@@ -1,0 +1,184 @@
+{
+  "sitemap": {
+    "baseUrl": "https://aptivi.github.io/BassBoom/"
+  },
+  "homepages": [],
+  "source_base_path": "/github/workspace/DocGen",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.BasoliaException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.BasoliaException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.BasoliaOutException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.BasoliaOutException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Devices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Devices.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.File.FileTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.File.FileTools.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.File.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.File.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Format.AudioInfoTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Format.AudioInfoTools.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Format.FormatTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Format.FormatTools.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Format.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Format.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.InitBasolia.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.InitBasolia.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Playback.PlaybackTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Playback.PlaybackTools.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Playback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Playback.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

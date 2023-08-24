@@ -1,0 +1,72 @@
+{
+  "api/BassBoom.Basolia.BasoliaException.html": {
+    "href": "api/BassBoom.Basolia.BasoliaException.html",
+    "title": "Class BasoliaException | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class BasoliaException Inheritance object Exception BasoliaException Namespace: BassBoom.Basolia Assembly: BassBoom.Basolia.dll Syntax public class BasoliaException : Exception Constructors | Improve this Doc View Source BasoliaException(mpg123_errors) Declaration public BasoliaException(mpg123_errors error) Parameters Type Name Description mpg123_errors error | Improve this Doc View Source BasoliaException(string, mpg123_errors) Declaration public BasoliaException(string message, mpg123_errors error) Parameters Type Name Description string message mpg123_errors error | Improve this Doc View Source BasoliaException(string, Exception, mpg123_errors) Declaration public BasoliaException(string message, Exception innerException, mpg123_errors error) Parameters Type Name Description string message Exception innerException mpg123_errors error"
+  },
+  "api/BassBoom.Basolia.BasoliaOutException.html": {
+    "href": "api/BassBoom.Basolia.BasoliaOutException.html",
+    "title": "Class BasoliaOutException | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class BasoliaOutException Inheritance object Exception BasoliaOutException Namespace: BassBoom.Basolia Assembly: BassBoom.Basolia.dll Syntax public class BasoliaOutException : Exception Constructors | Improve this Doc View Source BasoliaOutException(out123_error) Declaration public BasoliaOutException(out123_error error) Parameters Type Name Description out123_error error | Improve this Doc View Source BasoliaOutException(string, out123_error) Declaration public BasoliaOutException(string message, out123_error error) Parameters Type Name Description string message out123_error error | Improve this Doc View Source BasoliaOutException(string, Exception, out123_error) Declaration public BasoliaOutException(string message, Exception innerException, out123_error error) Parameters Type Name Description string message Exception innerException out123_error error"
+  },
+  "api/BassBoom.Basolia.Devices.DeviceTools.html": {
+    "href": "api/BassBoom.Basolia.Devices.DeviceTools.html",
+    "title": "Class DeviceTools | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class DeviceTools Device and driver tools Inheritance object DeviceTools Namespace: BassBoom.Basolia.Devices Assembly: BassBoom.Basolia.dll Syntax public static class DeviceTools Methods | Improve this Doc View Source GetDevices(string) Declaration public static ReadOnlyDictionary<string, string> GetDevices(string driver) Parameters Type Name Description string driver Returns Type Description ReadOnlyDictionary<string, string> | Improve this Doc View Source GetDrivers() Declaration public static ReadOnlyDictionary<string, string> GetDrivers() Returns Type Description ReadOnlyDictionary<string, string>"
+  },
+  "api/BassBoom.Basolia.Devices.html": {
+    "href": "api/BassBoom.Basolia.Devices.html",
+    "title": "Namespace BassBoom.Basolia.Devices | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Namespace BassBoom.Basolia.Devices Classes DeviceTools Device and driver tools"
+  },
+  "api/BassBoom.Basolia.File.FileTools.html": {
+    "href": "api/BassBoom.Basolia.File.FileTools.html",
+    "title": "Class FileTools | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class FileTools Inheritance object FileTools Namespace: BassBoom.Basolia.File Assembly: BassBoom.Basolia.dll Syntax public static class FileTools Properties | Improve this Doc View Source IsOpened Is the file open? Declaration public static bool IsOpened { get; } Property Value Type Description bool Methods | Improve this Doc View Source CloseFile() Closes a currently opened media file Declaration public static void CloseFile() | Improve this Doc View Source OpenFile(string) Opens a media file Declaration public static void OpenFile(string path) Parameters Type Name Description string path"
+  },
+  "api/BassBoom.Basolia.File.html": {
+    "href": "api/BassBoom.Basolia.File.html",
+    "title": "Namespace BassBoom.Basolia.File | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Namespace BassBoom.Basolia.File Classes FileTools"
+  },
+  "api/BassBoom.Basolia.Format.AudioInfoTools.html": {
+    "href": "api/BassBoom.Basolia.Format.AudioInfoTools.html",
+    "title": "Class AudioInfoTools | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class AudioInfoTools Audio information tools Inheritance object AudioInfoTools Namespace: BassBoom.Basolia.Format Assembly: BassBoom.Basolia.dll Syntax public static class AudioInfoTools Methods | Improve this Doc View Source GetDuration(bool) Gets the duration of the file Declaration public static int GetDuration(bool scan) Parameters Type Name Description bool scan Returns Type Description int"
+  },
+  "api/BassBoom.Basolia.Format.FormatTools.html": {
+    "href": "api/BassBoom.Basolia.Format.FormatTools.html",
+    "title": "Class FormatTools | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class FormatTools Audio format tools Inheritance object FormatTools Namespace: BassBoom.Basolia.Format Assembly: BassBoom.Basolia.dll Syntax public static class FormatTools Methods | Improve this Doc View Source GetFormatInfo() Gets the format information Declaration public static (long rate, int channels, int encoding) GetFormatInfo() Returns Type Description (long rate, int channels, int encoding)"
+  },
+  "api/BassBoom.Basolia.Format.html": {
+    "href": "api/BassBoom.Basolia.Format.html",
+    "title": "Namespace BassBoom.Basolia.Format | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Namespace BassBoom.Basolia.Format Classes AudioInfoTools Audio information tools FormatTools Audio format tools"
+  },
+  "api/BassBoom.Basolia.InitBasolia.html": {
+    "href": "api/BassBoom.Basolia.InitBasolia.html",
+    "title": "Class InitBasolia | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class InitBasolia Initialization code Inheritance object InitBasolia Namespace: BassBoom.Basolia Assembly: BassBoom.Basolia.dll Syntax public static class InitBasolia Methods | Improve this Doc View Source CheckInited() Declaration public static void CheckInited() | Improve this Doc View Source Init() Initializes the MPG123 library for Basolia to function Declaration public static void Init()"
+  },
+  "api/BassBoom.Basolia.Playback.PlaybackTools.html": {
+    "href": "api/BassBoom.Basolia.Playback.PlaybackTools.html",
+    "title": "Class PlaybackTools | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class PlaybackTools Playback tools Inheritance object PlaybackTools Namespace: BassBoom.Basolia.Playback Assembly: BassBoom.Basolia.dll Syntax public static class PlaybackTools Methods | Improve this Doc View Source Play() Declaration public static void Play()"
+  },
+  "api/BassBoom.Basolia.Playback.html": {
+    "href": "api/BassBoom.Basolia.Playback.html",
+    "title": "Namespace BassBoom.Basolia.Playback | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Namespace BassBoom.Basolia.Playback Classes PlaybackTools Playback tools"
+  },
+  "api/BassBoom.Basolia.html": {
+    "href": "api/BassBoom.Basolia.html",
+    "title": "Namespace BassBoom.Basolia | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Namespace BassBoom.Basolia Classes BasoliaException BasoliaOutException InitBasolia Initialization code"
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "What is Terminaux? | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "What is Terminaux? Terminaux is a library that allows you to manipulate with the console. What is this web page? This webpage is an API documentation for mod developers to be used as reference. It constantly gets updated as we push the updates to the main and servicing versions of this project. If you still intend to use a documentation specific to your preferred version of Terminaux, you may refer to the releases page of the project and download the attached <version>-doc.rar file. To get started using the documentation, select API Documentation from the top menu and select a namespace to get a clear overview of the API. Feedback If you wish to leave feedback to us about this API reference website, use the issue tracker of the project. If you wish to contribute to the documentation of the API, go to the project source code and make your improvements there on a draft Pull Request; we don't support override files that are made by clicking on Improve this doc. Any meaningful contributions are welcome. Copyright (c) 2022-2023 Aptivi. All rights reserved."
+  }
+}
