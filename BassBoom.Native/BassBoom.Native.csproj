@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net7.0-windows;net7.0</TargetFrameworks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="runtimes\linux-arm64\native\" />
+    <Folder Include="runtimes\linux-arm\native\" />
+    <Folder Include="runtimes\linux-x64\native\" />
+    <Folder Include="runtimes\linux-x86\native\" />
+    <Folder Include="runtimes\osx-arm\native\" />
+    <Folder Include="runtimes\osx-x64\native\" />
+    <Folder Include="runtimes\win-arm64\native\" />
+    <Folder Include="runtimes\win-arm\native\" />
+    <Folder Include="runtimes\win-x64\native\" />
+    <Folder Include="runtimes\win-x86\native\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- This is the only way to reliably copy all the runtimes -->
+    <None Include="runtimes\**\*.*" Pack="True" PackagePath="runtimes">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    
+    <!-- Necessary targets -->
+    <None Include="BassBoom.Native.targets" Pack="True" PackagePath="/" />
+  </ItemGroup>
+
+</Project>

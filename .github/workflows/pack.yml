@@ -1,0 +1,26 @@
+name: NuGet Gallery Push
+
+on:
+  release:
+    types: [published]
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
+    - name: Setup .NET 6.0
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x'
+    - name: Solution Compilation
+      run: dotnet build --configuration Release
+    - name: Package Publication (Basolia)
+      run: dotnet nuget push "BassBoom.Basolia/bin/Release/*.symbols.nupkg" --api-key ${{ secrets.NUGET_APIKEY }} --source "nuget.org"
+    - name: Package Publication (Native)
+      run: dotnet nuget push "BassBoom.Native/bin/Release/*.symbols.nupkg" --api-key ${{ secrets.NUGET_APIKEY }} --source "nuget.org"
+        

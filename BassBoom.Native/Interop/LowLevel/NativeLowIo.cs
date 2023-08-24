@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Runtime.InteropServices;
+using BassBoom.Native.Interop.Init;
+
+namespace BassBoom.Native.Interop.LowLevel
+{
+    /// <summary>
+    /// Low-level I/O group from mpg123
+    /// </summary>
+    public static unsafe class NativeLowIo
+    {
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        internal delegate int r_read(int val1, IntPtr val2, int val3);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        internal delegate int r_read2(IntPtr val1, IntPtr val2, int val3);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        internal delegate int r_read3(IntPtr val1, IntPtr val2, int val3, IntPtr val4);
+        
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        internal delegate int r_lseek(int val1, int val2, int val3);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        internal delegate int r_lseek2(IntPtr val1, int val2, int val3);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]     
+        internal delegate int r_lseek3(IntPtr val1, long val2, int val3);
+        
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        internal delegate void cleanup(IntPtr val1);
+
+        /// <summary>
+        /// MPG123_EXPORT int mpg123_replace_buffer(mpg123_handle *mh
+        /// ,   void *data, size_t size);
+        /// </summary>
+        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        internal static extern int mpg123_replace_buffer(mpg123_handle* mh, IntPtr data, int size);
+
+        /// <summary>
+        /// MPG123_EXPORT size_t mpg123_outblock(mpg123_handle *mh);
+        /// </summary>
+        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        internal static extern int mpg123_outblock(mpg123_handle* mh);
+
+        /// <summary>
+        /// MPG123_EXPORT int mpg123_replace_reader( mpg123_handle *mh
+        /// ,   mpg123_ssize_t (*r_read) (int, void *, size_t)
+        /// ,   off_t (*r_lseek)(int, off_t, int)
+        /// );
+        /// </summary>
+        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        internal static extern int mpg123_replace_reader(mpg123_handle* mh, r_read r_read, r_lseek r_lseek);
+
+        /// <summary>
+        /// MPG123_EXPORT int mpg123_replace_reader_handle( mpg123_handle *mh
+        /// ,   mpg123_ssize_t (*r_read) (void *, void *, size_t)
+        /// ,   off_t (*r_lseek)(void *, off_t, int)
+        /// ,   void (*cleanup)(void*) );
+        /// </summary>
+        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        internal static extern int mpg123_replace_reader_handle(mpg123_handle* mh, r_read2 r_read, r_lseek2 r_lseek, cleanup cleanup);
+
+        /// <summary>
+        /// MPG123_EXPORT int mpg123_reader64( mpg123_handle *mh, int (*r_read) (void *, void *, size_t, size_t *), int64_t (*r_lseek)(void *, int64_t, int), void (*cleanup)(void*) );
+        /// </summary>
+        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        internal static extern int mpg123_reader64(mpg123_handle* mh, r_read3 r_read, r_lseek3 r_lseek, cleanup cleanup);
+    }
+}

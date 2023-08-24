@@ -1,0 +1,18 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        SizeToContent="WidthAndHeight"
+        x:Class="BassBoom.Views.SelectionWindow"
+        Title="Select...">
+  <StackPanel>
+    <Grid RowDefinitions="Auto" ColumnDefinitions="Auto, Auto" Margin="15">
+      <Label Grid.Row="0" Grid.Column="0">Select:</Label>
+      <ComboBox Name="selection" Grid.Row="0" Grid.Column="1" x:CompileBindings="False" ItemsSource="{Binding Selections}"></ComboBox>
+    </Grid>
+    <Grid RowDefinitions="Auto" ColumnDefinitions="Auto" Margin="15" HorizontalAlignment="Right">
+      <Button Grid.Row="2" Grid.Column="0" Name="Acknowledge" x:CompileBindings="False" Command="{Binding Acknowledge}">OK</Button>
+    </Grid>
+  </StackPanel>
+</Window>
