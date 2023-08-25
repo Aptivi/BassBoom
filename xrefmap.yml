@@ -105,15 +105,63 @@ references:
   commentId: T:BassBoom.Basolia.Devices.DeviceTools
   fullName: BassBoom.Basolia.Devices.DeviceTools
   nameWithType: DeviceTools
-- uid: BassBoom.Basolia.Devices.DeviceTools.GetDevices(System.String)
-  name: GetDevices(string)
-  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetDevices_System_String_
-  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetDevices(System.String)
-  name.vb: GetDevices(String)
-  fullName: BassBoom.Basolia.Devices.DeviceTools.GetDevices(string)
-  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.GetDevices(String)
-  nameWithType: DeviceTools.GetDevices(string)
-  nameWithType.vb: DeviceTools.GetDevices(String)
+- uid: BassBoom.Basolia.Devices.DeviceTools.DeviceDescList
+  name: DeviceTools.DeviceDescList
+  href: api/BassBoom.Basolia.Devices.DeviceTools.DeviceDescList.html
+  commentId: T:BassBoom.Basolia.Devices.DeviceTools.DeviceDescList
+  fullName: BassBoom.Basolia.Devices.DeviceTools.DeviceDescList
+  nameWithType: DeviceTools.DeviceDescList
+- uid: BassBoom.Basolia.Devices.DeviceTools.DeviceDescList.listOfDeviceDescriptions
+  name: listOfDeviceDescriptions
+  href: api/BassBoom.Basolia.Devices.DeviceTools.DeviceDescList.html#BassBoom_Basolia_Devices_DeviceTools_DeviceDescList_listOfDeviceDescriptions
+  commentId: F:BassBoom.Basolia.Devices.DeviceTools.DeviceDescList.listOfDeviceDescriptions
+  fullName: BassBoom.Basolia.Devices.DeviceTools.DeviceDescList.listOfDeviceDescriptions
+  nameWithType: DeviceTools.DeviceDescList.listOfDeviceDescriptions
+- uid: BassBoom.Basolia.Devices.DeviceTools.DeviceList
+  name: DeviceTools.DeviceList
+  href: api/BassBoom.Basolia.Devices.DeviceTools.DeviceList.html
+  commentId: T:BassBoom.Basolia.Devices.DeviceTools.DeviceList
+  fullName: BassBoom.Basolia.Devices.DeviceTools.DeviceList
+  nameWithType: DeviceTools.DeviceList
+- uid: BassBoom.Basolia.Devices.DeviceTools.DeviceList.listOfDevices
+  name: listOfDevices
+  href: api/BassBoom.Basolia.Devices.DeviceTools.DeviceList.html#BassBoom_Basolia_Devices_DeviceTools_DeviceList_listOfDevices
+  commentId: F:BassBoom.Basolia.Devices.DeviceTools.DeviceList.listOfDevices
+  fullName: BassBoom.Basolia.Devices.DeviceTools.DeviceList.listOfDevices
+  nameWithType: DeviceTools.DeviceList.listOfDevices
+- uid: BassBoom.Basolia.Devices.DeviceTools.DriverDescList
+  name: DeviceTools.DriverDescList
+  href: api/BassBoom.Basolia.Devices.DeviceTools.DriverDescList.html
+  commentId: T:BassBoom.Basolia.Devices.DeviceTools.DriverDescList
+  fullName: BassBoom.Basolia.Devices.DeviceTools.DriverDescList
+  nameWithType: DeviceTools.DriverDescList
+- uid: BassBoom.Basolia.Devices.DeviceTools.DriverDescList.listOfDriverDescriptions
+  name: listOfDriverDescriptions
+  href: api/BassBoom.Basolia.Devices.DeviceTools.DriverDescList.html#BassBoom_Basolia_Devices_DeviceTools_DriverDescList_listOfDriverDescriptions
+  commentId: F:BassBoom.Basolia.Devices.DeviceTools.DriverDescList.listOfDriverDescriptions
+  fullName: BassBoom.Basolia.Devices.DeviceTools.DriverDescList.listOfDriverDescriptions
+  nameWithType: DeviceTools.DriverDescList.listOfDriverDescriptions
+- uid: BassBoom.Basolia.Devices.DeviceTools.DriverList
+  name: DeviceTools.DriverList
+  href: api/BassBoom.Basolia.Devices.DeviceTools.DriverList.html
+  commentId: T:BassBoom.Basolia.Devices.DeviceTools.DriverList
+  fullName: BassBoom.Basolia.Devices.DeviceTools.DriverList
+  nameWithType: DeviceTools.DriverList
+- uid: BassBoom.Basolia.Devices.DeviceTools.DriverList.listOfDrivers
+  name: listOfDrivers
+  href: api/BassBoom.Basolia.Devices.DeviceTools.DriverList.html#BassBoom_Basolia_Devices_DeviceTools_DriverList_listOfDrivers
+  commentId: F:BassBoom.Basolia.Devices.DeviceTools.DriverList.listOfDrivers
+  fullName: BassBoom.Basolia.Devices.DeviceTools.DriverList.listOfDrivers
+  nameWithType: DeviceTools.DriverList.listOfDrivers
+- uid: BassBoom.Basolia.Devices.DeviceTools.GetDevices(System.String,System.String@)
+  name: GetDevices(string, ref string)
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetDevices_System_String_System_String__
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetDevices(System.String,System.String@)
+  name.vb: GetDevices(String, String)
+  fullName: BassBoom.Basolia.Devices.DeviceTools.GetDevices(string, ref string)
+  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.GetDevices(String, String)
+  nameWithType: DeviceTools.GetDevices(string, ref string)
+  nameWithType.vb: DeviceTools.GetDevices(String, String)
 - uid: BassBoom.Basolia.Devices.DeviceTools.GetDevices*
   name: GetDevices
   href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetDevices_
@@ -134,6 +182,38 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Devices.DeviceTools.GetDrivers
   nameWithType: DeviceTools.GetDrivers
+- uid: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(System.String,System.String)
+  name: SetActiveDevice(string, string)
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_SetActiveDevice_System_String_System_String_
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(System.String,System.String)
+  name.vb: SetActiveDevice(String, String)
+  fullName: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(string, string)
+  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(String, String)
+  nameWithType: DeviceTools.SetActiveDevice(string, string)
+  nameWithType.vb: DeviceTools.SetActiveDevice(String, String)
+- uid: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice*
+  name: SetActiveDevice
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_SetActiveDevice_
+  commentId: Overload:BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice
+  nameWithType: DeviceTools.SetActiveDevice
+- uid: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(System.String)
+  name: SetActiveDriver(string)
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_SetActiveDriver_System_String_
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(System.String)
+  name.vb: SetActiveDriver(String)
+  fullName: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(string)
+  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(String)
+  nameWithType: DeviceTools.SetActiveDriver(string)
+  nameWithType.vb: DeviceTools.SetActiveDriver(String)
+- uid: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver*
+  name: SetActiveDriver
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_SetActiveDriver_
+  commentId: Overload:BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver
+  nameWithType: DeviceTools.SetActiveDriver
 - uid: BassBoom.Basolia.File
   name: BassBoom.Basolia.File
   href: api/BassBoom.Basolia.File.html

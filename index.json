@@ -9,15 +9,35 @@
     "title": "Class BasoliaOutException | BassBoom Basolia API - Aptivi Internals",
     "keywords": "Class BasoliaOutException Inheritance object Exception BasoliaOutException Namespace: BassBoom.Basolia Assembly: BassBoom.Basolia.dll Syntax public class BasoliaOutException : Exception Constructors | Improve this Doc View Source BasoliaOutException(out123_error) Declaration public BasoliaOutException(out123_error error) Parameters Type Name Description out123_error error | Improve this Doc View Source BasoliaOutException(string, out123_error) Declaration public BasoliaOutException(string message, out123_error error) Parameters Type Name Description string message out123_error error | Improve this Doc View Source BasoliaOutException(string, Exception, out123_error) Declaration public BasoliaOutException(string message, Exception innerException, out123_error error) Parameters Type Name Description string message Exception innerException out123_error error"
   },
+  "api/BassBoom.Basolia.Devices.DeviceTools.DeviceDescList.html": {
+    "href": "api/BassBoom.Basolia.Devices.DeviceTools.DeviceDescList.html",
+    "title": "Struct DeviceTools.DeviceDescList | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Struct DeviceTools.DeviceDescList Namespace: BassBoom.Basolia.Devices Assembly: BassBoom.Basolia.dll Syntax public struct DeviceTools.DeviceDescList Fields | Improve this Doc View Source listOfDeviceDescriptions Declaration public nint[] listOfDeviceDescriptions Field Value Type Description nint[]"
+  },
+  "api/BassBoom.Basolia.Devices.DeviceTools.DeviceList.html": {
+    "href": "api/BassBoom.Basolia.Devices.DeviceTools.DeviceList.html",
+    "title": "Struct DeviceTools.DeviceList | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Struct DeviceTools.DeviceList Namespace: BassBoom.Basolia.Devices Assembly: BassBoom.Basolia.dll Syntax public struct DeviceTools.DeviceList Fields | Improve this Doc View Source listOfDevices Declaration public nint[] listOfDevices Field Value Type Description nint[]"
+  },
+  "api/BassBoom.Basolia.Devices.DeviceTools.DriverDescList.html": {
+    "href": "api/BassBoom.Basolia.Devices.DeviceTools.DriverDescList.html",
+    "title": "Struct DeviceTools.DriverDescList | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Struct DeviceTools.DriverDescList Namespace: BassBoom.Basolia.Devices Assembly: BassBoom.Basolia.dll Syntax public struct DeviceTools.DriverDescList Fields | Improve this Doc View Source listOfDriverDescriptions Declaration public nint[] listOfDriverDescriptions Field Value Type Description nint[]"
+  },
+  "api/BassBoom.Basolia.Devices.DeviceTools.DriverList.html": {
+    "href": "api/BassBoom.Basolia.Devices.DeviceTools.DriverList.html",
+    "title": "Struct DeviceTools.DriverList | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Struct DeviceTools.DriverList Namespace: BassBoom.Basolia.Devices Assembly: BassBoom.Basolia.dll Syntax public struct DeviceTools.DriverList Fields | Improve this Doc View Source listOfDrivers Declaration public nint[] listOfDrivers Field Value Type Description nint[]"
+  },
   "api/BassBoom.Basolia.Devices.DeviceTools.html": {
     "href": "api/BassBoom.Basolia.Devices.DeviceTools.html",
     "title": "Class DeviceTools | BassBoom Basolia API - Aptivi Internals",
-    "keywords": "Class DeviceTools Device and driver tools Inheritance object DeviceTools Namespace: BassBoom.Basolia.Devices Assembly: BassBoom.Basolia.dll Syntax public static class DeviceTools Methods | Improve this Doc View Source GetDevices(string) Declaration public static ReadOnlyDictionary<string, string> GetDevices(string driver) Parameters Type Name Description string driver Returns Type Description ReadOnlyDictionary<string, string> | Improve this Doc View Source GetDrivers() Declaration public static ReadOnlyDictionary<string, string> GetDrivers() Returns Type Description ReadOnlyDictionary<string, string>"
+    "keywords": "Class DeviceTools Device and driver tools Inheritance object DeviceTools Namespace: BassBoom.Basolia.Devices Assembly: BassBoom.Basolia.dll Syntax public static class DeviceTools Methods | Improve this Doc View Source GetDevices(string, ref string) Declaration public static ReadOnlyDictionary<string, string> GetDevices(string driver, ref string activeDevice) Parameters Type Name Description string driver string activeDevice Returns Type Description ReadOnlyDictionary<string, string> | Improve this Doc View Source GetDrivers() Declaration public static ReadOnlyDictionary<string, string> GetDrivers() Returns Type Description ReadOnlyDictionary<string, string> | Improve this Doc View Source SetActiveDevice(string, string) Declaration public static void SetActiveDevice(string driver, string device) Parameters Type Name Description string driver string device | Improve this Doc View Source SetActiveDriver(string) Declaration public static void SetActiveDriver(string driver) Parameters Type Name Description string driver"
   },
   "api/BassBoom.Basolia.Devices.html": {
     "href": "api/BassBoom.Basolia.Devices.html",
     "title": "Namespace BassBoom.Basolia.Devices | BassBoom Basolia API - Aptivi Internals",
-    "keywords": "Namespace BassBoom.Basolia.Devices Classes DeviceTools Device and driver tools"
+    "keywords": "Namespace BassBoom.Basolia.Devices Classes DeviceTools Device and driver tools Structs DeviceTools.DeviceDescList DeviceTools.DeviceList DeviceTools.DriverDescList DeviceTools.DriverList"
   },
   "api/BassBoom.Basolia.File.FileTools.html": {
     "href": "api/BassBoom.Basolia.File.FileTools.html",
