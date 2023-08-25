@@ -176,14 +176,15 @@ namespace BassBoom.Native.Interop.Output
         /// MPG123_EXPORT int out123_drivers(out123_handle *ao, char ***names, char ***descr);
         /// </summary>
         [DllImport(LibraryTools.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_drivers(out123_handle* ao, out string[] names, out string[] descr);
+        internal static extern int out123_drivers(out123_handle* ao, ref nint names, ref nint descr);
 
         /// <summary>
         /// MPG123_EXPORT int out123_devices( out123_handle *ao, const char *driver
         /// ,   char ***names, char ***descr, char **active_driver );
         /// </summary>
         [DllImport(LibraryTools.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_devices(out123_handle* ao, string driver, out string[] names, out string[] descr, out string active_driver);
+        internal static extern int out123_devices(out123_handle* ao,
+            [MarshalAs(UnmanagedType.LPStr)] string driver, ref nint names, ref nint descr, ref nint active_driver);
 
         /// <summary>
         /// MPG123_EXPORT void out123_stringlists_free(char **name, char **descr, int count);

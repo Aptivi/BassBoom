@@ -120,6 +120,7 @@ public class BassBoomData
             {
                 string answer = selection.SelectionInput;
                 selectedDriver = answer;
+                DeviceTools.SetActiveDriver(selectedDriver);
             };
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                 selection.ShowDialog(desktop.MainWindow);
@@ -154,13 +155,15 @@ public class BassBoomData
                 dialog.ShowAsync();
                 return;
             }
-            var devices = DeviceTools.GetDevices(selectedDriver);
+            string activeDevice = selectedDevice;
+            var devices = DeviceTools.GetDevices(selectedDriver, ref activeDevice);
             var deviceArray = devices.Keys.ToArray();
             var selection = new SelectionWindow(new ObservableCollection<string>(deviceArray));
             selection.Closed += (s, e) =>
             {
                 string answer = selection.SelectionInput;
-                selectedDriver = answer;
+                selectedDevice = answer;
+                DeviceTools.SetActiveDevice(selectedDriver, selectedDevice);
             };
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                 selection.ShowDialog(desktop.MainWindow);

@@ -29,6 +29,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BassBoom.Basolia.Devices;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -51,11 +52,6 @@ namespace BassBoom.Basolia.Playback
                 var handle = Mpg123Instance._mpg123Handle;
                 var outHandle = Mpg123Instance._out123Handle;
 
-                // Query the devices
-                int devicesStatus = NativeOutputLib.out123_devices(outHandle, null, out string[] deviceNames, out string[] deviceDescr, out string active);
-                if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
-
                 // First, get formats and set them
                 var formatInfo = FormatTools.GetFormatInfo();
                 NativeOutput.mpg123_format_none(handle);
@@ -65,9 +61,9 @@ namespace BassBoom.Basolia.Playback
                 Debug.WriteLine($"Format {formatInfo.rate}, {formatInfo.channels}, {formatInfo.encoding}");
 
                 // Try to open output to device
-                int openStatus = NativeOutputLib.out123_open(outHandle, active, null);
+                int openStatus = NativeOutputLib.out123_open(outHandle, DeviceTools.activeDriver, DeviceTools.activeDevice);
                 if (openStatus != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException($"Can't open output to device {active}", (out123_error)openStatus);
+                    throw new BasoliaOutException($"Can't open output to device {DeviceTools.activeDevice} on driver {DeviceTools.activeDriver}", (out123_error)openStatus);
                 
                 // Start the output
                 int startStatus = NativeOutputLib.out123_start(outHandle, formatInfo.rate, formatInfo.channels, formatInfo.encoding);
