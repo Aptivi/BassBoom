@@ -38,6 +38,14 @@ namespace BassBoom.Basolia.Playback
     /// </summary>
     public static class PlaybackTools
     {
+        private static bool _playing = false;
+
+        /// <summary>
+        /// Checks to see whether the music is playing
+        /// </summary>
+        public static bool Playing =>
+            _playing;
+
         public static void Play()
         {
             InitBasolia.CheckInited();
@@ -85,6 +93,7 @@ namespace BassBoom.Basolia.Playback
                 int done = 0;
                 int err = (int)mpg123_errors.MPG123_OK;
                 int samples = 0;
+                _playing = true;
                 do
                 {
                     int played;
@@ -99,6 +108,7 @@ namespace BassBoom.Basolia.Playback
                     samples += played / frameSize;
                     Debug.WriteLine($"S: {samples}");
                 } while (done != 0 && err == (int)mpg123_errors.MPG123_OK);
+                _playing = false;
             }
         }
     }

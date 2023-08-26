@@ -19,6 +19,8 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Input;
+using Avalonia.Interactivity;
 using BassBoom.Basolia;
 using BassBoom.Basolia.Devices;
 using BassBoom.Basolia.File;
@@ -28,6 +30,7 @@ using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 
 namespace BassBoom.Views;
@@ -38,14 +41,29 @@ public partial class MainView : UserControl
     {
         InitializeComponent();
         DataContext = new BassBoomData(this);
+        PathToMp3.TextChanged += CheckPath;
+    }
+
+    public void CheckPath(object sender, TextChangedEventArgs e)
+    {
+        if (File.Exists(PathToMp3.Text) && (!string.IsNullOrEmpty(((BassBoomData)DataContext).selectedDevice)))
+        {
+            PlayButton.IsEnabled = true;
+            GetDuration.IsEnabled = true;
+        }
+        else
+        {
+            PlayButton.IsEnabled = false;
+            GetDuration.IsEnabled = false;
+        }
     }
 }
 
 public class BassBoomData
 {
     private readonly MainView view;
-    private string selectedDriver = "";
-    private string selectedDevice = "";
+    internal string selectedDriver = "";
+    internal string selectedDevice = "";
 
     public void GetDuration()
     {
@@ -121,6 +139,7 @@ public class BassBoomData
                 string answer = selection.SelectionInput;
                 selectedDriver = answer;
                 DeviceTools.SetActiveDriver(selectedDriver);
+                view.SelectDevice.IsEnabled = true;
             };
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                 selection.ShowDialog(desktop.MainWindow);
