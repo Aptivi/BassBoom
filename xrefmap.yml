@@ -372,3 +372,16 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.Play
   nameWithType: PlaybackTools.Play
+- uid: BassBoom.Basolia.Playback.PlaybackTools.Playing
+  name: Playing
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Playing
+  commentId: P:BassBoom.Basolia.Playback.PlaybackTools.Playing
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.Playing
+  nameWithType: PlaybackTools.Playing
+- uid: BassBoom.Basolia.Playback.PlaybackTools.Playing*
+  name: Playing
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Playing_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.Playing
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.Playing
+  nameWithType: PlaybackTools.Playing
