@@ -65,6 +65,7 @@ public class BassBoomData
     private readonly MainView view;
     internal string selectedDriver = "";
     internal string selectedDevice = "";
+    internal bool paused = false;
 
     public void GetDuration()
     {
@@ -73,7 +74,7 @@ public class BassBoomData
             FileTools.OpenFile(view.PathToMp3.Text);
             int duration = AudioInfoTools.GetDuration(true);
             int durationNoScan = AudioInfoTools.GetDuration(false);
-            view.DurationLabel.Text = $"Duration: [{duration} with scan, {durationNoScan} no scan]";
+            view.GotDurationLabel.Text = $"[{duration} with scan, {durationNoScan} no scan]";
         }
         catch (BasoliaException bex)
         {
@@ -102,16 +103,22 @@ public class BassBoomData
     {
         try
         {
-            FileTools.OpenFile(view.PathToMp3.Text);
+            if (!paused)
+                FileTools.OpenFile(view.PathToMp3.Text);
+            paused = false;
             view.PlayButton.IsEnabled = false;
             view.GetDuration.IsEnabled = false;
             view.SelectDevice.IsEnabled = false;
             view.SelectDriver.IsEnabled = false;
+            view.PauseButton.IsEnabled = true;
+            view.StopButton.IsEnabled = true;
             await PlaybackTools.PlayAsync();
             view.PlayButton.IsEnabled = true;
             view.GetDuration.IsEnabled = true;
             view.SelectDevice.IsEnabled = true;
             view.SelectDriver.IsEnabled = true;
+            view.PauseButton.IsEnabled = false;
+            view.StopButton.IsEnabled = false;
         }
         catch (BasoliaException bex)
         {
@@ -128,6 +135,72 @@ public class BassBoomData
                 "We apologize for your inconvenience, but BassBoom can't perform this operation:\n\n" +
                $"{ex.Message}", ButtonEnum.Ok);
             await dialog.ShowAsync();
+        }
+        finally
+        {
+            if (FileTools.IsOpened && !paused)
+                FileTools.CloseFile();
+        }
+    }
+
+    public void Pause()
+    {
+        try
+        {
+            view.PlayButton.IsEnabled = true;
+            view.GetDuration.IsEnabled = false;
+            view.SelectDevice.IsEnabled = false;
+            view.SelectDriver.IsEnabled = false;
+            view.PauseButton.IsEnabled = false;
+            view.StopButton.IsEnabled = true;
+            PlaybackTools.Pause();
+            paused = true;
+        }
+        catch (BasoliaException bex)
+        {
+            var dialog = MessageBoxManager.GetMessageBoxStandard(
+                "Basolia Error!",
+                "We apologize for your inconvenience, but BassBoom can't perform this operation as Basolia encountered the following error:\n\n" +
+               $"{bex.Message}", ButtonEnum.Ok);
+            dialog.ShowAsync();
+        }
+        catch (Exception ex)
+        {
+            var dialog = MessageBoxManager.GetMessageBoxStandard(
+                "BassBoom Error!",
+                "We apologize for your inconvenience, but BassBoom can't perform this operation:\n\n" +
+               $"{ex.Message}", ButtonEnum.Ok);
+            dialog.ShowAsync();
+        }
+    }
+
+    public void Stop()
+    {
+        try
+        {
+            view.PlayButton.IsEnabled = true;
+            view.GetDuration.IsEnabled = true;
+            view.SelectDevice.IsEnabled = true;
+            view.SelectDriver.IsEnabled = true;
+            view.PauseButton.IsEnabled = false;
+            view.StopButton.IsEnabled = false;
+            PlaybackTools.Stop();
+        }
+        catch (BasoliaException bex)
+        {
+            var dialog = MessageBoxManager.GetMessageBoxStandard(
+                "Basolia Error!",
+                "We apologize for your inconvenience, but BassBoom can't perform this operation as Basolia encountered the following error:\n\n" +
+               $"{bex.Message}", ButtonEnum.Ok);
+            dialog.ShowAsync();
+        }
+        catch (Exception ex)
+        {
+            var dialog = MessageBoxManager.GetMessageBoxStandard(
+                "BassBoom Error!",
+                "We apologize for your inconvenience, but BassBoom can't perform this operation:\n\n" +
+               $"{ex.Message}", ButtonEnum.Ok);
+            dialog.ShowAsync();
         }
         finally
         {

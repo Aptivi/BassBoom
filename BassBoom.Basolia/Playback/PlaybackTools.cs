@@ -107,12 +107,41 @@ namespace BassBoom.Basolia.Playback
                     Debug.WriteLine($"{played}, {done}, {err}");
                     samples += played / frameSize;
                     Debug.WriteLine($"S: {samples}");
-                } while (done != 0 && err == (int)mpg123_errors.MPG123_OK);
+                } while (done != 0 && err == (int)mpg123_errors.MPG123_OK && Playing);
                 _playing = false;
             }
         }
 
         public static async Task PlayAsync() =>
             await Task.Run(Play);
+
+        public static void Pause()
+        {
+            InitBasolia.CheckInited();
+
+            // Check to see if the file is open
+            if (!FileTools.IsOpened)
+                throw new BasoliaException("Can't pause a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+            _playing = false;
+        }
+
+        public static void Stop()
+        {
+            InitBasolia.CheckInited();
+
+            // Check to see if the file is open
+            if (!FileTools.IsOpened)
+                throw new BasoliaException("Can't stop a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+                _playing = false;
+                int seekResult = NativePositioning.mpg123_seek(handle, 0, 0);
+                if (seekResult != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException("Can't seek to the beginning", (mpg123_errors)seekResult);
+            }
+        }
     }
 }
