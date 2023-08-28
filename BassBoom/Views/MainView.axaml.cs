@@ -32,6 +32,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BassBoom.Views;
 
@@ -97,12 +98,20 @@ public class BassBoomData
         }
     }
 
-    public void Play()
+    public async Task PlayAsync()
     {
         try
         {
             FileTools.OpenFile(view.PathToMp3.Text);
-            PlaybackTools.Play();
+            view.PlayButton.IsEnabled = false;
+            view.GetDuration.IsEnabled = false;
+            view.SelectDevice.IsEnabled = false;
+            view.SelectDriver.IsEnabled = false;
+            await PlaybackTools.PlayAsync();
+            view.PlayButton.IsEnabled = true;
+            view.GetDuration.IsEnabled = true;
+            view.SelectDevice.IsEnabled = true;
+            view.SelectDriver.IsEnabled = true;
         }
         catch (BasoliaException bex)
         {
@@ -110,7 +119,7 @@ public class BassBoomData
                 "Basolia Error!",
                 "We apologize for your inconvenience, but BassBoom can't perform this operation as Basolia encountered the following error:\n\n" +
                $"{bex.Message}", ButtonEnum.Ok);
-            dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
         catch (Exception ex)
         {
@@ -118,7 +127,7 @@ public class BassBoomData
                 "BassBoom Error!",
                 "We apologize for your inconvenience, but BassBoom can't perform this operation:\n\n" +
                $"{ex.Message}", ButtonEnum.Ok);
-            dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
         finally
         {

@@ -111,5 +111,8 @@ namespace BassBoom.Basolia.Playback
                 _playing = false;
             }
         }
+
+        public static async Task PlayAsync() =>
+            await Task.Run(Play);
     }
 }
