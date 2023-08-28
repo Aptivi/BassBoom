@@ -372,6 +372,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.Play
   nameWithType: PlaybackTools.Play
+- uid: BassBoom.Basolia.Playback.PlaybackTools.PlayAsync
+  name: PlayAsync()
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_PlayAsync
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.PlayAsync
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.PlayAsync()
+  nameWithType: PlaybackTools.PlayAsync()
+- uid: BassBoom.Basolia.Playback.PlaybackTools.PlayAsync*
+  name: PlayAsync
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_PlayAsync_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.PlayAsync
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.PlayAsync
+  nameWithType: PlaybackTools.PlayAsync
 - uid: BassBoom.Basolia.Playback.PlaybackTools.Playing
   name: Playing
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Playing

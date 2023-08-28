@@ -72,7 +72,7 @@
   "api/BassBoom.Basolia.Playback.PlaybackTools.html": {
     "href": "api/BassBoom.Basolia.Playback.PlaybackTools.html",
     "title": "Class PlaybackTools | BassBoom Basolia API - Aptivi Internals",
-    "keywords": "Class PlaybackTools Playback tools Inheritance object PlaybackTools Namespace: BassBoom.Basolia.Playback Assembly: BassBoom.Basolia.dll Syntax public static class PlaybackTools Properties | Improve this Doc View Source Playing Checks to see whether the music is playing Declaration public static bool Playing { get; } Property Value Type Description bool Methods | Improve this Doc View Source Play() Declaration public static void Play()"
+    "keywords": "Class PlaybackTools Playback tools Inheritance object PlaybackTools Namespace: BassBoom.Basolia.Playback Assembly: BassBoom.Basolia.dll Syntax public static class PlaybackTools Properties | Improve this Doc View Source Playing Checks to see whether the music is playing Declaration public static bool Playing { get; } Property Value Type Description bool Methods | Improve this Doc View Source Play() Declaration public static void Play() | Improve this Doc View Source PlayAsync() Declaration public static Task PlayAsync() Returns Type Description Task"
   },
   "api/BassBoom.Basolia.Playback.html": {
     "href": "api/BassBoom.Basolia.Playback.html",
