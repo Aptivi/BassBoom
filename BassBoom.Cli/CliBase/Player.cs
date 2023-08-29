@@ -37,18 +37,26 @@ namespace BassBoom.Cli.CliBase
         public static void PlayerLoop(string musicPath)
         {
             bool exiting = false;
+            bool rerender = true;
 
             // Try to open the file after loading the library
             InitBasolia.Init();
             FileTools.OpenFile(musicPath);
+            int total = AudioInfoTools.GetDuration(true);
 
             // First, clear the screen to draw our TUI
-            ConsoleTools.ActionCursorVisible(false);
-            ColorTools.LoadBack();
             while (!exiting)
             {
                 try
                 {
+                    // If we need to render again, do it
+                    if (rerender)
+                    {
+                        rerender = false;
+                        ConsoleTools.ActionCursorVisible(false);
+                        ColorTools.LoadBack();
+                    }
+
                     // First, print the keystrokes
                     string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit";
                     CenteredTextColor.WriteCentered(ConsoleTools.ActionWindowHeight() - 2, keystrokes);
@@ -66,8 +74,7 @@ namespace BassBoom.Cli.CliBase
                     {
                         // Print the progress bar
                         int position = PlaybackPositioningTools.GetCurrentDuration();
-                        int total = AudioInfoTools.GetDuration(true);
-                        ProgressBarColor.WriteProgress(position / (double)total, 2, ConsoleTools.ActionWindowHeight() - 8, 6);
+                        ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleTools.ActionWindowHeight() - 8, 6);
 
                         // Wait for any keystroke asynchronously
                         if (ConsoleTools.ActionKeyAvailable())
@@ -106,15 +113,24 @@ namespace BassBoom.Cli.CliBase
                 }
                 catch (BasoliaException bex)
                 {
+                    if (PlaybackTools.Playing)
+                        PlaybackTools.Stop();
                     InfoBoxColor.WriteInfoBox("There's an error with Basolia when trying to process the music file.\n\n" + bex.Message);
+                    rerender = true;
                 }
                 catch (BasoliaOutException bex)
                 {
+                    if (PlaybackTools.Playing)
+                        PlaybackTools.Stop();
                     InfoBoxColor.WriteInfoBox("There's an error with Basolia output when trying to process the music file.\n\n" + bex.Message);
+                    rerender = true;
                 }
                 catch (Exception ex)
                 {
+                    if (PlaybackTools.Playing)
+                        PlaybackTools.Stop();
                     InfoBoxColor.WriteInfoBox("There's an unknown error when trying to process the music file.\n\n" + ex.Message);
+                    rerender = true;
                 }
             }
 

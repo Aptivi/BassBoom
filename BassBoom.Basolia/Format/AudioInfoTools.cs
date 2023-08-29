@@ -20,6 +20,7 @@ using BassBoom.Native.Runtime;
 using BassBoom.Native.Interop.Analysis;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Basolia.File;
+using BassBoom.Basolia.Playback;
 
 namespace BassBoom.Basolia.Format
 {
@@ -39,6 +40,10 @@ namespace BassBoom.Basolia.Format
             // Check to see if the file is open
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't play a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+            // Check to see if we're playing
+            if (PlaybackTools.Playing && !InitBasolia._fugitive)
+                throw new BasoliaException("Trying to get the duration during playback causes playback corruption! Don't call this function during playback. If you're willing to take a risk, turn on Fugitive Mode.", mpg123_errors.MPG123_ERR_READER);
 
             // We're now entering the dangerous zone
             unsafe
