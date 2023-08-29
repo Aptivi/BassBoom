@@ -353,6 +353,25 @@ references:
   commentId: N:BassBoom.Basolia.Playback
   fullName: BassBoom.Basolia.Playback
   nameWithType: BassBoom.Basolia.Playback
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools
+  name: PlaybackPositioningTools
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html
+  commentId: T:BassBoom.Basolia.Playback.PlaybackPositioningTools
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools
+  nameWithType: PlaybackPositioningTools
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration
+  name: GetCurrentDuration()
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_GetCurrentDuration
+  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration()
+  nameWithType: PlaybackPositioningTools.GetCurrentDuration()
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration*
+  name: GetCurrentDuration
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_GetCurrentDuration_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration
+  nameWithType: PlaybackPositioningTools.GetCurrentDuration
 - uid: BassBoom.Basolia.Playback.PlaybackTools
   name: PlaybackTools
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html
