@@ -224,7 +224,9 @@ public class BassBoomData
         {
             var drivers = DeviceTools.GetDrivers();
             var driverArray = drivers.Keys.ToArray();
-            var selection = new SelectionWindow(new ObservableCollection<string>(driverArray));
+            var selection = new SelectionWindow();
+            selection.selection.ItemsSource = driverArray;
+            selection.SelectInfo.Text = $"Select a driver. {driverArray.Length} drivers found in your system.";
             selection.Closed += (s, e) =>
             {
                 string answer = selection.SelectionInput;
@@ -268,7 +270,9 @@ public class BassBoomData
             string activeDevice = selectedDevice;
             var devices = DeviceTools.GetDevices(selectedDriver, ref activeDevice);
             var deviceArray = devices.Keys.ToArray();
-            var selection = new SelectionWindow(new ObservableCollection<string>(deviceArray));
+            var selection = new SelectionWindow();
+            selection.selection.ItemsSource = deviceArray;
+            selection.SelectInfo.Text = $"Select a device for the {selectedDriver} driver. {deviceArray.Length} devices found.";
             selection.Closed += (s, e) =>
             {
                 string answer = selection.SelectionInput;

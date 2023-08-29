@@ -25,13 +25,10 @@ namespace BassBoom.Views
     {
         public string SelectionInput { get; set; }
 
-        public SelectionWindow(ObservableCollection<string> selections)
+        public SelectionWindow()
         {
             InitializeComponent();
-            DataContext = new SelectionData(this)
-            {
-                Selections = selections
-            };
+            DataContext = new SelectionData(this);
             ShowInTaskbar = false;
             CanResize = false;
         }
@@ -40,8 +37,6 @@ namespace BassBoom.Views
     public class SelectionData
     {
         private readonly Window view;
-
-        public ObservableCollection<string> Selections { get; set; } = new();
 
         public void Acknowledge()
         {

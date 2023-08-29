@@ -29,9 +29,12 @@
         x:Class="BassBoom.Views.SelectionWindow"
         Title="Select...">
   <StackPanel>
-    <Grid RowDefinitions="Auto" ColumnDefinitions="Auto, Auto" Margin="15">
-      <Label Grid.Row="0" Grid.Column="0">Select:</Label>
-      <ComboBox Name="selection" Grid.Row="0" Grid.Column="1" x:CompileBindings="False" ItemsSource="{Binding Selections}"></ComboBox>
+    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, Auto" Margin="15">
+      <TextBlock Name="SelectInfo" Grid.Row="0" Grid.Column="0">Please select an item from the drop-down box below.</TextBlock>
+    </Grid>
+    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, Auto" Margin="15">
+      <Label Grid.Row="1" Grid.Column="0">Select an item:</Label>
+      <ComboBox Name="selection" Grid.Row="1" Grid.Column="1" x:CompileBindings="False"></ComboBox>
     </Grid>
     <Grid RowDefinitions="Auto" ColumnDefinitions="Auto" Margin="15" HorizontalAlignment="Right">
       <Button Grid.Row="2" Grid.Column="0" Name="Acknowledge" x:CompileBindings="False" Command="{Binding Acknowledge}">OK</Button>
