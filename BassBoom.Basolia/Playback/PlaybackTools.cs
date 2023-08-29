@@ -60,9 +60,13 @@ namespace BassBoom.Basolia.Playback
                 var handle = Mpg123Instance._mpg123Handle;
                 var outHandle = Mpg123Instance._out123Handle;
 
-                // First, get formats and set them
+                // First, get formats and reset them
                 var formatInfo = FormatTools.GetFormatInfo();
-                NativeOutput.mpg123_format_none(handle);
+                int resetStatus = NativeOutput.mpg123_format_none(handle);
+                if (resetStatus != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException($"Can't reset output encoding", (mpg123_errors)resetStatus);
+
+                // Set the format
                 int formatStatus = NativeOutput.mpg123_format(handle, formatInfo.rate, formatInfo.channels, formatInfo.encoding);
                 if (formatStatus != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set output encoding", (mpg123_errors)formatStatus);
@@ -72,15 +76,14 @@ namespace BassBoom.Basolia.Playback
                 int openStatus = NativeOutputLib.out123_open(outHandle, DeviceTools.activeDriver, DeviceTools.activeDevice);
                 if (openStatus != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't open output to device {DeviceTools.activeDevice} on driver {DeviceTools.activeDriver}", (out123_error)openStatus);
-                
+
                 // Start the output
                 int startStatus = NativeOutputLib.out123_start(outHandle, formatInfo.rate, formatInfo.channels, formatInfo.encoding);
                 if (startStatus != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't start the output.", (out123_error)openStatus);
 
                 // Get the output format to get the frame size
-                int frameSize = 0;
-                int getStatus = NativeOutputLib.out123_getformat(outHandle, null, null, null, out frameSize);
+                int getStatus = NativeOutputLib.out123_getformat(outHandle, null, null, null, out int frameSize);
                 if (getStatus != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't get the output.", (out123_error)openStatus);
                 Debug.WriteLine($"Got frame size {frameSize}");
@@ -90,9 +93,10 @@ namespace BassBoom.Basolia.Playback
                 Debug.WriteLine($"Buffer size is {bufferSize}");
                 var buffer = stackalloc byte[bufferSize];
                 var bufferPtr = new IntPtr(buffer);
-                int done = 0;
+                int done = NativePositioning.mpg123_tell(handle);
                 int err = (int)mpg123_errors.MPG123_OK;
                 int samples = 0;
+                Debug.WriteLine($"mpg123_tell() returned {done}");
                 _playing = true;
                 do
                 {
