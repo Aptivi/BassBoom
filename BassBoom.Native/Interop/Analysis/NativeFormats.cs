@@ -1,5 +1,4 @@
-﻿
-//   BassBoom  Copyright (C) 2023  Aptivi
+﻿//   BassBoom  Copyright (C) 2023  Aptivi
 // 
 //   This file is part of BassBoom
 // 
@@ -15,12 +14,6 @@
 // 
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.InteropServices;
-using BassBoom.Native.Interop.Init;
 
 namespace BassBoom.Native.Interop.Analysis
 {

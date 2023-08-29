@@ -17,15 +17,8 @@
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 using BassBoom.Native.Runtime;
-using BassBoom.Native.Interop.Analysis;
 using BassBoom.Native.Interop.Play;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BassBoom.Native.Interop.Init;
-using BassBoom.Basolia.File;
 
 namespace BassBoom.Basolia.Format
 {

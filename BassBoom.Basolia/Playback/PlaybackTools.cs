@@ -24,10 +24,7 @@ using BassBoom.Native.Interop.Play;
 using BassBoom.Native.Interop.LowLevel;
 using BassBoom.Native.Runtime;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using BassBoom.Basolia.Devices;
 

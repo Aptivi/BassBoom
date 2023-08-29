@@ -17,10 +17,7 @@
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Runtime.InteropServices;
-using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Analysis;
 
 namespace BassBoom.Native.Interop.Output
@@ -119,7 +116,7 @@ namespace BassBoom.Native.Interop.Output
         /// MPG123_EXPORT const char* out123_strerror(out123_handle *ao);
         /// </summary>
         [DllImport(LibraryTools.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern IntPtr out123_strerror(out123_handle* ao);
+        internal static extern string out123_strerror(out123_handle* ao);
 
         /// <summary>
         /// MPG123_EXPORT int out123_errcode(out123_handle *ao);
@@ -131,7 +128,7 @@ namespace BassBoom.Native.Interop.Output
         /// MPG123_EXPORT const char* out123_plain_strerror(int errcode);
         /// </summary>
         [DllImport(LibraryTools.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern IntPtr out123_plain_strerror(int errcode);
+        internal static extern string out123_plain_strerror(int errcode);
 
         /// <summary>
         /// MPG123_EXPORT int out123_set_buffer(out123_handle *ao, size_t buffer_bytes);
