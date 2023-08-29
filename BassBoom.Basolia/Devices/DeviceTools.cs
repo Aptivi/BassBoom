@@ -31,8 +31,8 @@ namespace BassBoom.Basolia.Devices
     /// </summary>
     public static class DeviceTools
     {
-        internal static string activeDriver = "";
-        internal static string activeDevice = "";
+        internal static string activeDriver;
+        internal static string activeDevice;
 
         [StructLayout(LayoutKind.Sequential)]
         public struct DriverList

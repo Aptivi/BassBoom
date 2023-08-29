@@ -48,8 +48,11 @@
       <Button Grid.Row="2" Grid.Column="1" Name="PlayButton" x:CompileBindings="False" Command="{Binding PlayAsync}" IsEnabled="False">Play</Button>
       <Button Grid.Row="2" Grid.Column="2" Name="PauseButton" x:CompileBindings="False" Command="{Binding Pause}" IsEnabled="False">Pause</Button>
       <Button Grid.Row="2" Grid.Column="3" Name="StopButton" x:CompileBindings="False" Command="{Binding Stop}" IsEnabled="False">Stop</Button>
-      <Button Grid.Row="2" Grid.Column="4" Name="SelectDriver" x:CompileBindings="False" Command="{Binding SelectDriver}">Select driver...</Button>
+      <Button Grid.Row="2" Grid.Column="4" Name="SelectDriver" x:CompileBindings="False" Command="{Binding SelectDriver}" IsEnabled="False">Select driver...</Button>
       <Button Grid.Row="2" Grid.Column="5" Name="SelectDevice" x:CompileBindings="False" Command="{Binding SelectDevice}" IsEnabled="False">Select device...</Button>
+    </Grid>
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" Margin="15">
+      <CheckBox Grid.Row="1" Name="DetermineDevice" IsChecked="true">Determine device and driver</CheckBox>
     </Grid>
   </StackPanel>
 </UserControl>

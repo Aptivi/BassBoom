@@ -43,11 +43,14 @@ public partial class MainView : UserControl
         InitializeComponent();
         DataContext = new BassBoomData(this);
         PathToMp3.TextChanged += CheckPath;
+        DetermineDevice.IsCheckedChanged += MakeDeviceDeterministic;
     }
 
-    public void CheckPath(object sender, TextChangedEventArgs e)
+    internal void EnablePlay()
     {
-        if (File.Exists(PathToMp3.Text) && (!string.IsNullOrEmpty(((BassBoomData)DataContext).selectedDevice)))
+        if (File.Exists(PathToMp3.Text) &&
+            ((!DetermineDevice.IsChecked.Value && !string.IsNullOrEmpty(((BassBoomData)DataContext).selectedDevice)) ||
+               DetermineDevice.IsChecked.Value))
         {
             PlayButton.IsEnabled = true;
             GetDuration.IsEnabled = true;
@@ -58,13 +61,19 @@ public partial class MainView : UserControl
             GetDuration.IsEnabled = false;
         }
     }
+
+    private void CheckPath(object sender, TextChangedEventArgs e) =>
+        EnablePlay();
+
+    private void MakeDeviceDeterministic(object sender, RoutedEventArgs e) =>
+        ((BassBoomData)DataContext).HandleDeviceButtons();
 }
 
 public class BassBoomData
 {
     private readonly MainView view;
-    internal string selectedDriver = "";
-    internal string selectedDevice = "";
+    internal string selectedDriver;
+    internal string selectedDevice;
     internal bool paused = false;
 
     public void GetDuration()
@@ -113,12 +122,6 @@ public class BassBoomData
             view.PauseButton.IsEnabled = true;
             view.StopButton.IsEnabled = true;
             await PlaybackTools.PlayAsync();
-            view.PlayButton.IsEnabled = true;
-            view.GetDuration.IsEnabled = true;
-            view.SelectDevice.IsEnabled = true;
-            view.SelectDriver.IsEnabled = true;
-            view.PauseButton.IsEnabled = false;
-            view.StopButton.IsEnabled = false;
         }
         catch (BasoliaException bex)
         {
@@ -140,6 +143,11 @@ public class BassBoomData
         {
             if (FileTools.IsOpened && !paused)
                 FileTools.CloseFile();
+            view.PlayButton.IsEnabled = true;
+            view.GetDuration.IsEnabled = true;
+            view.PauseButton.IsEnabled = false;
+            view.StopButton.IsEnabled = false;
+            HandleDeviceButtons();
         }
     }
 
@@ -147,14 +155,7 @@ public class BassBoomData
     {
         try
         {
-            view.PlayButton.IsEnabled = true;
-            view.GetDuration.IsEnabled = false;
-            view.SelectDevice.IsEnabled = false;
-            view.SelectDriver.IsEnabled = false;
-            view.PauseButton.IsEnabled = false;
-            view.StopButton.IsEnabled = true;
             PlaybackTools.Pause();
-            paused = true;
         }
         catch (BasoliaException bex)
         {
@@ -172,18 +173,22 @@ public class BassBoomData
                $"{ex.Message}", ButtonEnum.Ok);
             dialog.ShowAsync();
         }
+        finally
+        {
+            view.PlayButton.IsEnabled = true;
+            view.GetDuration.IsEnabled = false;
+            view.SelectDevice.IsEnabled = false;
+            view.SelectDriver.IsEnabled = false;
+            view.PauseButton.IsEnabled = false;
+            view.StopButton.IsEnabled = true;
+            paused = true;
+        }
     }
 
     public void Stop()
     {
         try
         {
-            view.PlayButton.IsEnabled = true;
-            view.GetDuration.IsEnabled = true;
-            view.SelectDevice.IsEnabled = true;
-            view.SelectDriver.IsEnabled = true;
-            view.PauseButton.IsEnabled = false;
-            view.StopButton.IsEnabled = false;
             PlaybackTools.Stop();
         }
         catch (BasoliaException bex)
@@ -206,6 +211,11 @@ public class BassBoomData
         {
             if (FileTools.IsOpened)
                 FileTools.CloseFile();
+            view.PlayButton.IsEnabled = true;
+            view.GetDuration.IsEnabled = true;
+            view.PauseButton.IsEnabled = false;
+            view.StopButton.IsEnabled = false;
+            HandleDeviceButtons();
         }
     }
 
@@ -285,6 +295,24 @@ public class BassBoomData
                $"{ex.Message}", ButtonEnum.Ok);
             dialog.ShowAsync();
         }
+    }
+
+    internal void HandleDeviceButtons()
+    {
+        if (view.DetermineDevice.IsChecked.Value)
+        {
+            selectedDevice = null;
+            selectedDriver = null;
+            view.SelectDevice.IsEnabled = false;
+            view.SelectDriver.IsEnabled = false;
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(selectedDriver))
+                view.SelectDevice.IsEnabled = true;
+            view.SelectDriver.IsEnabled = true;
+        }
+        view.EnablePlay();
     }
 
     internal BassBoomData(MainView window)
