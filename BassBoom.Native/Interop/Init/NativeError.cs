@@ -82,7 +82,6 @@ namespace BassBoom.Native.Interop.Init
         /// MPG123_EXPORT const char* mpg123_plain_strerror(int errcode);
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        [return: MarshalAs(UnmanagedType.LPStr)]
         internal static extern nint mpg123_plain_strerror(int errcode);
 
         /// <summary>

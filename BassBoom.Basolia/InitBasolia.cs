@@ -16,8 +16,8 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Runtime;
+using System;
 
 namespace BassBoom.Basolia
 {
@@ -40,7 +40,7 @@ namespace BassBoom.Basolia
         public static void CheckInited()
         {
             if (!_basoliaInited)
-                throw new BasoliaException("Basolia didn't initialize the MPG123 library yet!", mpg123_errors.MPG123_NOT_INITIALIZED);
+                throw new InvalidOperationException("Basolia didn't initialize the MPG123 library yet!");
         }
     }
 }
