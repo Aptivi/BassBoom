@@ -334,12 +334,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.InitBasolia.CheckInited
   nameWithType: InitBasolia.CheckInited
-- uid: BassBoom.Basolia.InitBasolia.Init
-  name: Init()
-  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_Init
-  commentId: M:BassBoom.Basolia.InitBasolia.Init
-  fullName: BassBoom.Basolia.InitBasolia.Init()
-  nameWithType: InitBasolia.Init()
+- uid: BassBoom.Basolia.InitBasolia.Init(System.Boolean)
+  name: Init(bool)
+  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_Init_System_Boolean_
+  commentId: M:BassBoom.Basolia.InitBasolia.Init(System.Boolean)
+  name.vb: Init(Boolean)
+  fullName: BassBoom.Basolia.InitBasolia.Init(bool)
+  fullName.vb: BassBoom.Basolia.InitBasolia.Init(Boolean)
+  nameWithType: InitBasolia.Init(bool)
+  nameWithType.vb: InitBasolia.Init(Boolean)
 - uid: BassBoom.Basolia.InitBasolia.Init*
   name: Init
   href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_Init_
