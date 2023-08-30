@@ -122,6 +122,8 @@ public class BassBoomData
             view.GetDuration.IsEnabled = false;
             view.SelectDevice.IsEnabled = false;
             view.SelectDriver.IsEnabled = false;
+            view.DetermineDevice.IsEnabled = false;
+            view.PathToMp3.IsEnabled = false;
             view.PauseButton.IsEnabled = true;
             view.StopButton.IsEnabled = true;
             duration = AudioInfoTools.GetDuration(true);
@@ -185,6 +187,8 @@ public class BassBoomData
             view.GetDuration.IsEnabled = false;
             view.SelectDevice.IsEnabled = false;
             view.SelectDriver.IsEnabled = false;
+            view.DetermineDevice.IsEnabled = true;
+            view.PathToMp3.IsEnabled = false;
             view.PauseButton.IsEnabled = false;
             view.StopButton.IsEnabled = true;
             paused = true;
@@ -323,6 +327,9 @@ public class BassBoomData
                 view.SelectDevice.IsEnabled = true;
             view.SelectDriver.IsEnabled = true;
         }
+        view.DetermineDevice.IsEnabled = true;
+        if (!paused)
+            view.PathToMp3.IsEnabled = true;
         view.EnablePlay();
     }
 
