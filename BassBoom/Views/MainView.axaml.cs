@@ -20,6 +20,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
+using Avalonia.Threading;
 using BassBoom.Basolia;
 using BassBoom.Basolia.Devices;
 using BassBoom.Basolia.File;
@@ -31,6 +32,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BassBoom.Views;
@@ -70,17 +72,19 @@ public partial class MainView : UserControl
 
 public class BassBoomData
 {
-    private readonly MainView view;
     internal string selectedDriver;
     internal string selectedDevice;
     internal bool paused = false;
+    internal static int duration = 0;
+    private Thread sliderUpdate = new(UpdateSlider);
+    private readonly MainView view;
 
     public void GetDuration()
     {
         try
         {
             FileTools.OpenFile(view.PathToMp3.Text);
-            int duration = AudioInfoTools.GetDuration(true);
+            duration = AudioInfoTools.GetDuration(true);
             int durationNoScan = AudioInfoTools.GetDuration(false);
             view.GotDurationLabel.Text = $"[{duration} with scan, {durationNoScan} no scan]";
         }
@@ -120,6 +124,8 @@ public class BassBoomData
             view.SelectDriver.IsEnabled = false;
             view.PauseButton.IsEnabled = true;
             view.StopButton.IsEnabled = true;
+            duration = AudioInfoTools.GetDuration(true);
+            sliderUpdate.Start(view);
             await PlaybackTools.PlayAsync();
         }
         catch (BasoliaException bex)
@@ -155,6 +161,7 @@ public class BassBoomData
         try
         {
             PlaybackTools.Pause();
+            sliderUpdate = new(UpdateSlider);
         }
         catch (BasoliaException bex)
         {
@@ -189,6 +196,7 @@ public class BassBoomData
         try
         {
             PlaybackTools.Stop();
+            sliderUpdate = new(UpdateSlider);
         }
         catch (BasoliaException bex)
         {
@@ -316,6 +324,25 @@ public class BassBoomData
             view.SelectDriver.IsEnabled = true;
         }
         view.EnablePlay();
+    }
+
+    private static void UpdateSlider(object obj)
+    {
+        SpinWait.SpinUntil(() => PlaybackTools.Playing);
+        var view = (MainView)obj;
+        Dispatcher.UIThread.Invoke(() => {
+            view.durationRemain.Value = 0;
+            view.GotDurationLabel.Text = $"0/{duration}";
+        });
+        while (PlaybackTools.Playing)
+        {
+            int position = PlaybackPositioningTools.GetCurrentDuration();
+            double remaining = 100 * (position / (double)duration);
+            Dispatcher.UIThread.Invoke(() => {
+                view.durationRemain.Value = remaining;
+                view.GotDurationLabel.Text = $"{position}/{duration}";
+            });
+        }
     }
 
     internal BassBoomData(MainView window)
