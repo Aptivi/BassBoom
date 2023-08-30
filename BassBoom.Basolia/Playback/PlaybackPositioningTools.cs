@@ -59,5 +59,28 @@ namespace BassBoom.Basolia.Playback
             // We're now entering the safe zone
             return length;
         }
+
+        /// <summary>
+        /// Gets the current duration of the file (samples)
+        /// </summary>
+        public static void SeekToTheBeginning()
+        {
+            InitBasolia.CheckInited();
+
+            // Check to see if the file is open
+            if (!FileTools.IsOpened)
+                throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+
+                // Get the length
+                int status = NativePositioning.mpg123_seek(handle, 0, 0);
+                if (status == (int)mpg123_errors.MPG123_ERR)
+                    throw new BasoliaException("Can't seek to the beginning of the file", mpg123_errors.MPG123_LSEEK_FAILED);
+            }
+        }
     }
 }

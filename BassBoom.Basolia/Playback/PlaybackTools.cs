@@ -35,13 +35,19 @@ namespace BassBoom.Basolia.Playback
     /// </summary>
     public static class PlaybackTools
     {
-        private static bool _playing = false;
+        private static PlaybackState state = PlaybackState.Stopped;
 
         /// <summary>
         /// Checks to see whether the music is playing
         /// </summary>
         public static bool Playing =>
-            _playing;
+            state == PlaybackState.Playing;
+
+        /// <summary>
+        /// The current state of the playback
+        /// </summary>
+        public static PlaybackState State =>
+            state;
 
         public static void Play()
         {
@@ -94,7 +100,7 @@ namespace BassBoom.Basolia.Playback
                 int err = (int)mpg123_errors.MPG123_OK;
                 int samples = 0;
                 Debug.WriteLine($"mpg123_tell() returned {done}");
-                _playing = true;
+                state = PlaybackState.Playing;
                 do
                 {
                     int played;
@@ -109,7 +115,8 @@ namespace BassBoom.Basolia.Playback
                     samples += played / frameSize;
                     Debug.WriteLine($"S: {samples}");
                 } while (done != 0 && err == (int)mpg123_errors.MPG123_OK && Playing);
-                _playing = false;
+                if (Playing)
+                    state = PlaybackState.Stopped;
             }
         }
 
@@ -123,7 +130,7 @@ namespace BassBoom.Basolia.Playback
             // Check to see if the file is open
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't pause a file that's not open", mpg123_errors.MPG123_BAD_FILE);
-            _playing = false;
+            state = PlaybackState.Paused;
         }
 
         public static void Stop()
@@ -134,15 +141,9 @@ namespace BassBoom.Basolia.Playback
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't stop a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
-            // We're now entering the dangerous zone
-            unsafe
-            {
-                var handle = Mpg123Instance._mpg123Handle;
-                _playing = false;
-                int seekResult = NativePositioning.mpg123_seek(handle, 0, 0);
-                if (seekResult != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't seek to the beginning", (mpg123_errors)seekResult);
-            }
+            // Stop the music and seek to the beginning
+            state = PlaybackState.Stopped;
+            PlaybackPositioningTools.SeekToTheBeginning();
         }
     }
 }

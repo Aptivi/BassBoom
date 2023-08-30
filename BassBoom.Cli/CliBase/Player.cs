@@ -102,6 +102,9 @@ namespace BassBoom.Cli.CliBase
                         switch (keystroke)
                         {
                             case ConsoleKey.Spacebar:
+                                if (PlaybackTools.State == PlaybackState.Stopped)
+                                    // There could be a chance that the music has fully stopped without any user interaction.
+                                    PlaybackPositioningTools.SeekToTheBeginning();
                                 playerThread.Start();
                                 SpinWait.SpinUntil(() => PlaybackTools.Playing);
                                 break;
