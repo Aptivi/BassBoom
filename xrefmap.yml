@@ -375,6 +375,43 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration
   nameWithType: PlaybackPositioningTools.GetCurrentDuration
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning
+  name: SeekToTheBeginning()
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToTheBeginning
+  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning()
+  nameWithType: PlaybackPositioningTools.SeekToTheBeginning()
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning*
+  name: SeekToTheBeginning
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToTheBeginning_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning
+  nameWithType: PlaybackPositioningTools.SeekToTheBeginning
+- uid: BassBoom.Basolia.Playback.PlaybackState
+  name: PlaybackState
+  href: api/BassBoom.Basolia.Playback.PlaybackState.html
+  commentId: T:BassBoom.Basolia.Playback.PlaybackState
+  fullName: BassBoom.Basolia.Playback.PlaybackState
+  nameWithType: PlaybackState
+- uid: BassBoom.Basolia.Playback.PlaybackState.Paused
+  name: Paused
+  href: api/BassBoom.Basolia.Playback.PlaybackState.html#BassBoom_Basolia_Playback_PlaybackState_Paused
+  commentId: F:BassBoom.Basolia.Playback.PlaybackState.Paused
+  fullName: BassBoom.Basolia.Playback.PlaybackState.Paused
+  nameWithType: PlaybackState.Paused
+- uid: BassBoom.Basolia.Playback.PlaybackState.Playing
+  name: Playing
+  href: api/BassBoom.Basolia.Playback.PlaybackState.html#BassBoom_Basolia_Playback_PlaybackState_Playing
+  commentId: F:BassBoom.Basolia.Playback.PlaybackState.Playing
+  fullName: BassBoom.Basolia.Playback.PlaybackState.Playing
+  nameWithType: PlaybackState.Playing
+- uid: BassBoom.Basolia.Playback.PlaybackState.Stopped
+  name: Stopped
+  href: api/BassBoom.Basolia.Playback.PlaybackState.html#BassBoom_Basolia_Playback_PlaybackState_Stopped
+  commentId: F:BassBoom.Basolia.Playback.PlaybackState.Stopped
+  fullName: BassBoom.Basolia.Playback.PlaybackState.Stopped
+  nameWithType: PlaybackState.Stopped
 - uid: BassBoom.Basolia.Playback.PlaybackTools
   name: PlaybackTools
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html
@@ -433,6 +470,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.Playing
   nameWithType: PlaybackTools.Playing
+- uid: BassBoom.Basolia.Playback.PlaybackTools.State
+  name: State
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_State
+  commentId: P:BassBoom.Basolia.Playback.PlaybackTools.State
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.State
+  nameWithType: PlaybackTools.State
+- uid: BassBoom.Basolia.Playback.PlaybackTools.State*
+  name: State
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_State_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.State
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.State
+  nameWithType: PlaybackTools.State
 - uid: BassBoom.Basolia.Playback.PlaybackTools.Stop
   name: Stop()
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Stop

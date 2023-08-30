@@ -166,6 +166,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Playback.PlaybackState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Playback.PlaybackState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.Playback.PlaybackTools.yml",
       "output": {
         ".html": {
