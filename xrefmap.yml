@@ -280,6 +280,19 @@ references:
   commentId: T:BassBoom.Basolia.Format.AudioInfoTools
   fullName: BassBoom.Basolia.Format.AudioInfoTools
   nameWithType: AudioInfoTools
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize
+  name: GetBufferSize()
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetBufferSize
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize()
+  nameWithType: AudioInfoTools.GetBufferSize()
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize*
+  name: GetBufferSize
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetBufferSize_
+  commentId: Overload:BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize
+  nameWithType: AudioInfoTools.GetBufferSize
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetDuration(System.Boolean)
   name: GetDuration(bool)
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDuration_System_Boolean_
@@ -312,6 +325,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan
   nameWithType: AudioInfoTools.GetDurationSpan
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize
+  name: GetFrameSize()
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameSize
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize()
+  nameWithType: AudioInfoTools.GetFrameSize()
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize*
+  name: GetFrameSize
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameSize_
+  commentId: Overload:BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize
+  nameWithType: AudioInfoTools.GetFrameSize
 - uid: BassBoom.Basolia.Format.FormatTools
   name: FormatTools
   href: api/BassBoom.Basolia.Format.FormatTools.html
@@ -404,6 +430,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan
   nameWithType: PlaybackPositioningTools.GetCurrentDurationSpan
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(System.Int32)
+  name: SeekToFrame(int)
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToFrame_System_Int32_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(System.Int32)
+  name.vb: SeekToFrame(Integer)
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(int)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(Integer)
+  nameWithType: PlaybackPositioningTools.SeekToFrame(int)
+  nameWithType.vb: PlaybackPositioningTools.SeekToFrame(Integer)
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame*
+  name: SeekToFrame
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToFrame_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame
+  nameWithType: PlaybackPositioningTools.SeekToFrame
 - uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning
   name: SeekToTheBeginning()
   href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToTheBeginning
