@@ -74,10 +74,10 @@
     </StackPanel>
     <StackPanel
         DockPanel.Dock="Bottom"
-        Margin="15"
+        Margin="15,0"
         HorizontalAlignment="Stretch"
         VerticalAlignment="Bottom">
-       <ProgressBar Name="durationRemain" HorizontalAlignment="Stretch"></ProgressBar>
+       <Slider Name="durationRemain" HorizontalAlignment="Stretch"></Slider>
     </StackPanel>
   </DockPanel>
 </UserControl>

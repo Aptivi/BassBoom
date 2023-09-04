@@ -85,14 +85,9 @@ namespace BassBoom.Basolia.Playback
                 if (startStatus != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't start the output.", (out123_error)startStatus);
 
-                // Get the output format to get the frame size
-                int getStatus = NativeOutputLib.out123_getformat(outHandle, null, null, null, out int frameSize);
-                if (getStatus != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException($"Can't get the output.", (out123_error)getStatus);
-                Debug.WriteLine($"Got frame size {frameSize}");
-
                 // Now, buffer the entire music file and create an empty array based on its size
-                var bufferSize = NativeLowIo.mpg123_outblock(handle);
+                var frameSize = AudioInfoTools.GetFrameSize();
+                var bufferSize = AudioInfoTools.GetBufferSize();
                 Debug.WriteLine($"Buffer size is {bufferSize}");
                 var buffer = stackalloc byte[bufferSize];
                 var bufferPtr = new IntPtr(buffer);

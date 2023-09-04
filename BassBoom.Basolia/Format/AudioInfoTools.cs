@@ -22,6 +22,9 @@ using BassBoom.Native.Interop.Init;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Playback;
 using System;
+using BassBoom.Native.Interop.Output;
+using System.Diagnostics;
+using BassBoom.Native.Interop.LowLevel;
 
 namespace BassBoom.Basolia.Format
 {
@@ -40,7 +43,7 @@ namespace BassBoom.Basolia.Format
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
-                throw new BasoliaException("Can't play a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
             if (PlaybackTools.Playing && !InitBasolia._fugitive)
@@ -78,6 +81,48 @@ namespace BassBoom.Basolia.Format
             int durationSamples = GetDuration(scan);
             long seconds = durationSamples / rate;
             return TimeSpan.FromSeconds(seconds);
+        }
+
+        public static int GetFrameSize()
+        {
+            int frameSize;
+            InitBasolia.CheckInited();
+
+            // Check to see if the file is open
+            if (!FileTools.IsOpened)
+                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+            unsafe
+            {
+                var outHandle = Mpg123Instance._out123Handle;
+
+                // Get the output format to get the frame size
+                int getStatus = NativeOutputLib.out123_getformat(outHandle, null, null, null, out frameSize);
+                if (getStatus != (int)out123_error.OUT123_OK)
+                    throw new BasoliaOutException($"Can't get the output.", (out123_error)getStatus);
+                Debug.WriteLine($"Got frame size {frameSize}");
+            }
+            return frameSize;
+        }
+
+        public static int GetBufferSize()
+        {
+            int bufferSize;
+            InitBasolia.CheckInited();
+
+            // Check to see if the file is open
+            if (!FileTools.IsOpened)
+                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+
+                // Now, buffer the entire music file and create an empty array based on its size
+                bufferSize = NativeLowIo.mpg123_outblock(handle);
+                Debug.WriteLine($"Buffer size is {bufferSize}");
+            }
+            return bufferSize;
         }
     }
 }

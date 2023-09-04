@@ -19,6 +19,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using BassBoom.Basolia;
@@ -30,6 +31,7 @@ using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -39,12 +41,15 @@ namespace BassBoom.Views;
 
 public partial class MainView : UserControl
 {
+    internal bool sliderUpdatedByCode = false;
+
     public MainView()
     {
         InitializeComponent();
         DataContext = new BassBoomData(this);
         PathToMp3.TextChanged += CheckPath;
         DetermineDevice.IsCheckedChanged += MakeDeviceDeterministic;
+        durationRemain.ValueChanged += HandleDurationValueChange;
     }
 
     internal void EnablePlay()
@@ -68,6 +73,14 @@ public partial class MainView : UserControl
 
     private void MakeDeviceDeterministic(object sender, RoutedEventArgs e) =>
         ((BassBoomData)DataContext).HandleDeviceButtons();
+
+    private void HandleDurationValueChange(object sender, RangeBaseValueChangedEventArgs e)
+    {
+        if (sliderUpdatedByCode)
+            return;
+        Debug.WriteLine($"Changed. {e.OldValue} -> {e.NewValue}");
+        PlaybackPositioningTools.SeekToFrame((int)e.NewValue);
+    }
 }
 
 public class BassBoomData
@@ -129,6 +142,9 @@ public class BassBoomData
             view.StopButton.IsEnabled = true;
             duration = AudioInfoTools.GetDuration(true);
             durationSpan = AudioInfoTools.GetDurationSpan(true).ToString();
+            view.durationRemain.Maximum = duration;
+            view.durationRemain.IsSnapToTickEnabled = true;
+            view.durationRemain.TickFrequency = AudioInfoTools.GetBufferSize();
             sliderUpdate.Start(view);
             await PlaybackTools.PlayAsync();
         }
@@ -340,17 +356,20 @@ public class BassBoomData
         SpinWait.SpinUntil(() => PlaybackTools.Playing);
         var view = (MainView)obj;
         Dispatcher.UIThread.Invoke(() => {
+            view.sliderUpdatedByCode = true;
             view.durationRemain.Value = 0;
             view.GotDurationLabel.Text = $"00:00:00/{durationSpan}";
+            view.sliderUpdatedByCode = false;
         });
         while (PlaybackTools.Playing)
         {
             int position = PlaybackPositioningTools.GetCurrentDuration();
             string positionSpan = PlaybackPositioningTools.GetCurrentDurationSpan().ToString();
-            double remaining = 100 * (position / (double)duration);
             Dispatcher.UIThread.Invoke(() => {
-                view.durationRemain.Value = remaining;
+                view.sliderUpdatedByCode = true;
+                view.durationRemain.Value = position;
                 view.GotDurationLabel.Text = $"{positionSpan}/{durationSpan}";
+                view.sliderUpdatedByCode = false;
             });
         }
     }
