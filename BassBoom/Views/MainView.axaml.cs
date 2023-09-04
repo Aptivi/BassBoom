@@ -75,7 +75,8 @@ public class BassBoomData
     internal string selectedDriver;
     internal string selectedDevice;
     internal bool paused = false;
-    internal static int duration = 0;
+    internal static int duration;
+    internal static string durationSpan;
     private Thread sliderUpdate = new(UpdateSlider);
     private readonly MainView view;
 
@@ -84,9 +85,9 @@ public class BassBoomData
         try
         {
             FileTools.OpenFile(view.PathToMp3.Text);
-            duration = AudioInfoTools.GetDuration(true);
-            int durationNoScan = AudioInfoTools.GetDuration(false);
-            view.GotDurationLabel.Text = $"[{duration} with scan, {durationNoScan} no scan]";
+            durationSpan = AudioInfoTools.GetDurationSpan(true).ToString();
+            string durationNoScan = AudioInfoTools.GetDurationSpan(false).ToString();
+            view.GotDurationLabel.Text = $"[{durationSpan} with scan, {durationNoScan} no scan]";
         }
         catch (BasoliaException bex)
         {
@@ -127,6 +128,7 @@ public class BassBoomData
             view.PauseButton.IsEnabled = true;
             view.StopButton.IsEnabled = true;
             duration = AudioInfoTools.GetDuration(true);
+            durationSpan = AudioInfoTools.GetDurationSpan(true).ToString();
             sliderUpdate.Start(view);
             await PlaybackTools.PlayAsync();
         }
@@ -339,15 +341,16 @@ public class BassBoomData
         var view = (MainView)obj;
         Dispatcher.UIThread.Invoke(() => {
             view.durationRemain.Value = 0;
-            view.GotDurationLabel.Text = $"0/{duration}";
+            view.GotDurationLabel.Text = $"00:00:00/{durationSpan}";
         });
         while (PlaybackTools.Playing)
         {
             int position = PlaybackPositioningTools.GetCurrentDuration();
+            string positionSpan = PlaybackPositioningTools.GetCurrentDurationSpan().ToString();
             double remaining = 100 * (position / (double)duration);
             Dispatcher.UIThread.Invoke(() => {
                 view.durationRemain.Value = remaining;
-                view.GotDurationLabel.Text = $"{position}/{duration}";
+                view.GotDurationLabel.Text = $"{positionSpan}/{durationSpan}";
             });
         }
     }

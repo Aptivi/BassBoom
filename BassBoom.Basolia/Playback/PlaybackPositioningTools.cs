@@ -17,6 +17,7 @@
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 using BassBoom.Basolia.File;
+using BassBoom.Basolia.Format;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Play;
 using BassBoom.Native.Runtime;
@@ -58,6 +59,18 @@ namespace BassBoom.Basolia.Playback
 
             // We're now entering the safe zone
             return length;
+        }
+
+        public static TimeSpan GetCurrentDurationSpan()
+        {
+            // First, get the format information
+            var formatInfo = FormatTools.GetFormatInfo();
+
+            // Get the required values
+            long rate = formatInfo.rate;
+            int durationSamples = GetCurrentDuration();
+            long seconds = durationSamples / rate;
+            return TimeSpan.FromSeconds(seconds);
         }
 
         /// <summary>

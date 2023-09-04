@@ -21,6 +21,7 @@ using BassBoom.Native.Interop.Analysis;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Playback;
+using System;
 
 namespace BassBoom.Basolia.Format
 {
@@ -65,6 +66,18 @@ namespace BassBoom.Basolia.Format
 
             // We're now entering the safe zone
             return length;
+        }
+
+        public static TimeSpan GetDurationSpan(bool scan)
+        {
+            // First, get the format information
+            var formatInfo = FormatTools.GetFormatInfo();
+
+            // Get the required values
+            long rate = formatInfo.rate;
+            int durationSamples = GetDuration(scan);
+            long seconds = durationSamples / rate;
+            return TimeSpan.FromSeconds(seconds);
         }
     }
 }
