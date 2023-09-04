@@ -296,6 +296,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDuration
   nameWithType: AudioInfoTools.GetDuration
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(System.Boolean)
+  name: GetDurationSpan(bool)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpan_System_Boolean_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(System.Boolean)
+  name.vb: GetDurationSpan(Boolean)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(bool)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(Boolean)
+  nameWithType: AudioInfoTools.GetDurationSpan(bool)
+  nameWithType.vb: AudioInfoTools.GetDurationSpan(Boolean)
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan*
+  name: GetDurationSpan
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpan_
+  commentId: Overload:BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan
+  nameWithType: AudioInfoTools.GetDurationSpan
 - uid: BassBoom.Basolia.Format.FormatTools
   name: FormatTools
   href: api/BassBoom.Basolia.Format.FormatTools.html
@@ -375,6 +391,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration
   nameWithType: PlaybackPositioningTools.GetCurrentDuration
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan
+  name: GetCurrentDurationSpan()
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_GetCurrentDurationSpan
+  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan()
+  nameWithType: PlaybackPositioningTools.GetCurrentDurationSpan()
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan*
+  name: GetCurrentDurationSpan
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_GetCurrentDurationSpan_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan
+  nameWithType: PlaybackPositioningTools.GetCurrentDurationSpan
 - uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning
   name: SeekToTheBeginning()
   href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToTheBeginning

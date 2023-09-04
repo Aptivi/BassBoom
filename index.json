@@ -52,7 +52,7 @@
   "api/BassBoom.Basolia.Format.AudioInfoTools.html": {
     "href": "api/BassBoom.Basolia.Format.AudioInfoTools.html",
     "title": "Class AudioInfoTools | BassBoom Basolia API - Aptivi Internals",
-    "keywords": "Class AudioInfoTools Audio information tools Inheritance object AudioInfoTools Namespace: BassBoom.Basolia.Format Assembly: BassBoom.Basolia.dll Syntax public static class AudioInfoTools Methods | Improve this Doc View Source GetDuration(bool) Gets the duration of the file Declaration public static int GetDuration(bool scan) Parameters Type Name Description bool scan Returns Type Description int"
+    "keywords": "Class AudioInfoTools Audio information tools Inheritance object AudioInfoTools Namespace: BassBoom.Basolia.Format Assembly: BassBoom.Basolia.dll Syntax public static class AudioInfoTools Methods | Improve this Doc View Source GetDuration(bool) Gets the duration of the file Declaration public static int GetDuration(bool scan) Parameters Type Name Description bool scan Returns Type Description int | Improve this Doc View Source GetDurationSpan(bool) Declaration public static TimeSpan GetDurationSpan(bool scan) Parameters Type Name Description bool scan Returns Type Description TimeSpan"
   },
   "api/BassBoom.Basolia.Format.FormatTools.html": {
     "href": "api/BassBoom.Basolia.Format.FormatTools.html",
@@ -72,7 +72,7 @@
   "api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html": {
     "href": "api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html",
     "title": "Class PlaybackPositioningTools | BassBoom Basolia API - Aptivi Internals",
-    "keywords": "Class PlaybackPositioningTools Playback positioning tools Inheritance object PlaybackPositioningTools Namespace: BassBoom.Basolia.Playback Assembly: BassBoom.Basolia.dll Syntax public static class PlaybackPositioningTools Methods | Improve this Doc View Source GetCurrentDuration() Gets the current duration of the file (samples) Declaration public static int GetCurrentDuration() Returns Type Description int | Improve this Doc View Source SeekToTheBeginning() Gets the current duration of the file (samples) Declaration public static void SeekToTheBeginning()"
+    "keywords": "Class PlaybackPositioningTools Playback positioning tools Inheritance object PlaybackPositioningTools Namespace: BassBoom.Basolia.Playback Assembly: BassBoom.Basolia.dll Syntax public static class PlaybackPositioningTools Methods | Improve this Doc View Source GetCurrentDuration() Gets the current duration of the file (samples) Declaration public static int GetCurrentDuration() Returns Type Description int | Improve this Doc View Source GetCurrentDurationSpan() Declaration public static TimeSpan GetCurrentDurationSpan() Returns Type Description TimeSpan | Improve this Doc View Source SeekToTheBeginning() Gets the current duration of the file (samples) Declaration public static void SeekToTheBeginning()"
   },
   "api/BassBoom.Basolia.Playback.PlaybackState.html": {
     "href": "api/BassBoom.Basolia.Playback.PlaybackState.html",
