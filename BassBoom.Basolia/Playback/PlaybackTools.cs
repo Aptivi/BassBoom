@@ -27,6 +27,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using BassBoom.Basolia.Devices;
+using System.Runtime.InteropServices;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -139,6 +140,47 @@ namespace BassBoom.Basolia.Playback
             // Stop the music and seek to the beginning
             state = PlaybackState.Stopped;
             PlaybackPositioningTools.SeekToTheBeginning();
+        }
+
+        public static void SetVolume(double volume)
+        {
+            InitBasolia.CheckInited();
+
+            // Check the volume
+            if (volume < 0)
+                volume = 0;
+            if (volume > 1)
+                volume = 1;
+
+            // Try to set the volume
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+                int status = NativeVolume.mpg123_volume(handle, volume);
+                if (status != (int)out123_error.OUT123_OK)
+                    throw new BasoliaOutException($"Can't set volume to {volume}", (out123_error)status);
+            }
+        }
+
+        public static (double baseLinear, double actualLinear, double decibelsRva) GetVolume()
+        {
+            InitBasolia.CheckInited();
+
+            double baseLinearAddr = 0;
+            double actualLinearAddr = 0;
+            double decibelsRvaAddr = 0;
+
+            // Try to get the volume
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+                int status = NativeVolume.mpg123_getvolume(handle, ref baseLinearAddr, ref actualLinearAddr, ref decibelsRvaAddr);
+                if (status != (int)out123_error.OUT123_OK)
+                    throw new BasoliaOutException($"Can't get volume (base, really, and decibels)", (out123_error)status);
+            }
+
+            // Get the volume information
+            return (baseLinearAddr, actualLinearAddr, decibelsRvaAddr);
         }
     }
 }

@@ -43,6 +43,7 @@ namespace BassBoom.Cli.CliBase
             InitBasolia.Init();
             FileTools.OpenFile(musicPath);
             int total = AudioInfoTools.GetDuration(true);
+            double volume = PlaybackTools.GetVolume().baseLinear;
 
             // First, clear the screen to draw our TUI
             while (!exiting)
@@ -58,7 +59,7 @@ namespace BassBoom.Cli.CliBase
                     }
 
                     // First, print the keystrokes
-                    string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit";
+                    string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [UP/DOWN] Vol";
                     CenteredTextColor.WriteCentered(ConsoleTools.ActionWindowHeight() - 2, keystrokes);
 
                     // Print the separator
@@ -82,6 +83,18 @@ namespace BassBoom.Cli.CliBase
                             var keystroke = Input.DetectKeypress().Key;
                             switch (keystroke)
                             {
+                                case ConsoleKey.UpArrow:
+                                    volume += 0.05;
+                                    if (volume > 1)
+                                        volume = 1;
+                                    PlaybackTools.SetVolume(volume);
+                                    break;
+                                case ConsoleKey.DownArrow:
+                                    volume -= 0.05;
+                                    if (volume < 0)
+                                        volume = 0;
+                                    PlaybackTools.SetVolume(volume);
+                                    break;
                                 case ConsoleKey.Spacebar:
                                     PlaybackTools.Pause();
                                     break;
@@ -101,6 +114,18 @@ namespace BassBoom.Cli.CliBase
                         var keystroke = Input.DetectKeypress().Key;
                         switch (keystroke)
                         {
+                            case ConsoleKey.UpArrow:
+                                volume += 0.05;
+                                if (volume > 1)
+                                    volume = 1;
+                                PlaybackTools.SetVolume(volume);
+                                break;
+                            case ConsoleKey.DownArrow:
+                                volume -= 0.05;
+                                if (volume < 0)
+                                    volume = 0;
+                                PlaybackTools.SetVolume(volume);
+                                break;
                             case ConsoleKey.Spacebar:
                                 if (PlaybackTools.State == PlaybackState.Stopped)
                                     // There could be a chance that the music has fully stopped without any user interaction.

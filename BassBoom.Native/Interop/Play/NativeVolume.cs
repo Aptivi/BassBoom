@@ -16,6 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+using System;
 using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Init;
 
@@ -102,6 +103,6 @@ namespace BassBoom.Native.Interop.Play
         /// MPG123_EXPORT int mpg123_getvolume(mpg123_handle *mh, double *base, double *really, double *rva_db);
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_getvolume(mpg123_handle* mh, double* @base, double* really, double* rva_db);
+        internal static extern int mpg123_getvolume(mpg123_handle* mh, ref double @base, ref double really, ref double rva_db);
     }
 }

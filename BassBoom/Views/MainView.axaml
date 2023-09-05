@@ -70,6 +70,7 @@
             ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
             Margin="15">
             <CheckBox Grid.Row="1" Name="DetermineDevice" IsChecked="true">Determine device and driver</CheckBox>
+            <Slider Name="volumeSlider" Minimum="0" Maximum="1" Value="0.5"></Slider>
         </Grid>
     </StackPanel>
     <StackPanel

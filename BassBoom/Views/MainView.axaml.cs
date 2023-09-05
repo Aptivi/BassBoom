@@ -50,6 +50,8 @@ public partial class MainView : UserControl
         PathToMp3.TextChanged += CheckPath;
         DetermineDevice.IsCheckedChanged += MakeDeviceDeterministic;
         durationRemain.ValueChanged += HandleDurationValueChange;
+        volumeSlider.ValueChanged += HandleVolumeValueChange;
+        volumeSlider.Value = PlaybackTools.GetVolume().baseLinear;
     }
 
     internal void EnablePlay()
@@ -80,6 +82,12 @@ public partial class MainView : UserControl
             return;
         Debug.WriteLine($"Changed. {e.OldValue} -> {e.NewValue}");
         PlaybackPositioningTools.SeekToFrame((int)e.NewValue);
+    }
+
+    private void HandleVolumeValueChange(object sender, RangeBaseValueChangedEventArgs e)
+    {
+        Debug.WriteLine($"Vol. changed. {e.OldValue} -> {e.NewValue}");
+        PlaybackTools.SetVolume(e.NewValue);
     }
 }
 
