@@ -43,6 +43,7 @@ namespace BassBoom.Cli.CliBase
             InitBasolia.Init();
             FileTools.OpenFile(musicPath);
             int total = AudioInfoTools.GetDuration(true);
+            int bufferSize = AudioInfoTools.GetBufferSize();
             double volume = PlaybackTools.GetVolume().baseLinear;
 
             // First, clear the screen to draw our TUI
@@ -59,7 +60,7 @@ namespace BassBoom.Cli.CliBase
                     }
 
                     // First, print the keystrokes
-                    string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [UP/DOWN] Vol";
+                    string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [UP/DOWN] Vol - [<-/->] Seek";
                     CenteredTextColor.WriteCentered(ConsoleTools.ActionWindowHeight() - 2, keystrokes);
 
                     // Print the separator
@@ -94,6 +95,18 @@ namespace BassBoom.Cli.CliBase
                                     if (volume < 0)
                                         volume = 0;
                                     PlaybackTools.SetVolume(volume);
+                                    break;
+                                case ConsoleKey.RightArrow:
+                                    position += bufferSize * 16;
+                                    if (position > total)
+                                        position = total;
+                                    PlaybackPositioningTools.SeekToFrame(position);
+                                    break;
+                                case ConsoleKey.LeftArrow:
+                                    position -= bufferSize * 16;
+                                    if (position < 0)
+                                        position = 0;
+                                    PlaybackPositioningTools.SeekToFrame(position);
                                     break;
                                 case ConsoleKey.Spacebar:
                                     PlaybackTools.Pause();
