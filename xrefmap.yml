@@ -489,6 +489,19 @@ references:
   commentId: T:BassBoom.Basolia.Playback.PlaybackTools
   fullName: BassBoom.Basolia.Playback.PlaybackTools
   nameWithType: PlaybackTools
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetVolume
+  name: GetVolume()
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetVolume
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetVolume
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetVolume()
+  nameWithType: PlaybackTools.GetVolume()
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetVolume*
+  name: GetVolume
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetVolume_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.GetVolume
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetVolume
+  nameWithType: PlaybackTools.GetVolume
 - uid: BassBoom.Basolia.Playback.PlaybackTools.Pause
   name: Pause()
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Pause
@@ -541,6 +554,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.Playing
   nameWithType: PlaybackTools.Playing
+- uid: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(System.Double)
+  name: SetVolume(double)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetVolume_System_Double_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetVolume(System.Double)
+  name.vb: SetVolume(Double)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(double)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(Double)
+  nameWithType: PlaybackTools.SetVolume(double)
+  nameWithType.vb: PlaybackTools.SetVolume(Double)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.SetVolume*
+  name: SetVolume
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetVolume_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.SetVolume
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetVolume
+  nameWithType: PlaybackTools.SetVolume
 - uid: BassBoom.Basolia.Playback.PlaybackTools.State
   name: State
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_State
