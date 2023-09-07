@@ -30,6 +30,9 @@ namespace BassBoom.Cli
         {
             try
             {
+                // Essentials
+                Console.Title = "BassBoom CLI - Prototype 5: ID3 Metadata & Volume Manipulation";
+
                 // First, prompt for the music path if no arguments are provided.
                 string musicPath;
                 if (args.Length == 0)

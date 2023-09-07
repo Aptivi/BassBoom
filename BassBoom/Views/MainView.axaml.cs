@@ -46,12 +46,16 @@ public partial class MainView : UserControl
     public MainView()
     {
         InitializeComponent();
-        DataContext = new BassBoomData(this);
-        PathToMp3.TextChanged += CheckPath;
-        DetermineDevice.IsCheckedChanged += MakeDeviceDeterministic;
-        durationRemain.ValueChanged += HandleDurationValueChange;
-        volumeSlider.ValueChanged += HandleVolumeValueChange;
-        volumeSlider.Value = PlaybackTools.GetVolume().baseLinear;
+        if (!Design.IsDesignMode)
+        {
+            // These functions depend on Basolia being initialized.
+            DataContext = new BassBoomData(this);
+            PathToMp3.TextChanged += CheckPath;
+            DetermineDevice.IsCheckedChanged += MakeDeviceDeterministic;
+            durationRemain.ValueChanged += HandleDurationValueChange;
+            volumeSlider.ValueChanged += HandleVolumeValueChange;
+            volumeSlider.Value = PlaybackTools.GetVolume().baseLinear;
+        }
     }
 
     internal void EnablePlay()
@@ -62,11 +66,30 @@ public partial class MainView : UserControl
         {
             PlayButton.IsEnabled = true;
             GetDuration.IsEnabled = true;
+            FileTools.OpenFile(PathToMp3.Text);
+            AudioInfoTools.GetId3Metadata(out var v1, out var v2);
+            GotArtistLabel.Text =
+                !string.IsNullOrEmpty(v2.Artist) ? v2.Artist :
+                !string.IsNullOrEmpty(v1.Artist) ? v1.Artist :
+                "";
+            GotGenreLabel.Text =
+                !string.IsNullOrEmpty(v2.Genre) ? v2.Genre :
+                v1.GenreIndex >= 0 ? $"{v1.Genre} [{v1.GenreIndex}]" :
+                "";
+            GotTitleLabel.Text =
+                !string.IsNullOrEmpty(v2.Title) ? v2.Title :
+                !string.IsNullOrEmpty(v1.Title) ? v1.Title :
+                "";
+            if (FileTools.IsOpened)
+                FileTools.CloseFile();
         }
         else
         {
             PlayButton.IsEnabled = false;
             GetDuration.IsEnabled = false;
+            GotArtistLabel.Text = "";
+            GotGenreLabel.Text = "";
+            GotTitleLabel.Text = "";
         }
     }
 

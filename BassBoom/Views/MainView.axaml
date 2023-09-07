@@ -53,6 +53,12 @@
             Margin="15">
             <TextBlock Name="DurationLabel" Grid.Row="1" Grid.Column="0">Duration:</TextBlock>
             <TextBlock Name="GotDurationLabel" Grid.Row="1" Grid.Column="1"></TextBlock>
+            <TextBlock Name="TitleLabel" Grid.Row="2" Grid.Column="0">Title:</TextBlock>
+            <TextBlock Name="GotTitleLabel" Grid.Row="2" Grid.Column="1"></TextBlock>
+            <TextBlock Name="ArtistLabel" Grid.Row="3" Grid.Column="0">Artist:</TextBlock>
+            <TextBlock Name="GotArtistLabel" Grid.Row="4" Grid.Column="1"></TextBlock>
+            <TextBlock Name="GenreLabel" Grid.Row="4" Grid.Column="0">Genre:</TextBlock>
+            <TextBlock Name="GotGenreLabel" Grid.Row="4" Grid.Column="1"></TextBlock>
         </Grid>
         <Grid
             RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"

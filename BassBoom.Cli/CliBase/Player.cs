@@ -40,11 +40,28 @@ namespace BassBoom.Cli.CliBase
             bool rerender = true;
 
             // Try to open the file after loading the library
+            InfoBoxColor.WriteInfoBox("Loading BassBoom to open {0}...", false, vars: musicPath);
             InitBasolia.Init();
             FileTools.OpenFile(musicPath);
             int total = AudioInfoTools.GetDuration(true);
             int bufferSize = AudioInfoTools.GetBufferSize();
             double volume = PlaybackTools.GetVolume().baseLinear;
+            AudioInfoTools.GetId3Metadata(out var managedV1, out var managedV2);
+
+            // Render the song name
+            string musicName =
+                !string.IsNullOrEmpty(managedV2.Title) ? managedV2.Title :
+                !string.IsNullOrEmpty(managedV1.Title) ? managedV1.Title :
+                Path.GetFileNameWithoutExtension(musicPath);
+            string musicArtist =
+                !string.IsNullOrEmpty(managedV2.Artist) ? managedV2.Artist :
+                !string.IsNullOrEmpty(managedV1.Artist) ? managedV1.Artist :
+                "Unknown Artist";
+            string musicGenre =
+                !string.IsNullOrEmpty(managedV2.Genre) ? managedV2.Genre :
+                managedV1.GenreIndex >= 0 ? $"{managedV1.Genre} [{managedV1.GenreIndex}]" :
+                "Unknown Genre";
+            Console.Title = $"BassBoom CLI - Prototype 5: ID3 Metadata & Volume Manipulation - {musicArtist} - {musicName} [{musicGenre}]";
 
             // First, clear the screen to draw our TUI
             while (!exiting)
@@ -68,8 +85,7 @@ namespace BassBoom.Cli.CliBase
                     CenteredTextColor.WriteCentered(ConsoleTools.ActionWindowHeight() - 4, separator);
 
                     // Print the music name
-                    string musicName = Path.GetFileNameWithoutExtension(musicPath);
-                    CenteredTextColor.WriteCentered(1, musicName);
+                    CenteredTextColor.WriteCentered(1, $"{musicArtist} - {musicName} [{musicGenre}]");
 
                     // Check the mode
                     if (PlaybackTools.Playing)

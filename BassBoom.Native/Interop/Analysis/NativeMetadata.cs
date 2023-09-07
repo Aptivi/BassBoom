@@ -16,6 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+using System;
 using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Init;
 
@@ -71,68 +72,68 @@ namespace BassBoom.Native.Interop.Analysis
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct mpg123_string
     {
-        char* p;
-        int size;
-        int fill;
+        internal char* p;
+        internal int size;
+        internal int fill;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct mpg123_text
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-        char[] lang;
+        internal char[] lang;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        char[] id;
-        mpg123_string description;
-        mpg123_string text;
+        internal char[] id;
+        internal mpg123_string description;
+        internal mpg123_string text;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct mpg123_picture
     {
-        char type;
-        mpg123_string description;
-        mpg123_string mime_type;
-        int size;
-        char* data;
+        internal char type;
+        internal mpg123_string description;
+        internal mpg123_string mime_type;
+        internal int size;
+        internal char* data;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct mpg123_id3v1
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-        char[] tag;
+        internal char[] tag;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 30)]
-        char[] title;
+        internal char[] title;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 30)]
-        char[] artist;
+        internal char[] artist;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 30)]
-        char[] album;
+        internal char[] album;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        char[] year;
+        internal char[] year;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 30)]
-        char[] comment;
-        char genre;
+        internal char[] comment;
+        internal int genre;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct mpg123_id3v2
     {
-        char version;
-        mpg123_string* title;
-        mpg123_string* artist;
-        mpg123_string* album;
-        mpg123_string* year;
-        mpg123_string* genre;
-        mpg123_string* comment;
-        mpg123_text* comment_list;
-        int comments;
-        mpg123_text* text;
-        int texts;
-        mpg123_text* extra;
-        int extras;
-        mpg123_picture* picture;
-        int pictures;
+        internal int version;
+        internal mpg123_string* title;
+        internal mpg123_string* artist;
+        internal mpg123_string* album;
+        internal mpg123_string* year;
+        internal mpg123_string* genre;
+        internal mpg123_string* comment;
+        internal mpg123_text* comment_list;
+        internal int comments;
+        internal mpg123_text* text;
+        internal int texts;
+        internal mpg123_text* extra;
+        internal int extras;
+        internal mpg123_picture* picture;
+        internal int pictures;
     }
 
     /// <summary>
@@ -279,7 +280,7 @@ namespace BassBoom.Native.Interop.Analysis
         /// ,   mpg123_id3v1 **v1, mpg123_id3v2 **v2 );
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_id3(mpg123_handle* mh, mpg123_id3v1*[] v1, mpg123_id3v2*[] v2 );
+        internal static extern int mpg123_id3(mpg123_handle* mh, ref IntPtr v1, ref IntPtr v2);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_id3_raw( mpg123_handle *mh
@@ -287,13 +288,13 @@ namespace BassBoom.Native.Interop.Analysis
         /// ,   unsigned char **v2, size_t *v2_size );
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_id3_raw(mpg123_handle* mh, string[]v1, int* v1_size, string[]v2, int* v2_size);
+        internal static extern int mpg123_id3_raw(mpg123_handle* mh, ref IntPtr v1, ref int v1_size, ref IntPtr v2, ref int v2_size);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_icy(mpg123_handle *mh, char **icy_meta);
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_icy(mpg123_handle* mh, string[] icy_meta);
+        internal static extern int mpg123_icy(mpg123_handle* mh, ref string icy_meta);
 
         /// <summary>
         /// MPG123_EXPORT char* mpg123_icy2utf8(const char* icy_text);
