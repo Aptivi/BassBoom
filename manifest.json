@@ -186,6 +186,56 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Lyrics.Lyric.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Lyrics.Lyric.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Lyrics.LyricLine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Lyrics.LyricLine.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Lyrics.LyricLineWord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Lyrics.LyricLineWord.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Lyrics.LyricReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Lyrics.LyricReader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Lyrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Lyrics.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.Playback.PlaybackPositioningTools.yml",
       "output": {
         ".html": {

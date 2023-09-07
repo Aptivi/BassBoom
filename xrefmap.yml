@@ -1567,6 +1567,187 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.InitBasolia.Init
   nameWithType: InitBasolia.Init
+- uid: BassBoom.Basolia.Lyrics
+  name: BassBoom.Basolia.Lyrics
+  href: api/BassBoom.Basolia.Lyrics.html
+  commentId: N:BassBoom.Basolia.Lyrics
+  fullName: BassBoom.Basolia.Lyrics
+  nameWithType: BassBoom.Basolia.Lyrics
+- uid: BassBoom.Basolia.Lyrics.Lyric
+  name: Lyric
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html
+  commentId: T:BassBoom.Basolia.Lyrics.Lyric
+  fullName: BassBoom.Basolia.Lyrics.Lyric
+  nameWithType: Lyric
+- uid: BassBoom.Basolia.Lyrics.Lyric.#ctor(System.Collections.Generic.List{BassBoom.Basolia.Lyrics.LyricLine})
+  name: Lyric(List<LyricLine>)
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric__ctor_System_Collections_Generic_List_BassBoom_Basolia_Lyrics_LyricLine__
+  commentId: M:BassBoom.Basolia.Lyrics.Lyric.#ctor(System.Collections.Generic.List{BassBoom.Basolia.Lyrics.LyricLine})
+  name.vb: New(List(Of LyricLine))
+  fullName: BassBoom.Basolia.Lyrics.Lyric.Lyric(System.Collections.Generic.List<BassBoom.Basolia.Lyrics.LyricLine>)
+  fullName.vb: BassBoom.Basolia.Lyrics.Lyric.New(System.Collections.Generic.List(Of BassBoom.Basolia.Lyrics.LyricLine))
+  nameWithType: Lyric.Lyric(List<LyricLine>)
+  nameWithType.vb: Lyric.New(List(Of LyricLine))
+- uid: BassBoom.Basolia.Lyrics.Lyric.#ctor*
+  name: Lyric
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric__ctor_
+  commentId: Overload:BassBoom.Basolia.Lyrics.Lyric.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BassBoom.Basolia.Lyrics.Lyric.Lyric
+  fullName.vb: BassBoom.Basolia.Lyrics.Lyric.New
+  nameWithType: Lyric.Lyric
+  nameWithType.vb: Lyric.New
+- uid: BassBoom.Basolia.Lyrics.Lyric.Lines
+  name: Lines
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_Lines
+  commentId: P:BassBoom.Basolia.Lyrics.Lyric.Lines
+  fullName: BassBoom.Basolia.Lyrics.Lyric.Lines
+  nameWithType: Lyric.Lines
+- uid: BassBoom.Basolia.Lyrics.Lyric.Lines*
+  name: Lines
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_Lines_
+  commentId: Overload:BassBoom.Basolia.Lyrics.Lyric.Lines
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Lyrics.Lyric.Lines
+  nameWithType: Lyric.Lines
+- uid: BassBoom.Basolia.Lyrics.LyricLine
+  name: LyricLine
+  href: api/BassBoom.Basolia.Lyrics.LyricLine.html
+  commentId: T:BassBoom.Basolia.Lyrics.LyricLine
+  fullName: BassBoom.Basolia.Lyrics.LyricLine
+  nameWithType: LyricLine
+- uid: BassBoom.Basolia.Lyrics.LyricLine.#ctor(System.String,System.TimeSpan)
+  name: LyricLine(string, TimeSpan)
+  href: api/BassBoom.Basolia.Lyrics.LyricLine.html#BassBoom_Basolia_Lyrics_LyricLine__ctor_System_String_System_TimeSpan_
+  commentId: M:BassBoom.Basolia.Lyrics.LyricLine.#ctor(System.String,System.TimeSpan)
+  name.vb: New(String, TimeSpan)
+  fullName: BassBoom.Basolia.Lyrics.LyricLine.LyricLine(string, System.TimeSpan)
+  fullName.vb: BassBoom.Basolia.Lyrics.LyricLine.New(String, System.TimeSpan)
+  nameWithType: LyricLine.LyricLine(string, TimeSpan)
+  nameWithType.vb: LyricLine.New(String, TimeSpan)
+- uid: BassBoom.Basolia.Lyrics.LyricLine.#ctor*
+  name: LyricLine
+  href: api/BassBoom.Basolia.Lyrics.LyricLine.html#BassBoom_Basolia_Lyrics_LyricLine__ctor_
+  commentId: Overload:BassBoom.Basolia.Lyrics.LyricLine.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BassBoom.Basolia.Lyrics.LyricLine.LyricLine
+  fullName.vb: BassBoom.Basolia.Lyrics.LyricLine.New
+  nameWithType: LyricLine.LyricLine
+  nameWithType.vb: LyricLine.New
+- uid: BassBoom.Basolia.Lyrics.LyricLine.Line
+  name: Line
+  href: api/BassBoom.Basolia.Lyrics.LyricLine.html#BassBoom_Basolia_Lyrics_LyricLine_Line
+  commentId: P:BassBoom.Basolia.Lyrics.LyricLine.Line
+  fullName: BassBoom.Basolia.Lyrics.LyricLine.Line
+  nameWithType: LyricLine.Line
+- uid: BassBoom.Basolia.Lyrics.LyricLine.Line*
+  name: Line
+  href: api/BassBoom.Basolia.Lyrics.LyricLine.html#BassBoom_Basolia_Lyrics_LyricLine_Line_
+  commentId: Overload:BassBoom.Basolia.Lyrics.LyricLine.Line
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Lyrics.LyricLine.Line
+  nameWithType: LyricLine.Line
+- uid: BassBoom.Basolia.Lyrics.LyricLine.LineSpan
+  name: LineSpan
+  href: api/BassBoom.Basolia.Lyrics.LyricLine.html#BassBoom_Basolia_Lyrics_LyricLine_LineSpan
+  commentId: P:BassBoom.Basolia.Lyrics.LyricLine.LineSpan
+  fullName: BassBoom.Basolia.Lyrics.LyricLine.LineSpan
+  nameWithType: LyricLine.LineSpan
+- uid: BassBoom.Basolia.Lyrics.LyricLine.LineSpan*
+  name: LineSpan
+  href: api/BassBoom.Basolia.Lyrics.LyricLine.html#BassBoom_Basolia_Lyrics_LyricLine_LineSpan_
+  commentId: Overload:BassBoom.Basolia.Lyrics.LyricLine.LineSpan
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Lyrics.LyricLine.LineSpan
+  nameWithType: LyricLine.LineSpan
+- uid: BassBoom.Basolia.Lyrics.LyricLine.LineWords
+  name: LineWords
+  href: api/BassBoom.Basolia.Lyrics.LyricLine.html#BassBoom_Basolia_Lyrics_LyricLine_LineWords
+  commentId: P:BassBoom.Basolia.Lyrics.LyricLine.LineWords
+  fullName: BassBoom.Basolia.Lyrics.LyricLine.LineWords
+  nameWithType: LyricLine.LineWords
+- uid: BassBoom.Basolia.Lyrics.LyricLine.LineWords*
+  name: LineWords
+  href: api/BassBoom.Basolia.Lyrics.LyricLine.html#BassBoom_Basolia_Lyrics_LyricLine_LineWords_
+  commentId: Overload:BassBoom.Basolia.Lyrics.LyricLine.LineWords
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Lyrics.LyricLine.LineWords
+  nameWithType: LyricLine.LineWords
+- uid: BassBoom.Basolia.Lyrics.LyricLineWord
+  name: LyricLineWord
+  href: api/BassBoom.Basolia.Lyrics.LyricLineWord.html
+  commentId: T:BassBoom.Basolia.Lyrics.LyricLineWord
+  fullName: BassBoom.Basolia.Lyrics.LyricLineWord
+  nameWithType: LyricLineWord
+- uid: BassBoom.Basolia.Lyrics.LyricLineWord.#ctor(System.String,System.TimeSpan)
+  name: LyricLineWord(string, TimeSpan)
+  href: api/BassBoom.Basolia.Lyrics.LyricLineWord.html#BassBoom_Basolia_Lyrics_LyricLineWord__ctor_System_String_System_TimeSpan_
+  commentId: M:BassBoom.Basolia.Lyrics.LyricLineWord.#ctor(System.String,System.TimeSpan)
+  name.vb: New(String, TimeSpan)
+  fullName: BassBoom.Basolia.Lyrics.LyricLineWord.LyricLineWord(string, System.TimeSpan)
+  fullName.vb: BassBoom.Basolia.Lyrics.LyricLineWord.New(String, System.TimeSpan)
+  nameWithType: LyricLineWord.LyricLineWord(string, TimeSpan)
+  nameWithType.vb: LyricLineWord.New(String, TimeSpan)
+- uid: BassBoom.Basolia.Lyrics.LyricLineWord.#ctor*
+  name: LyricLineWord
+  href: api/BassBoom.Basolia.Lyrics.LyricLineWord.html#BassBoom_Basolia_Lyrics_LyricLineWord__ctor_
+  commentId: Overload:BassBoom.Basolia.Lyrics.LyricLineWord.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BassBoom.Basolia.Lyrics.LyricLineWord.LyricLineWord
+  fullName.vb: BassBoom.Basolia.Lyrics.LyricLineWord.New
+  nameWithType: LyricLineWord.LyricLineWord
+  nameWithType.vb: LyricLineWord.New
+- uid: BassBoom.Basolia.Lyrics.LyricLineWord.Word
+  name: Word
+  href: api/BassBoom.Basolia.Lyrics.LyricLineWord.html#BassBoom_Basolia_Lyrics_LyricLineWord_Word
+  commentId: P:BassBoom.Basolia.Lyrics.LyricLineWord.Word
+  fullName: BassBoom.Basolia.Lyrics.LyricLineWord.Word
+  nameWithType: LyricLineWord.Word
+- uid: BassBoom.Basolia.Lyrics.LyricLineWord.Word*
+  name: Word
+  href: api/BassBoom.Basolia.Lyrics.LyricLineWord.html#BassBoom_Basolia_Lyrics_LyricLineWord_Word_
+  commentId: Overload:BassBoom.Basolia.Lyrics.LyricLineWord.Word
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Lyrics.LyricLineWord.Word
+  nameWithType: LyricLineWord.Word
+- uid: BassBoom.Basolia.Lyrics.LyricLineWord.WordSpan
+  name: WordSpan
+  href: api/BassBoom.Basolia.Lyrics.LyricLineWord.html#BassBoom_Basolia_Lyrics_LyricLineWord_WordSpan
+  commentId: P:BassBoom.Basolia.Lyrics.LyricLineWord.WordSpan
+  fullName: BassBoom.Basolia.Lyrics.LyricLineWord.WordSpan
+  nameWithType: LyricLineWord.WordSpan
+- uid: BassBoom.Basolia.Lyrics.LyricLineWord.WordSpan*
+  name: WordSpan
+  href: api/BassBoom.Basolia.Lyrics.LyricLineWord.html#BassBoom_Basolia_Lyrics_LyricLineWord_WordSpan_
+  commentId: Overload:BassBoom.Basolia.Lyrics.LyricLineWord.WordSpan
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Lyrics.LyricLineWord.WordSpan
+  nameWithType: LyricLineWord.WordSpan
+- uid: BassBoom.Basolia.Lyrics.LyricReader
+  name: LyricReader
+  href: api/BassBoom.Basolia.Lyrics.LyricReader.html
+  commentId: T:BassBoom.Basolia.Lyrics.LyricReader
+  fullName: BassBoom.Basolia.Lyrics.LyricReader
+  nameWithType: LyricReader
+- uid: BassBoom.Basolia.Lyrics.LyricReader.GetLyrics(System.String)
+  name: GetLyrics(string)
+  href: api/BassBoom.Basolia.Lyrics.LyricReader.html#BassBoom_Basolia_Lyrics_LyricReader_GetLyrics_System_String_
+  commentId: M:BassBoom.Basolia.Lyrics.LyricReader.GetLyrics(System.String)
+  name.vb: GetLyrics(String)
+  fullName: BassBoom.Basolia.Lyrics.LyricReader.GetLyrics(string)
+  fullName.vb: BassBoom.Basolia.Lyrics.LyricReader.GetLyrics(String)
+  nameWithType: LyricReader.GetLyrics(string)
+  nameWithType.vb: LyricReader.GetLyrics(String)
+- uid: BassBoom.Basolia.Lyrics.LyricReader.GetLyrics*
+  name: GetLyrics
+  href: api/BassBoom.Basolia.Lyrics.LyricReader.html#BassBoom_Basolia_Lyrics_LyricReader_GetLyrics_
+  commentId: Overload:BassBoom.Basolia.Lyrics.LyricReader.GetLyrics
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Lyrics.LyricReader.GetLyrics
+  nameWithType: LyricReader.GetLyrics
 - uid: BassBoom.Basolia.Playback
   name: BassBoom.Basolia.Playback
   href: api/BassBoom.Basolia.Playback.html

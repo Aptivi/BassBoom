@@ -84,6 +84,31 @@
     "title": "Class InitBasolia | BassBoom Basolia API - Aptivi Internals",
     "keywords": "Class InitBasolia Initialization code Inheritance object InitBasolia Namespace: BassBoom.Basolia Assembly: BassBoom.Basolia.dll Syntax public static class InitBasolia Methods | Improve this Doc View Source CheckInited() Declaration public static void CheckInited() | Improve this Doc View Source Init(bool) Initializes the MPG123 library for Basolia to function Declaration public static void Init(bool Fugitive = false) Parameters Type Name Description bool Fugitive Allows illegal operations. NEVER SET THIS TO TRUE UNLESS YOU KNOW WHAT YOU'RE DOING!"
   },
+  "api/BassBoom.Basolia.Lyrics.Lyric.html": {
+    "href": "api/BassBoom.Basolia.Lyrics.Lyric.html",
+    "title": "Class Lyric | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class Lyric A song lyric class containing lyrical lines Inheritance object Lyric Namespace: BassBoom.Basolia.Lyrics Assembly: BassBoom.Basolia.dll Syntax public class Lyric Constructors | Improve this Doc View Source Lyric(List<LyricLine>) Declaration protected Lyric(List<LyricLine> lines) Parameters Type Name Description List<LyricLine> lines Properties | Improve this Doc View Source Lines Lyric lines Declaration public List<LyricLine> Lines { get; } Property Value Type Description List<LyricLine>"
+  },
+  "api/BassBoom.Basolia.Lyrics.LyricLine.html": {
+    "href": "api/BassBoom.Basolia.Lyrics.LyricLine.html",
+    "title": "Class LyricLine | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class LyricLine A line from the lyric with its properties Inheritance object LyricLine Namespace: BassBoom.Basolia.Lyrics Assembly: BassBoom.Basolia.dll Syntax public class LyricLine Constructors | Improve this Doc View Source LyricLine(string, TimeSpan) Declaration protected LyricLine(string line, TimeSpan lineSpan) Parameters Type Name Description string line TimeSpan lineSpan Properties | Improve this Doc View Source Line Lyrical line Declaration public string Line { get; } Property Value Type Description string | Improve this Doc View Source LineSpan Starting time of the lyric line Declaration public TimeSpan LineSpan { get; } Property Value Type Description TimeSpan | Improve this Doc View Source LineWords Group of words from the lyric line Declaration public List<LyricLineWord> LineWords { get; } Property Value Type Description List<LyricLineWord>"
+  },
+  "api/BassBoom.Basolia.Lyrics.LyricLineWord.html": {
+    "href": "api/BassBoom.Basolia.Lyrics.LyricLineWord.html",
+    "title": "Class LyricLineWord | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class LyricLineWord A word from a lyric line with its properties Inheritance object LyricLineWord Namespace: BassBoom.Basolia.Lyrics Assembly: BassBoom.Basolia.dll Syntax public class LyricLineWord Constructors | Improve this Doc View Source LyricLineWord(string, TimeSpan) Declaration protected LyricLineWord(string word, TimeSpan wordSpan) Parameters Type Name Description string word TimeSpan wordSpan Properties | Improve this Doc View Source Word Lyrical word Declaration public string Word { get; } Property Value Type Description string | Improve this Doc View Source WordSpan Starting time of the lyric word Declaration public TimeSpan WordSpan { get; } Property Value Type Description TimeSpan"
+  },
+  "api/BassBoom.Basolia.Lyrics.LyricReader.html": {
+    "href": "api/BassBoom.Basolia.Lyrics.LyricReader.html",
+    "title": "Class LyricReader | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class LyricReader Lyrics reader module Inheritance object LyricReader Namespace: BassBoom.Basolia.Lyrics Assembly: BassBoom.Basolia.dll Syntax public static class LyricReader Methods | Improve this Doc View Source GetLyrics(string) Gets the lyrics and their properties from the .LRC or .TXT lyric file Declaration public static Lyric GetLyrics(string path) Parameters Type Name Description string path Path to the LRC or TXT file containing lyrics Returns Type Description Lyric"
+  },
+  "api/BassBoom.Basolia.Lyrics.html": {
+    "href": "api/BassBoom.Basolia.Lyrics.html",
+    "title": "Namespace BassBoom.Basolia.Lyrics | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Namespace BassBoom.Basolia.Lyrics Classes Lyric A song lyric class containing lyrical lines LyricLine A line from the lyric with its properties LyricLineWord A word from a lyric line with its properties LyricReader Lyrics reader module"
+  },
   "api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html": {
     "href": "api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html",
     "title": "Class PlaybackPositioningTools | BassBoom Basolia API - Aptivi Internals",
