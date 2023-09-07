@@ -26,6 +26,7 @@ using System.Threading;
 using Terminaux.Colors;
 using Terminaux.Reader.Inputs;
 using Terminaux.Reader.Tools;
+using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 
 namespace BassBoom.Cli.CliBase
@@ -44,6 +45,7 @@ namespace BassBoom.Cli.CliBase
             InitBasolia.Init();
             FileTools.OpenFile(musicPath);
             int total = AudioInfoTools.GetDuration(true);
+            var totalSpan = AudioInfoTools.GetDurationSpan(true);
             int bufferSize = AudioInfoTools.GetBufferSize();
             double volume = PlaybackTools.GetVolume().baseLinear;
             AudioInfoTools.GetId3Metadata(out var managedV1, out var managedV2);
@@ -90,9 +92,12 @@ namespace BassBoom.Cli.CliBase
                     // Check the mode
                     if (PlaybackTools.Playing)
                     {
-                        // Print the progress bar
+                        // Print the progress bar and the current duration
                         int position = PlaybackPositioningTools.GetCurrentDuration();
+                        var posSpan = PlaybackPositioningTools.GetCurrentDurationSpan();
                         ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleTools.ActionWindowHeight() - 8, 6);
+                        TextWriterWhereColor.WriteWhere($"{posSpan} / {totalSpan}", 3, ConsoleTools.ActionWindowHeight() - 9);
+                        TextWriterWhereColor.WriteWhere($"Vol: {volume:0.00}", ConsoleTools.ActionWindowWidth() - $"Vol: {volume:0.00}".Length - 3, ConsoleTools.ActionWindowHeight() - 9);
 
                         // Wait for any keystroke asynchronously
                         if (ConsoleTools.ActionKeyAvailable())
