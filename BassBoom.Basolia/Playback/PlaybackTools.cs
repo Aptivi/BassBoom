@@ -25,6 +25,7 @@ using BassBoom.Native.Interop.LowLevel;
 using BassBoom.Native.Runtime;
 using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using BassBoom.Basolia.Devices;
 using System.Runtime.InteropServices;
@@ -36,6 +37,7 @@ namespace BassBoom.Basolia.Playback
     /// </summary>
     public static class PlaybackTools
     {
+        internal static bool holding = false;
         private static PlaybackState state = PlaybackState.Stopped;
 
         /// <summary>
@@ -100,6 +102,12 @@ namespace BassBoom.Basolia.Playback
                 do
                 {
                     int played;
+
+                    // First, let Basolia "hold on" until hold is released
+                    while (holding)
+                        Thread.Sleep(1);
+
+                    // Now, play the MPEG buffer to the device
                     err = NativeInput.mpg123_read(handle, bufferPtr, bufferSize, out done);
                     played = NativeOutputLib.out123_play(outHandle, bufferPtr, done);
                     if (played != done)

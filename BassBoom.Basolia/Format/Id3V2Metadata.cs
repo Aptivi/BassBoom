@@ -20,12 +20,12 @@ namespace BassBoom.Basolia.Format
 {
     public class Id3V2Metadata
     {
-        private string title;
-        private string artist;
-        private string album;
-        private string year;
-        private string comment;
-        private string genre;
+        private string title = "";
+        private string artist = "";
+        private string album = "";
+        private string year = "";
+        private string comment = "";
+        private string genre = "";
         private string[] comments;
         private string[] texts;
         private string[] extras;
