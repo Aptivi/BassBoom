@@ -48,6 +48,7 @@ namespace BassBoom.Cli.CliBase
             var totalSpan = AudioInfoTools.GetDurationSpan(true);
             int bufferSize = AudioInfoTools.GetBufferSize();
             double volume = PlaybackTools.GetVolume().baseLinear;
+            var format = FormatTools.GetFormatInfo();
             AudioInfoTools.GetId3Metadata(out var managedV1, out var managedV2);
 
             // Render the song name
@@ -118,13 +119,13 @@ namespace BassBoom.Cli.CliBase
                                     PlaybackTools.SetVolume(volume);
                                     break;
                                 case ConsoleKey.RightArrow:
-                                    position += bufferSize * 16;
+                                    position += (int)format.rate * 3;
                                     if (position > total)
                                         position = total;
                                     PlaybackPositioningTools.SeekToFrame(position);
                                     break;
                                 case ConsoleKey.LeftArrow:
-                                    position -= bufferSize * 16;
+                                    position -= (int)format.rate * 3;
                                     if (position < 0)
                                         position = 0;
                                     PlaybackPositioningTools.SeekToFrame(position);
