@@ -16,6 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+using BassBoom.Basolia.Playback;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Play;
 using BassBoom.Native.Runtime;
@@ -68,6 +69,10 @@ namespace BassBoom.Basolia.File
             // Check to see if the file is open
             if (!IsOpened)
                 throw new BasoliaException("Can't close a file that's already closed", mpg123_errors.MPG123_BAD_FILE);
+
+            // First, stop the playing song
+            if (PlaybackTools.State == PlaybackState.Playing || PlaybackTools.State == PlaybackState.Paused)
+                PlaybackTools.Stop();
 
             // We're now entering the dangerous zone
             unsafe

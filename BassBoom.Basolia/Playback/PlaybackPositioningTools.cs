@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -93,7 +94,8 @@ namespace BassBoom.Basolia.Playback
 
                 // Get the length
                 PlaybackTools.holding = true;
-                NativeOutputLib.out123_pause(outHandle);
+                while (PlaybackTools.bufferPlaying)
+                    Thread.Sleep(1);
                 NativeOutputLib.out123_drop(outHandle);
                 int status = NativePositioning.mpg123_seek(handle, 0, 0);
                 PlaybackTools.holding = false;
@@ -121,7 +123,8 @@ namespace BassBoom.Basolia.Playback
 
                 // Get the length
                 PlaybackTools.holding = true;
-                NativeOutputLib.out123_pause(outHandle);
+                while (PlaybackTools.bufferPlaying)
+                    Thread.Sleep(1);
                 NativeOutputLib.out123_drop(outHandle);
                 int status = NativePositioning.mpg123_seek(handle, frame, 0);
                 PlaybackTools.holding = false;

@@ -29,6 +29,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BassBoom.Basolia.Devices;
 using System.Runtime.InteropServices;
+using System.Reflection.Metadata;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -37,6 +38,7 @@ namespace BassBoom.Basolia.Playback
     /// </summary>
     public static class PlaybackTools
     {
+        internal static bool bufferPlaying = false;
         internal static bool holding = false;
         private static PlaybackState state = PlaybackState.Stopped;
 
@@ -89,36 +91,27 @@ namespace BassBoom.Basolia.Playback
                     throw new BasoliaOutException($"Can't start the output.", (out123_error)startStatus);
 
                 // Now, buffer the entire music file and create an empty array based on its size
-                var frameSize = AudioInfoTools.GetFrameSize();
                 var bufferSize = AudioInfoTools.GetBufferSize();
                 Debug.WriteLine($"Buffer size is {bufferSize}");
-                var buffer = stackalloc byte[bufferSize];
-                var bufferPtr = new IntPtr(buffer);
-                int done = NativePositioning.mpg123_tell(handle);
-                int err = (int)mpg123_errors.MPG123_OK;
-                int samples = 0;
-                Debug.WriteLine($"mpg123_tell() returned {done}");
+                int err;
                 state = PlaybackState.Playing;
                 do
                 {
                     int played;
+                    int num = 0;
+                    int audioBytes = 0;
+                    byte[] audio = null;
 
                     // First, let Basolia "hold on" until hold is released
                     while (holding)
                         Thread.Sleep(1);
 
                     // Now, play the MPEG buffer to the device
-                    err = NativeInput.mpg123_read(handle, bufferPtr, bufferSize, out done);
-                    played = NativeOutputLib.out123_play(outHandle, bufferPtr, done);
-                    if (played != done)
-                    {
-                        Debug.WriteLine("Short read encountered.");
-                        Debug.WriteLine($"Played {played}, but done {done}");
-                    }
-                    Debug.WriteLine($"{played}, {done}, {err}");
-                    samples += played / frameSize;
-                    Debug.WriteLine($"S: {samples}");
-                } while (done != 0 && err == (int)mpg123_errors.MPG123_OK && Playing);
+                    bufferPlaying = true;
+                    err = DecodeTools.DecodeFrame(ref num, ref audio, ref audioBytes);
+                    played = PlayBuffer(audio);
+                    bufferPlaying = false;
+                } while (err == (int)mpg123_errors.MPG123_OK && Playing);
                 if (Playing)
                     state = PlaybackState.Stopped;
             }
@@ -189,6 +182,19 @@ namespace BassBoom.Basolia.Playback
 
             // Get the volume information
             return (baseLinearAddr, actualLinearAddr, decibelsRvaAddr);
+        }
+
+        internal static int PlayBuffer(byte[] buffer)
+        {
+            unsafe
+            {
+                var outHandle = Mpg123Instance._out123Handle;
+                IntPtr bufferPtr = Marshal.AllocHGlobal(Marshal.SizeOf<byte>() * buffer.Length);
+                Marshal.Copy(buffer, 0, bufferPtr, buffer.Length);
+                int size = NativeOutputLib.out123_play(outHandle, bufferPtr, buffer.Length);
+                Marshal.FreeHGlobal(bufferPtr);
+                return size;
+            }
         }
     }
 }

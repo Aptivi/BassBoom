@@ -292,7 +292,7 @@ namespace BassBoom.Native.Interop.Output
         /// <summary>
         /// MPG123_EXPORT void out123_drain(out123_handle *ao);
         /// </summary>
-        [DllImport(LibraryTools.LibraryNameOut, CharSet = CharSet.Ansi)]
+        [DllImport(LibraryTools.LibraryNameOut, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void out123_drain(out123_handle* ao);
 
         /// <summary>

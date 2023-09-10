@@ -91,7 +91,7 @@ namespace BassBoom.Native.Interop.Play
         /// ,   off_t *num, unsigned char **audio, size_t *bytes);
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_decode_frame(mpg123_handle* mh, IntPtr num, string[] audio, int* bytes);
+        internal static extern int mpg123_decode_frame(mpg123_handle* mh, ref IntPtr num, ref IntPtr audio, ref IntPtr bytes);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_framebyframe_decode(mpg123_handle *mh
