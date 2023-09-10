@@ -16,7 +16,10 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+using BassBoom.Basolia.Playback;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BassBoom.Basolia.Lyrics
 {
@@ -29,6 +32,66 @@ namespace BassBoom.Basolia.Lyrics
         /// Lyric lines
         /// </summary>
         public List<LyricLine> Lines { get; }
+
+        /// <summary>
+        /// Gets all the lines from the start to the current music duration
+        /// </summary>
+        /// <returns>Array of lyric lines from the start to the current music duration</returns>
+        public LyricLine[] GetLinesCurrent()
+        {
+            var currentSpan = PlaybackPositioningTools.GetCurrentDurationSpan();
+            return GetLinesToSpan(currentSpan);
+        }
+
+        /// <summary>
+        /// Gets the last lyric line from the current music duration
+        /// </summary>
+        /// <returns>Last lyric line from the current music duration</returns>
+        public string GetLastLineCurrent()
+        {
+            var processedLines = GetLinesCurrent();
+            return processedLines[^1].Line;
+        }
+
+        /// <summary>
+        /// Gets the last lyric line words from the current music duration
+        /// </summary>
+        /// <returns>Last lyric line word from the current music duration</returns>
+        public List<LyricLineWord> GetLastLineWordsCurrent()
+        {
+            var processedLines = GetLinesCurrent();
+            return processedLines[^1].LineWords;
+        }
+
+        /// <summary>
+        /// Gets all the lines from the start to the current span
+        /// </summary>
+        /// <param name="span">Time span in which it usually represents the current music duration</param>
+        /// <returns>Array of lyric lines from the start to the current span</returns>
+        public LyricLine[] GetLinesToSpan(TimeSpan span) =>
+            Lines.Where((line) => line.LineSpan <= span).ToArray();
+
+        /// <summary>
+        /// Gets the last lyric line from the given time span
+        /// </summary>
+        /// <param name="span">Time span in which it usually represents the current music duration</param>
+        /// <returns>Last lyric line from the given time span</returns>
+        public string GetLastLineAtSpan(TimeSpan span)
+        {
+            var processedLines = GetLinesToSpan(span);
+            return processedLines[^1].Line;
+        }
+
+        /// <summary>
+        /// Gets the last lyric line words from the given time span
+        /// </summary>
+        /// <param name="span">Time span in which it usually represents the current music duration</param>
+        /// <returns>Last lyric line word from the given time span</returns>
+        public List<LyricLineWord> GetLastLineWordsAtSpan(TimeSpan span)
+        {
+            var processedLines = GetLinesToSpan(span);
+            return processedLines[^1].LineWords;
+        }
 
         protected internal Lyric(List<LyricLine> lines)
         {

@@ -19,6 +19,7 @@
 using BassBoom.Basolia;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
+using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using System;
 using System.IO;
@@ -50,6 +51,20 @@ namespace BassBoom.Cli.CliBase
             double volume = PlaybackTools.GetVolume().baseLinear;
             var format = FormatTools.GetFormatInfo();
             AudioInfoTools.GetId3Metadata(out var managedV1, out var managedV2);
+
+            // Try to open the lyrics
+            string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
+            Lyric lyricInstance = null;
+            try
+            {
+                InfoBoxColor.WriteInfoBox("Trying to open lyrics file {0}...", false, vars: lyricsPath);
+                if (File.Exists(lyricsPath))
+                    lyricInstance = LyricReader.GetLyrics(lyricsPath);
+            }
+            catch (Exception ex)
+            {
+                InfoBoxColor.WriteInfoBox("Can't open lyrics file {0}... {1}", vars: new[] { lyricsPath, ex.Message });
+            }
 
             // Render the song name
             string musicName =
@@ -99,6 +114,10 @@ namespace BassBoom.Cli.CliBase
                         ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleWrappers.ActionWindowHeight() - 8, 6);
                         TextWriterWhereColor.WriteWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrappers.ActionWindowHeight() - 9);
                         TextWriterWhereColor.WriteWhere($"Vol: {volume:0.00}", ConsoleWrappers.ActionWindowWidth() - $"Vol: {volume:0.00}".Length - 3, ConsoleWrappers.ActionWindowHeight() - 9);
+
+                        // Print the lyrics, if any
+                        if (lyricInstance is not null)
+                            TextWriterWhereColor.WriteWhere(lyricInstance.GetLastLineCurrent() + ConsoleExtensions.GetClearLineToRightSequence(), 3, ConsoleWrappers.ActionWindowHeight() - 10);
 
                         // Wait for any keystroke asynchronously
                         if (ConsoleWrappers.ActionKeyAvailable())
