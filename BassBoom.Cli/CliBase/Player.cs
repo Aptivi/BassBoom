@@ -23,9 +23,9 @@ using BassBoom.Basolia.Playback;
 using System;
 using System.IO;
 using System.Threading;
+using Terminaux.Base;
 using Terminaux.Colors;
 using Terminaux.Reader.Inputs;
-using Terminaux.Reader.Tools;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 
@@ -74,17 +74,17 @@ namespace BassBoom.Cli.CliBase
                     if (rerender)
                     {
                         rerender = false;
-                        ConsoleTools.ActionCursorVisible(false);
+                        ConsoleWrappers.ActionCursorVisible(false);
                         ColorTools.LoadBack();
                     }
 
                     // First, print the keystrokes
                     string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [UP/DOWN] Vol - [<-/->] Seek";
-                    CenteredTextColor.WriteCentered(ConsoleTools.ActionWindowHeight() - 2, keystrokes);
+                    CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 2, keystrokes);
 
                     // Print the separator
-                    string separator = new('=', ConsoleTools.ActionWindowWidth());
-                    CenteredTextColor.WriteCentered(ConsoleTools.ActionWindowHeight() - 4, separator);
+                    string separator = new('=', ConsoleWrappers.ActionWindowWidth());
+                    CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 4, separator);
 
                     // Print the music name
                     CenteredTextColor.WriteCentered(1, $"{musicArtist} - {musicName} [{musicGenre}]");
@@ -95,12 +95,12 @@ namespace BassBoom.Cli.CliBase
                         // Print the progress bar and the current duration
                         int position = PlaybackPositioningTools.GetCurrentDuration();
                         var posSpan = PlaybackPositioningTools.GetCurrentDurationSpan();
-                        ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleTools.ActionWindowHeight() - 8, 6);
-                        TextWriterWhereColor.WriteWhere($"{posSpan} / {totalSpan}", 3, ConsoleTools.ActionWindowHeight() - 9);
-                        TextWriterWhereColor.WriteWhere($"Vol: {volume:0.00}", ConsoleTools.ActionWindowWidth() - $"Vol: {volume:0.00}".Length - 3, ConsoleTools.ActionWindowHeight() - 9);
+                        ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleWrappers.ActionWindowHeight() - 8, 6);
+                        TextWriterWhereColor.WriteWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrappers.ActionWindowHeight() - 9);
+                        TextWriterWhereColor.WriteWhere($"Vol: {volume:0.00}", ConsoleWrappers.ActionWindowWidth() - $"Vol: {volume:0.00}".Length - 3, ConsoleWrappers.ActionWindowHeight() - 9);
 
                         // Wait for any keystroke asynchronously
-                        if (ConsoleTools.ActionKeyAvailable())
+                        if (ConsoleWrappers.ActionKeyAvailable())
                         {
                             var keystroke = Input.DetectKeypress().Key;
                             switch (keystroke)
@@ -201,7 +201,7 @@ namespace BassBoom.Cli.CliBase
                 FileTools.CloseFile();
 
             // Restore state
-            ConsoleTools.ActionCursorVisible(true);
+            ConsoleWrappers.ActionCursorVisible(true);
             ColorTools.LoadBack();
         }
 
