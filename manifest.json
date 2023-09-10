@@ -126,6 +126,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Format.DecodeTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Format.DecodeTools.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.Format.FormatTools.yml",
       "output": {
         ".html": {

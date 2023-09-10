@@ -54,6 +54,11 @@
     "title": "Class AudioInfoTools | BassBoom Basolia API - Aptivi Internals",
     "keywords": "Class AudioInfoTools Audio information tools Inheritance object AudioInfoTools Namespace: BassBoom.Basolia.Format Assembly: BassBoom.Basolia.dll Syntax public static class AudioInfoTools Methods | Improve this Doc View Source GetBufferSize() Declaration public static int GetBufferSize() Returns Type Description int | Improve this Doc View Source GetDuration(bool) Gets the duration of the file Declaration public static int GetDuration(bool scan) Parameters Type Name Description bool scan Returns Type Description int | Improve this Doc View Source GetDurationSpan(bool) Declaration public static TimeSpan GetDurationSpan(bool scan) Parameters Type Name Description bool scan Returns Type Description TimeSpan | Improve this Doc View Source GetFrameSize() Declaration public static int GetFrameSize() Returns Type Description int | Improve this Doc View Source GetIcyMetadata() Declaration public static string GetIcyMetadata() Returns Type Description string | Improve this Doc View Source GetId3Metadata(out Id3V1Metadata, out Id3V2Metadata) Declaration public static void GetId3Metadata(out Id3V1Metadata managedV1, out Id3V2Metadata managedV2) Parameters Type Name Description Id3V1Metadata managedV1 Id3V2Metadata managedV2"
   },
+  "api/BassBoom.Basolia.Format.DecodeTools.html": {
+    "href": "api/BassBoom.Basolia.Format.DecodeTools.html",
+    "title": "Class DecodeTools | BassBoom Basolia API - Aptivi Internals",
+    "keywords": "Class DecodeTools Decoder tools Inheritance object DecodeTools Namespace: BassBoom.Basolia.Format Assembly: BassBoom.Basolia.dll Syntax public static class DecodeTools Methods | Improve this Doc View Source DecodeFrame(ref int, ref byte[], ref int) Decodes next MPEG frame to internal buffer or reads a frame and returns after setting a new format. Declaration public static int DecodeFrame(ref int num, ref byte[] audio, ref int bytes) Parameters Type Name Description int num Frame offset byte[] audio Array of decoded audio bytes int bytes Number of bytes to read Returns Type Description int MPG123_OK on success."
+  },
   "api/BassBoom.Basolia.Format.FormatTools.html": {
     "href": "api/BassBoom.Basolia.Format.FormatTools.html",
     "title": "Class FormatTools | BassBoom Basolia API - Aptivi Internals",
@@ -77,7 +82,7 @@
   "api/BassBoom.Basolia.Format.html": {
     "href": "api/BassBoom.Basolia.Format.html",
     "title": "Namespace BassBoom.Basolia.Format | BassBoom Basolia API - Aptivi Internals",
-    "keywords": "Namespace BassBoom.Basolia.Format Classes AudioInfoTools Audio information tools FormatTools Audio format tools Id3V1Metadata Id3V2Metadata Enums Id3V1Genre"
+    "keywords": "Namespace BassBoom.Basolia.Format Classes AudioInfoTools Audio information tools DecodeTools Decoder tools FormatTools Audio format tools Id3V1Metadata Id3V2Metadata Enums Id3V1Genre"
   },
   "api/BassBoom.Basolia.InitBasolia.html": {
     "href": "api/BassBoom.Basolia.InitBasolia.html",
