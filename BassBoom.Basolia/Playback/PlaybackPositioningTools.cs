@@ -20,6 +20,7 @@ using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Play;
+using BassBoom.Native.Interop.Output;
 using BassBoom.Native.Runtime;
 using System;
 using System.Collections.Generic;
@@ -88,9 +89,14 @@ namespace BassBoom.Basolia.Playback
             unsafe
             {
                 var handle = Mpg123Instance._mpg123Handle;
+                var outHandle = Mpg123Instance._out123Handle;
 
                 // Get the length
+                PlaybackTools.holding = true;
+                NativeOutputLib.out123_pause(outHandle);
+                NativeOutputLib.out123_drop(outHandle);
                 int status = NativePositioning.mpg123_seek(handle, 0, 0);
+                PlaybackTools.holding = false;
                 if (status == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't seek to the beginning of the file", mpg123_errors.MPG123_LSEEK_FAILED);
             }
@@ -111,9 +117,14 @@ namespace BassBoom.Basolia.Playback
             unsafe
             {
                 var handle = Mpg123Instance._mpg123Handle;
+                var outHandle = Mpg123Instance._out123Handle;
 
                 // Get the length
+                PlaybackTools.holding = true;
+                NativeOutputLib.out123_pause(outHandle);
+                NativeOutputLib.out123_drop(outHandle);
                 int status = NativePositioning.mpg123_seek(handle, frame, 0);
+                PlaybackTools.holding = false;
                 if (status == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException($"Can't seek to frame #{frame} of the file", (mpg123_errors)status);
             }
