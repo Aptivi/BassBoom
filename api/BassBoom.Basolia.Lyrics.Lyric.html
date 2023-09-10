@@ -104,7 +104,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Lyrics_Lyric__ctor_System_Collections_Generic_List_BassBoom_Basolia_Lyrics_LyricLine__.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Lyrics.Lyric.%23ctor(System.Collections.Generic.List%7BBassBoom.Basolia.Lyrics.LyricLine%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L33">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L96">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Lyrics_Lyric__ctor_" data-uid="BassBoom.Basolia.Lyrics.Lyric.#ctor*"></a>
   <h4 id="BassBoom_Basolia_Lyrics_Lyric__ctor_System_Collections_Generic_List_BassBoom_Basolia_Lyrics_LyricLine__" data-uid="BassBoom.Basolia.Lyrics.Lyric.#ctor(System.Collections.Generic.List{BassBoom.Basolia.Lyrics.LyricLine})">Lyric(List&lt;LyricLine&gt;)</h4>
@@ -138,7 +138,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Lyrics_Lyric_Lines.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Lyrics.Lyric.Lines%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L31">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L34">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Lyrics_Lyric_Lines_" data-uid="BassBoom.Basolia.Lyrics.Lyric.Lines*"></a>
   <h4 id="BassBoom_Basolia_Lyrics_Lyric_Lines" data-uid="BassBoom.Basolia.Lyrics.Lyric.Lines">Lines</h4>
@@ -164,6 +164,254 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Lyrics_Lyric_GetLastLineAtSpan_System_TimeSpan_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Lyrics.Lyric.GetLastLineAtSpan(System.TimeSpan)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L79">View Source</a>
+  </span>
+  <a id="BassBoom_Basolia_Lyrics_Lyric_GetLastLineAtSpan_" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLastLineAtSpan*"></a>
+  <h4 id="BassBoom_Basolia_Lyrics_Lyric_GetLastLineAtSpan_System_TimeSpan_" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLastLineAtSpan(System.TimeSpan)">GetLastLineAtSpan(TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Gets the last lyric line from the given time span</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetLastLineAtSpan(TimeSpan span)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
+        <td><span class="parametername">span</span></td>
+        <td><p>Time span in which it usually represents the current music duration</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>Last lyric line from the given time span</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Lyrics_Lyric_GetLastLineCurrent.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Lyrics.Lyric.GetLastLineCurrent%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L50">View Source</a>
+  </span>
+  <a id="BassBoom_Basolia_Lyrics_Lyric_GetLastLineCurrent_" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLastLineCurrent*"></a>
+  <h4 id="BassBoom_Basolia_Lyrics_Lyric_GetLastLineCurrent" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLastLineCurrent">GetLastLineCurrent()</h4>
+  <div class="markdown level1 summary"><p>Gets the last lyric line from the current music duration</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetLastLineCurrent()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>Last lyric line from the current music duration</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Lyrics_Lyric_GetLastLineWordsAtSpan_System_TimeSpan_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsAtSpan(System.TimeSpan)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L90">View Source</a>
+  </span>
+  <a id="BassBoom_Basolia_Lyrics_Lyric_GetLastLineWordsAtSpan_" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsAtSpan*"></a>
+  <h4 id="BassBoom_Basolia_Lyrics_Lyric_GetLastLineWordsAtSpan_System_TimeSpan_" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsAtSpan(System.TimeSpan)">GetLastLineWordsAtSpan(TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Gets the last lyric line words from the given time span</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;LyricLineWord&gt; GetLastLineWordsAtSpan(TimeSpan span)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
+        <td><span class="parametername">span</span></td>
+        <td><p>Time span in which it usually represents the current music duration</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="BassBoom.Basolia.Lyrics.LyricLineWord.html">LyricLineWord</a>&gt;</td>
+        <td><p>Last lyric line word from the given time span</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Lyrics_Lyric_GetLastLineWordsCurrent.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L60">View Source</a>
+  </span>
+  <a id="BassBoom_Basolia_Lyrics_Lyric_GetLastLineWordsCurrent_" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent*"></a>
+  <h4 id="BassBoom_Basolia_Lyrics_Lyric_GetLastLineWordsCurrent" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent">GetLastLineWordsCurrent()</h4>
+  <div class="markdown level1 summary"><p>Gets the last lyric line words from the current music duration</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;LyricLineWord&gt; GetLastLineWordsCurrent()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="BassBoom.Basolia.Lyrics.LyricLineWord.html">LyricLineWord</a>&gt;</td>
+        <td><p>Last lyric line word from the current music duration</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Lyrics_Lyric_GetLinesCurrent.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L40">View Source</a>
+  </span>
+  <a id="BassBoom_Basolia_Lyrics_Lyric_GetLinesCurrent_" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent*"></a>
+  <h4 id="BassBoom_Basolia_Lyrics_Lyric_GetLinesCurrent" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent">GetLinesCurrent()</h4>
+  <div class="markdown level1 summary"><p>Gets all the lines from the start to the current music duration</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LyricLine[] GetLinesCurrent()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.Lyrics.LyricLine.html">LyricLine</a>[]</td>
+        <td><p>Array of lyric lines from the start to the current music duration</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Lyrics_Lyric_GetLinesToSpan_System_TimeSpan_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Lyrics.Lyric.GetLinesToSpan(System.TimeSpan)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L71">View Source</a>
+  </span>
+  <a id="BassBoom_Basolia_Lyrics_Lyric_GetLinesToSpan_" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLinesToSpan*"></a>
+  <h4 id="BassBoom_Basolia_Lyrics_Lyric_GetLinesToSpan_System_TimeSpan_" data-uid="BassBoom.Basolia.Lyrics.Lyric.GetLinesToSpan(System.TimeSpan)">GetLinesToSpan(TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Gets all the lines from the start to the current span</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LyricLine[] GetLinesToSpan(TimeSpan span)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
+        <td><span class="parametername">span</span></td>
+        <td><p>Time span in which it usually represents the current music duration</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.Lyrics.LyricLine.html">LyricLine</a>[]</td>
+        <td><p>Array of lyric lines from the start to the current span</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 
 </article>
           </div>
@@ -176,7 +424,7 @@
                     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Lyrics_Lyric.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Lyrics.Lyric%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L26" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Lyrics/Lyric.cs/#L29" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
