@@ -64,7 +64,7 @@ namespace BassBoom.Cli.CliBase
                 !string.IsNullOrEmpty(managedV2.Genre) ? managedV2.Genre :
                 managedV1.GenreIndex >= 0 ? $"{managedV1.Genre} [{managedV1.GenreIndex}]" :
                 "Unknown Genre";
-            Console.Title = $"BassBoom CLI - Prototype 5: ID3 Metadata & Volume Manipulation - {musicArtist} - {musicName} [{musicGenre}]";
+            Console.Title = $"BassBoom CLI - Prototype 6: Lyrics and Information - {musicArtist} - {musicName} [{musicGenre}]";
 
             // First, clear the screen to draw our TUI
             while (!exiting)
