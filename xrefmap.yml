@@ -325,6 +325,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan
   nameWithType: AudioInfoTools.GetDurationSpan
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32)
+  name: GetDurationSpanFromSamples(int)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_System_Int32_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32)
+  name.vb: GetDurationSpanFromSamples(Integer)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(int)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(Integer)
+  nameWithType: AudioInfoTools.GetDurationSpanFromSamples(int)
+  nameWithType.vb: AudioInfoTools.GetDurationSpanFromSamples(Integer)
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples*
+  name: GetDurationSpanFromSamples
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_
+  commentId: Overload:BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples
+  nameWithType: AudioInfoTools.GetDurationSpanFromSamples
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize
   name: GetFrameSize()
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameSize
