@@ -81,6 +81,9 @@ namespace BassBoom.Cli.CliBase
                 "Unknown Genre";
             Console.Title = $"BassBoom CLI - Prototype 6: Lyrics and Information - {musicArtist} - {musicName} [{musicGenre}]";
 
+            // Load frame info
+            var frameInfo = AudioInfoTools.GetFrameInfo();
+
             // First, clear the screen to draw our TUI
             while (!exiting)
             {
@@ -184,6 +187,21 @@ namespace BassBoom.Cli.CliBase
                                     Comment: {{(!string.IsNullOrEmpty(managedV2.Comment) ? managedV2.Comment : !string.IsNullOrEmpty(managedV1.Comment) ? managedV1.Comment : "")}}
                                     Duration: {{totalSpan}}
                                     Lyrics: {{(lyricInstance is not null ? $"{lyricInstance.Lines.Count} lines" : "No lyrics")}}
+
+                                    Layer info
+                                    ==========
+
+                                    Version: {{frameInfo.Version}}
+                                    Layer: {{frameInfo.Layer}}
+                                    Rate: {{frameInfo.Rate}}
+                                    Mode: {{frameInfo.Mode}}
+                                    Mode Ext: {{frameInfo.ModeExt}}
+                                    Frame Size: {{frameInfo.FrameSize}}
+                                    Flags: {{frameInfo.Flags}}
+                                    Emphasis: {{frameInfo.Emphasis}}
+                                    Bitrate: {{frameInfo.BitRate}}
+                                    ABR Rate: {{frameInfo.AbrRate}}
+                                    VBR: {{frameInfo.Vbr}}
                                     """
                                     );
                                     rerender = true;
@@ -249,6 +267,21 @@ namespace BassBoom.Cli.CliBase
                                     Comment: {{(!string.IsNullOrEmpty(managedV2.Comment) ? managedV2.Comment : !string.IsNullOrEmpty(managedV1.Comment) ? managedV1.Comment : "")}}
                                     Duration: {{totalSpan}}
                                     Lyrics: {{(lyricInstance is not null ? $"{lyricInstance.Lines.Count} lines" : "No lyrics")}}
+                                    
+                                    Layer info
+                                    ==========
+                                    
+                                    Version: {{frameInfo.Version}}
+                                    Layer: {{frameInfo.Layer}}
+                                    Rate: {{frameInfo.Rate}}
+                                    Mode: {{frameInfo.Mode}}
+                                    Mode Ext: {{frameInfo.ModeExt}}
+                                    Frame Size: {{frameInfo.FrameSize}}
+                                    Flags: {{frameInfo.Flags}}
+                                    Emphasis: {{frameInfo.Emphasis}}
+                                    Bitrate: {{frameInfo.BitRate}}
+                                    ABR Rate: {{frameInfo.AbrRate}}
+                                    VBR: {{frameInfo.Vbr}}
                                     """
                                 );
                                 rerender = true;

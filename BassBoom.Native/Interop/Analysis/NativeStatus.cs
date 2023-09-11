@@ -16,6 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+using System;
 using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Init;
 
@@ -65,33 +66,33 @@ namespace BassBoom.Native.Interop.Analysis
     [StructLayout(LayoutKind.Sequential)]
     public struct mpg123_frameinfo
     {
-        mpg123_version version;
-        int layer;
-        long rate;
-        mpg123_mode mode;
-        int mode_ext;
-        int framesize;
-        mpg123_flags flags;
-        int emphasis;
-        int bitrate;
-        int abr_rate;
-        mpg123_vbr vbr;
+        internal mpg123_version version;
+        internal int layer;
+        internal long rate;
+        internal mpg123_mode mode;
+        internal int mode_ext;
+        internal int framesize;
+        internal mpg123_flags flags;
+        internal int emphasis;
+        internal int bitrate;
+        internal int abr_rate;
+        internal mpg123_vbr vbr;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     public struct mpg123_frameinfo2
     {
-        int version;
-        int layer;
-        long rate;
-        int mode;
-        int mode_ext;
-        int framesize;
-        int flags;
-        int emphasis;
-        int bitrate;
-        int abr_rate;
-        int vbr;
+        internal int version;
+        internal int layer;
+        internal long rate;
+        internal int mode;
+        internal int mode_ext;
+        internal int framesize;
+        internal int flags;
+        internal int emphasis;
+        internal int bitrate;
+        internal int abr_rate;
+        internal int vbr;
     }
 
     /// <summary>
@@ -103,13 +104,13 @@ namespace BassBoom.Native.Interop.Analysis
         /// MPG123_EXPORT int mpg123_info(mpg123_handle *mh, struct mpg123_frameinfo *mi);
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_info(mpg123_handle* mh, mpg123_frameinfo* mi);
+        internal static extern int mpg123_info(mpg123_handle* mh, ref mpg123_frameinfo mi);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_info2(mpg123_handle *mh, struct mpg123_frameinfo2 *mi);
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_info2(mpg123_handle* mh, mpg123_frameinfo2* mi);
+        internal static extern int mpg123_info2(mpg123_handle* mh, ref mpg123_frameinfo2 mi);
 
         /// <summary>
         /// MPG123_EXPORT size_t mpg123_safe_buffer(void);

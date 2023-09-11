@@ -247,5 +247,45 @@ namespace BassBoom.Basolia.Format
             }
             return icy;
         }
+
+        public static FrameInfo GetFrameInfo()
+        {
+            InitBasolia.CheckInited();
+
+            // Check to see if the file is open
+            if (!FileTools.IsOpened)
+                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+            mpg123_frameinfo frameInfo = default;
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+
+                // We need to scan the file to get accurate info
+                int scanStatus = NativeStatus.mpg123_scan(handle);
+                if (scanStatus == (int)mpg123_errors.MPG123_ERR)
+                    throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
+
+                // Now, get the frame info.
+                int getStatus = NativeStatus.mpg123_info(handle, ref frameInfo);
+                if (getStatus != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException("Can't get frame information", (mpg123_errors)getStatus);
+            }
+
+            // Move every info to the class
+            mpg123_version version = frameInfo.version;
+            int layer = frameInfo.layer;
+            long rate = frameInfo.rate;
+            mpg123_mode mode = frameInfo.mode;
+            int mode_ext = frameInfo.mode_ext;
+            int framesize = frameInfo.framesize;
+            mpg123_flags flags = frameInfo.flags;
+            int emphasis = frameInfo.emphasis;
+            int bitrate = frameInfo.bitrate;
+            int abr_rate = frameInfo.abr_rate;
+            mpg123_vbr vbr = frameInfo.vbr;
+            var frameInfoInstance = new FrameInfo(version, layer, rate, mode, mode_ext, framesize, flags, emphasis, bitrate, abr_rate, vbr);
+            return frameInfoInstance;
+        }
     }
 }

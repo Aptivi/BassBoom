@@ -83,6 +83,7 @@ public partial class MainView : UserControl
             BassBoomData.durationSpan = AudioInfoTools.GetDurationSpanFromSamples(BassBoomData.duration).ToString();
             BassBoomData.v1 = v1;
             BassBoomData.v2 = v2;
+            BassBoomData.frameInfo = AudioInfoTools.GetFrameInfo();
             GotDurationLabel.Text = $"00:00:00/{BassBoomData.durationSpan}";
             if (FileTools.IsOpened)
                 FileTools.CloseFile();
@@ -128,6 +129,7 @@ public class BassBoomData
     internal static string durationSpan;
     internal static Id3V1Metadata v1 = null;
     internal static Id3V2Metadata v2 = null;
+    internal static FrameInfo frameInfo = null;
     private Thread sliderUpdate = new(UpdateSlider);
     private readonly MainView view;
     private static Lyric lyricInstance = null;
@@ -367,6 +369,17 @@ public class BassBoomData
                     new TextBlock() { Text = $"Comment: {(!string.IsNullOrEmpty(v2.Comment) ? v2.Comment : !string.IsNullOrEmpty(v1.Comment) ? v1.Comment : "")}" },
                     new TextBlock() { Text = $"Duration: {durationSpan}" },
                     new TextBlock() { Text = $"Lyrics: {(lyricInstance is not null ? $"{lyricInstance.Lines.Count} lines" : "No lyrics")}" },
+                    new TextBlock() { Text = $"Version: {frameInfo.Version}" },
+                    new TextBlock() { Text = $"Layer: {frameInfo.Layer}" },
+                    new TextBlock() { Text = $"Rate: {frameInfo.Rate}" },
+                    new TextBlock() { Text = $"Mode: {frameInfo.Mode}" },
+                    new TextBlock() { Text = $"Mode Ext: {frameInfo.ModeExt}" },
+                    new TextBlock() { Text = $"Frame Size: {frameInfo.FrameSize}" },
+                    new TextBlock() { Text = $"Flags: {frameInfo.Flags}" },
+                    new TextBlock() { Text = $"Emphasis: {frameInfo.Emphasis}" },
+                    new TextBlock() { Text = $"Bitrate: {frameInfo.BitRate}" },
+                    new TextBlock() { Text = $"ABR Rate: {frameInfo.AbrRate}" },
+                    new TextBlock() { Text = $"VBR: {frameInfo.Vbr}" },
                 }
             );
             for (int i = 0; i < info.DynamicGrid.Children.Count; i++)
