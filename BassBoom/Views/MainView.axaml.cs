@@ -26,6 +26,7 @@ using BassBoom.Basolia;
 using BassBoom.Basolia.Devices;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
+using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
@@ -123,6 +124,7 @@ public class BassBoomData
     internal static string durationSpan;
     private Thread sliderUpdate = new(UpdateSlider);
     private readonly MainView view;
+    private static Lyric lyricInstance = null;
 
     public void GetDuration()
     {
@@ -163,6 +165,8 @@ public class BassBoomData
             if (!paused)
                 FileTools.OpenFile(view.PathToMp3.Text);
             paused = false;
+
+            // Enable and disable necessary buttons
             view.PlayButton.IsEnabled = false;
             view.GetDuration.IsEnabled = false;
             view.SelectDevice.IsEnabled = false;
@@ -171,6 +175,24 @@ public class BassBoomData
             view.PathToMp3.IsEnabled = false;
             view.PauseButton.IsEnabled = true;
             view.StopButton.IsEnabled = true;
+
+            // Try to open the lyrics
+            string lyricsPath = Path.GetDirectoryName(view.PathToMp3.Text) + "/" + Path.GetFileNameWithoutExtension(view.PathToMp3.Text) + ".lrc";
+            try
+            {
+                if (File.Exists(lyricsPath))
+                    lyricInstance = LyricReader.GetLyrics(lyricsPath);
+            }
+            catch (Exception ex)
+            {
+                var dialog = MessageBoxManager.GetMessageBoxStandard(
+                    "Basolia Warning!",
+                    "Basolia has encountered a failure trying to open the lyrics file. You may not be able to view the song lyrics.\n\n" +
+                   $"{ex.Message}", ButtonEnum.Ok);
+                await dialog.ShowAsync();
+            }
+
+            // Determine the duration
             duration = AudioInfoTools.GetDuration(true);
             durationSpan = AudioInfoTools.GetDurationSpan(true).ToString();
             view.durationRemain.Maximum = duration;
@@ -275,6 +297,7 @@ public class BassBoomData
             view.GetDuration.IsEnabled = true;
             view.PauseButton.IsEnabled = false;
             view.StopButton.IsEnabled = false;
+            view.lyricLine.Text = "";
             HandleDeviceButtons();
         }
     }
@@ -395,11 +418,14 @@ public class BassBoomData
         while (PlaybackTools.Playing)
         {
             int position = PlaybackPositioningTools.GetCurrentDuration();
-            string positionSpan = PlaybackPositioningTools.GetCurrentDurationSpan().ToString();
+            var positionSpan = PlaybackPositioningTools.GetCurrentDurationSpan();
+            string positionSpanString = positionSpan.ToString();
+            string positionLyric = lyricInstance is not null ? lyricInstance.GetLastLineCurrent() : "";
             Dispatcher.UIThread.Invoke(() => {
                 view.sliderUpdatedByCode = true;
                 view.durationRemain.Value = position;
-                view.GotDurationLabel.Text = $"{positionSpan}/{durationSpan}";
+                view.GotDurationLabel.Text = $"{positionSpanString}/{durationSpan}";
+                view.lyricLine.Text = positionLyric;
                 view.sliderUpdatedByCode = false;
             });
         }

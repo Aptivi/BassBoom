@@ -56,7 +56,7 @@
             <TextBlock Name="TitleLabel" Grid.Row="2" Grid.Column="0">Title:</TextBlock>
             <TextBlock Name="GotTitleLabel" Grid.Row="2" Grid.Column="1"></TextBlock>
             <TextBlock Name="ArtistLabel" Grid.Row="3" Grid.Column="0">Artist:</TextBlock>
-            <TextBlock Name="GotArtistLabel" Grid.Row="4" Grid.Column="1"></TextBlock>
+            <TextBlock Name="GotArtistLabel" Grid.Row="3" Grid.Column="1"></TextBlock>
             <TextBlock Name="GenreLabel" Grid.Row="4" Grid.Column="0">Genre:</TextBlock>
             <TextBlock Name="GotGenreLabel" Grid.Row="4" Grid.Column="1"></TextBlock>
         </Grid>
@@ -84,6 +84,7 @@
         Margin="15,0"
         HorizontalAlignment="Stretch"
         VerticalAlignment="Bottom">
+       <TextBlock Name="lyricLine" HorizontalAlignment="Stretch" TextAlignment="Center"></TextBlock>
        <Slider Name="durationRemain" HorizontalAlignment="Stretch"></Slider>
     </StackPanel>
   </DockPanel>
