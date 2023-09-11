@@ -31,7 +31,6 @@ using BassBoom.Basolia.Playback;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using System;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -66,7 +65,6 @@ public partial class MainView : UserControl
                DetermineDevice.IsChecked.Value))
         {
             PlayButton.IsEnabled = true;
-            GetDuration.IsEnabled = true;
             FileTools.OpenFile(PathToMp3.Text);
             AudioInfoTools.GetId3Metadata(out var v1, out var v2);
             GotArtistLabel.Text =
@@ -81,13 +79,15 @@ public partial class MainView : UserControl
                 !string.IsNullOrEmpty(v2.Title) ? v2.Title :
                 !string.IsNullOrEmpty(v1.Title) ? v1.Title :
                 "";
+            BassBoomData.duration = AudioInfoTools.GetDuration(true);
+            BassBoomData.durationSpan = AudioInfoTools.GetDurationSpanFromSamples(BassBoomData.duration).ToString();
+            GotDurationLabel.Text = $"00:00:00/{BassBoomData.durationSpan}";
             if (FileTools.IsOpened)
                 FileTools.CloseFile();
         }
         else
         {
             PlayButton.IsEnabled = false;
-            GetDuration.IsEnabled = false;
             GotArtistLabel.Text = "";
             GotGenreLabel.Text = "";
             GotTitleLabel.Text = "";
@@ -126,38 +126,6 @@ public class BassBoomData
     private readonly MainView view;
     private static Lyric lyricInstance = null;
 
-    public void GetDuration()
-    {
-        try
-        {
-            FileTools.OpenFile(view.PathToMp3.Text);
-            durationSpan = AudioInfoTools.GetDurationSpan(true).ToString();
-            string durationNoScan = AudioInfoTools.GetDurationSpan(false).ToString();
-            view.GotDurationLabel.Text = $"[{durationSpan} with scan, {durationNoScan} no scan]";
-        }
-        catch (BasoliaException bex)
-        {
-            var dialog = MessageBoxManager.GetMessageBoxStandard(
-                "Basolia Error!",
-                "We apologize for your inconvenience, but BassBoom can't perform this operation as Basolia encountered the following error:\n\n" +
-               $"{bex.Message}", ButtonEnum.Ok);
-            dialog.ShowAsync();
-        }
-        catch (Exception ex)
-        {
-            var dialog = MessageBoxManager.GetMessageBoxStandard(
-                "BassBoom Error!",
-                "We apologize for your inconvenience, but BassBoom can't perform this operation:\n\n" +
-               $"{ex.Message}", ButtonEnum.Ok);
-            dialog.ShowAsync();
-        }
-        finally
-        {
-            if (FileTools.IsOpened)
-                FileTools.CloseFile();
-        }
-    }
-
     public async Task PlayAsync()
     {
         try
@@ -168,7 +136,6 @@ public class BassBoomData
 
             // Enable and disable necessary buttons
             view.PlayButton.IsEnabled = false;
-            view.GetDuration.IsEnabled = false;
             view.SelectDevice.IsEnabled = false;
             view.SelectDriver.IsEnabled = false;
             view.DetermineDevice.IsEnabled = false;
@@ -193,8 +160,6 @@ public class BassBoomData
             }
 
             // Determine the duration
-            duration = AudioInfoTools.GetDuration(true);
-            durationSpan = AudioInfoTools.GetDurationSpan(true).ToString();
             view.durationRemain.Maximum = duration;
             view.durationRemain.IsSnapToTickEnabled = true;
             view.durationRemain.TickFrequency = AudioInfoTools.GetBufferSize();
@@ -222,7 +187,6 @@ public class BassBoomData
             if (FileTools.IsOpened && !paused)
                 FileTools.CloseFile();
             view.PlayButton.IsEnabled = true;
-            view.GetDuration.IsEnabled = true;
             view.PauseButton.IsEnabled = false;
             view.StopButton.IsEnabled = false;
             HandleDeviceButtons();
@@ -255,7 +219,6 @@ public class BassBoomData
         finally
         {
             view.PlayButton.IsEnabled = true;
-            view.GetDuration.IsEnabled = false;
             view.SelectDevice.IsEnabled = false;
             view.SelectDriver.IsEnabled = false;
             view.DetermineDevice.IsEnabled = true;
@@ -294,7 +257,6 @@ public class BassBoomData
             if (FileTools.IsOpened)
                 FileTools.CloseFile();
             view.PlayButton.IsEnabled = true;
-            view.GetDuration.IsEnabled = true;
             view.PauseButton.IsEnabled = false;
             view.StopButton.IsEnabled = false;
             view.lyricLine.Text = "";

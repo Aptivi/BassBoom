@@ -85,6 +85,17 @@ namespace BassBoom.Basolia.Format
             return TimeSpan.FromSeconds(seconds);
         }
 
+        public static TimeSpan GetDurationSpanFromSamples(int samples)
+        {
+            // First, get the format information
+            var formatInfo = FormatTools.GetFormatInfo();
+
+            // Get the required values
+            long rate = formatInfo.rate;
+            long seconds = samples / rate;
+            return TimeSpan.FromSeconds(seconds);
+        }
+
         public static int GetFrameSize()
         {
             int frameSize;

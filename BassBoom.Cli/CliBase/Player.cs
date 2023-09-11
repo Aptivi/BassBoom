@@ -46,7 +46,7 @@ namespace BassBoom.Cli.CliBase
             InitBasolia.Init();
             FileTools.OpenFile(musicPath);
             int total = AudioInfoTools.GetDuration(true);
-            var totalSpan = AudioInfoTools.GetDurationSpan(true);
+            var totalSpan = AudioInfoTools.GetDurationSpanFromSamples(total);
             int bufferSize = AudioInfoTools.GetBufferSize();
             double volume = PlaybackTools.GetVolume().baseLinear;
             var format = FormatTools.GetFormatInfo();
