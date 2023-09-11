@@ -1,4 +1,4 @@
-﻿
+
 //   BassBoom  Copyright (C) 2023  Aptivi
 // 
 //   This file is part of BassBoom
@@ -16,27 +16,34 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Markup.Xaml;
-using BassBoom.Views;
+using Avalonia.Controls;
 
-namespace BassBoom;
-
-public partial class App : Application
+namespace BassBoom.Views
 {
-    public override void Initialize()
+    public partial class DynamicInfoWindow : Window
     {
-        AvaloniaXamlLoader.Load(this);
+        public DynamicInfoWindow()
+        {
+            InitializeComponent();
+            DataContext = new DynamicInfoData(this);
+            ShowInTaskbar = false;
+            CanResize = false;
+        }
     }
 
-    public override void OnFrameworkInitializationCompleted()
+    public class DynamicInfoData
     {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            desktop.MainWindow = new MainWindow();
-        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-            singleViewPlatform.MainView = new MainView();
+        private readonly Window view;
 
-        base.OnFrameworkInitializationCompleted();
+        public void Acknowledge()
+        {
+            var thisView = (DynamicInfoWindow)view;
+            thisView.Close();
+        }
+
+        public DynamicInfoData(Window view)
+        {
+            this.view = view;
+        }
     }
 }

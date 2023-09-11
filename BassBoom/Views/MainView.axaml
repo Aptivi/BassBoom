@@ -69,6 +69,7 @@
             <Button Grid.Row="2" Grid.Column="2" Name="StopButton" x:CompileBindings="False" Command="{Binding Stop}" IsEnabled="False">Stop</Button>
             <Button Grid.Row="2" Grid.Column="3" Name="SelectDriver" x:CompileBindings="False" Command="{Binding SelectDriver}" IsEnabled="False">Select driver...</Button>
             <Button Grid.Row="2" Grid.Column="4" Name="SelectDevice" x:CompileBindings="False" Command="{Binding SelectDevice}" IsEnabled="False">Select device...</Button>
+            <Button Grid.Row="2" Grid.Column="5" Name="SongInfo" x:CompileBindings="False" Command="{Binding SongInfo}" IsEnabled="False">Song info</Button>
         </Grid>
         <Grid
             RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"

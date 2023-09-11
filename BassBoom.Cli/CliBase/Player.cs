@@ -95,7 +95,7 @@ namespace BassBoom.Cli.CliBase
                     }
 
                     // First, print the keystrokes
-                    string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [UP/DOWN] Vol - [<-/->] Seek";
+                    string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [H] Help";
                     CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 2, keystrokes);
 
                     // Print the separator
@@ -155,6 +155,39 @@ namespace BassBoom.Cli.CliBase
                                 case ConsoleKey.Escape:
                                     PlaybackTools.Stop();
                                     break;
+                                case ConsoleKey.H:
+                                    InfoBoxColor.WriteInfoBox(
+                                        """
+                                    Available keystrokes
+                                    ====================
+
+                                    [SPACE]     Play/Pause
+                                    [ESC]       Stop
+                                    [Q]         Exit
+                                    [UP/DOWN]   Volume control
+                                    [<-/->]     Seek control
+                                    [I]         Song info
+                                    """
+                                    );
+                                    rerender = true;
+                                    break;
+                                case ConsoleKey.I:
+                                    InfoBoxColor.WriteInfoBox(
+                                        $$"""
+                                    Song info
+                                    =========
+
+                                    Artist: {{(!string.IsNullOrEmpty(managedV2.Artist) ? managedV2.Artist : !string.IsNullOrEmpty(managedV1.Artist) ? managedV1.Artist : "Unknown")}}
+                                    Title: {{(!string.IsNullOrEmpty(managedV2.Title) ? managedV2.Title : !string.IsNullOrEmpty(managedV1.Title) ? managedV1.Title : "")}}
+                                    Album: {{(!string.IsNullOrEmpty(managedV2.Album) ? managedV2.Album : !string.IsNullOrEmpty(managedV1.Album) ? managedV1.Album : "")}}
+                                    Genre: {{(!string.IsNullOrEmpty(managedV2.Genre) ? managedV2.Genre : !string.IsNullOrEmpty(managedV1.Genre.ToString()) ? managedV1.Genre.ToString() : "")}}
+                                    Comment: {{(!string.IsNullOrEmpty(managedV2.Comment) ? managedV2.Comment : !string.IsNullOrEmpty(managedV1.Comment) ? managedV1.Comment : "")}}
+                                    Duration: {{totalSpan}}
+                                    Lyrics: {{(lyricInstance is not null ? $"{lyricInstance.Lines.Count} lines" : "No lyrics")}}
+                                    """
+                                    );
+                                    rerender = true;
+                                    break;
                                 case ConsoleKey.Q:
                                     exiting = true;
                                     break;
@@ -186,6 +219,39 @@ namespace BassBoom.Cli.CliBase
                                     PlaybackPositioningTools.SeekToTheBeginning();
                                 playerThread.Start();
                                 SpinWait.SpinUntil(() => PlaybackTools.Playing);
+                                break;
+                            case ConsoleKey.H:
+                                InfoBoxColor.WriteInfoBox(
+                                    """
+                                    Available keystrokes
+                                    ====================
+
+                                    [SPACE]     Play/Pause
+                                    [ESC]       Stop
+                                    [Q]         Exit
+                                    [UP/DOWN]   Volume control
+                                    [<-/->]     Seek control
+                                    [I]         Song info
+                                    """
+                                );
+                                rerender = true;
+                                break;
+                            case ConsoleKey.I:
+                                InfoBoxColor.WriteInfoBox(
+                                    $$"""
+                                    Song info
+                                    =========
+
+                                    Artist: {{(!string.IsNullOrEmpty(managedV2.Artist) ? managedV2.Artist : !string.IsNullOrEmpty(managedV1.Artist) ? managedV1.Artist : "Unknown")}}
+                                    Title: {{(!string.IsNullOrEmpty(managedV2.Title) ? managedV2.Title : !string.IsNullOrEmpty(managedV1.Title) ? managedV1.Title : "")}}
+                                    Album: {{(!string.IsNullOrEmpty(managedV2.Album) ? managedV2.Album : !string.IsNullOrEmpty(managedV1.Album) ? managedV1.Album : "")}}
+                                    Genre: {{(!string.IsNullOrEmpty(managedV2.Genre) ? managedV2.Genre : !string.IsNullOrEmpty(managedV1.Genre.ToString()) ? managedV1.Genre.ToString() : "")}}
+                                    Comment: {{(!string.IsNullOrEmpty(managedV2.Comment) ? managedV2.Comment : !string.IsNullOrEmpty(managedV1.Comment) ? managedV1.Comment : "")}}
+                                    Duration: {{totalSpan}}
+                                    Lyrics: {{(lyricInstance is not null ? $"{lyricInstance.Lines.Count} lines" : "No lyrics")}}
+                                    """
+                                );
+                                rerender = true;
                                 break;
                             case ConsoleKey.Q:
                                 exiting = true;

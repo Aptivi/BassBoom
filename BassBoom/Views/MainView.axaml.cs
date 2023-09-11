@@ -81,13 +81,17 @@ public partial class MainView : UserControl
                 "";
             BassBoomData.duration = AudioInfoTools.GetDuration(true);
             BassBoomData.durationSpan = AudioInfoTools.GetDurationSpanFromSamples(BassBoomData.duration).ToString();
+            BassBoomData.v1 = v1;
+            BassBoomData.v2 = v2;
             GotDurationLabel.Text = $"00:00:00/{BassBoomData.durationSpan}";
             if (FileTools.IsOpened)
                 FileTools.CloseFile();
+            SongInfo.IsEnabled = true;
         }
         else
         {
             PlayButton.IsEnabled = false;
+            SongInfo.IsEnabled = false;
             GotArtistLabel.Text = "";
             GotGenreLabel.Text = "";
             GotTitleLabel.Text = "";
@@ -122,6 +126,8 @@ public class BassBoomData
     internal bool paused = false;
     internal static int duration;
     internal static string durationSpan;
+    internal static Id3V1Metadata v1 = null;
+    internal static Id3V2Metadata v2 = null;
     private Thread sliderUpdate = new(UpdateSlider);
     private readonly MainView view;
     private static Lyric lyricInstance = null;
@@ -327,6 +333,49 @@ public class BassBoomData
             };
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                 selection.ShowDialog(desktop.MainWindow);
+        }
+        catch (BasoliaException bex)
+        {
+            var dialog = MessageBoxManager.GetMessageBoxStandard(
+                "Basolia Error!",
+                "We apologize for your inconvenience, but BassBoom can't perform this operation as Basolia encountered the following error:\n\n" +
+               $"{bex.Message}", ButtonEnum.Ok);
+            dialog.ShowAsync();
+        }
+        catch (Exception ex)
+        {
+            var dialog = MessageBoxManager.GetMessageBoxStandard(
+                "BassBoom Error!",
+                "We apologize for your inconvenience, but BassBoom can't perform this operation:\n\n" +
+               $"{ex.Message}", ButtonEnum.Ok);
+            dialog.ShowAsync();
+        }
+    }
+
+    public void SongInfo()
+    {
+        try
+        {
+            var info = new DynamicInfoWindow();
+            info.DynamicGrid.Children.AddRange(
+                new[]
+                {
+                    new TextBlock() { Text = $"Artist: {(!string.IsNullOrEmpty(v2.Artist) ? v2.Artist : !string.IsNullOrEmpty(v1.Artist) ? v1.Artist : "")}" },
+                    new TextBlock() { Text = $"Title: {(!string.IsNullOrEmpty(v2.Title) ? v2.Title : !string.IsNullOrEmpty(v1.Title) ? v1.Title : "")}" },
+                    new TextBlock() { Text = $"Album: {(!string.IsNullOrEmpty(v2.Album) ? v2.Album : !string.IsNullOrEmpty(v1.Album) ? v1.Album : "")}" },
+                    new TextBlock() { Text = $"Genre: {(!string.IsNullOrEmpty(v2.Genre) ? v2.Genre : !string.IsNullOrEmpty(v1.Genre.ToString()) ? v1.Genre.ToString() : "")}" },
+                    new TextBlock() { Text = $"Comment: {(!string.IsNullOrEmpty(v2.Comment) ? v2.Comment : !string.IsNullOrEmpty(v1.Comment) ? v1.Comment : "")}" },
+                    new TextBlock() { Text = $"Duration: {durationSpan}" },
+                    new TextBlock() { Text = $"Lyrics: {(lyricInstance is not null ? $"{lyricInstance.Lines.Count} lines" : "No lyrics")}" },
+                }
+            );
+            for (int i = 0; i < info.DynamicGrid.Children.Count; i++)
+            {
+                info.DynamicGrid.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
+                info.DynamicGrid.Children[i].SetValue(Grid.RowProperty, i);
+            }
+            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                info.ShowDialog(desktop.MainWindow);
         }
         catch (BasoliaException bex)
         {
