@@ -4,8 +4,6 @@
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\aptivi_snk.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   
