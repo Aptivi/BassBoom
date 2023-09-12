@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>net7.0-windows;net7.0</TargetFrameworks>
     <OutputType>Exe</OutputType>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\aptivi_snk.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
