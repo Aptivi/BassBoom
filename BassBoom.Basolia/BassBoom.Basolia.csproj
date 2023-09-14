@@ -4,12 +4,27 @@
     <TargetFrameworks>net7.0-windows;net7.0</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>BassBoom.Basolia</PackageId>
+    <Authors>Aptivi</Authors>
+    <Title>BassBoom.Basolia</Title>
+    <PackageDescription>BassBoom! Managed playback library</PackageDescription>
+    <PackageTags>bassboom;basolia;native;runtime;csharp;library;music;player;mpeg;mp3;mp2;mpg;mpg123</PackageTags>
+    <PackageProjectUrl>https://github.com/Aptivi/BassBoom</PackageProjectUrl>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <IncludeSymbols>True</IncludeSymbols>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Aptivi/BassBoom.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\aptivi_snk.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BassBoom.Native\BassBoom.Native.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

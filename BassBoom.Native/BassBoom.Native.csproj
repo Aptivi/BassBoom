@@ -5,6 +5,17 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Nullable>disable</Nullable>
+    <PackageId>BassBoom.Native</PackageId>
+    <Authors>Aptivi</Authors>
+    <Title>BassBoom.Native</Title>
+    <PackageDescription>BassBoom! Native libraries suppport for Basolia (MPG123)</PackageDescription>
+    <PackageTags>bassboom;basolia;native;runtime;csharp;library</PackageTags>
+    <PackageProjectUrl>https://github.com/Aptivi/BassBoom</PackageProjectUrl>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <IncludeSymbols>True</IncludeSymbols>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Aptivi/BassBoom.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\aptivi_snk.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -30,6 +41,9 @@
     
     <!-- Necessary targets -->
     <None Include="BassBoom.Native.targets" Pack="True" PackagePath="/" />
+
+    <!-- For packaging -->
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
