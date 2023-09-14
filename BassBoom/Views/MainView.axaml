@@ -35,57 +35,33 @@
   </Design.DataContext>
 
   <DockPanel
-      HorizontalAlignment="Stretch">
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch">
     <StackPanel
         DockPanel.Dock="Top"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Top">
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Top"
+        Margin="15">
         <Grid
             RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-            ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
-            Margin="15">
-            <Label Grid.Row="0" Grid.Column="0">File path:</Label>
-            <TextBox Name="PathToMp3" Grid.Row="0" Grid.Column="1" Watermark="Path to the MP3 file" x:CompileBindings="False"></TextBox>
-        </Grid>
-        <Grid
-            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-            ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
-            Margin="15">
-            <TextBlock Name="DurationLabel" Grid.Row="1" Grid.Column="0">Duration:</TextBlock>
-            <TextBlock Name="GotDurationLabel" Grid.Row="1" Grid.Column="1"></TextBlock>
-            <TextBlock Name="TitleLabel" Grid.Row="2" Grid.Column="0">Title:</TextBlock>
-            <TextBlock Name="GotTitleLabel" Grid.Row="2" Grid.Column="1"></TextBlock>
-            <TextBlock Name="ArtistLabel" Grid.Row="3" Grid.Column="0">Artist:</TextBlock>
-            <TextBlock Name="GotArtistLabel" Grid.Row="3" Grid.Column="1"></TextBlock>
-            <TextBlock Name="GenreLabel" Grid.Row="4" Grid.Column="0">Genre:</TextBlock>
-            <TextBlock Name="GotGenreLabel" Grid.Row="4" Grid.Column="1"></TextBlock>
-        </Grid>
-        <Grid
-            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-            ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
-            Margin="15">
+            ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+            HorizontalAlignment="Stretch">
             <Button Grid.Row="2" Grid.Column="0" Name="PlayButton" x:CompileBindings="False" Command="{Binding PlayAsync}" IsEnabled="False">Play</Button>
             <Button Grid.Row="2" Grid.Column="1" Name="PauseButton" x:CompileBindings="False" Command="{Binding Pause}" IsEnabled="False">Pause</Button>
             <Button Grid.Row="2" Grid.Column="2" Name="StopButton" x:CompileBindings="False" Command="{Binding Stop}" IsEnabled="False">Stop</Button>
-            <Button Grid.Row="2" Grid.Column="3" Name="SelectDriver" x:CompileBindings="False" Command="{Binding SelectDriver}" IsEnabled="False">Select driver...</Button>
-            <Button Grid.Row="2" Grid.Column="4" Name="SelectDevice" x:CompileBindings="False" Command="{Binding SelectDevice}" IsEnabled="False">Select device...</Button>
-            <Button Grid.Row="2" Grid.Column="5" Name="SongInfo" x:CompileBindings="False" Command="{Binding SongInfo}" IsEnabled="False">Song info</Button>
+            <Button Grid.Row="2" Grid.Column="3" Name="SongInfo" x:CompileBindings="False" Command="{Binding SongInfo}" IsEnabled="False">Song info</Button>
+            <Separator Grid.Row="2" Grid.Column="4"></Separator>
+            <Slider Grid.Row="2" Grid.Column="5" Name="volumeSlider" Minimum="0" Maximum="1" Value="0.5" Width="300"></Slider>
+            <Separator Grid.Row="2" Grid.Column="6"></Separator>
+            <Button Grid.Row="2" Grid.Column="7" Name="AddSong" x:CompileBindings="False" Command="{Binding AddSong}">Add...</Button>
         </Grid>
-        <Grid
-            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-            ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
-            Margin="15">
-            <CheckBox Grid.Row="1" Name="DetermineDevice" IsChecked="true">Determine device and driver</CheckBox>
-            <Slider Name="volumeSlider" Minimum="0" Maximum="1" Value="0.5"></Slider>
-        </Grid>
+        <TextBlock Grid.Row="3" Grid.Column="0" Name="lyricLine" TextAlignment="Center"></TextBlock>
+        <Slider Grid.Row="4" Grid.Column="0" Name="durationRemain" Height="40"></Slider>
     </StackPanel>
-    <StackPanel
-        DockPanel.Dock="Bottom"
-        Margin="15,0"
-        HorizontalAlignment="Stretch"
-        VerticalAlignment="Bottom">
-       <TextBlock Name="lyricLine" HorizontalAlignment="Stretch" TextAlignment="Center"></TextBlock>
-       <Slider Name="durationRemain" HorizontalAlignment="Stretch"></Slider>
-    </StackPanel>
+    <Panel Margin="15,0,15,15">
+      <Grid>
+        <ListBox Name="PathsToMp3" ItemsSource="{Binding MusicFileSelect}"></ListBox>
+      </Grid>
+    </Panel>
   </DockPanel>
 </UserControl>

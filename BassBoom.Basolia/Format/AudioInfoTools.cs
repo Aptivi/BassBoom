@@ -57,10 +57,13 @@ namespace BassBoom.Basolia.Format
                 var handle = Mpg123Instance._mpg123Handle;
                 if (scan)
                 {
-                    // We need to scan the file to get accurate duration
-                    int scanStatus = NativeStatus.mpg123_scan(handle);
-                    if (scanStatus == (int)mpg123_errors.MPG123_ERR)
-                        throw new BasoliaException("Can't scan file for length information", mpg123_errors.MPG123_ERR);
+                    lock (PlaybackPositioningTools.PositionLock)
+                    {
+                        // We need to scan the file to get accurate duration
+                        int scanStatus = NativeStatus.mpg123_scan(handle);
+                        if (scanStatus == (int)mpg123_errors.MPG123_ERR)
+                            throw new BasoliaException("Can't scan file for length information", mpg123_errors.MPG123_ERR);
+                    }
                 }
 
                 // Get the actual length

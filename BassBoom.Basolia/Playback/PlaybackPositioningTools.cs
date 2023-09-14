@@ -36,6 +36,8 @@ namespace BassBoom.Basolia.Playback
     /// </summary>
     public static class PlaybackPositioningTools
     {
+        internal static object PositionLock = new();
+
         /// <summary>
         /// Gets the current duration of the file (samples)
         /// </summary>
@@ -80,27 +82,30 @@ namespace BassBoom.Basolia.Playback
         /// </summary>
         public static void SeekToTheBeginning()
         {
-            InitBasolia.CheckInited();
-
-            // Check to see if the file is open
-            if (!FileTools.IsOpened)
-                throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
-
-            // We're now entering the dangerous zone
-            unsafe
+            lock (PositionLock)
             {
-                var handle = Mpg123Instance._mpg123Handle;
-                var outHandle = Mpg123Instance._out123Handle;
+                InitBasolia.CheckInited();
 
-                // Get the length
-                PlaybackTools.holding = true;
-                while (PlaybackTools.bufferPlaying)
-                    Thread.Sleep(1);
-                NativeOutputLib.out123_drop(outHandle);
-                int status = NativePositioning.mpg123_seek(handle, 0, 0);
-                PlaybackTools.holding = false;
-                if (status == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't seek to the beginning of the file", mpg123_errors.MPG123_LSEEK_FAILED);
+                // Check to see if the file is open
+                if (!FileTools.IsOpened)
+                    throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+                // We're now entering the dangerous zone
+                unsafe
+                {
+                    var handle = Mpg123Instance._mpg123Handle;
+                    var outHandle = Mpg123Instance._out123Handle;
+
+                    // Get the length
+                    PlaybackTools.holding = true;
+                    while (PlaybackTools.bufferPlaying)
+                        Thread.Sleep(1);
+                    NativeOutputLib.out123_drop(outHandle);
+                    int status = NativePositioning.mpg123_seek(handle, 0, 0);
+                    PlaybackTools.holding = false;
+                    if (status == (int)mpg123_errors.MPG123_ERR)
+                        throw new BasoliaException("Can't seek to the beginning of the file", mpg123_errors.MPG123_LSEEK_FAILED);
+                }
             }
         }
 
@@ -109,27 +114,30 @@ namespace BassBoom.Basolia.Playback
         /// </summary>
         public static void SeekToFrame(int frame)
         {
-            InitBasolia.CheckInited();
-
-            // Check to see if the file is open
-            if (!FileTools.IsOpened)
-                throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
-
-            // We're now entering the dangerous zone
-            unsafe
+            lock (PositionLock)
             {
-                var handle = Mpg123Instance._mpg123Handle;
-                var outHandle = Mpg123Instance._out123Handle;
+                InitBasolia.CheckInited();
 
-                // Get the length
-                PlaybackTools.holding = true;
-                while (PlaybackTools.bufferPlaying)
-                    Thread.Sleep(1);
-                NativeOutputLib.out123_drop(outHandle);
-                int status = NativePositioning.mpg123_seek(handle, frame, 0);
-                PlaybackTools.holding = false;
-                if (status == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException($"Can't seek to frame #{frame} of the file", (mpg123_errors)status);
+                // Check to see if the file is open
+                if (!FileTools.IsOpened)
+                    throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+                // We're now entering the dangerous zone
+                unsafe
+                {
+                    var handle = Mpg123Instance._mpg123Handle;
+                    var outHandle = Mpg123Instance._out123Handle;
+
+                    // Get the length
+                    PlaybackTools.holding = true;
+                    while (PlaybackTools.bufferPlaying)
+                        Thread.Sleep(1);
+                    NativeOutputLib.out123_drop(outHandle);
+                    int status = NativePositioning.mpg123_seek(handle, frame, 0);
+                    PlaybackTools.holding = false;
+                    if (status == (int)mpg123_errors.MPG123_ERR)
+                        throw new BasoliaException($"Can't seek to frame #{frame} of the file", (mpg123_errors)status);
+                }
             }
         }
     }
