@@ -53,6 +53,7 @@ namespace BassBoom.Cli.CliBase
         private static bool advance = false;
         private static bool populate = true;
         private static bool regen = true;
+        private static bool paused = false;
 
         public static void PlayerLoop(string musicPath)
         {
@@ -156,11 +157,14 @@ namespace BassBoom.Cli.CliBase
                                 case ConsoleKey.Spacebar:
                                     advance = false;
                                     regen = true;
+                                    paused = true;
                                     PlaybackTools.Pause();
                                     break;
                                 case ConsoleKey.Escape:
                                     advance = false;
                                     regen = true;
+                                    paused = false;
+                                    currentSong = 1;
                                     PlaybackTools.Stop();
                                     break;
                                 case ConsoleKey.H:
@@ -303,8 +307,7 @@ namespace BassBoom.Cli.CliBase
                                 case ConsoleKey.A:
                                     string path = InfoBoxColor.WriteInfoBoxInput("Enter a path to the music file");
                                     populate = true;
-                                    if (TryOpenMusicFile(path))
-                                        ShowMusicFileInfo(path);
+                                    ShowMusicFileInfo(path);
                                     rerender = true;
                                     break;
                                 case ConsoleKey.Q:
@@ -371,8 +374,6 @@ namespace BassBoom.Cli.CliBase
                 return;
             populate = false;
             InfoBoxColor.WriteInfoBox("Loading BassBoom to open {0}...", false, vars: musicPath);
-            if (FileTools.IsOpened)
-                FileTools.CloseFile();
             if (!TryOpenMusicFile(musicPath))
                 return;
             FileTools.OpenFile(musicPath);
@@ -380,7 +381,7 @@ namespace BassBoom.Cli.CliBase
             totalSpan = AudioInfoTools.GetDurationSpanFromSamples(total);
             formatInfo = FormatTools.GetFormatInfo();
             frameInfo = AudioInfoTools.GetFrameInfo();
-            AudioInfoTools.GetId3Metadata(out var managedV1, out var managedV2);
+            AudioInfoTools.GetId3Metadata(out managedV1, out managedV2);
 
             // Try to open the lyrics
             string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
@@ -418,13 +419,18 @@ namespace BassBoom.Cli.CliBase
 
         private static void HandlePlay()
         {
-            foreach (var musicFile in musicFiles)
+            foreach (var musicFile in musicFiles.Skip(currentSong - 1))
             {
                 populate = true;
                 if (!advance)
                     return;
                 currentSong = musicFiles.IndexOf(musicFile) + 1;
                 ShowMusicFileInfo(musicFile);
+                if (paused)
+                {
+                    paused = false;
+                    PlaybackPositioningTools.SeekToFrame(position);
+                }
                 PlaybackTools.Play();
                 lyricInstance = null;
                 rerender = true;
