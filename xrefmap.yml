@@ -334,6 +334,15 @@ references:
   fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(Integer)
   nameWithType: AudioInfoTools.GetDurationSpanFromSamples(int)
   nameWithType.vb: AudioInfoTools.GetDurationSpanFromSamples(Integer)
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32,System.ValueTuple{System.Int64,System.Int32,System.Int32})
+  name: GetDurationSpanFromSamples(int, (long rate, int channels, int encoding))
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_System_Int32_System_ValueTuple_System_Int64_System_Int32_System_Int32__
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32,System.ValueTuple{System.Int64,System.Int32,System.Int32})
+  name.vb: GetDurationSpanFromSamples(Integer, (rate As Long, channels As Integer, encoding As Integer))
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(int, (long rate, int channels, int encoding))
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(Integer, (rate As Long, channels As Integer, encoding As Integer))
+  nameWithType: AudioInfoTools.GetDurationSpanFromSamples(int, (long rate, int channels, int encoding))
+  nameWithType.vb: AudioInfoTools.GetDurationSpanFromSamples(Integer, (rate As Long, channels As Integer, encoding As Integer))
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples*
   name: GetDurationSpanFromSamples
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_
@@ -396,6 +405,141 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata
   nameWithType: AudioInfoTools.GetId3Metadata
+- uid: BassBoom.Basolia.Format.Cache
+  name: BassBoom.Basolia.Format.Cache
+  href: api/BassBoom.Basolia.Format.Cache.html
+  commentId: N:BassBoom.Basolia.Format.Cache
+  fullName: BassBoom.Basolia.Format.Cache
+  nameWithType: BassBoom.Basolia.Format.Cache
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo
+  name: CachedSongInfo
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html
+  commentId: T:BassBoom.Basolia.Format.Cache.CachedSongInfo
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo
+  nameWithType: CachedSongInfo
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.#ctor(System.String,BassBoom.Basolia.Format.Id3V1Metadata,BassBoom.Basolia.Format.Id3V2Metadata,System.Int32,System.ValueTuple{System.Int64,System.Int32,System.Int32},BassBoom.Basolia.Format.FrameInfo,BassBoom.Basolia.Lyrics.Lyric)
+  name: CachedSongInfo(string, Id3V1Metadata, Id3V2Metadata, int, (long rate, int channels, int encoding), FrameInfo, Lyric)
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo__ctor_System_String_BassBoom_Basolia_Format_Id3V1Metadata_BassBoom_Basolia_Format_Id3V2Metadata_System_Int32_System_ValueTuple_System_Int64_System_Int32_System_Int32__BassBoom_Basolia_Format_FrameInfo_BassBoom_Basolia_Lyrics_Lyric_
+  commentId: M:BassBoom.Basolia.Format.Cache.CachedSongInfo.#ctor(System.String,BassBoom.Basolia.Format.Id3V1Metadata,BassBoom.Basolia.Format.Id3V2Metadata,System.Int32,System.ValueTuple{System.Int64,System.Int32,System.Int32},BassBoom.Basolia.Format.FrameInfo,BassBoom.Basolia.Lyrics.Lyric)
+  name.vb: New(String, Id3V1Metadata, Id3V2Metadata, Integer, (rate As Long, channels As Integer, encoding As Integer), FrameInfo, Lyric)
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.CachedSongInfo(string, BassBoom.Basolia.Format.Id3V1Metadata, BassBoom.Basolia.Format.Id3V2Metadata, int, (long rate, int channels, int encoding), BassBoom.Basolia.Format.FrameInfo, BassBoom.Basolia.Lyrics.Lyric)
+  fullName.vb: BassBoom.Basolia.Format.Cache.CachedSongInfo.New(String, BassBoom.Basolia.Format.Id3V1Metadata, BassBoom.Basolia.Format.Id3V2Metadata, Integer, (rate As Long, channels As Integer, encoding As Integer), BassBoom.Basolia.Format.FrameInfo, BassBoom.Basolia.Lyrics.Lyric)
+  nameWithType: CachedSongInfo.CachedSongInfo(string, Id3V1Metadata, Id3V2Metadata, int, (long rate, int channels, int encoding), FrameInfo, Lyric)
+  nameWithType.vb: CachedSongInfo.New(String, Id3V1Metadata, Id3V2Metadata, Integer, (rate As Long, channels As Integer, encoding As Integer), FrameInfo, Lyric)
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.#ctor*
+  name: CachedSongInfo
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo__ctor_
+  commentId: Overload:BassBoom.Basolia.Format.Cache.CachedSongInfo.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.CachedSongInfo
+  fullName.vb: BassBoom.Basolia.Format.Cache.CachedSongInfo.New
+  nameWithType: CachedSongInfo.CachedSongInfo
+  nameWithType.vb: CachedSongInfo.New
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.Duration
+  name: Duration
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_Duration
+  commentId: P:BassBoom.Basolia.Format.Cache.CachedSongInfo.Duration
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.Duration
+  nameWithType: CachedSongInfo.Duration
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.Duration*
+  name: Duration
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_Duration_
+  commentId: Overload:BassBoom.Basolia.Format.Cache.CachedSongInfo.Duration
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.Duration
+  nameWithType: CachedSongInfo.Duration
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.DurationSpan
+  name: DurationSpan
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_DurationSpan
+  commentId: P:BassBoom.Basolia.Format.Cache.CachedSongInfo.DurationSpan
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.DurationSpan
+  nameWithType: CachedSongInfo.DurationSpan
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.DurationSpan*
+  name: DurationSpan
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_DurationSpan_
+  commentId: Overload:BassBoom.Basolia.Format.Cache.CachedSongInfo.DurationSpan
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.DurationSpan
+  nameWithType: CachedSongInfo.DurationSpan
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.FormatInfo
+  name: FormatInfo
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_FormatInfo
+  commentId: P:BassBoom.Basolia.Format.Cache.CachedSongInfo.FormatInfo
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.FormatInfo
+  nameWithType: CachedSongInfo.FormatInfo
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.FormatInfo*
+  name: FormatInfo
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_FormatInfo_
+  commentId: Overload:BassBoom.Basolia.Format.Cache.CachedSongInfo.FormatInfo
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.FormatInfo
+  nameWithType: CachedSongInfo.FormatInfo
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.FrameInfo
+  name: FrameInfo
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_FrameInfo
+  commentId: P:BassBoom.Basolia.Format.Cache.CachedSongInfo.FrameInfo
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.FrameInfo
+  nameWithType: CachedSongInfo.FrameInfo
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.FrameInfo*
+  name: FrameInfo
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_FrameInfo_
+  commentId: Overload:BassBoom.Basolia.Format.Cache.CachedSongInfo.FrameInfo
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.FrameInfo
+  nameWithType: CachedSongInfo.FrameInfo
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.LyricInstance
+  name: LyricInstance
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_LyricInstance
+  commentId: P:BassBoom.Basolia.Format.Cache.CachedSongInfo.LyricInstance
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.LyricInstance
+  nameWithType: CachedSongInfo.LyricInstance
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.LyricInstance*
+  name: LyricInstance
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_LyricInstance_
+  commentId: Overload:BassBoom.Basolia.Format.Cache.CachedSongInfo.LyricInstance
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.LyricInstance
+  nameWithType: CachedSongInfo.LyricInstance
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV1
+  name: MetadataV1
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_MetadataV1
+  commentId: P:BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV1
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV1
+  nameWithType: CachedSongInfo.MetadataV1
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV1*
+  name: MetadataV1
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_MetadataV1_
+  commentId: Overload:BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV1
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV1
+  nameWithType: CachedSongInfo.MetadataV1
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV2
+  name: MetadataV2
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_MetadataV2
+  commentId: P:BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV2
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV2
+  nameWithType: CachedSongInfo.MetadataV2
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV2*
+  name: MetadataV2
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_MetadataV2_
+  commentId: Overload:BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV2
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataV2
+  nameWithType: CachedSongInfo.MetadataV2
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.MusicPath
+  name: MusicPath
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_MusicPath
+  commentId: P:BassBoom.Basolia.Format.Cache.CachedSongInfo.MusicPath
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.MusicPath
+  nameWithType: CachedSongInfo.MusicPath
+- uid: BassBoom.Basolia.Format.Cache.CachedSongInfo.MusicPath*
+  name: MusicPath
+  href: api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html#BassBoom_Basolia_Format_Cache_CachedSongInfo_MusicPath_
+  commentId: Overload:BassBoom.Basolia.Format.Cache.CachedSongInfo.MusicPath
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.Cache.CachedSongInfo.MusicPath
+  nameWithType: CachedSongInfo.MusicPath
 - uid: BassBoom.Basolia.Format.DecodeTools
   name: DecodeTools
   href: api/BassBoom.Basolia.Format.DecodeTools.html
