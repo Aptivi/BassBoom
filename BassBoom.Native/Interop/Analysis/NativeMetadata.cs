@@ -81,9 +81,9 @@ namespace BassBoom.Native.Interop.Analysis
     public unsafe struct mpg123_text
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-        internal char[] lang;
+        internal byte[] lang;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        internal char[] id;
+        internal byte[] id;
         internal mpg123_string description;
         internal mpg123_string text;
     }
@@ -126,13 +126,17 @@ namespace BassBoom.Native.Interop.Analysis
         internal mpg123_string* year;
         internal mpg123_string* genre;
         internal mpg123_string* comment;
-        internal mpg123_text* comment_list;
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct)]
+        internal mpg123_text[] comment_list;
         internal int comments;
-        internal mpg123_text* text;
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct)]
+        internal mpg123_text[] text;
         internal int texts;
-        internal mpg123_text* extra;
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct)]
+        internal mpg123_text[] extra;
         internal int extras;
-        internal mpg123_picture* picture;
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct)]
+        internal mpg123_picture[] picture;
         internal int pictures;
     }
 
