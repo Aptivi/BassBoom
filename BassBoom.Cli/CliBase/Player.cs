@@ -19,6 +19,7 @@
 using BassBoom.Basolia;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
+using BassBoom.Basolia.Format.Cache;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using System;
@@ -54,6 +55,7 @@ namespace BassBoom.Cli.CliBase
         private static bool populate = true;
         private static bool regen = true;
         private static bool paused = false;
+        private static readonly List<CachedSongInfo> cachedInfos = new();
 
         public static void PlayerLoop(string musicPath)
         {
@@ -373,27 +375,45 @@ namespace BassBoom.Cli.CliBase
             if (PlaybackTools.Playing || !populate)
                 return;
             populate = false;
-            InfoBoxColor.WriteInfoBox("Loading BassBoom to open {0}...", false, vars: musicPath);
             if (!TryOpenMusicFile(musicPath))
                 return;
             FileTools.OpenFile(musicPath);
-            total = AudioInfoTools.GetDuration(true);
-            totalSpan = AudioInfoTools.GetDurationSpanFromSamples(total);
-            formatInfo = FormatTools.GetFormatInfo();
-            frameInfo = AudioInfoTools.GetFrameInfo();
-            AudioInfoTools.GetId3Metadata(out managedV1, out managedV2);
-
-            // Try to open the lyrics
-            string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
-            try
+            if (cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
-                InfoBoxColor.WriteInfoBox("Trying to open lyrics file {0}...", false, vars: lyricsPath);
-                if (File.Exists(lyricsPath))
-                    lyricInstance = LyricReader.GetLyrics(lyricsPath);
+                var instance = cachedInfos.Single((csi) => csi.MusicPath == musicPath);
+                total = instance.Duration;
+                formatInfo = instance.FormatInfo;
+                totalSpan = AudioInfoTools.GetDurationSpanFromSamples(total, formatInfo);
+                frameInfo = instance.FrameInfo;
+                managedV1 = instance.MetadataV1;
+                managedV2 = instance.MetadataV2;
+                lyricInstance = instance.LyricInstance;
+                if (!musicFiles.Contains(musicPath))
+                    musicFiles.Add(musicPath);
             }
-            catch (Exception ex)
+            else
             {
-                InfoBoxColor.WriteInfoBox("Can't open lyrics file {0}... {1}", vars: new[] { lyricsPath, ex.Message });
+                InfoBoxColor.WriteInfoBox("Loading BassBoom to open {0}...", false, vars: musicPath);
+                total = AudioInfoTools.GetDuration(true);
+                totalSpan = AudioInfoTools.GetDurationSpanFromSamples(total);
+                formatInfo = FormatTools.GetFormatInfo();
+                frameInfo = AudioInfoTools.GetFrameInfo();
+                AudioInfoTools.GetId3Metadata(out managedV1, out managedV2);
+
+                // Try to open the lyrics
+                string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
+                try
+                {
+                    InfoBoxColor.WriteInfoBox("Trying to open lyrics file {0}...", false, vars: lyricsPath);
+                    if (File.Exists(lyricsPath))
+                        lyricInstance = LyricReader.GetLyrics(lyricsPath);
+                }
+                catch (Exception ex)
+                {
+                    InfoBoxColor.WriteInfoBox("Can't open lyrics file {0}... {1}", vars: new[] { lyricsPath, ex.Message });
+                }
+                var instance = new CachedSongInfo(musicPath, managedV1, managedV2, total, formatInfo, frameInfo, lyricInstance);
+                cachedInfos.Add(instance);
             }
 
             // Render the song name
@@ -409,9 +429,9 @@ namespace BassBoom.Cli.CliBase
                 !string.IsNullOrEmpty(managedV2.Genre) ? managedV2.Genre :
                 managedV1.GenreIndex >= 0 ? $"{managedV1.Genre} [{managedV1.GenreIndex}]" :
                 "Unknown Genre";
-            Console.Title = $"BassBoom CLI - Final Prototype: Playlists - {musicArtist} - {musicName} [{musicGenre}]";
 
             // Print the music name
+            Console.Title = $"BassBoom CLI - Final Prototype: Playlists - {musicArtist} - {musicName} [{musicGenre}]";
             CenteredTextColor.WriteCentered(1, $"{musicArtist} - {musicName} [{musicGenre}]");
             if (!musicFiles.Contains(musicPath))
                 musicFiles.Add(musicPath);

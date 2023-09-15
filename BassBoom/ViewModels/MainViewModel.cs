@@ -35,13 +35,15 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using BassBoom.Views;
+using System.Collections.Generic;
+using BassBoom.Basolia.Format.Cache;
 
 namespace BassBoom.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
-    internal bool paused = false;
     internal bool advance = false;
+    internal static bool paused = false;
     internal static int duration;
     internal static string durationSpan;
     internal static Id3V1Metadata v1 = null;
@@ -52,6 +54,8 @@ public class MainViewModel : ViewModelBase
     private Thread sliderUpdate = new(UpdateSlider);
     private ObservableCollection<string> musicFileSelect = new();
     private static Lyric lyricInstance = null;
+    private readonly List<CachedSongInfo> cachedInfos = new();
+
     private FilePickerFileType MusicFiles => new("Music files")
     {
         // TODO: When adding support for macOS, use this: AppleUniformTypeIdentifiers
@@ -81,41 +85,73 @@ public class MainViewModel : ViewModelBase
         }
     }
 
-    public void Populate()
+    public async Task PopulateAsync()
     {
         if (view.PathsToMp3.SelectedValue is null)
             return;
         if (PlaybackTools.State != PlaybackState.Stopped)
             return;
         string file = (string)view.PathsToMp3.SelectedValue;
-        PopulateSongInfo(file);
+        await PopulateSongInfoAsync(file);
     }
 
-    public void PopulateSongInfo(string file)
+    public async Task PopulateSongInfoAsync(string file)
     {
         if (view.PathsToMp3.SelectedValue is null)
             return;
         if (PlaybackTools.State != PlaybackState.Stopped)
             return;
-        FileTools.OpenFile(file);
-        selectedPath = file;
-        AudioInfoTools.GetId3Metadata(out var v1, out var v2);
-        duration = AudioInfoTools.GetDuration(true);
-        durationSpan = AudioInfoTools.GetDurationSpanFromSamples(duration).ToString();
-        MainViewModel.v1 = v1;
-        MainViewModel.v2 = v2;
-        frameInfo = AudioInfoTools.GetFrameInfo();
-        if (FileTools.IsOpened)
+        if (cachedInfos.Any((csi) => csi.MusicPath == file))
         {
-            FileTools.CloseFile();
-            view.durationRemain.IsEnabled = false;
+            var instance = cachedInfos.Single((csi) => csi.MusicPath == file);
+            selectedPath = instance.MusicPath;
+            duration = instance.Duration;
+            durationSpan = instance.DurationSpan;
+            v1 = instance.MetadataV1;
+            v2 = instance.MetadataV2;
+            frameInfo = instance.FrameInfo;
+            lyricInstance = instance.LyricInstance;
         }
+        else
+        {
+            FileTools.OpenFile(file);
+            selectedPath = file;
+            AudioInfoTools.GetId3Metadata(out var v1, out var v2);
+            duration = AudioInfoTools.GetDuration(true);
+            durationSpan = AudioInfoTools.GetDurationSpanFromSamples(duration).ToString();
+            MainViewModel.v1 = v1;
+            MainViewModel.v2 = v2;
+            frameInfo = AudioInfoTools.GetFrameInfo();
+            var formatInfo = FormatTools.GetFormatInfo();
+
+            // Try to open the lyrics
+            string lyricsPath = Path.GetDirectoryName(selectedPath) + "/" + Path.GetFileNameWithoutExtension(selectedPath) + ".lrc";
+            try
+            {
+                if (File.Exists(lyricsPath))
+                    lyricInstance = LyricReader.GetLyrics(lyricsPath);
+            }
+            catch (Exception ex)
+            {
+                var dialog = MessageBoxManager.GetMessageBoxStandard(
+                    "Basolia Warning!",
+                    "Basolia has encountered a failure trying to open the lyrics file. You may not be able to view the song lyrics.\n\n" +
+                   $"{ex.Message}", ButtonEnum.Ok);
+                await dialog.ShowAsync();
+            }
+
+            if (FileTools.IsOpened)
+                FileTools.CloseFile();
+            var instance = new CachedSongInfo(file, v1, v2, duration, formatInfo, frameInfo, lyricInstance);
+            cachedInfos.Add(instance);
+        }
+        view.durationRemain.IsEnabled = false;
     }
 
     public async Task PlayAsync()
     {
         advance = true;
-        foreach (string file in musicFileSelect)
+        foreach (string file in musicFileSelect.Skip(view.PathsToMp3.SelectedIndex))
         {
             if (!advance)
                 break;
@@ -139,22 +175,6 @@ public class MainViewModel : ViewModelBase
             view.PauseButton.IsEnabled = true;
             view.StopButton.IsEnabled = true;
             view.durationRemain.IsEnabled = true;
-
-            // Try to open the lyrics
-            string lyricsPath = Path.GetDirectoryName(selectedPath) + "/" + Path.GetFileNameWithoutExtension(selectedPath) + ".lrc";
-            try
-            {
-                if (File.Exists(lyricsPath))
-                    lyricInstance = LyricReader.GetLyrics(lyricsPath);
-            }
-            catch (Exception ex)
-            {
-                var dialog = MessageBoxManager.GetMessageBoxStandard(
-                    "Basolia Warning!",
-                    "Basolia has encountered a failure trying to open the lyrics file. You may not be able to view the song lyrics.\n\n" +
-                   $"{ex.Message}", ButtonEnum.Ok);
-                await dialog.ShowAsync();
-            }
 
             // Determine the duration
             view.durationRemain.Maximum = duration;
@@ -182,7 +202,11 @@ public class MainViewModel : ViewModelBase
         finally
         {
             if (FileTools.IsOpened && !paused)
+            {
+                PlaybackPositioningTools.SeekToTheBeginning();
+                view.durationRemain.Value = 0;
                 FileTools.CloseFile();
+            }
             sliderUpdate = new(UpdateSlider);
             view.PlayButton.IsEnabled = true;
             view.PauseButton.IsEnabled = false;

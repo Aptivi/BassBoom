@@ -69,7 +69,7 @@ public partial class MainView : UserControl
         }
     }
 
-    internal void EnablePlay()
+    internal async void EnablePlay()
     {
         if (PathsToMp3.SelectedValue is null)
             return;
@@ -78,7 +78,7 @@ public partial class MainView : UserControl
         {
             PlayButton.IsEnabled = true;
             SongInfo.IsEnabled = true;
-            ((MainViewModel)DataContext).Populate();
+            await ((MainViewModel)DataContext).PopulateAsync();
         }
         else
         {
