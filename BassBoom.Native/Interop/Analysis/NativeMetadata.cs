@@ -126,17 +126,13 @@ namespace BassBoom.Native.Interop.Analysis
         internal mpg123_string* year;
         internal mpg123_string* genre;
         internal mpg123_string* comment;
-        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct)]
-        internal mpg123_text[] comment_list;
+        internal IntPtr comment_list;
         internal int comments;
-        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct)]
-        internal mpg123_text[] text;
+        internal IntPtr text;
         internal int texts;
-        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct)]
-        internal mpg123_text[] extra;
+        internal IntPtr extra;
         internal int extras;
-        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct)]
-        internal mpg123_picture[] picture;
+        internal IntPtr picture;
         internal int pictures;
     }
 

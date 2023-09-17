@@ -27,6 +27,8 @@ using System.Diagnostics;
 using BassBoom.Native.Interop.LowLevel;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BassBoom.Basolia.Format
 {
@@ -221,9 +223,67 @@ namespace BassBoom.Basolia.Format
                         Marshal.PtrToStringAnsi(new nint(nativeV2.comment->p), nativeV2.comment->size - 1) :
                         "";
 
-                    // TODO: Deal with the lists
+                    // Comments...
+                    // TODO: Verify size with a minimal C app that uses mpg123...
+                    var commentsSize = Marshal.SizeOf(typeof(mpg123_text)) + 16;
+                    var commentsList = new List<mpg123_text>();
+                    var commentsListManaged = new List<string>();
+                    var commentsPtr = nativeV2.comment_list;
+                    for (int i = 0; i < nativeV2.comments; i++)
+                    {
+                        commentsList.Add(Marshal.PtrToStructure<mpg123_text>(commentsPtr));
+                        commentsPtr += commentsSize;
+                    }
+                    commentsListManaged.AddRange(commentsList.Select((text) =>
+                        new nint(text.description.p) != IntPtr.Zero ?
+                        Marshal.PtrToStringAnsi(new nint(text.description.p)) :
+                        "")
+                    );
+
+                    // Texts...
+                    var textsSize = Marshal.SizeOf(typeof(mpg123_text)) + 16;
+                    var textsList = new List<mpg123_text>();
+                    var textsListManaged = new List<string>();
+                    var textsPtr = nativeV2.text;
+                    for (int i = 0; i < nativeV2.texts; i++)
+                    {
+                        textsList.Add(Marshal.PtrToStructure<mpg123_text>(textsPtr));
+                        textsPtr += textsSize;
+                    }
+                    textsListManaged.AddRange(textsList.Select((text) =>
+                        new nint(text.description.p) != IntPtr.Zero ?
+                        Marshal.PtrToStringAnsi(new nint(text.description.p)) :
+                        "")
+                    );
+
+                    // Extras...
+                    var extrasSize = Marshal.SizeOf(typeof(mpg123_text)) + 16;
+                    var extrasList = new List<mpg123_text>();
+                    var extrasListManaged = new List<string>();
+                    var extrasPtr = nativeV2.extra;
+                    for (int i = 0; i < nativeV2.extras; i++)
+                    {
+                        extrasList.Add(Marshal.PtrToStructure<mpg123_text>(extrasPtr));
+                        extrasPtr += extrasSize;
+                    }
+                    extrasListManaged.AddRange(extrasList.Select((text) =>
+                        new nint(text.description.p) != IntPtr.Zero ?
+                        Marshal.PtrToStringAnsi(new nint(text.description.p)) :
+                        "")
+                    );
+
+                    // Pictures...
+                    // TODO: Verify that it's actually correct.
+                    var pictureSize = Marshal.SizeOf(typeof(mpg123_picture));
+                    var pictureList = new List<mpg123_picture>();
+                    var picturePtr = nativeV2.picture;
+                    for (int i = 0; i < nativeV2.pictures; i++)
+                    {
+                        pictureList.Add(Marshal.PtrToStructure<mpg123_picture>(picturePtr));
+                        picturePtr += pictureSize;
+                    }
                     var managedV2Instance = new Id3V2Metadata(title, artist, album, year, comment, genre,
-                        Array.Empty<string>(), Array.Empty<string>(), Array.Empty<string>(), Array.Empty<string>());
+                        commentsListManaged.ToArray(), textsListManaged.ToArray(), extrasListManaged.ToArray(), Array.Empty<string>());
                     managedV2 = managedV2Instance;
                 }
             }
