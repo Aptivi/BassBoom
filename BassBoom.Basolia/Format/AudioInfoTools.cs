@@ -205,29 +205,28 @@ namespace BassBoom.Basolia.Format
                 {
                     // Checking for NULLs is necessary before trying to set the values.
                     string title = new nint(nativeV2.title) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.title->p), nativeV2.title->size - 1) :
+                        Marshal.PtrToStringAnsi(new nint(nativeV2.title->p), nativeV2.title->size.ToInt32() - 1) :
                         "";
                     string artist = new nint(nativeV2.artist) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.artist->p), nativeV2.artist->size - 1) :
+                        Marshal.PtrToStringAnsi(new nint(nativeV2.artist->p), nativeV2.artist->size.ToInt32() - 1) :
                         "";
                     string album = new nint(nativeV2.album) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.album->p), nativeV2.album->size - 1) :
+                        Marshal.PtrToStringAnsi(new nint(nativeV2.album->p), nativeV2.album->size.ToInt32() - 1) :
                         "";
                     string year = new nint(nativeV2.year) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.year->p), nativeV2.year->size - 1) :
+                        Marshal.PtrToStringAnsi(new nint(nativeV2.year->p), nativeV2.year->size.ToInt32() - 1) :
                         "";
                     string genre = new nint(nativeV2.genre) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.genre->p), nativeV2.genre->size - 1) :
+                        Marshal.PtrToStringAnsi(new nint(nativeV2.genre->p), nativeV2.genre->size.ToInt32() - 1) :
                         "";
                     string comment = new nint(nativeV2.comment) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.comment->p), nativeV2.comment->size - 1) :
+                        Marshal.PtrToStringAnsi(new nint(nativeV2.comment->p), nativeV2.comment->size.ToInt32() - 1) :
                         "";
 
                     // Comments...
-                    // TODO: Verify size with a minimal C app that uses mpg123...
-                    var commentsSize = Marshal.SizeOf(typeof(mpg123_text)) + 16;
+                    var commentsSize = Marshal.SizeOf(typeof(mpg123_text));
                     var commentsList = new List<mpg123_text>();
-                    var commentsListManaged = new List<string>();
+                    var commentsListManaged = new List<(string, string)>();
                     var commentsPtr = nativeV2.comment_list;
                     for (int i = 0; i < nativeV2.comments; i++)
                     {
@@ -235,15 +234,14 @@ namespace BassBoom.Basolia.Format
                         commentsPtr += commentsSize;
                     }
                     commentsListManaged.AddRange(commentsList.Select((text) =>
-                        new nint(text.description.p) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(text.description.p)) :
-                        "")
+                        (new nint(text.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.description.p)) : "",
+                         new nint(text.text.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.text.p)) : ""))
                     );
 
                     // Texts...
-                    var textsSize = Marshal.SizeOf(typeof(mpg123_text)) + 16;
+                    var textsSize = Marshal.SizeOf(typeof(mpg123_text));
                     var textsList = new List<mpg123_text>();
-                    var textsListManaged = new List<string>();
+                    var textsListManaged = new List<(string, string)>();
                     var textsPtr = nativeV2.text;
                     for (int i = 0; i < nativeV2.texts; i++)
                     {
@@ -251,15 +249,14 @@ namespace BassBoom.Basolia.Format
                         textsPtr += textsSize;
                     }
                     textsListManaged.AddRange(textsList.Select((text) =>
-                        new nint(text.description.p) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(text.description.p)) :
-                        "")
+                        (new nint(text.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.description.p)) : "",
+                         new nint(text.text.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.text.p)) : ""))
                     );
 
                     // Extras...
-                    var extrasSize = Marshal.SizeOf(typeof(mpg123_text)) + 16;
+                    var extrasSize = Marshal.SizeOf(typeof(mpg123_text));
                     var extrasList = new List<mpg123_text>();
-                    var extrasListManaged = new List<string>();
+                    var extrasListManaged = new List<(string, string)>();
                     var extrasPtr = nativeV2.extra;
                     for (int i = 0; i < nativeV2.extras; i++)
                     {
@@ -267,23 +264,26 @@ namespace BassBoom.Basolia.Format
                         extrasPtr += extrasSize;
                     }
                     extrasListManaged.AddRange(extrasList.Select((text) =>
-                        new nint(text.description.p) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(text.description.p)) :
-                        "")
+                        (new nint(text.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.description.p)) : "",
+                         new nint(text.text.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.text.p)) : ""))
                     );
 
                     // Pictures...
-                    // TODO: Verify that it's actually correct.
                     var pictureSize = Marshal.SizeOf(typeof(mpg123_picture));
                     var pictureList = new List<mpg123_picture>();
+                    var pictureListManaged = new List<(string, string)>();
                     var picturePtr = nativeV2.picture;
                     for (int i = 0; i < nativeV2.pictures; i++)
                     {
                         pictureList.Add(Marshal.PtrToStructure<mpg123_picture>(picturePtr));
                         picturePtr += pictureSize;
                     }
+                    extrasListManaged.AddRange(pictureList.Select((picture) =>
+                        (new nint(picture.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(picture.description.p)) : "",
+                         new nint(picture.data) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(picture.data)) : ""))
+                    );
                     var managedV2Instance = new Id3V2Metadata(title, artist, album, year, comment, genre,
-                        commentsListManaged.ToArray(), textsListManaged.ToArray(), extrasListManaged.ToArray(), Array.Empty<string>());
+                        commentsListManaged.ToArray(), textsListManaged.ToArray(), extrasListManaged.ToArray(), extrasListManaged.ToArray());
                     managedV2 = managedV2Instance;
                 }
             }

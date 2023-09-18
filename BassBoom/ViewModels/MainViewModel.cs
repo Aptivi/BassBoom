@@ -303,6 +303,8 @@ public class MainViewModel : ViewModelBase
                     new TextBlock() { Text = $"Comment: {(!string.IsNullOrEmpty(v2.Comment) ? v2.Comment : !string.IsNullOrEmpty(v1.Comment) ? v1.Comment : "")}" },
                     new TextBlock() { Text = $"Duration: {durationSpan}" },
                     new TextBlock() { Text = $"Lyrics: {(lyricInstance is not null ? $"{lyricInstance.Lines.Count} lines" : "No lyrics")}" },
+                    new TextBlock() { Text = $"" },
+                    new TextBlock() { Text = $"--- Frame info ---" },
                     new TextBlock() { Text = $"Version: {frameInfo.Version}" },
                     new TextBlock() { Text = $"Layer: {frameInfo.Layer}" },
                     new TextBlock() { Text = $"Rate: {frameInfo.Rate}" },
@@ -314,8 +316,14 @@ public class MainViewModel : ViewModelBase
                     new TextBlock() { Text = $"Bitrate: {frameInfo.BitRate}" },
                     new TextBlock() { Text = $"ABR Rate: {frameInfo.AbrRate}" },
                     new TextBlock() { Text = $"VBR: {frameInfo.Vbr}" },
+                    new TextBlock() { Text = $"" },
+                    new TextBlock() { Text = $"--- Texts and Extras ---" },
                 }
             );
+            foreach (var text in v2.Texts)
+                info.DynamicGrid.Children.Add(new TextBlock() { Text = $"T - {text.Item1}: {text.Item2}" });
+            foreach (var text in v2.Extras)
+                info.DynamicGrid.Children.Add(new TextBlock() { Text = $"E - {text.Item1}: {text.Item2}" });
             for (int i = 0; i < info.DynamicGrid.Children.Count; i++)
             {
                 info.DynamicGrid.RowDefinitions.Add(new RowDefinition(GridLength.Auto));

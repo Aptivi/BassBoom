@@ -26,10 +26,10 @@ namespace BassBoom.Basolia.Format
         private string year = "";
         private string comment = "";
         private string genre = "";
-        private string[] comments;
-        private string[] texts;
-        private string[] extras;
-        private string[] pictures;
+        private (string, string)[] comments;
+        private (string, string)[] texts;
+        private (string, string)[] extras;
+        private (string, string)[] pictures;
 
         public string Title =>
             title.Trim().Trim('\0');
@@ -43,19 +43,19 @@ namespace BassBoom.Basolia.Format
             comment.Trim().Trim('\0');
         public string Genre =>
             genre.Trim().Trim('\0');
-        public string[] Comments =>
+        public (string, string)[] Comments =>
             comments;
-        public string[] Texts =>
+        public (string, string)[] Texts =>
             texts;
-        public string[] Extras =>
+        public (string, string)[] Extras =>
             extras;
-        public string[] Pictures =>
+        public (string, string)[] Pictures =>
             pictures;
 
         internal Id3V2Metadata()
         { }
 
-        internal Id3V2Metadata(string title, string artist, string album, string year, string comment, string genre, string[] comments, string[] texts, string[] extras, string[] pictures)
+        internal Id3V2Metadata(string title, string artist, string album, string year, string comment, string genre, (string, string)[] comments, (string, string)[] texts, (string, string)[] extras, (string, string)[] pictures)
         {
             this.title = title;
             this.artist = artist;

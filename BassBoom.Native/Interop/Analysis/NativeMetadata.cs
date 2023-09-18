@@ -73,8 +73,8 @@ namespace BassBoom.Native.Interop.Analysis
     public unsafe struct mpg123_string
     {
         internal char* p;
-        internal int size;
-        internal int fill;
+        internal IntPtr size;
+        internal IntPtr fill;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -94,7 +94,7 @@ namespace BassBoom.Native.Interop.Analysis
         internal char type;
         internal mpg123_string description;
         internal mpg123_string mime_type;
-        internal int size;
+        internal IntPtr size;
         internal char* data;
     }
 
