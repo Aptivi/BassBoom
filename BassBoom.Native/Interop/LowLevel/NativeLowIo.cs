@@ -46,7 +46,7 @@ namespace BassBoom.Native.Interop.LowLevel
         internal delegate int r_lseek3(IntPtr val1, long val2, int val3);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        internal delegate void cleanup(IntPtr val1);
+        internal delegate void _cleanup(IntPtr val1);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_replace_buffer(mpg123_handle *mh
@@ -77,12 +77,12 @@ namespace BassBoom.Native.Interop.LowLevel
         /// ,   void (*cleanup)(void*) );
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_replace_reader_handle(mpg123_handle* mh, r_read2 r_read, r_lseek2 r_lseek, cleanup cleanup);
+        internal static extern int mpg123_replace_reader_handle(mpg123_handle* mh, r_read2 r_read, r_lseek2 r_lseek, _cleanup cleanup);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_reader64( mpg123_handle *mh, int (*r_read) (void *, void *, size_t, size_t *), int64_t (*r_lseek)(void *, int64_t, int), void (*cleanup)(void*) );
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_reader64(mpg123_handle* mh, r_read3 r_read, r_lseek3 r_lseek, cleanup cleanup);
+        internal static extern int mpg123_reader64(mpg123_handle* mh, r_read3 r_read, r_lseek3 r_lseek, _cleanup cleanup);
     }
 }
