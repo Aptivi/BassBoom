@@ -26,6 +26,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using Terminaux.Base;
 using Terminaux.Colors;
@@ -187,34 +188,44 @@ namespace BassBoom.Cli.CliBase
                                     rerender = true;
                                     break;
                                 case ConsoleKey.I:
+                                    var textsBuilder = new StringBuilder();
+                                    foreach (var text in managedV2.Texts)
+                                        textsBuilder.AppendLine($"T - {text.Item1}: {text.Item2}");
+                                    foreach (var text in managedV2.Extras)
+                                        textsBuilder.AppendLine($"E - {text.Item1}: {text.Item2}");
                                     InfoBoxColor.WriteInfoBox(
                                         $$"""
-                                    Song info
-                                    =========
+                                        Song info
+                                        =========
 
-                                    Artist: {{(!string.IsNullOrEmpty(managedV2.Artist) ? managedV2.Artist : !string.IsNullOrEmpty(managedV1.Artist) ? managedV1.Artist : "Unknown")}}
-                                    Title: {{(!string.IsNullOrEmpty(managedV2.Title) ? managedV2.Title : !string.IsNullOrEmpty(managedV1.Title) ? managedV1.Title : "")}}
-                                    Album: {{(!string.IsNullOrEmpty(managedV2.Album) ? managedV2.Album : !string.IsNullOrEmpty(managedV1.Album) ? managedV1.Album : "")}}
-                                    Genre: {{(!string.IsNullOrEmpty(managedV2.Genre) ? managedV2.Genre : !string.IsNullOrEmpty(managedV1.Genre.ToString()) ? managedV1.Genre.ToString() : "")}}
-                                    Comment: {{(!string.IsNullOrEmpty(managedV2.Comment) ? managedV2.Comment : !string.IsNullOrEmpty(managedV1.Comment) ? managedV1.Comment : "")}}
-                                    Duration: {{totalSpan}}
-                                    Lyrics: {{(lyricInstance is not null ? $"{lyricInstance.Lines.Count} lines" : "No lyrics")}}
+                                        Artist: {{(!string.IsNullOrEmpty(managedV2.Artist) ? managedV2.Artist : !string.IsNullOrEmpty(managedV1.Artist) ? managedV1.Artist : "Unknown")}}
+                                        Title: {{(!string.IsNullOrEmpty(managedV2.Title) ? managedV2.Title : !string.IsNullOrEmpty(managedV1.Title) ? managedV1.Title : "")}}
+                                        Album: {{(!string.IsNullOrEmpty(managedV2.Album) ? managedV2.Album : !string.IsNullOrEmpty(managedV1.Album) ? managedV1.Album : "")}}
+                                        Genre: {{(!string.IsNullOrEmpty(managedV2.Genre) ? managedV2.Genre : !string.IsNullOrEmpty(managedV1.Genre.ToString()) ? managedV1.Genre.ToString() : "")}}
+                                        Comment: {{(!string.IsNullOrEmpty(managedV2.Comment) ? managedV2.Comment : !string.IsNullOrEmpty(managedV1.Comment) ? managedV1.Comment : "")}}
+                                        Duration: {{totalSpan}}
+                                        Lyrics: {{(lyricInstance is not null ? $"{lyricInstance.Lines.Count} lines" : "No lyrics")}}
 
-                                    Layer info
-                                    ==========
+                                        Layer info
+                                        ==========
 
-                                    Version: {{frameInfo.Version}}
-                                    Layer: {{frameInfo.Layer}}
-                                    Rate: {{frameInfo.Rate}}
-                                    Mode: {{frameInfo.Mode}}
-                                    Mode Ext: {{frameInfo.ModeExt}}
-                                    Frame Size: {{frameInfo.FrameSize}}
-                                    Flags: {{frameInfo.Flags}}
-                                    Emphasis: {{frameInfo.Emphasis}}
-                                    Bitrate: {{frameInfo.BitRate}}
-                                    ABR Rate: {{frameInfo.AbrRate}}
-                                    VBR: {{frameInfo.Vbr}}
-                                    """
+                                        Version: {{frameInfo.Version}}
+                                        Layer: {{frameInfo.Layer}}
+                                        Rate: {{frameInfo.Rate}}
+                                        Mode: {{frameInfo.Mode}}
+                                        Mode Ext: {{frameInfo.ModeExt}}
+                                        Frame Size: {{frameInfo.FrameSize}}
+                                        Flags: {{frameInfo.Flags}}
+                                        Emphasis: {{frameInfo.Emphasis}}
+                                        Bitrate: {{frameInfo.BitRate}}
+                                        ABR Rate: {{frameInfo.AbrRate}}
+                                        VBR: {{frameInfo.Vbr}}
+
+                                        Texts and Extras
+                                        ================
+
+                                        {{textsBuilder}}
+                                        """
                                     );
                                     rerender = true;
                                     break;
@@ -275,6 +286,11 @@ namespace BassBoom.Cli.CliBase
                                     rerender = true;
                                     break;
                                 case ConsoleKey.I:
+                                    var textsBuilder = new StringBuilder();
+                                    foreach (var text in managedV2.Texts)
+                                        textsBuilder.AppendLine($"T - {text.Item1}: {text.Item2}");
+                                    foreach (var text in managedV2.Extras)
+                                        textsBuilder.AppendLine($"E - {text.Item1}: {text.Item2}");
                                     InfoBoxColor.WriteInfoBox(
                                         $$"""
                                         Song info
@@ -302,6 +318,11 @@ namespace BassBoom.Cli.CliBase
                                         Bitrate: {{frameInfo.BitRate}}
                                         ABR Rate: {{frameInfo.AbrRate}}
                                         VBR: {{frameInfo.Vbr}}
+                                        
+                                        Texts and Extras
+                                        ================
+                                        
+                                        {{textsBuilder}}
                                         """
                                     );
                                     rerender = true;
