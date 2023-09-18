@@ -21,23 +21,10 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Primitives;
 using Avalonia.Platform.Storage;
-using Avalonia.Threading;
-using BassBoom.Basolia;
-using BassBoom.Basolia.File;
-using BassBoom.Basolia.Format;
-using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using BassBoom.ViewModels;
-using MsBox.Avalonia;
-using MsBox.Avalonia.Enums;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BassBoom.Views;
 

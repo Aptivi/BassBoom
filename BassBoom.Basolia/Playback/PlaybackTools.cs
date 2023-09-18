@@ -21,7 +21,6 @@ using BassBoom.Basolia.Format;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
 using BassBoom.Native.Interop.Play;
-using BassBoom.Native.Interop.LowLevel;
 using BassBoom.Native.Runtime;
 using System;
 using System.Diagnostics;
@@ -29,7 +28,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using BassBoom.Basolia.Devices;
 using System.Runtime.InteropServices;
-using System.Reflection.Metadata;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -69,16 +67,16 @@ namespace BassBoom.Basolia.Playback
                 var outHandle = Mpg123Instance._out123Handle;
 
                 // First, get formats and reset them
-                var formatInfo = FormatTools.GetFormatInfo();
+                var (rate, channels, encoding) = FormatTools.GetFormatInfo();
                 int resetStatus = NativeOutput.mpg123_format_none(handle);
                 if (resetStatus != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't reset output encoding", (mpg123_errors)resetStatus);
 
                 // Set the format
-                int formatStatus = NativeOutput.mpg123_format(handle, formatInfo.rate, formatInfo.channels, formatInfo.encoding);
+                int formatStatus = NativeOutput.mpg123_format(handle, rate, channels, encoding);
                 if (formatStatus != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set output encoding", (mpg123_errors)formatStatus);
-                Debug.WriteLine($"Format {formatInfo.rate}, {formatInfo.channels}, {formatInfo.encoding}");
+                Debug.WriteLine($"Format {rate}, {channels}, {encoding}");
 
                 // Try to open output to device
                 int openStatus = NativeOutputLib.out123_open(outHandle, DeviceTools.activeDriver, DeviceTools.activeDevice);
@@ -86,7 +84,7 @@ namespace BassBoom.Basolia.Playback
                     throw new BasoliaOutException($"Can't open output to device {DeviceTools.activeDevice} on driver {DeviceTools.activeDriver}", (out123_error)openStatus);
 
                 // Start the output
-                int startStatus = NativeOutputLib.out123_start(outHandle, formatInfo.rate, formatInfo.channels, formatInfo.encoding);
+                int startStatus = NativeOutputLib.out123_start(outHandle, rate, channels, encoding);
                 if (startStatus != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't start the output.", (out123_error)startStatus);
 
@@ -97,7 +95,6 @@ namespace BassBoom.Basolia.Playback
                 state = PlaybackState.Playing;
                 do
                 {
-                    int played;
                     int num = 0;
                     int audioBytes = 0;
                     byte[] audio = null;
@@ -109,7 +106,7 @@ namespace BassBoom.Basolia.Playback
                     // Now, play the MPEG buffer to the device
                     bufferPlaying = true;
                     err = DecodeTools.DecodeFrame(ref num, ref audio, ref audioBytes);
-                    played = PlayBuffer(audio);
+                    PlayBuffer(audio);
                     bufferPlaying = false;
                 } while (err == (int)mpg123_errors.MPG123_OK && Playing);
                 if (Playing)

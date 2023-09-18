@@ -26,7 +26,6 @@ using BassBoom.Native.Interop.Output;
 using System.Diagnostics;
 using BassBoom.Native.Interop.LowLevel;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 

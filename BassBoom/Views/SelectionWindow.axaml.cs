@@ -17,7 +17,6 @@
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 using Avalonia.Controls;
-using System.Collections.ObjectModel;
 
 namespace BassBoom.Views
 {
