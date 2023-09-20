@@ -55,8 +55,8 @@
             <Separator Grid.Row="2" Grid.Column="6"></Separator>
             <Button Grid.Row="2" Grid.Column="7" Name="AddSong" x:CompileBindings="False" Command="{Binding AddSong}">Add...</Button>
         </Grid>
-        <TextBlock Grid.Row="3" Grid.Column="0" Name="lyricLine" TextAlignment="Center"></TextBlock>
         <Slider Grid.Row="4" Grid.Column="0" Name="durationRemain" Height="40"></Slider>
+        <TextBlock Grid.Row="3" Grid.Column="0" Name="lyricLine" TextAlignment="Center"></TextBlock>
     </StackPanel>
     <Panel Margin="15,0,15,15">
       <Grid>
