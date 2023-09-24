@@ -53,6 +53,7 @@ namespace BassBoom.Cli.CliBase
         internal static bool populate = true;
         internal static bool regen = true;
         internal static bool paused = false;
+        internal static string cachedLyric = "";
         internal static readonly List<string> musicFiles = new();
         internal static readonly List<CachedSongInfo> cachedInfos = new();
 
@@ -126,7 +127,17 @@ namespace BassBoom.Cli.CliBase
 
                         // Print the lyrics, if any
                         if (lyricInstance is not null)
-                            TextWriterWhereColor.WriteWhere(lyricInstance.GetLastLineCurrent() + ConsoleExtensions.GetClearLineToRightSequence(), 3, ConsoleWrappers.ActionWindowHeight() - 10);
+                        {
+                            string current = lyricInstance.GetLastLineCurrent();
+                            if (current != cachedLyric)
+                            {
+                                cachedLyric = current;
+                                TextWriterWhereColor.WriteWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrappers.ActionWindowHeight() - 10);
+                                CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 10, lyricInstance.GetLastLineCurrent());
+                            }
+                        }
+                        else
+                            cachedLyric = "";
 
                         // Wait for any keystroke asynchronously
                         if (ConsoleWrappers.ActionKeyAvailable())
@@ -138,6 +149,7 @@ namespace BassBoom.Cli.CliBase
                     else
                     {
                         // Wait for any keystroke
+                        cachedLyric = "";
                         if (regen)
                         {
                             regen = false;
