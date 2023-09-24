@@ -130,6 +130,8 @@ public class MainViewModel : ViewModelBase
             {
                 if (File.Exists(lyricsPath))
                     lyricInstance = LyricReader.GetLyrics(lyricsPath);
+                else
+                    lyricInstance = null;
             }
             catch (Exception ex)
             {
