@@ -52,15 +52,15 @@ public class MainViewModel : ViewModelBase
     internal static MainView view;
     internal static string selectedPath = "";
     private Thread sliderUpdate = new(UpdateSlider);
-    private ObservableCollection<string> musicFileSelect = new();
     private static Lyric lyricInstance = null;
+    private readonly ObservableCollection<string> musicFileSelect = new();
     private readonly List<CachedSongInfo> cachedInfos = new();
 
     private FilePickerFileType MusicFiles => new("Music files")
     {
-        // TODO: When adding support for macOS, use this: AppleUniformTypeIdentifiers
         Patterns = new[] { "*.mp3", "*.mp2", "*.mpa", "*.mpg", "*.mpga" },
-        MimeTypes = new[] { "audio/mpeg", "audio/x-mpeg", "audio/mpeg3", "audio/x-mpeg3" }
+        MimeTypes = new[] { "audio/mpeg", "audio/x-mpeg", "audio/mpeg3", "audio/x-mpeg3" },
+        AppleUniformTypeIdentifiers = new[] { "public.audio" }
     };
 
     public ObservableCollection<string> MusicFileSelect =>
