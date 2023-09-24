@@ -44,7 +44,7 @@
         Margin="15">
         <Grid
             RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-            ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+            ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
             HorizontalAlignment="Stretch">
             <Button Grid.Row="2" Grid.Column="0" Name="PlayButton" x:CompileBindings="False" Command="{Binding PlayAsync}" IsEnabled="False">Play</Button>
             <Button Grid.Row="2" Grid.Column="1" Name="PauseButton" x:CompileBindings="False" Command="{Binding Pause}" IsEnabled="False">Pause</Button>
@@ -54,6 +54,8 @@
             <Slider Grid.Row="2" Grid.Column="5" Name="volumeSlider" Minimum="0" Maximum="1" Value="0.5" Width="300"></Slider>
             <Separator Grid.Row="2" Grid.Column="6"></Separator>
             <Button Grid.Row="2" Grid.Column="7" Name="AddSong" x:CompileBindings="False" Command="{Binding AddSong}">Add...</Button>
+            <Separator Grid.Row="2" Grid.Column="8"></Separator>
+            <TextBlock Grid.Row="2" Grid.Column="9" Name="duration" TextAlignment="Center" VerticalAlignment="Center">00:00:00/00:00:00</TextBlock>
         </Grid>
         <Slider Grid.Row="4" Grid.Column="0" Name="durationRemain" Height="40"></Slider>
         <TextBlock Grid.Row="3" Grid.Column="0" Name="lyricLine" TextAlignment="Center"></TextBlock>

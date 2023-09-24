@@ -146,6 +146,7 @@ public class MainViewModel : ViewModelBase
             cachedInfos.Add(instance);
         }
         view.durationRemain.IsEnabled = false;
+        view.duration.Text = $"00:00:00/{durationSpan}";
     }
 
     public async Task PlayAsync()
@@ -358,6 +359,8 @@ public class MainViewModel : ViewModelBase
         Dispatcher.UIThread.Invoke(() => {
             view.sliderUpdatedByCode = true;
             view.durationRemain.Value = 0;
+            view.lyricLine.Text = "";
+            view.duration.Text = $"00:00:00/{durationSpan}";
             view.sliderUpdatedByCode = false;
         });
         while (PlaybackTools.Playing)
@@ -370,6 +373,7 @@ public class MainViewModel : ViewModelBase
                 view.sliderUpdatedByCode = true;
                 view.durationRemain.Value = position;
                 view.lyricLine.Text = positionLyric;
+                view.duration.Text = $"{positionSpanString}/{durationSpan}";
                 view.sliderUpdatedByCode = false;
             });
         }
