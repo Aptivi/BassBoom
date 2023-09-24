@@ -296,7 +296,10 @@ public class MainViewModel : ViewModelBase
     {
         try
         {
-            var info = new DynamicInfoWindow();
+            var info = new DynamicInfoWindow
+            {
+                Title = "Song info"
+            };
             info.DynamicGrid.Children.AddRange(
                 new[]
                 {
