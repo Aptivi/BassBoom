@@ -50,7 +50,9 @@ namespace BassBoom.Basolia.Lyrics
         public string GetLastLineCurrent()
         {
             var processedLines = GetLinesCurrent();
-            return processedLines[^1].Line;
+            if (processedLines.Length > 0)
+                return processedLines[^1].Line;
+            return "";
         }
 
         /// <summary>
@@ -60,7 +62,9 @@ namespace BassBoom.Basolia.Lyrics
         public List<LyricLineWord> GetLastLineWordsCurrent()
         {
             var processedLines = GetLinesCurrent();
-            return processedLines[^1].LineWords;
+            if (processedLines.Length > 0)
+                return processedLines[^1].LineWords;
+            return new();
         }
 
         /// <summary>
@@ -79,7 +83,9 @@ namespace BassBoom.Basolia.Lyrics
         public string GetLastLineAtSpan(TimeSpan span)
         {
             var processedLines = GetLinesToSpan(span);
-            return processedLines[^1].Line;
+            if (processedLines.Length > 0)
+                return processedLines[^1].Line;
+            return "";
         }
 
         /// <summary>
@@ -90,7 +96,9 @@ namespace BassBoom.Basolia.Lyrics
         public List<LyricLineWord> GetLastLineWordsAtSpan(TimeSpan span)
         {
             var processedLines = GetLinesToSpan(span);
-            return processedLines[^1].LineWords;
+            if (processedLines.Length > 0)
+                return processedLines[^1].LineWords;
+            return new();
         }
 
         protected internal Lyric(List<LyricLine> lines)
