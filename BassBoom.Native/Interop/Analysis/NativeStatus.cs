@@ -87,7 +87,11 @@ namespace BassBoom.Native.Interop.Analysis
     {
         internal int version;
         internal int layer;
+#if WINDOWS
+        internal int rate;
+#else
         internal long rate;
+#endif
         internal int mode;
         internal int mode_ext;
         internal int framesize;
