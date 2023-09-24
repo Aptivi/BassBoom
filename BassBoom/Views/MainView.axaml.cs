@@ -25,6 +25,7 @@ using BassBoom.Basolia.Playback;
 using BassBoom.ViewModels;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace BassBoom.Views;
 
@@ -49,14 +50,32 @@ public partial class MainView : UserControl
             // These functions depend on Basolia being initialized.
             MainViewModel.view = this;
             DataContext = new MainViewModel();
-            PathsToMp3.SelectionChanged += (_, _) => EnablePlay();
+            PathsToMp3.SelectionChanged += (_, _) => DetermineSelectionChange();
             durationRemain.ValueChanged += HandleDurationValueChange;
             volumeSlider.ValueChanged += HandleVolumeValueChange;
             volumeSlider.Value = PlaybackTools.GetVolume().baseLinear;
         }
     }
 
-    internal async void EnablePlay()
+    internal async void DetermineSelectionChange()
+    {
+        if (PlaybackTools.Playing)
+        {
+            await ((MainViewModel)DataContext).Stop();
+            await EnablePlay();
+        }
+        else
+        {
+            if (PlaybackTools.State == PlaybackState.Paused)
+            {
+                await ((MainViewModel)DataContext).Stop();
+                MainViewModel.paused = false;
+            }
+            await EnablePlay();
+        }
+    }
+
+    internal async Task EnablePlay()
     {
         if (PathsToMp3.SelectedValue is null)
             return;
@@ -74,8 +93,8 @@ public partial class MainView : UserControl
         }
     }
 
-    private void CheckPath(object sender, TextChangedEventArgs e) =>
-        EnablePlay();
+    private async Task CheckPathAsync(object sender, TextChangedEventArgs e) =>
+        await EnablePlay();
 
     private void HandleDurationValueChange(object sender, RangeBaseValueChangedEventArgs e)
     {

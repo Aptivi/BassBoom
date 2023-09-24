@@ -213,7 +213,7 @@ public class MainViewModel : ViewModelBase
             view.StopButton.IsEnabled = false;
             view.durationRemain.IsEnabled = false;
             lyricInstance = null;
-            view.EnablePlay();
+            await view.EnablePlay();
         }
     }
 
@@ -251,7 +251,7 @@ public class MainViewModel : ViewModelBase
         }
     }
 
-    public void Stop()
+    public async Task Stop()
     {
         try
         {
@@ -263,7 +263,7 @@ public class MainViewModel : ViewModelBase
                 "Basolia Error!",
                 "We apologize for your inconvenience, but BassBoom can't perform this operation as Basolia encountered the following error:\n\n" +
                $"{bex.Message}", ButtonEnum.Ok);
-            dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
         catch (Exception ex)
         {
@@ -271,7 +271,7 @@ public class MainViewModel : ViewModelBase
                 "BassBoom Error!",
                 "We apologize for your inconvenience, but BassBoom can't perform this operation:\n\n" +
                $"{ex.Message}", ButtonEnum.Ok);
-            dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
         finally
         {
@@ -284,7 +284,8 @@ public class MainViewModel : ViewModelBase
             view.lyricLine.Text = "";
             lyricInstance = null;
             advance = false;
-            view.EnablePlay();
+            sliderUpdate = new(UpdateSlider);
+            await view.EnablePlay();
         }
     }
 
