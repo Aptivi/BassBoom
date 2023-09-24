@@ -55,7 +55,6 @@ namespace BassBoom.Basolia.Lyrics
                     continue;
                 if (finalLine.Length == finalLine.IndexOf("]") + 1)
                     // Don't process lyric info without lyric line
-                    // TODO: Some of them will later be implemented to store song info
                     continue;
 
                 // We need to trim it after splitting the two elements
