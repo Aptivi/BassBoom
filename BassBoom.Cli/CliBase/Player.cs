@@ -24,9 +24,7 @@ using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using Terminaux.Base;
 using Terminaux.Colors;
@@ -38,25 +36,25 @@ namespace BassBoom.Cli.CliBase
 {
     internal static class Player
     {
-        private static Thread playerThread;
-        private static Lyric lyricInstance = null;
-        private static FrameInfo frameInfo = null;
-        private static Id3V1Metadata managedV1 = null;
-        private static Id3V2Metadata managedV2 = null;
-        private static TimeSpan totalSpan = new();
-        private static int total = 0;
-        private static (long rate, int channels, int encoding) formatInfo = new();
-        private static List<string> musicFiles = new();
-        private static bool rerender = true;
-        private static int currentSong = 1;
-        private static double volume = 1.0;
-        private static bool exiting = false;
-        private static int position = 0;
-        private static bool advance = false;
-        private static bool populate = true;
-        private static bool regen = true;
-        private static bool paused = false;
-        private static readonly List<CachedSongInfo> cachedInfos = new();
+        internal static Thread playerThread;
+        internal static Lyric lyricInstance = null;
+        internal static FrameInfo frameInfo = null;
+        internal static Id3V1Metadata managedV1 = null;
+        internal static Id3V2Metadata managedV2 = null;
+        internal static TimeSpan totalSpan = new();
+        internal static int total = 0;
+        internal static (long rate, int channels, int encoding) formatInfo = new();
+        internal static bool rerender = true;
+        internal static int currentSong = 1;
+        internal static double volume = 1.0;
+        internal static bool exiting = false;
+        internal static int position = 0;
+        internal static bool advance = false;
+        internal static bool populate = true;
+        internal static bool regen = true;
+        internal static bool paused = false;
+        internal static readonly List<string> musicFiles = new();
+        internal static readonly List<CachedSongInfo> cachedInfos = new();
 
         public static void PlayerLoop(string musicPath)
         {
@@ -74,18 +72,20 @@ namespace BassBoom.Cli.CliBase
                         rerender = false;
                         ConsoleWrappers.ActionCursorVisible(false);
                         ColorTools.LoadBack();
+
+                        // First, print the keystrokes
+                        string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [H] Help";
+                        CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 2, keystrokes);
+
+                        // Print the separator and the music file info
+                        string separator = new('=', ConsoleWrappers.ActionWindowWidth());
+                        CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 4, separator);
                     }
 
-                    // First, print the keystrokes
-                    string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [H] Help";
-                    CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 2, keystrokes);
-
-                    // Print the separator and the music file info
-                    string separator = new('=', ConsoleWrappers.ActionWindowWidth());
-                    CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 4, separator);
+                    // Populate music file info, as necessary
                     if (populate)
-                        PopulateMusicFileInfo(musicPath);
-                    RenderSongName(musicPath);
+                        PlayerControls.PopulateMusicFileInfo(musicPath);
+                    PlayerControls.RenderSongName(musicPath);
 
                     // Now, print the list of songs.
                     int startPos = 3;
@@ -132,138 +132,7 @@ namespace BassBoom.Cli.CliBase
                         if (ConsoleWrappers.ActionKeyAvailable())
                         {
                             var keystroke = Input.DetectKeypress().Key;
-                            switch (keystroke)
-                            {
-                                case ConsoleKey.UpArrow:
-                                    volume += 0.05;
-                                    if (volume > 1)
-                                        volume = 1;
-                                    PlaybackTools.SetVolume(volume);
-                                    break;
-                                case ConsoleKey.DownArrow:
-                                    volume -= 0.05;
-                                    if (volume < 0)
-                                        volume = 0;
-                                    PlaybackTools.SetVolume(volume);
-                                    break;
-                                case ConsoleKey.RightArrow:
-                                    position += (int)formatInfo.rate * 3;
-                                    if (position > total)
-                                        position = total;
-                                    PlaybackPositioningTools.SeekToFrame(position);
-                                    break;
-                                case ConsoleKey.LeftArrow:
-                                    position -= (int)formatInfo.rate * 3;
-                                    if (position < 0)
-                                        position = 0;
-                                    PlaybackPositioningTools.SeekToFrame(position);
-                                    break;
-                                case ConsoleKey.B:
-                                    advance = false;
-                                    paused = false;
-                                    PlaybackTools.Stop();
-                                    PlaybackPositioningTools.SeekToTheBeginning();
-                                    position = 0;
-                                    currentSong--;
-                                    if (currentSong <= 0)
-                                        currentSong = musicFiles.Count;
-                                    advance = true;
-                                    playerThread = new(HandlePlay);
-                                    playerThread.Start();
-                                    SpinWait.SpinUntil(() => PlaybackTools.Playing);
-                                    break;
-                                case ConsoleKey.N:
-                                    advance = false;
-                                    paused = false;
-                                    PlaybackTools.Stop();
-                                    PlaybackPositioningTools.SeekToTheBeginning();
-                                    position = 0;
-                                    currentSong++;
-                                    if (currentSong > musicFiles.Count)
-                                        currentSong = 1;
-                                    advance = true;
-                                    playerThread = new(HandlePlay);
-                                    playerThread.Start();
-                                    SpinWait.SpinUntil(() => PlaybackTools.Playing);
-                                    break;
-                                case ConsoleKey.Spacebar:
-                                    advance = false;
-                                    regen = true;
-                                    paused = true;
-                                    PlaybackTools.Pause();
-                                    break;
-                                case ConsoleKey.Escape:
-                                    advance = false;
-                                    regen = true;
-                                    paused = false;
-                                    currentSong = 1;
-                                    PlaybackTools.Stop();
-                                    break;
-                                case ConsoleKey.H:
-                                    InfoBoxColor.WriteInfoBox(
-                                        """
-                                    Available keystrokes
-                                    ====================
-
-                                    [SPACE]     Play/Pause
-                                    [ESC]       Stop
-                                    [Q]         Exit
-                                    [UP/DOWN]   Volume control
-                                    [<-/->]     Seek control
-                                    [I]         Song info
-                                    [A]         Add a music file
-                                    [B]         Previous song
-                                    [N]         Next song
-                                    """
-                                    );
-                                    rerender = true;
-                                    break;
-                                case ConsoleKey.I:
-                                    var textsBuilder = new StringBuilder();
-                                    foreach (var text in managedV2.Texts)
-                                        textsBuilder.AppendLine($"T - {text.Item1}: {text.Item2}");
-                                    foreach (var text in managedV2.Extras)
-                                        textsBuilder.AppendLine($"E - {text.Item1}: {text.Item2}");
-                                    InfoBoxColor.WriteInfoBox(
-                                        $$"""
-                                        Song info
-                                        =========
-
-                                        Artist: {{(!string.IsNullOrEmpty(managedV2.Artist) ? managedV2.Artist : !string.IsNullOrEmpty(managedV1.Artist) ? managedV1.Artist : "Unknown")}}
-                                        Title: {{(!string.IsNullOrEmpty(managedV2.Title) ? managedV2.Title : !string.IsNullOrEmpty(managedV1.Title) ? managedV1.Title : "")}}
-                                        Album: {{(!string.IsNullOrEmpty(managedV2.Album) ? managedV2.Album : !string.IsNullOrEmpty(managedV1.Album) ? managedV1.Album : "")}}
-                                        Genre: {{(!string.IsNullOrEmpty(managedV2.Genre) ? managedV2.Genre : !string.IsNullOrEmpty(managedV1.Genre.ToString()) ? managedV1.Genre.ToString() : "")}}
-                                        Comment: {{(!string.IsNullOrEmpty(managedV2.Comment) ? managedV2.Comment : !string.IsNullOrEmpty(managedV1.Comment) ? managedV1.Comment : "")}}
-                                        Duration: {{totalSpan}}
-                                        Lyrics: {{(lyricInstance is not null ? $"{lyricInstance.Lines.Count} lines" : "No lyrics")}}
-
-                                        Layer info
-                                        ==========
-
-                                        Version: {{frameInfo.Version}}
-                                        Layer: {{frameInfo.Layer}}
-                                        Rate: {{frameInfo.Rate}}
-                                        Mode: {{frameInfo.Mode}}
-                                        Mode Ext: {{frameInfo.ModeExt}}
-                                        Frame Size: {{frameInfo.FrameSize}}
-                                        Flags: {{frameInfo.Flags}}
-                                        Emphasis: {{frameInfo.Emphasis}}
-                                        Bitrate: {{frameInfo.BitRate}}
-                                        ABR Rate: {{frameInfo.AbrRate}}
-                                        VBR: {{frameInfo.Vbr}}
-
-                                        Texts and Extras
-                                        ================
-
-                                        {{textsBuilder}}
-                                        """
-                                    );
-                                    rerender = true;
-                                    break;
-                                case ConsoleKey.Q:
-                                    exiting = true;
-                                    break;
-                            }
+                            HandleKeypressPlayMode(keystroke);
                         }
                     }
                     else
@@ -277,121 +146,7 @@ namespace BassBoom.Cli.CliBase
                         if (ConsoleWrappers.ActionKeyAvailable())
                         {
                             var keystroke = Input.DetectKeypress().Key;
-                            switch (keystroke)
-                            {
-                                case ConsoleKey.UpArrow:
-                                    volume += 0.05;
-                                    if (volume > 1)
-                                        volume = 1;
-                                    PlaybackTools.SetVolume(volume);
-                                    break;
-                                case ConsoleKey.DownArrow:
-                                    volume -= 0.05;
-                                    if (volume < 0)
-                                        volume = 0;
-                                    PlaybackTools.SetVolume(volume);
-                                    break;
-                                case ConsoleKey.Spacebar:
-                                    if (PlaybackTools.State == PlaybackState.Stopped)
-                                        // There could be a chance that the music has fully stopped without any user interaction.
-                                        PlaybackPositioningTools.SeekToTheBeginning();
-                                    advance = true;
-                                    rerender = true;
-                                    playerThread.Start();
-                                    SpinWait.SpinUntil(() => PlaybackTools.Playing);
-                                    break;
-                                case ConsoleKey.B:
-                                    PlaybackPositioningTools.SeekToTheBeginning();
-                                    position = 0;
-                                    currentSong--;
-                                    if (currentSong <= 0)
-                                        currentSong = musicFiles.Count;
-                                    advance = true;
-                                    playerThread.Start();
-                                    SpinWait.SpinUntil(() => PlaybackTools.Playing);
-                                    break;
-                                case ConsoleKey.N:
-                                    PlaybackPositioningTools.SeekToTheBeginning();
-                                    position = 0;
-                                    currentSong++;
-                                    if (currentSong > musicFiles.Count)
-                                        currentSong = 1;
-                                    advance = true;
-                                    playerThread.Start();
-                                    SpinWait.SpinUntil(() => PlaybackTools.Playing);
-                                    break;
-                                case ConsoleKey.H:
-                                    InfoBoxColor.WriteInfoBox(
-                                        """
-                                        Available keystrokes
-                                        ====================
-
-                                        [SPACE]     Play/Pause
-                                        [ESC]       Stop
-                                        [Q]         Exit
-                                        [UP/DOWN]   Volume control
-                                        [<-/->]     Seek control
-                                        [I]         Song info
-                                        [A]         Add a music file
-                                        [B]         Previous song
-                                        [N]         Next song
-                                        """
-                                    );
-                                    rerender = true;
-                                    break;
-                                case ConsoleKey.I:
-                                    var textsBuilder = new StringBuilder();
-                                    foreach (var text in managedV2.Texts)
-                                        textsBuilder.AppendLine($"T - {text.Item1}: {text.Item2}");
-                                    foreach (var text in managedV2.Extras)
-                                        textsBuilder.AppendLine($"E - {text.Item1}: {text.Item2}");
-                                    InfoBoxColor.WriteInfoBox(
-                                        $$"""
-                                        Song info
-                                        =========
-
-                                        Artist: {{(!string.IsNullOrEmpty(managedV2.Artist) ? managedV2.Artist : !string.IsNullOrEmpty(managedV1.Artist) ? managedV1.Artist : "Unknown")}}
-                                        Title: {{(!string.IsNullOrEmpty(managedV2.Title) ? managedV2.Title : !string.IsNullOrEmpty(managedV1.Title) ? managedV1.Title : "")}}
-                                        Album: {{(!string.IsNullOrEmpty(managedV2.Album) ? managedV2.Album : !string.IsNullOrEmpty(managedV1.Album) ? managedV1.Album : "")}}
-                                        Genre: {{(!string.IsNullOrEmpty(managedV2.Genre) ? managedV2.Genre : !string.IsNullOrEmpty(managedV1.Genre.ToString()) ? managedV1.Genre.ToString() : "")}}
-                                        Comment: {{(!string.IsNullOrEmpty(managedV2.Comment) ? managedV2.Comment : !string.IsNullOrEmpty(managedV1.Comment) ? managedV1.Comment : "")}}
-                                        Duration: {{totalSpan}}
-                                        Lyrics: {{(lyricInstance is not null ? $"{lyricInstance.Lines.Count} lines" : "No lyrics")}}
-                                    
-                                        Layer info
-                                        ==========
-                                    
-                                        Version: {{frameInfo.Version}}
-                                        Layer: {{frameInfo.Layer}}
-                                        Rate: {{frameInfo.Rate}}
-                                        Mode: {{frameInfo.Mode}}
-                                        Mode Ext: {{frameInfo.ModeExt}}
-                                        Frame Size: {{frameInfo.FrameSize}}
-                                        Flags: {{frameInfo.Flags}}
-                                        Emphasis: {{frameInfo.Emphasis}}
-                                        Bitrate: {{frameInfo.BitRate}}
-                                        ABR Rate: {{frameInfo.AbrRate}}
-                                        VBR: {{frameInfo.Vbr}}
-                                        
-                                        Texts and Extras
-                                        ================
-                                        
-                                        {{textsBuilder}}
-                                        """
-                                    );
-                                    rerender = true;
-                                    break;
-                                case ConsoleKey.A:
-                                    string path = InfoBoxColor.WriteInfoBoxInput("Enter a path to the music file");
-                                    populate = true;
-                                    PopulateMusicFileInfo(path);
-                                    rerender = true;
-                                    break;
-                                case ConsoleKey.Q:
-                                    exiting = true;
-                                    advance = false;
-                                    break;
-                            }
+                            HandleKeypressIdleMode(keystroke);
                         }
                     }
                 }
@@ -427,99 +182,89 @@ namespace BassBoom.Cli.CliBase
             ColorTools.LoadBack();
         }
 
-        private static bool TryOpenMusicFile(string musicPath)
+        private static void HandleKeypressIdleMode(ConsoleKey keystroke)
         {
-            try
+            switch (keystroke)
             {
-                if (FileTools.IsOpened)
-                    FileTools.CloseFile();
-                FileTools.OpenFile(musicPath);
-                FileTools.CloseFile();
-                return true;
+                case ConsoleKey.UpArrow:
+                    PlayerControls.RaiseVolume();
+                    break;
+                case ConsoleKey.DownArrow:
+                    PlayerControls.LowerVolume();
+                    break;
+                case ConsoleKey.Spacebar:
+                    PlayerControls.Play();
+                    break;
+                case ConsoleKey.B:
+                    PlayerControls.SeekBeginning();
+                    PlayerControls.PreviousSong();
+                    PlayerControls.Play();
+                    break;
+                case ConsoleKey.N:
+                    PlayerControls.SeekBeginning();
+                    PlayerControls.NextSong();
+                    PlayerControls.Play();
+                    break;
+                case ConsoleKey.H:
+                    PlayerControls.ShowHelp();
+                    break;
+                case ConsoleKey.I:
+                    PlayerControls.ShowSongInfo();
+                    break;
+                case ConsoleKey.A:
+                    PlayerControls.PromptForAddSong();
+                    break;
+                case ConsoleKey.Q:
+                    PlayerControls.Exit();
+                    break;
             }
-            catch (Exception ex)
-            {
-                InfoBoxColor.WriteInfoBox("Can't open {0}: {1}", true, vars: new[] { musicPath, ex.Message });
-            }
-            return false;
         }
 
-        private static void PopulateMusicFileInfo(string musicPath)
+        private static void HandleKeypressPlayMode(ConsoleKey keystroke)
         {
-            // Try to open the file after loading the library
-            if (PlaybackTools.Playing || !populate)
-                return;
-            populate = false;
-            if (!TryOpenMusicFile(musicPath))
-                return;
-            FileTools.OpenFile(musicPath);
-            if (cachedInfos.Any((csi) => csi.MusicPath == musicPath))
+            switch (keystroke)
             {
-                var instance = cachedInfos.Single((csi) => csi.MusicPath == musicPath);
-                total = instance.Duration;
-                formatInfo = instance.FormatInfo;
-                totalSpan = AudioInfoTools.GetDurationSpanFromSamples(total, formatInfo);
-                frameInfo = instance.FrameInfo;
-                managedV1 = instance.MetadataV1;
-                managedV2 = instance.MetadataV2;
-                lyricInstance = instance.LyricInstance;
-                if (!musicFiles.Contains(musicPath))
-                    musicFiles.Add(musicPath);
-            }
-            else
-            {
-                InfoBoxColor.WriteInfoBox("Loading BassBoom to open {0}...", false, vars: musicPath);
-                total = AudioInfoTools.GetDuration(true);
-                totalSpan = AudioInfoTools.GetDurationSpanFromSamples(total);
-                formatInfo = FormatTools.GetFormatInfo();
-                frameInfo = AudioInfoTools.GetFrameInfo();
-                AudioInfoTools.GetId3Metadata(out managedV1, out managedV2);
-
-                // Try to open the lyrics
-                OpenLyrics(musicPath);
-                var instance = new CachedSongInfo(musicPath, managedV1, managedV2, total, formatInfo, frameInfo, lyricInstance);
-                cachedInfos.Add(instance);
-            }
-            TextWriterWhereColor.WriteWhere(new string(' ', ConsoleWrappers.ActionWindowWidth()), 0, 1);
-            if (!musicFiles.Contains(musicPath))
-                musicFiles.Add(musicPath);
-        }
-
-        private static void RenderSongName(string musicPath)
-        {
-            // Render the song name
-            string musicName =
-                !string.IsNullOrEmpty(managedV2.Title) ? managedV2.Title :
-                !string.IsNullOrEmpty(managedV1.Title) ? managedV1.Title :
-                Path.GetFileNameWithoutExtension(musicPath);
-            string musicArtist =
-                !string.IsNullOrEmpty(managedV2.Artist) ? managedV2.Artist :
-                !string.IsNullOrEmpty(managedV1.Artist) ? managedV1.Artist :
-                "Unknown Artist";
-            string musicGenre =
-                !string.IsNullOrEmpty(managedV2.Genre) ? managedV2.Genre :
-                managedV1.GenreIndex >= 0 ? $"{managedV1.Genre} [{managedV1.GenreIndex}]" :
-                "Unknown Genre";
-
-            // Print the music name
-            Console.Title = $"BassBoom CLI - Basolia v0.0.1 - Pre-alpha - {musicArtist} - {musicName} [{musicGenre}]";
-            CenteredTextColor.WriteCentered(1, $"{musicArtist} - {musicName} [{musicGenre}]");
-        }
-
-        private static void OpenLyrics(string musicPath)
-        {
-            string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
-            try
-            {
-                InfoBoxColor.WriteInfoBox("Trying to open lyrics file {0}...", false, vars: lyricsPath);
-                if (File.Exists(lyricsPath))
-                    lyricInstance = LyricReader.GetLyrics(lyricsPath);
-                else
-                    lyricInstance = null;
-            }
-            catch (Exception ex)
-            {
-                InfoBoxColor.WriteInfoBox("Can't open lyrics file {0}... {1}", vars: new[] { lyricsPath, ex.Message });
+                case ConsoleKey.UpArrow:
+                    PlayerControls.RaiseVolume();
+                    break;
+                case ConsoleKey.DownArrow:
+                    PlayerControls.LowerVolume();
+                    break;
+                case ConsoleKey.RightArrow:
+                    PlayerControls.SeekForward();
+                    break;
+                case ConsoleKey.LeftArrow:
+                    PlayerControls.SeekBackward();
+                    break;
+                case ConsoleKey.B:
+                    PlayerControls.Stop(false);
+                    PlayerControls.SeekBeginning();
+                    PlayerControls.PreviousSong();
+                    playerThread = new(HandlePlay);
+                    PlayerControls.Play();
+                    break;
+                case ConsoleKey.N:
+                    PlayerControls.Stop(false);
+                    PlayerControls.SeekBeginning();
+                    PlayerControls.NextSong();
+                    playerThread = new(HandlePlay);
+                    PlayerControls.Play();
+                    break;
+                case ConsoleKey.Spacebar:
+                    PlayerControls.Pause();
+                    break;
+                case ConsoleKey.Escape:
+                    PlayerControls.Stop();
+                    break;
+                case ConsoleKey.H:
+                    PlayerControls.ShowHelp();
+                    break;
+                case ConsoleKey.I:
+                    PlayerControls.ShowSongInfo();
+                    break;
+                case ConsoleKey.Q:
+                    PlayerControls.Exit();
+                    break;
             }
         }
 
@@ -531,8 +276,8 @@ namespace BassBoom.Cli.CliBase
                 if (!advance || exiting)
                     return;
                 currentSong = musicFiles.IndexOf(musicFile) + 1;
-                PopulateMusicFileInfo(musicFile);
-                RenderSongName(musicFile);
+                PlayerControls.PopulateMusicFileInfo(musicFile);
+                PlayerControls.RenderSongName(musicFile);
                 if (paused)
                 {
                     paused = false;
