@@ -67,7 +67,11 @@ namespace BassBoom.Native.Interop.Analysis
     {
         internal mpg123_version version;
         internal int layer;
+#if WINDOWS
+        internal int rate;
+#else
         internal long rate;
+#endif
         internal mpg123_mode mode;
         internal int mode_ext;
         internal int framesize;
