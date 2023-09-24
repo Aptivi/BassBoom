@@ -84,7 +84,8 @@ namespace BassBoom.Cli.CliBase
                     string separator = new('=', ConsoleWrappers.ActionWindowWidth());
                     CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 4, separator);
                     if (populate)
-                        ShowMusicFileInfo(musicPath);
+                        PopulateMusicFileInfo(musicPath);
+                    RenderSongName(musicPath);
 
                     // Now, print the list of songs.
                     int startPos = 3;
@@ -157,6 +158,34 @@ namespace BassBoom.Cli.CliBase
                                         position = 0;
                                     PlaybackPositioningTools.SeekToFrame(position);
                                     break;
+                                case ConsoleKey.B:
+                                    advance = false;
+                                    paused = false;
+                                    PlaybackTools.Stop();
+                                    PlaybackPositioningTools.SeekToTheBeginning();
+                                    position = 0;
+                                    currentSong--;
+                                    if (currentSong <= 0)
+                                        currentSong = musicFiles.Count;
+                                    advance = true;
+                                    playerThread = new(HandlePlay);
+                                    playerThread.Start();
+                                    SpinWait.SpinUntil(() => PlaybackTools.Playing);
+                                    break;
+                                case ConsoleKey.N:
+                                    advance = false;
+                                    paused = false;
+                                    PlaybackTools.Stop();
+                                    PlaybackPositioningTools.SeekToTheBeginning();
+                                    position = 0;
+                                    currentSong++;
+                                    if (currentSong > musicFiles.Count)
+                                        currentSong = 1;
+                                    advance = true;
+                                    playerThread = new(HandlePlay);
+                                    playerThread.Start();
+                                    SpinWait.SpinUntil(() => PlaybackTools.Playing);
+                                    break;
                                 case ConsoleKey.Spacebar:
                                     advance = false;
                                     regen = true;
@@ -183,6 +212,8 @@ namespace BassBoom.Cli.CliBase
                                     [<-/->]     Seek control
                                     [I]         Song info
                                     [A]         Add a music file
+                                    [B]         Previous song
+                                    [N]         Next song
                                     """
                                     );
                                     rerender = true;
@@ -265,6 +296,27 @@ namespace BassBoom.Cli.CliBase
                                         // There could be a chance that the music has fully stopped without any user interaction.
                                         PlaybackPositioningTools.SeekToTheBeginning();
                                     advance = true;
+                                    rerender = true;
+                                    playerThread.Start();
+                                    SpinWait.SpinUntil(() => PlaybackTools.Playing);
+                                    break;
+                                case ConsoleKey.B:
+                                    PlaybackPositioningTools.SeekToTheBeginning();
+                                    position = 0;
+                                    currentSong--;
+                                    if (currentSong <= 0)
+                                        currentSong = musicFiles.Count;
+                                    advance = true;
+                                    playerThread.Start();
+                                    SpinWait.SpinUntil(() => PlaybackTools.Playing);
+                                    break;
+                                case ConsoleKey.N:
+                                    PlaybackPositioningTools.SeekToTheBeginning();
+                                    position = 0;
+                                    currentSong++;
+                                    if (currentSong > musicFiles.Count)
+                                        currentSong = 1;
+                                    advance = true;
                                     playerThread.Start();
                                     SpinWait.SpinUntil(() => PlaybackTools.Playing);
                                     break;
@@ -281,6 +333,8 @@ namespace BassBoom.Cli.CliBase
                                         [<-/->]     Seek control
                                         [I]         Song info
                                         [A]         Add a music file
+                                        [B]         Previous song
+                                        [N]         Next song
                                         """
                                     );
                                     rerender = true;
@@ -330,7 +384,7 @@ namespace BassBoom.Cli.CliBase
                                 case ConsoleKey.A:
                                     string path = InfoBoxColor.WriteInfoBoxInput("Enter a path to the music file");
                                     populate = true;
-                                    ShowMusicFileInfo(path);
+                                    PopulateMusicFileInfo(path);
                                     rerender = true;
                                     break;
                                 case ConsoleKey.Q:
@@ -390,7 +444,7 @@ namespace BassBoom.Cli.CliBase
             return false;
         }
 
-        private static void ShowMusicFileInfo(string musicPath)
+        private static void PopulateMusicFileInfo(string musicPath)
         {
             // Try to open the file after loading the library
             if (PlaybackTools.Playing || !populate)
@@ -422,21 +476,17 @@ namespace BassBoom.Cli.CliBase
                 AudioInfoTools.GetId3Metadata(out managedV1, out managedV2);
 
                 // Try to open the lyrics
-                string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
-                try
-                {
-                    InfoBoxColor.WriteInfoBox("Trying to open lyrics file {0}...", false, vars: lyricsPath);
-                    if (File.Exists(lyricsPath))
-                        lyricInstance = LyricReader.GetLyrics(lyricsPath);
-                }
-                catch (Exception ex)
-                {
-                    InfoBoxColor.WriteInfoBox("Can't open lyrics file {0}... {1}", vars: new[] { lyricsPath, ex.Message });
-                }
+                OpenLyrics(musicPath);
                 var instance = new CachedSongInfo(musicPath, managedV1, managedV2, total, formatInfo, frameInfo, lyricInstance);
                 cachedInfos.Add(instance);
             }
+            TextWriterWhereColor.WriteWhere(new string(' ', ConsoleWrappers.ActionWindowWidth()), 0, 1);
+            if (!musicFiles.Contains(musicPath))
+                musicFiles.Add(musicPath);
+        }
 
+        private static void RenderSongName(string musicPath)
+        {
             // Render the song name
             string musicName =
                 !string.IsNullOrEmpty(managedV2.Title) ? managedV2.Title :
@@ -454,8 +504,23 @@ namespace BassBoom.Cli.CliBase
             // Print the music name
             Console.Title = $"BassBoom CLI - Basolia v0.0.1 - Pre-alpha - {musicArtist} - {musicName} [{musicGenre}]";
             CenteredTextColor.WriteCentered(1, $"{musicArtist} - {musicName} [{musicGenre}]");
-            if (!musicFiles.Contains(musicPath))
-                musicFiles.Add(musicPath);
+        }
+
+        private static void OpenLyrics(string musicPath)
+        {
+            string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
+            try
+            {
+                InfoBoxColor.WriteInfoBox("Trying to open lyrics file {0}...", false, vars: lyricsPath);
+                if (File.Exists(lyricsPath))
+                    lyricInstance = LyricReader.GetLyrics(lyricsPath);
+                else
+                    lyricInstance = null;
+            }
+            catch (Exception ex)
+            {
+                InfoBoxColor.WriteInfoBox("Can't open lyrics file {0}... {1}", vars: new[] { lyricsPath, ex.Message });
+            }
         }
 
         private static void HandlePlay()
@@ -463,10 +528,11 @@ namespace BassBoom.Cli.CliBase
             foreach (var musicFile in musicFiles.Skip(currentSong - 1))
             {
                 populate = true;
-                if (!advance)
+                if (!advance || exiting)
                     return;
                 currentSong = musicFiles.IndexOf(musicFile) + 1;
-                ShowMusicFileInfo(musicFile);
+                PopulateMusicFileInfo(musicFile);
+                RenderSongName(musicFile);
                 if (paused)
                 {
                     paused = false;
