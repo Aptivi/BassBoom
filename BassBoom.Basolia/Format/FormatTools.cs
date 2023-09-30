@@ -19,6 +19,11 @@
 using BassBoom.Native.Runtime;
 using BassBoom.Native.Interop.Play;
 using BassBoom.Native.Interop.Init;
+using System;
+using BassBoom.Native.Interop.Output;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using BassBoom.Native.Interop.Analysis;
 
 namespace BassBoom.Basolia.Format
 {
@@ -34,6 +39,7 @@ namespace BassBoom.Basolia.Format
         {
             long fileRate;
             int fileChannel, fileEncoding;
+
             // We're now entering the dangerous zone
             unsafe
             {
@@ -47,6 +53,44 @@ namespace BassBoom.Basolia.Format
 
             // We're now entering the safe zone
             return (fileRate, fileChannel, fileEncoding);
+        }
+
+        /// <summary>
+        /// Gets the supported formats
+        /// </summary>
+        public static FormatInfo[] GetFormats()
+        {
+            var formats = new List<FormatInfo>();
+
+            // We're now entering the dangerous zone
+            int getStatus;
+            nint fmtlist = IntPtr.Zero;
+            unsafe
+            {
+                var outHandle = Mpg123Instance._out123Handle;
+
+                // Get the list of supported formats
+                getStatus = NativeOutputLib.out123_formats(outHandle, IntPtr.Zero, 0, 0, 0, ref fmtlist);
+                if (getStatus == (int)out123_error.OUT123_ERR)
+                    throw new BasoliaOutException("Can't get format information", (out123_error)getStatus);
+            }
+
+            // Now, iterate through the list of supported formats
+            for (int i = 0; i < getStatus; i++)
+            {
+                var fmtStruct = Marshal.PtrToStructure<mpg123_fmt>(fmtlist);
+                long rate = fmtStruct.rate;
+                int channels = fmtStruct.channels;
+                int encoding = fmtStruct.encoding;
+                if (rate >= 0 && channels >= 0 && encoding >= 0)
+                {
+                    var fmtInstance = new FormatInfo(rate, channels, encoding);
+                    formats.Add(fmtInstance);
+                }
+            }
+
+            // We're now entering the safe zone
+            return formats.ToArray();
         }
     }
 }

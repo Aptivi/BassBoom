@@ -225,7 +225,7 @@ namespace BassBoom.Native.Interop.Output
         /// , struct mpg123_fmt **fmtlist );
         /// </summary>
         [DllImport(LibraryTools.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_formats(out123_handle* ao, long rates, int ratecount, int minchannels, int maxchannels, mpg123_fmt** fmtlist );
+        internal static extern int out123_formats(out123_handle* ao, IntPtr rates, int ratecount, int minchannels, int maxchannels, ref IntPtr fmtlist);
 
         /// <summary>
         /// MPG123_EXPORT int out123_enc_list(int **enclist);
