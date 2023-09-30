@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Class FormatTools
+      <title>Class FormatInfo
  | BassBoom Basolia API - Aptivi Internals </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class FormatTools
+      <meta name="title" content="Class FormatInfo
  | BassBoom Basolia API - Aptivi Internals ">
     
       <link rel="shortcut icon" href="../favicon.ico">
@@ -77,45 +77,44 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="BassBoom.Basolia.Format.FormatTools">
+            <article class="content wrap" id="_content" data-uid="BassBoom.Basolia.Format.FormatInfo">
 
 
 
-  <h1 id="BassBoom_Basolia_Format_FormatTools" data-uid="BassBoom.Basolia.Format.FormatTools" class="text-break">Class FormatTools
+  <h1 id="BassBoom_Basolia_Format_FormatInfo" data-uid="BassBoom.Basolia.Format.FormatInfo" class="text-break">Class FormatInfo
 </h1>
-  <div class="markdown level0 summary"><p>Audio format tools</p>
+  <div class="markdown level0 summary"><p>Format information</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">FormatTools</span></div>
+    <div class="level1"><span class="xref">FormatInfo</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="BassBoom.html">BassBoom</a>.<a class="xref" href="BassBoom.Basolia.html">Basolia</a>.<a class="xref" href="BassBoom.Basolia.Format.html">Format</a></h6>
   <h6><strong>Assembly</strong>: BassBoom.Basolia.dll</h6>
-  <h5 id="BassBoom_Basolia_Format_FormatTools_syntax">Syntax</h5>
+  <h5 id="BassBoom_Basolia_Format_FormatInfo_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class FormatTools</code></pre>
+    <pre><code class="lang-csharp hljs">public class FormatInfo</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h3 id="properties">Properties
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_FormatTools_GetFormatInfo.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.FormatTools.GetFormatInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_FormatInfo_Channels.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.FormatInfo.Channels%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/FormatTools.cs/#L38">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/FormatInfo.cs/#L33">View Source</a>
   </span>
-  <a id="BassBoom_Basolia_Format_FormatTools_GetFormatInfo_" data-uid="BassBoom.Basolia.Format.FormatTools.GetFormatInfo*"></a>
-  <h4 id="BassBoom_Basolia_Format_FormatTools_GetFormatInfo" data-uid="BassBoom.Basolia.Format.FormatTools.GetFormatInfo">GetFormatInfo()</h4>
-  <div class="markdown level1 summary"><p>Gets the format information</p>
-</div>
+  <a id="BassBoom_Basolia_Format_FormatInfo_Channels_" data-uid="BassBoom.Basolia.Format.FormatInfo.Channels*"></a>
+  <h4 id="BassBoom_Basolia_Format_FormatInfo_Channels" data-uid="BassBoom.Basolia.Format.FormatInfo.Channels">Channels</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static (long rate, int channels, int encoding) GetFormatInfo()</code></pre>
+    <pre><code class="lang-csharp hljs">public long Channels { get; }</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
     <thead>
       <tr>
@@ -125,28 +124,27 @@
     </thead>
     <tbody>
       <tr>
-        <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int64,system.int32,system.int32-.rate">rate</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int64,system.int32,system.int32-.channels">channels</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int64,system.int32,system.int32-.encoding">encoding</a>)</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_FormatTools_GetFormats.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.FormatTools.GetFormats%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_FormatInfo_Encoding.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.FormatInfo.Encoding%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/FormatTools.cs/#L61">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/FormatInfo.cs/#L36">View Source</a>
   </span>
-  <a id="BassBoom_Basolia_Format_FormatTools_GetFormats_" data-uid="BassBoom.Basolia.Format.FormatTools.GetFormats*"></a>
-  <h4 id="BassBoom_Basolia_Format_FormatTools_GetFormats" data-uid="BassBoom.Basolia.Format.FormatTools.GetFormats">GetFormats()</h4>
-  <div class="markdown level1 summary"><p>Gets the supported formats</p>
-</div>
+  <a id="BassBoom_Basolia_Format_FormatInfo_Encoding_" data-uid="BassBoom.Basolia.Format.FormatInfo.Encoding*"></a>
+  <h4 id="BassBoom_Basolia_Format_FormatInfo_Encoding" data-uid="BassBoom.Basolia.Format.FormatInfo.Encoding">Encoding</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static FormatInfo[] GetFormats()</code></pre>
+    <pre><code class="lang-csharp hljs">public long Encoding { get; }</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
     <thead>
       <tr>
@@ -156,7 +154,37 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="BassBoom.Basolia.Format.FormatInfo.html">FormatInfo</a>[]</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_FormatInfo_Rate.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.FormatInfo.Rate%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/FormatInfo.cs/#L30">View Source</a>
+  </span>
+  <a id="BassBoom_Basolia_Format_FormatInfo_Rate_" data-uid="BassBoom.Basolia.Format.FormatInfo.Rate*"></a>
+  <h4 id="BassBoom_Basolia_Format_FormatInfo_Rate" data-uid="BassBoom.Basolia.Format.FormatInfo.Rate">Rate</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long Rate { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -170,10 +198,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_FormatTools.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.FormatTools%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_FormatInfo.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.FormatInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/FormatTools.cs/#L33" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/FormatInfo.cs/#L24" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

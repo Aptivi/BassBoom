@@ -562,6 +562,51 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.DecodeTools.DecodeFrame
   nameWithType: DecodeTools.DecodeFrame
+- uid: BassBoom.Basolia.Format.FormatInfo
+  name: FormatInfo
+  href: api/BassBoom.Basolia.Format.FormatInfo.html
+  commentId: T:BassBoom.Basolia.Format.FormatInfo
+  fullName: BassBoom.Basolia.Format.FormatInfo
+  nameWithType: FormatInfo
+- uid: BassBoom.Basolia.Format.FormatInfo.Channels
+  name: Channels
+  href: api/BassBoom.Basolia.Format.FormatInfo.html#BassBoom_Basolia_Format_FormatInfo_Channels
+  commentId: P:BassBoom.Basolia.Format.FormatInfo.Channels
+  fullName: BassBoom.Basolia.Format.FormatInfo.Channels
+  nameWithType: FormatInfo.Channels
+- uid: BassBoom.Basolia.Format.FormatInfo.Channels*
+  name: Channels
+  href: api/BassBoom.Basolia.Format.FormatInfo.html#BassBoom_Basolia_Format_FormatInfo_Channels_
+  commentId: Overload:BassBoom.Basolia.Format.FormatInfo.Channels
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatInfo.Channels
+  nameWithType: FormatInfo.Channels
+- uid: BassBoom.Basolia.Format.FormatInfo.Encoding
+  name: Encoding
+  href: api/BassBoom.Basolia.Format.FormatInfo.html#BassBoom_Basolia_Format_FormatInfo_Encoding
+  commentId: P:BassBoom.Basolia.Format.FormatInfo.Encoding
+  fullName: BassBoom.Basolia.Format.FormatInfo.Encoding
+  nameWithType: FormatInfo.Encoding
+- uid: BassBoom.Basolia.Format.FormatInfo.Encoding*
+  name: Encoding
+  href: api/BassBoom.Basolia.Format.FormatInfo.html#BassBoom_Basolia_Format_FormatInfo_Encoding_
+  commentId: Overload:BassBoom.Basolia.Format.FormatInfo.Encoding
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatInfo.Encoding
+  nameWithType: FormatInfo.Encoding
+- uid: BassBoom.Basolia.Format.FormatInfo.Rate
+  name: Rate
+  href: api/BassBoom.Basolia.Format.FormatInfo.html#BassBoom_Basolia_Format_FormatInfo_Rate
+  commentId: P:BassBoom.Basolia.Format.FormatInfo.Rate
+  fullName: BassBoom.Basolia.Format.FormatInfo.Rate
+  nameWithType: FormatInfo.Rate
+- uid: BassBoom.Basolia.Format.FormatInfo.Rate*
+  name: Rate
+  href: api/BassBoom.Basolia.Format.FormatInfo.html#BassBoom_Basolia_Format_FormatInfo_Rate_
+  commentId: Overload:BassBoom.Basolia.Format.FormatInfo.Rate
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatInfo.Rate
+  nameWithType: FormatInfo.Rate
 - uid: BassBoom.Basolia.Format.FormatTools
   name: FormatTools
   href: api/BassBoom.Basolia.Format.FormatTools.html
@@ -581,6 +626,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.FormatTools.GetFormatInfo
   nameWithType: FormatTools.GetFormatInfo
+- uid: BassBoom.Basolia.Format.FormatTools.GetFormats
+  name: GetFormats()
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetFormats
+  commentId: M:BassBoom.Basolia.Format.FormatTools.GetFormats
+  fullName: BassBoom.Basolia.Format.FormatTools.GetFormats()
+  nameWithType: FormatTools.GetFormats()
+- uid: BassBoom.Basolia.Format.FormatTools.GetFormats*
+  name: GetFormats
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetFormats_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.GetFormats
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.GetFormats
+  nameWithType: FormatTools.GetFormats
 - uid: BassBoom.Basolia.Format.FrameInfo
   name: FrameInfo
   href: api/BassBoom.Basolia.Format.FrameInfo.html
