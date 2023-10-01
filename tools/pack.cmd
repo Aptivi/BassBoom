@@ -1,15 +1,15 @@
 @echo off
 
-REM    Terminaux  Copyright (C) 2018-2021  Aptivi
+REM    BassBoom  Copyright (C) 2023  Aptivi
 REM
-REM    This file is part of Terminaux
+REM    This file is part of BassBoom
 REM
-REM    Terminaux is free software: you can redistribute it and/or modify
+REM    BassBoom is free software: you can redistribute it and/or modify
 REM    it under the terms of the GNU General Public License as published by
 REM    the Free Software Foundation, either version 3 of the License, or
 REM    (at your option) any later version.
 REM
-REM    Terminaux is distributed in the hope that it will be useful,
+REM    BassBoom is distributed in the hope that it will be useful,
 REM    but WITHOUT ANY WARRANTY; without even the implied warranty of
 REM    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 REM    GNU General Public License for more details.
@@ -26,10 +26,12 @@ echo Packing binary...
 "%ProgramFiles%\WinRAR\rar.exe" a -ep1 -r -m5 %temp%/%version%-bin.rar "..\BassBoom\bin\%releaseconfig%\net7.0\"
 "%ProgramFiles%\WinRAR\rar.exe" a -ep1 -r -m5 %temp%/%version%-api.rar "..\BassBoom.Basolia\bin\%releaseconfig%\net7.0\"
 "%ProgramFiles%\WinRAR\rar.exe" a -ep1 -r -m5 %temp%/%version%-proto.rar "..\BassBoom.Desktop\bin\%releaseconfig%\net7.0\"
+"%ProgramFiles%\WinRAR\rar.exe" a -ep1 -r -m5 %temp%/%version%-protocli.rar "..\BassBoom.Cli\bin\%releaseconfig%\net7.0\"
 "%ProgramFiles%\WinRAR\rar.exe" a -ep1 -r -m5 %temp%/%version%-unsafeapi.rar "..\BassBoom.Native\bin\%releaseconfig%\net7.0\"
 "%ProgramFiles%\WinRAR\rar.exe" a -ep1 -r -m5 %temp%/%version%-bin-win.rar "..\BassBoom\bin\%releaseconfig%\net7.0-windows\"
 "%ProgramFiles%\WinRAR\rar.exe" a -ep1 -r -m5 %temp%/%version%-api-win.rar "..\BassBoom.Basolia\bin\%releaseconfig%\net7.0-windows\"
 "%ProgramFiles%\WinRAR\rar.exe" a -ep1 -r -m5 %temp%/%version%-proto-win.rar "..\BassBoom.Desktop\bin\%releaseconfig%\net7.0-windows\"
+"%ProgramFiles%\WinRAR\rar.exe" a -ep1 -r -m5 %temp%/%version%-protocli-win.rar "..\BassBoom.Cli\bin\%releaseconfig%\net7.0-windows\"
 "%ProgramFiles%\WinRAR\rar.exe" a -ep1 -r -m5 %temp%/%version%-unsafeapi-win.rar "..\BassBoom.Native\bin\%releaseconfig%\net7.0-windows\"
 if %errorlevel% == 0 goto :complete
 echo There was an error trying to pack binary (%errorlevel%).
@@ -39,10 +41,12 @@ goto :finished
 move %temp%\%version%-bin.rar
 move %temp%\%version%-api.rar
 move %temp%\%version%-proto.rar
+move %temp%\%version%-protocli.rar
 move %temp%\%version%-unsafeapi.rar
 move %temp%\%version%-bin-win.rar
 move %temp%\%version%-api-win.rar
 move %temp%\%version%-proto-win.rar
+move %temp%\%version%-protocli-win.rar
 move %temp%\%version%-unsafeapi-win.rar
 
 echo Pack successful.

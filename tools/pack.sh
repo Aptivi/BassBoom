@@ -36,10 +36,12 @@ echo Packing binary...
 "$rarpath" a -ep1 -r -m5 /tmp/$version-bin.rar "../BassBoom/bin/$releaseconf/net7.0/"
 "$rarpath" a -ep1 -r -m5 /tmp/$version-api.rar "../BassBoom.Basolia/bin/$releaseconf/net7.0/"
 "$rarpath" a -ep1 -r -m5 /tmp/$version-proto.rar "../BassBoom.Desktop/bin/$releaseconf/net7.0/"
+"$rarpath" a -ep1 -r -m5 /tmp/$version-protocli.rar "../BassBoom.Cli/bin/$releaseconf/net7.0/"
 "$rarpath" a -ep1 -r -m5 /tmp/$version-unsafeapi.rar "../BassBoom.Native/bin/$releaseconf/net7.0/"
 "$rarpath" a -ep1 -r -m5 /tmp/$version-bin-win.rar "../BassBoom/bin/$releaseconf/net7.0-windows/"
 "$rarpath" a -ep1 -r -m5 /tmp/$version-api-win.rar "../BassBoom.Basolia/bin/$releaseconf/net7.0-windows/"
 "$rarpath" a -ep1 -r -m5 /tmp/$version-proto-win.rar "../BassBoom.Desktop/bin/$releaseconf/net7.0-windows/"
+"$rarpath" a -ep1 -r -m5 /tmp/$version-protocli-win.rar "../BassBoom.Cli/bin/$releaseconf/net7.0-windows/"
 "$rarpath" a -ep1 -r -m5 /tmp/$version-unsafeapi-win.rar "../BassBoom.Native/bin/$releaseconf/net7.0-windows/"
 if [ ! $? == 0 ]; then
 	echo Packing using rar failed.
@@ -54,6 +56,7 @@ mv ~/tmp/$version-unsafeapi.rar .
 mv ~/tmp/$version-bin-win.rar .
 mv ~/tmp/$version-api-win.rar .
 mv ~/tmp/$version-proto-win.rar .
+mv ~/tmp/$version-protocli-win.rar .
 mv ~/tmp/$version-unsafeapi-win.rar .
 echo Build and pack successful.
 exit 0
