@@ -61,6 +61,7 @@ namespace BassBoom.Cli.CliBase
         {
             InitBasolia.Init();
             volume = PlaybackTools.GetVolume().baseLinear;
+            bool initial = true;
 
             // First, clear the screen to draw our TUI
             while (!exiting)
@@ -84,9 +85,19 @@ namespace BassBoom.Cli.CliBase
                     }
 
                     // Populate music file info, as necessary
-                    if (populate)
-                        PlayerControls.PopulateMusicFileInfo(musicPath);
-                    PlayerControls.RenderSongName(musicPath);
+                    if (initial)
+                    {
+                        if (populate)
+                            PlayerControls.PopulateMusicFileInfo(musicPath);
+                        PlayerControls.RenderSongName(musicPath);
+                        initial = false;
+                    }
+                    else
+                    {
+                        if (populate)
+                            PlayerControls.PopulateMusicFileInfo(musicFiles[currentSong - 1]);
+                        PlayerControls.RenderSongName(musicFiles[currentSong - 1]);
+                    }
 
                     // Now, print the list of songs.
                     int startPos = 3;
@@ -115,16 +126,16 @@ namespace BassBoom.Cli.CliBase
                         TextWriterWhereColor.WriteWhere(finalEntry + new string(' ', ConsoleWrappers.ActionWindowWidth() - 2 - finalEntry.Length - 1), 0, top, finalForeColor);
                     }
 
+                    // Current duration
+                    position = PlaybackPositioningTools.GetCurrentDuration();
+                    var posSpan = PlaybackPositioningTools.GetCurrentDurationSpan();
+                    ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleWrappers.ActionWindowHeight() - 8, 6);
+                    TextWriterWhereColor.WriteWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrappers.ActionWindowHeight() - 9);
+                    TextWriterWhereColor.WriteWhere($"Vol: {volume:0.00}", ConsoleWrappers.ActionWindowWidth() - $"Vol: {volume:0.00}".Length - 3, ConsoleWrappers.ActionWindowHeight() - 9);
+
                     // Check the mode
                     if (PlaybackTools.Playing)
                     {
-                        // Print the progress bar and the current duration
-                        position = PlaybackPositioningTools.GetCurrentDuration();
-                        var posSpan = PlaybackPositioningTools.GetCurrentDurationSpan();
-                        ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleWrappers.ActionWindowHeight() - 8, 6);
-                        TextWriterWhereColor.WriteWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrappers.ActionWindowHeight() - 9);
-                        TextWriterWhereColor.WriteWhere($"Vol: {volume:0.00}", ConsoleWrappers.ActionWindowWidth() - $"Vol: {volume:0.00}".Length - 3, ConsoleWrappers.ActionWindowHeight() - 9);
-
                         // Print the lyrics, if any
                         if (lyricInstance is not null)
                         {
@@ -148,13 +159,17 @@ namespace BassBoom.Cli.CliBase
                     }
                     else
                     {
-                        // Wait for any keystroke
+                        TextWriterWhereColor.WriteWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrappers.ActionWindowHeight() - 10);
                         cachedLyric = "";
+
+                        // Regenerate as necessary
                         if (regen)
                         {
                             regen = false;
                             playerThread = new(HandlePlay);
                         }
+
+                        // Wait for any keystroke
                         if (ConsoleWrappers.ActionKeyAvailable())
                         {
                             var keystroke = Input.DetectKeypress().Key;
@@ -284,9 +299,10 @@ namespace BassBoom.Cli.CliBase
         {
             foreach (var musicFile in musicFiles.Skip(currentSong - 1))
             {
-                populate = true;
                 if (!advance || exiting)
                     return;
+                else
+                    populate = true;
                 currentSong = musicFiles.IndexOf(musicFile) + 1;
                 PlayerControls.PopulateMusicFileInfo(musicFile);
                 PlayerControls.RenderSongName(musicFile);
