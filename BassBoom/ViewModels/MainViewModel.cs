@@ -81,7 +81,10 @@ public class MainViewModel : ViewModelBase
                 var file = result.Path.LocalPath;
                 MusicFileSelect.Add(file);
             }
-            view.PathsToMp3.SelectedIndex = 0;
+            if (view.PathsToMp3.SelectedIndex >= 0)
+                view.PathsToMp3.SelectedValue = selectedPath;
+            else
+                view.PathsToMp3.SelectedIndex = 0;
         }
     }
 
