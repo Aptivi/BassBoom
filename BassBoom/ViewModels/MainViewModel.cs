@@ -183,6 +183,24 @@ public class MainViewModel : ViewModelBase
             view.durationRemain.Maximum = duration;
             view.durationRemain.IsSnapToTickEnabled = true;
             view.durationRemain.TickFrequency = AudioInfoTools.GetBufferSize();
+
+            // Change the title as appropriate
+            string artist =
+                !string.IsNullOrEmpty(v2.Artist) ? v2.Artist :
+                !string.IsNullOrEmpty(v1.Artist) ? v1.Artist :
+                Path.GetFileNameWithoutExtension(selectedPath);
+            string title =
+                !string.IsNullOrEmpty(v2.Title) ? v2.Title :
+                !string.IsNullOrEmpty(v1.Title) ? v1.Title :
+                "Unknown Artist";
+            string genre =
+                !string.IsNullOrEmpty(v2.Genre) ? v2.Genre :
+                v1.GenreIndex >= 0 ? $"{v1.Genre} [{v1.GenreIndex}]" :
+                "Unknown Genre";
+            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.1 - Alpha 1 - {artist} - {title} [{genre}]";
+
+            // Actually play!
             sliderUpdate.Start(view);
             await PlaybackTools.PlayAsync();
         }
@@ -210,6 +228,8 @@ public class MainViewModel : ViewModelBase
                 view.durationRemain.Value = 0;
                 FileTools.CloseFile();
             }
+            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.1 - Alpha 1";
             sliderUpdate = new(UpdateSlider);
             view.PlayButton.IsEnabled = true;
             view.PauseButton.IsEnabled = false;
@@ -244,6 +264,8 @@ public class MainViewModel : ViewModelBase
         }
         finally
         {
+            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.1 - Alpha 1";
             view.PlayButton.IsEnabled = true;
             view.PauseButton.IsEnabled = false;
             view.StopButton.IsEnabled = true;
@@ -280,6 +302,8 @@ public class MainViewModel : ViewModelBase
         {
             if (FileTools.IsOpened)
                 FileTools.CloseFile();
+            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.1 - Alpha 1";
             view.PlayButton.IsEnabled = true;
             view.PauseButton.IsEnabled = false;
             view.StopButton.IsEnabled = false;

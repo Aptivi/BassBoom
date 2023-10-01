@@ -208,7 +208,7 @@ namespace BassBoom.Cli.CliBase
                 "Unknown Genre";
 
             // Print the music name
-            Console.Title = $"BassBoom CLI - Basolia v0.0.1 - Pre-alpha - {musicArtist} - {musicName} [{musicGenre}]";
+            Console.Title = $"BassBoom CLI - Basolia v0.0.1 - Alpha 1 - {musicArtist} - {musicName} [{musicGenre}]";
             CenteredTextColor.WriteCentered(1, $"{musicArtist} - {musicName} [{musicGenre}]");
         }
 
