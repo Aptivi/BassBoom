@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net7.0-windows;net7.0</TargetFrameworks>
@@ -11,6 +11,7 @@
     <PackageTags>bassboom;basolia;native;runtime;csharp;library;music;player;mpeg;mp3;mp2;mpg;mpg123</PackageTags>
     <PackageProjectUrl>https://github.com/Aptivi/BassBoom</PackageProjectUrl>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <PackageIcon>OfficialAppIcon-BassBoom-512.png</PackageIcon>
     <IncludeSymbols>True</IncludeSymbols>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/Aptivi/BassBoom.git</RepositoryUrl>
@@ -24,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="../BassBoom/Assets/OfficialAppIcon-BassBoom-512.png" Pack="true" PackagePath="\" />
     <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 

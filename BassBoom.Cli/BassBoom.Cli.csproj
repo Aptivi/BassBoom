@@ -5,6 +5,7 @@
     <OutputType>Exe</OutputType>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\aptivi_snk.snk</AssemblyOriginatorKeyFile>
+    <ApplicationIcon>../BassBoom/Assets/OfficialAppIcon-BassBoom.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
