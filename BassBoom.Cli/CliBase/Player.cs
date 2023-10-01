@@ -241,6 +241,9 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.A:
                     PlayerControls.PromptForAddSong();
                     break;
+                case ConsoleKey.S:
+                    PlayerControls.PromptForAddDirectory();
+                    break;
                 case ConsoleKey.Q:
                     PlayerControls.Exit();
                     break;

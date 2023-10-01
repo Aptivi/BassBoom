@@ -127,6 +127,27 @@ namespace BassBoom.Cli.CliBase
             Player.rerender = true;
         }
 
+        internal static void PromptForAddDirectory()
+        {
+            string path = InfoBoxColor.WriteInfoBoxInput("Enter a path to the music library directory");
+            if (Directory.Exists(path))
+            {
+                int currentPos = Player.position;
+                var musicFiles = Directory.GetFiles(path, "*.mp3");
+                foreach (string musicFile in musicFiles)
+                {
+                    Player.populate = true;
+                    PopulateMusicFileInfo(musicFile);
+                }
+                Player.populate = true;
+                PopulateMusicFileInfo(Player.musicFiles[Player.currentSong - 1]);
+                PlaybackPositioningTools.SeekToFrame(currentPos);
+            }
+            else
+                InfoBoxColor.WriteInfoBox("Music library directory is not found.");
+            Player.rerender = true;
+        }
+
         internal static void Exit()
         {
             Player.exiting = true;
@@ -243,6 +264,7 @@ namespace BassBoom.Cli.CliBase
                 [<-/->]     Seek control
                 [I]         Song info
                 [A]         Add a music file
+                [S]         Add a music directory to the playlist
                 [B]         Previous song
                 [N]         Next song
                 """
