@@ -185,6 +185,8 @@ public class MainViewModel : ViewModelBase
             view.durationRemain.TickFrequency = AudioInfoTools.GetBufferSize();
 
             // Change the title as appropriate
+            var instance = cachedInfos.Single((csi) => csi.MusicPath == selectedPath);
+            lyricInstance = instance.LyricInstance;
             string artist =
                 !string.IsNullOrEmpty(v2.Artist) ? v2.Artist :
                 !string.IsNullOrEmpty(v1.Artist) ? v1.Artist :
