@@ -90,7 +90,7 @@ namespace BassBoom.Cli.CliBase
 
                     // Now, print the list of songs.
                     int startPos = 3;
-                    int endPos = ConsoleWrappers.ActionWindowHeight() - 12;
+                    int endPos = ConsoleWrappers.ActionWindowHeight() - 10;
                     int songsPerPage = endPos - startPos;
                     int pages = musicFiles.Count / songsPerPage;
                     if (musicFiles.Count % songsPerPage == 0)
