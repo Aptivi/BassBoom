@@ -71,7 +71,7 @@ namespace BassBoom.Cli.CliBase
                     // If we need to render again, do it
                     if (rerender)
                     {
-                        rerender = false;
+                        rerender = PlaybackTools.Playing;
                         ConsoleWrappers.ActionCursorVisible(false);
                         ColorTools.LoadBack();
 
@@ -140,8 +140,9 @@ namespace BassBoom.Cli.CliBase
                         if (lyricInstance is not null)
                         {
                             string current = lyricInstance.GetLastLineCurrent();
-                            if (current != cachedLyric)
+                            if (current != cachedLyric || rerender)
                             {
+                                rerender = false;
                                 cachedLyric = current;
                                 TextWriterWhereColor.WriteWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrappers.ActionWindowHeight() - 10);
                                 CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 10, lyricInstance.GetLastLineCurrent());
