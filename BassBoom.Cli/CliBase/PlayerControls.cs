@@ -34,6 +34,8 @@ namespace BassBoom.Cli.CliBase
 {
     internal static class PlayerControls
     {
+        internal static double seekRate = 3.0d;
+
         internal static void RaiseVolume()
         {
             Player.volume += 0.05;
@@ -52,7 +54,7 @@ namespace BassBoom.Cli.CliBase
 
         internal static void SeekForward()
         {
-            Player.position += (int)Player.formatInfo.rate * 3;
+            Player.position += (int)(Player.formatInfo.rate * seekRate);
             if (Player.position > Player.total)
                 Player.position = Player.total;
             PlaybackPositioningTools.SeekToFrame(Player.position);
@@ -60,7 +62,7 @@ namespace BassBoom.Cli.CliBase
 
         internal static void SeekBackward()
         {
-            Player.position -= (int)Player.formatInfo.rate * 3;
+            Player.position -= (int)(Player.formatInfo.rate * seekRate);
             if (Player.position < 0)
                 Player.position = 0;
             PlaybackPositioningTools.SeekToFrame(Player.position);
@@ -257,16 +259,17 @@ namespace BassBoom.Cli.CliBase
                 Available keystrokes
                 ====================
 
-                [SPACE]     Play/Pause
-                [ESC]       Stop
-                [Q]         Exit
-                [UP/DOWN]   Volume control
-                [<-/->]     Seek control
-                [I]         Song info
-                [A]         Add a music file
-                [S]         Add a music directory to the playlist
-                [B]         Previous song
-                [N]         Next song
+                [SPACE]             Play/Pause
+                [ESC]               Stop
+                [Q]                 Exit
+                [UP/DOWN]           Volume control
+                [<-/->]             Seek control
+                [SHIFT] + [<-/->]   Seek duration control
+                [I]                 Song info
+                [A]                 Add a music file
+                [S]                 Add a music directory to the playlist
+                [B]                 Previous song
+                [N]                 Next song
                 """
             );
             Player.rerender = true;

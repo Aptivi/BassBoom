@@ -131,7 +131,7 @@ namespace BassBoom.Cli.CliBase
                     var posSpan = PlaybackPositioningTools.GetCurrentDurationSpan();
                     ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleWrappers.ActionWindowHeight() - 8, 6);
                     TextWriterWhereColor.WriteWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrappers.ActionWindowHeight() - 9);
-                    TextWriterWhereColor.WriteWhere($"Vol: {volume:0.00}", ConsoleWrappers.ActionWindowWidth() - $"Vol: {volume:0.00}".Length - 3, ConsoleWrappers.ActionWindowHeight() - 9);
+                    TextWriterWhereColor.WriteWhere($"Seek: {PlayerControls.seekRate:0.00} | Vol: {volume:0.00}", ConsoleWrappers.ActionWindowWidth() - $"Seek: {PlayerControls.seekRate:0.00} | Vol: {volume:0.00}".Length - 3, ConsoleWrappers.ActionWindowHeight() - 9);
 
                     // Check the mode
                     if (PlaybackTools.Playing)
@@ -153,7 +153,7 @@ namespace BassBoom.Cli.CliBase
                         // Wait for any keystroke asynchronously
                         if (ConsoleWrappers.ActionKeyAvailable())
                         {
-                            var keystroke = Input.DetectKeypress().Key;
+                            var keystroke = Input.DetectKeypress();
                             HandleKeypressPlayMode(keystroke);
                         }
                     }
@@ -172,7 +172,7 @@ namespace BassBoom.Cli.CliBase
                         // Wait for any keystroke
                         if (ConsoleWrappers.ActionKeyAvailable())
                         {
-                            var keystroke = Input.DetectKeypress().Key;
+                            var keystroke = Input.DetectKeypress();
                             HandleKeypressIdleMode(keystroke);
                         }
                     }
@@ -209,9 +209,9 @@ namespace BassBoom.Cli.CliBase
             ColorTools.LoadBack();
         }
 
-        private static void HandleKeypressIdleMode(ConsoleKey keystroke)
+        private static void HandleKeypressIdleMode(ConsoleKeyInfo keystroke)
         {
-            switch (keystroke)
+            switch (keystroke.Key)
             {
                 case ConsoleKey.UpArrow:
                     PlayerControls.RaiseVolume();
@@ -250,9 +250,9 @@ namespace BassBoom.Cli.CliBase
             }
         }
 
-        private static void HandleKeypressPlayMode(ConsoleKey keystroke)
+        private static void HandleKeypressPlayMode(ConsoleKeyInfo keystroke)
         {
-            switch (keystroke)
+            switch (keystroke.Key)
             {
                 case ConsoleKey.UpArrow:
                     PlayerControls.RaiseVolume();
@@ -261,10 +261,16 @@ namespace BassBoom.Cli.CliBase
                     PlayerControls.LowerVolume();
                     break;
                 case ConsoleKey.RightArrow:
-                    PlayerControls.SeekForward();
+                    if (keystroke.Modifiers == ConsoleModifiers.Control)
+                        PlayerControls.seekRate += 0.05d;
+                    else
+                        PlayerControls.SeekForward();
                     break;
                 case ConsoleKey.LeftArrow:
-                    PlayerControls.SeekBackward();
+                    if (keystroke.Modifiers == ConsoleModifiers.Control)
+                        PlayerControls.seekRate -= 0.05d;
+                    else
+                        PlayerControls.SeekBackward();
                     break;
                 case ConsoleKey.B:
                     PlayerControls.Stop(false);
