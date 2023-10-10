@@ -123,7 +123,7 @@ namespace BassBoom.Cli.CliBase
                         // Render an entry
                         var finalForeColor = finalIndex == currentSong - 1 ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Gray);
                         int top = startPos + finalIndex - startIndex;
-                        TextWriterWhereColor.WriteWhere(finalEntry + new string(' ', ConsoleWrappers.ActionWindowWidth() - 2 - finalEntry.Length - 1), 0, top, finalForeColor);
+                        TextWriterWhereColor.WriteWhereColor(finalEntry + new string(' ', ConsoleWrappers.ActionWindowWidth() - 2 - finalEntry.Length - 1), 0, top, finalForeColor);
                     }
 
                     // Current duration
