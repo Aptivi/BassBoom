@@ -203,7 +203,7 @@ public class MainViewModel : ViewModelBase
                 v1.GenreIndex >= 0 ? $"{v1.Genre} [{v1.GenreIndex}]" :
                 "Unknown Genre";
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.1 - Alpha 1 - {artist} - {title} [{genre}]";
+                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.2 - Alpha 2 - {artist} - {title} [{genre}]";
 
             // Actually play!
             sliderUpdate.Start(view);
@@ -234,7 +234,7 @@ public class MainViewModel : ViewModelBase
                 FileTools.CloseFile();
             }
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.1 - Alpha 1";
+                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.2 - Alpha 2";
             sliderUpdate = new(UpdateSlider);
             view.PlayButton.IsEnabled = true;
             view.PauseButton.IsEnabled = false;
@@ -270,7 +270,7 @@ public class MainViewModel : ViewModelBase
         finally
         {
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.1 - Alpha 1";
+                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.2 - Alpha 2";
             view.PlayButton.IsEnabled = true;
             view.PauseButton.IsEnabled = false;
             view.StopButton.IsEnabled = true;
@@ -308,7 +308,7 @@ public class MainViewModel : ViewModelBase
             if (FileTools.IsOpened)
                 FileTools.CloseFile();
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.1 - Alpha 1";
+                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.2 - Alpha 2";
             view.PlayButton.IsEnabled = true;
             view.PauseButton.IsEnabled = false;
             view.StopButton.IsEnabled = false;
