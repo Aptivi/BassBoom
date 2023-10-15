@@ -116,14 +116,18 @@ namespace BassBoom.Cli.CliBase
                         if (finalIndex <= musicFiles.Count - 1)
                         {
                             // Here, it's getting uglier as we don't have ElementAt() in IEnumerable, too!
-                            string dataObject = musicFiles[startIndex + i];
-                            finalEntry = $"  {dataObject}".Truncate(ConsoleWrappers.ActionWindowWidth() - 2);
+                            var (musicName, musicArtist, musicGenre) = PlayerControls.GetMusicNameArtistGenre(finalIndex);
+                            string duration = cachedInfos[finalIndex].DurationSpan;
+                            string renderedDuration = $"[{duration}]";
+                            string dataObject = $"  {musicArtist} - {musicName} ({musicGenre})".Truncate(ConsoleWrappers.ActionWindowWidth() - renderedDuration.Length - 5);
+                            string spaces = new(' ', ConsoleWrappers.ActionWindowWidth() - 4 - duration.Length - dataObject.Length);
+                            finalEntry = dataObject + spaces + renderedDuration;
                         }
 
                         // Render an entry
                         var finalForeColor = finalIndex == currentSong - 1 ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Gray);
                         int top = startPos + finalIndex - startIndex;
-                        TextWriterWhereColor.WriteWhereColor(finalEntry + new string(' ', ConsoleWrappers.ActionWindowWidth() - 2 - finalEntry.Length - 1), 0, top, finalForeColor);
+                        TextWriterWhereColor.WriteWhereColor(finalEntry + new string(' ', ConsoleWrappers.ActionWindowWidth() - finalEntry.Length), 0, top, finalForeColor);
                     }
 
                     // Current duration

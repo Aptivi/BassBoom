@@ -217,6 +217,15 @@ namespace BassBoom.Cli.CliBase
         internal static void RenderSongName(string musicPath)
         {
             // Render the song name
+            var (musicName, musicArtist, musicGenre) = GetMusicNameArtistGenre(musicPath);
+
+            // Print the music name
+            Console.Title = $"BassBoom CLI - Basolia v0.0.2 - Alpha 2 - {musicArtist} - {musicName} [{musicGenre}]";
+            CenteredTextColor.WriteCentered(1, $"{musicArtist} - {musicName} [{musicGenre}]");
+        }
+
+        internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(string musicPath)
+        {
             string musicName =
                 !string.IsNullOrEmpty(Player.managedV2.Title) ? Player.managedV2.Title :
                 !string.IsNullOrEmpty(Player.managedV1.Title) ? Player.managedV1.Title :
@@ -229,10 +238,26 @@ namespace BassBoom.Cli.CliBase
                 !string.IsNullOrEmpty(Player.managedV2.Genre) ? Player.managedV2.Genre :
                 Player.managedV1.GenreIndex >= 0 ? $"{Player.managedV1.Genre} [{Player.managedV1.GenreIndex}]" :
                 "Unknown Genre";
+            return (musicName, musicArtist, musicGenre);
+        }
 
-            // Print the music name
-            Console.Title = $"BassBoom CLI - Basolia v0.0.2 - Alpha 2 - {musicArtist} - {musicName} [{musicGenre}]";
-            CenteredTextColor.WriteCentered(1, $"{musicArtist} - {musicName} [{musicGenre}]");
+        internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(int cachedInfoIdx)
+        {
+            var metadatav2 = Player.cachedInfos[cachedInfoIdx].MetadataV2;
+            var metadatav1 = Player.cachedInfos[cachedInfoIdx].MetadataV1;
+            string musicName =
+                !string.IsNullOrEmpty(metadatav2.Title) ? metadatav2.Title :
+                !string.IsNullOrEmpty(metadatav1.Title) ? metadatav1.Title :
+                "Unknown Song";
+            string musicArtist =
+                !string.IsNullOrEmpty(metadatav2.Artist) ? metadatav2.Artist :
+                !string.IsNullOrEmpty(metadatav1.Artist) ? metadatav1.Artist :
+                "Unknown Artist";
+            string musicGenre =
+                !string.IsNullOrEmpty(metadatav2.Genre) ? metadatav2.Genre :
+                metadatav1.GenreIndex >= 0 ? $"{metadatav1.Genre} [{metadatav1.GenreIndex}]" :
+                "Unknown Genre";
+            return (musicName, musicArtist, musicGenre);
         }
 
         internal static void OpenLyrics(string musicPath)
