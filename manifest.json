@@ -2,7 +2,6 @@
   "sitemap": {
     "baseUrl": "https://aptivi.github.io/BassBoom/"
   },
-  "homepages": [],
   "source_base_path": "/github/workspace/DocGen",
   "xrefmap": "xrefmap.yml",
   "files": [
@@ -365,7 +364,6 @@
       "version": ""
     }
   ],
-  "version_info": {},
   "groups": [
     {
       "xrefmap": "xrefmap.yml"
