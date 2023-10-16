@@ -52,7 +52,6 @@ namespace BassBoom.Cli.CliBase
         internal static int position = 0;
         internal static bool advance = false;
         internal static bool populate = true;
-        internal static bool regen = true;
         internal static bool paused = false;
         internal static string cachedLyric = "";
         internal static readonly List<string> musicFiles = new();
@@ -114,13 +113,6 @@ namespace BassBoom.Cli.CliBase
                         TextWriterWhereColor.WriteWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrappers.ActionWindowHeight() - 10);
                         cachedLyric = "";
 
-                        // Regenerate as necessary
-                        if (regen)
-                        {
-                            regen = false;
-                            playerThread = new(HandlePlay);
-                        }
-
                         // Wait for any keystroke
                         if (ConsoleWrappers.ActionKeyAvailable())
                         {
@@ -172,16 +164,19 @@ namespace BassBoom.Cli.CliBase
                     PlayerControls.LowerVolume();
                     break;
                 case ConsoleKey.Spacebar:
+                    playerThread = new(HandlePlay);
                     PlayerControls.Play();
                     break;
                 case ConsoleKey.B:
                     PlayerControls.SeekBeginning();
                     PlayerControls.PreviousSong();
+                    playerThread = new(HandlePlay);
                     PlayerControls.Play();
                     break;
                 case ConsoleKey.N:
                     PlayerControls.SeekBeginning();
                     PlayerControls.NextSong();
+                    playerThread = new(HandlePlay);
                     PlayerControls.Play();
                     break;
                 case ConsoleKey.H:
@@ -276,7 +271,6 @@ namespace BassBoom.Cli.CliBase
                 lyricInstance = null;
                 rerender = true;
             }
-            regen = true;
         }
 
         private static void HandleDraw()

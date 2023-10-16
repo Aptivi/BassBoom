@@ -88,7 +88,6 @@ namespace BassBoom.Cli.CliBase
         internal static void Pause()
         {
             Player.advance = false;
-            Player.regen = true;
             Player.paused = true;
             PlaybackTools.Pause();
         }
@@ -96,7 +95,6 @@ namespace BassBoom.Cli.CliBase
         internal static void Stop(bool resetCurrentSong = true)
         {
             Player.advance = false;
-            Player.regen = true;
             Player.paused = false;
             if (resetCurrentSong)
                 Player.currentSong = 1;
