@@ -25,6 +25,7 @@ using BassBoom.Basolia.Playback;
 using BassBoom.ViewModels;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BassBoom.Views;
@@ -77,14 +78,17 @@ public partial class MainView : UserControl
 
     internal async Task EnablePlay()
     {
-        if (PathsToMp3.SelectedValue is null)
+        if (PathsToMp3.SelectedIndex < 0 || MainViewModel.locked)
             return;
-        string selected = (string)PathsToMp3.SelectedValue;
+        string selected =
+            MainViewModel.cachedInfos.Count < PathsToMp3.SelectedIndex + 1 ?
+            (string)PathsToMp3.SelectedValue :
+            MainViewModel.cachedInfos[PathsToMp3.SelectedIndex].MusicPath;
         if (File.Exists(selected))
         {
             PlayButton.IsEnabled = true;
             SongInfo.IsEnabled = true;
-            await ((MainViewModel)DataContext).PopulateAsync();
+            await ((MainViewModel)DataContext).PopulateSongInfoAsync(selected);
         }
         else
         {

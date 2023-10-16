@@ -44,17 +44,18 @@ public class MainViewModel : ViewModelBase
 {
     internal bool advance = false;
     internal static bool paused = false;
+    internal static bool locked = false;
     internal static int duration;
     internal static string durationSpan;
     internal static Id3V1Metadata v1 = null;
     internal static Id3V2Metadata v2 = null;
     internal static FrameInfo frameInfo = null;
     internal static MainView view;
-    internal static string selectedPath = "";
+    internal static int selectedPath = 0;
+    internal static readonly List<CachedSongInfo> cachedInfos = new();
     private Thread sliderUpdate = new(UpdateSlider);
     private static Lyric lyricInstance = null;
     private readonly ObservableCollection<string> musicFileSelect = new();
-    private readonly List<CachedSongInfo> cachedInfos = new();
 
     private FilePickerFileType MusicFiles => new("Music files")
     {
@@ -82,32 +83,30 @@ public class MainViewModel : ViewModelBase
                 MusicFileSelect.Add(file);
             }
             if (view.PathsToMp3.SelectedIndex >= 0)
-                view.PathsToMp3.SelectedValue = selectedPath;
+                view.PathsToMp3.SelectedIndex = selectedPath;
             else
                 view.PathsToMp3.SelectedIndex = 0;
         }
     }
 
-    public async Task PopulateAsync()
-    {
-        if (view.PathsToMp3.SelectedValue is null)
-            return;
-        if (PlaybackTools.State != PlaybackState.Stopped)
-            return;
-        string file = (string)view.PathsToMp3.SelectedValue;
-        await PopulateSongInfoAsync(file);
-    }
-
     public async Task PopulateSongInfoAsync(string file)
     {
-        if (view.PathsToMp3.SelectedValue is null)
+        if (view.PathsToMp3.SelectedIndex < 0)
             return;
         if (PlaybackTools.State != PlaybackState.Stopped)
             return;
+        int cachedInfoIdx = 0;
+        CachedSongInfo instance = default;
+        for (cachedInfoIdx = 0; cachedInfoIdx < cachedInfos.Count; cachedInfoIdx++)
+        {
+            instance = cachedInfos[cachedInfoIdx];
+            if (instance.MusicPath == file)
+                break;
+        }
+
         if (cachedInfos.Any((csi) => csi.MusicPath == file))
         {
-            var instance = cachedInfos.Single((csi) => csi.MusicPath == file);
-            selectedPath = instance.MusicPath;
+            selectedPath = cachedInfoIdx;
             duration = instance.Duration;
             durationSpan = instance.DurationSpan;
             v1 = instance.MetadataV1;
@@ -118,7 +117,7 @@ public class MainViewModel : ViewModelBase
         else
         {
             FileTools.OpenFile(file);
-            selectedPath = file;
+            selectedPath = view.PathsToMp3.SelectedIndex >= 0 ? view.PathsToMp3.SelectedIndex : 0;
             AudioInfoTools.GetId3Metadata(out var v1, out var v2);
             duration = AudioInfoTools.GetDuration(true);
             durationSpan = AudioInfoTools.GetDurationSpanFromSamples(duration).ToString();
@@ -128,7 +127,7 @@ public class MainViewModel : ViewModelBase
             var formatInfo = FormatTools.GetFormatInfo();
 
             // Try to open the lyrics
-            string lyricsPath = Path.GetDirectoryName(selectedPath) + "/" + Path.GetFileNameWithoutExtension(selectedPath) + ".lrc";
+            string lyricsPath = Path.GetDirectoryName(file) + "/" + Path.GetFileNameWithoutExtension(file) + ".lrc";
             try
             {
                 if (File.Exists(lyricsPath))
@@ -147,9 +146,21 @@ public class MainViewModel : ViewModelBase
 
             if (FileTools.IsOpened)
                 FileTools.CloseFile();
-            var instance = new CachedSongInfo(file, v1, v2, duration, formatInfo, frameInfo, lyricInstance);
-            cachedInfos.Add(instance);
+            var csiInstance = new CachedSongInfo(file, v1, v2, duration, formatInfo, frameInfo, lyricInstance);
+            cachedInfos.Add(csiInstance);
         }
+        string artist =
+            !string.IsNullOrEmpty(v2.Artist) ? v2.Artist :
+            !string.IsNullOrEmpty(v1.Artist) ? v1.Artist :
+            Path.GetFileNameWithoutExtension(instance.MusicPath);
+        string title =
+            !string.IsNullOrEmpty(v2.Title) ? v2.Title :
+            !string.IsNullOrEmpty(v1.Title) ? v1.Title :
+            "Unknown Artist";
+        locked = true;
+        musicFileSelect[cachedInfoIdx] = $"[{durationSpan}] {artist} - {title}";
+        view.PathsToMp3.SelectedIndex = cachedInfoIdx;
+        locked = false;
         view.durationRemain.IsEnabled = false;
         view.duration.Text = $"00:00:00/{durationSpan}";
     }
@@ -157,11 +168,12 @@ public class MainViewModel : ViewModelBase
     public async Task PlayAsync()
     {
         advance = true;
-        foreach (string file in musicFileSelect.Skip(view.PathsToMp3.SelectedIndex))
+        string[] musicFiles = musicFileSelect.ToArray();
+        for (int i = view.PathsToMp3.SelectedIndex; i < musicFiles.Length; i++)
         {
             if (!advance)
                 break;
-            view.PathsToMp3.SelectedValue = file;
+            view.PathsToMp3.SelectedIndex = i;
             await ProcessPlayAsync();
         }
     }
@@ -170,10 +182,10 @@ public class MainViewModel : ViewModelBase
     {
         try
         {
-            if (view.PathsToMp3.SelectedValue is null)
+            if (view.PathsToMp3.SelectedIndex < 0)
                 return;
             if (!paused)
-                FileTools.OpenFile(selectedPath);
+                FileTools.OpenFile(cachedInfos[selectedPath].MusicPath);
             paused = false;
 
             // Enable and disable necessary buttons
@@ -188,12 +200,12 @@ public class MainViewModel : ViewModelBase
             view.durationRemain.TickFrequency = AudioInfoTools.GetBufferSize();
 
             // Change the title as appropriate
-            var instance = cachedInfos.Single((csi) => csi.MusicPath == selectedPath);
+            var instance = cachedInfos[selectedPath];
             lyricInstance = instance.LyricInstance;
             string artist =
                 !string.IsNullOrEmpty(v2.Artist) ? v2.Artist :
                 !string.IsNullOrEmpty(v1.Artist) ? v1.Artist :
-                Path.GetFileNameWithoutExtension(selectedPath);
+                Path.GetFileNameWithoutExtension(instance.MusicPath);
             string title =
                 !string.IsNullOrEmpty(v2.Title) ? v2.Title :
                 !string.IsNullOrEmpty(v1.Title) ? v1.Title :
