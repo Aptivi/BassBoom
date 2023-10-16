@@ -191,6 +191,14 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.S:
                     PlayerControls.PromptForAddDirectory();
                     break;
+                case ConsoleKey.R:
+                    PlayerControls.Stop(false);
+                    PlayerControls.SeekBeginning();
+                    if (keystroke.Modifiers == ConsoleModifiers.Control)
+                        PlayerControls.RemoveAllSongs();
+                    else
+                        PlayerControls.RemoveCurrentSong();
+                    break;
                 case ConsoleKey.Q:
                     PlayerControls.Exit();
                     break;
@@ -235,6 +243,14 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.Spacebar:
                     PlayerControls.Pause();
+                    break;
+                case ConsoleKey.R:
+                    PlayerControls.Stop(false);
+                    PlayerControls.SeekBeginning();
+                    if (keystroke.Modifiers == ConsoleModifiers.Control)
+                        PlayerControls.RemoveAllSongs();
+                    else
+                        PlayerControls.RemoveCurrentSong();
                     break;
                 case ConsoleKey.Escape:
                     PlayerControls.Stop();
@@ -286,6 +302,10 @@ namespace BassBoom.Cli.CliBase
             // Print the separator and the music file info
             string separator = new('=', ConsoleWrappers.ActionWindowWidth());
             CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 4, separator);
+
+            // In case we have no songs in the playlist...
+            if (!musicFiles.Any())
+                return;
 
             // Populate music file info, as necessary
             if (populate)

@@ -54,6 +54,10 @@ namespace BassBoom.Cli.CliBase
 
         internal static void SeekForward()
         {
+            // In case we have no songs in the playlist...
+            if (!Player.musicFiles.Any())
+                return;
+
             Player.position += (int)(Player.formatInfo.rate * seekRate);
             if (Player.position > Player.total)
                 Player.position = Player.total;
@@ -62,6 +66,10 @@ namespace BassBoom.Cli.CliBase
 
         internal static void SeekBackward()
         {
+            // In case we have no songs in the playlist...
+            if (!Player.musicFiles.Any())
+                return;
+
             Player.position -= (int)(Player.formatInfo.rate * seekRate);
             if (Player.position < 0)
                 Player.position = 0;
@@ -70,12 +78,20 @@ namespace BassBoom.Cli.CliBase
 
         internal static void SeekBeginning()
         {
+            // In case we have no songs in the playlist...
+            if (!Player.musicFiles.Any())
+                return;
+
             PlaybackPositioningTools.SeekToTheBeginning();
             Player.position = 0;
         }
 
         internal static void Play()
         {
+            // In case we have no songs in the playlist...
+            if (!Player.musicFiles.Any())
+                return;
+
             if (PlaybackTools.State == PlaybackState.Stopped)
                 // There could be a chance that the music has fully stopped without any user interaction.
                 PlaybackPositioningTools.SeekToTheBeginning();
@@ -103,6 +119,10 @@ namespace BassBoom.Cli.CliBase
 
         internal static void NextSong()
         {
+            // In case we have no songs in the playlist...
+            if (!Player.musicFiles.Any())
+                return;
+
             Player.currentSong++;
             if (Player.currentSong > Player.musicFiles.Count)
                 Player.currentSong = 1;
@@ -110,6 +130,10 @@ namespace BassBoom.Cli.CliBase
 
         internal static void PreviousSong()
         {
+            // In case we have no songs in the playlist...
+            if (!Player.musicFiles.Any())
+                return;
+
             Player.currentSong--;
             if (Player.currentSong <= 0)
                 Player.currentSong = Player.musicFiles.Count;
@@ -280,6 +304,35 @@ namespace BassBoom.Cli.CliBase
             }
         }
 
+        internal static void RemoveCurrentSong()
+        {
+            // In case we have no songs in the playlist...
+            if (!Player.musicFiles.Any())
+                return;
+
+            Player.cachedInfos.RemoveAt(Player.currentSong - 1);
+            Player.musicFiles.RemoveAt(Player.currentSong - 1);
+            if (Player.musicFiles.Count > 0)
+            {
+                Player.currentSong--;
+                if (Player.currentSong == 0)
+                    Player.currentSong = 1;
+                Player.populate = true;
+                PopulateMusicFileInfo(Player.musicFiles[Player.currentSong - 1]);
+            }
+            Player.rerender = true;
+        }
+
+        internal static void RemoveAllSongs()
+        {
+            // In case we have no songs in the playlist...
+            if (!Player.musicFiles.Any())
+                return;
+
+            for (int i = Player.musicFiles.Count; i > 0; i--)
+                RemoveCurrentSong();
+        }
+
         internal static void ShowHelp()
         {
             InfoBoxColor.WriteInfoBox(
@@ -292,12 +345,14 @@ namespace BassBoom.Cli.CliBase
                 [Q]                 Exit
                 [UP/DOWN]           Volume control
                 [<-/->]             Seek control
-                [SHIFT] + [<-/->]   Seek duration control
+                [CTRL] + [<-/->]    Seek duration control
                 [I]                 Song info
                 [A]                 Add a music file
                 [S]                 Add a music directory to the playlist
                 [B]                 Previous song
                 [N]                 Next song
+                [R]                 Remove current song
+                [CTRL] + [R]        Remove all songs
                 """
             );
             Player.rerender = true;
