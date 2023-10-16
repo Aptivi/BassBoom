@@ -37,6 +37,7 @@ using System.Threading.Tasks;
 using BassBoom.Views;
 using System.Collections.Generic;
 using BassBoom.Basolia.Format.Cache;
+using DynamicData;
 
 namespace BassBoom.ViewModels;
 
@@ -56,6 +57,7 @@ public class MainViewModel : ViewModelBase
     private Thread sliderUpdate = new(UpdateSlider);
     private static Lyric lyricInstance = null;
     private readonly ObservableCollection<string> musicFileSelect = new();
+    private readonly string[] supportedExtensions = new[] { ".mp3", ".mp2", ".mpa", ".mpg", ".mpga" };
 
     private FilePickerFileType MusicFiles => new("Music files")
     {
@@ -81,6 +83,31 @@ public class MainViewModel : ViewModelBase
             {
                 var file = result.Path.LocalPath;
                 MusicFileSelect.Add(file);
+            }
+            if (view.PathsToMp3.SelectedIndex >= 0)
+                view.PathsToMp3.SelectedIndex = selectedPath;
+            else
+                view.PathsToMp3.SelectedIndex = 0;
+        }
+    }
+
+    public async Task AddSongs()
+    {
+        var results = await view.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
+        {
+            AllowMultiple = true,
+            Title = "BassBoom - Add music library contents to playlist",
+        });
+        if (results.Count > 0)
+        {
+            foreach (var result in results)
+            {
+                var folder = result.Path.LocalPath;
+                var files = Directory
+                    .GetFiles(folder, "*.*", SearchOption.AllDirectories)
+                    .Where((file) => supportedExtensions.Contains(Path.GetExtension(file).ToLower()))
+                    .ToArray();
+                MusicFileSelect.AddRange(files);
             }
             if (view.PathsToMp3.SelectedIndex >= 0)
                 view.PathsToMp3.SelectedIndex = selectedPath;
