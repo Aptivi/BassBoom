@@ -218,11 +218,11 @@ namespace BassBoom.Cli.CliBase
         internal static void RenderSongName(string musicPath)
         {
             // Render the song name
-            var (musicName, musicArtist, musicGenre) = GetMusicNameArtistGenre(musicPath);
+            var (musicName, musicArtist, _) = GetMusicNameArtistGenre(musicPath);
 
             // Print the music name
-            Console.Title = $"BassBoom CLI - Basolia v0.0.2 - Alpha 2 - {musicArtist} - {musicName} [{musicGenre}]";
-            CenteredTextColor.WriteCentered(1, $"{musicArtist} - {musicName} [{musicGenre}]");
+            Console.Title = $"BassBoom CLI - Basolia v0.0.2 - Alpha 2 • {musicArtist} - {musicName}";
+            CenteredTextColor.WriteCentered(1, $"Now playing: {musicArtist} - {musicName}");
         }
 
         internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(string musicPath)

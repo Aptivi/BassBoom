@@ -203,7 +203,7 @@ public class MainViewModel : ViewModelBase
                 v1.GenreIndex >= 0 ? $"{v1.Genre} [{v1.GenreIndex}]" :
                 "Unknown Genre";
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.2 - Alpha 2 - {artist} - {title} [{genre}]";
+                desktop.MainWindow.Title = $"BassBoom - Basolia 0.0.2 - Alpha 2 • {artist} - {title}";
 
             // Actually play!
             sliderUpdate.Start(view);

@@ -318,7 +318,7 @@ namespace BassBoom.Cli.CliBase
                     var (musicName, musicArtist, musicGenre) = PlayerControls.GetMusicNameArtistGenre(finalIndex);
                     string duration = cachedInfos[finalIndex].DurationSpan;
                     string renderedDuration = $"[{duration}]";
-                    string dataObject = $"  {musicArtist} - {musicName} ({musicGenre})".Truncate(ConsoleWrappers.ActionWindowWidth() - renderedDuration.Length - 5);
+                    string dataObject = $"  {musicArtist} - {musicName}".Truncate(ConsoleWrappers.ActionWindowWidth() - renderedDuration.Length - 5);
                     string spaces = new(' ', ConsoleWrappers.ActionWindowWidth() - 4 - duration.Length - dataObject.Length);
                     finalEntry = dataObject + spaces + renderedDuration;
                 }
