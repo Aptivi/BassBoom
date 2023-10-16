@@ -227,29 +227,33 @@ namespace BassBoom.Cli.CliBase
 
         internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(string musicPath)
         {
+            var metadatav2 = Player.managedV2;
+            var metadatav1 = Player.managedV1;
             string musicName =
-                !string.IsNullOrEmpty(Player.managedV2.Title) ? Player.managedV2.Title :
-                !string.IsNullOrEmpty(Player.managedV1.Title) ? Player.managedV1.Title :
+                !string.IsNullOrEmpty(metadatav2.Title) ? metadatav2.Title :
+                !string.IsNullOrEmpty(metadatav1.Title) ? metadatav1.Title :
                 Path.GetFileNameWithoutExtension(musicPath);
             string musicArtist =
-                !string.IsNullOrEmpty(Player.managedV2.Artist) ? Player.managedV2.Artist :
-                !string.IsNullOrEmpty(Player.managedV1.Artist) ? Player.managedV1.Artist :
+                !string.IsNullOrEmpty(metadatav2.Artist) ? metadatav2.Artist :
+                !string.IsNullOrEmpty(metadatav1.Artist) ? metadatav1.Artist :
                 "Unknown Artist";
             string musicGenre =
-                !string.IsNullOrEmpty(Player.managedV2.Genre) ? Player.managedV2.Genre :
-                Player.managedV1.GenreIndex >= 0 ? $"{Player.managedV1.Genre} [{Player.managedV1.GenreIndex}]" :
+                !string.IsNullOrEmpty(metadatav2.Genre) ? metadatav2.Genre :
+                metadatav1.GenreIndex >= 0 ? $"{metadatav1.Genre} [{metadatav1.GenreIndex}]" :
                 "Unknown Genre";
             return (musicName, musicArtist, musicGenre);
         }
 
         internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(int cachedInfoIdx)
         {
-            var metadatav2 = Player.cachedInfos[cachedInfoIdx].MetadataV2;
-            var metadatav1 = Player.cachedInfos[cachedInfoIdx].MetadataV1;
+            var cachedInfo = Player.cachedInfos[cachedInfoIdx];
+            var metadatav2 = cachedInfo.MetadataV2;
+            var metadatav1 = cachedInfo.MetadataV1;
+            var path = cachedInfo.MusicPath;
             string musicName =
                 !string.IsNullOrEmpty(metadatav2.Title) ? metadatav2.Title :
                 !string.IsNullOrEmpty(metadatav1.Title) ? metadatav1.Title :
-                "Unknown Song";
+                Path.GetFileNameWithoutExtension(path);
             string musicArtist =
                 !string.IsNullOrEmpty(metadatav2.Artist) ? metadatav2.Artist :
                 !string.IsNullOrEmpty(metadatav1.Artist) ? metadatav1.Artist :
