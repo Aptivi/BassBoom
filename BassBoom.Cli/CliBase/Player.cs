@@ -37,6 +37,7 @@ namespace BassBoom.Cli.CliBase
     internal static class Player
     {
         internal static Thread playerThread;
+        internal static Thread playerDrawThread = new(HandleDraw);
         internal static Lyric lyricInstance = null;
         internal static FrameInfo frameInfo = null;
         internal static Id3V1Metadata managedV1 = null;
@@ -57,77 +58,24 @@ namespace BassBoom.Cli.CliBase
         internal static readonly List<string> musicFiles = new();
         internal static readonly List<CachedSongInfo> cachedInfos = new();
 
-        public static void PlayerLoop(string musicPath)
+        public static void PlayerLoop()
         {
             InitBasolia.Init();
             volume = PlaybackTools.GetVolume().baseLinear;
-            bool initial = true;
 
             // First, clear the screen to draw our TUI
             while (!exiting)
             {
                 try
                 {
-                    // If we need to render again, do it
+                    // Redraw if necessary
+                    bool wasRerendered = rerender;
                     if (rerender)
                     {
-                        rerender = PlaybackTools.Playing;
-                        ConsoleWrappers.ActionCursorVisible(false);
-                        ColorTools.LoadBack();
-
-                        // First, print the keystrokes
-                        string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [H] Help";
-                        CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 2, keystrokes);
-
-                        // Print the separator and the music file info
-                        string separator = new('=', ConsoleWrappers.ActionWindowWidth());
-                        CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 4, separator);
-                    }
-
-                    // Populate music file info, as necessary
-                    if (initial)
-                    {
-                        if (populate)
-                            PlayerControls.PopulateMusicFileInfo(musicPath);
-                        PlayerControls.RenderSongName(musicPath);
-                        initial = false;
-                    }
-                    else
-                    {
-                        if (populate)
-                            PlayerControls.PopulateMusicFileInfo(musicFiles[currentSong - 1]);
-                        PlayerControls.RenderSongName(musicFiles[currentSong - 1]);
-                    }
-
-                    // Now, print the list of songs.
-                    int startPos = 3;
-                    int endPos = ConsoleWrappers.ActionWindowHeight() - 10;
-                    int songsPerPage = endPos - startPos;
-                    int pages = musicFiles.Count / songsPerPage;
-                    if (musicFiles.Count % songsPerPage == 0)
-                        pages--;
-                    int currentPage = (currentSong - 1) / songsPerPage;
-                    int startIndex = songsPerPage * currentPage;
-                    for (int i = 0; i <= songsPerPage - 1; i++)
-                    {
-                        // Populate the first pane
-                        string finalEntry = "";
-                        int finalIndex = i + startIndex;
-                        if (finalIndex <= musicFiles.Count - 1)
-                        {
-                            // Here, it's getting uglier as we don't have ElementAt() in IEnumerable, too!
-                            var (musicName, musicArtist, musicGenre) = PlayerControls.GetMusicNameArtistGenre(finalIndex);
-                            string duration = cachedInfos[finalIndex].DurationSpan;
-                            string renderedDuration = $"[{duration}]";
-                            string dataObject = $"  {musicArtist} - {musicName} ({musicGenre})".Truncate(ConsoleWrappers.ActionWindowWidth() - renderedDuration.Length - 5);
-                            string spaces = new(' ', ConsoleWrappers.ActionWindowWidth() - 4 - duration.Length - dataObject.Length);
-                            finalEntry = dataObject + spaces + renderedDuration;
-                        }
-
-                        // Render an entry
-                        var finalForeColor = finalIndex == currentSong - 1 ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Gray);
-                        int top = startPos + finalIndex - startIndex;
-                        TextWriterWhereColor.WriteWhereColor(finalEntry + new string(' ', ConsoleWrappers.ActionWindowWidth() - finalEntry.Length), 0, top, finalForeColor);
+                        rerender = false;
+                        playerDrawThread.Start();
+                        playerDrawThread.Join();
+                        playerDrawThread = new(HandleDraw);
                     }
 
                     // Current duration
@@ -144,9 +92,8 @@ namespace BassBoom.Cli.CliBase
                         if (lyricInstance is not null)
                         {
                             string current = lyricInstance.GetLastLineCurrent();
-                            if (current != cachedLyric || rerender)
+                            if (current != cachedLyric || wasRerendered)
                             {
-                                rerender = false;
                                 cachedLyric = current;
                                 TextWriterWhereColor.WriteWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrappers.ActionWindowHeight() - 10);
                                 CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 10, lyricInstance.GetLastLineCurrent());
@@ -330,6 +277,57 @@ namespace BassBoom.Cli.CliBase
                 rerender = true;
             }
             regen = true;
+        }
+
+        private static void HandleDraw()
+        {
+            // Prepare things
+            ConsoleWrappers.ActionCursorVisible(false);
+            ColorTools.LoadBack();
+
+            // First, print the keystrokes
+            string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [H] Help";
+            CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 2, keystrokes);
+
+            // Print the separator and the music file info
+            string separator = new('=', ConsoleWrappers.ActionWindowWidth());
+            CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 4, separator);
+
+            // Populate music file info, as necessary
+            if (populate)
+                PlayerControls.PopulateMusicFileInfo(musicFiles[currentSong - 1]);
+            PlayerControls.RenderSongName(musicFiles[currentSong - 1]);
+
+            // Now, print the list of songs.
+            int startPos = 3;
+            int endPos = ConsoleWrappers.ActionWindowHeight() - 10;
+            int songsPerPage = endPos - startPos;
+            int pages = musicFiles.Count / songsPerPage;
+            if (musicFiles.Count % songsPerPage == 0)
+                pages--;
+            int currentPage = (currentSong - 1) / songsPerPage;
+            int startIndex = songsPerPage * currentPage;
+            for (int i = 0; i <= songsPerPage - 1; i++)
+            {
+                // Populate the first pane
+                string finalEntry = "";
+                int finalIndex = i + startIndex;
+                if (finalIndex <= musicFiles.Count - 1)
+                {
+                    // Here, it's getting uglier as we don't have ElementAt() in IEnumerable, too!
+                    var (musicName, musicArtist, musicGenre) = PlayerControls.GetMusicNameArtistGenre(finalIndex);
+                    string duration = cachedInfos[finalIndex].DurationSpan;
+                    string renderedDuration = $"[{duration}]";
+                    string dataObject = $"  {musicArtist} - {musicName} ({musicGenre})".Truncate(ConsoleWrappers.ActionWindowWidth() - renderedDuration.Length - 5);
+                    string spaces = new(' ', ConsoleWrappers.ActionWindowWidth() - 4 - duration.Length - dataObject.Length);
+                    finalEntry = dataObject + spaces + renderedDuration;
+                }
+
+                // Render an entry
+                var finalForeColor = finalIndex == currentSong - 1 ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Gray);
+                int top = startPos + finalIndex - startIndex;
+                TextWriterWhereColor.WriteWhereColor(finalEntry + new string(' ', ConsoleWrappers.ActionWindowWidth() - finalEntry.Length), 0, top, finalForeColor);
+            }
         }
 
         private static string Truncate(this string target, int threshold)

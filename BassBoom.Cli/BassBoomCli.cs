@@ -51,7 +51,8 @@ namespace BassBoom.Cli
                 }
 
                 // Now, open an interactive TUI
-                Player.PlayerLoop(musicPath);
+                Player.musicFiles.Add(musicPath);
+                Player.PlayerLoop();
             }
             catch (Exception ex)
             {

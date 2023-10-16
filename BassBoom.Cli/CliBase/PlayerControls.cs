@@ -197,6 +197,7 @@ namespace BassBoom.Cli.CliBase
             }
             else
             {
+                Player.rerender = true;
                 InfoBoxColor.WriteInfoBox("Loading BassBoom to open {0}...", false, vars: musicPath);
                 Player.total = AudioInfoTools.GetDuration(true);
                 Player.totalSpan = AudioInfoTools.GetDurationSpanFromSamples(Player.total);
