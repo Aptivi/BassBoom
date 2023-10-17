@@ -37,7 +37,6 @@ namespace BassBoom.Cli.CliBase
     internal static class Player
     {
         internal static Thread playerThread;
-        internal static Thread playerDrawThread = new(HandleDraw);
         internal static Lyric lyricInstance = null;
         internal static FrameInfo frameInfo = null;
         internal static Id3V1Metadata managedV1 = null;
@@ -72,9 +71,7 @@ namespace BassBoom.Cli.CliBase
                     if (rerender)
                     {
                         rerender = false;
-                        playerDrawThread.Start();
-                        playerDrawThread.Join();
-                        playerDrawThread = new(HandleDraw);
+                        HandleDraw();
                     }
 
                     // Current duration
