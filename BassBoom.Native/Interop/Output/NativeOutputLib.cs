@@ -18,7 +18,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using BassBoom.Native.Interop.Analysis;
 
 namespace BassBoom.Native.Interop.Output
 {

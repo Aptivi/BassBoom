@@ -25,7 +25,6 @@ using BassBoom.Basolia.Playback;
 using BassBoom.ViewModels;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BassBoom.Views;
