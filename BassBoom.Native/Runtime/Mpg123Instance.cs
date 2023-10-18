@@ -20,7 +20,9 @@ using BassBoom.Native.Exceptions;
 using BassBoom.Native.Interop;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
+using BassBoom.Native.Interop.Synthesis;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -50,12 +52,15 @@ namespace BassBoom.Native.Runtime
 #if WINDOWS
         internal static string mpg123LibPath = runtimesPath + "mpg123-0.dll";
         internal static string out123LibPath = runtimesPath + "out123-0.dll";
+        internal static string syn123LibPath = runtimesPath + "syn123-0.dll";
 #elif MACOS
         internal static string mpg123LibPath = runtimesPath + "libmpg123.dylib";
         internal static string out123LibPath = runtimesPath + "libout123.dylib";
+        internal static string syn123LibPath = runtimesPath + "libsyn123.dylib";
 #else
         internal static string mpg123LibPath = runtimesPath + "libmpg123.so";
         internal static string out123LibPath = runtimesPath + "libout123.so";
+        internal static string syn123LibPath = runtimesPath + "libsyn123.so";
 #endif
 
         /// <summary>
@@ -65,31 +70,37 @@ namespace BassBoom.Native.Runtime
 
         internal static mpg123_handle* _mpg123Handle;
         internal static out123_handle* _out123Handle;
+        internal static syn123_handle* _syn123Handle;
 
         /// <summary>
         /// Initializes the mpg123 library
         /// </summary>
         public static void InitializeLibrary() =>
-            InitializeLibrary(mpg123LibPath, out123LibPath);
+            InitializeLibrary(mpg123LibPath, out123LibPath, syn123LibPath);
 
         /// <summary>
         /// Initializes the mpg123 library
         /// </summary>
         /// <param name="libPath">Absolute path to the mpg123 library</param>
         /// <param name="libPathOut">Absolute path to the out123 library</param>
-        public static void InitializeLibrary(string libPath, string libPathOut)
+        /// <param name="libPathSyn">Absolute path to the syn123 library</param>
+        public static void InitializeLibrary(string libPath, string libPathOut, string libPathSyn)
         {
             // Check to see if we have this path
             if (!File.Exists(libPath))
                 throw new BasoliaNativeLibraryException($"mpg123 library path {libPath} doesn't exist.");
             if (!File.Exists(libPathOut))
                 throw new BasoliaNativeLibraryException($"out123 library path {libPath} doesn't exist.");
+            if (!File.Exists(libPathSyn))
+                throw new BasoliaNativeLibraryException($"syn123 library path {libPath} doesn't exist.");
 
             // Set the library path
             string oldLibPath = mpg123LibPath;
             string oldLibPathOut = out123LibPath;
+            string oldLibPathSyn = syn123LibPath;
             mpg123LibPath = libPath;
             out123LibPath = libPathOut;
+            syn123LibPath = libPathSyn;
             NativeLibrary.SetDllImportResolver(typeof(NativeInit).Assembly, ResolveLibrary);
             string libPluginsPath = Path.GetDirectoryName(oldLibPath) + "/plugins/";
 #if WINDOWS
@@ -125,6 +136,22 @@ namespace BassBoom.Native.Runtime
                 out123LibPath = oldLibPathOut;
                 throw new BasoliaNativeLibraryException($"out123 library path {libPathOut} doesn't contain a valid out123 library. out123_new() was called. {ex.Message}");
             }
+
+            // Do the same for the syn123 library!
+            try
+            {
+                uint major = 0, minor = 0, patch = 0;
+                var versionHandle = NativeSynthesis.syn123_distversion(ref major, ref minor, ref patch);
+                string version = Marshal.PtrToStringAnsi(versionHandle);
+
+                // We can't init handle here, because we need values.
+                Debug.WriteLine(version);
+            }
+            catch (Exception ex)
+            {
+                syn123LibPath = oldLibPathSyn;
+                throw new BasoliaNativeLibraryException($"syn123 library path {libPathSyn} doesn't contain a valid syn123 library. syn123_new() was called. {ex.Message}");
+            }
         }
 
         private static nint ResolveLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
@@ -134,6 +161,8 @@ namespace BassBoom.Native.Runtime
                 libHandle = NativeLibrary.Load(mpg123LibPath);
             else if (libraryName == LibraryTools.LibraryNameOut)
                 libHandle = NativeLibrary.Load(out123LibPath);
+            else if (libraryName == LibraryTools.LibraryNameSyn)
+                libHandle = NativeLibrary.Load(syn123LibPath);
             return libHandle;
         }
 

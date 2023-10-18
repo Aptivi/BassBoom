@@ -39,6 +39,12 @@ namespace BassBoom.Native.Interop
             Mpg123Instance.out123LibPath;
 
         /// <summary>
+        /// Absolute path to the syn123 library
+        /// </summary>
+        public static string LibraryPathSyn =>
+            Mpg123Instance.syn123LibPath;
+
+        /// <summary>
         /// C library name (POSIX)
         /// </summary>
         public const string LibcName = "libc";
@@ -52,6 +58,11 @@ namespace BassBoom.Native.Interop
         /// Library name to search for upon invoking P/Invoke
         /// </summary>
         public const string LibraryNameOut = "out123";
+
+        /// <summary>
+        /// Library name to search for upon invoking P/Invoke
+        /// </summary>
+        public const string LibraryNameSyn = "syn123";
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_init (void)
