@@ -363,6 +363,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo
   nameWithType: AudioInfoTools.GetFrameInfo
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength
+  name: GetFrameLength()
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameLength
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength()
+  nameWithType: AudioInfoTools.GetFrameLength()
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength*
+  name: GetFrameLength
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameLength_
+  commentId: Overload:BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength
+  nameWithType: AudioInfoTools.GetFrameLength
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize
   name: GetFrameSize()
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameSize
@@ -405,6 +418,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata
   nameWithType: AudioInfoTools.GetId3Metadata
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame
+  name: GetSamplesPerFrame()
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetSamplesPerFrame
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame()
+  nameWithType: AudioInfoTools.GetSamplesPerFrame()
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame*
+  name: GetSamplesPerFrame
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetSamplesPerFrame_
+  commentId: Overload:BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame
+  nameWithType: AudioInfoTools.GetSamplesPerFrame
 - uid: BassBoom.Basolia.Format.Cache
   name: BassBoom.Basolia.Format.Cache
   href: api/BassBoom.Basolia.Format.Cache.html
