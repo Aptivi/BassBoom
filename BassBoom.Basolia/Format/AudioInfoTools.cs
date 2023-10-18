@@ -126,6 +126,50 @@ namespace BassBoom.Basolia.Format
             return frameSize;
         }
 
+        public static int GetFrameLength()
+        {
+            int getStatus;
+            InitBasolia.CheckInited();
+
+            // Check to see if the file is open
+            if (!FileTools.IsOpened)
+                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+
+                // Get the frame length
+                getStatus = NativeStatus.mpg123_framelength(handle);
+                if (getStatus == (int)mpg123_errors.MPG123_ERR)
+                    throw new BasoliaException($"Can't get the frame length.", mpg123_errors.MPG123_ERR);
+                Debug.WriteLine($"Got frame length {getStatus}");
+            }
+            return getStatus;
+        }
+
+        public static int GetSamplesPerFrame()
+        {
+            int getStatus;
+            InitBasolia.CheckInited();
+
+            // Check to see if the file is open
+            if (!FileTools.IsOpened)
+                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+
+                // Get the samples per frame
+                getStatus = NativeStatus.mpg123_spf(handle);
+                if (getStatus < 0)
+                    throw new BasoliaException($"Can't get the samples per frame.", mpg123_errors.MPG123_ERR);
+                Debug.WriteLine($"Got frame spf {getStatus}");
+            }
+            return getStatus;
+        }
+
         public static int GetBufferSize()
         {
             int bufferSize;
