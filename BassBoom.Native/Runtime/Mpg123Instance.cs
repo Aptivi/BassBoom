@@ -34,43 +34,18 @@ namespace BassBoom.Native.Runtime
     /// </summary>
     public unsafe class Mpg123Instance
     {
-        internal static string runtimesPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/" + (
-#if WINDOWS
-            RuntimeInformation.OSArchitecture == Architecture.X64   ? "runtimes/win-x64/native/" :
-            RuntimeInformation.OSArchitecture == Architecture.X86   ? "runtimes/win-x86/native/" :
-            RuntimeInformation.OSArchitecture == Architecture.Arm   ? "runtimes/win-arm/native/" :
-                                                                      "runtimes/win-arm64/native/");
-#elif MACOS
-            RuntimeInformation.OSArchitecture == Architecture.X64   ? "runtimes/osx-x64/native/" :
-                                                                      "runtimes/osx-arm/native/");
-#else
-            RuntimeInformation.OSArchitecture == Architecture.X64   ? "runtimes/linux-x64/native/" :
-            RuntimeInformation.OSArchitecture == Architecture.X86   ? "runtimes/linux-x86/native/" :
-            RuntimeInformation.OSArchitecture == Architecture.Arm   ? "runtimes/linux-arm/native/" :
-                                                                      "runtimes/linux-arm64/native/");
-#endif
-#if WINDOWS
-        internal static string mpg123LibPath = runtimesPath + "mpg123-0.dll";
-        internal static string out123LibPath = runtimesPath + "out123-0.dll";
-        internal static string syn123LibPath = runtimesPath + "syn123-0.dll";
-#elif MACOS
-        internal static string mpg123LibPath = runtimesPath + "libmpg123.dylib";
-        internal static string out123LibPath = runtimesPath + "libout123.dylib";
-        internal static string syn123LibPath = runtimesPath + "libsyn123.dylib";
-#else
-        internal static string mpg123LibPath = runtimesPath + "libmpg123.so";
-        internal static string out123LibPath = runtimesPath + "libout123.so";
-        internal static string syn123LibPath = runtimesPath + "libsyn123.so";
-#endif
+        internal static string mpg123LibPath = GetAppropriateMpg123LibraryPath();
+        internal static string out123LibPath = GetAppropriateOut123LibraryPath();
+        internal static string syn123LibPath = GetAppropriateSyn123LibraryPath();
+
+        internal static mpg123_handle* _mpg123Handle;
+        internal static out123_handle* _out123Handle;
+        internal static syn123_handle* _syn123Handle;
 
         /// <summary>
         /// Singleton of the mpg123 instance class
         /// </summary>
         public static Mpg123Instance Instance { get; } = new Mpg123Instance();
-
-        internal static mpg123_handle* _mpg123Handle;
-        internal static out123_handle* _out123Handle;
-        internal static syn123_handle* _syn123Handle;
 
         /// <summary>
         /// Initializes the mpg123 library
@@ -103,13 +78,14 @@ namespace BassBoom.Native.Runtime
             syn123LibPath = libPathSyn;
             NativeLibrary.SetDllImportResolver(typeof(NativeInit).Assembly, ResolveLibrary);
             string libPluginsPath = Path.GetDirectoryName(oldLibPath) + "/plugins/";
-#if WINDOWS
-            Environment.SetEnvironmentVariable("MPG123_MODDIR", libPluginsPath);
-#else
-            int result = LibraryTools.setenv("MPG123_MODDIR", libPluginsPath, 1);
-            if (result != 0)
-                throw new BasoliaNativeLibraryException("Can't set environment variable MPG123_MODDIR");
-#endif
+            if (PlatformTools.IsOnWindows())
+                Environment.SetEnvironmentVariable("MPG123_MODDIR", libPluginsPath);
+            else
+            {
+                int result = LibraryTools.setenv("MPG123_MODDIR", libPluginsPath, 1);
+                if (result != 0)
+                    throw new BasoliaNativeLibraryException("Can't set environment variable MPG123_MODDIR");
+            }
 
             // Verify that we've actually loaded the library!
             try
@@ -164,6 +140,51 @@ namespace BassBoom.Native.Runtime
             else if (libraryName == LibraryTools.LibraryNameSyn)
                 libHandle = NativeLibrary.Load(syn123LibPath);
             return libHandle;
+        }
+
+        private static string GetAppropriateMpg123LibraryPath()
+        {
+            string runtimesPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/";
+            string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
+            if (PlatformTools.IsOnWindows())
+                runtimesPath += $"runtimes/win-{lowerArch}/native/mpg123-0.dll";
+            else if (PlatformTools.IsOnMacOS())
+                runtimesPath += $"runtimes/osx-{lowerArch}/native/libmpg123.dylib";
+            else if (PlatformTools.IsOnUnix())
+                runtimesPath += $"runtimes/linux-{lowerArch}/native/libmpg123.so";
+            else
+                runtimesPath += $"runtimes/freebsd-{lowerArch}/native/libmpg123.so";
+            return runtimesPath;
+        }
+
+        private static string GetAppropriateOut123LibraryPath()
+        {
+            string runtimesPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/";
+            string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
+            if (PlatformTools.IsOnWindows())
+                runtimesPath += $"runtimes/win-{lowerArch}/native/out123-0.dll";
+            else if (PlatformTools.IsOnMacOS())
+                runtimesPath += $"runtimes/osx-{lowerArch}/native/libout123.dylib";
+            else if (PlatformTools.IsOnUnix())
+                runtimesPath += $"runtimes/linux-{lowerArch}/native/libout123.so";
+            else
+                runtimesPath += $"runtimes/freebsd-{lowerArch}/native/libout123.so";
+            return runtimesPath;
+        }
+
+        private static string GetAppropriateSyn123LibraryPath()
+        {
+            string runtimesPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/";
+            string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
+            if (PlatformTools.IsOnWindows())
+                runtimesPath += $"runtimes/win-{lowerArch}/native/syn123-0.dll";
+            else if (PlatformTools.IsOnMacOS())
+                runtimesPath += $"runtimes/osx-{lowerArch}/native/libsyn123.dylib";
+            else if (PlatformTools.IsOnUnix())
+                runtimesPath += $"runtimes/linux-{lowerArch}/native/libsyn123.so";
+            else
+                runtimesPath += $"runtimes/freebsd-{lowerArch}/native/libsyn123.so";
+            return runtimesPath;
         }
 
         internal protected Mpg123Instance()
