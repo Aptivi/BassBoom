@@ -142,9 +142,12 @@ namespace BassBoom.Native.Runtime
             return libHandle;
         }
 
-        private static string GetAppropriateMpg123LibraryPath()
+        internal static string GetAppropriateMpg123LibraryPath() =>
+            GetAppropriateMpg123LibraryPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+
+        internal static string GetAppropriateMpg123LibraryPath(string root)
         {
-            string runtimesPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/";
+            string runtimesPath = root + "/";
             string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
             if (PlatformTools.IsOnWindows())
                 runtimesPath += $"runtimes/win-{lowerArch}/native/mpg123-0.dll";
@@ -157,9 +160,12 @@ namespace BassBoom.Native.Runtime
             return runtimesPath;
         }
 
-        private static string GetAppropriateOut123LibraryPath()
+        internal static string GetAppropriateOut123LibraryPath() =>
+            GetAppropriateOut123LibraryPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+
+        internal static string GetAppropriateOut123LibraryPath(string root)
         {
-            string runtimesPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/";
+            string runtimesPath = root + "/";
             string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
             if (PlatformTools.IsOnWindows())
                 runtimesPath += $"runtimes/win-{lowerArch}/native/out123-0.dll";
@@ -172,9 +178,12 @@ namespace BassBoom.Native.Runtime
             return runtimesPath;
         }
 
-        private static string GetAppropriateSyn123LibraryPath()
+        internal static string GetAppropriateSyn123LibraryPath() =>
+            GetAppropriateSyn123LibraryPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+
+        internal static string GetAppropriateSyn123LibraryPath(string root)
         {
-            string runtimesPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/";
+            string runtimesPath = root + "/";
             string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
             if (PlatformTools.IsOnWindows())
                 runtimesPath += $"runtimes/win-{lowerArch}/native/syn123-0.dll";
