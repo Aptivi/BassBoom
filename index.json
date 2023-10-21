@@ -107,7 +107,7 @@
   "api/BassBoom.Basolia.InitBasolia.html": {
     "href": "api/BassBoom.Basolia.InitBasolia.html",
     "title": "Class InitBasolia | BassBoom Basolia API - Aptivi Internals",
-    "keywords": "Class InitBasolia Initialization code Inheritance object InitBasolia Namespace: BassBoom.Basolia Assembly: BassBoom.Basolia.dll Syntax public static class InitBasolia Methods | Edit this page View Source CheckInited() Declaration public static void CheckInited() | Edit this page View Source Init(bool) Initializes the MPG123 library for Basolia to function Declaration public static void Init(bool Fugitive = false) Parameters Type Name Description bool Fugitive Allows illegal operations. NEVER SET THIS TO TRUE UNLESS YOU KNOW WHAT YOU'RE DOING!"
+    "keywords": "Class InitBasolia Initialization code Inheritance object InitBasolia Namespace: BassBoom.Basolia Assembly: BassBoom.Basolia.dll Syntax public static class InitBasolia Methods | Edit this page View Source CheckInited() Declaration public static void CheckInited() | Edit this page View Source Init(string, bool) Initializes the MPG123 library for Basolia to function Declaration public static void Init(string root = \"\", bool Fugitive = false) Parameters Type Name Description string root Sets the root path to the library files bool Fugitive Allows illegal operations. NEVER SET THIS TO TRUE UNLESS YOU KNOW WHAT YOU'RE DOING!"
   },
   "api/BassBoom.Basolia.Lyrics.Lyric.html": {
     "href": "api/BassBoom.Basolia.Lyrics.Lyric.html",
