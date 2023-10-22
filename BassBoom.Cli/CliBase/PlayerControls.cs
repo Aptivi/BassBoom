@@ -333,6 +333,24 @@ namespace BassBoom.Cli.CliBase
                 RemoveCurrentSong();
         }
 
+        internal static void PromptSeek()
+        {
+            // In case we have no songs in the playlist...
+            if (!Player.musicFiles.Any())
+                return;
+
+            // Prompt the user to set the current position to the specified time
+            string time = InfoBoxColor.WriteInfoBoxInput("Write the target position in this format: HH:MM:SS");
+            if (TimeSpan.TryParse(time, out TimeSpan duration))
+            {
+                Player.position = (int)(Player.cachedInfos[Player.currentSong - 1].FormatInfo.rate * duration.TotalSeconds);
+                if (Player.position > Player.total)
+                    Player.position = Player.total;
+                PlaybackPositioningTools.SeekToFrame(Player.position);
+            }
+            Player.rerender = true;
+        }
+
         internal static void ShowHelp()
         {
             InfoBoxColor.WriteInfoBox(
@@ -353,6 +371,7 @@ namespace BassBoom.Cli.CliBase
                 [N]                 Next song
                 [R]                 Remove current song
                 [CTRL] + [R]        Remove all songs
+                [S]                 Selectively seek
                 """
             );
             Player.rerender = true;

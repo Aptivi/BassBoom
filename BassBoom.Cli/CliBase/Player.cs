@@ -258,6 +258,9 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.I:
                     PlayerControls.ShowSongInfo();
                     break;
+                case ConsoleKey.S:
+                    PlayerControls.PromptSeek();
+                    break;
                 case ConsoleKey.Q:
                     PlayerControls.Exit();
                     break;
