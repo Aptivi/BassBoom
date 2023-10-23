@@ -64,6 +64,7 @@ namespace BassBoom.Cli.CliBase
             // First, clear the screen to draw our TUI
             while (!exiting)
             {
+                Thread.Sleep(1);
                 try
                 {
                     // Redraw if necessary
