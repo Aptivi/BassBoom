@@ -25,38 +25,38 @@ if [ -z $releaseconf ]; then
 fi
 
 # Check for dependencies
-rarpath=`which rar`
+zippath=`which zip`
 if [ ! $? == 0 ]; then
-	echo rar is not found.
+	echo zip is not found.
 	exit 1
 fi
 
 # Pack binary
 echo Packing binary...
-"$rarpath" a -ep1 -r -m5 /tmp/$version-bin.rar "../BassBoom/bin/$releaseconf/net7.0/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-api.rar "../BassBoom.Basolia/bin/$releaseconf/net7.0/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-proto.rar "../BassBoom.Desktop/bin/$releaseconf/net7.0/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-protocli.rar "../BassBoom.Cli/bin/$releaseconf/net7.0/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-unsafeapi.rar "../BassBoom.Native/bin/$releaseconf/net7.0/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-bin-win.rar "../BassBoom/bin/$releaseconf/net7.0-windows/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-api-win.rar "../BassBoom.Basolia/bin/$releaseconf/net7.0-windows/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-proto-win.rar "../BassBoom.Desktop/bin/$releaseconf/net7.0-windows/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-protocli-win.rar "../BassBoom.Cli/bin/$releaseconf/net7.0-windows/"
-"$rarpath" a -ep1 -r -m5 /tmp/$version-unsafeapi-win.rar "../BassBoom.Native/bin/$releaseconf/net7.0-windows/"
+cd "../BassBoom/bin/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-bin.zip . && cd -
+cd "../BassBoom.Basolia/bin/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-api.zip . && cd -
+cd "../BassBoom/bin.Desktop/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-proto.zip . && cd -
+cd "../BassBoom/bin.Cli/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-protocli.zip . && cd -
+cd "../BassBoom/bin.Native/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-unsafeapi.zip . && cd -
+cd "../BassBoom/bin/$releaseconf/net7.0-windows/" && "$zippath" -r /tmp/$version-bin-win.zip . && cd -
+cd "../BassBoom.Basolia/bin/$releaseconf/net7.0-windows/" && "$zippath" -r /tmp/$version-api-win.zip . && cd -
+cd "../BassBoom/bin.Desktop/$releaseconf/net7.0-windows/" && "$zippath" -r /tmp/$version-proto-win.zip . && cd -
+cd "../BassBoom/bin.Cli/$releaseconf/net7.0-windows/" && "$zippath" -r /tmp/$version-protocli-win.zip . && cd -
+cd "../BassBoom/bin.Native/$releaseconf/net7.0-windows/" && "$zippath" -r /tmp/$version-unsafeapi-win.zip . && cd -
 if [ ! $? == 0 ]; then
-	echo Packing using rar failed.
+	echo Packing using zip failed.
 	exit 1
 fi
 
 # Inform success
-mv ~/tmp/$version-bin.rar .
-mv ~/tmp/$version-api.rar .
-mv ~/tmp/$version-proto.rar .
-mv ~/tmp/$version-unsafeapi.rar .
-mv ~/tmp/$version-bin-win.rar .
-mv ~/tmp/$version-api-win.rar .
-mv ~/tmp/$version-proto-win.rar .
-mv ~/tmp/$version-protocli-win.rar .
-mv ~/tmp/$version-unsafeapi-win.rar .
+mv ~/tmp/$version-bin.zip .
+mv ~/tmp/$version-api.zip .
+mv ~/tmp/$version-proto.zip .
+mv ~/tmp/$version-unsafeapi.zip .
+mv ~/tmp/$version-bin-win.zip .
+mv ~/tmp/$version-api-win.zip .
+mv ~/tmp/$version-proto-win.zip .
+mv ~/tmp/$version-protocli-win.zip .
+mv ~/tmp/$version-unsafeapi-win.zip .
 echo Build and pack successful.
 exit 0
