@@ -47,6 +47,10 @@ namespace BassBoom.Basolia.File
             if (string.IsNullOrEmpty(path))
                 throw new BasoliaException("Provide a path to a music file", mpg123_errors.MPG123_BAD_FILE);
 
+            // Check to see if the file exists
+            if (!System.IO.File.Exists(path))
+                throw new BasoliaException("Music file doesn't exist", mpg123_errors.MPG123_BAD_FILE);
+
             // We're now entering the dangerous zone
             unsafe
             {
