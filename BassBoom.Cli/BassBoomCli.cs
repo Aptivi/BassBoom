@@ -34,24 +34,20 @@ namespace BassBoom.Cli
                 Console.Title = "BassBoom CLI - Basolia v0.0.2 - Alpha 2";
 
                 // First, prompt for the music path if no arguments are provided.
-                string musicPath;
-                if (args.Length == 0)
+                if (args.Length != 0)
                 {
-                    TextWriterColor.Write("Provide a path to the music path in the below input:");
-                    musicPath = Input.ReadLine();
-                }
-                else
-                    musicPath = args[0];
+                    string musicPath = args[0];
 
-                // Now, check for existence.
-                if (string.IsNullOrEmpty(musicPath) || !File.Exists(musicPath))
-                {
-                    TextWriterColor.Write("Music file {0} doesn't exist.", musicPath);
-                    return 1;
+                    // Check for existence.
+                    if (string.IsNullOrEmpty(musicPath) || !File.Exists(musicPath))
+                    {
+                        TextWriterColor.Write("Music file {0} doesn't exist.", musicPath);
+                        return 1;
+                    }
+                    Player.musicFiles.Add(musicPath);
                 }
 
                 // Now, open an interactive TUI
-                Player.musicFiles.Add(musicPath);
                 Player.PlayerLoop();
             }
             catch (Exception ex)

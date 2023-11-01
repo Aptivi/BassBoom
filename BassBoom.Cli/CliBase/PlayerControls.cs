@@ -158,14 +158,17 @@ namespace BassBoom.Cli.CliBase
             {
                 int currentPos = Player.position;
                 var musicFiles = Directory.GetFiles(path, "*.mp3");
-                foreach (string musicFile in musicFiles)
+                if (musicFiles.Length > 0)
                 {
+                    foreach (string musicFile in musicFiles)
+                    {
+                        Player.populate = true;
+                        PopulateMusicFileInfo(musicFile);
+                    }
                     Player.populate = true;
-                    PopulateMusicFileInfo(musicFile);
+                    PopulateMusicFileInfo(Player.musicFiles[Player.currentSong - 1]);
+                    PlaybackPositioningTools.SeekToFrame(currentPos);
                 }
-                Player.populate = true;
-                PopulateMusicFileInfo(Player.musicFiles[Player.currentSong - 1]);
-                PlaybackPositioningTools.SeekToFrame(currentPos);
             }
             else
                 InfoBoxColor.WriteInfoBox("Music library directory is not found.");

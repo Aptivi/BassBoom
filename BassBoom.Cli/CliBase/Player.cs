@@ -76,8 +76,8 @@ namespace BassBoom.Cli.CliBase
                     }
 
                     // Current duration
-                    position = PlaybackPositioningTools.GetCurrentDuration();
-                    var posSpan = PlaybackPositioningTools.GetCurrentDurationSpan();
+                    position = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDuration() : 0;
+                    var posSpan = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDurationSpan() : new();
                     ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleWrappers.ActionWindowHeight() - 8, 6);
                     TextWriterWhereColor.WriteWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrappers.ActionWindowHeight() - 9);
                     TextWriterWhereColor.WriteWhere($"Seek: {PlayerControls.seekRate:0.00} | Vol: {volume:0.00}", ConsoleWrappers.ActionWindowWidth() - $"Seek: {PlayerControls.seekRate:0.00} | Vol: {volume:0.00}".Length - 3, ConsoleWrappers.ActionWindowHeight() - 9);
