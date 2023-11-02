@@ -142,12 +142,17 @@ namespace BassBoom.Cli.CliBase
         internal static void PromptForAddSong()
         {
             string path = InfoBoxColor.WriteInfoBoxInput("Enter a path to the music file");
-            int currentPos = Player.position;
-            Player.populate = true;
-            PopulateMusicFileInfo(path);
-            Player.populate = true;
-            PopulateMusicFileInfo(Player.musicFiles[Player.currentSong - 1]);
-            PlaybackPositioningTools.SeekToFrame(currentPos);
+            if (File.Exists(path))
+            {
+                int currentPos = Player.position;
+                Player.populate = true;
+                PopulateMusicFileInfo(path);
+                Player.populate = true;
+                PopulateMusicFileInfo(Player.musicFiles[Player.currentSong - 1]);
+                PlaybackPositioningTools.SeekToFrame(currentPos);
+            }
+            else
+                InfoBoxColor.WriteInfoBox($"File \"{path}\" doesn't exist.");
             Player.rerender = true;
         }
 
