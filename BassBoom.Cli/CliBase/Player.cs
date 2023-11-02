@@ -306,7 +306,11 @@ namespace BassBoom.Cli.CliBase
 
             // In case we have no songs in the playlist...
             if (!musicFiles.Any())
+            {
+                int height = (ConsoleWrappers.ActionWindowHeight() - 10) / 2;
+                CenteredTextColor.WriteCentered(height, "Press A to insert a single song to the playlist, or S to insert the whole music library.");
                 return;
+            }
 
             // Populate music file info, as necessary
             if (populate)
