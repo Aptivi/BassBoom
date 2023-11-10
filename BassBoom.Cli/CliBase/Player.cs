@@ -25,10 +25,12 @@ using BassBoom.Basolia.Playback;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using Terminaux.Base;
 using Terminaux.Colors;
 using Terminaux.Reader.Inputs;
+using Terminaux.Sequences.Builder.Types;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 
@@ -326,6 +328,7 @@ namespace BassBoom.Cli.CliBase
                 pages--;
             int currentPage = (currentSong - 1) / songsPerPage;
             int startIndex = songsPerPage * currentPage;
+            var playlist = new StringBuilder();
             for (int i = 0; i <= songsPerPage - 1; i++)
             {
                 // Populate the first pane
@@ -345,8 +348,14 @@ namespace BassBoom.Cli.CliBase
                 // Render an entry
                 var finalForeColor = finalIndex == currentSong - 1 ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Gray);
                 int top = startPos + finalIndex - startIndex;
-                TextWriterWhereColor.WriteWhereColor(finalEntry + new string(' ', ConsoleWrappers.ActionWindowWidth() - finalEntry.Length), 0, top, finalForeColor);
+                playlist.Append(
+                    $"{CsiSequences.GenerateCsiCursorPosition(1, top + 1)}" +
+                    $"{finalForeColor.VTSequenceForeground}" +
+                    finalEntry +
+                    new string(' ', ConsoleWrappers.ActionWindowWidth() - finalEntry.Length)
+                );
             }
+            TextWriterColor.WritePlain(playlist.ToString());
         }
 
         private static string Truncate(this string target, int threshold)
