@@ -38,9 +38,5 @@ namespace BassBoom.Native.Exceptions
             base($"{message}\n" +
                  $"Library path is {Mpg123Instance.mpg123LibPath}", innerException)
         { }
-
-        protected BasoliaNativeLibraryException(SerializationInfo info, StreamingContext context) :
-            base(info, context)
-        { }
     }
 }
