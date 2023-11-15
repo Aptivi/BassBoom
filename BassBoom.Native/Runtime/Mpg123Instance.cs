@@ -77,7 +77,7 @@ namespace BassBoom.Native.Runtime
             out123LibPath = libPathOut;
             syn123LibPath = libPathSyn;
             NativeLibrary.SetDllImportResolver(typeof(NativeInit).Assembly, ResolveLibrary);
-            string libPluginsPath = Path.GetDirectoryName(oldLibPath) + "/plugins/";
+            string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
             if (PlatformTools.IsOnWindows())
                 Environment.SetEnvironmentVariable("MPG123_MODDIR", libPluginsPath);
             else
