@@ -7,6 +7,34 @@ references:
   commentId: N:BassBoom.Basolia
   fullName: BassBoom.Basolia
   nameWithType: BassBoom.Basolia
+- uid: BassBoom.Basolia.Albums
+  name: BassBoom.Basolia.Albums
+  href: api/BassBoom.Basolia.Albums.html
+  commentId: N:BassBoom.Basolia.Albums
+  fullName: BassBoom.Basolia.Albums
+  nameWithType: BassBoom.Basolia.Albums
+- uid: BassBoom.Basolia.Albums.MusicFileLabeler
+  name: MusicFileLabeler
+  href: api/BassBoom.Basolia.Albums.MusicFileLabeler.html
+  commentId: T:BassBoom.Basolia.Albums.MusicFileLabeler
+  fullName: BassBoom.Basolia.Albums.MusicFileLabeler
+  nameWithType: MusicFileLabeler
+- uid: BassBoom.Basolia.Albums.MusicFileLabeler.LabelFiles(System.String)
+  name: LabelFiles(string)
+  href: api/BassBoom.Basolia.Albums.MusicFileLabeler.html#BassBoom_Basolia_Albums_MusicFileLabeler_LabelFiles_System_String_
+  commentId: M:BassBoom.Basolia.Albums.MusicFileLabeler.LabelFiles(System.String)
+  name.vb: LabelFiles(String)
+  fullName: BassBoom.Basolia.Albums.MusicFileLabeler.LabelFiles(string)
+  fullName.vb: BassBoom.Basolia.Albums.MusicFileLabeler.LabelFiles(String)
+  nameWithType: MusicFileLabeler.LabelFiles(string)
+  nameWithType.vb: MusicFileLabeler.LabelFiles(String)
+- uid: BassBoom.Basolia.Albums.MusicFileLabeler.LabelFiles*
+  name: LabelFiles
+  href: api/BassBoom.Basolia.Albums.MusicFileLabeler.html#BassBoom_Basolia_Albums_MusicFileLabeler_LabelFiles_
+  commentId: Overload:BassBoom.Basolia.Albums.MusicFileLabeler.LabelFiles
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Albums.MusicFileLabeler.LabelFiles
+  nameWithType: MusicFileLabeler.LabelFiles
 - uid: BassBoom.Basolia.BasoliaException
   name: BasoliaException
   href: api/BassBoom.Basolia.BasoliaException.html
@@ -268,6 +296,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.File.FileTools.OpenFile
   nameWithType: FileTools.OpenFile
+- uid: BassBoom.Basolia.File.FileTools.SupportedExtensions
+  name: SupportedExtensions
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_SupportedExtensions
+  commentId: P:BassBoom.Basolia.File.FileTools.SupportedExtensions
+  fullName: BassBoom.Basolia.File.FileTools.SupportedExtensions
+  nameWithType: FileTools.SupportedExtensions
+- uid: BassBoom.Basolia.File.FileTools.SupportedExtensions*
+  name: SupportedExtensions
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_SupportedExtensions_
+  commentId: Overload:BassBoom.Basolia.File.FileTools.SupportedExtensions
+  isSpec: "True"
+  fullName: BassBoom.Basolia.File.FileTools.SupportedExtensions
+  nameWithType: FileTools.SupportedExtensions
 - uid: BassBoom.Basolia.Format
   name: BassBoom.Basolia.Format
   href: api/BassBoom.Basolia.Format.html

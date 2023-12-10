@@ -15,6 +15,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Albums.MusicFileLabeler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Albums.MusicFileLabeler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Albums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Albums.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.BasoliaException.yml",
       "output": {
         ".html": {
