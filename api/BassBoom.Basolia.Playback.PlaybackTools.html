@@ -168,11 +168,12 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Playback_PlaybackTools_GetVolume.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Playback.PlaybackTools.GetVolume%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L164">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L190">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Playback_PlaybackTools_GetVolume_" data-uid="BassBoom.Basolia.Playback.PlaybackTools.GetVolume*"></a>
   <h4 id="BassBoom_Basolia_Playback_PlaybackTools_GetVolume" data-uid="BassBoom.Basolia.Playback.PlaybackTools.GetVolume">GetVolume()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the volume information</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -189,6 +190,22 @@
     <tbody>
       <tr>
         <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.double,system.double,system.double-.baselinear">baseLinear</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.double,system.double,system.double-.actuallinear">actualLinear</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.double,system.double,system.double-.decibelsrva">decibelsRva</a>)</td>
+        <td><p>A base linear volume from 0.0 to 1.0, an actual linear volume from 0.0 to 1.0, and the RVA volume in decibels (dB)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaOutException.html">BasoliaOutException</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -198,41 +215,78 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Playback_PlaybackTools_Pause.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Playback.PlaybackTools.Pause%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L121">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L133">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Playback_PlaybackTools_Pause_" data-uid="BassBoom.Basolia.Playback.PlaybackTools.Pause*"></a>
   <h4 id="BassBoom_Basolia_Playback_PlaybackTools_Pause" data-uid="BassBoom.Basolia.Playback.PlaybackTools.Pause">Pause()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Pauses the currently open file</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static void Pause()</code></pre>
   </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaException.html">BasoliaException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Playback_PlaybackTools_Play.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Playback.PlaybackTools.Play%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L56">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L61">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Playback_PlaybackTools_Play_" data-uid="BassBoom.Basolia.Playback.PlaybackTools.Play*"></a>
   <h4 id="BassBoom_Basolia_Playback_PlaybackTools_Play" data-uid="BassBoom.Basolia.Playback.PlaybackTools.Play">Play()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Plays the currently open file (synchronous)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static void Play()</code></pre>
   </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaException.html">BasoliaException</a></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaOutException.html">BasoliaOutException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Playback_PlaybackTools_PlayAsync.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Playback.PlaybackTools.PlayAsync%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L118">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L126">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Playback_PlaybackTools_PlayAsync_" data-uid="BassBoom.Basolia.Playback.PlaybackTools.PlayAsync*"></a>
   <h4 id="BassBoom_Basolia_Playback_PlaybackTools_PlayAsync" data-uid="BassBoom.Basolia.Playback.PlaybackTools.PlayAsync">PlayAsync()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Plays the currently open file (asynchronous)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -258,11 +312,12 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Playback_PlaybackTools_SetVolume_System_Double_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Playback.PlaybackTools.SetVolume(System.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L144">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L165">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Playback_PlaybackTools_SetVolume_" data-uid="BassBoom.Basolia.Playback.PlaybackTools.SetVolume*"></a>
   <h4 id="BassBoom_Basolia_Playback_PlaybackTools_SetVolume_System_Double_" data-uid="BassBoom.Basolia.Playback.PlaybackTools.SetVolume(System.Double)">SetVolume(double)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the volume of this application</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -281,6 +336,22 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
         <td><span class="parametername">volume</span></td>
+        <td><p>Volume from 0.0 to 1.0, inclusive</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaOutException.html">BasoliaOutException</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -290,16 +361,32 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Playback_PlaybackTools_Stop.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Playback.PlaybackTools.Stop%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L131">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Playback/PlaybackTools.cs/#L147">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Playback_PlaybackTools_Stop_" data-uid="BassBoom.Basolia.Playback.PlaybackTools.Stop*"></a>
   <h4 id="BassBoom_Basolia_Playback_PlaybackTools_Stop" data-uid="BassBoom.Basolia.Playback.PlaybackTools.Stop">Stop()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Stops the playback</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static void Stop()</code></pre>
   </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaException.html">BasoliaException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 </article>
           </div>

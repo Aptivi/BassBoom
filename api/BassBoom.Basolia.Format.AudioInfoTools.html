@@ -104,11 +104,12 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetBufferSize.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L174">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L212">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_AudioInfoTools_GetBufferSize_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize*"></a>
   <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetBufferSize" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize">GetBufferSize()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the buffer size from the currently open music file.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -125,6 +126,22 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>Buffer size</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaException.html">BasoliaException</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -134,11 +151,11 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetDuration_System_Boolean_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetDuration(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L43">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L45">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_AudioInfoTools_GetDuration_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetDuration*"></a>
   <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetDuration_System_Boolean_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetDuration(System.Boolean)">GetDuration(bool)</h4>
-  <div class="markdown level1 summary"><p>Gets the duration of the file</p>
+  <div class="markdown level1 summary"><p>Gets the duration of the file in samples</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -158,7 +175,8 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">scan</span></td>
-        <td></td>
+        <td><p>Whether to scan the whole music file or not (seeks to the beginning of the music; don't use during playback.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -173,7 +191,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
+        <td><p>Number of samples detected by MPG123. If you want to get seconds, use <a class="xref" href="BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetFormatInfo">GetFormatInfo()</a>'s rate result to divide the samples by it.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -182,11 +201,12 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpan_System_Boolean_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L81">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L88">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpan_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan*"></a>
   <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpan_System_Boolean_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(System.Boolean)">GetDurationSpan(bool)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the duration of the file in the time span</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -205,7 +225,8 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">scan</span></td>
-        <td></td>
+        <td><p>Whether to scan the whole music file or not (seeks to the beginning of the music; don't use during playback.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -220,7 +241,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
-        <td></td>
+        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a> instance containing the duration in human-readable format</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -229,11 +251,12 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_System_Int32_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L93">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L105">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples*"></a>
   <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_System_Int32_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32)">GetDurationSpanFromSamples(int)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the duration from the number of samples</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -252,7 +275,8 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><span class="parametername">samples</span></td>
-        <td></td>
+        <td><p>Number of samples</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -267,24 +291,26 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
-        <td></td>
+        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a> instance containing the duration in human-readable format</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_System_Int32_System_ValueTuple_System_Int64_System_Int32_System_Int32__.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32%2CSystem.ValueTuple%7BSystem.Int64%2CSystem.Int32%2CSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_System_Int32_System_Int64_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32%2CSystem.Int64)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L100">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L118">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples*"></a>
-  <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_System_Int32_System_ValueTuple_System_Int64_System_Int32_System_Int32__" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32,System.ValueTuple{System.Int64,System.Int32,System.Int32})">GetDurationSpanFromSamples(int, (long rate, int channels, int encoding))</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_System_Int32_System_Int64_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32,System.Int64)">GetDurationSpanFromSamples(int, long)</h4>
+  <div class="markdown level1 summary"><p>Gets the duration from the number of samples</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static TimeSpan GetDurationSpanFromSamples(int samples, (long rate, int channels, int encoding) formatInfo)</code></pre>
+    <pre><code class="lang-csharp hljs">public static TimeSpan GetDurationSpanFromSamples(int samples, long rate)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -299,12 +325,14 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><span class="parametername">samples</span></td>
-        <td></td>
+        <td><p>Number of samples</p>
+</td>
       </tr>
       <tr>
-        <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int64,system.int32,system.int32-.rate">rate</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int64,system.int32,system.int32-.channels">channels</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int64,system.int32,system.int32-.encoding">encoding</a>)</td>
-        <td><span class="parametername">formatInfo</span></td>
-        <td></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">rate</span></td>
+        <td><p>Bit rate</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -319,7 +347,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
-        <td></td>
+        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a> instance containing the duration in human-readable format</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -328,11 +357,12 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetFrameInfo.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L362">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L416">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_AudioInfoTools_GetFrameInfo_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo*"></a>
   <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetFrameInfo" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo">GetFrameInfo()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the frame information</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -349,6 +379,22 @@
     <tbody>
       <tr>
         <td><a class="xref" href="BassBoom.Basolia.Format.FrameInfo.html">FrameInfo</a></td>
+        <td><p>An instance of <a class="xref" href="BassBoom.Basolia.Format.FrameInfo.html">FrameInfo</a> containing MPEG frame information about the music file</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaException.html">BasoliaException</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -358,11 +404,12 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetFrameLength.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L130">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L158">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_AudioInfoTools_GetFrameLength_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength*"></a>
   <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetFrameLength" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength">GetFrameLength()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the frame length</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -379,6 +426,22 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>Frame length in samples</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaException.html">BasoliaException</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -388,11 +451,12 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetFrameSize.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L108">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L131">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_AudioInfoTools_GetFrameSize_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize*"></a>
   <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetFrameSize" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize">GetFrameSize()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the frame size from the currently open music file</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -409,6 +473,26 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>The MPEG frame size</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaException.html">BasoliaException</a></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaOutException.html">BasoliaOutException</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -418,11 +502,12 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetIcyMetadata.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L336">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L385">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_AudioInfoTools_GetIcyMetadata_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata*"></a>
   <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetIcyMetadata" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata">GetIcyMetadata()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the ICY metadata</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -439,6 +524,22 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>A string containing ICY metadata</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaException.html">BasoliaException</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -448,11 +549,12 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetId3Metadata_BassBoom_Basolia_Format_Id3V1Metadata__BassBoom_Basolia_Format_Id3V2Metadata__.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata(BassBoom.Basolia.Format.Id3V1Metadata%40%2CBassBoom.Basolia.Format.Id3V2Metadata%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L194">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L238">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_AudioInfoTools_GetId3Metadata_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata*"></a>
   <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetId3Metadata_BassBoom_Basolia_Format_Id3V1Metadata__BassBoom_Basolia_Format_Id3V2Metadata__" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata(BassBoom.Basolia.Format.Id3V1Metadata@,BassBoom.Basolia.Format.Id3V2Metadata@)">GetId3Metadata(out Id3V1Metadata, out Id3V2Metadata)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the ID3 metadata (v2 and v1)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -471,11 +573,28 @@
       <tr>
         <td><a class="xref" href="BassBoom.Basolia.Format.Id3V1Metadata.html">Id3V1Metadata</a></td>
         <td><span class="parametername">managedV1</span></td>
-        <td></td>
+        <td><p>An output to the managed instance of the ID3 metadata version 1</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="BassBoom.Basolia.Format.Id3V2Metadata.html">Id3V2Metadata</a></td>
         <td><span class="parametername">managedV2</span></td>
+        <td><p>An output to the managed instance of the ID3 metadata version 2</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaException.html">BasoliaException</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -485,11 +604,12 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_AudioInfoTools_GetSamplesPerFrame.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L152">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/AudioInfoTools.cs/#L185">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_AudioInfoTools_GetSamplesPerFrame_" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame*"></a>
   <h4 id="BassBoom_Basolia_Format_AudioInfoTools_GetSamplesPerFrame" data-uid="BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame">GetSamplesPerFrame()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the number of samples per frame</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -506,6 +626,22 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>Number of samples per frame</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BassBoom.Basolia.BasoliaException.html">BasoliaException</a></td>
         <td></td>
       </tr>
     </tbody>

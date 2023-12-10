@@ -55,46 +55,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.DeviceDescList.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.DeviceDescList.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.DeviceList.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.DeviceList.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.DriverDescList.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.DriverDescList.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.DriverList.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.DriverList.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.yml",
       "output": {
         ".html": {
