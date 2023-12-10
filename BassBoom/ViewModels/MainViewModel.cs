@@ -54,11 +54,10 @@ public class MainViewModel : ViewModelBase
     internal static FrameInfo frameInfo = null;
     internal static MainView view;
     internal static int selectedPath = 0;
-    internal static readonly List<CachedSongInfo> cachedInfos = new();
+    internal static readonly List<CachedSongInfo> cachedInfos = [];
     private Thread sliderUpdate = new(UpdateSlider);
     private static Lyric lyricInstance = null;
-    private readonly ObservableCollection<string> musicFileSelect = new();
-    private readonly string[] supportedExtensions = new[] { ".mp3", ".mp2", ".mpa", ".mpg", ".mpga" };
+    private readonly ObservableCollection<string> musicFileSelect = [];
 
     private FilePickerFileType MusicFiles => new("Music files")
     {
@@ -106,7 +105,7 @@ public class MainViewModel : ViewModelBase
                 var folder = result.Path.LocalPath;
                 var files = Directory
                     .GetFiles(folder, "*.*", SearchOption.AllDirectories)
-                    .Where((file) => supportedExtensions.Contains(Path.GetExtension(file).ToLower()))
+                    .Where((file) => FileTools.SupportedExtensions.Contains(Path.GetExtension(file).ToLower()))
                     .ToArray();
                 MusicFileSelect.AddRange(files);
             }

@@ -63,7 +63,7 @@ namespace BassBoom.Basolia.Devices
         public static ReadOnlyDictionary<string, string> GetDrivers()
         {
             InitBasolia.CheckInited();
-            Dictionary<string, string> drivers = new();
+            Dictionary<string, string> drivers = [];
 
             // We're now entering the dangerous zone
             nint names = nint.Zero, descr = nint.Zero;
@@ -95,7 +95,7 @@ namespace BassBoom.Basolia.Devices
         public static ReadOnlyDictionary<string, string> GetDevices(string driver, ref string activeDevice)
         {
             InitBasolia.CheckInited();
-            Dictionary<string, string> devices = new();
+            Dictionary<string, string> devices = [];
 
             // We're now entering the dangerous zone
             nint names = nint.Zero, descr = nint.Zero, active = nint.Zero;

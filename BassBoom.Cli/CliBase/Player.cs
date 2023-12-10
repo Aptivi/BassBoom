@@ -56,8 +56,8 @@ namespace BassBoom.Cli.CliBase
         internal static bool populate = true;
         internal static bool paused = false;
         internal static string cachedLyric = "";
-        internal static readonly List<string> musicFiles = new();
-        internal static readonly List<CachedSongInfo> cachedInfos = new();
+        internal static readonly List<string> musicFiles = [];
+        internal static readonly List<CachedSongInfo> cachedInfos = [];
 
         public static void PlayerLoop()
         {

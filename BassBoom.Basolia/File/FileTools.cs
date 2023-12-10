@@ -24,14 +24,32 @@ using BassBoom.Native.Runtime;
 
 namespace BassBoom.Basolia.File
 {
+    /// <summary>
+    /// File tools that are essential for the music player
+    /// </summary>
     public static class FileTools
     {
         private static bool isOpened = false;
+        private static readonly string[] supportedExts =
+        [
+            ".mp3",
+            ".mp2",
+            ".mpa",
+            ".mpg",
+            ".mpga",
+        ];
+
+        /// <summary>
+        /// List of supported extensions
+        /// </summary>
+        public static string[] SupportedExtensions =>
+            supportedExts;
 
         /// <summary>
         /// Is the file open?
         /// </summary>
-        public static bool IsOpened => isOpened;
+        public static bool IsOpened =>
+            isOpened;
 
         /// <summary>
         /// Opens a media file

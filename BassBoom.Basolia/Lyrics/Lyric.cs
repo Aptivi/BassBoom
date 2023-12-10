@@ -65,7 +65,7 @@ namespace BassBoom.Basolia.Lyrics
             var processedLines = GetLinesCurrent();
             if (processedLines.Length > 0)
                 return processedLines[^1].LineWords;
-            return new();
+            return [];
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace BassBoom.Basolia.Lyrics
             var processedLines = GetLinesToSpan(span);
             if (processedLines.Length > 0)
                 return processedLines[^1].LineWords;
-            return new();
+            return [];
         }
 
         protected internal Lyric(List<LyricLine> lines)
