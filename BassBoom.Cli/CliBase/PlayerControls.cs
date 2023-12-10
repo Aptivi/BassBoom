@@ -252,7 +252,7 @@ namespace BassBoom.Cli.CliBase
             var (musicName, musicArtist, _) = GetMusicNameArtistGenre(musicPath);
 
             // Print the music name
-            Console.Title = $"BassBoom CLI - Basolia v0.0.2.1 - Alpha 2 • {musicArtist} - {musicName}";
+            Console.Title = $"BassBoom CLI - Basolia v0.0.3 - Alpha 3 • {musicArtist} - {musicName}";
             CenteredTextColor.WriteCentered(1, $"Now playing: {musicArtist} - {musicName}");
         }
 
