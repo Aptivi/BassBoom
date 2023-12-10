@@ -6,6 +6,7 @@
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\aptivi_snk.snk</AssemblyOriginatorKeyFile>
     <ApplicationIcon>../BassBoom/Assets/OfficialAppIcon-BassBoom.ico</ApplicationIcon>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
