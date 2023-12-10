@@ -38,8 +38,10 @@ namespace BassBoom.Basolia.Format
     public static class AudioInfoTools
     {
         /// <summary>
-        /// Gets the duration of the file
+        /// Gets the duration of the file in samples
         /// </summary>
+        /// <param name="scan">Whether to scan the whole music file or not (seeks to the beginning of the music; don't use during playback.</param>
+        /// <returns>Number of samples detected by MPG123. If you want to get seconds, use <see cref="FormatTools.GetFormatInfo"/>'s rate result to divide the samples by it.</returns>
         public static int GetDuration(bool scan)
         {
             int length;
@@ -78,6 +80,11 @@ namespace BassBoom.Basolia.Format
             return length;
         }
 
+        /// <summary>
+        /// Gets the duration of the file in the time span
+        /// </summary>
+        /// <param name="scan">Whether to scan the whole music file or not (seeks to the beginning of the music; don't use during playback.</param>
+        /// <returns>A <see cref="TimeSpan"/> instance containing the duration in human-readable format</returns>
         public static TimeSpan GetDurationSpan(bool scan)
         {
             // First, get the format information
@@ -90,21 +97,37 @@ namespace BassBoom.Basolia.Format
             return TimeSpan.FromSeconds(seconds);
         }
 
+        /// <summary>
+        /// Gets the duration from the number of samples
+        /// </summary>
+        /// <param name="samples">Number of samples</param>
+        /// <returns>A <see cref="TimeSpan"/> instance containing the duration in human-readable format</returns>
         public static TimeSpan GetDurationSpanFromSamples(int samples)
         {
             // First, get the format information
-            var formatInfo = FormatTools.GetFormatInfo();
-            return GetDurationSpanFromSamples(samples, formatInfo);
+            var (rate, _, _) = FormatTools.GetFormatInfo();
+            return GetDurationSpanFromSamples(samples, rate);
         }
 
-        public static TimeSpan GetDurationSpanFromSamples(int samples, (long rate, int channels, int encoding) formatInfo)
+        /// <summary>
+        /// Gets the duration from the number of samples
+        /// </summary>
+        /// <param name="samples">Number of samples</param>
+        /// <param name="rate">Bit rate</param>
+        /// <returns>A <see cref="TimeSpan"/> instance containing the duration in human-readable format</returns>
+        public static TimeSpan GetDurationSpanFromSamples(int samples, long rate)
         {
             // Get the required values
-            long rate = formatInfo.rate;
             long seconds = samples / rate;
             return TimeSpan.FromSeconds(seconds);
         }
 
+        /// <summary>
+        /// Gets the frame size from the currently open music file
+        /// </summary>
+        /// <returns>The MPEG frame size</returns>
+        /// <exception cref="BasoliaException"></exception>
+        /// <exception cref="BasoliaOutException"></exception>
         public static int GetFrameSize()
         {
             int frameSize;
@@ -127,6 +150,11 @@ namespace BassBoom.Basolia.Format
             return frameSize;
         }
 
+        /// <summary>
+        /// Gets the frame length
+        /// </summary>
+        /// <returns>Frame length in samples</returns>
+        /// <exception cref="BasoliaException"></exception>
         public static int GetFrameLength()
         {
             int getStatus;
@@ -149,6 +177,11 @@ namespace BassBoom.Basolia.Format
             return getStatus;
         }
 
+        /// <summary>
+        /// Gets the number of samples per frame
+        /// </summary>
+        /// <returns>Number of samples per frame</returns>
+        /// <exception cref="BasoliaException"></exception>
         public static int GetSamplesPerFrame()
         {
             int getStatus;
@@ -171,6 +204,11 @@ namespace BassBoom.Basolia.Format
             return getStatus;
         }
 
+        /// <summary>
+        /// Gets the buffer size from the currently open music file.
+        /// </summary>
+        /// <returns>Buffer size</returns>
+        /// <exception cref="BasoliaException"></exception>
         public static int GetBufferSize()
         {
             int bufferSize;
@@ -191,6 +229,12 @@ namespace BassBoom.Basolia.Format
             return bufferSize;
         }
 
+        /// <summary>
+        /// Gets the ID3 metadata (v2 and v1)
+        /// </summary>
+        /// <param name="managedV1">An output to the managed instance of the ID3 metadata version 1</param>
+        /// <param name="managedV2">An output to the managed instance of the ID3 metadata version 2</param>
+        /// <exception cref="BasoliaException"></exception>
         public static void GetId3Metadata(out Id3V1Metadata managedV1, out Id3V2Metadata managedV2)
         {
             InitBasolia.CheckInited();
@@ -327,12 +371,17 @@ namespace BassBoom.Basolia.Format
                          new nint(picture.data) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(picture.data)) : ""))
                     );
                     var managedV2Instance = new Id3V2Metadata(title, artist, album, year, comment, genre,
-                        commentsListManaged.ToArray(), textsListManaged.ToArray(), extrasListManaged.ToArray(), extrasListManaged.ToArray());
+                        [.. commentsListManaged], [.. textsListManaged], [.. extrasListManaged], [.. extrasListManaged]);
                     managedV2 = managedV2Instance;
                 }
             }
         }
 
+        /// <summary>
+        /// Gets the ICY metadata
+        /// </summary>
+        /// <returns>A string containing ICY metadata</returns>
+        /// <exception cref="BasoliaException"></exception>
         public static string GetIcyMetadata()
         {
             InitBasolia.CheckInited();
@@ -359,6 +408,11 @@ namespace BassBoom.Basolia.Format
             return icy;
         }
 
+        /// <summary>
+        /// Gets the frame information
+        /// </summary>
+        /// <returns>An instance of <see cref="FrameInfo"/> containing MPEG frame information about the music file</returns>
+        /// <exception cref="BasoliaException"></exception>
         public static FrameInfo GetFrameInfo()
         {
             InitBasolia.CheckInited();

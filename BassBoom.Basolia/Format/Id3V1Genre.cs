@@ -19,6 +19,9 @@
 
 namespace BassBoom.Basolia.Format
 {
+    /// <summary>
+    /// Genre known by the ID3v1 specification
+    /// </summary>
     public enum Id3V1Genre
     {
         /// <summary>
@@ -82,7 +85,7 @@ namespace BassBoom.Basolia.Format
         /// </summary>
         Pop,
         /// <summary>
-        /// R&B
+        /// R&amp;B
         /// </summary>
         RAndB,
         /// <summary>
@@ -142,7 +145,7 @@ namespace BassBoom.Basolia.Format
         /// </summary>
         Vocal,
         /// <summary>
-        /// Jazz & Funk
+        /// Jazz &amp; Funk
         /// </summary>
         JazzAndFunk,
         /// <summary>
@@ -338,7 +341,7 @@ namespace BassBoom.Basolia.Format
         /// </summary>
         Musical,
         /// <summary>
-        /// Rock & Roll
+        /// Rock &amp; Roll
         /// </summary>
         RockAndRoll,
         /// <summary>

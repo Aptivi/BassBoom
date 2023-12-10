@@ -35,7 +35,7 @@ namespace BassBoom.Basolia.Lyrics
         /// </summary>
         public TimeSpan WordSpan { get; }
 
-        protected internal LyricLineWord(string word, TimeSpan wordSpan)
+        internal LyricLineWord(string word, TimeSpan wordSpan)
         {
             Word = word;
             WordSpan = wordSpan;

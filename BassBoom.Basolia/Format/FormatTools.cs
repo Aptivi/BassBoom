@@ -91,7 +91,7 @@ namespace BassBoom.Basolia.Format
             }
 
             // We're now entering the safe zone
-            return formats.ToArray();
+            return [.. formats];
         }
     }
 }

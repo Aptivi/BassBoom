@@ -23,18 +23,36 @@ using System.Runtime.InteropServices;
 
 namespace BassBoom.Basolia
 {
+    /// <summary>
+    /// Basolia exception
+    /// </summary>
     public class BasoliaException : Exception
     {
+        /// <summary>
+        /// Creates a new instance of Basolia error with the specific MPG123 error.
+        /// </summary>
+        /// <param name="error">An MPG123 error value to use.</param>
         public BasoliaException(mpg123_errors error) :
             base($"General Basolia error\n" +
                  $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeError.mpg123_plain_strerror((int)error))}]")
         { }
 
+        /// <summary>
+        /// Creates a new instance of Basolia error with the specific MPG123 error.
+        /// </summary>
+        /// <param name="message">Custom message to use while creating this exception</param>
+        /// <param name="error">An MPG123 error value to use.</param>
         public BasoliaException(string message, mpg123_errors error) :
             base($"{message}\n" +
                  $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeError.mpg123_plain_strerror((int)error))}]")
         { }
 
+        /// <summary>
+        /// Creates a new instance of Basolia error with the specific MPG123 error.
+        /// </summary>
+        /// <param name="message">Custom message to use while creating this exception</param>
+        /// <param name="innerException">Inner exception</param>
+        /// <param name="error">An MPG123 error value to use.</param>
         public BasoliaException(string message, Exception innerException, mpg123_errors error) :
             base($"{message}\n" +
                  $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeError.mpg123_plain_strerror((int)error))}]", innerException)

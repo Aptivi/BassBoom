@@ -41,13 +41,13 @@ namespace BassBoom.Basolia.Lyrics
         /// </summary>
         public List<LyricLineWord> LineWords { get; }
 
-        protected internal LyricLine(string line, TimeSpan lineSpan)
+        internal LyricLine(string line, TimeSpan lineSpan)
         {
             Line = line;
             LineSpan = lineSpan;
             LineWords = LyricReader.GetLyricWords(line);
 
-            if (line.Contains("<") && line.Contains(">"))
+            if (line.Contains('<') && line.Contains('>'))
                 Line = string.Join(" ", LineWords.Select((llw) => llw.Word).ToArray());
         }
     }

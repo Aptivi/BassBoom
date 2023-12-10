@@ -62,6 +62,10 @@ namespace BassBoom.Basolia.Playback
             return length;
         }
 
+        /// <summary>
+        /// Gets the current duration of the file (time span)
+        /// </summary>
+        /// <returns>A time span instance that describes the current duration of the file</returns>
         public static TimeSpan GetCurrentDurationSpan()
         {
             // First, get the format information
@@ -75,7 +79,7 @@ namespace BassBoom.Basolia.Playback
         }
 
         /// <summary>
-        /// Gets the current duration of the file (samples)
+        /// Seeks to the beginning of the music
         /// </summary>
         public static void SeekToTheBeginning()
         {
@@ -107,8 +111,9 @@ namespace BassBoom.Basolia.Playback
         }
 
         /// <summary>
-        /// Gets the current duration of the file (samples)
+        /// Seeks to a specific frame
         /// </summary>
+        /// <param name="frame">An MPEG frame number</param>
         public static void SeekToFrame(int frame)
         {
             lock (PositionLock)

@@ -53,6 +53,11 @@ namespace BassBoom.Basolia.Playback
         public static PlaybackState State =>
             state;
 
+        /// <summary>
+        /// Plays the currently open file (synchronous)
+        /// </summary>
+        /// <exception cref="BasoliaException"></exception>
+        /// <exception cref="BasoliaOutException"></exception>
         public static void Play()
         {
             InitBasolia.CheckInited();
@@ -115,9 +120,16 @@ namespace BassBoom.Basolia.Playback
             }
         }
 
+        /// <summary>
+        /// Plays the currently open file (asynchronous)
+        /// </summary>
         public static async Task PlayAsync() =>
             await Task.Run(Play);
 
+        /// <summary>
+        /// Pauses the currently open file
+        /// </summary>
+        /// <exception cref="BasoliaException"></exception>
         public static void Pause()
         {
             InitBasolia.CheckInited();
@@ -128,6 +140,10 @@ namespace BassBoom.Basolia.Playback
             state = PlaybackState.Paused;
         }
 
+        /// <summary>
+        /// Stops the playback
+        /// </summary>
+        /// <exception cref="BasoliaException"></exception>
         public static void Stop()
         {
             InitBasolia.CheckInited();
@@ -141,6 +157,11 @@ namespace BassBoom.Basolia.Playback
             PlaybackPositioningTools.SeekToTheBeginning();
         }
 
+        /// <summary>
+        /// Sets the volume of this application
+        /// </summary>
+        /// <param name="volume">Volume from 0.0 to 1.0, inclusive</param>
+        /// <exception cref="BasoliaOutException"></exception>
         public static void SetVolume(double volume)
         {
             InitBasolia.CheckInited();
@@ -161,6 +182,11 @@ namespace BassBoom.Basolia.Playback
             }
         }
 
+        /// <summary>
+        /// Gets the volume information
+        /// </summary>
+        /// <returns>A base linear volume from 0.0 to 1.0, an actual linear volume from 0.0 to 1.0, and the RVA volume in decibels (dB)</returns>
+        /// <exception cref="BasoliaOutException"></exception>
         public static (double baseLinear, double actualLinear, double decibelsRva) GetVolume()
         {
             InitBasolia.CheckInited();

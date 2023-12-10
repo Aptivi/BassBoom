@@ -21,6 +21,9 @@ using System;
 
 namespace BassBoom.Basolia.Format
 {
+    /// <summary>
+    /// The managed world version of the ID3v1 metadata class instance
+    /// </summary>
     public class Id3V1Metadata
     {
         private readonly string tag = "";
@@ -31,20 +34,44 @@ namespace BassBoom.Basolia.Format
         private readonly string comment = "";
         private readonly int genreIndex;
 
+        /// <summary>
+        /// The tag
+        /// </summary>
         public string Tag =>
             tag.Trim().Trim('\0');
+        /// <summary>
+        /// Title of the song (usually the song name)
+        /// </summary>
         public string Title =>
             title.Trim().Trim('\0');
+        /// <summary>
+        /// Artist of the song
+        /// </summary>
         public string Artist =>
             artist.Trim().Trim('\0');
+        /// <summary>
+        /// Album of the song
+        /// </summary>
         public string Album =>
             album.Trim().Trim('\0');
+        /// <summary>
+        /// Release year of the song
+        /// </summary>
         public string Year =>
             year.Trim().Trim('\0');
+        /// <summary>
+        /// A single comment for the song
+        /// </summary>
         public string Comment =>
             comment.Trim().Trim('\0');
+        /// <summary>
+        /// Music genre
+        /// </summary>
         public Id3V1Genre Genre =>
             (Id3V1Genre)(Enum.IsDefined(typeof(Id3V1Genre), GenreIndex) ? Enum.Parse(typeof(Id3V1Genre), $"{GenreIndex}") : Id3V1Genre.Unknown);
+        /// <summary>
+        /// Genre index
+        /// </summary>
         public int GenreIndex =>
             genreIndex;
 

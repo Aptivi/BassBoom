@@ -102,7 +102,7 @@ namespace BassBoom.Basolia.Lyrics
             return [];
         }
 
-        protected internal Lyric(List<LyricLine> lines)
+        internal Lyric(List<LyricLine> lines)
         {
             Lines = lines;
         }

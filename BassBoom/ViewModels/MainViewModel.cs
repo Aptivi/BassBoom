@@ -195,7 +195,7 @@ public class MainViewModel : ViewModelBase
     public async Task PlayAsync()
     {
         advance = true;
-        string[] musicFiles = musicFileSelect.ToArray();
+        string[] musicFiles = [.. musicFileSelect];
         for (int i = view.PathsToMp3.SelectedIndex; i < musicFiles.Length; i++)
         {
             if (!advance)

@@ -24,16 +24,25 @@ namespace BassBoom.Basolia.Format
     /// </summary>
     public class FormatInfo
     {
-        private long rate;
-        private int channels;
-        private int encoding;
+        private readonly long rate;
+        private readonly int channels;
+        private readonly int encoding;
 
+        /// <summary>
+        /// The bit rate
+        /// </summary>
         public long Rate =>
             rate;
 
+        /// <summary>
+        /// The number of channels
+        /// </summary>
         public long Channels =>
             channels;
 
+        /// <summary>
+        /// The encoding number
+        /// </summary>
         public long Encoding =>
             encoding;
 

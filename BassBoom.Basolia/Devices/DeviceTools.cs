@@ -36,30 +36,35 @@ namespace BassBoom.Basolia.Devices
         internal static string activeDevice;
 
         [StructLayout(LayoutKind.Sequential)]
-        public struct DriverList
+        internal struct DriverList
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
             public IntPtr[] listOfDrivers;
         }
         [StructLayout(LayoutKind.Sequential)]
-        public struct DriverDescList
+        internal struct DriverDescList
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
             public IntPtr[] listOfDriverDescriptions;
         }
         [StructLayout(LayoutKind.Sequential)]
-        public struct DeviceList
+        internal struct DeviceList
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
             public IntPtr[] listOfDevices;
         }
         [StructLayout(LayoutKind.Sequential)]
-        public struct DeviceDescList
+        internal struct DeviceDescList
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
             public IntPtr[] listOfDeviceDescriptions;
         }
 
+        /// <summary>
+        /// Gets a read only dictionary that lists all the drivers
+        /// </summary>
+        /// <returns>A dictionary containing the driver names and their descriptions</returns>
+        /// <exception cref="BasoliaException"></exception>
         public static ReadOnlyDictionary<string, string> GetDrivers()
         {
             InitBasolia.CheckInited();
@@ -92,6 +97,13 @@ namespace BassBoom.Basolia.Devices
             return new ReadOnlyDictionary<string, string>(drivers);
         }
 
+        /// <summary>
+        /// Gets a read only dictionary that lists all the devices detected by the driver
+        /// </summary>
+        /// <param name="driver">A specific driver to use</param>
+        /// <param name="activeDevice">An output for the active device name</param>
+        /// <returns>A dictionary containing the device names and their descriptions</returns>
+        /// <exception cref="BasoliaException"></exception>
         public static ReadOnlyDictionary<string, string> GetDevices(string driver, ref string activeDevice)
         {
             InitBasolia.CheckInited();
@@ -125,6 +137,11 @@ namespace BassBoom.Basolia.Devices
             return new ReadOnlyDictionary<string, string>(devices);
         }
 
+        /// <summary>
+        /// Sets the active driver
+        /// </summary>
+        /// <param name="driver">Driver to use</param>
+        /// <exception cref="BasoliaException"></exception>
         public static void SetActiveDriver(string driver)
         {
             var driverList = GetDrivers();
@@ -133,6 +150,12 @@ namespace BassBoom.Basolia.Devices
             activeDriver = driver;
         }
 
+        /// <summary>
+        /// Sets the active device
+        /// </summary>
+        /// <param name="driver">Driver to use</param>
+        /// <param name="device">Device to use</param>
+        /// <exception cref="BasoliaException"></exception>
         public static void SetActiveDevice(string driver, string device)
         {
             var deviceList = GetDevices(driver, ref activeDevice);

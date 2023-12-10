@@ -26,16 +26,50 @@ namespace BassBoom.Basolia.Format.Cache
     /// </summary>
     public class CachedSongInfo
     {
+        /// <summary>
+        /// A full path to the music file
+        /// </summary>
         public string MusicPath { get; private set; }
+        /// <summary>
+        /// ID3v1 metadata
+        /// </summary>
         public Id3V1Metadata MetadataV1 { get; private set; }
+        /// <summary>
+        /// ID3v2 metadata
+        /// </summary>
         public Id3V2Metadata MetadataV2 { get; private set; }
+        /// <summary>
+        /// Music duration in samples
+        /// </summary>
         public int Duration { get; private set; }
-        public (long rate, int channels, int encoding) FormatInfo { get; private set; }
-        public FrameInfo FrameInfo { get; private set; }
-        public Lyric LyricInstance { get; private set; }
+        /// <summary>
+        /// Music duration in a string representation of the time span
+        /// </summary>
         public string DurationSpan =>
-            AudioInfoTools.GetDurationSpanFromSamples(Duration, FormatInfo).ToString();
+            AudioInfoTools.GetDurationSpanFromSamples(Duration, FormatInfo.rate).ToString();
+        /// <summary>
+        /// Format information (rate, channels, and encoding)
+        /// </summary>
+        public (long rate, int channels, int encoding) FormatInfo { get; private set; }
+        /// <summary>
+        /// MPEG frame info
+        /// </summary>
+        public FrameInfo FrameInfo { get; private set; }
+        /// <summary>
+        /// An instance of the music lyrics (if any)
+        /// </summary>
+        public Lyric LyricInstance { get; private set; }
 
+        /// <summary>
+        /// A cached song information
+        /// </summary>
+        /// <param name="musicPath">A full path to the music file</param>
+        /// <param name="metadataV1">ID3v1 metadata</param>
+        /// <param name="metadataV2">ID3v2 metadata</param>
+        /// <param name="duration">Music duration in samples</param>
+        /// <param name="formatInfo">Format information (rate, channels, and encoding)</param>
+        /// <param name="frameInfo">MPEG frame info</param>
+        /// <param name="lyricInstance">An instance of the music lyrics (if any)</param>
         public CachedSongInfo(string musicPath, Id3V1Metadata metadataV1, Id3V2Metadata metadataV2, int duration, (long rate, int channels, int encoding) formatInfo, FrameInfo frameInfo, Lyric lyricInstance)
         {
             MusicPath = musicPath;

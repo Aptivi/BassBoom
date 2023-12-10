@@ -23,18 +23,36 @@ using System.Runtime.InteropServices;
 
 namespace BassBoom.Basolia
 {
+    /// <summary>
+    /// Basolia output exception
+    /// </summary>
     public class BasoliaOutException : Exception
     {
+        /// <summary>
+        /// Creates a new instance of Basolia output error with the specific OUT123 error.
+        /// </summary>
+        /// <param name="error">An OUT123 error value to use.</param>
         public BasoliaOutException(out123_error error) :
             base($"General Basolia output system error\n" +
                  $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeOutputLib.out123_plain_strerror((int)error))}]")
         { }
 
+        /// <summary>
+        /// Creates a new instance of Basolia output error with the specific OUT123 error.
+        /// </summary>
+        /// <param name="message">Custom message to use while creating this exception</param>
+        /// <param name="error">An OUT123 error value to use.</param>
         public BasoliaOutException(string message, out123_error error) :
             base($"{message}\n" +
                  $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeOutputLib.out123_plain_strerror((int)error))}]")
         { }
 
+        /// <summary>
+        /// Creates a new instance of Basolia output error with the specific OUT123 error.
+        /// </summary>
+        /// <param name="message">Custom message to use while creating this exception</param>
+        /// <param name="innerException">Inner exception</param>
+        /// <param name="error">An OUT123 error value to use.</param>
         public BasoliaOutException(string message, Exception innerException, out123_error error) :
             base($"{message}\n" +
                  $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeOutputLib.out123_plain_strerror((int)error))}]", innerException)

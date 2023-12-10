@@ -26,48 +26,81 @@ namespace BassBoom.Basolia.Format
     /// </summary>
     public class FrameInfo
     {
-        private mpg123_version version;
-        private int layer;
-        private long rate;
-        private mpg123_mode mode;
-        private int mode_ext;
-        private int framesize;
-        private mpg123_flags flags;
-        private int emphasis;
-        private int bitrate;
-        private int abr_rate;
-        private mpg123_vbr vbr;
+        private readonly mpg123_version version;
+        private readonly int layer;
+        private readonly long rate;
+        private readonly mpg123_mode mode;
+        private readonly int mode_ext;
+        private readonly int framesize;
+        private readonly mpg123_flags flags;
+        private readonly int emphasis;
+        private readonly int bitrate;
+        private readonly int abr_rate;
+        private readonly mpg123_vbr vbr;
 
+        /// <summary>
+        /// MPEG version
+        /// </summary>
         public mpg123_version Version =>
             version;
 
+        /// <summary>
+        /// MPEG layer
+        /// </summary>
         public int Layer =>
             layer;
 
+        /// <summary>
+        /// Bit rate
+        /// </summary>
         public long Rate =>
             rate;
 
+        /// <summary>
+        /// Stereo mode
+        /// </summary>
         public mpg123_mode Mode =>
             mode;
 
+        /// <summary>
+        /// Stereo mode (extended)
+        /// </summary>
         public int ModeExt =>
             mode_ext;
 
+        /// <summary>
+        /// Frame size
+        /// </summary>
         public int FrameSize =>
             framesize;
 
+        /// <summary>
+        /// Music file flags
+        /// </summary>
         public mpg123_flags Flags =>
             flags;
 
+        /// <summary>
+        /// Emphasis
+        /// </summary>
         public int Emphasis =>
             emphasis;
 
+        /// <summary>
+        /// Bit rate
+        /// </summary>
         public int BitRate =>
             bitrate;
 
+        /// <summary>
+        /// ABR rate
+        /// </summary>
         public int AbrRate =>
             abr_rate;
 
+        /// <summary>
+        /// Variable bit rate mode
+        /// </summary>
         public mpg123_vbr Vbr =>
             vbr;
 

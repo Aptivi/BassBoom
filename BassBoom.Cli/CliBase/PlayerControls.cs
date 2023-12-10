@@ -218,7 +218,7 @@ namespace BassBoom.Cli.CliBase
                 var instance = Player.cachedInfos.Single((csi) => csi.MusicPath == musicPath);
                 Player.total = instance.Duration;
                 Player.formatInfo = instance.FormatInfo;
-                Player.totalSpan = AudioInfoTools.GetDurationSpanFromSamples(Player.total, Player.formatInfo);
+                Player.totalSpan = AudioInfoTools.GetDurationSpanFromSamples(Player.total, Player.formatInfo.rate);
                 Player.frameInfo = instance.FrameInfo;
                 Player.managedV1 = instance.MetadataV1;
                 Player.managedV2 = instance.MetadataV2;

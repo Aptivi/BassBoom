@@ -32,7 +32,6 @@ namespace BassBoom.Basolia.Albums
         /// Prepends the filenames with the file number to prepare it for album folder
         /// </summary>
         /// <param name="libraryPath">The target path</param>
-        /// <param name="extensions">Extensions to include (Make sure to include the dot before the extension. For example: .mp3 instead of mp3)</param>
         public static void LabelFiles(string libraryPath)
         {
             string[] files = Directory.GetFiles(libraryPath);
