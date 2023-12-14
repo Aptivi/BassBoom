@@ -27,15 +27,13 @@ namespace BassBoom.Basolia
     /// </summary>
     public static class InitBasolia
     {
-        internal static bool _fugitive = false;
         private static bool _basoliaInited = false;
         
         /// <summary>
         /// Initializes the MPG123 library for Basolia to function
         /// </summary>
         /// <param name="root">Sets the root path to the library files</param>
-        /// <param name="Fugitive">Allows illegal operations. NEVER SET THIS TO TRUE UNLESS YOU KNOW WHAT YOU'RE DOING!</param>
-        public static void Init(string root = "", bool Fugitive = false)
+        public static void Init(string root = "")
         {
             if (string.IsNullOrEmpty(root))
                 Mpg123Instance.InitializeLibrary();
@@ -46,7 +44,6 @@ namespace BassBoom.Basolia
                 string syn = Mpg123Instance.GetAppropriateSyn123LibraryPath(root);
                 Mpg123Instance.InitializeLibrary(mpg, @out, syn);
             }
-            _fugitive = Fugitive;
             _basoliaInited = true;
         }
 

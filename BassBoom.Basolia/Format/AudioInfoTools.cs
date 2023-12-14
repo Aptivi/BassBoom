@@ -52,8 +52,8 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
-            if (PlaybackTools.Playing && !InitBasolia._fugitive)
-                throw new BasoliaException("Trying to get the duration during playback causes playback corruption! Don't call this function during playback. If you're willing to take a risk, turn on Fugitive Mode.", mpg123_errors.MPG123_ERR_READER);
+            if (PlaybackTools.Playing)
+                throw new BasoliaException("Trying to get the duration during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
 
             // We're now entering the dangerous zone
             unsafe
