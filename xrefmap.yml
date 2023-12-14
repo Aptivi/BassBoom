@@ -1972,15 +1972,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.InitBasolia.CheckInited
   nameWithType: InitBasolia.CheckInited
-- uid: BassBoom.Basolia.InitBasolia.Init(System.String,System.Boolean)
-  name: Init(string, bool)
-  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_Init_System_String_System_Boolean_
-  commentId: M:BassBoom.Basolia.InitBasolia.Init(System.String,System.Boolean)
-  name.vb: Init(String, Boolean)
-  fullName: BassBoom.Basolia.InitBasolia.Init(string, bool)
-  fullName.vb: BassBoom.Basolia.InitBasolia.Init(String, Boolean)
-  nameWithType: InitBasolia.Init(string, bool)
-  nameWithType.vb: InitBasolia.Init(String, Boolean)
+- uid: BassBoom.Basolia.InitBasolia.Init(System.String)
+  name: Init(string)
+  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_Init_System_String_
+  commentId: M:BassBoom.Basolia.InitBasolia.Init(System.String)
+  name.vb: Init(String)
+  fullName: BassBoom.Basolia.InitBasolia.Init(string)
+  fullName.vb: BassBoom.Basolia.InitBasolia.Init(String)
+  nameWithType: InitBasolia.Init(string)
+  nameWithType.vb: InitBasolia.Init(String)
 - uid: BassBoom.Basolia.InitBasolia.Init*
   name: Init
   href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_Init_
