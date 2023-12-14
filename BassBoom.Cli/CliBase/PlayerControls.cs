@@ -156,7 +156,7 @@ namespace BassBoom.Cli.CliBase
                 PlaybackPositioningTools.SeekToFrame(currentPos);
             }
             else
-                InfoBoxColor.WriteInfoBox("File \"{0}\" doesn't exist.", path);
+                InfoBoxColor.WriteInfoBox($"File \"{path}\" doesn't exist.");
             Player.rerender = true;
         }
 
@@ -202,7 +202,7 @@ namespace BassBoom.Cli.CliBase
             }
             catch (Exception ex)
             {
-                InfoBoxColor.WriteInfoBox("Can't open {0}: {1}", true, musicPath, ex.Message);
+                InfoBoxColor.WriteInfoBox($"Can't open {musicPath}: {ex.Message}", true);
             }
             return false;
         }
@@ -232,7 +232,7 @@ namespace BassBoom.Cli.CliBase
             else
             {
                 Player.rerender = true;
-                InfoBoxColor.WriteInfoBox("Loading BassBoom to open {0}...", false, musicPath);
+                InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
                 Player.total = AudioInfoTools.GetDuration(true);
                 Player.totalSpan = AudioInfoTools.GetDurationSpanFromSamples(Player.total);
                 Player.formatInfo = FormatTools.GetFormatInfo();
@@ -303,7 +303,7 @@ namespace BassBoom.Cli.CliBase
             string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
             try
             {
-                InfoBoxColor.WriteInfoBox("Trying to open lyrics file {0}...", false, lyricsPath);
+                InfoBoxColor.WriteInfoBox($"Trying to open lyrics file {lyricsPath}...", false);
                 if (File.Exists(lyricsPath))
                     Player.lyricInstance = LyricReader.GetLyrics(lyricsPath);
                 else
@@ -311,7 +311,7 @@ namespace BassBoom.Cli.CliBase
             }
             catch (Exception ex)
             {
-                InfoBoxColor.WriteInfoBox("Can't open lyrics file {0}... {1}", lyricsPath, ex.Message);
+                InfoBoxColor.WriteInfoBox($"Can't open lyrics file {lyricsPath}... {ex.Message}");
             }
         }
 
