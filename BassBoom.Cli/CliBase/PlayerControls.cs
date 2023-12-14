@@ -28,6 +28,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Terminaux.Base;
+using Terminaux.Colors;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
@@ -100,7 +101,8 @@ namespace BassBoom.Cli.CliBase
             Player.advance = true;
             Player.rerender = true;
             Player.playerThread.Start();
-            SpinWait.SpinUntil(() => PlaybackTools.Playing);
+            SpinWait.SpinUntil(() => PlaybackTools.Playing || Player.failedToPlay);
+            Player.failedToPlay = false;
         }
 
         internal static void Pause()
@@ -154,7 +156,7 @@ namespace BassBoom.Cli.CliBase
                 PlaybackPositioningTools.SeekToFrame(currentPos);
             }
             else
-                InfoBoxColor.WriteInfoBox($"File \"{path}\" doesn't exist.");
+                InfoBoxColor.WriteInfoBox("File \"{0}\" doesn't exist.", path);
             Player.rerender = true;
         }
 
@@ -200,7 +202,7 @@ namespace BassBoom.Cli.CliBase
             }
             catch (Exception ex)
             {
-                InfoBoxColor.WriteInfoBox("Can't open {0}: {1}", true, vars: new[] { musicPath, ex.Message });
+                InfoBoxColor.WriteInfoBox("Can't open {0}: {1}", true, musicPath, ex.Message);
             }
             return false;
         }
@@ -230,7 +232,7 @@ namespace BassBoom.Cli.CliBase
             else
             {
                 Player.rerender = true;
-                InfoBoxColor.WriteInfoBox("Loading BassBoom to open {0}...", false, vars: musicPath);
+                InfoBoxColor.WriteInfoBox("Loading BassBoom to open {0}...", false, musicPath);
                 Player.total = AudioInfoTools.GetDuration(true);
                 Player.totalSpan = AudioInfoTools.GetDurationSpanFromSamples(Player.total);
                 Player.formatInfo = FormatTools.GetFormatInfo();
@@ -247,14 +249,13 @@ namespace BassBoom.Cli.CliBase
                 Player.musicFiles.Add(musicPath);
         }
 
-        internal static void RenderSongName(string musicPath)
+        internal static string RenderSongName(string musicPath)
         {
             // Render the song name
             var (musicName, musicArtist, _) = GetMusicNameArtistGenre(musicPath);
 
             // Print the music name
-            Console.Title = $"BassBoom CLI - Basolia v0.0.3 - Alpha 3 • {musicArtist} - {musicName}";
-            CenteredTextColor.WriteCentered(1, $"Now playing: {musicArtist} - {musicName}");
+            return CenteredTextColor.RenderCentered(1, "Now playing: {0} - {1}", ConsoleColors.White, ConsoleColors.Black, musicArtist, musicName);
         }
 
         internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(string musicPath)
@@ -302,7 +303,7 @@ namespace BassBoom.Cli.CliBase
             string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
             try
             {
-                InfoBoxColor.WriteInfoBox("Trying to open lyrics file {0}...", false, vars: lyricsPath);
+                InfoBoxColor.WriteInfoBox("Trying to open lyrics file {0}...", false, lyricsPath);
                 if (File.Exists(lyricsPath))
                     Player.lyricInstance = LyricReader.GetLyrics(lyricsPath);
                 else
@@ -310,7 +311,7 @@ namespace BassBoom.Cli.CliBase
             }
             catch (Exception ex)
             {
-                InfoBoxColor.WriteInfoBox("Can't open lyrics file {0}... {1}", vars: new[] { lyricsPath, ex.Message });
+                InfoBoxColor.WriteInfoBox("Can't open lyrics file {0}... {1}", lyricsPath, ex.Message);
             }
         }
 
@@ -406,7 +407,7 @@ namespace BassBoom.Cli.CliBase
                 Comment: {{(!string.IsNullOrEmpty(Player.managedV2.Comment) ? Player.managedV2.Comment : !string.IsNullOrEmpty(Player.managedV1.Comment) ? Player.managedV1.Comment : "")}}
                 Duration: {{Player.totalSpan}}
                 Lyrics: {{(Player.lyricInstance is not null ? $"{Player.lyricInstance.Lines.Count} lines" : "No lyrics")}}
-
+                
                 Layer info
                 ==========
 

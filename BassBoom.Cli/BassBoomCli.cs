@@ -20,6 +20,7 @@
 using BassBoom.Cli.CliBase;
 using System;
 using System.IO;
+using Terminaux.Base;
 using Terminaux.Writer.ConsoleWriters;
 
 namespace BassBoom.Cli
@@ -48,6 +49,7 @@ namespace BassBoom.Cli
                 }
 
                 // Now, open an interactive TUI
+                ConsoleResizeListener.StartResizeListener();
                 Player.PlayerLoop();
             }
             catch (Exception ex)

@@ -29,6 +29,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Terminaux.Base;
+using Terminaux.Base.Buffered;
 using Terminaux.Colors;
 using Terminaux.Inputs;
 using Terminaux.Inputs.Styles.Infobox;
@@ -57,6 +58,7 @@ namespace BassBoom.Cli.CliBase
         internal static bool advance = false;
         internal static bool populate = true;
         internal static bool paused = false;
+        internal static bool failedToPlay = false;
         internal static string cachedLyric = "";
         internal static readonly List<string> musicFiles = [];
         internal static readonly List<CachedSongInfo> cachedInfos = [];
@@ -65,29 +67,51 @@ namespace BassBoom.Cli.CliBase
         {
             InitBasolia.Init();
             volume = PlaybackTools.GetVolume().baseLinear;
+            exiting = false;
+            rerender = true;
+            paused = false;
+            populate = true;
+            advance = false;
+
+            // Populate the screen
+            Screen playerScreen = new();
+            ScreenTools.SetCurrent(playerScreen);
 
             // First, clear the screen to draw our TUI
             while (!exiting)
             {
+                ScreenPart screenPart = new();
                 Thread.Sleep(1);
                 try
                 {
                     // Redraw if necessary
+                    if (ConsoleResizeListener.WasResized(true))
+                        rerender = true;
                     bool wasRerendered = rerender;
                     if (rerender)
                     {
                         rerender = false;
-                        HandleDraw();
+                        screenPart.AddDynamicText(HandleDraw);
                     }
 
                     // Current duration
                     position = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDuration() : 0;
                     var posSpan = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDurationSpan() : new();
-                    ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleWrapper.WindowHeight - 8, 6, ConsoleColors.DarkYellow, ConsoleColors.White);
-                    TextWriterWhereColor.WriteWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrapper.WindowHeight - 9);
-                    TextWriterWhereColor.WriteWhere($"Seek: {PlayerControls.seekRate:0.00} | Vol: {volume:0.00}", ConsoleWrapper.WindowWidth - $"Seek: {PlayerControls.seekRate:0.00} | Vol: {volume:0.00}".Length - 3, ConsoleWrapper.WindowHeight - 9);
+                    string indicator =
+                        $"Seek: {PlayerControls.seekRate:0.00} | " +
+                        $"Volume: {volume:0.00}";
+                    screenPart.AddDynamicText(() =>
+                    {
+                        var buffer = new StringBuilder();
+                        buffer.Append(
+                            ProgressBarColor.RenderProgress(100 * (position / (double)total), 2, ConsoleWrapper.WindowHeight - 8, 3, 3, ConsoleColors.DarkYellow, ConsoleColors.Gray, ConsoleColors.Black) +
+                            TextWriterWhereColor.RenderWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black) +
+                            TextWriterWhereColor.RenderWhere(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black)
+                        );
+                        return buffer.ToString();
+                    });
 
-                    // Check the mode
+                    // Get the lyrics
                     if (PlaybackTools.Playing)
                     {
                         // Print the lyrics, if any
@@ -97,31 +121,45 @@ namespace BassBoom.Cli.CliBase
                             if (current != cachedLyric || wasRerendered)
                             {
                                 cachedLyric = current;
-                                TextWriterWhereColor.WriteWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10);
-                                CenteredTextColor.WriteCentered(ConsoleWrapper.WindowHeight - 10, lyricInstance.GetLastLineCurrent());
+                                screenPart.AddDynamicText(() =>
+                                {
+                                    var buffer = new StringBuilder();
+                                    buffer.Append(
+                                        TextWriterWhereColor.RenderWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10, ConsoleColors.White, ConsoleColors.Black) +
+                                        CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 10, lyricInstance.GetLastLineCurrent(), ConsoleColors.White, ConsoleColors.Black)
+                                    );
+                                    return buffer.ToString();
+                                });
                             }
                         }
                         else
                             cachedLyric = "";
-
-                        // Wait for any keystroke asynchronously
-                        if (ConsoleWrapper.KeyAvailable)
-                        {
-                            var keystroke = Input.DetectKeypress();
-                            HandleKeypressPlayMode(keystroke);
-                        }
                     }
                     else
                     {
-                        TextWriterWhereColor.WriteWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10);
                         cachedLyric = "";
-
-                        // Wait for any keystroke
-                        if (ConsoleWrapper.KeyAvailable)
+                        screenPart.AddDynamicText(() =>
                         {
-                            var keystroke = Input.DetectKeypress();
+                            var buffer = new StringBuilder();
+                            buffer.Append(
+                                TextWriterWhereColor.RenderWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10, ConsoleColors.White, ConsoleColors.Black)
+                            );
+                            return buffer.ToString();
+                        });
+                    }
+
+                    // Render the buffer
+                    playerScreen.AddBufferedPart("BassBoom Player", screenPart);
+                    ScreenTools.Render();
+
+                    // Handle the keystroke
+                    if (ConsoleWrapper.KeyAvailable)
+                    {
+                        var keystroke = Input.DetectKeypress();
+                        if (PlaybackTools.Playing)
+                            HandleKeypressPlayMode(keystroke);
+                        else
                             HandleKeypressIdleMode(keystroke);
-                        }
                     }
                 }
                 catch (BasoliaException bex)
@@ -145,6 +183,7 @@ namespace BassBoom.Cli.CliBase
                     InfoBoxColor.WriteInfoBox("There's an unknown error when trying to process the music file.\n\n" + ex.Message);
                     rerender = true;
                 }
+                playerScreen.RemoveBufferedParts();
             }
 
             // Close the file if open
@@ -154,6 +193,7 @@ namespace BassBoom.Cli.CliBase
             // Restore state
             ConsoleWrapper.CursorVisible = true;
             ColorTools.LoadBack();
+            ScreenTools.UnsetCurrent(playerScreen);
         }
 
         private static void HandleKeypressIdleMode(ConsoleKeyInfo keystroke)
@@ -275,52 +315,71 @@ namespace BassBoom.Cli.CliBase
 
         private static void HandlePlay()
         {
-            foreach (var musicFile in musicFiles.Skip(currentSong - 1))
+            try
             {
-                if (!advance || exiting)
-                    return;
-                else
-                    populate = true;
-                currentSong = musicFiles.IndexOf(musicFile) + 1;
-                PlayerControls.PopulateMusicFileInfo(musicFile);
-                PlayerControls.RenderSongName(musicFile);
-                if (paused)
+                foreach (var musicFile in musicFiles.Skip(currentSong - 1))
                 {
-                    paused = false;
-                    PlaybackPositioningTools.SeekToFrame(position);
+                    if (!advance || exiting)
+                        return;
+                    else
+                        populate = true;
+                    currentSong = musicFiles.IndexOf(musicFile) + 1;
+                    PlayerControls.PopulateMusicFileInfo(musicFile);
+                    TextWriterColor.WritePlain(PlayerControls.RenderSongName(musicFile), false);
+                    if (paused)
+                    {
+                        paused = false;
+                        PlaybackPositioningTools.SeekToFrame(position);
+                    }
+                    PlaybackTools.Play();
                 }
-                PlaybackTools.Play();
+            }
+            catch (Exception ex)
+            {
+                InfoBoxColor.WriteInfoBox($"Playback failure: {ex.Message}");
+                failedToPlay = true;
+            }
+            finally
+            {
                 lyricInstance = null;
                 rerender = true;
             }
         }
 
-        private static void HandleDraw()
+        private static string HandleDraw()
         {
             // Prepare things
+            var drawn = new StringBuilder();
             ConsoleWrapper.CursorVisible = false;
             ColorTools.LoadBack();
 
             // First, print the keystrokes
-            string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [H] Help";
-            CenteredTextColor.WriteCentered(ConsoleWrapper.WindowHeight - 2, keystrokes);
+            string keystrokes =
+                "[SPACE] Play/Pause" +
+                " - [ESC] Stop" +
+                " - [Q] Exit" +
+                " - [H] Help";
+            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 2, keystrokes));
 
             // Print the separator and the music file info
             string separator = new('=', ConsoleWrapper.WindowWidth);
-            CenteredTextColor.WriteCentered(ConsoleWrapper.WindowHeight - 4, separator);
+            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
+
+            // Write powered by...
+            drawn.Append(TextWriterWhereColor.RenderWherePlain($"[ Powered by BassBoom ]", 2, ConsoleWrapper.WindowHeight - 4));
 
             // In case we have no songs in the playlist...
             if (musicFiles.Count == 0)
             {
                 int height = (ConsoleWrapper.WindowHeight - 10) / 2;
-                CenteredTextColor.WriteCentered(height, "Press A to insert a single song to the playlist, or S to insert the whole music library.");
-                return;
+                drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a single song to the playlist, or 'S' to insert the whole music library."));
+                return drawn.ToString();
             }
 
             // Populate music file info, as necessary
             if (populate)
                 PlayerControls.PopulateMusicFileInfo(musicFiles[currentSong - 1]);
-            PlayerControls.RenderSongName(musicFiles[currentSong - 1]);
+            drawn.Append(PlayerControls.RenderSongName(musicFiles[currentSong - 1]));
 
             // Now, print the list of songs.
             int startPos = 3;
@@ -355,7 +414,8 @@ namespace BassBoom.Cli.CliBase
                     new string(' ', ConsoleWrapper.WindowWidth - finalEntry.Length)
                 );
             }
-            TextWriterColor.WritePlain(playlist.ToString());
+            drawn.Append(playlist);
+            return drawn.ToString();
         }
     }
 }
