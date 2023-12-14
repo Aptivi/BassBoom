@@ -33,16 +33,16 @@ fi
 
 # Pack binary
 echo Packing binary...
-cd "../BassBoom/bin/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-bin.zip . && cd -
-cd "../BassBoom.Basolia/bin/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-api.zip . && cd -
-cd "../BassBoom/bin.Desktop/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-proto.zip . && cd -
-cd "../BassBoom/bin.Cli/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-protocli.zip . && cd -
-cd "../BassBoom/bin.Native/$releaseconf/net7.0/" && "$zippath" -r /tmp/$version-unsafeapi.zip . && cd -
-cd "../BassBoom/bin/$releaseconf/net7.0-windows/" && "$zippath" -r /tmp/$version-bin-win.zip . && cd -
-cd "../BassBoom.Basolia/bin/$releaseconf/net7.0-windows/" && "$zippath" -r /tmp/$version-api-win.zip . && cd -
-cd "../BassBoom/bin.Desktop/$releaseconf/net7.0-windows/" && "$zippath" -r /tmp/$version-proto-win.zip . && cd -
-cd "../BassBoom/bin.Cli/$releaseconf/net7.0-windows/" && "$zippath" -r /tmp/$version-protocli-win.zip . && cd -
-cd "../BassBoom/bin.Native/$releaseconf/net7.0-windows/" && "$zippath" -r /tmp/$version-unsafeapi-win.zip . && cd -
+cd "../BassBoom/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-bin.zip . && cd -
+cd "../BassBoom.Basolia/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-api.zip . && cd -
+cd "../BassBoom/bin.Desktop/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-proto.zip . && cd -
+cd "../BassBoom/bin.Cli/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-protocli.zip . && cd -
+cd "../BassBoom/bin.Native/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-unsafeapi.zip . && cd -
+cd "../BassBoom/bin/$releaseconf/net8.0-windows/" && "$zippath" -r /tmp/$version-bin-win.zip . && cd -
+cd "../BassBoom.Basolia/bin/$releaseconf/net8.0-windows/" && "$zippath" -r /tmp/$version-api-win.zip . && cd -
+cd "../BassBoom/bin.Desktop/$releaseconf/net8.0-windows/" && "$zippath" -r /tmp/$version-proto-win.zip . && cd -
+cd "../BassBoom/bin.Cli/$releaseconf/net8.0-windows/" && "$zippath" -r /tmp/$version-protocli-win.zip . && cd -
+cd "../BassBoom/bin.Native/$releaseconf/net8.0-windows/" && "$zippath" -r /tmp/$version-unsafeapi-win.zip . && cd -
 if [ ! $? == 0 ]; then
 	echo Packing using zip failed.
 	exit 1

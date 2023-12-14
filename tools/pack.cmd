@@ -23,16 +23,16 @@ if "%releaseconfig%" == "" set releaseconfig=Release
 
 :packbin
 echo Packing binary...
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-bin.zip "..\BassBoom\bin\%releaseconfig%\net7.0\*"
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-api.zip "..\BassBoom.Basolia\bin\%releaseconfig%\net7.0\*"
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-proto.zip "..\BassBoom.Desktop\bin\%releaseconfig%\net7.0\*"
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-protocli.zip "..\BassBoom.Cli\bin\%releaseconfig%\net7.0\*"
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-unsafeapi.zip "..\BassBoom.Native\bin\%releaseconfig%\net7.0\*"
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-bin-win.zip "..\BassBoom\bin\%releaseconfig%\net7.0-windows\*"
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-api-win.zip "..\BassBoom.Basolia\bin\%releaseconfig%\net7.0-windows\*"
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-proto-win.zip "..\BassBoom.Desktop\bin\%releaseconfig%\net7.0-windows\*"
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-protocli-win.zip "..\BassBoom.Cli\bin\%releaseconfig%\net7.0-windows\*"
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-unsafeapi-win.zip "..\BassBoom.Native\bin\%releaseconfig%\net7.0-windows\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-bin.zip "..\BassBoom\bin\%releaseconfig%\net8.0\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-api.zip "..\BassBoom.Basolia\bin\%releaseconfig%\net8.0\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-proto.zip "..\BassBoom.Desktop\bin\%releaseconfig%\net8.0\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-protocli.zip "..\BassBoom.Cli\bin\%releaseconfig%\net8.0\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-unsafeapi.zip "..\BassBoom.Native\bin\%releaseconfig%\net8.0\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-bin-win.zip "..\BassBoom\bin\%releaseconfig%\net8.0-windows\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-api-win.zip "..\BassBoom.Basolia\bin\%releaseconfig%\net8.0-windows\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-proto-win.zip "..\BassBoom.Desktop\bin\%releaseconfig%\net8.0-windows\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-protocli-win.zip "..\BassBoom.Cli\bin\%releaseconfig%\net8.0-windows\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-unsafeapi-win.zip "..\BassBoom.Native\bin\%releaseconfig%\net8.0-windows\*"
 if %errorlevel% == 0 goto :complete
 echo There was an error trying to pack binary (%errorlevel%).
 goto :finished
