@@ -243,6 +243,10 @@ namespace BassBoom.Basolia.Format
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
+            // Check to see if we're playing
+            if (PlaybackTools.Playing)
+                throw new BasoliaException("Trying to get the ID3 metadata during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
+
             IntPtr v1 = IntPtr.Zero;
             IntPtr v2 = IntPtr.Zero;
             unsafe
@@ -390,6 +394,10 @@ namespace BassBoom.Basolia.Format
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
+            // Check to see if we're playing
+            if (PlaybackTools.Playing)
+                throw new BasoliaException("Trying to get the ICY metadata during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
+
             string icy = "";
             unsafe
             {
@@ -420,6 +428,10 @@ namespace BassBoom.Basolia.Format
             // Check to see if the file is open
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+            // Check to see if we're playing
+            if (PlaybackTools.Playing)
+                throw new BasoliaException("Trying to get the frame information during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
 
             mpg123_frameinfo frameInfo = default;
             unsafe
