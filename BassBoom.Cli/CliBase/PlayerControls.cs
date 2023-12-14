@@ -28,6 +28,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Terminaux.Base;
+using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 
@@ -56,7 +57,7 @@ namespace BassBoom.Cli.CliBase
         internal static void SeekForward()
         {
             // In case we have no songs in the playlist...
-            if (!Player.musicFiles.Any())
+            if (Player.musicFiles.Count == 0)
                 return;
 
             Player.position += (int)(Player.formatInfo.rate * seekRate);
@@ -68,7 +69,7 @@ namespace BassBoom.Cli.CliBase
         internal static void SeekBackward()
         {
             // In case we have no songs in the playlist...
-            if (!Player.musicFiles.Any())
+            if (Player.musicFiles.Count == 0)
                 return;
 
             Player.position -= (int)(Player.formatInfo.rate * seekRate);
@@ -80,7 +81,7 @@ namespace BassBoom.Cli.CliBase
         internal static void SeekBeginning()
         {
             // In case we have no songs in the playlist...
-            if (!Player.musicFiles.Any())
+            if (Player.musicFiles.Count == 0)
                 return;
 
             PlaybackPositioningTools.SeekToTheBeginning();
@@ -90,7 +91,7 @@ namespace BassBoom.Cli.CliBase
         internal static void Play()
         {
             // In case we have no songs in the playlist...
-            if (!Player.musicFiles.Any())
+            if (Player.musicFiles.Count == 0)
                 return;
 
             if (PlaybackTools.State == PlaybackState.Stopped)
@@ -121,7 +122,7 @@ namespace BassBoom.Cli.CliBase
         internal static void NextSong()
         {
             // In case we have no songs in the playlist...
-            if (!Player.musicFiles.Any())
+            if (Player.musicFiles.Count == 0)
                 return;
 
             Player.currentSong++;
@@ -132,7 +133,7 @@ namespace BassBoom.Cli.CliBase
         internal static void PreviousSong()
         {
             // In case we have no songs in the playlist...
-            if (!Player.musicFiles.Any())
+            if (Player.musicFiles.Count == 0)
                 return;
 
             Player.currentSong--;
@@ -142,7 +143,7 @@ namespace BassBoom.Cli.CliBase
 
         internal static void PromptForAddSong()
         {
-            string path = InfoBoxColor.WriteInfoBoxInput("Enter a path to the music file");
+            string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the music file");
             if (File.Exists(path))
             {
                 int currentPos = Player.position;
@@ -159,7 +160,7 @@ namespace BassBoom.Cli.CliBase
 
         internal static void PromptForAddDirectory()
         {
-            string path = InfoBoxColor.WriteInfoBoxInput("Enter a path to the music library directory");
+            string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the music library directory");
             if (Directory.Exists(path))
             {
                 int currentPos = Player.position;
@@ -241,7 +242,7 @@ namespace BassBoom.Cli.CliBase
                 var instance = new CachedSongInfo(musicPath, Player.managedV1, Player.managedV2, Player.total, Player.formatInfo, Player.frameInfo, Player.lyricInstance);
                 Player.cachedInfos.Add(instance);
             }
-            TextWriterWhereColor.WriteWhere(new string(' ', ConsoleWrappers.ActionWindowWidth()), 0, 1);
+            TextWriterWhereColor.WriteWhere(new string(' ', ConsoleWrapper.WindowWidth), 0, 1);
             if (!Player.musicFiles.Contains(musicPath))
                 Player.musicFiles.Add(musicPath);
         }
@@ -316,7 +317,7 @@ namespace BassBoom.Cli.CliBase
         internal static void RemoveCurrentSong()
         {
             // In case we have no songs in the playlist...
-            if (!Player.musicFiles.Any())
+            if (Player.musicFiles.Count == 0)
                 return;
 
             Player.cachedInfos.RemoveAt(Player.currentSong - 1);
@@ -335,7 +336,7 @@ namespace BassBoom.Cli.CliBase
         internal static void RemoveAllSongs()
         {
             // In case we have no songs in the playlist...
-            if (!Player.musicFiles.Any())
+            if (Player.musicFiles.Count == 0)
                 return;
 
             for (int i = Player.musicFiles.Count; i > 0; i--)
@@ -345,11 +346,11 @@ namespace BassBoom.Cli.CliBase
         internal static void PromptSeek()
         {
             // In case we have no songs in the playlist...
-            if (!Player.musicFiles.Any())
+            if (Player.musicFiles.Count == 0)
                 return;
 
             // Prompt the user to set the current position to the specified time
-            string time = InfoBoxColor.WriteInfoBoxInput("Write the target position in this format: HH:MM:SS");
+            string time = InfoBoxInputColor.WriteInfoBoxInput("Write the target position in this format: HH:MM:SS");
             if (TimeSpan.TryParse(time, out TimeSpan duration))
             {
                 Player.position = (int)(Player.cachedInfos[Player.currentSong - 1].FormatInfo.rate * duration.TotalSeconds);

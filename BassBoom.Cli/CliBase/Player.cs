@@ -30,10 +30,12 @@ using System.Text;
 using System.Threading;
 using Terminaux.Base;
 using Terminaux.Colors;
-using Terminaux.Reader.Inputs;
-using Terminaux.Sequences.Builder.Types;
+using Terminaux.Inputs;
+using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
+using Textify.General;
+using Textify.Sequences.Builder.Types;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -81,9 +83,9 @@ namespace BassBoom.Cli.CliBase
                     // Current duration
                     position = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDuration() : 0;
                     var posSpan = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDurationSpan() : new();
-                    ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleWrappers.ActionWindowHeight() - 8, 6);
-                    TextWriterWhereColor.WriteWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrappers.ActionWindowHeight() - 9);
-                    TextWriterWhereColor.WriteWhere($"Seek: {PlayerControls.seekRate:0.00} | Vol: {volume:0.00}", ConsoleWrappers.ActionWindowWidth() - $"Seek: {PlayerControls.seekRate:0.00} | Vol: {volume:0.00}".Length - 3, ConsoleWrappers.ActionWindowHeight() - 9);
+                    ProgressBarColor.WriteProgress(100 * (position / (double)total), 2, ConsoleWrapper.WindowHeight - 8, 6, ConsoleColors.DarkYellow, ConsoleColors.White);
+                    TextWriterWhereColor.WriteWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrapper.WindowHeight - 9);
+                    TextWriterWhereColor.WriteWhere($"Seek: {PlayerControls.seekRate:0.00} | Vol: {volume:0.00}", ConsoleWrapper.WindowWidth - $"Seek: {PlayerControls.seekRate:0.00} | Vol: {volume:0.00}".Length - 3, ConsoleWrapper.WindowHeight - 9);
 
                     // Check the mode
                     if (PlaybackTools.Playing)
@@ -95,15 +97,15 @@ namespace BassBoom.Cli.CliBase
                             if (current != cachedLyric || wasRerendered)
                             {
                                 cachedLyric = current;
-                                TextWriterWhereColor.WriteWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrappers.ActionWindowHeight() - 10);
-                                CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 10, lyricInstance.GetLastLineCurrent());
+                                TextWriterWhereColor.WriteWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10);
+                                CenteredTextColor.WriteCentered(ConsoleWrapper.WindowHeight - 10, lyricInstance.GetLastLineCurrent());
                             }
                         }
                         else
                             cachedLyric = "";
 
                         // Wait for any keystroke asynchronously
-                        if (ConsoleWrappers.ActionKeyAvailable())
+                        if (ConsoleWrapper.KeyAvailable)
                         {
                             var keystroke = Input.DetectKeypress();
                             HandleKeypressPlayMode(keystroke);
@@ -111,11 +113,11 @@ namespace BassBoom.Cli.CliBase
                     }
                     else
                     {
-                        TextWriterWhereColor.WriteWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrappers.ActionWindowHeight() - 10);
+                        TextWriterWhereColor.WriteWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10);
                         cachedLyric = "";
 
                         // Wait for any keystroke
-                        if (ConsoleWrappers.ActionKeyAvailable())
+                        if (ConsoleWrapper.KeyAvailable)
                         {
                             var keystroke = Input.DetectKeypress();
                             HandleKeypressIdleMode(keystroke);
@@ -150,7 +152,7 @@ namespace BassBoom.Cli.CliBase
                 FileTools.CloseFile();
 
             // Restore state
-            ConsoleWrappers.ActionCursorVisible(true);
+            ConsoleWrapper.CursorVisible = true;
             ColorTools.LoadBack();
         }
 
@@ -296,21 +298,21 @@ namespace BassBoom.Cli.CliBase
         private static void HandleDraw()
         {
             // Prepare things
-            ConsoleWrappers.ActionCursorVisible(false);
+            ConsoleWrapper.CursorVisible = false;
             ColorTools.LoadBack();
 
             // First, print the keystrokes
             string keystrokes = "[SPACE] Play/Pause - [ESC] Stop - [Q] Exit - [H] Help";
-            CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 2, keystrokes);
+            CenteredTextColor.WriteCentered(ConsoleWrapper.WindowHeight - 2, keystrokes);
 
             // Print the separator and the music file info
-            string separator = new('=', ConsoleWrappers.ActionWindowWidth());
-            CenteredTextColor.WriteCentered(ConsoleWrappers.ActionWindowHeight() - 4, separator);
+            string separator = new('=', ConsoleWrapper.WindowWidth);
+            CenteredTextColor.WriteCentered(ConsoleWrapper.WindowHeight - 4, separator);
 
             // In case we have no songs in the playlist...
-            if (!musicFiles.Any())
+            if (musicFiles.Count == 0)
             {
-                int height = (ConsoleWrappers.ActionWindowHeight() - 10) / 2;
+                int height = (ConsoleWrapper.WindowHeight - 10) / 2;
                 CenteredTextColor.WriteCentered(height, "Press A to insert a single song to the playlist, or S to insert the whole music library.");
                 return;
             }
@@ -322,11 +324,8 @@ namespace BassBoom.Cli.CliBase
 
             // Now, print the list of songs.
             int startPos = 3;
-            int endPos = ConsoleWrappers.ActionWindowHeight() - 10;
+            int endPos = ConsoleWrapper.WindowHeight - 10;
             int songsPerPage = endPos - startPos;
-            int pages = musicFiles.Count / songsPerPage;
-            if (musicFiles.Count % songsPerPage == 0)
-                pages--;
             int currentPage = (currentSong - 1) / songsPerPage;
             int startIndex = songsPerPage * currentPage;
             var playlist = new StringBuilder();
@@ -338,11 +337,11 @@ namespace BassBoom.Cli.CliBase
                 if (finalIndex <= musicFiles.Count - 1)
                 {
                     // Here, it's getting uglier as we don't have ElementAt() in IEnumerable, too!
-                    var (musicName, musicArtist, musicGenre) = PlayerControls.GetMusicNameArtistGenre(finalIndex);
+                    var (musicName, musicArtist, _) = PlayerControls.GetMusicNameArtistGenre(finalIndex);
                     string duration = cachedInfos[finalIndex].DurationSpan;
                     string renderedDuration = $"[{duration}]";
-                    string dataObject = $"  {musicArtist} - {musicName}".Truncate(ConsoleWrappers.ActionWindowWidth() - renderedDuration.Length - 5);
-                    string spaces = new(' ', ConsoleWrappers.ActionWindowWidth() - 4 - duration.Length - dataObject.Length);
+                    string dataObject = $"  {musicArtist} - {musicName}".Truncate(ConsoleWrapper.WindowWidth - renderedDuration.Length - 5);
+                    string spaces = new(' ', ConsoleWrapper.WindowWidth - 4 - duration.Length - dataObject.Length);
                     finalEntry = dataObject + spaces + renderedDuration;
                 }
 
@@ -353,25 +352,10 @@ namespace BassBoom.Cli.CliBase
                     $"{CsiSequences.GenerateCsiCursorPosition(1, top + 1)}" +
                     $"{finalForeColor.VTSequenceForeground}" +
                     finalEntry +
-                    new string(' ', ConsoleWrappers.ActionWindowWidth() - finalEntry.Length)
+                    new string(' ', ConsoleWrapper.WindowWidth - finalEntry.Length)
                 );
             }
             TextWriterColor.WritePlain(playlist.ToString());
-        }
-
-        private static string Truncate(this string target, int threshold)
-        {
-            if (target is null)
-                throw new ArgumentNullException(nameof(target));
-
-            // Try to truncate string. If the string length is bigger than the threshold, it'll be truncated to the length of
-            // the threshold, putting three dots next to it. We don't use ellipsis marks here because we're dealing with the
-            // terminal, and some terminals and some monospace fonts may not support that character, so we mimick it by putting
-            // the three dots.
-            if (target.Length > threshold)
-                return target[..(threshold - 1)] + "...";
-            else
-                return target;
         }
     }
 }
