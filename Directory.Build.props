@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <AvaloniaVersion>11.0.2</AvaloniaVersion>
-    <Version>0.0.3</Version>
+    <Version>0.0.3.1</Version>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>True</IncludeSymbols>
   </PropertyGroup>
