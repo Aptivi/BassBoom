@@ -28,6 +28,10 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
+#if !NETCOREAPP
+using NativeLibraryManager;
+#endif
+
 namespace BassBoom.Native.Runtime
 {
     /// <summary>
@@ -77,7 +81,49 @@ namespace BassBoom.Native.Runtime
             mpg123LibPath = libPath;
             out123LibPath = libPathOut;
             syn123LibPath = libPathSyn;
+#if NETCOREAPP
             NativeLibrary.SetDllImportResolver(typeof(NativeInit).Assembly, ResolveLibrary);
+#else
+            var bytesMpg = File.ReadAllBytes(mpg123LibPath);
+            var libManagerMpg = new LibraryManager(
+                new LibraryItem(Platform.Windows, Bitness.x32,
+                    new LibraryFile("mpg123-0.dll", bytesMpg)),
+                new LibraryItem(Platform.Windows, Bitness.x64,
+                    new LibraryFile("mpg123-0.dll", bytesMpg)),
+                new LibraryItem(Platform.MacOs, Bitness.x64,
+                    new LibraryFile("libmpg123.dylib", bytesMpg)),
+                new LibraryItem(Platform.Linux, Bitness.x64,
+                    new LibraryFile("libmpg123.so", bytesMpg)),
+                new LibraryItem(Platform.Linux, Bitness.x32,
+                    new LibraryFile("libmpg123.so", bytesMpg)));
+            libManagerMpg.LoadNativeLibrary();
+            var bytesOut = File.ReadAllBytes(out123LibPath);
+            var libManagerOut = new LibraryManager(
+                new LibraryItem(Platform.Windows, Bitness.x32,
+                    new LibraryFile("out123-0.dll", bytesOut)),
+                new LibraryItem(Platform.Windows, Bitness.x64,
+                    new LibraryFile("out123-0.dll", bytesOut)),
+                new LibraryItem(Platform.MacOs, Bitness.x64,
+                    new LibraryFile("libout123.dylib", bytesOut)),
+                new LibraryItem(Platform.Linux, Bitness.x64,
+                    new LibraryFile("libout123.so", bytesOut)),
+                new LibraryItem(Platform.Linux, Bitness.x32,
+                    new LibraryFile("libout123.so", bytesOut)));
+            libManagerOut.LoadNativeLibrary();
+            var bytesSyn = File.ReadAllBytes(syn123LibPath);
+            var libManagerSyn = new LibraryManager(
+                new LibraryItem(Platform.Windows, Bitness.x32,
+                    new LibraryFile("syn123-0.dll", bytesSyn)),
+                new LibraryItem(Platform.Windows, Bitness.x64,
+                    new LibraryFile("syn123-0.dll", bytesSyn)),
+                new LibraryItem(Platform.MacOs, Bitness.x64,
+                    new LibraryFile("libsyn123.dylib", bytesSyn)),
+                new LibraryItem(Platform.Linux, Bitness.x64,
+                    new LibraryFile("libsyn123.so", bytesSyn)),
+                new LibraryItem(Platform.Linux, Bitness.x32,
+                    new LibraryFile("libsyn123.so", bytesSyn)));
+            libManagerSyn.LoadNativeLibrary();
+#endif
             string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
             if (PlatformTools.IsOnWindows())
                 Environment.SetEnvironmentVariable("MPG123_MODDIR", libPluginsPath);
@@ -131,6 +177,7 @@ namespace BassBoom.Native.Runtime
             }
         }
 
+#if NETCOREAPP
         private static nint ResolveLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
         {
             IntPtr libHandle = IntPtr.Zero;
@@ -142,6 +189,7 @@ namespace BassBoom.Native.Runtime
                 libHandle = NativeLibrary.Load(syn123LibPath);
             return libHandle;
         }
+#endif
 
         internal static string GetAppropriateMpg123LibraryPath() =>
             GetAppropriateMpg123LibraryPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));

@@ -296,23 +296,23 @@ namespace BassBoom.Basolia.Format
                 unsafe
                 {
                     // Checking for NULLs is necessary before trying to set the values.
-                    string title = new nint(nativeV2.title) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.title->p), nativeV2.title->size.ToInt32() - 1) :
+                    string title = new IntPtr(nativeV2.title) != IntPtr.Zero ?
+                        Marshal.PtrToStringAnsi(new IntPtr(nativeV2.title->p), nativeV2.title->size.ToInt32() - 1) :
                         "";
-                    string artist = new nint(nativeV2.artist) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.artist->p), nativeV2.artist->size.ToInt32() - 1) :
+                    string artist = new IntPtr(nativeV2.artist) != IntPtr.Zero ?
+                        Marshal.PtrToStringAnsi(new IntPtr(nativeV2.artist->p), nativeV2.artist->size.ToInt32() - 1) :
                         "";
-                    string album = new nint(nativeV2.album) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.album->p), nativeV2.album->size.ToInt32() - 1) :
+                    string album = new IntPtr(nativeV2.album) != IntPtr.Zero ?
+                        Marshal.PtrToStringAnsi(new IntPtr(nativeV2.album->p), nativeV2.album->size.ToInt32() - 1) :
                         "";
-                    string year = new nint(nativeV2.year) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.year->p), nativeV2.year->size.ToInt32() - 1) :
+                    string year = new IntPtr(nativeV2.year) != IntPtr.Zero ?
+                        Marshal.PtrToStringAnsi(new IntPtr(nativeV2.year->p), nativeV2.year->size.ToInt32() - 1) :
                         "";
-                    string genre = new nint(nativeV2.genre) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.genre->p), nativeV2.genre->size.ToInt32() - 1) :
+                    string genre = new IntPtr(nativeV2.genre) != IntPtr.Zero ?
+                        Marshal.PtrToStringAnsi(new IntPtr(nativeV2.genre->p), nativeV2.genre->size.ToInt32() - 1) :
                         "";
-                    string comment = new nint(nativeV2.comment) != IntPtr.Zero ?
-                        Marshal.PtrToStringAnsi(new nint(nativeV2.comment->p), nativeV2.comment->size.ToInt32() - 1) :
+                    string comment = new IntPtr(nativeV2.comment) != IntPtr.Zero ?
+                        Marshal.PtrToStringAnsi(new IntPtr(nativeV2.comment->p), nativeV2.comment->size.ToInt32() - 1) :
                         "";
 
                     // Comments...
@@ -326,8 +326,8 @@ namespace BassBoom.Basolia.Format
                         commentsPtr += commentsSize;
                     }
                     commentsListManaged.AddRange(commentsList.Select((text) =>
-                        (new nint(text.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.description.p)) : "",
-                         new nint(text.text.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.text.p)) : ""))
+                        (new IntPtr(text.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new IntPtr(text.description.p)) : "",
+                         new IntPtr(text.text.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new IntPtr(text.text.p)) : ""))
                     );
 
                     // Texts...
@@ -341,8 +341,8 @@ namespace BassBoom.Basolia.Format
                         textsPtr += textsSize;
                     }
                     textsListManaged.AddRange(textsList.Select((text) =>
-                        (new nint(text.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.description.p)) : "",
-                         new nint(text.text.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.text.p)) : ""))
+                        (new IntPtr(text.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new IntPtr(text.description.p)) : "",
+                         new IntPtr(text.text.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new IntPtr(text.text.p)) : ""))
                     );
 
                     // Extras...
@@ -356,8 +356,8 @@ namespace BassBoom.Basolia.Format
                         extrasPtr += extrasSize;
                     }
                     extrasListManaged.AddRange(extrasList.Select((text) =>
-                        (new nint(text.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.description.p)) : "",
-                         new nint(text.text.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(text.text.p)) : ""))
+                        (new IntPtr(text.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new IntPtr(text.description.p)) : "",
+                         new IntPtr(text.text.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new IntPtr(text.text.p)) : ""))
                     );
 
                     // Pictures...
@@ -371,8 +371,8 @@ namespace BassBoom.Basolia.Format
                         picturePtr += pictureSize;
                     }
                     extrasListManaged.AddRange(pictureList.Select((picture) =>
-                        (new nint(picture.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(picture.description.p)) : "",
-                         new nint(picture.data) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new nint(picture.data)) : ""))
+                        (new IntPtr(picture.description.p) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new IntPtr(picture.description.p)) : "",
+                         new IntPtr(picture.data) != IntPtr.Zero ? Marshal.PtrToStringAnsi(new IntPtr(picture.data)) : ""))
                     );
                     var managedV2Instance = new Id3V2Metadata(title, artist, album, year, comment, genre,
                         [.. commentsListManaged], [.. textsListManaged], [.. extrasListManaged], [.. extrasListManaged]);

@@ -85,7 +85,7 @@ namespace BassBoom.Basolia.Lyrics
             {
                 string timeOrWord = words[i];
                 string nextWord = "";
-                bool isTime = timeOrWord.Contains('<') && timeOrWord.Contains('>');
+                bool isTime = timeOrWord.Contains("<") && timeOrWord.Contains(">");
                 var wordTime = new TimeSpan();
 
                 // If the current word is a time, populate the word variable

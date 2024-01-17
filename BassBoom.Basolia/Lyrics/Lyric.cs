@@ -52,7 +52,7 @@ namespace BassBoom.Basolia.Lyrics
         {
             var processedLines = GetLinesCurrent();
             if (processedLines.Length > 0)
-                return processedLines[^1].Line;
+                return processedLines[processedLines.Length - 1].Line;
             return "";
         }
 
@@ -64,7 +64,7 @@ namespace BassBoom.Basolia.Lyrics
         {
             var processedLines = GetLinesCurrent();
             if (processedLines.Length > 0)
-                return processedLines[^1].LineWords;
+                return processedLines[processedLines.Length - 1].LineWords;
             return [];
         }
 
@@ -85,7 +85,7 @@ namespace BassBoom.Basolia.Lyrics
         {
             var processedLines = GetLinesToSpan(span);
             if (processedLines.Length > 0)
-                return processedLines[^1].Line;
+                return processedLines[processedLines.Length - 1].Line;
             return "";
         }
 
@@ -98,7 +98,7 @@ namespace BassBoom.Basolia.Lyrics
         {
             var processedLines = GetLinesToSpan(span);
             if (processedLines.Length > 0)
-                return processedLines[^1].LineWords;
+                return processedLines[processedLines.Length - 1].LineWords;
             return [];
         }
 

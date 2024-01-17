@@ -71,7 +71,7 @@ namespace BassBoom.Basolia.Devices
             Dictionary<string, string> drivers = [];
 
             // We're now entering the dangerous zone
-            nint names = nint.Zero, descr = nint.Zero;
+            nint names = IntPtr.Zero, descr = IntPtr.Zero;
             int driverCount;
             DriverList drvList;
             DriverDescList drvDescList;
@@ -110,7 +110,7 @@ namespace BassBoom.Basolia.Devices
             Dictionary<string, string> devices = [];
 
             // We're now entering the dangerous zone
-            nint names = nint.Zero, descr = nint.Zero, active = nint.Zero;
+            nint names = IntPtr.Zero, descr = IntPtr.Zero, active = IntPtr.Zero;
             int deviceCount;
             DeviceList devList;
             DeviceDescList devDescList;
