@@ -29,7 +29,8 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 #if !NETCOREAPP
-using NativeLibraryManager;
+using NativeLand;
+using NativeLand.Tools;
 #endif
 
 namespace BassBoom.Native.Runtime
@@ -86,42 +87,72 @@ namespace BassBoom.Native.Runtime
 #else
             var bytesMpg = File.ReadAllBytes(mpg123LibPath);
             var libManagerMpg = new LibraryManager(
-                new LibraryItem(Platform.Windows, Bitness.x32,
-                    new LibraryFile("mpg123-0.dll", bytesMpg)),
-                new LibraryItem(Platform.Windows, Bitness.x64,
-                    new LibraryFile("mpg123-0.dll", bytesMpg)),
-                new LibraryItem(Platform.MacOs, Bitness.x64,
+                new LibraryItem(Platform.Windows, Architecture.X86,
+                    new LibraryFile("mpg123.dll", bytesMpg)),
+                new LibraryItem(Platform.Windows, Architecture.X64,
+                    new LibraryFile("mpg123.dll", bytesMpg)),
+                new LibraryItem(Platform.Windows, Architecture.Arm,
+                    new LibraryFile("mpg123.dll", bytesMpg)),
+                new LibraryItem(Platform.Windows, Architecture.Arm64,
+                    new LibraryFile("mpg123.dll", bytesMpg)),
+                new LibraryItem(Platform.MacOS, Architecture.X64,
                     new LibraryFile("libmpg123.dylib", bytesMpg)),
-                new LibraryItem(Platform.Linux, Bitness.x64,
+                new LibraryItem(Platform.MacOS, Architecture.Arm64,
+                    new LibraryFile("libmpg123.dylib", bytesMpg)),
+                new LibraryItem(Platform.Linux, Architecture.X64,
                     new LibraryFile("libmpg123.so", bytesMpg)),
-                new LibraryItem(Platform.Linux, Bitness.x32,
+                new LibraryItem(Platform.Linux, Architecture.X86,
+                    new LibraryFile("libmpg123.so", bytesMpg)),
+                new LibraryItem(Platform.Linux, Architecture.Arm,
+                    new LibraryFile("libmpg123.so", bytesMpg)),
+                new LibraryItem(Platform.Linux, Architecture.Arm64,
                     new LibraryFile("libmpg123.so", bytesMpg)));
-            libManagerMpg.LoadNativeLibrary();
             var bytesOut = File.ReadAllBytes(out123LibPath);
             var libManagerOut = new LibraryManager(
-                new LibraryItem(Platform.Windows, Bitness.x32,
-                    new LibraryFile("out123-0.dll", bytesOut)),
-                new LibraryItem(Platform.Windows, Bitness.x64,
-                    new LibraryFile("out123-0.dll", bytesOut)),
-                new LibraryItem(Platform.MacOs, Bitness.x64,
+                new LibraryItem(Platform.Windows, Architecture.X86,
+                    new LibraryFile("out123.dll", bytesOut)),
+                new LibraryItem(Platform.Windows, Architecture.X64,
+                    new LibraryFile("out123.dll", bytesOut)),
+                new LibraryItem(Platform.Windows, Architecture.Arm,
+                    new LibraryFile("out123.dll", bytesMpg)),
+                new LibraryItem(Platform.Windows, Architecture.Arm64,
+                    new LibraryFile("out123.dll", bytesMpg)),
+                new LibraryItem(Platform.MacOS, Architecture.X64,
                     new LibraryFile("libout123.dylib", bytesOut)),
-                new LibraryItem(Platform.Linux, Bitness.x64,
+                new LibraryItem(Platform.MacOS, Architecture.Arm64,
+                    new LibraryFile("libout123.dylib", bytesMpg)),
+                new LibraryItem(Platform.Linux, Architecture.X64,
                     new LibraryFile("libout123.so", bytesOut)),
-                new LibraryItem(Platform.Linux, Bitness.x32,
-                    new LibraryFile("libout123.so", bytesOut)));
-            libManagerOut.LoadNativeLibrary();
+                new LibraryItem(Platform.Linux, Architecture.X86,
+                    new LibraryFile("libout123.so", bytesOut)),
+                new LibraryItem(Platform.Linux, Architecture.Arm,
+                    new LibraryFile("libout123.so", bytesMpg)),
+                new LibraryItem(Platform.Linux, Architecture.Arm64,
+                    new LibraryFile("libout123.so", bytesMpg)));
             var bytesSyn = File.ReadAllBytes(syn123LibPath);
             var libManagerSyn = new LibraryManager(
-                new LibraryItem(Platform.Windows, Bitness.x32,
-                    new LibraryFile("syn123-0.dll", bytesSyn)),
-                new LibraryItem(Platform.Windows, Bitness.x64,
-                    new LibraryFile("syn123-0.dll", bytesSyn)),
-                new LibraryItem(Platform.MacOs, Bitness.x64,
+                new LibraryItem(Platform.Windows, Architecture.X86,
+                    new LibraryFile("syn123.dll", bytesSyn)),
+                new LibraryItem(Platform.Windows, Architecture.X64,
+                    new LibraryFile("syn123.dll", bytesSyn)),
+                new LibraryItem(Platform.Windows, Architecture.Arm,
+                    new LibraryFile("syn123.dll", bytesMpg)),
+                new LibraryItem(Platform.Windows, Architecture.Arm64,
+                    new LibraryFile("syn123.dll", bytesMpg)),
+                new LibraryItem(Platform.MacOS, Architecture.X64,
                     new LibraryFile("libsyn123.dylib", bytesSyn)),
-                new LibraryItem(Platform.Linux, Bitness.x64,
+                new LibraryItem(Platform.MacOS, Architecture.Arm64,
+                    new LibraryFile("libsyn123.dylib", bytesMpg)),
+                new LibraryItem(Platform.Linux, Architecture.X64,
                     new LibraryFile("libsyn123.so", bytesSyn)),
-                new LibraryItem(Platform.Linux, Bitness.x32,
-                    new LibraryFile("libsyn123.so", bytesSyn)));
+                new LibraryItem(Platform.Linux, Architecture.X86,
+                    new LibraryFile("libsyn123.so", bytesSyn)),
+                new LibraryItem(Platform.Linux, Architecture.Arm,
+                    new LibraryFile("libsyn123.so", bytesMpg)),
+                new LibraryItem(Platform.Linux, Architecture.Arm64,
+                    new LibraryFile("libsyn123.so", bytesMpg)));
+            libManagerMpg.LoadNativeLibrary();
+            libManagerOut.LoadNativeLibrary();
             libManagerSyn.LoadNativeLibrary();
 #endif
             string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
@@ -199,7 +230,7 @@ namespace BassBoom.Native.Runtime
             string runtimesPath = root + "/";
             string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
             if (PlatformTools.IsOnWindows())
-                runtimesPath += $"runtimes/win-{lowerArch}/native/mpg123-0.dll";
+                runtimesPath += $"runtimes/win-{lowerArch}/native/mpg123.dll";
             else if (PlatformTools.IsOnMacOS())
                 runtimesPath += $"runtimes/osx-{lowerArch}/native/libmpg123.dylib";
             else if (PlatformTools.IsOnUnix())
@@ -217,7 +248,7 @@ namespace BassBoom.Native.Runtime
             string runtimesPath = root + "/";
             string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
             if (PlatformTools.IsOnWindows())
-                runtimesPath += $"runtimes/win-{lowerArch}/native/out123-0.dll";
+                runtimesPath += $"runtimes/win-{lowerArch}/native/out123.dll";
             else if (PlatformTools.IsOnMacOS())
                 runtimesPath += $"runtimes/osx-{lowerArch}/native/libout123.dylib";
             else if (PlatformTools.IsOnUnix())
@@ -235,7 +266,7 @@ namespace BassBoom.Native.Runtime
             string runtimesPath = root + "/";
             string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
             if (PlatformTools.IsOnWindows())
-                runtimesPath += $"runtimes/win-{lowerArch}/native/syn123-0.dll";
+                runtimesPath += $"runtimes/win-{lowerArch}/native/syn123.dll";
             else if (PlatformTools.IsOnMacOS())
                 runtimesPath += $"runtimes/osx-{lowerArch}/native/libsyn123.dylib";
             else if (PlatformTools.IsOnUnix())

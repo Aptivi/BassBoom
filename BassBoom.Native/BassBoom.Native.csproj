@@ -32,8 +32,6 @@
     <Folder Include="runtimes\osx-x64\native\" />
     <Folder Include="runtimes\win-arm64\native\" />
     <Folder Include="runtimes\win-arm\native\" />
-    <Folder Include="runtimes\win-x64\native\" />
-    <Folder Include="runtimes\win-x86\native\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,7 +55,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-    <PackageReference Include="NativeLibraryManager" Version="1.0.23" Condition="'$(TargetFramework)' == 'net48'" />
+    <PackageReference Include="NativeLand" Version="1.0.0" Condition="'$(TargetFramework)' == 'net48'" />
   </ItemGroup>
 
 </Project>
