@@ -79,10 +79,27 @@ namespace BassBoom.Basolia.Format
             // Now, iterate through the list of supported formats
             for (int i = 0; i < getStatus; i++)
             {
-                var fmtStruct = Marshal.PtrToStructure<mpg123_fmt>(fmtlist);
-                long rate = fmtStruct.rate;
-                int channels = fmtStruct.channels;
-                int encoding = fmtStruct.encoding;
+                long rate = 0;
+                int channels = 0;
+                int encoding = 0;
+
+                // The "long" rate is different on our Windows compilations than on Linux compilations.
+                if (PlatformTools.IsOnWindows())
+                {
+                    var fmtStruct = Marshal.PtrToStructure<mpg123_fmt_win>(fmtlist);
+                    rate = fmtStruct.rate;
+                    channels = fmtStruct.channels;
+                    encoding = fmtStruct.encoding;
+                }
+                else
+                {
+                    var fmtStruct = Marshal.PtrToStructure<mpg123_fmt>(fmtlist);
+                    rate = fmtStruct.rate;
+                    channels = fmtStruct.channels;
+                    encoding = fmtStruct.encoding;
+                }
+
+                // Check the validity of the three values
                 if (rate >= 0 && channels >= 0 && encoding >= 0)
                 {
                     var fmtInstance = new FormatInfo(rate, channels, encoding);

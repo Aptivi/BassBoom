@@ -49,11 +49,14 @@ namespace BassBoom.Native.Interop.Analysis
 
     public unsafe struct mpg123_fmt
     {
-#if WINDOWS
-        internal int rate;
-#else
         internal long rate;
-#endif
+        internal int channels;
+        internal int encoding;
+    }
+
+    public unsafe struct mpg123_fmt_win
+    {
+        internal int rate;
         internal int channels;
         internal int encoding;
     }
