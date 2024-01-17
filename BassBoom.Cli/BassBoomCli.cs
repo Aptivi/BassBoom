@@ -20,7 +20,7 @@
 using BassBoom.Cli.CliBase;
 using System;
 using System.IO;
-using Terminaux.Base;
+using Terminaux.ResizeListener;
 using Terminaux.Writer.ConsoleWriters;
 
 namespace BassBoom.Cli

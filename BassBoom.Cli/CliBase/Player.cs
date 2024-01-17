@@ -31,6 +31,7 @@ using System.Threading;
 using Terminaux.Base;
 using Terminaux.Base.Buffered;
 using Terminaux.Colors;
+using Terminaux.Colors.Data;
 using Terminaux.Inputs;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
@@ -85,7 +86,7 @@ namespace BassBoom.Cli.CliBase
                 try
                 {
                     // Redraw if necessary
-                    if (ConsoleResizeListener.WasResized(true))
+                    if (ConsoleResizeHandler.WasResized(true))
                         rerender = true;
                     bool wasRerendered = rerender;
                     if (rerender)
