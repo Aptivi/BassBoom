@@ -28,6 +28,11 @@ echo Packing binary...
 "%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-proto.zip "..\BassBoom.Desktop\bin\%releaseconfig%\net8.0\*"
 "%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-protocli.zip "..\BassBoom.Cli\bin\%releaseconfig%\net8.0\*"
 "%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-unsafeapi.zip "..\BassBoom.Native\bin\%releaseconfig%\net8.0\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-bin-48.zip "..\BassBoom\bin\%releaseconfig%\net48\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-api-48.zip "..\BassBoom.Basolia\bin\%releaseconfig%\net48\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-proto-48.zip "..\BassBoom.Desktop\bin\%releaseconfig%\net48\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-protocli-48.zip "..\BassBoom.Cli\bin\%releaseconfig%\net48\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-unsafeapi-48.zip "..\BassBoom.Native\bin\%releaseconfig%\net48\*"
 if %errorlevel% == 0 goto :complete
 echo There was an error trying to pack binary (%errorlevel%).
 goto :finished
@@ -38,6 +43,11 @@ move %temp%\%version%-api.zip
 move %temp%\%version%-proto.zip
 move %temp%\%version%-protocli.zip
 move %temp%\%version%-unsafeapi.zip
+move %temp%\%version%-bin-48.zip
+move %temp%\%version%-api-48.zip
+move %temp%\%version%-proto-48.zip
+move %temp%\%version%-protocli-48.zip
+move %temp%\%version%-unsafeapi-48.zip
 
 echo Pack successful.
 :finished

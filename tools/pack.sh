@@ -38,6 +38,11 @@ cd "../BassBoom.Basolia/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version
 cd "../BassBoom/bin.Desktop/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-proto.zip . && cd -
 cd "../BassBoom/bin.Cli/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-protocli.zip . && cd -
 cd "../BassBoom/bin.Native/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-unsafeapi.zip . && cd -
+cd "../BassBoom/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-bin-48.zip . && cd -
+cd "../BassBoom.Basolia/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-api-48.zip . && cd -
+cd "../BassBoom/bin.Desktop/$releaseconf/net48/" && "$zippath" -r /tmp/$version-proto-48.zip . && cd -
+cd "../BassBoom/bin.Cli/$releaseconf/net48/" && "$zippath" -r /tmp/$version-protocli-48.zip . && cd -
+cd "../BassBoom/bin.Native/$releaseconf/net48/" && "$zippath" -r /tmp/$version-unsafeapi-48.zip . && cd -
 if [ ! $? == 0 ]; then
 	echo Packing using zip failed.
 	exit 1
@@ -49,5 +54,10 @@ mv ~/tmp/$version-api.zip .
 mv ~/tmp/$version-proto.zip .
 mv ~/tmp/$version-protocli.zip .
 mv ~/tmp/$version-unsafeapi.zip .
+mv ~/tmp/$version-bin-48.zip .
+mv ~/tmp/$version-api-48.zip .
+mv ~/tmp/$version-proto-48.zip .
+mv ~/tmp/$version-protocli-48.zip .
+mv ~/tmp/$version-unsafeapi-48.zip .
 echo Build and pack successful.
 exit 0
