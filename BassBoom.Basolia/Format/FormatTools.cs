@@ -84,7 +84,7 @@ namespace BassBoom.Basolia.Format
                 int encoding = 0;
 
                 // The "long" rate is different on our Windows compilations than on Linux compilations.
-                if (PlatformTools.IsOnWindows())
+                if (PlatformTools.IsOnWindows() || !Environment.Is64BitOperatingSystem)
                 {
                     var fmtStruct = Marshal.PtrToStructure<mpg123_fmt_win>(fmtlist);
                     rate = fmtStruct.rate;
