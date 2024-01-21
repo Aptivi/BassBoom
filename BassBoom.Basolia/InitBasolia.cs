@@ -28,6 +28,12 @@ namespace BassBoom.Basolia
     public static class InitBasolia
     {
         private static bool _basoliaInited = false;
+
+        /// <summary>
+        /// Whether the Basolia library has been initialized or not
+        /// </summary>
+        public static bool BasoliaInitialized =>
+            _basoliaInited;
         
         /// <summary>
         /// Initializes the MPG123 library for Basolia to function
