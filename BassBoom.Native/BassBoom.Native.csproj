@@ -4,6 +4,7 @@
     <TargetFrameworks>net8.0;net48</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <Nullable>disable</Nullable>
     <PackageId>BassBoom.Native</PackageId>
     <Authors>Aptivi</Authors>

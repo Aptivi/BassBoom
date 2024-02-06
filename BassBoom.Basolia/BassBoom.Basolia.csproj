@@ -4,6 +4,7 @@
     <TargetFrameworks>net8.0;net48</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageId>BassBoom.Basolia</PackageId>
     <Authors>Aptivi</Authors>
     <Title>BassBoom.Basolia</Title>
