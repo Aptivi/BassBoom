@@ -29,6 +29,6 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="BassBoom.Views.MainWindow"
         Icon="/Assets/OfficialAppIcon-BassBoom.ico"
-        Title="BassBoom - Basolia 0.0.4.2 - Alpha 4">
+        Title="BassBoom - Basolia 0.0.5 - Alpha 5">
         <views:MainView />
 </Window>
