@@ -394,19 +394,20 @@ namespace BassBoom.Cli.CliBase
                 // Populate the first pane
                 string finalEntry = "";
                 int finalIndex = i + startIndex;
+                bool selected = finalIndex == currentSong - 1;
                 if (finalIndex <= musicFiles.Count - 1)
                 {
                     // Here, it's getting uglier as we don't have ElementAt() in IEnumerable, too!
                     var (musicName, musicArtist, _) = PlayerControls.GetMusicNameArtistGenre(finalIndex);
                     string duration = cachedInfos[finalIndex].DurationSpan;
-                    string renderedDuration = $"[{duration}]";
-                    string dataObject = $"  {musicArtist} - {musicName}".Truncate(ConsoleWrapper.WindowWidth - renderedDuration.Length - 5);
-                    string spaces = new(' ', ConsoleWrapper.WindowWidth - 4 - duration.Length - dataObject.Length);
+                    string renderedDuration = $"[{duration}] {(selected ? "<<<" : "   ")}";
+                    string dataObject = $"  {(selected ? ">>>" : "   ")} {musicArtist} - {musicName}".Truncate(ConsoleWrapper.WindowWidth - renderedDuration.Length - 5);
+                    string spaces = new(' ', ConsoleWrapper.WindowWidth - 2 - renderedDuration.Length - dataObject.Length);
                     finalEntry = dataObject + spaces + renderedDuration;
                 }
 
                 // Render an entry
-                var finalForeColor = finalIndex == currentSong - 1 ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Gray);
+                var finalForeColor = selected ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Gray);
                 int top = startPos + finalIndex - startIndex;
                 playlist.Append(
                     $"{CsiSequences.GenerateCsiCursorPosition(1, top + 1)}" +
