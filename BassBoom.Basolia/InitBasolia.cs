@@ -48,7 +48,8 @@ namespace BassBoom.Basolia
                 string mpg = Mpg123Instance.GetAppropriateMpg123LibraryPath(root);
                 string @out = Mpg123Instance.GetAppropriateOut123LibraryPath(root);
                 string syn = Mpg123Instance.GetAppropriateSyn123LibraryPath(root);
-                Mpg123Instance.InitializeLibrary(mpg, @out, syn);
+                string pthreads = Mpg123Instance.GetAppropriateWinpthreadsLibraryPath(root);
+                Mpg123Instance.InitializeLibrary(mpg, @out, syn, pthreads);
             }
             _basoliaInited = true;
         }

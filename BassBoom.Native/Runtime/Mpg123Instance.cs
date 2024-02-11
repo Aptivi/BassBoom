@@ -43,6 +43,7 @@ namespace BassBoom.Native.Runtime
         internal static string mpg123LibPath = GetAppropriateMpg123LibraryPath();
         internal static string out123LibPath = GetAppropriateOut123LibraryPath();
         internal static string syn123LibPath = GetAppropriateSyn123LibraryPath();
+        internal static string winpthreadsLibPath = GetAppropriateWinpthreadsLibraryPath();
 
         internal static mpg123_handle* _mpg123Handle;
         internal static out123_handle* _out123Handle;
@@ -57,7 +58,7 @@ namespace BassBoom.Native.Runtime
         /// Initializes the mpg123 library
         /// </summary>
         public static void InitializeLibrary() =>
-            InitializeLibrary(mpg123LibPath, out123LibPath, syn123LibPath);
+            InitializeLibrary(mpg123LibPath, out123LibPath, syn123LibPath, winpthreadsLibPath);
 
         /// <summary>
         /// Initializes the mpg123 library
@@ -65,7 +66,8 @@ namespace BassBoom.Native.Runtime
         /// <param name="libPath">Absolute path to the mpg123 library</param>
         /// <param name="libPathOut">Absolute path to the out123 library</param>
         /// <param name="libPathSyn">Absolute path to the syn123 library</param>
-        public static void InitializeLibrary(string libPath, string libPathOut, string libPathSyn)
+        /// <param name="libPathWinpthreads">Absolute path to the libwinpthreads library</param>
+        public static void InitializeLibrary(string libPath, string libPathOut, string libPathSyn, string libPathWinpthreads)
         {
             // Check to see if we have this path
             if (!File.Exists(libPath))
@@ -74,6 +76,8 @@ namespace BassBoom.Native.Runtime
                 throw new BasoliaNativeLibraryException($"out123 library path {libPath} doesn't exist.");
             if (!File.Exists(libPathSyn))
                 throw new BasoliaNativeLibraryException($"syn123 library path {libPath} doesn't exist.");
+            if (PlatformTools.IsOnWindows() && !File.Exists(libPathWinpthreads))
+                throw new BasoliaNativeLibraryException($"libwinpthreads library path {libPathWinpthreads} doesn't exist.");
 
             // Set the library path
             string oldLibPath = mpg123LibPath;
@@ -114,21 +118,35 @@ namespace BassBoom.Native.Runtime
                 new LibraryItem(Platform.Windows, Architecture.X64,
                     new LibraryFile("out123.dll", bytesOut)),
                 new LibraryItem(Platform.Windows, Architecture.Arm,
-                    new LibraryFile("out123.dll", bytesMpg)),
+                    new LibraryFile("out123.dll", bytesOut)),
                 new LibraryItem(Platform.Windows, Architecture.Arm64,
-                    new LibraryFile("out123.dll", bytesMpg)),
+                    new LibraryFile("out123.dll", bytesOut)),
                 new LibraryItem(Platform.MacOS, Architecture.X64,
                     new LibraryFile("libout123.dylib", bytesOut)),
                 new LibraryItem(Platform.MacOS, Architecture.Arm64,
-                    new LibraryFile("libout123.dylib", bytesMpg)),
+                    new LibraryFile("libout123.dylib", bytesOut)),
                 new LibraryItem(Platform.Linux, Architecture.X64,
                     new LibraryFile("libout123.so", bytesOut)),
                 new LibraryItem(Platform.Linux, Architecture.X86,
                     new LibraryFile("libout123.so", bytesOut)),
                 new LibraryItem(Platform.Linux, Architecture.Arm,
-                    new LibraryFile("libout123.so", bytesMpg)),
+                    new LibraryFile("libout123.so", bytesOut)),
                 new LibraryItem(Platform.Linux, Architecture.Arm64,
-                    new LibraryFile("libout123.so", bytesMpg)));
+                    new LibraryFile("libout123.so", bytesOut)));
+            if (PlatformTools.IsOnWindows())
+            {
+                var bytesWinpthread = File.ReadAllBytes(winpthreadsLibPath);
+                var libManagerWinpthread = new LibraryManager(
+                    new LibraryItem(Platform.Windows, Architecture.X86,
+                        new LibraryFile("libwinpthread-1.dll", bytesWinpthread)),
+                    new LibraryItem(Platform.Windows, Architecture.X64,
+                        new LibraryFile("libwinpthread-1.dll", bytesWinpthread)),
+                    new LibraryItem(Platform.Windows, Architecture.Arm,
+                        new LibraryFile("libwinpthread-1.dll", bytesWinpthread)),
+                    new LibraryItem(Platform.Windows, Architecture.Arm64,
+                        new LibraryFile("libwinpthread-1.dll", bytesWinpthread)));
+                libManagerWinpthread.LoadNativeLibrary();
+            }
             var bytesSyn = File.ReadAllBytes(syn123LibPath);
             var libManagerSyn = new LibraryManager(
                 new LibraryItem(Platform.Windows, Architecture.X86,
@@ -136,21 +154,21 @@ namespace BassBoom.Native.Runtime
                 new LibraryItem(Platform.Windows, Architecture.X64,
                     new LibraryFile("syn123.dll", bytesSyn)),
                 new LibraryItem(Platform.Windows, Architecture.Arm,
-                    new LibraryFile("syn123.dll", bytesMpg)),
+                    new LibraryFile("syn123.dll", bytesSyn)),
                 new LibraryItem(Platform.Windows, Architecture.Arm64,
-                    new LibraryFile("syn123.dll", bytesMpg)),
+                    new LibraryFile("syn123.dll", bytesSyn)),
                 new LibraryItem(Platform.MacOS, Architecture.X64,
                     new LibraryFile("libsyn123.dylib", bytesSyn)),
                 new LibraryItem(Platform.MacOS, Architecture.Arm64,
-                    new LibraryFile("libsyn123.dylib", bytesMpg)),
+                    new LibraryFile("libsyn123.dylib", bytesSyn)),
                 new LibraryItem(Platform.Linux, Architecture.X64,
                     new LibraryFile("libsyn123.so", bytesSyn)),
                 new LibraryItem(Platform.Linux, Architecture.X86,
                     new LibraryFile("libsyn123.so", bytesSyn)),
                 new LibraryItem(Platform.Linux, Architecture.Arm,
-                    new LibraryFile("libsyn123.so", bytesMpg)),
+                    new LibraryFile("libsyn123.so", bytesSyn)),
                 new LibraryItem(Platform.Linux, Architecture.Arm64,
-                    new LibraryFile("libsyn123.so", bytesMpg)));
+                    new LibraryFile("libsyn123.so", bytesSyn)));
             libManagerMpg.LoadNativeLibrary();
             libManagerOut.LoadNativeLibrary();
             libManagerSyn.LoadNativeLibrary();
@@ -273,6 +291,20 @@ namespace BassBoom.Native.Runtime
                 runtimesPath += $"runtimes/linux-{lowerArch}/native/libsyn123.so";
             else
                 runtimesPath += $"runtimes/freebsd-{lowerArch}/native/libsyn123.so";
+            return runtimesPath;
+        }
+
+        internal static string GetAppropriateWinpthreadsLibraryPath() =>
+            GetAppropriateWinpthreadsLibraryPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+
+        internal static string GetAppropriateWinpthreadsLibraryPath(string root)
+        {
+            string runtimesPath = root + "/";
+            string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
+            if (PlatformTools.IsOnWindows())
+                runtimesPath += $"runtimes/win-{lowerArch}/native/libwinpthread-1.dll";
+            else
+                return "";
             return runtimesPath;
         }
 
