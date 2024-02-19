@@ -208,6 +208,86 @@ namespace BassBoom.Basolia.Playback
             return (baseLinearAddr, actualLinearAddr, decibelsRvaAddr);
         }
 
+        /// <summary>
+        /// Sets the equalizer band to any value
+        /// </summary>
+        /// <param name="channels">Mono, stereo, or both</param>
+        /// <param name="bandIdx">Band index from 0 to 31</param>
+        /// <param name="value">Value of the equalizer</param>
+        /// <exception cref="BasoliaException"></exception>
+        public static void SetEqualizer(mpg123_channels channels, int bandIdx, double value)
+        {
+            InitBasolia.CheckInited();
+
+            // Try to set the equalizer value
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+                int status = NativeVolume.mpg123_eq(handle, channels, bandIdx, value);
+                if (status != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException($"Can't set equalizer band {bandIdx + 1}/32 to {value} under {channels}", (mpg123_errors)status);
+            }
+        }
+
+        /// <summary>
+        /// Sets the equalizer bands to any value
+        /// </summary>
+        /// <param name="channels">Mono, stereo, or both</param>
+        /// <param name="bandIdxStart">Band index from 0 to 31 (first band to start from)</param>
+        /// <param name="bandIdxEnd">Band index from 0 to 31 (second band to end to)</param>
+        /// <param name="value">Value of the equalizer</param>
+        /// <exception cref="BasoliaException"></exception>
+        public static void SetEqualizerRange(mpg123_channels channels, int bandIdxStart, int bandIdxEnd, double value)
+        {
+            InitBasolia.CheckInited();
+
+            // Try to set the equalizer value
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+                int status = NativeVolume.mpg123_eq_bands(handle, (int)channels, bandIdxStart, bandIdxEnd, value);
+                if (status != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException($"Can't set equalizer bands {bandIdxStart + 1}/32 -> {bandIdxEnd + 1}/32 to {value} under {channels}", (mpg123_errors)status);
+            }
+        }
+
+        /// <summary>
+        /// Gets the equalizer band value
+        /// </summary>
+        /// <param name="channels">Mono, stereo, or both</param>
+        /// <param name="bandIdx">Band index from 0 to 31</param>
+        /// <exception cref="BasoliaException"></exception>
+        public static double GetEqualizer(mpg123_channels channels, int bandIdx)
+        {
+            InitBasolia.CheckInited();
+
+            // Try to set the equalizer value
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+                double eq = NativeVolume.mpg123_geteq(handle, channels, bandIdx);
+                return eq;
+            }
+        }
+
+        /// <summary>
+        /// Resets the equalizer band to its natural value
+        /// </summary>
+        /// <exception cref="BasoliaException"></exception>
+        public static void ResetEqualizer()
+        {
+            InitBasolia.CheckInited();
+
+            // Try to set the equalizer value
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+                int status = NativeVolume.mpg123_reset_eq(handle);
+                if (status != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException("Can't reset equalizer bands to their initial values!", (mpg123_errors)status);
+            }
+        }
+
         internal static int PlayBuffer(byte[] buffer)
         {
             unsafe
