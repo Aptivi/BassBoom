@@ -384,6 +384,7 @@ namespace BassBoom.Cli.CliBase
                 [R]                 Remove current song
                 [CTRL] + [R]        Remove all songs
                 [S]                 Selectively seek
+                [E]                 Opens the equalizer
                 """
             );
             Player.rerender = true;

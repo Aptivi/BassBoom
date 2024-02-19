@@ -158,9 +158,9 @@ namespace BassBoom.Cli.CliBase
                     {
                         var keystroke = Input.DetectKeypress();
                         if (PlaybackTools.Playing)
-                            HandleKeypressPlayMode(keystroke);
+                            HandleKeypressPlayMode(keystroke, playerScreen);
                         else
-                            HandleKeypressIdleMode(keystroke);
+                            HandleKeypressIdleMode(keystroke, playerScreen);
                     }
                 }
                 catch (BasoliaException bex)
@@ -197,7 +197,7 @@ namespace BassBoom.Cli.CliBase
             ScreenTools.UnsetCurrent(playerScreen);
         }
 
-        private static void HandleKeypressIdleMode(ConsoleKeyInfo keystroke)
+        private static void HandleKeypressIdleMode(ConsoleKeyInfo keystroke, Screen playerScreen)
         {
             switch (keystroke.Key)
             {
@@ -243,13 +243,17 @@ namespace BassBoom.Cli.CliBase
                     else
                         PlayerControls.RemoveCurrentSong();
                     break;
+                case ConsoleKey.E:
+                    Equalizer.OpenEqualizer(playerScreen);
+                    rerender = true;
+                    break;
                 case ConsoleKey.Q:
                     PlayerControls.Exit();
                     break;
             }
         }
 
-        private static void HandleKeypressPlayMode(ConsoleKeyInfo keystroke)
+        private static void HandleKeypressPlayMode(ConsoleKeyInfo keystroke, Screen playerScreen)
         {
             switch (keystroke.Key)
             {
@@ -307,6 +311,10 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.S:
                     PlayerControls.PromptSeek();
+                    break;
+                case ConsoleKey.E:
+                    Equalizer.OpenEqualizer(playerScreen);
+                    rerender = true;
                     break;
                 case ConsoleKey.Q:
                     PlayerControls.Exit();
@@ -413,7 +421,8 @@ namespace BassBoom.Cli.CliBase
                     $"{CsiSequences.GenerateCsiCursorPosition(1, top + 1)}" +
                     $"{finalForeColor.VTSequenceForeground}" +
                     finalEntry +
-                    new string(' ', ConsoleWrapper.WindowWidth - finalEntry.Length)
+                    new string(' ', ConsoleWrapper.WindowWidth - finalEntry.Length) +
+                    $"{ColorTools.CurrentForegroundColor.VTSequenceForeground}"
                 );
             }
             drawn.Append(playlist);
