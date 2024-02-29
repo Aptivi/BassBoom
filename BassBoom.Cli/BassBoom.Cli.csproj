@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Terminaux" Version="2.7.2" />
-    <PackageReference Include="Terminaux.ResizeListener" Version="2.7.2" />
+    <PackageReference Include="Terminaux" Version="3.1.2" />
+    <PackageReference Include="Terminaux.ResizeListener" Version="3.1.2" />
   </ItemGroup>
 
   <ItemGroup>

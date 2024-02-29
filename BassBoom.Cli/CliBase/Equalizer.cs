@@ -28,7 +28,9 @@ using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 using Textify.General;
-using Textify.Sequences.Builder.Types;
+using Terminaux.Sequences.Builder.Types;
+using Terminaux.Reader;
+using Terminaux.Base.Extensions;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -55,7 +57,7 @@ namespace BassBoom.Cli.CliBase
                     ScreenTools.Render();
 
                     // Handle the keystroke
-                    var keystroke = Input.DetectKeypress();
+                    var keystroke = TermReader.ReadKey();
                     HandleKeypress(keystroke);
                 }
                 catch (BasoliaException bex)
@@ -136,7 +138,7 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
 
             // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWherePlain($"[ Powered by BassBoom ]", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(TextWriterWhereColor.RenderWhere($"[ Powered by BassBoom ]", 2, ConsoleWrapper.WindowHeight - 4));
 
             // Write current song
             if (Player.musicFiles.Count > 0 )
@@ -167,7 +169,7 @@ namespace BassBoom.Cli.CliBase
                 }
 
                 // Render an entry
-                var finalForeColor = selected ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Gray);
+                var finalForeColor = selected ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Silver);
                 int top = startPos + finalIndex - startIndex;
                 eqs.Append(
                     $"{CsiSequences.GenerateCsiCursorPosition(1, top + 1)}" +

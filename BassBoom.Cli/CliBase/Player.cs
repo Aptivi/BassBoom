@@ -37,7 +37,9 @@ using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 using Textify.General;
-using Textify.Sequences.Builder.Types;
+using Terminaux.Sequences.Builder.Types;
+using Terminaux.Base.Extensions;
+using Terminaux.Reader;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -105,7 +107,7 @@ namespace BassBoom.Cli.CliBase
                     {
                         var buffer = new StringBuilder();
                         buffer.Append(
-                            ProgressBarColor.RenderProgress(100 * (position / (double)total), 2, ConsoleWrapper.WindowHeight - 8, 3, 3, ConsoleColors.DarkYellow, ConsoleColors.Gray, ConsoleColors.Black) +
+                            ProgressBarColor.RenderProgress(100 * (position / (double)total), 2, ConsoleWrapper.WindowHeight - 8, 3, 3, ConsoleColors.Olive, ConsoleColors.Silver, ConsoleColors.Black) +
                             TextWriterWhereColor.RenderWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black) +
                             TextWriterWhereColor.RenderWhere(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black)
                         );
@@ -126,7 +128,7 @@ namespace BassBoom.Cli.CliBase
                                 {
                                     var buffer = new StringBuilder();
                                     buffer.Append(
-                                        TextWriterWhereColor.RenderWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10, ConsoleColors.White, ConsoleColors.Black) +
+                                        TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10, ConsoleColors.White, ConsoleColors.Black) +
                                         CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 10, lyricInstance.GetLastLineCurrent(), ConsoleColors.White, ConsoleColors.Black)
                                     );
                                     return buffer.ToString();
@@ -143,7 +145,7 @@ namespace BassBoom.Cli.CliBase
                         {
                             var buffer = new StringBuilder();
                             buffer.Append(
-                                TextWriterWhereColor.RenderWhere(ConsoleExtensions.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10, ConsoleColors.White, ConsoleColors.Black)
+                                TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10, ConsoleColors.White, ConsoleColors.Black)
                             );
                             return buffer.ToString();
                         });
@@ -156,7 +158,7 @@ namespace BassBoom.Cli.CliBase
                     // Handle the keystroke
                     if (ConsoleWrapper.KeyAvailable)
                     {
-                        var keystroke = Input.DetectKeypress();
+                        var keystroke = TermReader.ReadKey();
                         if (PlaybackTools.Playing)
                             HandleKeypressPlayMode(keystroke, playerScreen);
                         else
@@ -334,7 +336,7 @@ namespace BassBoom.Cli.CliBase
                         populate = true;
                     currentSong = musicFiles.IndexOf(musicFile) + 1;
                     PlayerControls.PopulateMusicFileInfo(musicFile);
-                    TextWriterColor.WritePlain(PlayerControls.RenderSongName(musicFile), false);
+                    TextWriterRaw.WritePlain(PlayerControls.RenderSongName(musicFile), false);
                     if (paused)
                     {
                         paused = false;
@@ -375,7 +377,7 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
 
             // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWherePlain($"[ Powered by BassBoom ]", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(TextWriterWhereColor.RenderWhere($"[ Powered by BassBoom ]", 2, ConsoleWrapper.WindowHeight - 4));
 
             // In case we have no songs in the playlist...
             if (musicFiles.Count == 0)
@@ -415,7 +417,7 @@ namespace BassBoom.Cli.CliBase
                 }
 
                 // Render an entry
-                var finalForeColor = selected ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Gray);
+                var finalForeColor = selected ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Silver);
                 int top = startPos + finalIndex - startIndex;
                 playlist.Append(
                     $"{CsiSequences.GenerateCsiCursorPosition(1, top + 1)}" +
