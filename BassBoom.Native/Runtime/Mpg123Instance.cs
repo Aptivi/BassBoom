@@ -27,6 +27,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using SpecProbe.Platform;
+
 
 #if !NETCOREAPP
 using NativeLand;
@@ -76,7 +78,7 @@ namespace BassBoom.Native.Runtime
                 throw new BasoliaNativeLibraryException($"out123 library path {libPath} doesn't exist.");
             if (!File.Exists(libPathSyn))
                 throw new BasoliaNativeLibraryException($"syn123 library path {libPath} doesn't exist.");
-            if (PlatformTools.IsOnWindows() && !File.Exists(libPathWinpthreads))
+            if (PlatformHelper.IsOnWindows() && !File.Exists(libPathWinpthreads))
                 throw new BasoliaNativeLibraryException($"libwinpthreads library path {libPathWinpthreads} doesn't exist.");
 
             // Set the library path
@@ -133,7 +135,7 @@ namespace BassBoom.Native.Runtime
                     new LibraryFile("libout123.so", bytesOut)),
                 new LibraryItem(Platform.Linux, Architecture.Arm64,
                     new LibraryFile("libout123.so", bytesOut)));
-            if (PlatformTools.IsOnWindows())
+            if (PlatformHelper.IsOnWindows())
             {
                 var bytesWinpthread = File.ReadAllBytes(winpthreadsLibPath);
                 var libManagerWinpthread = new LibraryManager(
@@ -174,7 +176,7 @@ namespace BassBoom.Native.Runtime
             libManagerSyn.LoadNativeLibrary();
 #endif
             string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
-            if (PlatformTools.IsOnWindows())
+            if (PlatformHelper.IsOnWindows())
                 Environment.SetEnvironmentVariable("MPG123_MODDIR", libPluginsPath);
             else
             {
@@ -247,11 +249,11 @@ namespace BassBoom.Native.Runtime
         {
             string runtimesPath = root + "/";
             string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
-            if (PlatformTools.IsOnWindows())
+            if (PlatformHelper.IsOnWindows())
                 runtimesPath += $"runtimes/win-{lowerArch}/native/mpg123.dll";
-            else if (PlatformTools.IsOnMacOS())
+            else if (PlatformHelper.IsOnMacOS())
                 runtimesPath += $"runtimes/osx-{lowerArch}/native/libmpg123.dylib";
-            else if (PlatformTools.IsOnUnix())
+            else if (PlatformHelper.IsOnUnix())
                 runtimesPath += $"runtimes/linux-{lowerArch}/native/libmpg123.so";
             else
                 runtimesPath += $"runtimes/freebsd-{lowerArch}/native/libmpg123.so";
@@ -265,11 +267,11 @@ namespace BassBoom.Native.Runtime
         {
             string runtimesPath = root + "/";
             string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
-            if (PlatformTools.IsOnWindows())
+            if (PlatformHelper.IsOnWindows())
                 runtimesPath += $"runtimes/win-{lowerArch}/native/out123.dll";
-            else if (PlatformTools.IsOnMacOS())
+            else if (PlatformHelper.IsOnMacOS())
                 runtimesPath += $"runtimes/osx-{lowerArch}/native/libout123.dylib";
-            else if (PlatformTools.IsOnUnix())
+            else if (PlatformHelper.IsOnUnix())
                 runtimesPath += $"runtimes/linux-{lowerArch}/native/libout123.so";
             else
                 runtimesPath += $"runtimes/freebsd-{lowerArch}/native/libout123.so";
@@ -283,11 +285,11 @@ namespace BassBoom.Native.Runtime
         {
             string runtimesPath = root + "/";
             string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
-            if (PlatformTools.IsOnWindows())
+            if (PlatformHelper.IsOnWindows())
                 runtimesPath += $"runtimes/win-{lowerArch}/native/syn123.dll";
-            else if (PlatformTools.IsOnMacOS())
+            else if (PlatformHelper.IsOnMacOS())
                 runtimesPath += $"runtimes/osx-{lowerArch}/native/libsyn123.dylib";
-            else if (PlatformTools.IsOnUnix())
+            else if (PlatformHelper.IsOnUnix())
                 runtimesPath += $"runtimes/linux-{lowerArch}/native/libsyn123.so";
             else
                 runtimesPath += $"runtimes/freebsd-{lowerArch}/native/libsyn123.so";
@@ -301,7 +303,7 @@ namespace BassBoom.Native.Runtime
         {
             string runtimesPath = root + "/";
             string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
-            if (PlatformTools.IsOnWindows())
+            if (PlatformHelper.IsOnWindows())
                 runtimesPath += $"runtimes/win-{lowerArch}/native/libwinpthread-1.dll";
             else
                 return "";

@@ -25,6 +25,7 @@ using BassBoom.Native.Interop.Output;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Analysis;
+using SpecProbe.Platform;
 
 namespace BassBoom.Basolia.Format
 {
@@ -84,7 +85,7 @@ namespace BassBoom.Basolia.Format
                 int encoding = 0;
 
                 // The "long" rate is different on our Windows compilations than on Linux compilations.
-                if (PlatformTools.IsOnWindows() || !Environment.Is64BitOperatingSystem)
+                if (PlatformHelper.IsOnWindows() || !Environment.Is64BitOperatingSystem)
                 {
                     var fmtStruct = Marshal.PtrToStructure<mpg123_fmt_win>(fmtlist);
                     rate = fmtStruct.rate;

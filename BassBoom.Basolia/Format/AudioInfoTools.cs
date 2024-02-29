@@ -29,6 +29,7 @@ using BassBoom.Native.Interop.LowLevel;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Linq;
+using SpecProbe.Platform;
 
 namespace BassBoom.Basolia.Format
 {
@@ -447,7 +448,7 @@ namespace BassBoom.Basolia.Format
             mpg123_vbr vbr;
 
             // In Windows, the "long" rate byte number differs from the Linux version.
-            if (PlatformTools.IsOnWindows() || !Environment.Is64BitOperatingSystem)
+            if (PlatformHelper.IsOnWindows() || !Environment.Is64BitOperatingSystem)
             {
                 mpg123_frameinfo_win frameInfo = default;
                 unsafe
