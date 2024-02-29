@@ -32,7 +32,7 @@ namespace BassBoom.Cli
             try
             {
                 // Essentials
-                Console.Title = "BassBoom CLI - Basolia v0.0.5 - Alpha 5";
+                Console.Title = "BassBoom CLI - Basolia v0.0.6 - Alpha 6";
 
                 // First, prompt for the music path if no arguments are provided.
                 if (args.Length != 0)
