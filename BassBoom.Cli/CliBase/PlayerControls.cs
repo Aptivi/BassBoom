@@ -100,7 +100,6 @@ namespace BassBoom.Cli.CliBase
                 // There could be a chance that the music has fully stopped without any user interaction.
                 PlaybackPositioningTools.SeekToTheBeginning();
             Player.advance = true;
-            Player.rerender = true;
             Player.playerThread.Start();
             SpinWait.SpinUntil(() => PlaybackTools.Playing || Player.failedToPlay);
             Player.failedToPlay = false;
@@ -158,7 +157,6 @@ namespace BassBoom.Cli.CliBase
             }
             else
                 InfoBoxColor.WriteInfoBox($"File \"{path}\" doesn't exist.");
-            Player.rerender = true;
         }
 
         internal static void PromptForAddDirectory()
@@ -182,7 +180,6 @@ namespace BassBoom.Cli.CliBase
             }
             else
                 InfoBoxColor.WriteInfoBox("Music library directory is not found.");
-            Player.rerender = true;
         }
 
         internal static void Exit()
@@ -232,7 +229,6 @@ namespace BassBoom.Cli.CliBase
             }
             else
             {
-                Player.rerender = true;
                 InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
                 Player.total = AudioInfoTools.GetDuration(true);
                 Player.totalSpan = AudioInfoTools.GetDurationSpanFromSamples(Player.total);
@@ -332,7 +328,6 @@ namespace BassBoom.Cli.CliBase
                 Player.populate = true;
                 PopulateMusicFileInfo(Player.musicFiles[Player.currentSong - 1]);
             }
-            Player.rerender = true;
         }
 
         internal static void RemoveAllSongs()
@@ -360,7 +355,6 @@ namespace BassBoom.Cli.CliBase
                     Player.position = Player.total;
                 PlaybackPositioningTools.SeekToFrame(Player.position);
             }
-            Player.rerender = true;
         }
 
         internal static void ShowHelp()
@@ -387,7 +381,6 @@ namespace BassBoom.Cli.CliBase
                 [E]                 Opens the equalizer
                 """
             );
-            Player.rerender = true;
         }
 
         internal static void ShowSongInfo()
@@ -431,7 +424,6 @@ namespace BassBoom.Cli.CliBase
                 {{textsBuilder}}
                 """
             );
-            Player.rerender = true;
         }
     }
 }

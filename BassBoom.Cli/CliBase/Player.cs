@@ -53,7 +53,6 @@ namespace BassBoom.Cli.CliBase
         internal static TimeSpan totalSpan = new();
         internal static int total = 0;
         internal static (long rate, int channels, int encoding) formatInfo = new();
-        internal static bool rerender = true;
         internal static int currentSong = 1;
         internal static double volume = 1.0;
         internal static bool exiting = false;
@@ -68,10 +67,8 @@ namespace BassBoom.Cli.CliBase
 
         public static void PlayerLoop()
         {
-            InitBasolia.Init();
             volume = PlaybackTools.GetVolume().baseLinear;
             exiting = false;
-            rerender = true;
             paused = false;
             populate = true;
             advance = false;
@@ -80,79 +77,74 @@ namespace BassBoom.Cli.CliBase
             Screen playerScreen = new();
             ScreenTools.SetCurrent(playerScreen);
 
-            // First, clear the screen to draw our TUI
-            while (!exiting)
-            {
-                ScreenPart screenPart = new();
-                Thread.Sleep(1);
-                try
-                {
-                    // Redraw if necessary
-                    if (ConsoleResizeHandler.WasResized(true))
-                        rerender = true;
-                    bool wasRerendered = rerender;
-                    if (rerender)
-                    {
-                        rerender = false;
-                        screenPart.AddDynamicText(HandleDraw);
-                    }
+            // First, make a screen part to draw our TUI
+            ScreenPart screenPart = new();
 
-                    // Current duration
-                    position = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDuration() : 0;
-                    var posSpan = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDurationSpan() : new();
-                    string indicator =
-                        $"Seek: {PlayerControls.seekRate:0.00} | " +
-                        $"Volume: {volume:0.00}";
-                    screenPart.AddDynamicText(() =>
-                    {
-                        var buffer = new StringBuilder();
-                        buffer.Append(
+            // Redraw if necessary
+            bool wasRerendered = true;
+            screenPart.AddDynamicText(HandleDraw);
+
+            // Current duration
+            screenPart.AddDynamicText(() =>
+            {
+                var buffer = new StringBuilder();
+                position = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDuration() : 0;
+                var posSpan = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDurationSpan() : new();
+                string indicator =
+                    $"Seek: {PlayerControls.seekRate:0.00} | " +
+                    $"Volume: {volume:0.00}";
+                buffer.Append(
                             ProgressBarColor.RenderProgress(100 * (position / (double)total), 2, ConsoleWrapper.WindowHeight - 8, 3, 3, ConsoleColors.Olive, ConsoleColors.Silver, ConsoleColors.Black) +
                             TextWriterWhereColor.RenderWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black) +
                             TextWriterWhereColor.RenderWhere(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black)
-                        );
-                        return buffer.ToString();
-                    });
+                );
+                return buffer.ToString();
+            });
 
-                    // Get the lyrics
-                    if (PlaybackTools.Playing)
+            // Get the lyrics
+            screenPart.AddDynamicText(() =>
+            {
+                var buffer = new StringBuilder();
+                if (PlaybackTools.Playing)
+                {
+                    // Print the lyrics, if any
+                    if (lyricInstance is not null)
                     {
-                        // Print the lyrics, if any
-                        if (lyricInstance is not null)
+                        string current = lyricInstance.GetLastLineCurrent();
+                        if (current != cachedLyric || wasRerendered)
                         {
-                            string current = lyricInstance.GetLastLineCurrent();
-                            if (current != cachedLyric || wasRerendered)
-                            {
-                                cachedLyric = current;
-                                screenPart.AddDynamicText(() =>
-                                {
-                                    var buffer = new StringBuilder();
-                                    buffer.Append(
+                            cachedLyric = current;
+                            buffer.Append(
                                         TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10, ConsoleColors.White, ConsoleColors.Black) +
                                         CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 10, lyricInstance.GetLastLineCurrent(), ConsoleColors.White, ConsoleColors.Black)
-                                    );
-                                    return buffer.ToString();
-                                });
-                            }
+                            );
                         }
-                        else
-                            cachedLyric = "";
                     }
                     else
-                    {
                         cachedLyric = "";
-                        screenPart.AddDynamicText(() =>
-                        {
-                            var buffer = new StringBuilder();
-                            buffer.Append(
+                }
+                else
+                {
+                    cachedLyric = "";
+                    buffer.Append(
                                 TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10, ConsoleColors.White, ConsoleColors.Black)
-                            );
-                            return buffer.ToString();
-                        });
-                    }
+                    );
+                }
+                return buffer.ToString();
+            });
 
-                    // Render the buffer
-                    playerScreen.AddBufferedPart("BassBoom Player", screenPart);
+            // Render the buffer
+            playerScreen.AddBufferedPart("BassBoom Player", screenPart);
+
+            // Then, the main loop
+            while (!exiting)
+            {
+                Thread.Sleep(1);
+                try
+                {
+                    if (!playerScreen.CheckBufferedPart("BassBoom Player"))
+                        playerScreen.AddBufferedPart("BassBoom Player", screenPart);
+                    wasRerendered = ConsoleResizeHandler.WasResized(false);
                     ScreenTools.Render();
 
                     // Handle the keystroke
@@ -170,23 +162,22 @@ namespace BassBoom.Cli.CliBase
                     if (PlaybackTools.Playing)
                         PlaybackTools.Stop();
                     InfoBoxColor.WriteInfoBox("There's an error with Basolia when trying to process the music file.\n\n" + bex.Message);
-                    rerender = true;
+                    playerScreen.RequireRefresh();
                 }
                 catch (BasoliaOutException bex)
                 {
                     if (PlaybackTools.Playing)
                         PlaybackTools.Stop();
                     InfoBoxColor.WriteInfoBox("There's an error with Basolia output when trying to process the music file.\n\n" + bex.Message);
-                    rerender = true;
+                    playerScreen.RequireRefresh();
                 }
                 catch (Exception ex)
                 {
                     if (PlaybackTools.Playing)
                         PlaybackTools.Stop();
                     InfoBoxColor.WriteInfoBox("There's an unknown error when trying to process the music file.\n\n" + ex.Message);
-                    rerender = true;
+                    playerScreen.RequireRefresh();
                 }
-                playerScreen.RemoveBufferedParts();
             }
 
             // Close the file if open
@@ -196,6 +187,7 @@ namespace BassBoom.Cli.CliBase
             // Restore state
             ConsoleWrapper.CursorVisible = true;
             ColorTools.LoadBack();
+            playerScreen.RemoveBufferedParts();
             ScreenTools.UnsetCurrent(playerScreen);
         }
 
@@ -227,15 +219,19 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.H:
                     PlayerControls.ShowHelp();
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.I:
                     PlayerControls.ShowSongInfo();
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.A:
                     PlayerControls.PromptForAddSong();
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.S:
                     PlayerControls.PromptForAddDirectory();
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.R:
                     PlayerControls.Stop(false);
@@ -247,7 +243,7 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.E:
                     Equalizer.OpenEqualizer(playerScreen);
-                    rerender = true;
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.Q:
                     PlayerControls.Exit();
@@ -307,16 +303,19 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.H:
                     PlayerControls.ShowHelp();
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.I:
                     PlayerControls.ShowSongInfo();
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.S:
                     PlayerControls.PromptSeek();
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.E:
                     Equalizer.OpenEqualizer(playerScreen);
-                    rerender = true;
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.Q:
                     PlayerControls.Exit();
@@ -353,7 +352,6 @@ namespace BassBoom.Cli.CliBase
             finally
             {
                 lyricInstance = null;
-                rerender = true;
             }
         }
 
@@ -362,7 +360,6 @@ namespace BassBoom.Cli.CliBase
             // Prepare things
             var drawn = new StringBuilder();
             ConsoleWrapper.CursorVisible = false;
-            ColorTools.LoadBack();
 
             // First, print the keystrokes
             string keystrokes =
@@ -377,7 +374,7 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
 
             // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere($"[ Powered by BassBoom ]", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(TextWriterWhereColor.RenderWhere("[ Powered by BassBoom ]", 2, ConsoleWrapper.WindowHeight - 4));
 
             // In case we have no songs in the playlist...
             if (musicFiles.Count == 0)
@@ -404,27 +401,25 @@ namespace BassBoom.Cli.CliBase
                 // Populate the first pane
                 string finalEntry = "";
                 int finalIndex = i + startIndex;
-                bool selected = finalIndex == currentSong - 1;
                 if (finalIndex <= musicFiles.Count - 1)
                 {
                     // Here, it's getting uglier as we don't have ElementAt() in IEnumerable, too!
                     var (musicName, musicArtist, _) = PlayerControls.GetMusicNameArtistGenre(finalIndex);
                     string duration = cachedInfos[finalIndex].DurationSpan;
-                    string renderedDuration = $"[{duration}] {(selected ? "<<<" : "   ")}";
-                    string dataObject = $"  {(selected ? ">>>" : "   ")} {musicArtist} - {musicName}".Truncate(ConsoleWrapper.WindowWidth - renderedDuration.Length - 5);
-                    string spaces = new(' ', ConsoleWrapper.WindowWidth - 2 - renderedDuration.Length - dataObject.Length);
+                    string renderedDuration = $"[{duration}]";
+                    string dataObject = $"  {musicArtist} - {musicName}".Truncate(ConsoleWrapper.WindowWidth - renderedDuration.Length - 5);
+                    string spaces = new(' ', ConsoleWrapper.WindowWidth - 4 - duration.Length - dataObject.Length);
                     finalEntry = dataObject + spaces + renderedDuration;
                 }
 
                 // Render an entry
-                var finalForeColor = selected ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Silver);
+                var finalForeColor = finalIndex == currentSong - 1 ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Silver);
                 int top = startPos + finalIndex - startIndex;
                 playlist.Append(
                     $"{CsiSequences.GenerateCsiCursorPosition(1, top + 1)}" +
                     $"{finalForeColor.VTSequenceForeground}" +
                     finalEntry +
-                    new string(' ', ConsoleWrapper.WindowWidth - finalEntry.Length) +
-                    $"{ColorTools.CurrentForegroundColor.VTSequenceForeground}"
+                    new string(' ', ConsoleWrapper.WindowWidth - finalEntry.Length)
                 );
             }
             drawn.Append(playlist);

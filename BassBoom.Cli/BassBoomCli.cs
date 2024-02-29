@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia;
 using BassBoom.Cli.CliBase;
 using System;
 using System.IO;
@@ -50,6 +51,7 @@ namespace BassBoom.Cli
 
                 // Now, open an interactive TUI
                 ConsoleResizeListener.StartResizeListener();
+                InitBasolia.Init();
                 Player.PlayerLoop();
             }
             catch (Exception ex)
