@@ -28,7 +28,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Terminaux.Base;
-using Terminaux.Colors;
 using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;

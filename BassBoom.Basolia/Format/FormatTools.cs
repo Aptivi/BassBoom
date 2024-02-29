@@ -80,9 +80,8 @@ namespace BassBoom.Basolia.Format
             // Now, iterate through the list of supported formats
             for (int i = 0; i < getStatus; i++)
             {
-                long rate = 0;
-                int channels = 0;
-                int encoding = 0;
+                long rate;
+                int channels, encoding;
 
                 // The "long" rate is different on our Windows compilations than on Linux compilations.
                 if (PlatformHelper.IsOnWindows() || !Environment.Is64BitOperatingSystem)
