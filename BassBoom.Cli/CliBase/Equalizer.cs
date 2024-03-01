@@ -157,9 +157,22 @@ namespace BassBoom.Cli.CliBase
                 bool selected = finalIndex == currentBandIdx;
                 if (finalIndex <= 31)
                 {
-                    // Here, it's getting uglier as we don't have ElementAt() in IEnumerable, too!
+                    // Get the equalizer value for this band
                     double val = EqualizerControls.GetEqualizer(finalIndex);
-                    string eqKey = $"Equalizer Band #{finalIndex + 1}";
+                    string eqType =
+                        // Bass bands: 1-8, Bass-Mid bands: 9-16, Mid-Treble bands: 17-24, Treble bands: 25-32
+                        finalIndex < 4 ? "Deep Bass" : // Band 1, 2, 3, 4
+                        finalIndex < 8 ? "Bass" :
+                        finalIndex < 12 ? "Deep Bass-Mid" :
+                        finalIndex < 16 ? "Bass-Mid" :
+                        finalIndex < 20 ? "Deep Mid-Treble" :
+                        finalIndex < 24 ? "Mid-Treble" :
+                        finalIndex < 28 ? "Deep Treble" :
+                        finalIndex < 32 ? "Treble" :
+                        "Unknown band type";
+
+                    // Now, render it
+                    string eqKey = $"Equalizer Band #{finalIndex + 1} - {eqType}";
                     string renderedVal = $"[{val:0.00}] {(selected ? "<<<" : "   ")}";
                     string dataObject = $"  {(selected ? ">>>" : "   ")} {eqKey}".Truncate(ConsoleWrapper.WindowWidth - renderedVal.Length - 5);
                     string spaces = new(' ', ConsoleWrapper.WindowWidth - 2 - renderedVal.Length - dataObject.Length);
