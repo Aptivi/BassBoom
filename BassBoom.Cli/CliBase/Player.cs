@@ -133,6 +133,7 @@ namespace BassBoom.Cli.CliBase
 
             // Render the buffer
             playerScreen.AddBufferedPart("BassBoom Player", screenPart);
+            playerScreen.ResetResize = false;
 
             // Then, the main loop
             while (!exiting)
@@ -142,7 +143,7 @@ namespace BassBoom.Cli.CliBase
                 {
                     if (!playerScreen.CheckBufferedPart("BassBoom Player"))
                         playerScreen.AddBufferedPart("BassBoom Player", screenPart);
-                    wasRerendered = ConsoleResizeHandler.WasResized(false);
+                    wasRerendered = ConsoleResizeHandler.WasResized();
                     ScreenTools.Render();
 
                     // Handle the keystroke
