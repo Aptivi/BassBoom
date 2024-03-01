@@ -581,6 +581,35 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.DecodeTools.DecodeFrame
   nameWithType: DecodeTools.DecodeFrame
+- uid: BassBoom.Basolia.Format.DecodeTools.Decoder
+  name: Decoder
+  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_Decoder
+  commentId: P:BassBoom.Basolia.Format.DecodeTools.Decoder
+  fullName: BassBoom.Basolia.Format.DecodeTools.Decoder
+  nameWithType: DecodeTools.Decoder
+- uid: BassBoom.Basolia.Format.DecodeTools.Decoder*
+  name: Decoder
+  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_Decoder_
+  commentId: Overload:BassBoom.Basolia.Format.DecodeTools.Decoder
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.DecodeTools.Decoder
+  nameWithType: DecodeTools.Decoder
+- uid: BassBoom.Basolia.Format.DecodeTools.GetDecoders(System.Boolean)
+  name: GetDecoders(bool)
+  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_GetDecoders_System_Boolean_
+  commentId: M:BassBoom.Basolia.Format.DecodeTools.GetDecoders(System.Boolean)
+  name.vb: GetDecoders(Boolean)
+  fullName: BassBoom.Basolia.Format.DecodeTools.GetDecoders(bool)
+  fullName.vb: BassBoom.Basolia.Format.DecodeTools.GetDecoders(Boolean)
+  nameWithType: DecodeTools.GetDecoders(bool)
+  nameWithType.vb: DecodeTools.GetDecoders(Boolean)
+- uid: BassBoom.Basolia.Format.DecodeTools.GetDecoders*
+  name: GetDecoders
+  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_GetDecoders_
+  commentId: Overload:BassBoom.Basolia.Format.DecodeTools.GetDecoders
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.DecodeTools.GetDecoders
+  nameWithType: DecodeTools.GetDecoders
 - uid: BassBoom.Basolia.Format.FormatInfo
   name: FormatInfo
   href: api/BassBoom.Basolia.Format.FormatInfo.html
