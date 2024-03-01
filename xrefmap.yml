@@ -133,6 +133,32 @@ references:
   commentId: T:BassBoom.Basolia.Devices.DeviceTools
   fullName: BassBoom.Basolia.Devices.DeviceTools
   nameWithType: DeviceTools
+- uid: BassBoom.Basolia.Devices.DeviceTools.GetCurrent
+  name: GetCurrent()
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetCurrent
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetCurrent
+  fullName: BassBoom.Basolia.Devices.DeviceTools.GetCurrent()
+  nameWithType: DeviceTools.GetCurrent()
+- uid: BassBoom.Basolia.Devices.DeviceTools.GetCurrent*
+  name: GetCurrent
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetCurrent_
+  commentId: Overload:BassBoom.Basolia.Devices.DeviceTools.GetCurrent
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Devices.DeviceTools.GetCurrent
+  nameWithType: DeviceTools.GetCurrent
+- uid: BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached
+  name: GetCurrentCached()
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetCurrentCached
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached
+  fullName: BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached()
+  nameWithType: DeviceTools.GetCurrentCached()
+- uid: BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached*
+  name: GetCurrentCached
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetCurrentCached_
+  commentId: Overload:BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached
+  nameWithType: DeviceTools.GetCurrentCached
 - uid: BassBoom.Basolia.Devices.DeviceTools.GetDevices(System.String,System.String@)
   name: GetDevices(string, ref string)
   href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetDevices_System_String_System_String__
