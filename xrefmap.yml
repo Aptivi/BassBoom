@@ -2329,6 +2329,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer
   nameWithType: PlaybackTools.GetEqualizer
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Native.Interop.Analysis.mpg123_state)
+  name: GetNativeState(mpg123_state)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetNativeState_BassBoom_Native_Interop_Analysis_mpg123_state_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Native.Interop.Analysis.mpg123_state)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Native.Interop.Analysis.mpg123_state)
+  nameWithType: PlaybackTools.GetNativeState(mpg123_state)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState*
+  name: GetNativeState
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetNativeState_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.GetNativeState
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState
+  nameWithType: PlaybackTools.GetNativeState
 - uid: BassBoom.Basolia.Playback.PlaybackTools.GetVolume
   name: GetVolume()
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetVolume
