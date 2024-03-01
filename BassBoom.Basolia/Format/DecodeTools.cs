@@ -22,6 +22,8 @@ using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Play;
 using BassBoom.Native.Runtime;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace BassBoom.Basolia.Format
@@ -31,6 +33,22 @@ namespace BassBoom.Basolia.Format
     /// </summary>
     public static class DecodeTools
     {
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct DecoderList
+        {
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
+            public IntPtr[] listOfDecoders;
+        }
+
+        /// <summary>
+        /// Decoder to use
+        /// </summary>
+        public static string Decoder
+        {
+            get => GetCurrentDecoder();
+            set => SetCurrentDecoder(value);
+        }
+
         /// <summary>
         /// Decodes next MPEG frame to internal buffer or reads a frame and returns after setting a new format.
         /// </summary>
@@ -69,7 +87,67 @@ namespace BassBoom.Basolia.Format
 
                 return decodeStatus;
             }
+        }
 
+        /// <summary>
+        /// Gets all decoders or the supported decoders
+        /// </summary>
+        /// <param name="onlySupported">Show only supported decoders</param>
+        /// <returns>Either an array of all decoders or an array of only the supported decoders according to the current device and driver.</returns>
+        public static string[] GetDecoders(bool onlySupported)
+        {
+            InitBasolia.CheckInited();
+
+            // Try to set the equalizer value
+            unsafe
+            {
+                IntPtr decodersPtr =
+                    onlySupported ?
+                    NativeDecoder.mpg123_supported_decoders() :
+                    NativeDecoder.mpg123_decoders();
+                var decodersEnum = Marshal.PtrToStructure<DecoderList>(decodersPtr);
+                List<string> decoders = [];
+                foreach (var decoder in decodersEnum.listOfDecoders)
+                {
+                    if (decoder == IntPtr.Zero)
+                        break;
+                    decoders.Add(Marshal.PtrToStringAnsi(decoder));
+                }
+                return [.. decoders];
+            }
+        }
+
+        private static string GetCurrentDecoder()
+        {
+            InitBasolia.CheckInited();
+
+            // Try to set the equalizer value
+            unsafe
+            {
+                var handle = Mpg123Instance._mpg123Handle;
+                IntPtr decoderPtr = NativeDecoder.mpg123_current_decoder(handle);
+                return Marshal.PtrToStringAnsi(decoderPtr);
+            }
+        }
+
+        private static void SetCurrentDecoder(string decoderName)
+        {
+            InitBasolia.CheckInited();
+
+            // Try to set the equalizer value
+            unsafe
+            {
+                string[] decoders = GetDecoders(false);
+                if (!decoders.Contains(decoderName))
+                    throw new BasoliaException($"Decoder {decoderName} not found", mpg123_errors.MPG123_BAD_DECODER);
+                string[] supportedDecoders = GetDecoders(true);
+                if (!supportedDecoders.Contains(decoderName))
+                    throw new BasoliaException($"Decoder {decoderName} not supported by your device", mpg123_errors.MPG123_BAD_DECODER);
+                var handle = Mpg123Instance._mpg123Handle;
+                int status = NativeDecoder.mpg123_decoder(handle, decoderName);
+                if (status != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException($"Can't set decoder to {decoderName}", (mpg123_errors)status);
+            }
         }
     }
 }

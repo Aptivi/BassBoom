@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using System;
 using System.Runtime.InteropServices;
 
 namespace BassBoom.Native.Interop.Init
@@ -30,13 +31,13 @@ namespace BassBoom.Native.Interop.Init
         /// MPG123_EXPORT const char **mpg123_decoders(void);
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern string[] mpg123_decoders();
+        internal static extern IntPtr mpg123_decoders();
 
         /// <summary>
         /// MPG123_EXPORT const char **mpg123_supported_decoders(void);
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern string[] mpg123_supported_decoders();
+        internal static extern IntPtr mpg123_supported_decoders();
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_decoder(mpg123_handle *mh, const char* decoder_name);
@@ -48,6 +49,6 @@ namespace BassBoom.Native.Interop.Init
         /// MPG123_EXPORT const char* mpg123_current_decoder(mpg123_handle *mh);
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern string mpg123_current_decoder(mpg123_handle* mh);
+        internal static extern IntPtr mpg123_current_decoder(mpg123_handle* mh);
     }
 }
