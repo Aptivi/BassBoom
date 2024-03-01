@@ -402,7 +402,6 @@ namespace BassBoom.Cli.CliBase
                 int finalIndex = i + startIndex;
                 if (finalIndex <= musicFiles.Count - 1)
                 {
-                    // Here, it's getting uglier as we don't have ElementAt() in IEnumerable, too!
                     var (musicName, musicArtist, _) = PlayerControls.GetMusicNameArtistGenre(finalIndex);
                     string duration = cachedInfos[finalIndex].DurationSpan;
                     string renderedDuration = $"[{duration}]";

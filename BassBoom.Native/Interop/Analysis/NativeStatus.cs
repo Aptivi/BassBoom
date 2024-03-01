@@ -227,13 +227,13 @@ namespace BassBoom.Native.Interop.Analysis
         /// ,   enum mpg123_state key, long *val, double *fval );
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_getstate(mpg123_handle* mh, mpg123_state key, long* val, double* fval);
+        internal static extern int mpg123_getstate(mpg123_handle* mh, mpg123_state key, ref long val, ref double fval);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_getstate2( mpg123_handle *mh
         /// ,   int key, long *val, double *fval );
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_getstate2(mpg123_handle* mh, int key, long* val, double* fval);
+        internal static extern int mpg123_getstate2(mpg123_handle* mh, int key, ref long val, ref double fval);
     }
 }

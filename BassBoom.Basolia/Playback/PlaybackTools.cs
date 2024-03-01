@@ -29,6 +29,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BassBoom.Basolia.Devices;
 using System.Runtime.InteropServices;
+using BassBoom.Native.Interop.Analysis;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -285,6 +286,29 @@ namespace BassBoom.Basolia.Playback
                 int status = NativeVolume.mpg123_reset_eq(handle);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException("Can't reset equalizer bands to their initial values!", (mpg123_errors)status);
+            }
+        }
+
+        /// <summary>
+        /// Gets the native state
+        /// </summary>
+        /// <param name="state">A native state to get</param>
+        /// <returns>A number that represents the value of this state</returns>
+        /// <exception cref="BasoliaException"></exception>
+        public static (long, double) GetNativeState(mpg123_state state)
+        {
+            InitBasolia.CheckInited();
+
+            // Try to set the equalizer value
+            unsafe
+            {
+                long stateInt = 0;
+                double stateDouble = 0;
+                var handle = Mpg123Instance._mpg123Handle;
+                int status = NativeStatus.mpg123_getstate(handle, state, ref stateInt, ref stateDouble);
+                if (status != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException($"Can't get native state of {state}!", (mpg123_errors)status);
+                return (stateInt, stateDouble);
             }
         }
 

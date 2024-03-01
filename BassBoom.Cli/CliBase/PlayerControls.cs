@@ -22,6 +22,7 @@ using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Format.Cache;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
+using BassBoom.Native.Interop.Analysis;
 using System;
 using System.IO;
 using System.Linq;
@@ -416,6 +417,17 @@ namespace BassBoom.Cli.CliBase
                 Bitrate: {{Player.frameInfo.BitRate}}
                 ABR Rate: {{Player.frameInfo.AbrRate}}
                 VBR: {{Player.frameInfo.Vbr}}
+                
+                Native State
+                ============
+
+                Accurate rendering: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_ACCURATE)}}
+                Buffer fill: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_BUFFERFILL)}}
+                Decoding delay: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_DEC_DELAY)}}
+                Encoding delay: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_ENC_DELAY)}}
+                Encoding padding: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_ENC_PADDING)}}
+                Frankenstein stream: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_FRANKENSTEIN)}}
+                Fresh decoder: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_FRESH_DECODER)}}
 
                 Texts and Extras
                 ================
