@@ -316,6 +316,13 @@ namespace BassBoom.Cli.CliBase
                     Equalizer.OpenEqualizer(playerScreen);
                     playerScreen.RequireRefresh();
                     break;
+                case ConsoleKey.D:
+                    PlayerControls.Pause();
+                    PlayerControls.ShowDeviceDriver();
+                    playerThread = new(HandlePlay);
+                    PlayerControls.Play();
+                    playerScreen.RequireRefresh();
+                    break;
                 case ConsoleKey.Q:
                     PlayerControls.Exit();
                     break;

@@ -199,7 +199,7 @@ namespace BassBoom.Native.Interop.Output
         /// MPG123_EXPORT int out123_driver_info(out123_handle *ao, char **driver, char **device);
         /// </summary>
         [DllImport(LibraryTools.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_driver_info(out123_handle* ao, char** driver, char** device);
+        internal static extern int out123_driver_info(out123_handle* ao, ref IntPtr driver, ref IntPtr device);
 
         /// <summary>
         /// MPG123_EXPORT void out123_close(out123_handle *ao);

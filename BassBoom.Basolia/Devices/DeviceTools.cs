@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia.Helpers;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
 using BassBoom.Native.Runtime;
@@ -35,31 +36,6 @@ namespace BassBoom.Basolia.Devices
         internal static string activeDriver;
         internal static string activeDevice;
 
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct DriverList
-        {
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
-            public IntPtr[] listOfDrivers;
-        }
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct DriverDescList
-        {
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
-            public IntPtr[] listOfDriverDescriptions;
-        }
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct DeviceList
-        {
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
-            public IntPtr[] listOfDevices;
-        }
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct DeviceDescList
-        {
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
-            public IntPtr[] listOfDeviceDescriptions;
-        }
-
         /// <summary>
         /// Gets a read only dictionary that lists all the drivers
         /// </summary>
@@ -73,8 +49,7 @@ namespace BassBoom.Basolia.Devices
             // We're now entering the dangerous zone
             nint names = IntPtr.Zero, descr = IntPtr.Zero;
             int driverCount;
-            DriverList drvList;
-            DriverDescList drvDescList;
+            string[] driverNames, driverDescs;
             unsafe
             {
                 // Query the drivers
@@ -82,16 +57,16 @@ namespace BassBoom.Basolia.Devices
                 int driversStatus = NativeOutputLib.out123_drivers(handle, ref names, ref descr);
                 if (driversStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't query the drivers", mpg123_errors.MPG123_ERR);
-                drvList = Marshal.PtrToStructure<DriverList>(names);
-                drvDescList = Marshal.PtrToStructure<DriverDescList>(descr);
                 driverCount = driversStatus;
+                driverNames = ArrayVariantLength.GetStringsKnownLength(names, driverCount);
+                driverDescs = ArrayVariantLength.GetStringsKnownLength(descr, driverCount);
             }
 
             // Iterate through each driver
             for (int i = 0; i < driverCount; i++)
             {
-                string name = Marshal.PtrToStringAnsi(drvList.listOfDrivers[i]);
-                string description = Marshal.PtrToStringAnsi(drvDescList.listOfDriverDescriptions[i]);
+                string name = driverNames[i];
+                string description = driverDescs[i];
                 drivers.Add(name, description);
             }
             return new ReadOnlyDictionary<string, string>(drivers);
@@ -112,8 +87,7 @@ namespace BassBoom.Basolia.Devices
             // We're now entering the dangerous zone
             nint names = IntPtr.Zero, descr = IntPtr.Zero, active = IntPtr.Zero;
             int deviceCount;
-            DeviceList devList;
-            DeviceDescList devDescList;
+            string[] deviceNames, deviceDescs;
             unsafe
             {
                 // Query the devices
@@ -121,20 +95,56 @@ namespace BassBoom.Basolia.Devices
                 int devicesStatus = NativeOutputLib.out123_devices(handle, driver, ref names, ref descr, ref active);
                 if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
-                devList = Marshal.PtrToStructure<DeviceList>(names);
-                devDescList = Marshal.PtrToStructure<DeviceDescList>(descr);
                 activeDevice = Marshal.PtrToStringAnsi(active);
                 deviceCount = devicesStatus;
+                deviceNames = ArrayVariantLength.GetStringsKnownLength(names, deviceCount);
+                deviceDescs = ArrayVariantLength.GetStringsKnownLength(descr, deviceCount);
             }
 
             // Iterate through each device
             for (int i = 0; i < deviceCount; i++)
             {
-                string name = Marshal.PtrToStringAnsi(devList.listOfDevices[i]);
-                string description = Marshal.PtrToStringAnsi(devDescList.listOfDeviceDescriptions[i]);
+                string name = deviceNames[i];
+                string description = deviceDescs[i];
                 devices.Add(name, description);
             }
             return new ReadOnlyDictionary<string, string>(devices);
+        }
+
+        /// <summary>
+        /// Gets the current device and driver
+        /// </summary>
+        /// <returns>Current device and driver</returns>
+        /// <exception cref="BasoliaException"></exception>
+        public static (string driver, string device) GetCurrent()
+        {
+            InitBasolia.CheckInited();
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                // Query the devices
+                var handle = Mpg123Instance._out123Handle;
+                IntPtr driverPtr = IntPtr.Zero;
+                IntPtr devicePtr = IntPtr.Zero;
+                int devicesStatus = NativeOutputLib.out123_driver_info(handle, ref driverPtr, ref devicePtr);
+                if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
+                    throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
+                string driver = Marshal.PtrToStringAnsi(driverPtr);
+                string device = Marshal.PtrToStringAnsi(devicePtr);
+                return (driver, device);
+            }
+        }
+
+        /// <summary>
+        /// Gets the current cached device and driver
+        /// </summary>
+        /// <returns>Current cached device and driver</returns>
+        /// <exception cref="BasoliaException"></exception>
+        public static (string driver, string device) GetCurrentCached()
+        {
+            InitBasolia.CheckInited();
+            return (activeDriver, activeDevice);
         }
 
         /// <summary>

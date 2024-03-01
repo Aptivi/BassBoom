@@ -18,11 +18,11 @@
 //
 
 using BassBoom.Basolia.File;
+using BassBoom.Basolia.Helpers;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Play;
 using BassBoom.Native.Runtime;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 
@@ -33,13 +33,6 @@ namespace BassBoom.Basolia.Format
     /// </summary>
     public static class DecodeTools
     {
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct DecoderList
-        {
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
-            public IntPtr[] listOfDecoders;
-        }
-
         /// <summary>
         /// Decoder to use
         /// </summary>
@@ -105,15 +98,8 @@ namespace BassBoom.Basolia.Format
                     onlySupported ?
                     NativeDecoder.mpg123_supported_decoders() :
                     NativeDecoder.mpg123_decoders();
-                var decodersEnum = Marshal.PtrToStructure<DecoderList>(decodersPtr);
-                List<string> decoders = [];
-                foreach (var decoder in decodersEnum.listOfDecoders)
-                {
-                    if (decoder == IntPtr.Zero)
-                        break;
-                    decoders.Add(Marshal.PtrToStringAnsi(decoder));
-                }
-                return [.. decoders];
+                string[] decoders = ArrayVariantLength.GetStringsUnknownLength(decodersPtr);
+                return decoders;
             }
         }
 

@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia.Devices;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Format.Cache;
@@ -372,13 +373,14 @@ namespace BassBoom.Cli.CliBase
                 [CTRL] + [<-/->]    Seek duration control
                 [I]                 Song info
                 [A]                 Add a music file
-                [S]                 Add a music directory to the playlist
+                [S] (when idle)     Add a music directory to the playlist
                 [B]                 Previous song
                 [N]                 Next song
                 [R]                 Remove current song
                 [CTRL] + [R]        Remove all songs
-                [S]                 Selectively seek
+                [S] (when playing)  Selectively seek
                 [E]                 Opens the equalizer
+                [D] (when playing)  Device and driver info
                 """
             );
         }
@@ -433,6 +435,45 @@ namespace BassBoom.Cli.CliBase
                 ================
 
                 {{textsBuilder}}
+                """
+            );
+        }
+
+        internal static void ShowDeviceDriver()
+        {
+            var builder = new StringBuilder();
+            var currentTuple = DeviceTools.GetCurrent();
+            var currentCachedTuple = DeviceTools.GetCurrentCached();
+            var drivers = DeviceTools.GetDrivers();
+            string activeDevice = "";
+            foreach (var driver in drivers)
+            {
+                try
+                {
+                    builder.AppendLine($"- {driver.Key}: {driver.Value}");
+                    var devices = DeviceTools.GetDevices(driver.Key, ref activeDevice);
+                    foreach (var device in devices)
+                        builder.AppendLine($"  - {device.Key}: {device.Value}");
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+            InfoBoxColor.WriteInfoBox(
+                $$"""
+                Device and Driver
+                =================
+
+                Device: {{currentTuple.device}}
+                Driver: {{currentTuple.driver}}
+                Device (cached): {{currentCachedTuple.device}}
+                Driver (cached): {{currentCachedTuple.driver}}
+
+                Available devices and drivers
+                =============================
+
+                {{builder}}
                 """
             );
         }
