@@ -17,8 +17,14 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Native.Interop;
+using BassBoom.Native.Interop.Init;
+using BassBoom.Native.Interop.Output;
+using BassBoom.Native.Interop.Synthesis;
 using BassBoom.Native.Runtime;
 using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace BassBoom.Basolia
 {
@@ -34,6 +40,45 @@ namespace BassBoom.Basolia
         /// </summary>
         public static bool BasoliaInitialized =>
             _basoliaInited;
+
+        /// <summary>
+        /// MPG library version
+        /// </summary>
+        public static Version MpgLibVersion
+        {
+            get
+            {
+                if (!BasoliaInitialized)
+                    throw new BasoliaException("Can't get version until the library is initialized", mpg123_errors.MPG123_NOT_INITIALIZED);
+                return LibraryTools.MpgLibVersion;
+            }
+        }
+
+        /// <summary>
+        /// Output library version
+        /// </summary>
+        public static Version OutLibVersion
+        {
+            get
+            {
+                if (!BasoliaInitialized)
+                    throw new BasoliaOutException("Can't get version until the library is initialized", out123_error.OUT123_ERR);
+                return LibraryTools.OutLibVersion;
+            }
+        }
+
+        /// <summary>
+        /// Synthesis library version
+        /// </summary>
+        public static Version SynLibVersion
+        {
+            get
+            {
+                if (!BasoliaInitialized)
+                    throw new BasoliaSynException("Can't get version until the library is initialized", syn123_error.SYN123_NO_DATA);
+                return LibraryTools.SynLibVersion;
+            }
+        }
         
         /// <summary>
         /// Initializes the MPG123 library for Basolia to function

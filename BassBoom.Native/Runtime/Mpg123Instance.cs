@@ -191,40 +191,38 @@ namespace BassBoom.Native.Runtime
                 // mpg123 returns 0 on init.
                 _ = LibraryTools.mpg123_init();
                 var handle = NativeInit.mpg123_new(null, null);
+                Debug.WriteLine($"Verifying mpg123 version: {LibraryTools.MpgLibVersion}");
                 _mpg123Handle = handle;
             }
             catch (Exception ex)
             {
                 mpg123LibPath = oldLibPath;
-                throw new BasoliaNativeLibraryException($"mpg123 library path {libPath} doesn't contain a valid mpg123 library. mpg123_init() was called. {ex.Message}");
+                throw new BasoliaNativeLibraryException($"mpg123 library path {libPath} doesn't contain a valid mpg123 library. out123_distversion() was called. {ex.Message}");
             }
 
             // Do the same for the out123 library!
             try
             {
                 var handle = NativeOutputLib.out123_new();
+                Debug.WriteLine($"Verifying out123 version: {LibraryTools.OutLibVersion}");
                 _out123Handle = handle;
             }
             catch (Exception ex)
             {
                 out123LibPath = oldLibPathOut;
-                throw new BasoliaNativeLibraryException($"out123 library path {libPathOut} doesn't contain a valid out123 library. out123_new() was called. {ex.Message}");
+                throw new BasoliaNativeLibraryException($"out123 library path {libPathOut} doesn't contain a valid out123 library. out123_distversion() was called. {ex.Message}");
             }
 
             // Do the same for the syn123 library!
             try
             {
-                uint major = 0, minor = 0, patch = 0;
-                var versionHandle = NativeSynthesis.syn123_distversion(ref major, ref minor, ref patch);
-                string version = Marshal.PtrToStringAnsi(versionHandle);
-
                 // We can't init handle here, because we need values.
-                Debug.WriteLine(version);
+                Debug.WriteLine($"Verifying syn123 version: {LibraryTools.SynLibVersion}");
             }
             catch (Exception ex)
             {
                 syn123LibPath = oldLibPathSyn;
-                throw new BasoliaNativeLibraryException($"syn123 library path {libPathSyn} doesn't contain a valid syn123 library. syn123_new() was called. {ex.Message}");
+                throw new BasoliaNativeLibraryException($"syn123 library path {libPathSyn} doesn't contain a valid syn123 library. syn123_distversion() was called. {ex.Message}");
             }
         }
 

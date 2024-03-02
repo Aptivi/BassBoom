@@ -116,6 +116,18 @@ namespace BassBoom.Native.Interop.Init
     public static unsafe class NativeInit
     {
         /// <summary>
+        /// const char *mpg123_distversion(unsigned int *major, unsigned int *minor, unsigned int *patch)
+        /// </summary>
+        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        internal static extern IntPtr mpg123_distversion(ref uint major, ref uint minor, ref uint patch);
+
+        /// <summary>
+        /// unsigned int mpg123_libversion(unsigned int *patch);
+        /// </summary>
+        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        internal static extern uint mpg123_libversion(ref uint patch);
+
+        /// <summary>
         /// MPG123_EXPORT mpg123_handle* mpg123_new (const char* decoder, int* error)
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]

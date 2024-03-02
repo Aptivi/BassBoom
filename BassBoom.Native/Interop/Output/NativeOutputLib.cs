@@ -86,13 +86,13 @@ namespace BassBoom.Native.Interop.Output
         /// MPG123_EXPORT const char *out123_distversion(unsigned int *major, unsigned int *minor, unsigned int *patch);
         /// </summary>
         [DllImport(LibraryTools.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern string out123_distversion(uint* major, uint* minor, uint* patch);
+        internal static extern IntPtr out123_distversion(ref uint major, ref uint minor, ref uint patch);
 
         /// <summary>
         /// MPG123_EXPORT unsigned int out123_libversion(unsigned int *patch);
         /// </summary>
         [DllImport(LibraryTools.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern uint out123_libversion(uint* patch);
+        internal static extern uint out123_libversion(ref uint patch);
 
         /// <summary>
         /// MPG123_EXPORT out123_handle *out123_new(void);

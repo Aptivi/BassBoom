@@ -17,7 +17,12 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Native.Interop.Init;
+using BassBoom.Native.Interop.Output;
+using BassBoom.Native.Interop.Synthesis;
 using BassBoom.Native.Runtime;
+using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace BassBoom.Native.Interop
@@ -44,6 +49,51 @@ namespace BassBoom.Native.Interop
         /// </summary>
         public static string LibraryPathSyn =>
             Mpg123Instance.syn123LibPath;
+
+        /// <summary>
+        /// MPG library version
+        /// </summary>
+        public static Version MpgLibVersion
+        {
+            get
+            {
+                uint major = 0, minor = 0, patch = 0;
+                var versionHandle = NativeInit.mpg123_distversion(ref major, ref minor, ref patch);
+                string version = Marshal.PtrToStringAnsi(versionHandle);
+                Debug.WriteLine($"mpg123 version: {version}");
+                return new((int)major, (int)minor, (int)patch, 0);
+            }
+        }
+
+        /// <summary>
+        /// Output library version
+        /// </summary>
+        public static Version OutLibVersion
+        {
+            get
+            {
+                uint major = 0, minor = 0, patch = 0;
+                var versionHandle = NativeOutputLib.out123_distversion(ref major, ref minor, ref patch);
+                string version = Marshal.PtrToStringAnsi(versionHandle);
+                Debug.WriteLine($"out123 version: {version}");
+                return new((int)major, (int)minor, (int)patch, 0);
+            }
+        }
+
+        /// <summary>
+        /// Synthesis library version
+        /// </summary>
+        public static Version SynLibVersion
+        {
+            get
+            {
+                uint major = 0, minor = 0, patch = 0;
+                var versionHandle = NativeSynthesis.syn123_distversion(ref major, ref minor, ref patch);
+                string version = Marshal.PtrToStringAnsi(versionHandle);
+                Debug.WriteLine($"syn123 version: {version}");
+                return new((int)major, (int)minor, (int)patch, 0);
+            }
+        }
 
         /// <summary>
         /// C library name (POSIX)

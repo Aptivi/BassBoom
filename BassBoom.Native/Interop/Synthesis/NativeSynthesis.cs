@@ -84,6 +84,18 @@ namespace BassBoom.Native.Interop.Synthesis
         public static extern uint syn123_libversion(ref uint patch);
 
         /// <summary>
+        /// const char* syn123_strerror(int errcode);
+        /// </summary>
+        [DllImport(LibraryTools.LibraryNameSyn, CharSet = CharSet.Ansi)]
+        public static extern IntPtr syn123_strerror(syn123_error errcode);
+
+        /// <summary>
+        /// const char* syn123_strerror(int errcode);
+        /// </summary>
+        [DllImport(LibraryTools.LibraryNameSyn, CharSet = CharSet.Ansi, EntryPoint = "syn123_strerror")]
+        public static extern IntPtr syn123_strerror2(int errcode);
+
+        /// <summary>
         /// syn123_handle* syn123_new(long rate, int channels, int encoding, size_t maxbuf, int* err);
         /// </summary>
         [DllImport(LibraryTools.LibraryNameSyn, CharSet = CharSet.Ansi)]
