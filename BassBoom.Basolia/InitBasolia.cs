@@ -24,6 +24,7 @@ using BassBoom.Native.Interop.Synthesis;
 using BassBoom.Native.Runtime;
 using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace BassBoom.Basolia
@@ -79,6 +80,12 @@ namespace BassBoom.Basolia
                 return LibraryTools.SynLibVersion;
             }
         }
+
+        /// <summary>
+        /// BassBoom's Basolia version
+        /// </summary>
+        public static Version BasoliaVersion =>
+            Assembly.GetExecutingAssembly().GetName().Version;
         
         /// <summary>
         /// Initializes the MPG123 library for Basolia to function

@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia;
 using BassBoom.Basolia.Devices;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
@@ -24,9 +25,11 @@ using BassBoom.Basolia.Format.Cache;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using BassBoom.Native.Interop.Analysis;
+using SpecProbe.Platform;
 using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using Terminaux.Base;
@@ -381,6 +384,7 @@ namespace BassBoom.Cli.CliBase
                 [S] (when playing)  Selectively seek
                 [E]                 Opens the equalizer
                 [D] (when playing)  Device and driver info
+                [Z]                 System info
                 """
             );
         }
@@ -474,6 +478,30 @@ namespace BassBoom.Cli.CliBase
                 =============================
 
                 {{builder}}
+                """
+            );
+        }
+
+        internal static void ShowSpecs()
+        {
+            InfoBoxColor.WriteInfoBox(
+                $$"""
+                BassBoom specifications
+                =======================
+
+                Basolia version: {{InitBasolia.BasoliaVersion}}
+                MPG123 version: {{InitBasolia.MpgLibVersion}}
+                OUT123 version: {{InitBasolia.OutLibVersion}}
+                SYN123 version: {{InitBasolia.SynLibVersion}}
+
+                System specifications
+                =====================
+
+                System: {{(PlatformHelper.IsOnWindows() ? "Windows" : PlatformHelper.IsOnMacOS() ? "macOS" : "Unix/Linux")}}
+                System Architecture: {{RuntimeInformation.OSArchitecture}}
+                Process Architecture: {{RuntimeInformation.ProcessArchitecture}}
+                System description: {{RuntimeInformation.OSDescription}}
+                .NET description: {{RuntimeInformation.FrameworkDescription}}
                 """
             );
         }

@@ -62,6 +62,9 @@ namespace BassBoom.Cli.CliBase
         internal static string cachedLyric = "";
         internal static readonly List<string> musicFiles = [];
         internal static readonly List<CachedSongInfo> cachedInfos = [];
+        internal static Version mpgVer;
+        internal static Version outVer;
+        internal static Version synVer;
 
         public static void PlayerLoop()
         {
@@ -70,6 +73,11 @@ namespace BassBoom.Cli.CliBase
             paused = false;
             populate = true;
             advance = false;
+
+            // Initialize versions
+            mpgVer = InitBasolia.MpgLibVersion;
+            outVer = InitBasolia.OutLibVersion;
+            synVer = InitBasolia.SynLibVersion;
 
             // Populate the screen
             Screen playerScreen = new();
@@ -244,6 +252,10 @@ namespace BassBoom.Cli.CliBase
                     Equalizer.OpenEqualizer(playerScreen);
                     playerScreen.RequireRefresh();
                     break;
+                case ConsoleKey.Z:
+                    PlayerControls.ShowSpecs();
+                    playerScreen.RequireRefresh();
+                    break;
                 case ConsoleKey.Q:
                     PlayerControls.Exit();
                     break;
@@ -323,6 +335,10 @@ namespace BassBoom.Cli.CliBase
                     PlayerControls.Play();
                     playerScreen.RequireRefresh();
                     break;
+                case ConsoleKey.Z:
+                    PlayerControls.ShowSpecs();
+                    playerScreen.RequireRefresh();
+                    break;
                 case ConsoleKey.Q:
                     PlayerControls.Exit();
                     break;
@@ -380,7 +396,7 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
 
             // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere("[ Powered by BassBoom ]", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(TextWriterWhereColor.RenderWhere($"[ Powered by BassBoom and MPG123 v{mpgVer} ]", 2, ConsoleWrapper.WindowHeight - 4));
 
             // In case we have no songs in the playlist...
             if (musicFiles.Count == 0)
