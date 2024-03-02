@@ -2070,6 +2070,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.InitBasolia.BasoliaInitialized
   nameWithType: InitBasolia.BasoliaInitialized
+- uid: BassBoom.Basolia.InitBasolia.BasoliaVersion
+  name: BasoliaVersion
+  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_BasoliaVersion
+  commentId: P:BassBoom.Basolia.InitBasolia.BasoliaVersion
+  fullName: BassBoom.Basolia.InitBasolia.BasoliaVersion
+  nameWithType: InitBasolia.BasoliaVersion
+- uid: BassBoom.Basolia.InitBasolia.BasoliaVersion*
+  name: BasoliaVersion
+  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_BasoliaVersion_
+  commentId: Overload:BassBoom.Basolia.InitBasolia.BasoliaVersion
+  isSpec: "True"
+  fullName: BassBoom.Basolia.InitBasolia.BasoliaVersion
+  nameWithType: InitBasolia.BasoliaVersion
 - uid: BassBoom.Basolia.InitBasolia.CheckInited
   name: CheckInited()
   href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_CheckInited
