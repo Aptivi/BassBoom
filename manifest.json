@@ -55,6 +55,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.BasoliaSynException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.BasoliaSynException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.yml",
       "output": {
         ".html": {

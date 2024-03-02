@@ -121,6 +121,49 @@ references:
   fullName.vb: BassBoom.Basolia.BasoliaOutException.New
   nameWithType: BasoliaOutException.BasoliaOutException
   nameWithType.vb: BasoliaOutException.New
+- uid: BassBoom.Basolia.BasoliaSynException
+  name: BasoliaSynException
+  href: api/BassBoom.Basolia.BasoliaSynException.html
+  commentId: T:BassBoom.Basolia.BasoliaSynException
+  fullName: BassBoom.Basolia.BasoliaSynException
+  nameWithType: BasoliaSynException
+- uid: BassBoom.Basolia.BasoliaSynException.#ctor(BassBoom.Native.Interop.Synthesis.syn123_error)
+  name: BasoliaSynException(syn123_error)
+  href: api/BassBoom.Basolia.BasoliaSynException.html#BassBoom_Basolia_BasoliaSynException__ctor_BassBoom_Native_Interop_Synthesis_syn123_error_
+  commentId: M:BassBoom.Basolia.BasoliaSynException.#ctor(BassBoom.Native.Interop.Synthesis.syn123_error)
+  name.vb: New(syn123_error)
+  fullName: BassBoom.Basolia.BasoliaSynException.BasoliaSynException(BassBoom.Native.Interop.Synthesis.syn123_error)
+  fullName.vb: BassBoom.Basolia.BasoliaSynException.New(BassBoom.Native.Interop.Synthesis.syn123_error)
+  nameWithType: BasoliaSynException.BasoliaSynException(syn123_error)
+  nameWithType.vb: BasoliaSynException.New(syn123_error)
+- uid: BassBoom.Basolia.BasoliaSynException.#ctor(System.String,BassBoom.Native.Interop.Synthesis.syn123_error)
+  name: BasoliaSynException(string, syn123_error)
+  href: api/BassBoom.Basolia.BasoliaSynException.html#BassBoom_Basolia_BasoliaSynException__ctor_System_String_BassBoom_Native_Interop_Synthesis_syn123_error_
+  commentId: M:BassBoom.Basolia.BasoliaSynException.#ctor(System.String,BassBoom.Native.Interop.Synthesis.syn123_error)
+  name.vb: New(String, syn123_error)
+  fullName: BassBoom.Basolia.BasoliaSynException.BasoliaSynException(string, BassBoom.Native.Interop.Synthesis.syn123_error)
+  fullName.vb: BassBoom.Basolia.BasoliaSynException.New(String, BassBoom.Native.Interop.Synthesis.syn123_error)
+  nameWithType: BasoliaSynException.BasoliaSynException(string, syn123_error)
+  nameWithType.vb: BasoliaSynException.New(String, syn123_error)
+- uid: BassBoom.Basolia.BasoliaSynException.#ctor(System.String,System.Exception,BassBoom.Native.Interop.Synthesis.syn123_error)
+  name: BasoliaSynException(string, Exception, syn123_error)
+  href: api/BassBoom.Basolia.BasoliaSynException.html#BassBoom_Basolia_BasoliaSynException__ctor_System_String_System_Exception_BassBoom_Native_Interop_Synthesis_syn123_error_
+  commentId: M:BassBoom.Basolia.BasoliaSynException.#ctor(System.String,System.Exception,BassBoom.Native.Interop.Synthesis.syn123_error)
+  name.vb: New(String, Exception, syn123_error)
+  fullName: BassBoom.Basolia.BasoliaSynException.BasoliaSynException(string, System.Exception, BassBoom.Native.Interop.Synthesis.syn123_error)
+  fullName.vb: BassBoom.Basolia.BasoliaSynException.New(String, System.Exception, BassBoom.Native.Interop.Synthesis.syn123_error)
+  nameWithType: BasoliaSynException.BasoliaSynException(string, Exception, syn123_error)
+  nameWithType.vb: BasoliaSynException.New(String, Exception, syn123_error)
+- uid: BassBoom.Basolia.BasoliaSynException.#ctor*
+  name: BasoliaSynException
+  href: api/BassBoom.Basolia.BasoliaSynException.html#BassBoom_Basolia_BasoliaSynException__ctor_
+  commentId: Overload:BassBoom.Basolia.BasoliaSynException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BassBoom.Basolia.BasoliaSynException.BasoliaSynException
+  fullName.vb: BassBoom.Basolia.BasoliaSynException.New
+  nameWithType: BasoliaSynException.BasoliaSynException
+  nameWithType.vb: BasoliaSynException.New
 - uid: BassBoom.Basolia.Devices
   name: BassBoom.Basolia.Devices
   href: api/BassBoom.Basolia.Devices.html
@@ -2069,6 +2112,45 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.InitBasolia.IsInited
   nameWithType: InitBasolia.IsInited
+- uid: BassBoom.Basolia.InitBasolia.MpgLibVersion
+  name: MpgLibVersion
+  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_MpgLibVersion
+  commentId: P:BassBoom.Basolia.InitBasolia.MpgLibVersion
+  fullName: BassBoom.Basolia.InitBasolia.MpgLibVersion
+  nameWithType: InitBasolia.MpgLibVersion
+- uid: BassBoom.Basolia.InitBasolia.MpgLibVersion*
+  name: MpgLibVersion
+  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_MpgLibVersion_
+  commentId: Overload:BassBoom.Basolia.InitBasolia.MpgLibVersion
+  isSpec: "True"
+  fullName: BassBoom.Basolia.InitBasolia.MpgLibVersion
+  nameWithType: InitBasolia.MpgLibVersion
+- uid: BassBoom.Basolia.InitBasolia.OutLibVersion
+  name: OutLibVersion
+  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_OutLibVersion
+  commentId: P:BassBoom.Basolia.InitBasolia.OutLibVersion
+  fullName: BassBoom.Basolia.InitBasolia.OutLibVersion
+  nameWithType: InitBasolia.OutLibVersion
+- uid: BassBoom.Basolia.InitBasolia.OutLibVersion*
+  name: OutLibVersion
+  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_OutLibVersion_
+  commentId: Overload:BassBoom.Basolia.InitBasolia.OutLibVersion
+  isSpec: "True"
+  fullName: BassBoom.Basolia.InitBasolia.OutLibVersion
+  nameWithType: InitBasolia.OutLibVersion
+- uid: BassBoom.Basolia.InitBasolia.SynLibVersion
+  name: SynLibVersion
+  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_SynLibVersion
+  commentId: P:BassBoom.Basolia.InitBasolia.SynLibVersion
+  fullName: BassBoom.Basolia.InitBasolia.SynLibVersion
+  nameWithType: InitBasolia.SynLibVersion
+- uid: BassBoom.Basolia.InitBasolia.SynLibVersion*
+  name: SynLibVersion
+  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_SynLibVersion_
+  commentId: Overload:BassBoom.Basolia.InitBasolia.SynLibVersion
+  isSpec: "True"
+  fullName: BassBoom.Basolia.InitBasolia.SynLibVersion
+  nameWithType: InitBasolia.SynLibVersion
 - uid: BassBoom.Basolia.Lyrics
   name: BassBoom.Basolia.Lyrics
   href: api/BassBoom.Basolia.Lyrics.html
