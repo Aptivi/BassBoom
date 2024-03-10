@@ -1,4 +1,4 @@
-name: Build Project (Linux)
+name: Build Project (Debug)
 
 on:
   push:
@@ -10,24 +10,21 @@ on:
     
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        runs-on: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.runs-on }}
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.ref }}
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
     - name: Solution Compilation
       run: dotnet build --configuration Debug
     - name: Testing
-      run: dotnet test --configuration Debug
-    - uses: actions/upload-artifact@v3
-      if: success() || failure()
-      with:
-        name: bb-build
-        path: "BassBoom.Desktop/bin/Debug/"
+      run: dotnet test --no-build --configuration Debug
         
