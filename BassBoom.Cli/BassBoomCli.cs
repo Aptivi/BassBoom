@@ -21,6 +21,7 @@ using BassBoom.Basolia;
 using BassBoom.Cli.CliBase;
 using System;
 using System.IO;
+using System.Reflection;
 using Terminaux.ResizeListener;
 using Terminaux.Writer.ConsoleWriters;
 
@@ -33,7 +34,7 @@ namespace BassBoom.Cli
             try
             {
                 // Essentials
-                Console.Title = "BassBoom CLI - Basolia v0.0.6.1 - Alpha 6";
+                Console.Title = $"BassBoom CLI - Basolia v0.0.7 - Alpha {Assembly.GetAssembly(typeof(InitBasolia)).GetName().Version.Build}";
 
                 // First, prompt for the music path if no arguments are provided.
                 if (args.Length != 0)
