@@ -315,6 +315,66 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Radio.ShoutcastServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Radio.ShoutcastServer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Radio.ShoutcastServerException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Radio.ShoutcastServerException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Radio.ShoutcastStreamParseException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Radio.ShoutcastStreamParseException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Radio.ShoutcastVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Radio.ShoutcastVersion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Radio.StreamInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Radio.StreamInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Radio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Radio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.yml",
       "output": {
         ".html": {
