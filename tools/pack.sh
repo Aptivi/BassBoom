@@ -18,7 +18,7 @@
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # This script builds and packs the artifacts. Use when you have MSBuild installed.
-version=$(cat version)
+version=$(grep "<Version>" ../Directory.Build.props | cut -d "<" -f 2 | cut -d ">" -f 2)
 releaseconf=$1
 if [ -z $releaseconf ]; then
 	releaseconf=Release
