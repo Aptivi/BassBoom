@@ -1,8 +1,25 @@
 <Project>
-  <PropertyGroup>
-    <AvaloniaVersion>11.0.2</AvaloniaVersion>
-    <Version>0.0.7</Version>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <IncludeSymbols>True</IncludeSymbols>
-  </PropertyGroup>
+    <PropertyGroup>
+        <AvaloniaVersion>11.0.2</AvaloniaVersion>
+        <Version>0.0.7</Version>
+        <Authors>Aptivi</Authors>
+        <Company>Aptivi</Company>
+        <Copyright>Copyright (c) 2021-2024 Aptivi</Copyright>
+        <LangVersion>latest</LangVersion>
+        <DebugType>portable</DebugType>
+        <SignAssembly>True</SignAssembly>
+        <RootPath>$(MSBuildThisFileDirectory)</RootPath>
+        <AssemblyOriginatorKeyFile>$(RootPath)\aptivi_snk.snk</AssemblyOriginatorKeyFile>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
+        <IncludeSymbols>True</IncludeSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+    </ItemGroup>
 </Project>
