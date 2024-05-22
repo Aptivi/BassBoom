@@ -100,7 +100,7 @@ namespace BassBoom.Cli.CliBase
                     $"Seek: {PlayerControls.seekRate:0.00} | " +
                     $"Volume: {volume:0.00}";
                 buffer.Append(
-                    ProgressBarColor.RenderProgress(100 * (position / (double)total), 2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, ConsoleColors.Olive, ConsoleColors.Silver, ConsoleColors.Black, Targeted: true) +
+                    ProgressBarColor.RenderProgress(100 * (position / (double)total), 2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, ConsoleColors.Olive, ConsoleColors.Silver, ConsoleColors.Black) +
                     TextWriterWhereColor.RenderWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black) +
                     TextWriterWhereColor.RenderWhere(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black)
                 );
