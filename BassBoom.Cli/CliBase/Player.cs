@@ -83,11 +83,10 @@ namespace BassBoom.Cli.CliBase
             Screen playerScreen = new();
             ScreenTools.SetCurrent(playerScreen);
 
-            // First, make a screen part to draw our TUI
+            // Make a screen part to draw our TUI
             ScreenPart screenPart = new();
 
-            // Redraw if necessary
-            bool wasRerendered = true;
+            // Handle drawing
             screenPart.AddDynamicText(HandleDraw);
 
             // Current duration
@@ -117,7 +116,7 @@ namespace BassBoom.Cli.CliBase
                     if (lyricInstance is not null)
                     {
                         string current = lyricInstance.GetLastLineCurrent();
-                        if (current != cachedLyric || wasRerendered)
+                        if (current != cachedLyric || ConsoleResizeHandler.WasResized())
                         {
                             cachedLyric = current;
                             buffer.Append(
@@ -151,7 +150,6 @@ namespace BassBoom.Cli.CliBase
                 {
                     if (!playerScreen.CheckBufferedPart("BassBoom Player"))
                         playerScreen.AddBufferedPart("BassBoom Player", screenPart);
-                    wasRerendered = ConsoleResizeHandler.WasResized();
                     ScreenTools.Render();
 
                     // Handle the keystroke
