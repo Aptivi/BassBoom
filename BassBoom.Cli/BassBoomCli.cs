@@ -24,17 +24,19 @@ using System.IO;
 using System.Reflection;
 using Terminaux.ResizeListener;
 using Terminaux.Writer.ConsoleWriters;
+using Terminaux.Base.Extensions;
 
 namespace BassBoom.Cli
 {
     internal class BassBoomCli
     {
+        private static readonly Version version = Assembly.GetAssembly(typeof(InitBasolia)).GetName().Version;
+
         static int Main(string[] args)
         {
             try
             {
-                // Essentials
-                Console.Title = $"BassBoom CLI - Basolia v0.0.7 - Alpha {Assembly.GetAssembly(typeof(InitBasolia)).GetName().Version.Build}";
+                ConsoleMisc.SetTitle($"BassBoom CLI - Basolia v{version.ToString(3)} - Beta {version.Minor}");
 
                 // First, prompt for the music path if no arguments are provided.
                 if (args.Length != 0)

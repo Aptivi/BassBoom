@@ -1,7 +1,6 @@
 <Project>
     <PropertyGroup>
-        <AvaloniaVersion>11.0.2</AvaloniaVersion>
-        <Version>0.0.7</Version>
+        <Version>0.1.0</Version>
         <Authors>Aptivi</Authors>
         <Company>Aptivi</Company>
         <Copyright>Copyright (c) 2021-2024 Aptivi</Copyright>
