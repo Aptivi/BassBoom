@@ -38,6 +38,8 @@ using Terminaux.Writer.FancyWriters;
 using Terminaux.Sequences.Builder.Types;
 using Terminaux.Base.Extensions;
 using Terminaux.Reader;
+using Terminaux.Inputs.Styles.Selection;
+using Terminaux.Inputs;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -410,38 +412,25 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(PlayerControls.RenderSongName(musicFiles[currentSong - 1]));
 
             // Now, print the list of songs.
+            var choices = new List<InputChoiceInfo>();
             int startPos = 3;
             int endPos = ConsoleWrapper.WindowHeight - 10;
             int songsPerPage = endPos - startPos;
-            int currentPage = (currentSong - 1) / songsPerPage;
-            int startIndex = songsPerPage * currentPage;
-            var playlist = new StringBuilder();
-            for (int i = 0; i <= songsPerPage - 1; i++)
+            int max = musicFiles.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
+            for (int i = 0; i < musicFiles.Count; i++)
             {
                 // Populate the first pane
-                string finalEntry = "";
-                int finalIndex = i + startIndex;
-                if (finalIndex <= musicFiles.Count - 1)
-                {
-                    var (musicName, musicArtist, _) = PlayerControls.GetMusicNameArtistGenre(finalIndex);
-                    string duration = cachedInfos[finalIndex].DurationSpan;
-                    string renderedDuration = $"[{duration}]";
-                    string dataObject = $"  {musicArtist} - {musicName}".Truncate(ConsoleWrapper.WindowWidth - renderedDuration.Length - 5);
-                    string spaces = new(' ', ConsoleWrapper.WindowWidth - 4 - duration.Length - dataObject.Length);
-                    finalEntry = dataObject + spaces + renderedDuration;
-                }
-
-                // Render an entry
-                var finalForeColor = finalIndex == currentSong - 1 ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Silver);
-                int top = startPos + finalIndex - startIndex;
-                playlist.Append(
-                    $"{CsiSequences.GenerateCsiCursorPosition(1, top + 1)}" +
-                    $"{finalForeColor.VTSequenceForeground}" +
-                    finalEntry +
-                    new string(' ', ConsoleWrapper.WindowWidth - finalEntry.Length)
-                );
+                var (musicName, musicArtist, _) = PlayerControls.GetMusicNameArtistGenre(i);
+                string duration = cachedInfos[i].DurationSpan;
+                string renderedDuration = $"[{duration}]";
+                string songPreview = $"{musicArtist} - {musicName}".Truncate(ConsoleWrapper.WindowWidth - renderedDuration.Length - 5);
+                string spaces = new(' ', ConsoleWrapper.WindowWidth - 8 - max - renderedDuration.Length - ConsoleChar.EstimateCellWidth(songPreview));
+                string finalEntry = songPreview + spaces + renderedDuration;
+                choices.Add(new($"{i + 1}", finalEntry));
             }
-            drawn.Append(playlist);
+            drawn.Append(
+                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentSong - 1, songsPerPage, ConsoleWrapper.WindowWidth - 4, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+            );
             return drawn.ToString();
         }
     }
