@@ -29,6 +29,9 @@ using Terminaux.Writer.FancyWriters;
 using Terminaux.Sequences.Builder.Types;
 using Terminaux.Reader;
 using Terminaux.Base.Extensions;
+using Terminaux.Inputs;
+using System.Collections.Generic;
+using Terminaux.Inputs.Styles.Selection;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -143,54 +146,33 @@ namespace BassBoom.Cli.CliBase
                 drawn.Append(PlayerControls.RenderSongName(Player.musicFiles[Player.currentSong - 1]));
 
             // Now, print the list of bands and their values.
+            var choices = new List<InputChoiceInfo>();
             int startPos = 3;
             int endPos = ConsoleWrapper.WindowHeight - 5;
-            int songsPerPage = endPos - startPos;
-            int currentPage = currentBandIdx / songsPerPage;
-            int startIndex = songsPerPage * currentPage;
-            var eqs = new StringBuilder();
-            for (int i = 0; i <= songsPerPage - 1; i++)
+            int bandsPerPage = endPos - startPos;
+            for (int i = 0; i < 32; i++)
             {
-                // Populate the first pane
-                string finalEntry = "";
-                int finalIndex = i + startIndex;
-                bool selected = finalIndex == currentBandIdx;
-                if (finalIndex <= 31)
-                {
-                    // Get the equalizer value for this band
-                    double val = EqualizerControls.GetEqualizer(finalIndex);
-                    string eqType =
-                        // Bass bands: 1-8, Bass-Mid bands: 9-16, Mid-Treble bands: 17-24, Treble bands: 25-32
-                        finalIndex < 4 ? "Deep Bass" : // Band 1, 2, 3, 4
-                        finalIndex < 8 ? "Bass" :
-                        finalIndex < 12 ? "Deep Bass-Mid" :
-                        finalIndex < 16 ? "Bass-Mid" :
-                        finalIndex < 20 ? "Deep Mid-Treble" :
-                        finalIndex < 24 ? "Mid-Treble" :
-                        finalIndex < 28 ? "Deep Treble" :
-                        finalIndex < 32 ? "Treble" :
-                        "Unknown band type";
+                // Get the equalizer value for this band
+                double val = EqualizerControls.GetEqualizer(i);
+                string eqType =
+                    // Bass bands: 1-8, Bass-Mid bands: 9-16, Mid-Treble bands: 17-24, Treble bands: 25-32
+                    i < 4 ? "Deep Bass" : // Band 1, 2, 3, 4
+                    i < 8 ? "Bass" :
+                    i < 12 ? "Deep Bass-Mid" :
+                    i < 16 ? "Bass-Mid" :
+                    i < 20 ? "Deep Mid-Treble" :
+                    i < 24 ? "Mid-Treble" :
+                    i < 28 ? "Deep Treble" :
+                    i < 32 ? "Treble" :
+                    "Unknown band type";
 
-                    // Now, render it
-                    string eqKey = $"Equalizer Band #{finalIndex + 1} - {eqType}";
-                    string renderedVal = $"[{val:0.00}] {(selected ? "<<<" : "   ")}";
-                    string dataObject = $"  {(selected ? ">>>" : "   ")} {eqKey}".Truncate(ConsoleWrapper.WindowWidth - renderedVal.Length - 5);
-                    string spaces = new(' ', ConsoleWrapper.WindowWidth - 2 - renderedVal.Length - dataObject.Length);
-                    finalEntry = dataObject + spaces + renderedVal;
-                }
-
-                // Render an entry
-                var finalForeColor = selected ? new Color(ConsoleColors.Green) : new Color(ConsoleColors.Silver);
-                int top = startPos + finalIndex - startIndex;
-                eqs.Append(
-                    $"{CsiSequences.GenerateCsiCursorPosition(1, top + 1)}" +
-                    $"{finalForeColor.VTSequenceForeground}" +
-                    finalEntry +
-                    new string(' ', ConsoleWrapper.WindowWidth - finalEntry.Length) +
-                    $"{ColorTools.CurrentForegroundColor.VTSequenceForeground}"
-                );
+                // Now, render it
+                string bandData = $"[{val:0.00}] Equalizer Band #{i + 1} - {eqType}";
+                choices.Add(new($"{i + 1}", bandData));
             }
-            drawn.Append(eqs);
+            drawn.Append(
+                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentBandIdx, bandsPerPage, ConsoleWrapper.WindowWidth - 4, altChoicePos: choices.Count, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+            );
             return drawn.ToString();
         }
     }

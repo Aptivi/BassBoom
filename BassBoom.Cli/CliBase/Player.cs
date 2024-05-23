@@ -429,7 +429,7 @@ namespace BassBoom.Cli.CliBase
                 choices.Add(new($"{i + 1}", finalEntry));
             }
             drawn.Append(
-                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentSong - 1, songsPerPage, ConsoleWrapper.WindowWidth - 4, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentSong - 1, songsPerPage, ConsoleWrapper.WindowWidth - 4, altChoicePos: choices.Count, selectedForegroundColor: new Color(ConsoleColors.Green), altForegroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
         }
