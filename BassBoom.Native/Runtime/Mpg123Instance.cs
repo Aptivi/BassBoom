@@ -308,7 +308,7 @@ namespace BassBoom.Native.Runtime
             return runtimesPath;
         }
 
-        internal protected Mpg123Instance()
+        internal Mpg123Instance()
         { }
     }
 }

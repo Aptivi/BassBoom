@@ -24,6 +24,6 @@ internal class Program
 {
     private static void Main()
     {
-        TextWriterColor.WriteColor("Synthesis is coming soon. Please wait until Alpha 7 comes...", ConsoleColors.Red);
+
     }
 }
