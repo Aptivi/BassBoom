@@ -171,7 +171,7 @@ namespace BassBoom.Cli.CliBase
                 choices.Add(new($"{i + 1}", bandData));
             }
             drawn.Append(
-                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentBandIdx, bandsPerPage, ConsoleWrapper.WindowWidth - 4, altChoicePos: choices.Count, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentBandIdx, bandsPerPage, ConsoleWrapper.WindowWidth - 4, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
         }
