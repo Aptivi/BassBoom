@@ -130,12 +130,12 @@ namespace BassBoom.Cli.CliBase
                 " - [Q] Exit";
             drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 2, keystrokes));
 
-            // Print the separator
-            string separator = new('=', ConsoleWrapper.WindowWidth);
+            // Print the separator and the music file info
+            string separator = new('═', ConsoleWrapper.WindowWidth);
             drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
 
             // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere($"[ Powered by BassBoom ]", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{Player.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
 
             // Write current song
             if (Player.musicFiles.Count > 0 )

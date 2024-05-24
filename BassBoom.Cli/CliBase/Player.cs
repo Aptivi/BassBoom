@@ -421,14 +421,11 @@ namespace BassBoom.Cli.CliBase
                 // Populate the first pane
                 var (musicName, musicArtist, _) = PlayerControls.GetMusicNameArtistGenre(i);
                 string duration = cachedInfos[i].DurationSpan;
-                string renderedDuration = $"[{duration}]";
-                string songPreview = $"{musicArtist} - {musicName}".Truncate(ConsoleWrapper.WindowWidth - renderedDuration.Length - 5);
-                string spaces = new(' ', ConsoleWrapper.WindowWidth - 8 - max - renderedDuration.Length - ConsoleChar.EstimateCellWidth(songPreview));
-                string finalEntry = songPreview + spaces + renderedDuration;
-                choices.Add(new($"{i + 1}", finalEntry));
+                string songPreview = $"[{duration}] {musicArtist} - {musicName}";
+                choices.Add(new($"{i + 1}", songPreview));
             }
             drawn.Append(
-                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentSong - 1, songsPerPage, ConsoleWrapper.WindowWidth - 4, selectedForegroundColor: new Color(ConsoleColors.Green), altForegroundColor: new Color(ConsoleColors.Silver))
+                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentSong - 1, songsPerPage, ConsoleWrapper.WindowWidth - 4, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
         }
