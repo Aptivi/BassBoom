@@ -23,9 +23,7 @@ using BassBoom.Native.Interop.Output;
 using BassBoom.Native.Interop.Synthesis;
 using BassBoom.Native.Runtime;
 using System;
-using System.Diagnostics;
 using System.Reflection;
-using System.Runtime.InteropServices;
 
 namespace BassBoom.Basolia
 {
