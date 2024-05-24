@@ -45,9 +45,8 @@ namespace BassBoom.Cli.CliBase
             // First, initialize a screen part to handle drawing
             ScreenPart screenPart = new();
             screenPart.AddDynamicText(HandleDraw);
+            screen.RemoveBufferedParts();
             screen.AddBufferedPart("BassBoom Player - Equalizer", screenPart);
-            if (screen.CheckBufferedPart("BassBoom Player"))
-                screen.RemoveBufferedPart("BassBoom Player");
 
             // Then, clear the screen to draw our TUI
             while (!exiting)
@@ -77,8 +76,7 @@ namespace BassBoom.Cli.CliBase
 
             // Restore state
             exiting = false;
-            if (screen.CheckBufferedPart("BassBoom Player - Equalizer"))
-                screen.RemoveBufferedPart("BassBoom Player - Equalizer");
+            screen.RemoveBufferedParts();
             ColorTools.LoadBack();
         }
 
