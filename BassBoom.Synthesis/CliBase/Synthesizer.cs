@@ -30,21 +30,39 @@ using Terminaux.Reader;
 using Terminaux.Inputs;
 using System.Collections.Generic;
 using Terminaux.Inputs.Styles.Selection;
+using BassBoom.Basolia.Synthesis;
+using BassBoom.Native.Interop.Synthesis;
 
-namespace BassBoom.Cli.CliBase
+namespace BassBoom.Synthesis.CliBase
 {
-    internal static class Equalizer
+    internal static class Synthesizer
     {
+        internal static Version mpgVer;
+        internal static Version outVer;
+        internal static Version synVer;
         internal static bool exiting = false;
-        internal static int currentBandIdx = 0;
+        internal static int currentSynthesizerIdx = 0;
 
-        internal static void OpenEqualizer(Screen screen)
+        internal static void OpenSynthesizer()
         {
-            // First, initialize a screen part to handle drawing
+            // Initialize versions and synthesizers
+            mpgVer = InitBasolia.MpgLibVersion;
+            outVer = InitBasolia.OutLibVersion;
+            synVer = InitBasolia.SynLibVersion;
+
+            // Populate the screen
+            Screen synthesizerScreen = new();
+            ScreenTools.SetCurrent(synthesizerScreen);
+
+            // Make a screen part to draw our TUI
             ScreenPart screenPart = new();
+
+            // Handle drawing
             screenPart.AddDynamicText(HandleDraw);
-            screen.RemoveBufferedParts();
-            screen.AddBufferedPart("BassBoom Player - Equalizer", screenPart);
+
+            // Render the buffer
+            synthesizerScreen.AddBufferedPart("BassBoom Synthesizer", screenPart);
+            synthesizerScreen.ResetResize = false;
 
             // Then, clear the screen to draw our TUI
             while (!exiting)
@@ -73,9 +91,10 @@ namespace BassBoom.Cli.CliBase
             }
 
             // Restore state
-            exiting = false;
-            screen.RemoveBufferedParts();
+            ConsoleWrapper.CursorVisible = true;
             ColorTools.LoadBack();
+            synthesizerScreen.RemoveBufferedParts();
+            ScreenTools.UnsetCurrent(synthesizerScreen);
         }
 
         private static void HandleKeypress(ConsoleKeyInfo keystroke)
@@ -84,30 +103,30 @@ namespace BassBoom.Cli.CliBase
             {
                 case ConsoleKey.RightArrow:
                     {
-                        double eq = EqualizerControls.GetCachedEqualizer(currentBandIdx);
+                        double eq = SynthesizerControls.GetCachedEqualizer(currentSynthesizerIdx);
                         eq += 0.05d;
-                        EqualizerControls.SetEqualizer(currentBandIdx, eq);
+                        SynthesizerControls.SetEqualizer(currentSynthesizerIdx, eq);
                     }
                     break;
                 case ConsoleKey.LeftArrow:
                     {
-                        double eq = EqualizerControls.GetCachedEqualizer(currentBandIdx);
+                        double eq = SynthesizerControls.GetCachedEqualizer(currentSynthesizerIdx);
                         eq -= 0.05d;
-                        EqualizerControls.SetEqualizer(currentBandIdx, eq);
+                        SynthesizerControls.SetEqualizer(currentSynthesizerIdx, eq);
                     }
                     break;
                 case ConsoleKey.UpArrow:
-                    currentBandIdx--;
-                    if (currentBandIdx < 0)
-                        currentBandIdx = 0;
+                    currentSynthesizerIdx--;
+                    if (currentSynthesizerIdx < 0)
+                        currentSynthesizerIdx = 0;
                     break;
                 case ConsoleKey.DownArrow:
-                    currentBandIdx++;
-                    if (currentBandIdx > 31)
-                        currentBandIdx = 31;
+                    currentSynthesizerIdx++;
+                    if (currentSynthesizerIdx > 31)
+                        currentSynthesizerIdx = 31;
                     break;
                 case ConsoleKey.R:
-                    EqualizerControls.ResetEqualizers();
+                    SynthesizerControls.ResetEqualizers();
                     break;
                 case ConsoleKey.Q:
                     exiting = true;
@@ -125,8 +144,8 @@ namespace BassBoom.Cli.CliBase
             // First, print the keystrokes
             string keystrokes =
                 "[<-|->] Change" +
-                " - [UP|DOWN] Select Band" +
-                " - [R] Reset" +
+                " - [UP|DOWN] Select Synthesizer" +
+                " - [SPACE] Play" +
                 " - [Q] Exit";
             drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 2, keystrokes));
 
@@ -135,41 +154,44 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
 
             // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{Player.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{synVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
 
-            // Write current song
-            if (Player.musicFiles.Count > 0 )
-                drawn.Append(PlayerControls.RenderSongName(Player.musicFiles[Player.currentSong - 1]));
-
-            // Now, print the list of bands and their values.
+            // Now, print the list of synthesizers.
             var choices = new List<InputChoiceInfo>();
             int startPos = 3;
             int endPos = ConsoleWrapper.WindowHeight - 5;
-            int bandsPerPage = endPos - startPos;
-            for (int i = 0; i < 32; i++)
+            int synthsPerPage = endPos - startPos;
+            for (int i = 0; i < 5; i++)
             {
-                // Get the equalizer value for this band
-                double val = EqualizerControls.GetEqualizer(i);
+                // Get the synth type
                 string eqType =
-                    // Bass bands: 1-8, Bass-Mid bands: 9-16, Mid-Treble bands: 17-24, Treble bands: 25-32
-                    i < 4 ? "Deep Bass" : // Band 1, 2, 3, 4
-                    i < 8 ? "Bass" :
-                    i < 12 ? "Deep Bass-Mid" :
-                    i < 16 ? "Bass-Mid" :
-                    i < 20 ? "Deep Mid-Treble" :
-                    i < 24 ? "Mid-Treble" :
-                    i < 28 ? "Deep Treble" :
-                    i < 32 ? "Treble" :
+                    i == 0 ? "Frequency Sweep" :
+                    i == 1 ? "Pink Noise" :
+                    i == 2 ? "White Noise" :
+                    i == 3 ? "Geiger Sampling" :
+                    i == 4 ? "Silence" :
                     "Unknown band type";
 
                 // Now, render it
-                string bandData = $"[{val:0.00}] Equalizer Band #{i + 1} - {eqType}";
-                choices.Add(new($"{i + 1}", bandData));
+                string synthRendered = $"Synth #{i + 1} - {eqType}";
+                choices.Add(new($"{i + 1}", synthRendered));
             }
             drawn.Append(
-                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentBandIdx, bandsPerPage, ConsoleWrapper.WindowWidth - 4, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentSynthesizerIdx, synthsPerPage, ConsoleWrapper.WindowWidth - 4, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
+        }
+
+        private static void InitializeSynthesizers(out Guid sweepId, out Guid pinkNoiseId, out Guid whiteNoiseId, out Guid geigerId, out Guid silenceId)
+        {
+            SynthesisTools.NewSynthesis("Frequency Sweep", out sweepId);
+            SynthesisTools.NewSynthesis("Pink Noise", out pinkNoiseId);
+            SynthesisTools.NewSynthesis("White Noise", out whiteNoiseId);
+            SynthesisTools.NewSynthesis("Geiger Sampling", out geigerId);
+            SynthesisTools.NewSynthesis("Silence", out silenceId);
+
+            // Set up a sample frequency sweep
+            SynthesisTools.SynthSweep(sweepId, syn123_wave_id.SYN123_WAVE_SINE, 1, 0, syn123_sweep_id.SYN123_SWEEP_QUAD, 128, 512, 1, (IntPtr)1000, out _, out _, out _);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿//
 // BassBoom  Copyright (C) 2023  Aptivi
 //
-// This file is part of Nitrocid KS
+// This file is part of BassBoom
 //
 // BassBoom is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,10 +17,26 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-internal class Program
+namespace BassBoom.Native.Interop.Synthesis
 {
-    private static void Main()
+    /// <summary>
+    /// Synthesizer info
+    /// </summary>
+    public unsafe class SynthesizerInfo
     {
+        internal syn123_handle* synHandle;
+        private string synName;
 
+        /// <summary>
+        /// Synthesizer name
+        /// </summary>
+        public string SynthesizerName =>
+            synName;
+
+        internal SynthesizerInfo(syn123_handle* synHandle, string synName)
+        {
+            this.synHandle = synHandle;
+            this.synName = synName;
+        }
     }
 }

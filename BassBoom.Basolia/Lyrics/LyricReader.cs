@@ -1,7 +1,7 @@
 ﻿//
 // BassBoom  Copyright (C) 2023  Aptivi
 //
-// This file is part of Nitrocid KS
+// This file is part of BassBoom
 //
 // BassBoom is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

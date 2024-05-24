@@ -20,9 +20,9 @@
 using BassBoom.Basolia.Playback;
 using BassBoom.Native.Interop.Play;
 
-namespace BassBoom.Cli.CliBase
+namespace BassBoom.Synthesis.CliBase
 {
-    internal static class EqualizerControls
+    internal static class SynthesizerControls
     {
         private const int numBands = 32;
         private static readonly bool equalizerInited = false;
@@ -52,7 +52,7 @@ namespace BassBoom.Cli.CliBase
                 bands[i] = GetEqualizer(i);
         }
 
-        static EqualizerControls()
+        static SynthesizerControls()
         {
             if (equalizerInited)
                 return;

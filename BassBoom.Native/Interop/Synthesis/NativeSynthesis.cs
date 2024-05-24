@@ -1,7 +1,7 @@
 ﻿//
 // BassBoom  Copyright (C) 2023  Aptivi
 //
-// This file is part of Nitrocid KS
+// This file is part of BassBoom
 //
 // BassBoom is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,7 +17,9 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Native.Interop.Analysis;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace BassBoom.Native.Interop.Synthesis
@@ -99,7 +101,13 @@ namespace BassBoom.Native.Interop.Synthesis
         /// syn123_handle* syn123_new(long rate, int channels, int encoding, size_t maxbuf, int* err);
         /// </summary>
         [DllImport(LibraryTools.LibraryNameSyn, CharSet = CharSet.Ansi)]
-        public static extern syn123_handle syn123_new(int rate, int channels, int encoding, [MarshalAs(UnmanagedType.SysInt)] int maxbuf, ref int err);
+        public static extern syn123_handle* syn123_new(int rate, int channels, int encoding, [MarshalAs(UnmanagedType.SysInt)] int maxbuf, ref int err);
+
+        /// <summary>
+        /// syn123_handle* syn123_new(long rate, int channels, int encoding, size_t maxbuf, int* err);
+        /// </summary>
+        [DllImport(LibraryTools.LibraryNameSyn, CharSet = CharSet.Ansi)]
+        public static extern syn123_handle* syn123_new(int rate, int channels, mpg123_enc_enum encoding, [MarshalAs(UnmanagedType.SysInt)] int maxbuf, ref int err);
 
         /// <summary>
         /// void syn123_del(syn123_handle *sh);
@@ -148,7 +156,13 @@ namespace BassBoom.Native.Interop.Synthesis
         /// int syn123_setup_sweep(syn123_handle* sh, int wave_id, double phase, int backwards, int sweep_id, double* f1, double* f2, int smooth, size_t duration, double* endphase, size_t *period, size_t* buffer_period);
         /// </summary>
         [DllImport(LibraryTools.LibraryNameSyn, CharSet = CharSet.Ansi)]
-        public static extern int syn123_setup_sweep(syn123_handle* sh, int wave_id, double phase, int backwards, int sweep_id, ref double f1, ref double f2, int smooth, [MarshalAs(UnmanagedType.SysInt)] int duration, ref double endphase, ref int period, ref int buffer_period);
+        public static extern int syn123_setup_sweep(syn123_handle* sh, int wave_id, double phase, int backwards, int sweep_id, [In] double f1, [In] double f2, int smooth, [MarshalAs(UnmanagedType.SysInt)] int duration, ref double endphase, [MarshalAs(UnmanagedType.SysInt)] ref int period, [MarshalAs(UnmanagedType.SysInt)] ref int buffer_period);
+
+        /// <summary>
+        /// int syn123_setup_sweep(syn123_handle* sh, int wave_id, double phase, int backwards, int sweep_id, double* f1, double* f2, int smooth, size_t duration, double* endphase, size_t *period, size_t* buffer_period);
+        /// </summary>
+        [DllImport(LibraryTools.LibraryNameSyn, CharSet = CharSet.Ansi)]
+        public static extern int syn123_setup_sweep(syn123_handle* sh, syn123_wave_id wave_id, double phase, int backwards, syn123_sweep_id sweep_id, [In] double f1, [In] double f2, int smooth, [MarshalAs(UnmanagedType.SysInt)] int duration, ref double endphase, [MarshalAs(UnmanagedType.SysInt)] ref int period, [MarshalAs(UnmanagedType.SysInt)] ref int buffer_period);
 
         /// <summary>
         /// int syn123_setup_pink(syn123_handle *sh, int rows, unsigned long seed, size_t* period);
