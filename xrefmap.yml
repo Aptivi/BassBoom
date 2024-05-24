@@ -3318,3 +3318,60 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Radio.StreamInfo.UniqueListeners
   nameWithType: StreamInfo.UniqueListeners
+- uid: BassBoom.Basolia.Synthesis
+  name: BassBoom.Basolia.Synthesis
+  href: api/BassBoom.Basolia.Synthesis.html
+  commentId: N:BassBoom.Basolia.Synthesis
+  fullName: BassBoom.Basolia.Synthesis
+  nameWithType: BassBoom.Basolia.Synthesis
+- uid: BassBoom.Basolia.Synthesis.SynthesisTools
+  name: SynthesisTools
+  href: api/BassBoom.Basolia.Synthesis.SynthesisTools.html
+  commentId: T:BassBoom.Basolia.Synthesis.SynthesisTools
+  fullName: BassBoom.Basolia.Synthesis.SynthesisTools
+  nameWithType: SynthesisTools
+- uid: BassBoom.Basolia.Synthesis.SynthesisTools.DoesSynthesizerExist(System.Guid)
+  name: DoesSynthesizerExist(Guid)
+  href: api/BassBoom.Basolia.Synthesis.SynthesisTools.html#BassBoom_Basolia_Synthesis_SynthesisTools_DoesSynthesizerExist_System_Guid_
+  commentId: M:BassBoom.Basolia.Synthesis.SynthesisTools.DoesSynthesizerExist(System.Guid)
+  fullName: BassBoom.Basolia.Synthesis.SynthesisTools.DoesSynthesizerExist(System.Guid)
+  nameWithType: SynthesisTools.DoesSynthesizerExist(Guid)
+- uid: BassBoom.Basolia.Synthesis.SynthesisTools.DoesSynthesizerExist*
+  name: DoesSynthesizerExist
+  href: api/BassBoom.Basolia.Synthesis.SynthesisTools.html#BassBoom_Basolia_Synthesis_SynthesisTools_DoesSynthesizerExist_
+  commentId: Overload:BassBoom.Basolia.Synthesis.SynthesisTools.DoesSynthesizerExist
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Synthesis.SynthesisTools.DoesSynthesizerExist
+  nameWithType: SynthesisTools.DoesSynthesizerExist
+- uid: BassBoom.Basolia.Synthesis.SynthesisTools.NewSynthesis(System.String,System.Guid@)
+  name: NewSynthesis(string, out Guid)
+  href: api/BassBoom.Basolia.Synthesis.SynthesisTools.html#BassBoom_Basolia_Synthesis_SynthesisTools_NewSynthesis_System_String_System_Guid__
+  commentId: M:BassBoom.Basolia.Synthesis.SynthesisTools.NewSynthesis(System.String,System.Guid@)
+  name.vb: NewSynthesis(String, Guid)
+  fullName: BassBoom.Basolia.Synthesis.SynthesisTools.NewSynthesis(string, out System.Guid)
+  fullName.vb: BassBoom.Basolia.Synthesis.SynthesisTools.NewSynthesis(String, System.Guid)
+  nameWithType: SynthesisTools.NewSynthesis(string, out Guid)
+  nameWithType.vb: SynthesisTools.NewSynthesis(String, Guid)
+- uid: BassBoom.Basolia.Synthesis.SynthesisTools.NewSynthesis*
+  name: NewSynthesis
+  href: api/BassBoom.Basolia.Synthesis.SynthesisTools.html#BassBoom_Basolia_Synthesis_SynthesisTools_NewSynthesis_
+  commentId: Overload:BassBoom.Basolia.Synthesis.SynthesisTools.NewSynthesis
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Synthesis.SynthesisTools.NewSynthesis
+  nameWithType: SynthesisTools.NewSynthesis
+- uid: BassBoom.Basolia.Synthesis.SynthesisTools.SynthSweep(System.Guid,BassBoom.Native.Interop.Synthesis.syn123_wave_id,System.Double,System.Int32,BassBoom.Native.Interop.Synthesis.syn123_sweep_id,System.Double,System.Double,System.Int32,System.IntPtr,System.Double@,System.IntPtr@,System.IntPtr@)
+  name: SynthSweep(Guid, syn123_wave_id, double, int, syn123_sweep_id, double, double, int, nint, out double, out nint, out nint)
+  href: api/BassBoom.Basolia.Synthesis.SynthesisTools.html#BassBoom_Basolia_Synthesis_SynthesisTools_SynthSweep_System_Guid_BassBoom_Native_Interop_Synthesis_syn123_wave_id_System_Double_System_Int32_BassBoom_Native_Interop_Synthesis_syn123_sweep_id_System_Double_System_Double_System_Int32_System_IntPtr_System_Double__System_IntPtr__System_IntPtr__
+  commentId: M:BassBoom.Basolia.Synthesis.SynthesisTools.SynthSweep(System.Guid,BassBoom.Native.Interop.Synthesis.syn123_wave_id,System.Double,System.Int32,BassBoom.Native.Interop.Synthesis.syn123_sweep_id,System.Double,System.Double,System.Int32,System.IntPtr,System.Double@,System.IntPtr@,System.IntPtr@)
+  name.vb: SynthSweep(Guid, syn123_wave_id, Double, Integer, syn123_sweep_id, Double, Double, Integer, IntPtr, Double, IntPtr, IntPtr)
+  fullName: BassBoom.Basolia.Synthesis.SynthesisTools.SynthSweep(System.Guid, BassBoom.Native.Interop.Synthesis.syn123_wave_id, double, int, BassBoom.Native.Interop.Synthesis.syn123_sweep_id, double, double, int, nint, out double, out nint, out nint)
+  fullName.vb: BassBoom.Basolia.Synthesis.SynthesisTools.SynthSweep(System.Guid, BassBoom.Native.Interop.Synthesis.syn123_wave_id, Double, Integer, BassBoom.Native.Interop.Synthesis.syn123_sweep_id, Double, Double, Integer, System.IntPtr, Double, System.IntPtr, System.IntPtr)
+  nameWithType: SynthesisTools.SynthSweep(Guid, syn123_wave_id, double, int, syn123_sweep_id, double, double, int, nint, out double, out nint, out nint)
+  nameWithType.vb: SynthesisTools.SynthSweep(Guid, syn123_wave_id, Double, Integer, syn123_sweep_id, Double, Double, Integer, IntPtr, Double, IntPtr, IntPtr)
+- uid: BassBoom.Basolia.Synthesis.SynthesisTools.SynthSweep*
+  name: SynthSweep
+  href: api/BassBoom.Basolia.Synthesis.SynthesisTools.html#BassBoom_Basolia_Synthesis_SynthesisTools_SynthSweep_
+  commentId: Overload:BassBoom.Basolia.Synthesis.SynthesisTools.SynthSweep
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Synthesis.SynthesisTools.SynthSweep
+  nameWithType: SynthesisTools.SynthSweep

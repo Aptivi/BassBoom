@@ -179,6 +179,16 @@
     "title": "Namespace BassBoom.Basolia.Radio | BassBoom Basolia API - Aptivi",
     "keywords": "Namespace BassBoom.Basolia.Radio Classes ShoutcastServer A Shoutcast server ShoutcastServerException Happens when the error in the server has occurred ShoutcastStreamParseException Happens when the error in parsing the stream has occurred StreamInfo Shoutcast stream information Enums ShoutcastVersion Enumeration for the Shoutcast version"
   },
+  "api/BassBoom.Basolia.Synthesis.SynthesisTools.html": {
+    "href": "api/BassBoom.Basolia.Synthesis.SynthesisTools.html",
+    "title": "Class SynthesisTools | BassBoom Basolia API - Aptivi",
+    "keywords": "Class SynthesisTools Synthesis tools for MPG123 Inheritance object SynthesisTools Namespace: BassBoom.Basolia.Synthesis Assembly: BassBoom.Basolia.dll Syntax public static class SynthesisTools Methods | Edit this page View Source DoesSynthesizerExist(Guid) Declaration public static bool DoesSynthesizerExist(Guid synthId) Parameters Type Name Description Guid synthId Returns Type Description bool | Edit this page View Source NewSynthesis(string, out Guid) Declaration public static void NewSynthesis(string synthName, out Guid synthId) Parameters Type Name Description string synthName Guid synthId | Edit this page View Source SynthSweep(Guid, syn123_wave_id, double, int, syn123_sweep_id, double, double, int, nint, out double, out nint, out nint) Declaration public static void SynthSweep(Guid synthId, syn123_wave_id waveId, double phase, int backwards, syn123_sweep_id sweepId, double f1, double f2, int smooth, nint duration, out double endphase, out nint period, out nint bufferPeriod) Parameters Type Name Description Guid synthId syn123_wave_id waveId double phase int backwards syn123_sweep_id sweepId double f1 double f2 int smooth nint duration double endphase nint period nint bufferPeriod"
+  },
+  "api/BassBoom.Basolia.Synthesis.html": {
+    "href": "api/BassBoom.Basolia.Synthesis.html",
+    "title": "Namespace BassBoom.Basolia.Synthesis | BassBoom Basolia API - Aptivi",
+    "keywords": "Namespace BassBoom.Basolia.Synthesis Classes SynthesisTools Synthesis tools for MPG123"
+  },
   "api/BassBoom.Basolia.html": {
     "href": "api/BassBoom.Basolia.html",
     "title": "Namespace BassBoom.Basolia | BassBoom Basolia API - Aptivi",
