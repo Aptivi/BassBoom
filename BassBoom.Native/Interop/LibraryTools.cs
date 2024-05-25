@@ -19,7 +19,6 @@
 
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
-using BassBoom.Native.Interop.Synthesis;
 using BassBoom.Native.Runtime;
 using System;
 using System.Diagnostics;
@@ -43,12 +42,6 @@ namespace BassBoom.Native.Interop
         /// </summary>
         public static string LibraryPathOut =>
             Mpg123Instance.out123LibPath;
-
-        /// <summary>
-        /// Absolute path to the syn123 library
-        /// </summary>
-        public static string LibraryPathSyn =>
-            Mpg123Instance.syn123LibPath;
 
         /// <summary>
         /// MPG library version
@@ -81,21 +74,6 @@ namespace BassBoom.Native.Interop
         }
 
         /// <summary>
-        /// Synthesis library version
-        /// </summary>
-        public static Version SynLibVersion
-        {
-            get
-            {
-                uint major = 0, minor = 0, patch = 0;
-                var versionHandle = NativeSynthesis.syn123_distversion(ref major, ref minor, ref patch);
-                string version = Marshal.PtrToStringAnsi(versionHandle);
-                Debug.WriteLine($"syn123 version: {version}");
-                return new((int)major, (int)minor, (int)patch, 0);
-            }
-        }
-
-        /// <summary>
         /// C library name (POSIX)
         /// </summary>
         public const string LibcName = "libc";
@@ -109,11 +87,6 @@ namespace BassBoom.Native.Interop
         /// Library name to search for upon invoking P/Invoke
         /// </summary>
         public const string LibraryNameOut = "out123";
-
-        /// <summary>
-        /// Library name to search for upon invoking P/Invoke
-        /// </summary>
-        public const string LibraryNameSyn = "syn123";
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_init (void)

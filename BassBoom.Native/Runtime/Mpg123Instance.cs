@@ -21,14 +21,12 @@ using BassBoom.Native.Exceptions;
 using BassBoom.Native.Interop;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
-using BassBoom.Native.Interop.Synthesis;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using SpecProbe.Platform;
-
 
 #if !NETCOREAPP
 using NativeLand;
@@ -44,12 +42,10 @@ namespace BassBoom.Native.Runtime
     {
         internal static string mpg123LibPath = GetAppropriateMpg123LibraryPath();
         internal static string out123LibPath = GetAppropriateOut123LibraryPath();
-        internal static string syn123LibPath = GetAppropriateSyn123LibraryPath();
         internal static string winpthreadsLibPath = GetAppropriateWinpthreadsLibraryPath();
 
         internal static mpg123_handle* _mpg123Handle;
         internal static out123_handle* _out123Handle;
-        internal static syn123_handle* _syn123Handle;
 
         /// <summary>
         /// Singleton of the mpg123 instance class
@@ -60,34 +56,29 @@ namespace BassBoom.Native.Runtime
         /// Initializes the mpg123 library
         /// </summary>
         public static void InitializeLibrary() =>
-            InitializeLibrary(mpg123LibPath, out123LibPath, syn123LibPath, winpthreadsLibPath);
+            InitializeLibrary(mpg123LibPath, out123LibPath, winpthreadsLibPath);
 
         /// <summary>
         /// Initializes the mpg123 library
         /// </summary>
         /// <param name="libPath">Absolute path to the mpg123 library</param>
         /// <param name="libPathOut">Absolute path to the out123 library</param>
-        /// <param name="libPathSyn">Absolute path to the syn123 library</param>
         /// <param name="libPathWinpthreads">Absolute path to the libwinpthreads library</param>
-        public static void InitializeLibrary(string libPath, string libPathOut, string libPathSyn, string libPathWinpthreads)
+        public static void InitializeLibrary(string libPath, string libPathOut, string libPathWinpthreads)
         {
             // Check to see if we have this path
             if (!File.Exists(libPath))
                 throw new BasoliaNativeLibraryException($"mpg123 library path {libPath} doesn't exist.");
             if (!File.Exists(libPathOut))
                 throw new BasoliaNativeLibraryException($"out123 library path {libPath} doesn't exist.");
-            if (!File.Exists(libPathSyn))
-                throw new BasoliaNativeLibraryException($"syn123 library path {libPath} doesn't exist.");
             if (PlatformHelper.IsOnWindows() && !File.Exists(libPathWinpthreads))
                 throw new BasoliaNativeLibraryException($"libwinpthreads library path {libPathWinpthreads} doesn't exist.");
 
             // Set the library path
             string oldLibPath = mpg123LibPath;
             string oldLibPathOut = out123LibPath;
-            string oldLibPathSyn = syn123LibPath;
             mpg123LibPath = libPath;
             out123LibPath = libPathOut;
-            syn123LibPath = libPathSyn;
 #if NETCOREAPP
             NativeLibrary.SetDllImportResolver(typeof(NativeInit).Assembly, ResolveLibrary);
 #else
@@ -149,31 +140,8 @@ namespace BassBoom.Native.Runtime
                         new LibraryFile("libwinpthread-1.dll", bytesWinpthread)));
                 libManagerWinpthread.LoadNativeLibrary();
             }
-            var bytesSyn = File.ReadAllBytes(syn123LibPath);
-            var libManagerSyn = new LibraryManager(
-                new LibraryItem(Platform.Windows, Architecture.X86,
-                    new LibraryFile("syn123.dll", bytesSyn)),
-                new LibraryItem(Platform.Windows, Architecture.X64,
-                    new LibraryFile("syn123.dll", bytesSyn)),
-                new LibraryItem(Platform.Windows, Architecture.Arm,
-                    new LibraryFile("syn123.dll", bytesSyn)),
-                new LibraryItem(Platform.Windows, Architecture.Arm64,
-                    new LibraryFile("syn123.dll", bytesSyn)),
-                new LibraryItem(Platform.MacOS, Architecture.X64,
-                    new LibraryFile("libsyn123.dylib", bytesSyn)),
-                new LibraryItem(Platform.MacOS, Architecture.Arm64,
-                    new LibraryFile("libsyn123.dylib", bytesSyn)),
-                new LibraryItem(Platform.Linux, Architecture.X64,
-                    new LibraryFile("libsyn123.so", bytesSyn)),
-                new LibraryItem(Platform.Linux, Architecture.X86,
-                    new LibraryFile("libsyn123.so", bytesSyn)),
-                new LibraryItem(Platform.Linux, Architecture.Arm,
-                    new LibraryFile("libsyn123.so", bytesSyn)),
-                new LibraryItem(Platform.Linux, Architecture.Arm64,
-                    new LibraryFile("libsyn123.so", bytesSyn)));
             libManagerMpg.LoadNativeLibrary();
             libManagerOut.LoadNativeLibrary();
-            libManagerSyn.LoadNativeLibrary();
 #endif
             string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
             if (PlatformHelper.IsOnWindows())
@@ -212,18 +180,6 @@ namespace BassBoom.Native.Runtime
                 out123LibPath = oldLibPathOut;
                 throw new BasoliaNativeLibraryException($"out123 library path {libPathOut} doesn't contain a valid out123 library. out123_distversion() was called. {ex.Message}");
             }
-
-            // Do the same for the syn123 library!
-            try
-            {
-                // We can't init handle here, because we need values.
-                Debug.WriteLine($"Verifying syn123 version: {LibraryTools.SynLibVersion}");
-            }
-            catch (Exception ex)
-            {
-                syn123LibPath = oldLibPathSyn;
-                throw new BasoliaNativeLibraryException($"syn123 library path {libPathSyn} doesn't contain a valid syn123 library. syn123_distversion() was called. {ex.Message}");
-            }
         }
 
 #if NETCOREAPP
@@ -234,8 +190,6 @@ namespace BassBoom.Native.Runtime
                 libHandle = NativeLibrary.Load(mpg123LibPath);
             else if (libraryName == LibraryTools.LibraryNameOut)
                 libHandle = NativeLibrary.Load(out123LibPath);
-            else if (libraryName == LibraryTools.LibraryNameSyn)
-                libHandle = NativeLibrary.Load(syn123LibPath);
             return libHandle;
         }
 #endif
@@ -273,24 +227,6 @@ namespace BassBoom.Native.Runtime
                 runtimesPath += $"runtimes/linux-{lowerArch}/native/libout123.so";
             else
                 runtimesPath += $"runtimes/freebsd-{lowerArch}/native/libout123.so";
-            return runtimesPath;
-        }
-
-        internal static string GetAppropriateSyn123LibraryPath() =>
-            GetAppropriateSyn123LibraryPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
-
-        internal static string GetAppropriateSyn123LibraryPath(string root)
-        {
-            string runtimesPath = root + "/";
-            string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
-            if (PlatformHelper.IsOnWindows())
-                runtimesPath += $"runtimes/win-{lowerArch}/native/syn123.dll";
-            else if (PlatformHelper.IsOnMacOS())
-                runtimesPath += $"runtimes/osx-{lowerArch}/native/libsyn123.dylib";
-            else if (PlatformHelper.IsOnUnix())
-                runtimesPath += $"runtimes/linux-{lowerArch}/native/libsyn123.so";
-            else
-                runtimesPath += $"runtimes/freebsd-{lowerArch}/native/libsyn123.so";
             return runtimesPath;
         }
 

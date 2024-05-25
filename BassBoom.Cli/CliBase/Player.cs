@@ -65,7 +65,6 @@ namespace BassBoom.Cli.CliBase
         internal static readonly List<CachedSongInfo> cachedInfos = [];
         internal static Version mpgVer;
         internal static Version outVer;
-        internal static Version synVer;
 
         public static void PlayerLoop()
         {
@@ -78,7 +77,6 @@ namespace BassBoom.Cli.CliBase
             // Initialize versions
             mpgVer = InitBasolia.MpgLibVersion;
             outVer = InitBasolia.OutLibVersion;
-            synVer = InitBasolia.SynLibVersion;
 
             // Populate the screen
             Screen playerScreen = new();

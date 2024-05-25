@@ -20,7 +20,6 @@
 using BassBoom.Native.Interop;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
-using BassBoom.Native.Interop.Synthesis;
 using BassBoom.Native.Runtime;
 using System;
 using System.Reflection;
@@ -67,19 +66,6 @@ namespace BassBoom.Basolia
         }
 
         /// <summary>
-        /// Synthesis library version
-        /// </summary>
-        public static Version SynLibVersion
-        {
-            get
-            {
-                if (!BasoliaInitialized)
-                    throw new BasoliaSynException("Can't get version until the library is initialized", syn123_error.SYN123_NO_DATA);
-                return LibraryTools.SynLibVersion;
-            }
-        }
-
-        /// <summary>
         /// BassBoom's Basolia version
         /// </summary>
         public static Version BasoliaVersion =>
@@ -97,9 +83,8 @@ namespace BassBoom.Basolia
             {
                 string mpg = Mpg123Instance.GetAppropriateMpg123LibraryPath(root);
                 string @out = Mpg123Instance.GetAppropriateOut123LibraryPath(root);
-                string syn = Mpg123Instance.GetAppropriateSyn123LibraryPath(root);
                 string pthreads = Mpg123Instance.GetAppropriateWinpthreadsLibraryPath(root);
-                Mpg123Instance.InitializeLibrary(mpg, @out, syn, pthreads);
+                Mpg123Instance.InitializeLibrary(mpg, @out, pthreads);
             }
             _basoliaInited = true;
         }

@@ -40,10 +40,5 @@ jobs:
       - name: MPG123 artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: "MPG123 library - libsyn123"
-          path: mpg123-1.32.6/src/libsyn123/.libs/libsyn123.0.dylib
-      - name: MPG123 artifacts
-        uses: actions/upload-artifact@v4
-        with:
           name: "MPG123 library - libout123 output modules"
           path: mpg123-1.32.6/src/libout123/modules/.libs/*.so
