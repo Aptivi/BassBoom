@@ -55,16 +55,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.BasoliaSynException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.BasoliaSynException.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.yml",
       "output": {
         ".html": {
@@ -369,26 +359,6 @@
       "output": {
         ".html": {
           "relative_path": "api/BassBoom.Basolia.Radio.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.Synthesis.SynthesisTools.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.Synthesis.SynthesisTools.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.Synthesis.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.Synthesis.html"
         }
       },
       "version": ""
