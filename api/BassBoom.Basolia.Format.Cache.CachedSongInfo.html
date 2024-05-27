@@ -99,19 +99,19 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_Cache_CachedSongInfo__ctor_System_String_BassBoom_Basolia_Format_Id3V1Metadata_BassBoom_Basolia_Format_Id3V2Metadata_System_Int32_System_ValueTuple_System_Int64_System_Int32_System_Int32__BassBoom_Basolia_Format_FrameInfo_BassBoom_Basolia_Lyrics_Lyric_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.Cache.CachedSongInfo.%23ctor(System.String%2CBassBoom.Basolia.Format.Id3V1Metadata%2CBassBoom.Basolia.Format.Id3V2Metadata%2CSystem.Int32%2CSystem.ValueTuple%7BSystem.Int64%2CSystem.Int32%2CSystem.Int32%7D%2CBassBoom.Basolia.Format.FrameInfo%2CBassBoom.Basolia.Lyrics.Lyric)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_Cache_CachedSongInfo__ctor_System_String_BassBoom_Basolia_Format_Id3V1Metadata_BassBoom_Basolia_Format_Id3V2Metadata_System_Int32_System_ValueTuple_System_Int64_System_Int32_System_Int32__BassBoom_Basolia_Format_FrameInfo_BassBoom_Basolia_Lyrics_Lyric_System_String_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.Cache.CachedSongInfo.%23ctor(System.String%2CBassBoom.Basolia.Format.Id3V1Metadata%2CBassBoom.Basolia.Format.Id3V2Metadata%2CSystem.Int32%2CSystem.ValueTuple%7BSystem.Int64%2CSystem.Int32%2CSystem.Int32%7D%2CBassBoom.Basolia.Format.FrameInfo%2CBassBoom.Basolia.Lyrics.Lyric%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L73">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L78">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_Cache_CachedSongInfo__ctor_" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.#ctor*"></a>
-  <h4 id="BassBoom_Basolia_Format_Cache_CachedSongInfo__ctor_System_String_BassBoom_Basolia_Format_Id3V1Metadata_BassBoom_Basolia_Format_Id3V2Metadata_System_Int32_System_ValueTuple_System_Int64_System_Int32_System_Int32__BassBoom_Basolia_Format_FrameInfo_BassBoom_Basolia_Lyrics_Lyric_" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.#ctor(System.String,BassBoom.Basolia.Format.Id3V1Metadata,BassBoom.Basolia.Format.Id3V2Metadata,System.Int32,System.ValueTuple{System.Int64,System.Int32,System.Int32},BassBoom.Basolia.Format.FrameInfo,BassBoom.Basolia.Lyrics.Lyric)">CachedSongInfo(string, Id3V1Metadata, Id3V2Metadata, int, (long rate, int channels, int encoding), FrameInfo, Lyric)</h4>
+  <h4 id="BassBoom_Basolia_Format_Cache_CachedSongInfo__ctor_System_String_BassBoom_Basolia_Format_Id3V1Metadata_BassBoom_Basolia_Format_Id3V2Metadata_System_Int32_System_ValueTuple_System_Int64_System_Int32_System_Int32__BassBoom_Basolia_Format_FrameInfo_BassBoom_Basolia_Lyrics_Lyric_System_String_" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.#ctor(System.String,BassBoom.Basolia.Format.Id3V1Metadata,BassBoom.Basolia.Format.Id3V2Metadata,System.Int32,System.ValueTuple{System.Int64,System.Int32,System.Int32},BassBoom.Basolia.Format.FrameInfo,BassBoom.Basolia.Lyrics.Lyric,System.String)">CachedSongInfo(string, Id3V1Metadata, Id3V2Metadata, int, (long rate, int channels, int encoding), FrameInfo, Lyric, string)</h4>
   <div class="markdown level1 summary"><p>A cached song information</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CachedSongInfo(string musicPath, Id3V1Metadata metadataV1, Id3V2Metadata metadataV2, int duration, (long rate, int channels, int encoding) formatInfo, FrameInfo frameInfo, Lyric lyricInstance)</code></pre>
+    <pre><code class="lang-csharp hljs">public CachedSongInfo(string musicPath, Id3V1Metadata metadataV1, Id3V2Metadata metadataV2, int duration, (long rate, int channels, int encoding) formatInfo, FrameInfo frameInfo, Lyric lyricInstance, string metadataIcy)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -165,6 +165,12 @@
         <td><p>An instance of the music lyrics (if any)</p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">metadataIcy</span></td>
+        <td><p>ICY metadata</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
@@ -174,7 +180,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_Cache_CachedSongInfo_Duration.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.Cache.CachedSongInfo.Duration%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L44">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L48">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_Cache_CachedSongInfo_Duration_" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.Duration*"></a>
   <h4 id="BassBoom_Basolia_Format_Cache_CachedSongInfo_Duration" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.Duration">Duration</h4>
@@ -205,7 +211,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_Cache_CachedSongInfo_DurationSpan.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.Cache.CachedSongInfo.DurationSpan%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L48">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L52">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_Cache_CachedSongInfo_DurationSpan_" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.DurationSpan*"></a>
   <h4 id="BassBoom_Basolia_Format_Cache_CachedSongInfo_DurationSpan" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.DurationSpan">DurationSpan</h4>
@@ -236,7 +242,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_Cache_CachedSongInfo_FormatInfo.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.Cache.CachedSongInfo.FormatInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L53">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L57">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_Cache_CachedSongInfo_FormatInfo_" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.FormatInfo*"></a>
   <h4 id="BassBoom_Basolia_Format_Cache_CachedSongInfo_FormatInfo" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.FormatInfo">FormatInfo</h4>
@@ -267,7 +273,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_Cache_CachedSongInfo_FrameInfo.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.Cache.CachedSongInfo.FrameInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L57">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L61">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_Cache_CachedSongInfo_FrameInfo_" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.FrameInfo*"></a>
   <h4 id="BassBoom_Basolia_Format_Cache_CachedSongInfo_FrameInfo" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.FrameInfo">FrameInfo</h4>
@@ -298,7 +304,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_Cache_CachedSongInfo_LyricInstance.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.Cache.CachedSongInfo.LyricInstance%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L61">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L65">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Format_Cache_CachedSongInfo_LyricInstance_" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.LyricInstance*"></a>
   <h4 id="BassBoom_Basolia_Format_Cache_CachedSongInfo_LyricInstance" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.LyricInstance">LyricInstance</h4>
@@ -320,6 +326,37 @@
     <tbody>
       <tr>
         <td><a class="xref" href="BassBoom.Basolia.Lyrics.Lyric.html">Lyric</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Format_Cache_CachedSongInfo_MetadataIcy.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataIcy%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Format/Cache/CachedSongInfo.cs/#L44">View Source</a>
+  </span>
+  <a id="BassBoom_Basolia_Format_Cache_CachedSongInfo_MetadataIcy_" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataIcy*"></a>
+  <h4 id="BassBoom_Basolia_Format_Cache_CachedSongInfo_MetadataIcy" data-uid="BassBoom.Basolia.Format.Cache.CachedSongInfo.MetadataIcy">MetadataIcy</h4>
+  <div class="markdown level1 summary"><p>ICY metadata</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string MetadataIcy { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
