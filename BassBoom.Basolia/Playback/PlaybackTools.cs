@@ -30,6 +30,9 @@ using System.Threading.Tasks;
 using BassBoom.Basolia.Devices;
 using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Analysis;
+using BassBoom.Basolia.Radio;
+using System.Net.Http;
+using System.IO;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -40,6 +43,7 @@ namespace BassBoom.Basolia.Playback
     {
         internal static bool bufferPlaying = false;
         internal static bool holding = false;
+        internal static Stream radioStream = null;
         private static PlaybackState state = PlaybackState.Stopped;
 
         /// <summary>
@@ -115,6 +119,13 @@ namespace BassBoom.Basolia.Playback
                     err = DecodeTools.DecodeFrame(ref num, ref audio, ref audioBytes);
                     PlayBuffer(audio);
                     bufferPlaying = false;
+
+                    // Check to see if we need more (radio)
+                    if (FileTools.IsRadioStation && err == (int)mpg123_errors.MPG123_NEED_MORE)
+                    {
+                        err = (int)mpg123_errors.MPG123_OK;
+                        FeedRadio();
+                    }
                 } while (err == (int)mpg123_errors.MPG123_OK && Playing);
                 if (Playing)
                     state = PlaybackState.Stopped;
@@ -310,6 +321,36 @@ namespace BassBoom.Basolia.Playback
                     throw new BasoliaException($"Can't get native state of {state}!", (mpg123_errors)status);
                 return (stateInt, stateDouble);
             }
+        }
+
+        internal static int FeedRadio()
+        {
+            if (FileTools.IsOpened && FileTools.IsRadioStation)
+            {
+                unsafe
+                {
+                    var handle = Mpg123Instance._mpg123Handle;
+                    if (radioStream is null)
+                    {
+                        ShoutcastServer.client.DefaultRequestHeaders.Add("Icy-MetaData", "1");
+                        var reply = ShoutcastServer.client.GetAsync(FileTools.CurrentFile.Path, HttpCompletionOption.ResponseHeadersRead).Result;
+                        ShoutcastServer.client.DefaultRequestHeaders.Remove("Icy-MetaData");
+                        if (!reply.IsSuccessStatusCode)
+                            throw new BasoliaException($"This radio station doesn't exist. Error code: {(int)reply.StatusCode} ({reply.StatusCode}).", mpg123_errors.MPG123_BAD_FILE);
+                        radioStream = reply.Content.ReadAsStreamAsync().Result;
+                    }
+                    byte[] buffer = new byte[8192];
+                    radioStream.Read(buffer, 0, buffer.Length);
+                    IntPtr data = Marshal.AllocHGlobal(buffer.Length);
+                    Marshal.Copy(buffer, 0, data, buffer.Length);
+                    int feedResult = NativeInput.mpg123_feed(handle, data, buffer.Length);
+                    if (feedResult != (int)mpg123_errors.MPG123_OK)
+                        throw new BasoliaException("Can't feed.", mpg123_errors.MPG123_ERR);
+                    return buffer.Length;
+                }
+            }
+            else
+                return 0;
         }
 
         internal static int PlayBuffer(byte[] buffer)

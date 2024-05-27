@@ -39,6 +39,10 @@ namespace BassBoom.Basolia.Format.Cache
         /// </summary>
         public Id3V2Metadata MetadataV2 { get; private set; }
         /// <summary>
+        /// ICY metadata
+        /// </summary>
+        public string MetadataIcy { get; private set; }
+        /// <summary>
         /// Music duration in samples
         /// </summary>
         public int Duration { get; private set; }
@@ -70,7 +74,8 @@ namespace BassBoom.Basolia.Format.Cache
         /// <param name="formatInfo">Format information (rate, channels, and encoding)</param>
         /// <param name="frameInfo">MPEG frame info</param>
         /// <param name="lyricInstance">An instance of the music lyrics (if any)</param>
-        public CachedSongInfo(string musicPath, Id3V1Metadata metadataV1, Id3V2Metadata metadataV2, int duration, (long rate, int channels, int encoding) formatInfo, FrameInfo frameInfo, Lyric lyricInstance)
+        /// <param name="metadataIcy">ICY metadata</param>
+        public CachedSongInfo(string musicPath, Id3V1Metadata metadataV1, Id3V2Metadata metadataV2, int duration, (long rate, int channels, int encoding) formatInfo, FrameInfo frameInfo, Lyric lyricInstance, string metadataIcy)
         {
             MusicPath = musicPath;
             MetadataV1 = metadataV1;
@@ -79,6 +84,7 @@ namespace BassBoom.Basolia.Format.Cache
             FormatInfo = formatInfo;
             FrameInfo = frameInfo;
             LyricInstance = lyricInstance;
+            MetadataIcy = metadataIcy;
         }
     }
 }

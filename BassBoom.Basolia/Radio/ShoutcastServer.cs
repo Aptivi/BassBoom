@@ -44,7 +44,7 @@ namespace BassBoom.Basolia.Radio
         private readonly List<StreamInfo> streams = [];
         internal JToken streamToken;
         internal HtmlDocument streamHtmlToken = new();
-        internal HttpClient client = new();
+        internal static HttpClient client = new();
 
         /// <summary>
         /// Server IP address

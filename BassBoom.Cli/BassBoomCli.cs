@@ -25,6 +25,7 @@ using System.Reflection;
 using Terminaux.ResizeListener;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Base.Extensions;
+using System.Linq;
 
 namespace BassBoom.Cli
 {
@@ -39,23 +40,30 @@ namespace BassBoom.Cli
                 ConsoleMisc.SetTitle($"BassBoom CLI - Basolia v{version.ToString(3)} - Beta {version.Minor}");
 
                 // First, prompt for the music path if no arguments are provided.
-                if (args.Length != 0)
+                string[] arguments = args.Where((arg) => !arg.StartsWith("-")).ToArray();
+                string[] switches = args.Where((arg) => arg.StartsWith("-")).ToArray();
+                bool isRadio = switches.Contains("-r");
+                if (arguments.Length != 0)
                 {
                     string musicPath = args[0];
 
                     // Check for existence.
-                    if (string.IsNullOrEmpty(musicPath) || !File.Exists(musicPath))
+                    if (string.IsNullOrEmpty(musicPath) || (!isRadio && !File.Exists(musicPath)))
                     {
                         TextWriterColor.Write("Music file {0} doesn't exist.", musicPath);
                         return 1;
                     }
-                    Player.musicFiles.Add(musicPath);
+                    if (!isRadio)
+                        Player.musicFiles.Add(musicPath);
                 }
 
                 // Now, open an interactive TUI
                 ConsoleResizeListener.StartResizeListener();
                 InitBasolia.Init();
-                Player.PlayerLoop();
+                if (isRadio)
+                    Radio.RadioLoop();
+                else
+                    Player.PlayerLoop();
             }
             catch (Exception ex)
             {

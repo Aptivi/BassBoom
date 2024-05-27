@@ -56,6 +56,10 @@ namespace BassBoom.Basolia.Format
             if (PlaybackTools.Playing)
                 throw new BasoliaException("Trying to get the duration during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
 
+            // Always zero for radio stations
+            if (FileTools.IsRadioStation)
+                return 0;
+
             // We're now entering the dangerous zone
             unsafe
             {
@@ -255,9 +259,12 @@ namespace BassBoom.Basolia.Format
                 var handle = Mpg123Instance._mpg123Handle;
 
                 // We need to scan the file to get accurate info
-                int scanStatus = NativeStatus.mpg123_scan(handle);
-                if (scanStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't scan file for metadata information", mpg123_errors.MPG123_ERR);
+                if (!FileTools.IsRadioStation)
+                {
+                    int scanStatus = NativeStatus.mpg123_scan(handle);
+                    if (scanStatus == (int)mpg123_errors.MPG123_ERR)
+                        throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
+                }
 
                 // Now, get the metadata info.
                 int getStatus = NativeMetadata.mpg123_id3(handle, ref v1, ref v2);
@@ -405,9 +412,12 @@ namespace BassBoom.Basolia.Format
                 var handle = Mpg123Instance._mpg123Handle;
 
                 // We need to scan the file to get accurate info
-                int scanStatus = NativeStatus.mpg123_scan(handle);
-                if (scanStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't scan file for metadata information", mpg123_errors.MPG123_ERR);
+                if (!FileTools.IsRadioStation)
+                {
+                    int scanStatus = NativeStatus.mpg123_scan(handle);
+                    if (scanStatus == (int)mpg123_errors.MPG123_ERR)
+                        throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
+                }
 
                 // Now, get the metadata info.
                 int getStatus = NativeMetadata.mpg123_icy(handle, ref icy);
@@ -455,10 +465,13 @@ namespace BassBoom.Basolia.Format
                 {
                     var handle = Mpg123Instance._mpg123Handle;
 
-                    // We need to scan the file to get accurate info
-                    int scanStatus = NativeStatus.mpg123_scan(handle);
-                    if (scanStatus == (int)mpg123_errors.MPG123_ERR)
-                        throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
+                    // We need to scan the file to get accurate info, but it only works with files
+                    if (!FileTools.IsRadioStation)
+                    {
+                        int scanStatus = NativeStatus.mpg123_scan(handle);
+                        if (scanStatus == (int)mpg123_errors.MPG123_ERR)
+                            throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
+                    }
 
                     // Now, get the frame info.
                     int getStatus = NativeStatus.mpg123_info_win(handle, ref frameInfo);
@@ -487,9 +500,12 @@ namespace BassBoom.Basolia.Format
                     var handle = Mpg123Instance._mpg123Handle;
 
                     // We need to scan the file to get accurate info
-                    int scanStatus = NativeStatus.mpg123_scan(handle);
-                    if (scanStatus == (int)mpg123_errors.MPG123_ERR)
-                        throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
+                    if (!FileTools.IsRadioStation)
+                    {
+                        int scanStatus = NativeStatus.mpg123_scan(handle);
+                        if (scanStatus == (int)mpg123_errors.MPG123_ERR)
+                            throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
+                    }
 
                     // Now, get the frame info.
                     int getStatus = NativeStatus.mpg123_info(handle, ref frameInfo);

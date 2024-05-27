@@ -77,7 +77,7 @@ namespace BassBoom.Native.Interop.Play
         /// ,   const unsigned char *in, size_t size);
         /// </summary>
         [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_feed(mpg123_handle* mh, byte* @in, int size);
+        internal static extern int mpg123_feed(mpg123_handle* mh, IntPtr @in, int size);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_decode(mpg123_handle *mh

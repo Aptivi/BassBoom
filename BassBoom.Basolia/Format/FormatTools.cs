@@ -26,6 +26,10 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Analysis;
 using SpecProbe.Platform;
+using BassBoom.Basolia.File;
+using BassBoom.Basolia.Radio;
+using System.Net.Http;
+using BassBoom.Basolia.Playback;
 
 namespace BassBoom.Basolia.Format
 {

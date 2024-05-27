@@ -242,7 +242,7 @@ namespace BassBoom.Cli.CliBase
 
                 // Try to open the lyrics
                 OpenLyrics(musicPath);
-                var instance = new CachedSongInfo(musicPath, Player.managedV1, Player.managedV2, Player.total, Player.formatInfo, Player.frameInfo, Player.lyricInstance);
+                var instance = new CachedSongInfo(musicPath, Player.managedV1, Player.managedV2, Player.total, Player.formatInfo, Player.frameInfo, Player.lyricInstance, "null");
                 Player.cachedInfos.Add(instance);
             }
             TextWriterWhereColor.WriteWhere(new string(' ', ConsoleWrapper.WindowWidth), 0, 1);
