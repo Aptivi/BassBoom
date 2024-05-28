@@ -54,7 +54,6 @@ namespace BassBoom.Cli.CliBase
         internal static bool populate = true;
         internal static bool paused = false;
         internal static bool failedToPlay = false;
-        internal static string icyMetadata = "";
         internal static readonly List<string> stationUrls = [];
         internal static readonly List<CachedSongInfo> cachedInfos = [];
         internal static Version mpgVer;
@@ -82,13 +81,20 @@ namespace BassBoom.Cli.CliBase
             // Handle drawing
             screenPart.AddDynamicText(HandleDraw);
 
-            // Current duration
+            // Current volume
+            int hue = 0;
             screenPart.AddDynamicText(() =>
             {
                 var buffer = new StringBuilder();
                 string indicator = $"Volume: {volume:0.00}";
+                if (PlaybackTools.Playing)
+                {
+                    hue++;
+                    if (hue >= 360)
+                        hue = 0;
+                }
                 buffer.Append(
-                    BoxFrameColor.RenderBoxFrame(2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, 1) +
+                    BoxFrameColor.RenderBoxFrame(2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, 1, PlaybackTools.Playing ? new Color($"hsl:{hue};50;50") : new Color(ConsoleColors.White)) +
                     TextWriterWhereColor.RenderWhere(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black)
                 );
                 return buffer.ToString();
@@ -341,7 +347,7 @@ namespace BassBoom.Cli.CliBase
             for (int i = 0; i < stationUrls.Count; i++)
             {
                 // Populate the first pane
-                string stationName = "Station name";
+                string stationName = cachedInfos[i].MetadataIcy;
                 string duration = cachedInfos[i].DurationSpan;
                 string stationPreview = $"[{duration}] {stationName}";
                 choices.Add(new($"{i + 1}", stationPreview));

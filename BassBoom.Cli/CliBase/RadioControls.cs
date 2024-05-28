@@ -31,6 +31,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using Terminaux.Base;
 using Terminaux.Colors.Data;
@@ -149,27 +150,25 @@ namespace BassBoom.Cli.CliBase
             if (PlaybackTools.Playing || !Radio.populate)
                 return;
             Radio.populate = false;
-            if (!TryOpenStation(musicPath))
-                return;
-            FileTools.OpenUrl(musicPath);
             if (Radio.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
                 var instance = Radio.cachedInfos.Single((csi) => csi.MusicPath == musicPath);
                 Radio.formatInfo = instance.FormatInfo;
                 Radio.frameInfo = instance.FrameInfo;
-                Radio.icyMetadata = instance.MetadataIcy;
                 if (!Radio.stationUrls.Contains(musicPath))
                     Radio.stationUrls.Add(musicPath);
             }
             else
             {
+                if (!TryOpenStation(musicPath))
+                    return;
                 InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
+                FileTools.OpenUrl(musicPath);
                 Radio.formatInfo = FormatTools.GetFormatInfo();
                 Radio.frameInfo = AudioInfoTools.GetFrameInfo();
-                Radio.icyMetadata = AudioInfoTools.GetIcyMetadata();
 
                 // Try to open the lyrics
-                var instance = new CachedSongInfo(musicPath, null, null, -1, Radio.formatInfo, Radio.frameInfo, null, Radio.icyMetadata);
+                var instance = new CachedSongInfo(musicPath, null, null, -1, Radio.formatInfo, Radio.frameInfo, null, FileTools.CurrentFile.StationName);
                 Radio.cachedInfos.Add(instance);
             }
             TextWriterWhereColor.WriteWhere(new string(' ', ConsoleWrapper.WindowWidth), 0, 1);
@@ -180,7 +179,10 @@ namespace BassBoom.Cli.CliBase
         internal static string RenderStationName()
         {
             // Render the station name
-            string icy = Radio.icyMetadata;
+            string icy = PlaybackTools.RadioIcy;
+            if (icy.Length == 0)
+                return "";
+            icy = Regex.Match(icy, @"StreamTitle='((?:[^']|\\')*)'").Groups[1].Value.Trim().Replace("\\'", "'");
 
             // Print the music name
             return CenteredTextColor.RenderCentered(1, "Now playing: {0}", ConsoleColors.White, ConsoleColors.Black, icy);

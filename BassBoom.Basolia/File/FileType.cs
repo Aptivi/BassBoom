@@ -18,6 +18,8 @@
 //
 
 using System;
+using System.IO;
+using System.Net.Http.Headers;
 
 namespace BassBoom.Basolia.File
 {
@@ -28,6 +30,9 @@ namespace BassBoom.Basolia.File
     {
         private bool isLink;
         private string path;
+        private Stream stream;
+        private HttpResponseHeaders headers;
+        private string stationName;
 
         /// <summary>
         /// Is this file type a link?
@@ -41,10 +46,31 @@ namespace BassBoom.Basolia.File
         public string Path =>
             path;
 
-        internal FileType(bool isLink, string path)
+        /// <summary>
+        /// Radio station stream
+        /// </summary>
+        public Stream Stream =>
+            stream;
+
+        /// <summary>
+        /// Radio station ICY headers
+        /// </summary>
+        public HttpResponseHeaders Headers =>
+            headers;
+
+        /// <summary>
+        /// Radio station name
+        /// </summary>
+        public string StationName =>
+            stationName;
+
+        internal FileType(bool isLink, string path, Stream stream, HttpResponseHeaders headers, string stationName)
         {
             this.isLink = isLink;
             this.path = path ?? throw new ArgumentNullException(nameof(path));
+            this.stream = stream;
+            this.headers = headers;
+            this.stationName = stationName;
         }
     }
 }

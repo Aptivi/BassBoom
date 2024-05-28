@@ -33,6 +33,8 @@ using BassBoom.Native.Interop.Analysis;
 using BassBoom.Basolia.Radio;
 using System.Net.Http;
 using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -43,7 +45,7 @@ namespace BassBoom.Basolia.Playback
     {
         internal static bool bufferPlaying = false;
         internal static bool holding = false;
-        internal static Stream radioStream = null;
+        internal static string radioIcy = "";
         private static PlaybackState state = PlaybackState.Stopped;
 
         /// <summary>
@@ -57,6 +59,12 @@ namespace BassBoom.Basolia.Playback
         /// </summary>
         public static PlaybackState State =>
             state;
+
+        /// <summary>
+        /// Current radio ICY metadata
+        /// </summary>
+        public static string RadioIcy =>
+            radioIcy;
 
         /// <summary>
         /// Plays the currently open file (synchronous)
@@ -166,7 +174,8 @@ namespace BassBoom.Basolia.Playback
 
             // Stop the music and seek to the beginning
             state = PlaybackState.Stopped;
-            PlaybackPositioningTools.SeekToTheBeginning();
+            if (!FileTools.IsRadioStation)
+                PlaybackPositioningTools.SeekToTheBeginning();
         }
 
         /// <summary>
@@ -323,34 +332,48 @@ namespace BassBoom.Basolia.Playback
             }
         }
 
-        internal static int FeedRadio()
+        internal static void FeedRadio()
         {
-            if (FileTools.IsOpened && FileTools.IsRadioStation)
+            if (!FileTools.IsOpened || !FileTools.IsRadioStation)
+                return;
+
+            unsafe
             {
-                unsafe
+                var handle = Mpg123Instance._mpg123Handle;
+
+                // Get the MP3 frame length first
+                string metaIntStr = FileTools.CurrentFile.Headers.GetValues("icy-metaint").First();
+                int metaInt = int.Parse(metaIntStr);
+
+                // Now, get the MP3 frame
+                byte[] buffer = new byte[metaInt];
+                int numBytesRead = 0;
+                int numBytesToRead = metaInt;
+                do
                 {
-                    var handle = Mpg123Instance._mpg123Handle;
-                    if (radioStream is null)
-                    {
-                        ShoutcastServer.client.DefaultRequestHeaders.Add("Icy-MetaData", "1");
-                        var reply = ShoutcastServer.client.GetAsync(FileTools.CurrentFile.Path, HttpCompletionOption.ResponseHeadersRead).Result;
-                        ShoutcastServer.client.DefaultRequestHeaders.Remove("Icy-MetaData");
-                        if (!reply.IsSuccessStatusCode)
-                            throw new BasoliaException($"This radio station doesn't exist. Error code: {(int)reply.StatusCode} ({reply.StatusCode}).", mpg123_errors.MPG123_BAD_FILE);
-                        radioStream = reply.Content.ReadAsStreamAsync().Result;
-                    }
-                    byte[] buffer = new byte[8192];
-                    radioStream.Read(buffer, 0, buffer.Length);
-                    IntPtr data = Marshal.AllocHGlobal(buffer.Length);
-                    Marshal.Copy(buffer, 0, data, buffer.Length);
-                    int feedResult = NativeInput.mpg123_feed(handle, data, buffer.Length);
-                    if (feedResult != (int)mpg123_errors.MPG123_OK)
-                        throw new BasoliaException("Can't feed.", mpg123_errors.MPG123_ERR);
-                    return buffer.Length;
-                }
+                    int n = FileTools.CurrentFile.Stream.Read(buffer, numBytesRead, 1);
+                    numBytesRead += n;
+                    numBytesToRead -= n;
+                } while (numBytesToRead > 0);
+
+                // Fetch the metadata.
+                int lengthOfMetaData = FileTools.CurrentFile.Stream.ReadByte();
+                int metaBytesToRead = lengthOfMetaData * 16;
+                Debug.WriteLine($"Buffer: {lengthOfMetaData} [{metaBytesToRead}]");
+                byte[] metadataBytes = new byte[metaBytesToRead];
+                FileTools.CurrentFile.Stream.Read(metadataBytes, 0, metaBytesToRead);
+                string icy = Encoding.UTF8.GetString(metadataBytes).Replace("\0", "").Trim();
+                if (!string.IsNullOrEmpty(icy))
+                    radioIcy = icy;
+                Debug.WriteLine($"{radioIcy}\n");
+
+                // Copy the data to MPG123
+                IntPtr data = Marshal.AllocHGlobal(buffer.Length);
+                Marshal.Copy(buffer, 0, data, buffer.Length);
+                int feedResult = NativeInput.mpg123_feed(handle, data, buffer.Length);
+                if (feedResult != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException("Can't feed.", mpg123_errors.MPG123_ERR);
             }
-            else
-                return 0;
         }
 
         internal static int PlayBuffer(byte[] buffer)
