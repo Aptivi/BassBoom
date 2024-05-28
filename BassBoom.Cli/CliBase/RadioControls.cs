@@ -21,13 +21,11 @@ using BassBoom.Basolia;
 using BassBoom.Basolia.Devices;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
-using BassBoom.Basolia.Format.Cache;
-using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
+using BassBoom.Cli.Tools;
 using BassBoom.Native.Interop.Analysis;
 using SpecProbe.Platform;
 using System;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -62,12 +60,13 @@ namespace BassBoom.Cli.CliBase
         internal static void Play()
         {
             // In case we have no stations in the playlist...
-            if (Radio.stationUrls.Count == 0)
+            if (Radio.cachedInfos.Count == 0)
                 return;
 
+            // There could be a chance that the music has fully stopped without any user interaction, but since we're on
+            // a radio station, we should seek nothing; just drop.
             if (PlaybackTools.State == PlaybackState.Stopped)
-                // There could be a chance that the music has fully stopped without any user interaction.
-                PlaybackPositioningTools.SeekToTheBeginning();
+                PlaybackPositioningTools.Drop();
             Radio.advance = true;
             Radio.playerThread.Start();
             SpinWait.SpinUntil(() => PlaybackTools.Playing || Radio.failedToPlay);
@@ -93,55 +92,41 @@ namespace BassBoom.Cli.CliBase
         internal static void NextStation()
         {
             // In case we have no stations in the playlist...
-            if (Radio.stationUrls.Count == 0)
+            if (Radio.cachedInfos.Count == 0)
                 return;
 
+            PlaybackTools.Stop();
             Radio.currentStation++;
-            if (Radio.currentStation > Radio.stationUrls.Count)
+            if (Radio.currentStation > Radio.cachedInfos.Count)
                 Radio.currentStation = 1;
         }
 
         internal static void PreviousStation()
         {
             // In case we have no stations in the playlist...
-            if (Radio.stationUrls.Count == 0)
+            if (Radio.cachedInfos.Count == 0)
                 return;
 
+            PlaybackTools.Stop();
             Radio.currentStation--;
             if (Radio.currentStation <= 0)
-                Radio.currentStation = Radio.stationUrls.Count;
+                Radio.currentStation = Radio.cachedInfos.Count;
         }
 
         internal static void PromptForAddStation()
         {
-            string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the music file");
+            string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the radio station. The URL to the station must provide an MPEG radio station. AAC ones are not supported yet.");
             Radio.populate = true;
             PopulateRadioStationInfo(path);
             Radio.populate = true;
-            PopulateRadioStationInfo(Radio.stationUrls[Radio.currentStation - 1]);
+            PopulateRadioStationInfo(Radio.cachedInfos[Radio.currentStation - 1].MusicPath);
         }
 
         internal static void Exit()
         {
             Radio.exiting = true;
             Radio.advance = false;
-        }
-
-        internal static bool TryOpenStation(string musicPath)
-        {
-            try
-            {
-                if (FileTools.IsOpened)
-                    FileTools.CloseFile();
-                FileTools.OpenUrl(musicPath);
-                FileTools.CloseFile();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                InfoBoxColor.WriteInfoBox($"Can't open {musicPath}: {ex.Message}", true);
-            }
-            return false;
+            PlaybackTools.Stop();
         }
 
         internal static void PopulateRadioStationInfo(string musicPath)
@@ -155,34 +140,27 @@ namespace BassBoom.Cli.CliBase
                 var instance = Radio.cachedInfos.Single((csi) => csi.MusicPath == musicPath);
                 Radio.formatInfo = instance.FormatInfo;
                 Radio.frameInfo = instance.FrameInfo;
-                if (!Radio.stationUrls.Contains(musicPath))
-                    Radio.stationUrls.Add(musicPath);
             }
             else
             {
-                if (!TryOpenStation(musicPath))
-                    return;
                 InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
+                if (FileTools.IsOpened)
+                    FileTools.CloseFile();
                 FileTools.OpenUrl(musicPath);
                 Radio.formatInfo = FormatTools.GetFormatInfo();
                 Radio.frameInfo = AudioInfoTools.GetFrameInfo();
 
                 // Try to open the lyrics
-                var instance = new CachedSongInfo(musicPath, null, null, -1, Radio.formatInfo, Radio.frameInfo, null, FileTools.CurrentFile.StationName);
+                var instance = new CachedSongInfo(musicPath, null, null, -1, Radio.formatInfo, Radio.frameInfo, null, FileTools.CurrentFile.StationName, true);
                 Radio.cachedInfos.Add(instance);
             }
             TextWriterWhereColor.WriteWhere(new string(' ', ConsoleWrapper.WindowWidth), 0, 1);
-            if (!Radio.stationUrls.Contains(musicPath))
-                Radio.stationUrls.Add(musicPath);
         }
 
         internal static string RenderStationName()
         {
             // Render the station name
-            string icy = PlaybackTools.RadioIcy;
-            if (icy.Length == 0)
-                return "";
-            icy = Regex.Match(icy, @"StreamTitle='((?:[^']|\\')*)'").Groups[1].Value.Trim().Replace("\\'", "'");
+            string icy = PlaybackTools.RadioNowPlaying;
 
             // Print the music name
             return CenteredTextColor.RenderCentered(1, "Now playing: {0}", ConsoleColors.White, ConsoleColors.Black, icy);
@@ -191,28 +169,27 @@ namespace BassBoom.Cli.CliBase
         internal static void RemoveCurrentStation()
         {
             // In case we have no stations in the playlist...
-            if (Radio.stationUrls.Count == 0)
+            if (Radio.cachedInfos.Count == 0)
                 return;
 
             Radio.cachedInfos.RemoveAt(Radio.currentStation - 1);
-            Radio.stationUrls.RemoveAt(Radio.currentStation - 1);
-            if (Radio.stationUrls.Count > 0)
+            if (Radio.cachedInfos.Count > 0)
             {
                 Radio.currentStation--;
                 if (Radio.currentStation == 0)
                     Radio.currentStation = 1;
                 Radio.populate = true;
-                PopulateRadioStationInfo(Radio.stationUrls[Radio.currentStation - 1]);
+                PopulateRadioStationInfo(Radio.cachedInfos[Radio.currentStation - 1].MusicPath);
             }
         }
 
         internal static void RemoveAllStations()
         {
             // In case we have no stations in the playlist...
-            if (Radio.stationUrls.Count == 0)
+            if (Radio.cachedInfos.Count == 0)
                 return;
 
-            for (int i = Radio.stationUrls.Count; i > 0; i--)
+            for (int i = Radio.cachedInfos.Count; i > 0; i--)
                 RemoveCurrentStation();
         }
 
@@ -247,6 +224,9 @@ namespace BassBoom.Cli.CliBase
                 Station info
                 =========
 
+                Radio station URL: {{Radio.cachedInfos[Radio.currentStation - 1].MusicPath}}
+                Radio station name: {{Radio.cachedInfos[Radio.currentStation - 1].StationName}}
+                Radio station current song: {{PlaybackTools.RadioNowPlaying}}
                 
                 Layer info
                 ==========

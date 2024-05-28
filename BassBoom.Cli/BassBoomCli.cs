@@ -32,6 +32,8 @@ namespace BassBoom.Cli
     internal class BassBoomCli
     {
         private static readonly Version version = Assembly.GetAssembly(typeof(InitBasolia)).GetName().Version;
+        internal static Version mpgVer;
+        internal static Version outVer;
 
         static int Main(string[] args)
         {
@@ -54,12 +56,18 @@ namespace BassBoom.Cli
                         return 1;
                     }
                     if (!isRadio)
-                        Player.musicFiles.Add(musicPath);
+                        Player.passedMusicPaths.Add(musicPath);
                 }
+
+                // Initialize Basolia
+                InitBasolia.Init();
+
+                // Initialize versions
+                mpgVer = InitBasolia.MpgLibVersion;
+                outVer = InitBasolia.OutLibVersion;
 
                 // Now, open an interactive TUI
                 ConsoleResizeListener.StartResizeListener();
-                InitBasolia.Init();
                 if (isRadio)
                     Radio.RadioLoop();
                 else

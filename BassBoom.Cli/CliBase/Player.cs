@@ -20,7 +20,6 @@
 using BassBoom.Basolia;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
-using BassBoom.Basolia.Format.Cache;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using System;
@@ -39,6 +38,7 @@ using Terminaux.Base.Extensions;
 using Terminaux.Reader;
 using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
+using BassBoom.Cli.Tools;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -61,10 +61,8 @@ namespace BassBoom.Cli.CliBase
         internal static bool paused = false;
         internal static bool failedToPlay = false;
         internal static string cachedLyric = "";
-        internal static readonly List<string> musicFiles = [];
         internal static readonly List<CachedSongInfo> cachedInfos = [];
-        internal static Version mpgVer;
-        internal static Version outVer;
+        internal static readonly List<string> passedMusicPaths = [];
 
         public static void PlayerLoop()
         {
@@ -73,10 +71,6 @@ namespace BassBoom.Cli.CliBase
             paused = false;
             populate = true;
             advance = false;
-
-            // Initialize versions
-            mpgVer = InitBasolia.MpgLibVersion;
-            outVer = InitBasolia.OutLibVersion;
 
             // Populate the screen
             Screen playerScreen = new();
@@ -346,15 +340,15 @@ namespace BassBoom.Cli.CliBase
         {
             try
             {
-                foreach (var musicFile in musicFiles.Skip(currentSong - 1))
+                foreach (var musicFile in cachedInfos.Skip(currentSong - 1))
                 {
                     if (!advance || exiting)
                         return;
                     else
                         populate = true;
-                    currentSong = musicFiles.IndexOf(musicFile) + 1;
-                    PlayerControls.PopulateMusicFileInfo(musicFile);
-                    TextWriterRaw.WritePlain(PlayerControls.RenderSongName(musicFile), false);
+                    currentSong = cachedInfos.IndexOf(musicFile) + 1;
+                    PlayerControls.PopulateMusicFileInfo(musicFile.MusicPath);
+                    TextWriterRaw.WritePlain(PlayerControls.RenderSongName(musicFile.MusicPath), false);
                     if (paused)
                     {
                         paused = false;
@@ -393,28 +387,40 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
 
             // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
 
             // In case we have no songs in the playlist...
-            if (musicFiles.Count == 0)
+            if (cachedInfos.Count == 0)
             {
-                int height = (ConsoleWrapper.WindowHeight - 10) / 2;
-                drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a single song to the playlist, or 'S' to insert the whole music library."));
-                return drawn.ToString();
+                if (passedMusicPaths.Count > 0)
+                {
+                    foreach (string path in passedMusicPaths)
+                    {
+                        PlayerControls.PopulateMusicFileInfo(path);
+                        populate = true;
+                    }
+                    passedMusicPaths.Clear();
+                }
+                else
+                {
+                    int height = (ConsoleWrapper.WindowHeight - 10) / 2;
+                    drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a single song to the playlist, or 'S' to insert the whole music library."));
+                    return drawn.ToString();
+                }
             }
 
             // Populate music file info, as necessary
             if (populate)
-                PlayerControls.PopulateMusicFileInfo(musicFiles[currentSong - 1]);
-            drawn.Append(PlayerControls.RenderSongName(musicFiles[currentSong - 1]));
+                PlayerControls.PopulateMusicFileInfo(cachedInfos[currentSong - 1].MusicPath);
+            drawn.Append(PlayerControls.RenderSongName(cachedInfos[currentSong - 1].MusicPath));
 
             // Now, print the list of songs.
             var choices = new List<InputChoiceInfo>();
             int startPos = 3;
             int endPos = ConsoleWrapper.WindowHeight - 10;
             int songsPerPage = endPos - startPos;
-            int max = musicFiles.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
-            for (int i = 0; i < musicFiles.Count; i++)
+            int max = cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
+            for (int i = 0; i < cachedInfos.Count; i++)
             {
                 // Populate the first pane
                 var (musicName, musicArtist, _) = PlayerControls.GetMusicNameArtistGenre(i);

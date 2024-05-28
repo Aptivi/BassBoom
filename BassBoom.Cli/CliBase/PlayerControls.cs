@@ -21,9 +21,9 @@ using BassBoom.Basolia;
 using BassBoom.Basolia.Devices;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
-using BassBoom.Basolia.Format.Cache;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
+using BassBoom.Cli.Tools;
 using BassBoom.Native.Interop.Analysis;
 using SpecProbe.Platform;
 using System;
@@ -63,7 +63,7 @@ namespace BassBoom.Cli.CliBase
         internal static void SeekForward()
         {
             // In case we have no songs in the playlist...
-            if (Player.musicFiles.Count == 0)
+            if (Player.cachedInfos.Count == 0)
                 return;
 
             Player.position += (int)(Player.formatInfo.rate * seekRate);
@@ -75,7 +75,7 @@ namespace BassBoom.Cli.CliBase
         internal static void SeekBackward()
         {
             // In case we have no songs in the playlist...
-            if (Player.musicFiles.Count == 0)
+            if (Player.cachedInfos.Count == 0)
                 return;
 
             Player.position -= (int)(Player.formatInfo.rate * seekRate);
@@ -87,7 +87,7 @@ namespace BassBoom.Cli.CliBase
         internal static void SeekBeginning()
         {
             // In case we have no songs in the playlist...
-            if (Player.musicFiles.Count == 0)
+            if (Player.cachedInfos.Count == 0)
                 return;
 
             PlaybackPositioningTools.SeekToTheBeginning();
@@ -97,7 +97,7 @@ namespace BassBoom.Cli.CliBase
         internal static void Play()
         {
             // In case we have no songs in the playlist...
-            if (Player.musicFiles.Count == 0)
+            if (Player.cachedInfos.Count == 0)
                 return;
 
             if (PlaybackTools.State == PlaybackState.Stopped)
@@ -128,23 +128,23 @@ namespace BassBoom.Cli.CliBase
         internal static void NextSong()
         {
             // In case we have no songs in the playlist...
-            if (Player.musicFiles.Count == 0)
+            if (Player.cachedInfos.Count == 0)
                 return;
 
             Player.currentSong++;
-            if (Player.currentSong > Player.musicFiles.Count)
+            if (Player.currentSong > Player.cachedInfos.Count)
                 Player.currentSong = 1;
         }
 
         internal static void PreviousSong()
         {
             // In case we have no songs in the playlist...
-            if (Player.musicFiles.Count == 0)
+            if (Player.cachedInfos.Count == 0)
                 return;
 
             Player.currentSong--;
             if (Player.currentSong <= 0)
-                Player.currentSong = Player.musicFiles.Count;
+                Player.currentSong = Player.cachedInfos.Count;
         }
 
         internal static void PromptForAddSong()
@@ -156,7 +156,7 @@ namespace BassBoom.Cli.CliBase
                 Player.populate = true;
                 PopulateMusicFileInfo(path);
                 Player.populate = true;
-                PopulateMusicFileInfo(Player.musicFiles[Player.currentSong - 1]);
+                PopulateMusicFileInfo(Player.cachedInfos[Player.currentSong - 1].MusicPath);
                 PlaybackPositioningTools.SeekToFrame(currentPos);
             }
             else
@@ -169,16 +169,16 @@ namespace BassBoom.Cli.CliBase
             if (Directory.Exists(path))
             {
                 int currentPos = Player.position;
-                var musicFiles = Directory.GetFiles(path, "*.mp3");
-                if (musicFiles.Length > 0)
+                var cachedInfos = Directory.GetFiles(path, "*.mp3");
+                if (cachedInfos.Length > 0)
                 {
-                    foreach (string musicFile in musicFiles)
+                    foreach (string musicFile in cachedInfos)
                     {
                         Player.populate = true;
                         PopulateMusicFileInfo(musicFile);
                     }
                     Player.populate = true;
-                    PopulateMusicFileInfo(Player.musicFiles[Player.currentSong - 1]);
+                    PopulateMusicFileInfo(Player.cachedInfos[Player.currentSong - 1].MusicPath);
                     PlaybackPositioningTools.SeekToFrame(currentPos);
                 }
             }
@@ -192,32 +192,12 @@ namespace BassBoom.Cli.CliBase
             Player.advance = false;
         }
 
-        internal static bool TryOpenMusicFile(string musicPath)
-        {
-            try
-            {
-                if (FileTools.IsOpened)
-                    FileTools.CloseFile();
-                FileTools.OpenFile(musicPath);
-                FileTools.CloseFile();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                InfoBoxColor.WriteInfoBox($"Can't open {musicPath}: {ex.Message}", true);
-            }
-            return false;
-        }
-
         internal static void PopulateMusicFileInfo(string musicPath)
         {
             // Try to open the file after loading the library
             if (PlaybackTools.Playing || !Player.populate)
                 return;
             Player.populate = false;
-            if (!TryOpenMusicFile(musicPath))
-                return;
-            FileTools.OpenFile(musicPath);
             if (Player.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
                 var instance = Player.cachedInfos.Single((csi) => csi.MusicPath == musicPath);
@@ -228,12 +208,13 @@ namespace BassBoom.Cli.CliBase
                 Player.managedV1 = instance.MetadataV1;
                 Player.managedV2 = instance.MetadataV2;
                 Player.lyricInstance = instance.LyricInstance;
-                if (!Player.musicFiles.Contains(musicPath))
-                    Player.musicFiles.Add(musicPath);
             }
             else
             {
                 InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
+                if (FileTools.IsOpened)
+                    FileTools.CloseFile();
+                FileTools.OpenFile(musicPath);
                 Player.total = AudioInfoTools.GetDuration(true);
                 Player.totalSpan = AudioInfoTools.GetDurationSpanFromSamples(Player.total);
                 Player.formatInfo = FormatTools.GetFormatInfo();
@@ -242,12 +223,10 @@ namespace BassBoom.Cli.CliBase
 
                 // Try to open the lyrics
                 OpenLyrics(musicPath);
-                var instance = new CachedSongInfo(musicPath, Player.managedV1, Player.managedV2, Player.total, Player.formatInfo, Player.frameInfo, Player.lyricInstance, "null");
+                var instance = new CachedSongInfo(musicPath, Player.managedV1, Player.managedV2, Player.total, Player.formatInfo, Player.frameInfo, Player.lyricInstance, "", false);
                 Player.cachedInfos.Add(instance);
             }
             TextWriterWhereColor.WriteWhere(new string(' ', ConsoleWrapper.WindowWidth), 0, 1);
-            if (!Player.musicFiles.Contains(musicPath))
-                Player.musicFiles.Add(musicPath);
         }
 
         internal static string RenderSongName(string musicPath)
@@ -319,35 +298,34 @@ namespace BassBoom.Cli.CliBase
         internal static void RemoveCurrentSong()
         {
             // In case we have no songs in the playlist...
-            if (Player.musicFiles.Count == 0)
+            if (Player.cachedInfos.Count == 0)
                 return;
 
             Player.cachedInfos.RemoveAt(Player.currentSong - 1);
-            Player.musicFiles.RemoveAt(Player.currentSong - 1);
-            if (Player.musicFiles.Count > 0)
+            if (Player.cachedInfos.Count > 0)
             {
                 Player.currentSong--;
                 if (Player.currentSong == 0)
                     Player.currentSong = 1;
                 Player.populate = true;
-                PopulateMusicFileInfo(Player.musicFiles[Player.currentSong - 1]);
+                PopulateMusicFileInfo(Player.cachedInfos[Player.currentSong - 1].MusicPath);
             }
         }
 
         internal static void RemoveAllSongs()
         {
             // In case we have no songs in the playlist...
-            if (Player.musicFiles.Count == 0)
+            if (Player.cachedInfos.Count == 0)
                 return;
 
-            for (int i = Player.musicFiles.Count; i > 0; i--)
+            for (int i = Player.cachedInfos.Count; i > 0; i--)
                 RemoveCurrentSong();
         }
 
         internal static void PromptSeek()
         {
             // In case we have no songs in the playlist...
-            if (Player.musicFiles.Count == 0)
+            if (Player.cachedInfos.Count == 0)
                 return;
 
             // Prompt the user to set the current position to the specified time

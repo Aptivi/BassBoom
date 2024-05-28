@@ -17,14 +17,15 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Lyrics;
 
-namespace BassBoom.Basolia.Format.Cache
+namespace BassBoom.Cli.Tools
 {
     /// <summary>
     /// Cached song info
     /// </summary>
-    public class CachedSongInfo
+    internal class CachedSongInfo
     {
         /// <summary>
         /// A full path to the music file
@@ -39,9 +40,9 @@ namespace BassBoom.Basolia.Format.Cache
         /// </summary>
         public Id3V2Metadata MetadataV2 { get; private set; }
         /// <summary>
-        /// ICY metadata
+        /// Radio station name
         /// </summary>
-        public string MetadataIcy { get; private set; }
+        public string StationName { get; private set; }
         /// <summary>
         /// Music duration in samples
         /// </summary>
@@ -63,6 +64,10 @@ namespace BassBoom.Basolia.Format.Cache
         /// An instance of the music lyrics (if any)
         /// </summary>
         public Lyric LyricInstance { get; private set; }
+        /// <summary>
+        /// Checks to see if this cached song info instance is a radio station or not
+        /// </summary>
+        public bool IsRadio { get; private set; }
 
         /// <summary>
         /// A cached song information
@@ -74,8 +79,9 @@ namespace BassBoom.Basolia.Format.Cache
         /// <param name="formatInfo">Format information (rate, channels, and encoding)</param>
         /// <param name="frameInfo">MPEG frame info</param>
         /// <param name="lyricInstance">An instance of the music lyrics (if any)</param>
-        /// <param name="metadataIcy">ICY metadata</param>
-        public CachedSongInfo(string musicPath, Id3V1Metadata metadataV1, Id3V2Metadata metadataV2, int duration, (long rate, int channels, int encoding) formatInfo, FrameInfo frameInfo, Lyric lyricInstance, string metadataIcy)
+        /// <param name="stationName">Radio station name</param>
+        /// <param name="isRadioStation">Is this cached song info instance is a radio station or not?</param>
+        public CachedSongInfo(string musicPath, Id3V1Metadata metadataV1, Id3V2Metadata metadataV2, int duration, (long rate, int channels, int encoding) formatInfo, FrameInfo frameInfo, Lyric lyricInstance, string stationName, bool isRadioStation)
         {
             MusicPath = musicPath;
             MetadataV1 = metadataV1;
@@ -84,7 +90,8 @@ namespace BassBoom.Basolia.Format.Cache
             FormatInfo = formatInfo;
             FrameInfo = frameInfo;
             LyricInstance = lyricInstance;
-            MetadataIcy = metadataIcy;
+            StationName = stationName;
+            IsRadio = isRadioStation;
         }
     }
 }

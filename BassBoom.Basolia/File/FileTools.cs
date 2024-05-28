@@ -131,7 +131,10 @@ namespace BassBoom.Basolia.File
 
             // Check to see if there are any ICY headers
             if (!reply.Headers.Any((kvp) => kvp.Key.StartsWith("icy-")))
-                throw new BasoliaException($"This doesn't look like a radio station. Are you sure?", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException("This doesn't look like a radio station. Are you sure?", mpg123_errors.MPG123_BAD_FILE);
+            var contentType = reply.Content.Headers.ContentType;
+            if (contentType.MediaType != "audio/mpeg")
+                throw new BasoliaException($"This doesn't look like an MP3 radio station. You have a(n) {contentType.MediaType} type. Are you sure?", mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone
             unsafe

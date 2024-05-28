@@ -101,7 +101,7 @@ namespace BassBoom.Basolia.Playback
                     PlaybackTools.holding = true;
                     while (PlaybackTools.bufferPlaying)
                         Thread.Sleep(1);
-                    NativeOutputLib.out123_drop(outHandle);
+                    Drop();
                     int status = NativePositioning.mpg123_seek(handle, 0, 0);
                     PlaybackTools.holding = false;
                     if (status == (int)mpg123_errors.MPG123_ERR)
@@ -134,11 +134,34 @@ namespace BassBoom.Basolia.Playback
                     PlaybackTools.holding = true;
                     while (PlaybackTools.bufferPlaying)
                         Thread.Sleep(1);
-                    NativeOutputLib.out123_drop(outHandle);
+                    Drop();
                     int status = NativePositioning.mpg123_seek(handle, frame, 0);
                     PlaybackTools.holding = false;
                     if (status == (int)mpg123_errors.MPG123_ERR)
                         throw new BasoliaException($"Can't seek to frame #{frame} of the file", (mpg123_errors)status);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Drops all MPEG frames to the device
+        /// </summary>
+        /// <exception cref="BasoliaException"></exception>
+        public static void Drop()
+        {
+            lock (PositionLock)
+            {
+                InitBasolia.CheckInited();
+
+                // Check to see if the file is open
+                if (!FileTools.IsOpened)
+                    throw new BasoliaException("Can't drop.", mpg123_errors.MPG123_BAD_FILE);
+
+                // We're now entering the dangerous zone
+                unsafe
+                {
+                    var outHandle = Mpg123Instance._out123Handle;
+                    NativeOutputLib.out123_drop(outHandle);
                 }
             }
         }

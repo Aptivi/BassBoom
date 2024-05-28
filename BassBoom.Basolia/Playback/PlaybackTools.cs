@@ -30,11 +30,9 @@ using System.Threading.Tasks;
 using BassBoom.Basolia.Devices;
 using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Analysis;
-using BassBoom.Basolia.Radio;
-using System.Net.Http;
-using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -65,6 +63,21 @@ namespace BassBoom.Basolia.Playback
         /// </summary>
         public static string RadioIcy =>
             radioIcy;
+
+        /// <summary>
+        /// Current radio ICY metadata
+        /// </summary>
+        public static string RadioNowPlaying
+        {
+            get
+            {
+                string icy = RadioIcy;
+                if (icy.Length == 0 || !FileTools.IsRadioStation)
+                    return "";
+                icy = Regex.Match(icy, @"StreamTitle='((?:[^']|\\')*)'").Groups[1].Value.Trim().Replace("\\'", "'");
+                return icy;
+            }
+        }
 
         /// <summary>
         /// Plays the currently open file (synchronous)

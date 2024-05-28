@@ -20,8 +20,6 @@
 using BassBoom.Basolia;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
-using BassBoom.Basolia.Format.Cache;
-using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using System;
 using System.Collections.Generic;
@@ -35,10 +33,10 @@ using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
-using Terminaux.Base.Extensions;
 using Terminaux.Reader;
 using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
+using BassBoom.Cli.Tools;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -54,10 +52,7 @@ namespace BassBoom.Cli.CliBase
         internal static bool populate = true;
         internal static bool paused = false;
         internal static bool failedToPlay = false;
-        internal static readonly List<string> stationUrls = [];
         internal static readonly List<CachedSongInfo> cachedInfos = [];
-        internal static Version mpgVer;
-        internal static Version outVer;
 
         public static void RadioLoop()
         {
@@ -66,10 +61,6 @@ namespace BassBoom.Cli.CliBase
             paused = false;
             populate = true;
             advance = false;
-
-            // Initialize versions
-            mpgVer = InitBasolia.MpgLibVersion;
-            outVer = InitBasolia.OutLibVersion;
 
             // Populate the screen
             Screen radioScreen = new();
@@ -283,14 +274,14 @@ namespace BassBoom.Cli.CliBase
         {
             try
             {
-                foreach (var musicFile in stationUrls.Skip(currentStation - 1))
+                foreach (var musicFile in cachedInfos.Skip(currentStation - 1))
                 {
                     if (!advance || exiting)
                         return;
                     else
                         populate = true;
-                    currentStation = stationUrls.IndexOf(musicFile) + 1;
-                    RadioControls.PopulateRadioStationInfo(musicFile);
+                    currentStation = cachedInfos.IndexOf(musicFile) + 1;
+                    RadioControls.PopulateRadioStationInfo(musicFile.MusicPath);
                     TextWriterRaw.WritePlain(RadioControls.RenderStationName(), false);
                     if (paused)
                         paused = false;
@@ -323,10 +314,10 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
 
             // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
 
             // In case we have no stations in the playlist...
-            if (stationUrls.Count == 0)
+            if (cachedInfos.Count == 0)
             {
                 int height = (ConsoleWrapper.WindowHeight - 10) / 2;
                 drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a radio station to the playlist."));
@@ -335,7 +326,7 @@ namespace BassBoom.Cli.CliBase
 
             // Populate music file info, as necessary
             if (populate)
-                RadioControls.PopulateRadioStationInfo(stationUrls[currentStation - 1]);
+                RadioControls.PopulateRadioStationInfo(cachedInfos[currentStation - 1].MusicPath);
             drawn.Append(RadioControls.RenderStationName());
 
             // Now, print the list of stations.
@@ -343,11 +334,11 @@ namespace BassBoom.Cli.CliBase
             int startPos = 3;
             int endPos = ConsoleWrapper.WindowHeight - 10;
             int stationsPerPage = endPos - startPos;
-            int max = stationUrls.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
-            for (int i = 0; i < stationUrls.Count; i++)
+            int max = cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
+            for (int i = 0; i < cachedInfos.Count; i++)
             {
                 // Populate the first pane
-                string stationName = cachedInfos[i].MetadataIcy;
+                string stationName = cachedInfos[i].StationName;
                 string duration = cachedInfos[i].DurationSpan;
                 string stationPreview = $"[{duration}] {stationName}";
                 choices.Add(new($"{i + 1}", stationPreview));

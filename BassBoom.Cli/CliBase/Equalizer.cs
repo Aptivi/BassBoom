@@ -135,11 +135,13 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
 
             // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{Player.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
 
             // Write current song
-            if (Player.musicFiles.Count > 0 )
-                drawn.Append(PlayerControls.RenderSongName(Player.musicFiles[Player.currentSong - 1]));
+            if (Player.cachedInfos.Count > 0)
+                drawn.Append(PlayerControls.RenderSongName(Player.cachedInfos[Player.currentSong - 1].MusicPath));
+            else if (Radio.cachedInfos.Count > 0)
+                drawn.Append(RadioControls.RenderStationName());
 
             // Now, print the list of bands and their values.
             var choices = new List<InputChoiceInfo>();
