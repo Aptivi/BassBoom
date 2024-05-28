@@ -115,26 +115,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.Format.Cache.CachedSongInfo.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.Format.Cache.CachedSongInfo.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.Format.Cache.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.Format.Cache.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.Format.DecodeTools.yml",
       "output": {
         ".html": {
