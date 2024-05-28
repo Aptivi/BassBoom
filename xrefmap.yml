@@ -351,6 +351,19 @@ references:
   commentId: T:BassBoom.Basolia.File.FileType
   fullName: BassBoom.Basolia.File.FileType
   nameWithType: FileType
+- uid: BassBoom.Basolia.File.FileType.Headers
+  name: Headers
+  href: api/BassBoom.Basolia.File.FileType.html#BassBoom_Basolia_File_FileType_Headers
+  commentId: P:BassBoom.Basolia.File.FileType.Headers
+  fullName: BassBoom.Basolia.File.FileType.Headers
+  nameWithType: FileType.Headers
+- uid: BassBoom.Basolia.File.FileType.Headers*
+  name: Headers
+  href: api/BassBoom.Basolia.File.FileType.html#BassBoom_Basolia_File_FileType_Headers_
+  commentId: Overload:BassBoom.Basolia.File.FileType.Headers
+  isSpec: "True"
+  fullName: BassBoom.Basolia.File.FileType.Headers
+  nameWithType: FileType.Headers
 - uid: BassBoom.Basolia.File.FileType.IsLink
   name: IsLink
   href: api/BassBoom.Basolia.File.FileType.html#BassBoom_Basolia_File_FileType_IsLink
@@ -377,6 +390,32 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.File.FileType.Path
   nameWithType: FileType.Path
+- uid: BassBoom.Basolia.File.FileType.StationName
+  name: StationName
+  href: api/BassBoom.Basolia.File.FileType.html#BassBoom_Basolia_File_FileType_StationName
+  commentId: P:BassBoom.Basolia.File.FileType.StationName
+  fullName: BassBoom.Basolia.File.FileType.StationName
+  nameWithType: FileType.StationName
+- uid: BassBoom.Basolia.File.FileType.StationName*
+  name: StationName
+  href: api/BassBoom.Basolia.File.FileType.html#BassBoom_Basolia_File_FileType_StationName_
+  commentId: Overload:BassBoom.Basolia.File.FileType.StationName
+  isSpec: "True"
+  fullName: BassBoom.Basolia.File.FileType.StationName
+  nameWithType: FileType.StationName
+- uid: BassBoom.Basolia.File.FileType.Stream
+  name: Stream
+  href: api/BassBoom.Basolia.File.FileType.html#BassBoom_Basolia_File_FileType_Stream
+  commentId: P:BassBoom.Basolia.File.FileType.Stream
+  fullName: BassBoom.Basolia.File.FileType.Stream
+  nameWithType: FileType.Stream
+- uid: BassBoom.Basolia.File.FileType.Stream*
+  name: Stream
+  href: api/BassBoom.Basolia.File.FileType.html#BassBoom_Basolia_File_FileType_Stream_
+  commentId: Overload:BassBoom.Basolia.File.FileType.Stream
+  isSpec: "True"
+  fullName: BassBoom.Basolia.File.FileType.Stream
+  nameWithType: FileType.Stream
 - uid: BassBoom.Basolia.Format
   name: BassBoom.Basolia.Format
   href: api/BassBoom.Basolia.Format.html
@@ -2604,6 +2643,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.Playing
   nameWithType: PlaybackTools.Playing
+- uid: BassBoom.Basolia.Playback.PlaybackTools.RadioIcy
+  name: RadioIcy
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_RadioIcy
+  commentId: P:BassBoom.Basolia.Playback.PlaybackTools.RadioIcy
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.RadioIcy
+  nameWithType: PlaybackTools.RadioIcy
+- uid: BassBoom.Basolia.Playback.PlaybackTools.RadioIcy*
+  name: RadioIcy
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_RadioIcy_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.RadioIcy
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.RadioIcy
+  nameWithType: PlaybackTools.RadioIcy
 - uid: BassBoom.Basolia.Playback.PlaybackTools.ResetEqualizer
   name: ResetEqualizer()
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_ResetEqualizer
