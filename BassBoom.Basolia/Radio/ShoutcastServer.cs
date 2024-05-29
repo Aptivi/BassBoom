@@ -27,6 +27,7 @@ using System.Net.Http;
 
 namespace BassBoom.Basolia.Radio
 {
+    // TODO: Generalize this to support IceCast
     /// <summary>
     /// A Shoutcast server
     /// </summary>
@@ -158,7 +159,7 @@ namespace BassBoom.Basolia.Radio
             }
             catch (Exception ex)
             {
-                throw new ShoutcastServerException($"Failed to parse Shoutcast server {ServerHost}. More information can be found in the inner exception.", ex);
+                throw new BasoliaMiscException($"Failed to parse radio server {ServerHost}. More information can be found in the inner exception.", ex);
             }
         }
 
@@ -179,7 +180,7 @@ namespace BassBoom.Basolia.Radio
             }
             catch (Exception ex)
             {
-                throw new ShoutcastServerException($"Failed to parse Shoutcast server {ServerHost}. More information can be found in the inner exception.", ex);
+                throw new BasoliaMiscException($"Failed to parse radio server {ServerHost}. More information can be found in the inner exception.", ex);
             }
         }
 

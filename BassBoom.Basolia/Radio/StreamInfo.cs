@@ -206,7 +206,7 @@ namespace BassBoom.Basolia.Radio
             }
             catch (Exception ex)
             {
-                throw new ShoutcastStreamParseException($"Failed to parse Shoutcast stream ID {streamId}. More information can be found in the inner exception.", ex);
+                throw new BasoliaMiscException($"Failed to parse stream ID {streamId}. More information can be found in the inner exception.", ex);
             }
         }
     }

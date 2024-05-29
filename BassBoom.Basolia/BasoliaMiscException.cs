@@ -19,29 +19,35 @@
 
 using System;
 
-namespace BassBoom.Basolia.Radio
+namespace BassBoom.Basolia
 {
     /// <summary>
-    /// Happens when the error in parsing the stream has occurred
+    /// Basolia miscellaneous exception (ones that don't have to do with MPG123 or OUT123)
     /// </summary>
-    public class ShoutcastStreamParseException : Exception
+    public class BasoliaMiscException : Exception
     {
         /// <summary>
-        /// Throws the stream parse exception
+        /// Creates a new instance of Basolia error.
         /// </summary>
-        public ShoutcastStreamParseException()
+        internal BasoliaMiscException() :
+            base("General Basolia error")
         { }
+
         /// <summary>
-        /// Throws the stream parse exception
+        /// Creates a new instance of Basolia error.
         /// </summary>
-        public ShoutcastStreamParseException(string message) :
+        /// <param name="message">Custom message to use while creating this exception</param>
+        internal BasoliaMiscException(string message) :
             base(message)
         { }
+
         /// <summary>
-        /// Throws the stream parse exception
+        /// Creates a new instance of Basolia error.
         /// </summary>
-        public ShoutcastStreamParseException(string message, Exception inner) :
-            base(message, inner)
+        /// <param name="message">Custom message to use while creating this exception</param>
+        /// <param name="innerException">Inner exception</param>
+        internal BasoliaMiscException(string message, Exception innerException) :
+            base(message, innerException)
         { }
     }
 }
