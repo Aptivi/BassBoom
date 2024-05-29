@@ -41,86 +41,12 @@ references:
   commentId: T:BassBoom.Basolia.BasoliaException
   fullName: BassBoom.Basolia.BasoliaException
   nameWithType: BasoliaException
-- uid: BassBoom.Basolia.BasoliaException.#ctor(BassBoom.Native.Interop.Init.mpg123_errors)
-  name: BasoliaException(mpg123_errors)
-  href: api/BassBoom.Basolia.BasoliaException.html#BassBoom_Basolia_BasoliaException__ctor_BassBoom_Native_Interop_Init_mpg123_errors_
-  commentId: M:BassBoom.Basolia.BasoliaException.#ctor(BassBoom.Native.Interop.Init.mpg123_errors)
-  name.vb: New(mpg123_errors)
-  fullName: BassBoom.Basolia.BasoliaException.BasoliaException(BassBoom.Native.Interop.Init.mpg123_errors)
-  fullName.vb: BassBoom.Basolia.BasoliaException.New(BassBoom.Native.Interop.Init.mpg123_errors)
-  nameWithType: BasoliaException.BasoliaException(mpg123_errors)
-  nameWithType.vb: BasoliaException.New(mpg123_errors)
-- uid: BassBoom.Basolia.BasoliaException.#ctor(System.String,BassBoom.Native.Interop.Init.mpg123_errors)
-  name: BasoliaException(string, mpg123_errors)
-  href: api/BassBoom.Basolia.BasoliaException.html#BassBoom_Basolia_BasoliaException__ctor_System_String_BassBoom_Native_Interop_Init_mpg123_errors_
-  commentId: M:BassBoom.Basolia.BasoliaException.#ctor(System.String,BassBoom.Native.Interop.Init.mpg123_errors)
-  name.vb: New(String, mpg123_errors)
-  fullName: BassBoom.Basolia.BasoliaException.BasoliaException(string, BassBoom.Native.Interop.Init.mpg123_errors)
-  fullName.vb: BassBoom.Basolia.BasoliaException.New(String, BassBoom.Native.Interop.Init.mpg123_errors)
-  nameWithType: BasoliaException.BasoliaException(string, mpg123_errors)
-  nameWithType.vb: BasoliaException.New(String, mpg123_errors)
-- uid: BassBoom.Basolia.BasoliaException.#ctor(System.String,System.Exception,BassBoom.Native.Interop.Init.mpg123_errors)
-  name: BasoliaException(string, Exception, mpg123_errors)
-  href: api/BassBoom.Basolia.BasoliaException.html#BassBoom_Basolia_BasoliaException__ctor_System_String_System_Exception_BassBoom_Native_Interop_Init_mpg123_errors_
-  commentId: M:BassBoom.Basolia.BasoliaException.#ctor(System.String,System.Exception,BassBoom.Native.Interop.Init.mpg123_errors)
-  name.vb: New(String, Exception, mpg123_errors)
-  fullName: BassBoom.Basolia.BasoliaException.BasoliaException(string, System.Exception, BassBoom.Native.Interop.Init.mpg123_errors)
-  fullName.vb: BassBoom.Basolia.BasoliaException.New(String, System.Exception, BassBoom.Native.Interop.Init.mpg123_errors)
-  nameWithType: BasoliaException.BasoliaException(string, Exception, mpg123_errors)
-  nameWithType.vb: BasoliaException.New(String, Exception, mpg123_errors)
-- uid: BassBoom.Basolia.BasoliaException.#ctor*
-  name: BasoliaException
-  href: api/BassBoom.Basolia.BasoliaException.html#BassBoom_Basolia_BasoliaException__ctor_
-  commentId: Overload:BassBoom.Basolia.BasoliaException.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: BassBoom.Basolia.BasoliaException.BasoliaException
-  fullName.vb: BassBoom.Basolia.BasoliaException.New
-  nameWithType: BasoliaException.BasoliaException
-  nameWithType.vb: BasoliaException.New
 - uid: BassBoom.Basolia.BasoliaOutException
   name: BasoliaOutException
   href: api/BassBoom.Basolia.BasoliaOutException.html
   commentId: T:BassBoom.Basolia.BasoliaOutException
   fullName: BassBoom.Basolia.BasoliaOutException
   nameWithType: BasoliaOutException
-- uid: BassBoom.Basolia.BasoliaOutException.#ctor(BassBoom.Native.Interop.Output.out123_error)
-  name: BasoliaOutException(out123_error)
-  href: api/BassBoom.Basolia.BasoliaOutException.html#BassBoom_Basolia_BasoliaOutException__ctor_BassBoom_Native_Interop_Output_out123_error_
-  commentId: M:BassBoom.Basolia.BasoliaOutException.#ctor(BassBoom.Native.Interop.Output.out123_error)
-  name.vb: New(out123_error)
-  fullName: BassBoom.Basolia.BasoliaOutException.BasoliaOutException(BassBoom.Native.Interop.Output.out123_error)
-  fullName.vb: BassBoom.Basolia.BasoliaOutException.New(BassBoom.Native.Interop.Output.out123_error)
-  nameWithType: BasoliaOutException.BasoliaOutException(out123_error)
-  nameWithType.vb: BasoliaOutException.New(out123_error)
-- uid: BassBoom.Basolia.BasoliaOutException.#ctor(System.String,BassBoom.Native.Interop.Output.out123_error)
-  name: BasoliaOutException(string, out123_error)
-  href: api/BassBoom.Basolia.BasoliaOutException.html#BassBoom_Basolia_BasoliaOutException__ctor_System_String_BassBoom_Native_Interop_Output_out123_error_
-  commentId: M:BassBoom.Basolia.BasoliaOutException.#ctor(System.String,BassBoom.Native.Interop.Output.out123_error)
-  name.vb: New(String, out123_error)
-  fullName: BassBoom.Basolia.BasoliaOutException.BasoliaOutException(string, BassBoom.Native.Interop.Output.out123_error)
-  fullName.vb: BassBoom.Basolia.BasoliaOutException.New(String, BassBoom.Native.Interop.Output.out123_error)
-  nameWithType: BasoliaOutException.BasoliaOutException(string, out123_error)
-  nameWithType.vb: BasoliaOutException.New(String, out123_error)
-- uid: BassBoom.Basolia.BasoliaOutException.#ctor(System.String,System.Exception,BassBoom.Native.Interop.Output.out123_error)
-  name: BasoliaOutException(string, Exception, out123_error)
-  href: api/BassBoom.Basolia.BasoliaOutException.html#BassBoom_Basolia_BasoliaOutException__ctor_System_String_System_Exception_BassBoom_Native_Interop_Output_out123_error_
-  commentId: M:BassBoom.Basolia.BasoliaOutException.#ctor(System.String,System.Exception,BassBoom.Native.Interop.Output.out123_error)
-  name.vb: New(String, Exception, out123_error)
-  fullName: BassBoom.Basolia.BasoliaOutException.BasoliaOutException(string, System.Exception, BassBoom.Native.Interop.Output.out123_error)
-  fullName.vb: BassBoom.Basolia.BasoliaOutException.New(String, System.Exception, BassBoom.Native.Interop.Output.out123_error)
-  nameWithType: BasoliaOutException.BasoliaOutException(string, Exception, out123_error)
-  nameWithType.vb: BasoliaOutException.New(String, Exception, out123_error)
-- uid: BassBoom.Basolia.BasoliaOutException.#ctor*
-  name: BasoliaOutException
-  href: api/BassBoom.Basolia.BasoliaOutException.html#BassBoom_Basolia_BasoliaOutException__ctor_
-  commentId: Overload:BassBoom.Basolia.BasoliaOutException.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: BassBoom.Basolia.BasoliaOutException.BasoliaOutException
-  fullName.vb: BassBoom.Basolia.BasoliaOutException.New
-  nameWithType: BasoliaOutException.BasoliaOutException
-  nameWithType.vb: BasoliaOutException.New
 - uid: BassBoom.Basolia.Devices
   name: BassBoom.Basolia.Devices
   href: api/BassBoom.Basolia.Devices.html
@@ -220,6 +146,192 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver
   nameWithType: DeviceTools.SetActiveDriver
+- uid: BassBoom.Basolia.Enumerations
+  name: BassBoom.Basolia.Enumerations
+  href: api/BassBoom.Basolia.Enumerations.html
+  commentId: N:BassBoom.Basolia.Enumerations
+  fullName: BassBoom.Basolia.Enumerations
+  nameWithType: BassBoom.Basolia.Enumerations
+- uid: BassBoom.Basolia.Enumerations.FrameFlags
+  name: FrameFlags
+  href: api/BassBoom.Basolia.Enumerations.FrameFlags.html
+  commentId: T:BassBoom.Basolia.Enumerations.FrameFlags
+  fullName: BassBoom.Basolia.Enumerations.FrameFlags
+  nameWithType: FrameFlags
+- uid: BassBoom.Basolia.Enumerations.FrameFlags.Copyright
+  name: Copyright
+  href: api/BassBoom.Basolia.Enumerations.FrameFlags.html#BassBoom_Basolia_Enumerations_FrameFlags_Copyright
+  commentId: F:BassBoom.Basolia.Enumerations.FrameFlags.Copyright
+  fullName: BassBoom.Basolia.Enumerations.FrameFlags.Copyright
+  nameWithType: FrameFlags.Copyright
+- uid: BassBoom.Basolia.Enumerations.FrameFlags.Crc
+  name: Crc
+  href: api/BassBoom.Basolia.Enumerations.FrameFlags.html#BassBoom_Basolia_Enumerations_FrameFlags_Crc
+  commentId: F:BassBoom.Basolia.Enumerations.FrameFlags.Crc
+  fullName: BassBoom.Basolia.Enumerations.FrameFlags.Crc
+  nameWithType: FrameFlags.Crc
+- uid: BassBoom.Basolia.Enumerations.FrameFlags.Original
+  name: Original
+  href: api/BassBoom.Basolia.Enumerations.FrameFlags.html#BassBoom_Basolia_Enumerations_FrameFlags_Original
+  commentId: F:BassBoom.Basolia.Enumerations.FrameFlags.Original
+  fullName: BassBoom.Basolia.Enumerations.FrameFlags.Original
+  nameWithType: FrameFlags.Original
+- uid: BassBoom.Basolia.Enumerations.FrameFlags.Private
+  name: Private
+  href: api/BassBoom.Basolia.Enumerations.FrameFlags.html#BassBoom_Basolia_Enumerations_FrameFlags_Private
+  commentId: F:BassBoom.Basolia.Enumerations.FrameFlags.Private
+  fullName: BassBoom.Basolia.Enumerations.FrameFlags.Private
+  nameWithType: FrameFlags.Private
+- uid: BassBoom.Basolia.Enumerations.FrameMode
+  name: FrameMode
+  href: api/BassBoom.Basolia.Enumerations.FrameMode.html
+  commentId: T:BassBoom.Basolia.Enumerations.FrameMode
+  fullName: BassBoom.Basolia.Enumerations.FrameMode
+  nameWithType: FrameMode
+- uid: BassBoom.Basolia.Enumerations.FrameMode.Dual
+  name: Dual
+  href: api/BassBoom.Basolia.Enumerations.FrameMode.html#BassBoom_Basolia_Enumerations_FrameMode_Dual
+  commentId: F:BassBoom.Basolia.Enumerations.FrameMode.Dual
+  fullName: BassBoom.Basolia.Enumerations.FrameMode.Dual
+  nameWithType: FrameMode.Dual
+- uid: BassBoom.Basolia.Enumerations.FrameMode.Joint
+  name: Joint
+  href: api/BassBoom.Basolia.Enumerations.FrameMode.html#BassBoom_Basolia_Enumerations_FrameMode_Joint
+  commentId: F:BassBoom.Basolia.Enumerations.FrameMode.Joint
+  fullName: BassBoom.Basolia.Enumerations.FrameMode.Joint
+  nameWithType: FrameMode.Joint
+- uid: BassBoom.Basolia.Enumerations.FrameMode.Mono
+  name: Mono
+  href: api/BassBoom.Basolia.Enumerations.FrameMode.html#BassBoom_Basolia_Enumerations_FrameMode_Mono
+  commentId: F:BassBoom.Basolia.Enumerations.FrameMode.Mono
+  fullName: BassBoom.Basolia.Enumerations.FrameMode.Mono
+  nameWithType: FrameMode.Mono
+- uid: BassBoom.Basolia.Enumerations.FrameMode.Stereo
+  name: Stereo
+  href: api/BassBoom.Basolia.Enumerations.FrameMode.html#BassBoom_Basolia_Enumerations_FrameMode_Stereo
+  commentId: F:BassBoom.Basolia.Enumerations.FrameMode.Stereo
+  fullName: BassBoom.Basolia.Enumerations.FrameMode.Stereo
+  nameWithType: FrameMode.Stereo
+- uid: BassBoom.Basolia.Enumerations.FrameVbr
+  name: FrameVbr
+  href: api/BassBoom.Basolia.Enumerations.FrameVbr.html
+  commentId: T:BassBoom.Basolia.Enumerations.FrameVbr
+  fullName: BassBoom.Basolia.Enumerations.FrameVbr
+  nameWithType: FrameVbr
+- uid: BassBoom.Basolia.Enumerations.FrameVbr.Abr
+  name: Abr
+  href: api/BassBoom.Basolia.Enumerations.FrameVbr.html#BassBoom_Basolia_Enumerations_FrameVbr_Abr
+  commentId: F:BassBoom.Basolia.Enumerations.FrameVbr.Abr
+  fullName: BassBoom.Basolia.Enumerations.FrameVbr.Abr
+  nameWithType: FrameVbr.Abr
+- uid: BassBoom.Basolia.Enumerations.FrameVbr.Cbr
+  name: Cbr
+  href: api/BassBoom.Basolia.Enumerations.FrameVbr.html#BassBoom_Basolia_Enumerations_FrameVbr_Cbr
+  commentId: F:BassBoom.Basolia.Enumerations.FrameVbr.Cbr
+  fullName: BassBoom.Basolia.Enumerations.FrameVbr.Cbr
+  nameWithType: FrameVbr.Cbr
+- uid: BassBoom.Basolia.Enumerations.FrameVbr.Vbr
+  name: Vbr
+  href: api/BassBoom.Basolia.Enumerations.FrameVbr.html#BassBoom_Basolia_Enumerations_FrameVbr_Vbr
+  commentId: F:BassBoom.Basolia.Enumerations.FrameVbr.Vbr
+  fullName: BassBoom.Basolia.Enumerations.FrameVbr.Vbr
+  nameWithType: FrameVbr.Vbr
+- uid: BassBoom.Basolia.Enumerations.FrameVersion
+  name: FrameVersion
+  href: api/BassBoom.Basolia.Enumerations.FrameVersion.html
+  commentId: T:BassBoom.Basolia.Enumerations.FrameVersion
+  fullName: BassBoom.Basolia.Enumerations.FrameVersion
+  nameWithType: FrameVersion
+- uid: BassBoom.Basolia.Enumerations.FrameVersion.Version10
+  name: Version10
+  href: api/BassBoom.Basolia.Enumerations.FrameVersion.html#BassBoom_Basolia_Enumerations_FrameVersion_Version10
+  commentId: F:BassBoom.Basolia.Enumerations.FrameVersion.Version10
+  fullName: BassBoom.Basolia.Enumerations.FrameVersion.Version10
+  nameWithType: FrameVersion.Version10
+- uid: BassBoom.Basolia.Enumerations.FrameVersion.Version20
+  name: Version20
+  href: api/BassBoom.Basolia.Enumerations.FrameVersion.html#BassBoom_Basolia_Enumerations_FrameVersion_Version20
+  commentId: F:BassBoom.Basolia.Enumerations.FrameVersion.Version20
+  fullName: BassBoom.Basolia.Enumerations.FrameVersion.Version20
+  nameWithType: FrameVersion.Version20
+- uid: BassBoom.Basolia.Enumerations.FrameVersion.Version25
+  name: Version25
+  href: api/BassBoom.Basolia.Enumerations.FrameVersion.html#BassBoom_Basolia_Enumerations_FrameVersion_Version25
+  commentId: F:BassBoom.Basolia.Enumerations.FrameVersion.Version25
+  fullName: BassBoom.Basolia.Enumerations.FrameVersion.Version25
+  nameWithType: FrameVersion.Version25
+- uid: BassBoom.Basolia.Enumerations.PlaybackChannels
+  name: PlaybackChannels
+  href: api/BassBoom.Basolia.Enumerations.PlaybackChannels.html
+  commentId: T:BassBoom.Basolia.Enumerations.PlaybackChannels
+  fullName: BassBoom.Basolia.Enumerations.PlaybackChannels
+  nameWithType: PlaybackChannels
+- uid: BassBoom.Basolia.Enumerations.PlaybackChannels.Both
+  name: Both
+  href: api/BassBoom.Basolia.Enumerations.PlaybackChannels.html#BassBoom_Basolia_Enumerations_PlaybackChannels_Both
+  commentId: F:BassBoom.Basolia.Enumerations.PlaybackChannels.Both
+  fullName: BassBoom.Basolia.Enumerations.PlaybackChannels.Both
+  nameWithType: PlaybackChannels.Both
+- uid: BassBoom.Basolia.Enumerations.PlaybackChannels.Left
+  name: Left
+  href: api/BassBoom.Basolia.Enumerations.PlaybackChannels.html#BassBoom_Basolia_Enumerations_PlaybackChannels_Left
+  commentId: F:BassBoom.Basolia.Enumerations.PlaybackChannels.Left
+  fullName: BassBoom.Basolia.Enumerations.PlaybackChannels.Left
+  nameWithType: PlaybackChannels.Left
+- uid: BassBoom.Basolia.Enumerations.PlaybackChannels.Right
+  name: Right
+  href: api/BassBoom.Basolia.Enumerations.PlaybackChannels.html#BassBoom_Basolia_Enumerations_PlaybackChannels_Right
+  commentId: F:BassBoom.Basolia.Enumerations.PlaybackChannels.Right
+  fullName: BassBoom.Basolia.Enumerations.PlaybackChannels.Right
+  nameWithType: PlaybackChannels.Right
+- uid: BassBoom.Basolia.Enumerations.PlaybackStateType
+  name: PlaybackStateType
+  href: api/BassBoom.Basolia.Enumerations.PlaybackStateType.html
+  commentId: T:BassBoom.Basolia.Enumerations.PlaybackStateType
+  fullName: BassBoom.Basolia.Enumerations.PlaybackStateType
+  nameWithType: PlaybackStateType
+- uid: BassBoom.Basolia.Enumerations.PlaybackStateType.Accurate
+  name: Accurate
+  href: api/BassBoom.Basolia.Enumerations.PlaybackStateType.html#BassBoom_Basolia_Enumerations_PlaybackStateType_Accurate
+  commentId: F:BassBoom.Basolia.Enumerations.PlaybackStateType.Accurate
+  fullName: BassBoom.Basolia.Enumerations.PlaybackStateType.Accurate
+  nameWithType: PlaybackStateType.Accurate
+- uid: BassBoom.Basolia.Enumerations.PlaybackStateType.BufferFill
+  name: BufferFill
+  href: api/BassBoom.Basolia.Enumerations.PlaybackStateType.html#BassBoom_Basolia_Enumerations_PlaybackStateType_BufferFill
+  commentId: F:BassBoom.Basolia.Enumerations.PlaybackStateType.BufferFill
+  fullName: BassBoom.Basolia.Enumerations.PlaybackStateType.BufferFill
+  nameWithType: PlaybackStateType.BufferFill
+- uid: BassBoom.Basolia.Enumerations.PlaybackStateType.DecodeDelay
+  name: DecodeDelay
+  href: api/BassBoom.Basolia.Enumerations.PlaybackStateType.html#BassBoom_Basolia_Enumerations_PlaybackStateType_DecodeDelay
+  commentId: F:BassBoom.Basolia.Enumerations.PlaybackStateType.DecodeDelay
+  fullName: BassBoom.Basolia.Enumerations.PlaybackStateType.DecodeDelay
+  nameWithType: PlaybackStateType.DecodeDelay
+- uid: BassBoom.Basolia.Enumerations.PlaybackStateType.EncodeDelay
+  name: EncodeDelay
+  href: api/BassBoom.Basolia.Enumerations.PlaybackStateType.html#BassBoom_Basolia_Enumerations_PlaybackStateType_EncodeDelay
+  commentId: F:BassBoom.Basolia.Enumerations.PlaybackStateType.EncodeDelay
+  fullName: BassBoom.Basolia.Enumerations.PlaybackStateType.EncodeDelay
+  nameWithType: PlaybackStateType.EncodeDelay
+- uid: BassBoom.Basolia.Enumerations.PlaybackStateType.EncodePadding
+  name: EncodePadding
+  href: api/BassBoom.Basolia.Enumerations.PlaybackStateType.html#BassBoom_Basolia_Enumerations_PlaybackStateType_EncodePadding
+  commentId: F:BassBoom.Basolia.Enumerations.PlaybackStateType.EncodePadding
+  fullName: BassBoom.Basolia.Enumerations.PlaybackStateType.EncodePadding
+  nameWithType: PlaybackStateType.EncodePadding
+- uid: BassBoom.Basolia.Enumerations.PlaybackStateType.Frankenstein
+  name: Frankenstein
+  href: api/BassBoom.Basolia.Enumerations.PlaybackStateType.html#BassBoom_Basolia_Enumerations_PlaybackStateType_Frankenstein
+  commentId: F:BassBoom.Basolia.Enumerations.PlaybackStateType.Frankenstein
+  fullName: BassBoom.Basolia.Enumerations.PlaybackStateType.Frankenstein
+  nameWithType: PlaybackStateType.Frankenstein
+- uid: BassBoom.Basolia.Enumerations.PlaybackStateType.FreshDecoder
+  name: FreshDecoder
+  href: api/BassBoom.Basolia.Enumerations.PlaybackStateType.html#BassBoom_Basolia_Enumerations_PlaybackStateType_FreshDecoder
+  commentId: F:BassBoom.Basolia.Enumerations.PlaybackStateType.FreshDecoder
+  fullName: BassBoom.Basolia.Enumerations.PlaybackStateType.FreshDecoder
+  nameWithType: PlaybackStateType.FreshDecoder
 - uid: BassBoom.Basolia.File
   name: BassBoom.Basolia.File
   href: api/BassBoom.Basolia.File.html
@@ -2414,15 +2526,15 @@ references:
   commentId: T:BassBoom.Basolia.Playback.PlaybackTools
   fullName: BassBoom.Basolia.Playback.PlaybackTools
   nameWithType: PlaybackTools
-- uid: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Native.Interop.Play.mpg123_channels,System.Int32)
-  name: GetEqualizer(mpg123_channels, int)
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetEqualizer_BassBoom_Native_Interop_Play_mpg123_channels_System_Int32_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Native.Interop.Play.mpg123_channels,System.Int32)
-  name.vb: GetEqualizer(mpg123_channels, Integer)
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Native.Interop.Play.mpg123_channels, int)
-  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Native.Interop.Play.mpg123_channels, Integer)
-  nameWithType: PlaybackTools.GetEqualizer(mpg123_channels, int)
-  nameWithType.vb: PlaybackTools.GetEqualizer(mpg123_channels, Integer)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32)
+  name: GetEqualizer(PlaybackChannels, int)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetEqualizer_BassBoom_Basolia_Enumerations_PlaybackChannels_System_Int32_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32)
+  name.vb: GetEqualizer(PlaybackChannels, Integer)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels, int)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels, Integer)
+  nameWithType: PlaybackTools.GetEqualizer(PlaybackChannels, int)
+  nameWithType.vb: PlaybackTools.GetEqualizer(PlaybackChannels, Integer)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer*
   name: GetEqualizer
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetEqualizer_
@@ -2430,12 +2542,12 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer
   nameWithType: PlaybackTools.GetEqualizer
-- uid: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Native.Interop.Analysis.mpg123_state)
-  name: GetNativeState(mpg123_state)
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetNativeState_BassBoom_Native_Interop_Analysis_mpg123_state_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Native.Interop.Analysis.mpg123_state)
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Native.Interop.Analysis.mpg123_state)
-  nameWithType: PlaybackTools.GetNativeState(mpg123_state)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Basolia.Enumerations.PlaybackStateType)
+  name: GetNativeState(PlaybackStateType)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetNativeState_BassBoom_Basolia_Enumerations_PlaybackStateType_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Basolia.Enumerations.PlaybackStateType)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Basolia.Enumerations.PlaybackStateType)
+  nameWithType: PlaybackTools.GetNativeState(PlaybackStateType)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState*
   name: GetNativeState
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetNativeState_
@@ -2547,15 +2659,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.ResetEqualizer
   nameWithType: PlaybackTools.ResetEqualizer
-- uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Native.Interop.Play.mpg123_channels,System.Int32,System.Double)
-  name: SetEqualizer(mpg123_channels, int, double)
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizer_BassBoom_Native_Interop_Play_mpg123_channels_System_Int32_System_Double_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Native.Interop.Play.mpg123_channels,System.Int32,System.Double)
-  name.vb: SetEqualizer(mpg123_channels, Integer, Double)
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Native.Interop.Play.mpg123_channels, int, double)
-  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Native.Interop.Play.mpg123_channels, Integer, Double)
-  nameWithType: PlaybackTools.SetEqualizer(mpg123_channels, int, double)
-  nameWithType.vb: PlaybackTools.SetEqualizer(mpg123_channels, Integer, Double)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Double)
+  name: SetEqualizer(PlaybackChannels, int, double)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizer_BassBoom_Basolia_Enumerations_PlaybackChannels_System_Int32_System_Double_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Double)
+  name.vb: SetEqualizer(PlaybackChannels, Integer, Double)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels, int, double)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels, Integer, Double)
+  nameWithType: PlaybackTools.SetEqualizer(PlaybackChannels, int, double)
+  nameWithType.vb: PlaybackTools.SetEqualizer(PlaybackChannels, Integer, Double)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer*
   name: SetEqualizer
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizer_
@@ -2563,15 +2675,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer
   nameWithType: PlaybackTools.SetEqualizer
-- uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Native.Interop.Play.mpg123_channels,System.Int32,System.Int32,System.Double)
-  name: SetEqualizerRange(mpg123_channels, int, int, double)
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizerRange_BassBoom_Native_Interop_Play_mpg123_channels_System_Int32_System_Int32_System_Double_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Native.Interop.Play.mpg123_channels,System.Int32,System.Int32,System.Double)
-  name.vb: SetEqualizerRange(mpg123_channels, Integer, Integer, Double)
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Native.Interop.Play.mpg123_channels, int, int, double)
-  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Native.Interop.Play.mpg123_channels, Integer, Integer, Double)
-  nameWithType: PlaybackTools.SetEqualizerRange(mpg123_channels, int, int, double)
-  nameWithType.vb: PlaybackTools.SetEqualizerRange(mpg123_channels, Integer, Integer, Double)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Int32,System.Double)
+  name: SetEqualizerRange(PlaybackChannels, int, int, double)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizerRange_BassBoom_Basolia_Enumerations_PlaybackChannels_System_Int32_System_Int32_System_Double_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Int32,System.Double)
+  name.vb: SetEqualizerRange(PlaybackChannels, Integer, Integer, Double)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.Enumerations.PlaybackChannels, int, int, double)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.Enumerations.PlaybackChannels, Integer, Integer, Double)
+  nameWithType: PlaybackTools.SetEqualizerRange(PlaybackChannels, int, int, double)
+  nameWithType.vb: PlaybackTools.SetEqualizerRange(PlaybackChannels, Integer, Integer, Double)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange*
   name: SetEqualizerRange
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizerRange_

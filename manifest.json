@@ -75,6 +75,76 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Enumerations.FrameFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Enumerations.FrameFlags.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Enumerations.FrameMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Enumerations.FrameMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Enumerations.FrameVbr.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Enumerations.FrameVbr.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Enumerations.FrameVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Enumerations.FrameVersion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Enumerations.PlaybackChannels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Enumerations.PlaybackChannels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Enumerations.PlaybackStateType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Enumerations.PlaybackStateType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Enumerations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Enumerations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.File.FileTools.yml",
       "output": {
         ".html": {
