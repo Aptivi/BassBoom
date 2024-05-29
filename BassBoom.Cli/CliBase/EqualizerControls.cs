@@ -17,8 +17,8 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia.Enumerations;
 using BassBoom.Basolia.Playback;
-using BassBoom.Native.Interop.Play;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -32,11 +32,11 @@ namespace BassBoom.Cli.CliBase
             bands[band];
 
         internal static double GetEqualizer(int band) =>
-            PlaybackTools.GetEqualizer(mpg123_channels.MPG123_LR, band);
+            PlaybackTools.GetEqualizer(PlaybackChannels.Both, band);
 
         internal static void SetEqualizer(int band, double value)
         {
-            PlaybackTools.SetEqualizer(mpg123_channels.MPG123_LR, band, value);
+            PlaybackTools.SetEqualizer(PlaybackChannels.Both, band, value);
             UpdateEqualizers();
         }
 

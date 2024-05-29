@@ -33,6 +33,7 @@ using BassBoom.Native.Interop.Analysis;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using BassBoom.Basolia.Enumerations;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -249,7 +250,7 @@ namespace BassBoom.Basolia.Playback
         /// <param name="bandIdx">Band index from 0 to 31</param>
         /// <param name="value">Value of the equalizer</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void SetEqualizer(mpg123_channels channels, int bandIdx, double value)
+        public static void SetEqualizer(PlaybackChannels channels, int bandIdx, double value)
         {
             InitBasolia.CheckInited();
 
@@ -257,7 +258,7 @@ namespace BassBoom.Basolia.Playback
             unsafe
             {
                 var handle = Mpg123Instance._mpg123Handle;
-                int status = NativeVolume.mpg123_eq(handle, channels, bandIdx, value);
+                int status = NativeVolume.mpg123_eq(handle, (mpg123_channels)channels, bandIdx, value);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set equalizer band {bandIdx + 1}/32 to {value} under {channels}", (mpg123_errors)status);
             }
@@ -271,7 +272,7 @@ namespace BassBoom.Basolia.Playback
         /// <param name="bandIdxEnd">Band index from 0 to 31 (second band to end to)</param>
         /// <param name="value">Value of the equalizer</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void SetEqualizerRange(mpg123_channels channels, int bandIdxStart, int bandIdxEnd, double value)
+        public static void SetEqualizerRange(PlaybackChannels channels, int bandIdxStart, int bandIdxEnd, double value)
         {
             InitBasolia.CheckInited();
 
@@ -291,7 +292,7 @@ namespace BassBoom.Basolia.Playback
         /// <param name="channels">Mono, stereo, or both</param>
         /// <param name="bandIdx">Band index from 0 to 31</param>
         /// <exception cref="BasoliaException"></exception>
-        public static double GetEqualizer(mpg123_channels channels, int bandIdx)
+        public static double GetEqualizer(PlaybackChannels channels, int bandIdx)
         {
             InitBasolia.CheckInited();
 
@@ -299,7 +300,7 @@ namespace BassBoom.Basolia.Playback
             unsafe
             {
                 var handle = Mpg123Instance._mpg123Handle;
-                double eq = NativeVolume.mpg123_geteq(handle, channels, bandIdx);
+                double eq = NativeVolume.mpg123_geteq(handle, (mpg123_channels)channels, bandIdx);
                 return eq;
             }
         }
@@ -328,7 +329,7 @@ namespace BassBoom.Basolia.Playback
         /// <param name="state">A native state to get</param>
         /// <returns>A number that represents the value of this state</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static (long, double) GetNativeState(mpg123_state state)
+        public static (long, double) GetNativeState(PlaybackStateType state)
         {
             InitBasolia.CheckInited();
 
@@ -338,7 +339,7 @@ namespace BassBoom.Basolia.Playback
                 long stateInt = 0;
                 double stateDouble = 0;
                 var handle = Mpg123Instance._mpg123Handle;
-                int status = NativeStatus.mpg123_getstate(handle, state, ref stateInt, ref stateDouble);
+                int status = NativeStatus.mpg123_getstate(handle, (mpg123_state)state, ref stateInt, ref stateDouble);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't get native state of {state}!", (mpg123_errors)status);
                 return (stateInt, stateDouble);

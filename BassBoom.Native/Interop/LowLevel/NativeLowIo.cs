@@ -26,7 +26,7 @@ namespace BassBoom.Native.Interop.LowLevel
     /// <summary>
     /// Low-level I/O group from mpg123
     /// </summary>
-    public static unsafe class NativeLowIo
+    internal static unsafe class NativeLowIo
     {
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate int r_read(int val1, IntPtr val2, int val3);

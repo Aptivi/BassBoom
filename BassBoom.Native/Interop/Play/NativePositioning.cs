@@ -25,7 +25,7 @@ namespace BassBoom.Native.Interop.Play
     /// <summary>
     /// Positioning group from mpg123
     /// </summary>
-    public static unsafe class NativePositioning
+    internal static unsafe class NativePositioning
     {
         /// <summary>
         /// MPG123_EXPORT off_t mpg123_tell(mpg123_handle *mh);

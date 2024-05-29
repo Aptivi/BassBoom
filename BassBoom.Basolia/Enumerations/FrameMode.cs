@@ -17,26 +17,28 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Native.Runtime;
-using System;
-
-namespace BassBoom.Native.Exceptions
+namespace BassBoom.Basolia.Enumerations
 {
-    internal class BasoliaNativeLibraryException : Exception
+    /// <summary>
+    /// Frame mode
+    /// </summary>
+    public enum FrameMode
     {
-        internal BasoliaNativeLibraryException() :
-            base($"Native library error\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}")
-        { }
-
-        internal BasoliaNativeLibraryException(string message) :
-            base($"{message}\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}")
-        { }
-
-        internal BasoliaNativeLibraryException(string message, Exception innerException) :
-            base($"{message}\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}", innerException)
-        { }
+        /// <summary>
+        /// Stereo sound
+        /// </summary>
+        Stereo,
+        /// <summary>
+        /// Joint stereo sound
+        /// </summary>
+        Joint,
+        /// <summary>
+        /// Dual sound
+        /// </summary>
+        Dual,
+        /// <summary>
+        /// Mono sound
+        /// </summary>
+        Mono
     }
 }

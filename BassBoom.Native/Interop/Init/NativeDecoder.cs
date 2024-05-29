@@ -25,7 +25,7 @@ namespace BassBoom.Native.Interop.Init
     /// <summary>
     /// Decoder group from mpg123
     /// </summary>
-    public static unsafe class NativeDecoder
+    internal static unsafe class NativeDecoder
     {
         /// <summary>
         /// MPG123_EXPORT const char **mpg123_decoders(void);

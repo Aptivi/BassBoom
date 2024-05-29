@@ -19,7 +19,7 @@
 
 namespace BassBoom.Native.Interop.Analysis
 {
-    public enum mpg123_enc_enum
+    internal enum mpg123_enc_enum
     {
         MPG123_ENC_8      = 0x00f,
         MPG123_ENC_16     = 0x040,
@@ -47,14 +47,14 @@ namespace BassBoom.Native.Interop.Analysis
                          | MPG123_ENC_FLOAT_32   | MPG123_ENC_FLOAT_64
     }
 
-    public unsafe struct mpg123_fmt
+    internal unsafe struct mpg123_fmt
     {
         internal long rate;
         internal int channels;
         internal int encoding;
     }
 
-    public unsafe struct mpg123_fmt_win
+    internal unsafe struct mpg123_fmt_win
     {
         internal int rate;
         internal int channels;

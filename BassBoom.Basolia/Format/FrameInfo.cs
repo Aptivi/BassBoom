@@ -17,7 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Native.Interop.Analysis;
+using BassBoom.Basolia.Enumerations;
 
 namespace BassBoom.Basolia.Format
 {
@@ -26,22 +26,22 @@ namespace BassBoom.Basolia.Format
     /// </summary>
     public class FrameInfo
     {
-        private readonly mpg123_version version;
+        private readonly FrameVersion version;
         private readonly int layer;
         private readonly long rate;
-        private readonly mpg123_mode mode;
+        private readonly FrameMode mode;
         private readonly int mode_ext;
         private readonly int framesize;
-        private readonly mpg123_flags flags;
+        private readonly FrameFlags flags;
         private readonly int emphasis;
         private readonly int bitrate;
         private readonly int abr_rate;
-        private readonly mpg123_vbr vbr;
+        private readonly FrameVbr vbr;
 
         /// <summary>
         /// MPEG version
         /// </summary>
-        public mpg123_version Version =>
+        public FrameVersion Version =>
             version;
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Stereo mode
         /// </summary>
-        public mpg123_mode Mode =>
+        public FrameMode Mode =>
             mode;
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Music file flags
         /// </summary>
-        public mpg123_flags Flags =>
+        public FrameFlags Flags =>
             flags;
 
         /// <summary>
@@ -101,10 +101,10 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Variable bit rate mode
         /// </summary>
-        public mpg123_vbr Vbr =>
+        public FrameVbr Vbr =>
             vbr;
 
-        internal FrameInfo(mpg123_version version, int layer, long rate, mpg123_mode mode, int mode_ext, int framesize, mpg123_flags flags, int emphasis, int bitrate, int abr_rate, mpg123_vbr vbr)
+        internal FrameInfo(FrameVersion version, int layer, long rate, FrameMode mode, int mode_ext, int framesize, FrameFlags flags, int emphasis, int bitrate, int abr_rate, FrameVbr vbr)
         {
             this.version = version;
             this.layer = layer;

@@ -16,8 +16,6 @@
     
 *A cross-platform music app and library*
 
-*WARNING: This application and library is not done yet, and we'll release the first public version when it's ready. Send your feedback through Issues!*
-
 <br>
 <br>
 

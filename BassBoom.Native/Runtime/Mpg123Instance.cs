@@ -38,7 +38,7 @@ namespace BassBoom.Native.Runtime
     /// <summary>
     /// mpg123 instance class to enable Basolia to perform sound operations
     /// </summary>
-    public unsafe class Mpg123Instance
+    internal unsafe class Mpg123Instance
     {
         internal static string mpg123LibPath = GetAppropriateMpg123LibraryPath();
         internal static string out123LibPath = GetAppropriateOut123LibraryPath();
@@ -50,12 +50,12 @@ namespace BassBoom.Native.Runtime
         /// <summary>
         /// Singleton of the mpg123 instance class
         /// </summary>
-        public static Mpg123Instance Instance { get; } = new Mpg123Instance();
+        internal static Mpg123Instance Instance { get; } = new Mpg123Instance();
 
         /// <summary>
         /// Initializes the mpg123 library
         /// </summary>
-        public static void InitializeLibrary() =>
+        internal static void InitializeLibrary() =>
             InitializeLibrary(mpg123LibPath, out123LibPath, winpthreadsLibPath);
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace BassBoom.Native.Runtime
         /// <param name="libPath">Absolute path to the mpg123 library</param>
         /// <param name="libPathOut">Absolute path to the out123 library</param>
         /// <param name="libPathWinpthreads">Absolute path to the libwinpthreads library</param>
-        public static void InitializeLibrary(string libPath, string libPathOut, string libPathWinpthreads)
+        internal static void InitializeLibrary(string libPath, string libPathOut, string libPathWinpthreads)
         {
             // Check to see if we have this path
             if (!File.Exists(libPath))

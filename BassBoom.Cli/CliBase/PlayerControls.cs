@@ -19,12 +19,12 @@
 
 using BassBoom.Basolia;
 using BassBoom.Basolia.Devices;
+using BassBoom.Basolia.Enumerations;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using BassBoom.Cli.Tools;
-using BassBoom.Native.Interop.Analysis;
 using SpecProbe.Platform;
 using System;
 using System.IO;
@@ -405,13 +405,13 @@ namespace BassBoom.Cli.CliBase
                 Native State
                 ============
 
-                Accurate rendering: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_ACCURATE)}}
-                Buffer fill: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_BUFFERFILL)}}
-                Decoding delay: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_DEC_DELAY)}}
-                Encoding delay: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_ENC_DELAY)}}
-                Encoding padding: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_ENC_PADDING)}}
-                Frankenstein stream: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_FRANKENSTEIN)}}
-                Fresh decoder: {{PlaybackTools.GetNativeState(mpg123_state.MPG123_FRESH_DECODER)}}
+                Accurate rendering: {{PlaybackTools.GetNativeState(PlaybackStateType.Accurate)}}
+                Buffer fill: {{PlaybackTools.GetNativeState(PlaybackStateType.BufferFill)}}
+                Decoding delay: {{PlaybackTools.GetNativeState(PlaybackStateType.DecodeDelay)}}
+                Encoding delay: {{PlaybackTools.GetNativeState(PlaybackStateType.EncodeDelay)}}
+                Encoding padding: {{PlaybackTools.GetNativeState(PlaybackStateType.EncodePadding)}}
+                Frankenstein stream: {{PlaybackTools.GetNativeState(PlaybackStateType.Frankenstein)}}
+                Fresh decoder: {{PlaybackTools.GetNativeState(PlaybackStateType.FreshDecoder)}}
 
                 Texts and Extras
                 ================

@@ -23,10 +23,10 @@ using System.Runtime.InteropServices;
 namespace BassBoom.Native.Interop.Init
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct mpg123_handle
+    internal struct mpg123_handle
     { }
 
-    public enum mpg123_parms
+    internal enum mpg123_parms
     {
         MPG123_VERBOSE = 0,
         MPG123_FLAGS,
@@ -50,7 +50,7 @@ namespace BassBoom.Native.Interop.Init
         MPG123_FREEFORMAT_SIZE
     }
 
-    public enum mpg123_param_flags
+    internal enum mpg123_param_flags
     {
         MPG123_FORCE_MONO = 0x7,
         MPG123_MONO_LEFT = 0x1,
@@ -80,7 +80,7 @@ namespace BassBoom.Native.Interop.Init
         MPG123_NO_FRANKENSTEIN = 0x1000000
     }
 
-    public enum mpg123_param_rva
+    internal enum mpg123_param_rva
     {
         MPG123_RVA_OFF = 0,
         MPG123_RVA_MIX = 1,
@@ -88,7 +88,7 @@ namespace BassBoom.Native.Interop.Init
         MPG123_RVA_MAX = MPG123_RVA_ALBUM
     }
 
-    public enum mpg123_feature_set
+    internal enum mpg123_feature_set
     {
         MPG123_FEATURE_ABI_UTF8OPEN = 0,
         MPG123_FEATURE_OUTPUT_8BIT,
@@ -113,7 +113,7 @@ namespace BassBoom.Native.Interop.Init
     /// <summary>
     /// Init group from mpg123
     /// </summary>
-    public static unsafe class NativeInit
+    internal static unsafe class NativeInit
     {
         /// <summary>
         /// const char *mpg123_distversion(unsigned int *major, unsigned int *minor, unsigned int *patch)

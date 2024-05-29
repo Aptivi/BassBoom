@@ -17,26 +17,28 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Native.Runtime;
-using System;
-
-namespace BassBoom.Native.Exceptions
+namespace BassBoom.Basolia.Enumerations
 {
-    internal class BasoliaNativeLibraryException : Exception
+    /// <summary>
+    /// Frame flags
+    /// </summary>
+    public enum FrameFlags
     {
-        internal BasoliaNativeLibraryException() :
-            base($"Native library error\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}")
-        { }
-
-        internal BasoliaNativeLibraryException(string message) :
-            base($"{message}\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}")
-        { }
-
-        internal BasoliaNativeLibraryException(string message, Exception innerException) :
-            base($"{message}\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}", innerException)
-        { }
+        /// <summary>
+        /// Cyclic redundancy check
+        /// </summary>
+        Crc = 0x1,
+        /// <summary>
+        /// Copyrighted asset
+        /// </summary>
+        Copyright = 0x2,
+        /// <summary>
+        /// Private asset
+        /// </summary>
+        Private = 0x4,
+        /// <summary>
+        /// Original asset
+        /// </summary>
+        Original = 0x8
     }
 }

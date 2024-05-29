@@ -26,7 +26,7 @@ namespace BassBoom.Native.Interop.Play
     /// <summary>
     /// Input group from mpg123
     /// </summary>
-    public static unsafe class NativeInput
+    internal static unsafe class NativeInput
     {
         /// <summary>
         /// MPG123_EXPORT int mpg123_open_fixed(mpg123_handle *mh, const char *path

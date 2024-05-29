@@ -30,6 +30,7 @@ using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Linq;
 using SpecProbe.Platform;
+using BassBoom.Basolia.Enumerations;
 
 namespace BassBoom.Basolia.Format
 {
@@ -445,17 +446,17 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Trying to get the frame information during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
             
             // Some variables
-            mpg123_version version;
+            FrameVersion version;
             int layer;
             long rate;
-            mpg123_mode mode;
+            FrameMode mode;
             int mode_ext;
             int framesize;
-            mpg123_flags flags;
+            FrameFlags flags;
             int emphasis;
             int bitrate;
             int abr_rate;
-            mpg123_vbr vbr;
+            FrameVbr vbr;
 
             // In Windows, the "long" rate byte number differs from the Linux version.
             if (PlatformHelper.IsOnWindows() || !Environment.Is64BitOperatingSystem)
@@ -480,17 +481,17 @@ namespace BassBoom.Basolia.Format
                 }
 
                 // Move every info to the class
-                version = frameInfo.version;
+                version = (FrameVersion)frameInfo.version;
                 layer = frameInfo.layer;
                 rate = frameInfo.rate;
-                mode = frameInfo.mode;
+                mode = (FrameMode)frameInfo.mode;
                 mode_ext = frameInfo.mode_ext;
                 framesize = frameInfo.framesize;
-                flags = frameInfo.flags;
+                flags = (FrameFlags)frameInfo.flags;
                 emphasis = frameInfo.emphasis;
                 bitrate = frameInfo.bitrate;
                 abr_rate = frameInfo.abr_rate;
-                vbr = frameInfo.vbr;
+                vbr = (FrameVbr)frameInfo.vbr;
             }
             else
             {
@@ -514,17 +515,17 @@ namespace BassBoom.Basolia.Format
                 }
 
                 // Move every info to the class
-                version = frameInfo.version;
+                version = (FrameVersion)frameInfo.version;
                 layer = frameInfo.layer;
                 rate = frameInfo.rate;
-                mode = frameInfo.mode;
+                mode = (FrameMode)frameInfo.mode;
                 mode_ext = frameInfo.mode_ext;
                 framesize = frameInfo.framesize;
-                flags = frameInfo.flags;
+                flags = (FrameFlags)frameInfo.flags;
                 emphasis = frameInfo.emphasis;
                 bitrate = frameInfo.bitrate;
                 abr_rate = frameInfo.abr_rate;
-                vbr = frameInfo.vbr;
+                vbr = (FrameVbr)frameInfo.vbr;
             }
             var frameInfoInstance = new FrameInfo(version, layer, rate, mode, mode_ext, framesize, flags, emphasis, bitrate, abr_rate, vbr);
             return frameInfoInstance;

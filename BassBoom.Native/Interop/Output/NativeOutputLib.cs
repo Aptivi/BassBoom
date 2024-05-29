@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 namespace BassBoom.Native.Interop.Output
 {
-    public enum out123_parms
+    internal enum out123_parms
     {
         OUT123_FLAGS = 1,
         OUT123_PRELOAD,
@@ -36,7 +36,7 @@ namespace BassBoom.Native.Interop.Output
         OUT123_REMOVE_FLAGS,
     }
 
-    public enum out123_flags
+    internal enum out123_flags
     {
         OUT123_HEADPHONES       = 0x01,
         OUT123_INTERNAL_SPEAKER = 0x02,
@@ -46,13 +46,13 @@ namespace BassBoom.Native.Interop.Output
         OUT123_MUTE             = 0x20
     }
 
-    public enum out123_propflags
+    internal enum out123_propflags
     {
         OUT123_PROP_LIVE = 0x01,
         OUT123_PROP_PERSISTENT = 0x02
     }
 
-    public enum out123_error
+    internal enum out123_error
     {
         OUT123_ERR = -1,
         OUT123_OK  = 0,
@@ -74,13 +74,13 @@ namespace BassBoom.Native.Interop.Output
         OUT123_ERRCOUNT
     }
 
-    public unsafe struct out123_handle
+    internal unsafe struct out123_handle
     { }
 
     /// <summary>
     /// Output group from out123
     /// </summary>
-    public static unsafe class NativeOutputLib
+    internal static unsafe class NativeOutputLib
     {
         /// <summary>
         /// MPG123_EXPORT const char *out123_distversion(unsigned int *major, unsigned int *minor, unsigned int *patch);

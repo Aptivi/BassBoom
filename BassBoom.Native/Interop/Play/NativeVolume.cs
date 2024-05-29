@@ -22,7 +22,7 @@ using BassBoom.Native.Interop.Init;
 
 namespace BassBoom.Native.Interop.Play
 {
-    public enum mpg123_channels
+    internal enum mpg123_channels
     {
         MPG123_LEFT = 0x1,
         MPG123_RIGHT = 0x2,
@@ -32,7 +32,7 @@ namespace BassBoom.Native.Interop.Play
     /// <summary>
     /// Volume group from mpg123
     /// </summary>
-    public static unsafe class NativeVolume
+    internal static unsafe class NativeVolume
     {
         /// <summary>
         /// MPG123_EXPORT int mpg123_eq( mpg123_handle *mh

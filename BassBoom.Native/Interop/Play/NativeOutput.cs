@@ -22,7 +22,7 @@ using BassBoom.Native.Interop.Init;
 
 namespace BassBoom.Native.Interop.Play
 {
-    public enum mpg123_channelcount
+    internal enum mpg123_channelcount
     {
         MPG123_MONO = 1,
         MPG123_STEREO = 2
@@ -31,7 +31,7 @@ namespace BassBoom.Native.Interop.Play
     /// <summary>
     /// Output group from mpg123
     /// </summary>
-    public static unsafe class NativeOutput
+    internal static unsafe class NativeOutput
     {
         /// <summary>
         /// MPG123_EXPORT void mpg123_rates(const long **list, size_t *number);

@@ -22,21 +22,21 @@ using BassBoom.Native.Interop.Init;
 
 namespace BassBoom.Native.Interop.Analysis
 {
-    public enum mpg123_vbr
+    internal enum mpg123_vbr
     {
         MPG123_CBR = 0,
         MPG123_VBR,
         MPG123_ABR
     }
 
-    public enum mpg123_version
+    internal enum mpg123_version
     {
         MPG123_1_0 = 0,
         MPG123_2_0,
         MPG123_2_5
     }
 
-    public enum mpg123_mode
+    internal enum mpg123_mode
     {
         MPG123_M_STEREO = 0,
         MPG123_M_JOINT,
@@ -44,7 +44,7 @@ namespace BassBoom.Native.Interop.Analysis
         MPG123_M_MONO
     }
 
-    public enum mpg123_flags
+    internal enum mpg123_flags
     {
         MPG123_CRC = 0x1,
         MPG123_COPYRIGHT = 0x2,
@@ -52,7 +52,7 @@ namespace BassBoom.Native.Interop.Analysis
         MPG123_ORIGINAL = 0x8
     }
 
-    public enum mpg123_state
+    internal enum mpg123_state
     {
         MPG123_ACCURATE = 1,
         MPG123_BUFFERFILL,
@@ -64,7 +64,7 @@ namespace BassBoom.Native.Interop.Analysis
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct mpg123_frameinfo_win
+    internal struct mpg123_frameinfo_win
     {
         internal mpg123_version version;
         internal int layer;
@@ -80,7 +80,7 @@ namespace BassBoom.Native.Interop.Analysis
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct mpg123_frameinfo2_win
+    internal struct mpg123_frameinfo2_win
     {
         internal int version;
         internal int layer;
@@ -96,7 +96,7 @@ namespace BassBoom.Native.Interop.Analysis
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct mpg123_frameinfo
+    internal struct mpg123_frameinfo
     {
         internal mpg123_version version;
         internal int layer;
@@ -112,7 +112,7 @@ namespace BassBoom.Native.Interop.Analysis
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct mpg123_frameinfo2
+    internal struct mpg123_frameinfo2
     {
         internal int version;
         internal int layer;
@@ -130,7 +130,7 @@ namespace BassBoom.Native.Interop.Analysis
     /// <summary>
     /// Status group from mpg123
     /// </summary>
-    public static unsafe class NativeStatus
+    internal static unsafe class NativeStatus
     {
         /// <summary>
         /// MPG123_EXPORT int mpg123_info(mpg123_handle *mh, struct mpg123_frameinfo *mi);

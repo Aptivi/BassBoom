@@ -17,26 +17,24 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Native.Runtime;
-using System;
-
-namespace BassBoom.Native.Exceptions
+namespace BassBoom.Basolia.Enumerations
 {
-    internal class BasoliaNativeLibraryException : Exception
+    /// <summary>
+    /// Frame version
+    /// </summary>
+    public enum FrameVersion
     {
-        internal BasoliaNativeLibraryException() :
-            base($"Native library error\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}")
-        { }
-
-        internal BasoliaNativeLibraryException(string message) :
-            base($"{message}\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}")
-        { }
-
-        internal BasoliaNativeLibraryException(string message, Exception innerException) :
-            base($"{message}\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}", innerException)
-        { }
+        /// <summary>
+        /// MPEG Layer 1.0
+        /// </summary>
+        Version10,
+        /// <summary>
+        /// MPEG Layer 2.0
+        /// </summary>
+        Version20,
+        /// <summary>
+        /// MPEG Layer 2.5
+        /// </summary>
+        Version25,
     }
 }

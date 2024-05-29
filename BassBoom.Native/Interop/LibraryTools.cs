@@ -29,24 +29,24 @@ namespace BassBoom.Native.Interop
     /// <summary>
     /// General native library properties and functions
     /// </summary>
-    public static unsafe class LibraryTools
+    internal static unsafe class LibraryTools
     {
         /// <summary>
         /// Absolute path to the mpg123 library
         /// </summary>
-        public static string LibraryPath =>
+        internal static string LibraryPath =>
             Mpg123Instance.mpg123LibPath;
 
         /// <summary>
         /// Absolute path to the out123 library
         /// </summary>
-        public static string LibraryPathOut =>
+        internal static string LibraryPathOut =>
             Mpg123Instance.out123LibPath;
 
         /// <summary>
         /// MPG library version
         /// </summary>
-        public static Version MpgLibVersion
+        internal static Version MpgLibVersion
         {
             get
             {
@@ -61,7 +61,7 @@ namespace BassBoom.Native.Interop
         /// <summary>
         /// Output library version
         /// </summary>
-        public static Version OutLibVersion
+        internal static Version OutLibVersion
         {
             get
             {
@@ -76,17 +76,17 @@ namespace BassBoom.Native.Interop
         /// <summary>
         /// C library name (POSIX)
         /// </summary>
-        public const string LibcName = "libc";
+        internal const string LibcName = "libc";
 
         /// <summary>
         /// Library name to search for upon invoking P/Invoke
         /// </summary>
-        public const string LibraryName = "mpg123";
+        internal const string LibraryName = "mpg123";
 
         /// <summary>
         /// Library name to search for upon invoking P/Invoke
         /// </summary>
-        public const string LibraryNameOut = "out123";
+        internal const string LibraryNameOut = "out123";
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_init (void)

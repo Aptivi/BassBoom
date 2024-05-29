@@ -22,13 +22,13 @@ using BassBoom.Native.Interop.Init;
 
 namespace BassBoom.Native.Interop.Analysis
 {
-    public unsafe struct mpg123_pars
+    internal unsafe struct mpg123_pars
     { }
 
     /// <summary>
     /// Parameters group from mpg123
     /// </summary>
-    public static unsafe class NativeParameters
+    internal static unsafe class NativeParameters
     {
         /// <summary>
         /// MPG123_EXPORT mpg123_handle *mpg123_parnew( mpg123_pars *mp

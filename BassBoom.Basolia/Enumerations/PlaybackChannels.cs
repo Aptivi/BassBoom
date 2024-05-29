@@ -17,26 +17,24 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Native.Runtime;
-using System;
-
-namespace BassBoom.Native.Exceptions
+namespace BassBoom.Basolia.Enumerations
 {
-    internal class BasoliaNativeLibraryException : Exception
+    /// <summary>
+    /// Playback channels
+    /// </summary>
+    public enum PlaybackChannels
     {
-        internal BasoliaNativeLibraryException() :
-            base($"Native library error\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}")
-        { }
-
-        internal BasoliaNativeLibraryException(string message) :
-            base($"{message}\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}")
-        { }
-
-        internal BasoliaNativeLibraryException(string message, Exception innerException) :
-            base($"{message}\n" +
-                 $"Library path is {Mpg123Instance.mpg123LibPath}", innerException)
-        { }
+        /// <summary>
+        /// Left channel
+        /// </summary>
+        Left = 1,
+        /// <summary>
+        /// Right channel
+        /// </summary>
+        Right,
+        /// <summary>
+        /// Both left and right sound channels
+        /// </summary>
+        Both,
     }
 }

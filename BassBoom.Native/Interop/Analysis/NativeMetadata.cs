@@ -23,7 +23,7 @@ using BassBoom.Native.Interop.Init;
 
 namespace BassBoom.Native.Interop.Analysis
 {
-    public enum mpg123_text_encoding
+    internal enum mpg123_text_encoding
     {
         mpg123_text_unknown  = 0,
         mpg123_text_utf8     = 1,
@@ -36,7 +36,7 @@ namespace BassBoom.Native.Interop.Analysis
         mpg123_text_max      = 7
     }
 
-    public enum mpg123_id3_enc
+    internal enum mpg123_id3_enc
     {
         mpg123_id3_latin1   = 0,
         mpg123_id3_utf16bom = 1,
@@ -45,7 +45,7 @@ namespace BassBoom.Native.Interop.Analysis
         mpg123_id3_enc_max  = 3
     }
 
-    public enum mpg123_id3_pic_type
+    internal enum mpg123_id3_pic_type
     {
         mpg123_id3_pic_other          =  0,
         mpg123_id3_pic_icon           =  1,
@@ -71,7 +71,7 @@ namespace BassBoom.Native.Interop.Analysis
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct mpg123_string
+    internal unsafe struct mpg123_string
     {
         internal char* p;
         internal IntPtr size;
@@ -79,7 +79,7 @@ namespace BassBoom.Native.Interop.Analysis
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct mpg123_text
+    internal unsafe struct mpg123_text
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         internal byte[] lang;
@@ -90,7 +90,7 @@ namespace BassBoom.Native.Interop.Analysis
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct mpg123_picture
+    internal unsafe struct mpg123_picture
     {
         internal char type;
         internal mpg123_string description;
@@ -100,7 +100,7 @@ namespace BassBoom.Native.Interop.Analysis
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct mpg123_id3v1
+    internal unsafe struct mpg123_id3v1
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         internal char[] tag;
@@ -118,7 +118,7 @@ namespace BassBoom.Native.Interop.Analysis
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct mpg123_id3v2
+    internal unsafe struct mpg123_id3v2
     {
         internal int version;
         internal mpg123_string* title;
@@ -140,7 +140,7 @@ namespace BassBoom.Native.Interop.Analysis
     /// <summary>
     /// Metadata group from mpg123
     /// </summary>
-    public static unsafe class NativeMetadata
+    internal static unsafe class NativeMetadata
     {
         internal const int MPG123_ID3 = 0x3;
         internal const int MPG123_NEW_ID3 = 0x1;

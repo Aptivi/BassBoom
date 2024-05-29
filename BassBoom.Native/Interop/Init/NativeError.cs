@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 
 namespace BassBoom.Native.Interop.Init
 {
-    public enum mpg123_errors
+    internal enum mpg123_errors
     {
         MPG123_DONE = -12,
         MPG123_NEW_FORMAT = -11,
@@ -77,7 +77,7 @@ namespace BassBoom.Native.Interop.Init
     /// <summary>
     /// Error group from mpg123
     /// </summary>
-    public static unsafe class NativeError
+    internal static unsafe class NativeError
     {
         /// <summary>
         /// MPG123_EXPORT const char* mpg123_plain_strerror(int errcode);
