@@ -41,6 +41,12 @@ references:
   commentId: T:BassBoom.Basolia.BasoliaException
   fullName: BassBoom.Basolia.BasoliaException
   nameWithType: BasoliaException
+- uid: BassBoom.Basolia.BasoliaMiscException
+  name: BasoliaMiscException
+  href: api/BassBoom.Basolia.BasoliaMiscException.html
+  commentId: T:BassBoom.Basolia.BasoliaMiscException
+  fullName: BassBoom.Basolia.BasoliaMiscException
+  nameWithType: BasoliaMiscException
 - uid: BassBoom.Basolia.BasoliaOutException
   name: BasoliaOutException
   href: api/BassBoom.Basolia.BasoliaOutException.html
@@ -2972,92 +2978,6 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Radio.ShoutcastServer.UniqueListeners
   nameWithType: ShoutcastServer.UniqueListeners
-- uid: BassBoom.Basolia.Radio.ShoutcastServerException
-  name: ShoutcastServerException
-  href: api/BassBoom.Basolia.Radio.ShoutcastServerException.html
-  commentId: T:BassBoom.Basolia.Radio.ShoutcastServerException
-  fullName: BassBoom.Basolia.Radio.ShoutcastServerException
-  nameWithType: ShoutcastServerException
-- uid: BassBoom.Basolia.Radio.ShoutcastServerException.#ctor
-  name: ShoutcastServerException()
-  href: api/BassBoom.Basolia.Radio.ShoutcastServerException.html#BassBoom_Basolia_Radio_ShoutcastServerException__ctor
-  commentId: M:BassBoom.Basolia.Radio.ShoutcastServerException.#ctor
-  name.vb: New()
-  fullName: BassBoom.Basolia.Radio.ShoutcastServerException.ShoutcastServerException()
-  fullName.vb: BassBoom.Basolia.Radio.ShoutcastServerException.New()
-  nameWithType: ShoutcastServerException.ShoutcastServerException()
-  nameWithType.vb: ShoutcastServerException.New()
-- uid: BassBoom.Basolia.Radio.ShoutcastServerException.#ctor(System.String)
-  name: ShoutcastServerException(string)
-  href: api/BassBoom.Basolia.Radio.ShoutcastServerException.html#BassBoom_Basolia_Radio_ShoutcastServerException__ctor_System_String_
-  commentId: M:BassBoom.Basolia.Radio.ShoutcastServerException.#ctor(System.String)
-  name.vb: New(String)
-  fullName: BassBoom.Basolia.Radio.ShoutcastServerException.ShoutcastServerException(string)
-  fullName.vb: BassBoom.Basolia.Radio.ShoutcastServerException.New(String)
-  nameWithType: ShoutcastServerException.ShoutcastServerException(string)
-  nameWithType.vb: ShoutcastServerException.New(String)
-- uid: BassBoom.Basolia.Radio.ShoutcastServerException.#ctor(System.String,System.Exception)
-  name: ShoutcastServerException(string, Exception)
-  href: api/BassBoom.Basolia.Radio.ShoutcastServerException.html#BassBoom_Basolia_Radio_ShoutcastServerException__ctor_System_String_System_Exception_
-  commentId: M:BassBoom.Basolia.Radio.ShoutcastServerException.#ctor(System.String,System.Exception)
-  name.vb: New(String, Exception)
-  fullName: BassBoom.Basolia.Radio.ShoutcastServerException.ShoutcastServerException(string, System.Exception)
-  fullName.vb: BassBoom.Basolia.Radio.ShoutcastServerException.New(String, System.Exception)
-  nameWithType: ShoutcastServerException.ShoutcastServerException(string, Exception)
-  nameWithType.vb: ShoutcastServerException.New(String, Exception)
-- uid: BassBoom.Basolia.Radio.ShoutcastServerException.#ctor*
-  name: ShoutcastServerException
-  href: api/BassBoom.Basolia.Radio.ShoutcastServerException.html#BassBoom_Basolia_Radio_ShoutcastServerException__ctor_
-  commentId: Overload:BassBoom.Basolia.Radio.ShoutcastServerException.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: BassBoom.Basolia.Radio.ShoutcastServerException.ShoutcastServerException
-  fullName.vb: BassBoom.Basolia.Radio.ShoutcastServerException.New
-  nameWithType: ShoutcastServerException.ShoutcastServerException
-  nameWithType.vb: ShoutcastServerException.New
-- uid: BassBoom.Basolia.Radio.ShoutcastStreamParseException
-  name: ShoutcastStreamParseException
-  href: api/BassBoom.Basolia.Radio.ShoutcastStreamParseException.html
-  commentId: T:BassBoom.Basolia.Radio.ShoutcastStreamParseException
-  fullName: BassBoom.Basolia.Radio.ShoutcastStreamParseException
-  nameWithType: ShoutcastStreamParseException
-- uid: BassBoom.Basolia.Radio.ShoutcastStreamParseException.#ctor
-  name: ShoutcastStreamParseException()
-  href: api/BassBoom.Basolia.Radio.ShoutcastStreamParseException.html#BassBoom_Basolia_Radio_ShoutcastStreamParseException__ctor
-  commentId: M:BassBoom.Basolia.Radio.ShoutcastStreamParseException.#ctor
-  name.vb: New()
-  fullName: BassBoom.Basolia.Radio.ShoutcastStreamParseException.ShoutcastStreamParseException()
-  fullName.vb: BassBoom.Basolia.Radio.ShoutcastStreamParseException.New()
-  nameWithType: ShoutcastStreamParseException.ShoutcastStreamParseException()
-  nameWithType.vb: ShoutcastStreamParseException.New()
-- uid: BassBoom.Basolia.Radio.ShoutcastStreamParseException.#ctor(System.String)
-  name: ShoutcastStreamParseException(string)
-  href: api/BassBoom.Basolia.Radio.ShoutcastStreamParseException.html#BassBoom_Basolia_Radio_ShoutcastStreamParseException__ctor_System_String_
-  commentId: M:BassBoom.Basolia.Radio.ShoutcastStreamParseException.#ctor(System.String)
-  name.vb: New(String)
-  fullName: BassBoom.Basolia.Radio.ShoutcastStreamParseException.ShoutcastStreamParseException(string)
-  fullName.vb: BassBoom.Basolia.Radio.ShoutcastStreamParseException.New(String)
-  nameWithType: ShoutcastStreamParseException.ShoutcastStreamParseException(string)
-  nameWithType.vb: ShoutcastStreamParseException.New(String)
-- uid: BassBoom.Basolia.Radio.ShoutcastStreamParseException.#ctor(System.String,System.Exception)
-  name: ShoutcastStreamParseException(string, Exception)
-  href: api/BassBoom.Basolia.Radio.ShoutcastStreamParseException.html#BassBoom_Basolia_Radio_ShoutcastStreamParseException__ctor_System_String_System_Exception_
-  commentId: M:BassBoom.Basolia.Radio.ShoutcastStreamParseException.#ctor(System.String,System.Exception)
-  name.vb: New(String, Exception)
-  fullName: BassBoom.Basolia.Radio.ShoutcastStreamParseException.ShoutcastStreamParseException(string, System.Exception)
-  fullName.vb: BassBoom.Basolia.Radio.ShoutcastStreamParseException.New(String, System.Exception)
-  nameWithType: ShoutcastStreamParseException.ShoutcastStreamParseException(string, Exception)
-  nameWithType.vb: ShoutcastStreamParseException.New(String, Exception)
-- uid: BassBoom.Basolia.Radio.ShoutcastStreamParseException.#ctor*
-  name: ShoutcastStreamParseException
-  href: api/BassBoom.Basolia.Radio.ShoutcastStreamParseException.html#BassBoom_Basolia_Radio_ShoutcastStreamParseException__ctor_
-  commentId: Overload:BassBoom.Basolia.Radio.ShoutcastStreamParseException.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: BassBoom.Basolia.Radio.ShoutcastStreamParseException.ShoutcastStreamParseException
-  fullName.vb: BassBoom.Basolia.Radio.ShoutcastStreamParseException.New
-  nameWithType: ShoutcastStreamParseException.ShoutcastStreamParseException
-  nameWithType.vb: ShoutcastStreamParseException.New
 - uid: BassBoom.Basolia.Radio.ShoutcastVersion
   name: ShoutcastVersion
   href: api/BassBoom.Basolia.Radio.ShoutcastVersion.html

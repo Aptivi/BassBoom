@@ -45,6 +45,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.BasoliaMiscException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.BasoliaMiscException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.BasoliaOutException.yml",
       "output": {
         ".html": {
@@ -369,26 +379,6 @@
       "output": {
         ".html": {
           "relative_path": "api/BassBoom.Basolia.Radio.ShoutcastServer.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.Radio.ShoutcastServerException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.Radio.ShoutcastServerException.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.Radio.ShoutcastStreamParseException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.Radio.ShoutcastStreamParseException.html"
         }
       },
       "version": ""
