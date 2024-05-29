@@ -147,8 +147,8 @@ namespace BassBoom.Cli.CliBase
 
             // Now, print the list of bands and their values.
             var choices = new List<InputChoiceInfo>();
-            int startPos = 3;
-            int endPos = ConsoleWrapper.WindowHeight - 5;
+            int startPos = 4;
+            int endPos = ConsoleWrapper.WindowHeight - 6;
             int bandsPerPage = endPos - startPos;
             for (int i = 0; i < 32; i++)
             {
@@ -171,7 +171,8 @@ namespace BassBoom.Cli.CliBase
                 choices.Add(new($"{i + 1}", bandData));
             }
             drawn.Append(
-                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentBandIdx, bandsPerPage, ConsoleWrapper.WindowWidth - 4, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                BoxFrameColor.RenderBoxFrame(2, 3, ConsoleWrapper.WindowWidth - 6, bandsPerPage) +
+                SelectionInputTools.RenderSelections([.. choices], 3, 4, currentBandIdx, bandsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
         }

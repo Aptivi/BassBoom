@@ -60,6 +60,7 @@ namespace BassBoom.Cli.CliBase
         internal static bool populate = true;
         internal static bool paused = false;
         internal static bool failedToPlay = false;
+        internal static bool enableDisco = false;
         internal static string cachedLyric = "";
         internal static readonly List<CachedSongInfo> cachedInfos = [];
         internal static readonly List<string> passedMusicPaths = [];
@@ -83,51 +84,30 @@ namespace BassBoom.Cli.CliBase
             screenPart.AddDynamicText(HandleDraw);
 
             // Current duration
+            int hue = 0;
             screenPart.AddDynamicText(() =>
             {
                 var buffer = new StringBuilder();
                 position = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDuration() : 0;
                 var posSpan = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDurationSpan() : new();
-                string indicator =
-                    $"Seek: {PlayerControls.seekRate:0.00} | " +
-                    $"Volume: {volume:0.00}";
-                buffer.Append(
-                    ProgressBarColor.RenderProgress(100 * (position / (double)total), 2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, ConsoleColors.Olive, ConsoleColors.Silver, ConsoleColors.Black) +
-                    TextWriterWhereColor.RenderWhere($"{posSpan} / {totalSpan}", 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black) +
-                    TextWriterWhereColor.RenderWhere(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black)
-                );
-                return buffer.ToString();
-            });
-
-            // Get the lyrics
-            screenPart.AddDynamicText(() =>
-            {
-                var buffer = new StringBuilder();
+                var disco = PlaybackTools.Playing && enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
                 if (PlaybackTools.Playing)
                 {
-                    // Print the lyrics, if any
-                    if (lyricInstance is not null)
-                    {
-                        string current = lyricInstance.GetLastLineCurrent();
-                        if (current != cachedLyric || ConsoleResizeHandler.WasResized())
-                        {
-                            cachedLyric = current;
-                            buffer.Append(
-                                TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10, ConsoleColors.White, ConsoleColors.Black) +
-                                CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 10, lyricInstance.GetLastLineCurrent(), ConsoleColors.White, ConsoleColors.Black)
-                            );
-                        }
-                    }
-                    else
-                        cachedLyric = "";
+                    hue++;
+                    if (hue >= 360)
+                        hue = 0;
                 }
-                else
-                {
-                    cachedLyric = "";
-                    buffer.Append(
-                        TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, ConsoleWrapper.WindowHeight - 10, ConsoleColors.White, ConsoleColors.Black)
-                    );
-                }
+                string indicator =
+                    $"╣ Seek: {PlayerControls.seekRate:0.00} | " +
+                    $"Volume: {volume:0.00} ╠";
+                string lyric = lyricInstance is not null ? lyricInstance.GetLastLineCurrent() : "";
+                string finalLyric = string.IsNullOrWhiteSpace(lyric) ? "..." : lyric;
+                buffer.Append(
+                    ProgressBarColor.RenderProgress(100 * (position / (double)total), 2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, disco, disco) +
+                    TextWriterWhereColor.RenderWhereColor($"╣ {posSpan} / {totalSpan} ╠", 4, ConsoleWrapper.WindowHeight - 8, disco) +
+                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 8, disco) +
+                    CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 6, lyricInstance is not null && PlaybackTools.Playing ? $"╣ {finalLyric} ╠" : "", disco)
+                );
                 return buffer.ToString();
             });
 
@@ -330,6 +310,9 @@ namespace BassBoom.Cli.CliBase
                     PlayerControls.ShowSpecs();
                     playerScreen.RequireRefresh();
                     break;
+                case ConsoleKey.L:
+                    enableDisco = !enableDisco;
+                    break;
                 case ConsoleKey.Q:
                     PlayerControls.Exit();
                     break;
@@ -416,7 +399,7 @@ namespace BassBoom.Cli.CliBase
 
             // Now, print the list of songs.
             var choices = new List<InputChoiceInfo>();
-            int startPos = 3;
+            int startPos = 4;
             int endPos = ConsoleWrapper.WindowHeight - 10;
             int songsPerPage = endPos - startPos;
             int max = cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
@@ -429,7 +412,8 @@ namespace BassBoom.Cli.CliBase
                 choices.Add(new($"{i + 1}", songPreview));
             }
             drawn.Append(
-                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentSong - 1, songsPerPage, ConsoleWrapper.WindowWidth - 4, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                BoxFrameColor.RenderBoxFrame(2, 3, ConsoleWrapper.WindowWidth - 6, songsPerPage) +
+                SelectionInputTools.RenderSelections([.. choices], 3, 4, currentSong - 1, songsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
         }

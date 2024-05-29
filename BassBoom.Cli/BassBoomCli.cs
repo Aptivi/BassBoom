@@ -26,6 +26,8 @@ using Terminaux.ResizeListener;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Base.Extensions;
 using System.Linq;
+using Terminaux.Colors;
+using Terminaux.Colors.Data;
 
 namespace BassBoom.Cli
 {
@@ -34,6 +36,7 @@ namespace BassBoom.Cli
         private static readonly Version version = Assembly.GetAssembly(typeof(InitBasolia)).GetName().Version;
         internal static Version mpgVer;
         internal static Version outVer;
+        internal static Color white = new(ConsoleColors.White);
 
         static int Main(string[] args)
         {

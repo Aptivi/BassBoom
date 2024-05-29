@@ -52,6 +52,7 @@ namespace BassBoom.Cli.CliBase
         internal static bool populate = true;
         internal static bool paused = false;
         internal static bool failedToPlay = false;
+        internal static bool enableDisco = false;
         internal static readonly List<CachedSongInfo> cachedInfos = [];
 
         public static void RadioLoop()
@@ -77,7 +78,8 @@ namespace BassBoom.Cli.CliBase
             screenPart.AddDynamicText(() =>
             {
                 var buffer = new StringBuilder();
-                string indicator = $"Volume: {volume:0.00}";
+                string indicator = $"╣ Volume: {volume:0.00} ╠";
+                var disco = PlaybackTools.Playing && enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
                 if (PlaybackTools.Playing)
                 {
                     hue++;
@@ -85,8 +87,8 @@ namespace BassBoom.Cli.CliBase
                         hue = 0;
                 }
                 buffer.Append(
-                    BoxFrameColor.RenderBoxFrame(2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, 1, PlaybackTools.Playing ? new Color($"hsl:{hue};50;50") : new Color(ConsoleColors.White)) +
-                    TextWriterWhereColor.RenderWhere(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 3, ConsoleWrapper.WindowHeight - 9, ConsoleColors.White, ConsoleColors.Black)
+                    BoxFrameColor.RenderBoxFrame(2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, 1, disco) +
+                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 8, disco)
                 );
                 return buffer.ToString();
             });
@@ -264,6 +266,9 @@ namespace BassBoom.Cli.CliBase
                     RadioControls.ShowSpecs();
                     playerScreen.RequireRefresh();
                     break;
+                case ConsoleKey.L:
+                    enableDisco = !enableDisco;
+                    break;
                 case ConsoleKey.Q:
                     RadioControls.Exit();
                     break;
@@ -331,7 +336,7 @@ namespace BassBoom.Cli.CliBase
 
             // Now, print the list of stations.
             var choices = new List<InputChoiceInfo>();
-            int startPos = 3;
+            int startPos = 4;
             int endPos = ConsoleWrapper.WindowHeight - 10;
             int stationsPerPage = endPos - startPos;
             int max = cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
@@ -344,7 +349,8 @@ namespace BassBoom.Cli.CliBase
                 choices.Add(new($"{i + 1}", stationPreview));
             }
             drawn.Append(
-                SelectionInputTools.RenderSelections([.. choices], 2, 3, currentStation - 1, stationsPerPage, ConsoleWrapper.WindowWidth - 4, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                BoxFrameColor.RenderBoxFrame(2, 3, ConsoleWrapper.WindowWidth - 6, stationsPerPage) +
+                SelectionInputTools.RenderSelections([.. choices], 3, 4, currentStation - 1, stationsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
         }
