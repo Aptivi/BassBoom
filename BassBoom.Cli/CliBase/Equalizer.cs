@@ -142,6 +142,8 @@ namespace BassBoom.Cli.CliBase
                 drawn.Append(PlayerControls.RenderSongName(Player.cachedInfos[Player.currentSong - 1].MusicPath));
             else if (Radio.cachedInfos.Count > 0)
                 drawn.Append(RadioControls.RenderStationName());
+            else
+                drawn.Append(CenteredTextColor.RenderCentered(1, "Not playing. Music player is idle.", ConsoleColors.White, ConsoleColors.Black));
 
             // Now, print the list of bands and their values.
             var choices = new List<InputChoiceInfo>();
