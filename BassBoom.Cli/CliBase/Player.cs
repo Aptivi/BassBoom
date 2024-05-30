@@ -34,11 +34,9 @@ using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
-using Terminaux.Base.Extensions;
 using Terminaux.Reader;
 using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
-using BassBoom.Cli.Tools;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -52,26 +50,12 @@ namespace BassBoom.Cli.CliBase
         internal static TimeSpan totalSpan = new();
         internal static int total = 0;
         internal static (long rate, int channels, int encoding) formatInfo = new();
-        internal static int currentSong = 1;
-        internal static double volume = 1.0;
-        internal static bool exiting = false;
         internal static int position = 0;
-        internal static bool advance = false;
-        internal static bool populate = true;
-        internal static bool paused = false;
-        internal static bool failedToPlay = false;
-        internal static bool enableDisco = false;
-        internal static string cachedLyric = "";
-        internal static readonly List<CachedSongInfo> cachedInfos = [];
         internal static readonly List<string> passedMusicPaths = [];
 
         public static void PlayerLoop()
         {
-            volume = PlaybackTools.GetVolume().baseLinear;
-            exiting = false;
-            paused = false;
-            populate = true;
-            advance = false;
+            Common.volume = PlaybackTools.GetVolume().baseLinear;
 
             // Populate the screen
             Screen playerScreen = new();
@@ -90,7 +74,7 @@ namespace BassBoom.Cli.CliBase
                 var buffer = new StringBuilder();
                 position = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDuration() : 0;
                 var posSpan = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDurationSpan() : new();
-                var disco = PlaybackTools.Playing && enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
+                var disco = PlaybackTools.Playing && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
                 if (PlaybackTools.Playing)
                 {
                     hue++;
@@ -99,7 +83,7 @@ namespace BassBoom.Cli.CliBase
                 }
                 string indicator =
                     $"╣ Seek: {PlayerControls.seekRate:0.00} | " +
-                    $"Volume: {volume:0.00} ╠";
+                    $"Volume: {Common.volume:0.00} ╠";
                 string lyric = lyricInstance is not null ? lyricInstance.GetLastLineCurrent() : "";
                 string finalLyric = string.IsNullOrWhiteSpace(lyric) ? "..." : lyric;
                 buffer.Append(
@@ -116,7 +100,7 @@ namespace BassBoom.Cli.CliBase
             playerScreen.ResetResize = false;
 
             // Then, the main loop
-            while (!exiting)
+            while (!Common.exiting)
             {
                 Thread.Sleep(1);
                 try
@@ -173,12 +157,6 @@ namespace BassBoom.Cli.CliBase
         {
             switch (keystroke.Key)
             {
-                case ConsoleKey.UpArrow:
-                    PlayerControls.RaiseVolume();
-                    break;
-                case ConsoleKey.DownArrow:
-                    PlayerControls.LowerVolume();
-                    break;
                 case ConsoleKey.Spacebar:
                     playerThread = new(HandlePlay);
                     PlayerControls.Play();
@@ -194,10 +172,6 @@ namespace BassBoom.Cli.CliBase
                     PlayerControls.NextSong();
                     playerThread = new(HandlePlay);
                     PlayerControls.Play();
-                    break;
-                case ConsoleKey.H:
-                    PlayerControls.ShowHelp();
-                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.I:
                     PlayerControls.ShowSongInfo();
@@ -219,16 +193,8 @@ namespace BassBoom.Cli.CliBase
                     else
                         PlayerControls.RemoveCurrentSong();
                     break;
-                case ConsoleKey.E:
-                    Equalizer.OpenEqualizer(playerScreen);
-                    playerScreen.RequireRefresh();
-                    break;
-                case ConsoleKey.Z:
-                    PlayerControls.ShowSpecs();
-                    playerScreen.RequireRefresh();
-                    break;
-                case ConsoleKey.Q:
-                    PlayerControls.Exit();
+                default:
+                    Common.HandleKeypressCommon(keystroke, playerScreen, false);
                     break;
             }
         }
@@ -237,12 +203,6 @@ namespace BassBoom.Cli.CliBase
         {
             switch (keystroke.Key)
             {
-                case ConsoleKey.UpArrow:
-                    PlayerControls.RaiseVolume();
-                    break;
-                case ConsoleKey.DownArrow:
-                    PlayerControls.LowerVolume();
-                    break;
                 case ConsoleKey.RightArrow:
                     if (keystroke.Modifiers == ConsoleModifiers.Control)
                         PlayerControls.seekRate += 0.05d;
@@ -283,10 +243,6 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.Escape:
                     PlayerControls.Stop();
                     break;
-                case ConsoleKey.H:
-                    PlayerControls.ShowHelp();
-                    playerScreen.RequireRefresh();
-                    break;
                 case ConsoleKey.I:
                     PlayerControls.ShowSongInfo();
                     playerScreen.RequireRefresh();
@@ -295,26 +251,15 @@ namespace BassBoom.Cli.CliBase
                     PlayerControls.PromptSeek();
                     playerScreen.RequireRefresh();
                     break;
-                case ConsoleKey.E:
-                    Equalizer.OpenEqualizer(playerScreen);
-                    playerScreen.RequireRefresh();
-                    break;
                 case ConsoleKey.D:
                     PlayerControls.Pause();
-                    PlayerControls.ShowDeviceDriver();
+                    Common.ShowDeviceDriver();
                     playerThread = new(HandlePlay);
                     PlayerControls.Play();
                     playerScreen.RequireRefresh();
                     break;
-                case ConsoleKey.Z:
-                    PlayerControls.ShowSpecs();
-                    playerScreen.RequireRefresh();
-                    break;
-                case ConsoleKey.L:
-                    enableDisco = !enableDisco;
-                    break;
-                case ConsoleKey.Q:
-                    PlayerControls.Exit();
+                default:
+                    Common.HandleKeypressCommon(keystroke, playerScreen, false);
                     break;
             }
         }
@@ -323,18 +268,18 @@ namespace BassBoom.Cli.CliBase
         {
             try
             {
-                foreach (var musicFile in cachedInfos.Skip(currentSong - 1))
+                foreach (var musicFile in Common.cachedInfos.Skip(Common.currentPos - 1))
                 {
-                    if (!advance || exiting)
+                    if (!Common.advance || Common.exiting)
                         return;
                     else
-                        populate = true;
-                    currentSong = cachedInfos.IndexOf(musicFile) + 1;
+                        Common.populate = true;
+                    Common.currentPos = Common.cachedInfos.IndexOf(musicFile) + 1;
                     PlayerControls.PopulateMusicFileInfo(musicFile.MusicPath);
                     TextWriterRaw.WritePlain(PlayerControls.RenderSongName(musicFile.MusicPath), false);
-                    if (paused)
+                    if (Common.paused)
                     {
-                        paused = false;
+                        Common.paused = false;
                         PlaybackPositioningTools.SeekToFrame(position);
                     }
                     PlaybackTools.Play();
@@ -343,7 +288,7 @@ namespace BassBoom.Cli.CliBase
             catch (Exception ex)
             {
                 InfoBoxColor.WriteInfoBox($"Playback failure: {ex.Message}");
-                failedToPlay = true;
+                Common.failedToPlay = true;
             }
             finally
             {
@@ -373,14 +318,14 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
 
             // In case we have no songs in the playlist...
-            if (cachedInfos.Count == 0)
+            if (Common.cachedInfos.Count == 0)
             {
                 if (passedMusicPaths.Count > 0)
                 {
                     foreach (string path in passedMusicPaths)
                     {
                         PlayerControls.PopulateMusicFileInfo(path);
-                        populate = true;
+                        Common.populate = true;
                     }
                     passedMusicPaths.Clear();
                 }
@@ -393,27 +338,27 @@ namespace BassBoom.Cli.CliBase
             }
 
             // Populate music file info, as necessary
-            if (populate)
-                PlayerControls.PopulateMusicFileInfo(cachedInfos[currentSong - 1].MusicPath);
-            drawn.Append(PlayerControls.RenderSongName(cachedInfos[currentSong - 1].MusicPath));
+            if (Common.populate)
+                PlayerControls.PopulateMusicFileInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
+            drawn.Append(PlayerControls.RenderSongName(Common.cachedInfos[Common.currentPos - 1].MusicPath));
 
             // Now, print the list of songs.
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
             int endPos = ConsoleWrapper.WindowHeight - 10;
             int songsPerPage = endPos - startPos;
-            int max = cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
-            for (int i = 0; i < cachedInfos.Count; i++)
+            int max = Common.cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
+            for (int i = 0; i < Common.cachedInfos.Count; i++)
             {
                 // Populate the first pane
                 var (musicName, musicArtist, _) = PlayerControls.GetMusicNameArtistGenre(i);
-                string duration = cachedInfos[i].DurationSpan;
+                string duration = Common.cachedInfos[i].DurationSpan;
                 string songPreview = $"[{duration}] {musicArtist} - {musicName}";
                 choices.Add(new($"{i + 1}", songPreview));
             }
             drawn.Append(
                 BoxFrameColor.RenderBoxFrame(2, 3, ConsoleWrapper.WindowWidth - 6, songsPerPage) +
-                SelectionInputTools.RenderSelections([.. choices], 3, 4, currentSong - 1, songsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                SelectionInputTools.RenderSelections([.. choices], 3, 4, Common.currentPos - 1, songsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
         }

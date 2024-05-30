@@ -17,19 +17,15 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Basolia;
-using BassBoom.Basolia.Devices;
 using BassBoom.Basolia.Enumerations;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using BassBoom.Cli.Tools;
-using SpecProbe.Platform;
 using System;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using Terminaux.Base;
@@ -44,26 +40,10 @@ namespace BassBoom.Cli.CliBase
     {
         internal static double seekRate = 3.0d;
 
-        internal static void RaiseVolume()
-        {
-            Player.volume += 0.05;
-            if (Player.volume > 1)
-                Player.volume = 1;
-            PlaybackTools.SetVolume(Player.volume);
-        }
-
-        internal static void LowerVolume()
-        {
-            Player.volume -= 0.05;
-            if (Player.volume < 0)
-                Player.volume = 0;
-            PlaybackTools.SetVolume(Player.volume);
-        }
-
         internal static void SeekForward()
         {
             // In case we have no songs in the playlist...
-            if (Player.cachedInfos.Count == 0)
+            if (Common.cachedInfos.Count == 0)
                 return;
 
             Player.position += (int)(Player.formatInfo.rate * seekRate);
@@ -75,7 +55,7 @@ namespace BassBoom.Cli.CliBase
         internal static void SeekBackward()
         {
             // In case we have no songs in the playlist...
-            if (Player.cachedInfos.Count == 0)
+            if (Common.cachedInfos.Count == 0)
                 return;
 
             Player.position -= (int)(Player.formatInfo.rate * seekRate);
@@ -87,7 +67,7 @@ namespace BassBoom.Cli.CliBase
         internal static void SeekBeginning()
         {
             // In case we have no songs in the playlist...
-            if (Player.cachedInfos.Count == 0)
+            if (Common.cachedInfos.Count == 0)
                 return;
 
             PlaybackPositioningTools.SeekToTheBeginning();
@@ -97,54 +77,54 @@ namespace BassBoom.Cli.CliBase
         internal static void Play()
         {
             // In case we have no songs in the playlist...
-            if (Player.cachedInfos.Count == 0)
+            if (Common.cachedInfos.Count == 0)
                 return;
 
             if (PlaybackTools.State == PlaybackState.Stopped)
                 // There could be a chance that the music has fully stopped without any user interaction.
                 PlaybackPositioningTools.SeekToTheBeginning();
-            Player.advance = true;
+            Common.advance = true;
             Player.playerThread.Start();
-            SpinWait.SpinUntil(() => PlaybackTools.Playing || Player.failedToPlay);
-            Player.failedToPlay = false;
+            SpinWait.SpinUntil(() => PlaybackTools.Playing || Common.failedToPlay);
+            Common.failedToPlay = false;
         }
 
         internal static void Pause()
         {
-            Player.advance = false;
-            Player.paused = true;
+            Common.advance = false;
+            Common.paused = true;
             PlaybackTools.Pause();
         }
 
         internal static void Stop(bool resetCurrentSong = true)
         {
-            Player.advance = false;
-            Player.paused = false;
+            Common.advance = false;
+            Common.paused = false;
             if (resetCurrentSong)
-                Player.currentSong = 1;
+                Common.currentPos = 1;
             PlaybackTools.Stop();
         }
 
         internal static void NextSong()
         {
             // In case we have no songs in the playlist...
-            if (Player.cachedInfos.Count == 0)
+            if (Common.cachedInfos.Count == 0)
                 return;
 
-            Player.currentSong++;
-            if (Player.currentSong > Player.cachedInfos.Count)
-                Player.currentSong = 1;
+            Common.currentPos++;
+            if (Common.currentPos > Common.cachedInfos.Count)
+                Common.currentPos = 1;
         }
 
         internal static void PreviousSong()
         {
             // In case we have no songs in the playlist...
-            if (Player.cachedInfos.Count == 0)
+            if (Common.cachedInfos.Count == 0)
                 return;
 
-            Player.currentSong--;
-            if (Player.currentSong <= 0)
-                Player.currentSong = Player.cachedInfos.Count;
+            Common.currentPos--;
+            if (Common.currentPos <= 0)
+                Common.currentPos = Common.cachedInfos.Count;
         }
 
         internal static void PromptForAddSong()
@@ -153,10 +133,10 @@ namespace BassBoom.Cli.CliBase
             if (File.Exists(path))
             {
                 int currentPos = Player.position;
-                Player.populate = true;
+                Common.populate = true;
                 PopulateMusicFileInfo(path);
-                Player.populate = true;
-                PopulateMusicFileInfo(Player.cachedInfos[Player.currentSong - 1].MusicPath);
+                Common.populate = true;
+                PopulateMusicFileInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
                 PlaybackPositioningTools.SeekToFrame(currentPos);
             }
             else
@@ -174,11 +154,11 @@ namespace BassBoom.Cli.CliBase
                 {
                     foreach (string musicFile in cachedInfos)
                     {
-                        Player.populate = true;
+                        Common.populate = true;
                         PopulateMusicFileInfo(musicFile);
                     }
-                    Player.populate = true;
-                    PopulateMusicFileInfo(Player.cachedInfos[Player.currentSong - 1].MusicPath);
+                    Common.populate = true;
+                    PopulateMusicFileInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
                     PlaybackPositioningTools.SeekToFrame(currentPos);
                 }
             }
@@ -186,21 +166,15 @@ namespace BassBoom.Cli.CliBase
                 InfoBoxColor.WriteInfoBox("Music library directory is not found.");
         }
 
-        internal static void Exit()
-        {
-            Player.exiting = true;
-            Player.advance = false;
-        }
-
         internal static void PopulateMusicFileInfo(string musicPath)
         {
             // Try to open the file after loading the library
-            if (PlaybackTools.Playing || !Player.populate)
+            if (PlaybackTools.Playing || !Common.populate)
                 return;
-            Player.populate = false;
-            if (Player.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
+            Common.populate = false;
+            if (Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
-                var instance = Player.cachedInfos.Single((csi) => csi.MusicPath == musicPath);
+                var instance = Common.cachedInfos.Single((csi) => csi.MusicPath == musicPath);
                 Player.total = instance.Duration;
                 Player.formatInfo = instance.FormatInfo;
                 Player.totalSpan = AudioInfoTools.GetDurationSpanFromSamples(Player.total, Player.formatInfo.rate);
@@ -224,7 +198,7 @@ namespace BassBoom.Cli.CliBase
                 // Try to open the lyrics
                 OpenLyrics(musicPath);
                 var instance = new CachedSongInfo(musicPath, Player.managedV1, Player.managedV2, Player.total, Player.formatInfo, Player.frameInfo, Player.lyricInstance, "", false);
-                Player.cachedInfos.Add(instance);
+                Common.cachedInfos.Add(instance);
             }
             TextWriterWhereColor.WriteWhere(new string(' ', ConsoleWrapper.WindowWidth), 0, 1);
         }
@@ -259,7 +233,7 @@ namespace BassBoom.Cli.CliBase
 
         internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(int cachedInfoIdx)
         {
-            var cachedInfo = Player.cachedInfos[cachedInfoIdx];
+            var cachedInfo = Common.cachedInfos[cachedInfoIdx];
             var metadatav2 = cachedInfo.MetadataV2;
             var metadatav1 = cachedInfo.MetadataV1;
             var path = cachedInfo.MusicPath;
@@ -298,73 +272,45 @@ namespace BassBoom.Cli.CliBase
         internal static void RemoveCurrentSong()
         {
             // In case we have no songs in the playlist...
-            if (Player.cachedInfos.Count == 0)
+            if (Common.cachedInfos.Count == 0)
                 return;
 
-            Player.cachedInfos.RemoveAt(Player.currentSong - 1);
-            if (Player.cachedInfos.Count > 0)
+            Common.cachedInfos.RemoveAt(Common.currentPos - 1);
+            if (Common.cachedInfos.Count > 0)
             {
-                Player.currentSong--;
-                if (Player.currentSong == 0)
-                    Player.currentSong = 1;
-                Player.populate = true;
-                PopulateMusicFileInfo(Player.cachedInfos[Player.currentSong - 1].MusicPath);
+                Common.currentPos--;
+                if (Common.currentPos == 0)
+                    Common.currentPos = 1;
+                Common.populate = true;
+                PopulateMusicFileInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
             }
         }
 
         internal static void RemoveAllSongs()
         {
             // In case we have no songs in the playlist...
-            if (Player.cachedInfos.Count == 0)
+            if (Common.cachedInfos.Count == 0)
                 return;
 
-            for (int i = Player.cachedInfos.Count; i > 0; i--)
+            for (int i = Common.cachedInfos.Count; i > 0; i--)
                 RemoveCurrentSong();
         }
 
         internal static void PromptSeek()
         {
             // In case we have no songs in the playlist...
-            if (Player.cachedInfos.Count == 0)
+            if (Common.cachedInfos.Count == 0)
                 return;
 
             // Prompt the user to set the current position to the specified time
             string time = InfoBoxInputColor.WriteInfoBoxInput("Write the target position in this format: HH:MM:SS");
             if (TimeSpan.TryParse(time, out TimeSpan duration))
             {
-                Player.position = (int)(Player.cachedInfos[Player.currentSong - 1].FormatInfo.rate * duration.TotalSeconds);
+                Player.position = (int)(Common.cachedInfos[Common.currentPos - 1].FormatInfo.rate * duration.TotalSeconds);
                 if (Player.position > Player.total)
                     Player.position = Player.total;
                 PlaybackPositioningTools.SeekToFrame(Player.position);
             }
-        }
-
-        internal static void ShowHelp()
-        {
-            InfoBoxColor.WriteInfoBox(
-                """
-                Available keystrokes
-                ====================
-
-                [SPACE]             Play/Pause
-                [ESC]               Stop
-                [Q]                 Exit
-                [UP/DOWN]           Volume control
-                [<-/->]             Seek control
-                [CTRL] + [<-/->]    Seek duration control
-                [I]                 Song info
-                [A]                 Add a music file
-                [S] (when idle)     Add a music directory to the playlist
-                [B]                 Previous song
-                [N]                 Next song
-                [R]                 Remove current song
-                [CTRL] + [R]        Remove all songs
-                [S] (when playing)  Selectively seek
-                [E]                 Opens the equalizer
-                [D] (when playing)  Device and driver info
-                [Z]                 System info
-                """
-            );
         }
 
         internal static void ShowSongInfo()
@@ -417,77 +363,6 @@ namespace BassBoom.Cli.CliBase
                 ================
 
                 {{textsBuilder}}
-                """
-            );
-        }
-
-        internal static void ShowDeviceDriver()
-        {
-            var builder = new StringBuilder();
-            var currentTuple = DeviceTools.GetCurrent();
-            var currentCachedTuple = DeviceTools.GetCurrentCached();
-            var drivers = DeviceTools.GetDrivers();
-            string activeDevice = "";
-            foreach (var driver in drivers)
-            {
-                try
-                {
-                    builder.AppendLine($"- {driver.Key}: {driver.Value}");
-                    var devices = DeviceTools.GetDevices(driver.Key, ref activeDevice);
-                    foreach (var device in devices)
-                        builder.AppendLine($"  - {device.Key}: {device.Value}");
-                }
-                catch
-                {
-                    continue;
-                }
-            }
-            InfoBoxColor.WriteInfoBox(
-                $$"""
-                Device and Driver
-                =================
-
-                Device: {{currentTuple.device}}
-                Driver: {{currentTuple.driver}}
-                Device (cached): {{currentCachedTuple.device}}
-                Driver (cached): {{currentCachedTuple.driver}}
-
-                Available devices and drivers
-                =============================
-
-                {{builder}}
-                """
-            );
-        }
-
-        internal static void ShowSpecs()
-        {
-            InfoBoxColor.WriteInfoBox(
-                $$"""
-                BassBoom specifications
-                =======================
-
-                Basolia version: {{InitBasolia.BasoliaVersion}}
-                MPG123 version: {{InitBasolia.MpgLibVersion}}
-                OUT123 version: {{InitBasolia.OutLibVersion}}
-                
-                Decoders
-                ========
-                
-                Supported decoders:
-                  - {{string.Join("\n  - ", DecodeTools.GetDecoders(true))}}
-                
-                All decoders:
-                  - {{string.Join("\n  - ", DecodeTools.GetDecoders(false))}}
-
-                System specifications
-                =====================
-
-                System: {{(PlatformHelper.IsOnWindows() ? "Windows" : PlatformHelper.IsOnMacOS() ? "macOS" : "Unix/Linux")}}
-                System Architecture: {{RuntimeInformation.OSArchitecture}}
-                Process Architecture: {{RuntimeInformation.ProcessArchitecture}}
-                System description: {{RuntimeInformation.OSDescription}}
-                .NET description: {{RuntimeInformation.FrameworkDescription}}
                 """
             );
         }

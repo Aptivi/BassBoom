@@ -36,7 +36,6 @@ using Terminaux.Writer.FancyWriters;
 using Terminaux.Reader;
 using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
-using BassBoom.Cli.Tools;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -45,23 +44,11 @@ namespace BassBoom.Cli.CliBase
         internal static Thread playerThread;
         internal static FrameInfo frameInfo = null;
         internal static (long rate, int channels, int encoding) formatInfo = new();
-        internal static int currentStation = 1;
-        internal static double volume = 1.0;
-        internal static bool exiting = false;
-        internal static bool advance = false;
-        internal static bool populate = true;
-        internal static bool paused = false;
-        internal static bool failedToPlay = false;
-        internal static bool enableDisco = false;
-        internal static readonly List<CachedSongInfo> cachedInfos = [];
 
         public static void RadioLoop()
         {
-            volume = PlaybackTools.GetVolume().baseLinear;
-            exiting = false;
-            paused = false;
-            populate = true;
-            advance = false;
+            Common.volume = PlaybackTools.GetVolume().baseLinear;
+            Common.isRadioMode = true;
 
             // Populate the screen
             Screen radioScreen = new();
@@ -78,8 +65,8 @@ namespace BassBoom.Cli.CliBase
             screenPart.AddDynamicText(() =>
             {
                 var buffer = new StringBuilder();
-                string indicator = $"╣ Volume: {volume:0.00} ╠";
-                var disco = PlaybackTools.Playing && enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
+                string indicator = $"╣ Volume: {Common.volume:0.00} ╠";
+                var disco = PlaybackTools.Playing && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
                 if (PlaybackTools.Playing)
                 {
                     hue++;
@@ -98,7 +85,7 @@ namespace BassBoom.Cli.CliBase
             radioScreen.ResetResize = false;
 
             // Then, the main loop
-            while (!exiting)
+            while (!Common.exiting)
             {
                 Thread.Sleep(1);
                 try
@@ -155,12 +142,6 @@ namespace BassBoom.Cli.CliBase
         {
             switch (keystroke.Key)
             {
-                case ConsoleKey.UpArrow:
-                    RadioControls.RaiseVolume();
-                    break;
-                case ConsoleKey.DownArrow:
-                    RadioControls.LowerVolume();
-                    break;
                 case ConsoleKey.Spacebar:
                     playerThread = new(HandlePlay);
                     RadioControls.Play();
@@ -174,10 +155,6 @@ namespace BassBoom.Cli.CliBase
                     RadioControls.NextStation();
                     playerThread = new(HandlePlay);
                     RadioControls.Play();
-                    break;
-                case ConsoleKey.H:
-                    RadioControls.ShowHelp();
-                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.I:
                     RadioControls.ShowStationInfo();
@@ -194,16 +171,8 @@ namespace BassBoom.Cli.CliBase
                     else
                         RadioControls.RemoveCurrentStation();
                     break;
-                case ConsoleKey.E:
-                    Equalizer.OpenEqualizer(playerScreen);
-                    playerScreen.RequireRefresh();
-                    break;
-                case ConsoleKey.Z:
-                    RadioControls.ShowSpecs();
-                    playerScreen.RequireRefresh();
-                    break;
-                case ConsoleKey.Q:
-                    RadioControls.Exit();
+                default:
+                    Common.HandleKeypressCommon(keystroke, playerScreen, false);
                     break;
             }
         }
@@ -212,12 +181,6 @@ namespace BassBoom.Cli.CliBase
         {
             switch (keystroke.Key)
             {
-                case ConsoleKey.UpArrow:
-                    RadioControls.RaiseVolume();
-                    break;
-                case ConsoleKey.DownArrow:
-                    RadioControls.LowerVolume();
-                    break;
                 case ConsoleKey.B:
                     RadioControls.Stop(false);
                     RadioControls.PreviousStation();
@@ -243,34 +206,19 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.Escape:
                     RadioControls.Stop();
                     break;
-                case ConsoleKey.H:
-                    RadioControls.ShowHelp();
-                    playerScreen.RequireRefresh();
-                    break;
                 case ConsoleKey.I:
                     RadioControls.ShowStationInfo();
                     playerScreen.RequireRefresh();
                     break;
-                case ConsoleKey.E:
-                    Equalizer.OpenEqualizer(playerScreen);
-                    playerScreen.RequireRefresh();
-                    break;
                 case ConsoleKey.D:
                     RadioControls.Pause();
-                    RadioControls.ShowDeviceDriver();
+                    Common.ShowDeviceDriver();
                     playerThread = new(HandlePlay);
                     RadioControls.Play();
                     playerScreen.RequireRefresh();
                     break;
-                case ConsoleKey.Z:
-                    RadioControls.ShowSpecs();
-                    playerScreen.RequireRefresh();
-                    break;
-                case ConsoleKey.L:
-                    enableDisco = !enableDisco;
-                    break;
-                case ConsoleKey.Q:
-                    RadioControls.Exit();
+                default:
+                    Common.HandleKeypressCommon(keystroke, playerScreen, false);
                     break;
             }
         }
@@ -279,24 +227,24 @@ namespace BassBoom.Cli.CliBase
         {
             try
             {
-                foreach (var musicFile in cachedInfos.Skip(currentStation - 1))
+                foreach (var musicFile in Common.cachedInfos.Skip(Common.currentPos - 1))
                 {
-                    if (!advance || exiting)
+                    if (!Common.advance || Common.exiting)
                         return;
                     else
-                        populate = true;
-                    currentStation = cachedInfos.IndexOf(musicFile) + 1;
+                        Common.populate = true;
+                    Common.currentPos = Common.cachedInfos.IndexOf(musicFile) + 1;
                     RadioControls.PopulateRadioStationInfo(musicFile.MusicPath);
                     TextWriterRaw.WritePlain(RadioControls.RenderStationName(), false);
-                    if (paused)
-                        paused = false;
+                    if (Common.paused)
+                        Common.paused = false;
                     PlaybackTools.Play();
                 }
             }
             catch (Exception ex)
             {
                 InfoBoxColor.WriteInfoBox($"Playback failure: {ex.Message}");
-                failedToPlay = true;
+                Common.failedToPlay = true;
             }
         }
 
@@ -322,7 +270,7 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
 
             // In case we have no stations in the playlist...
-            if (cachedInfos.Count == 0)
+            if (Common.cachedInfos.Count == 0)
             {
                 int height = (ConsoleWrapper.WindowHeight - 10) / 2;
                 drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a radio station to the playlist."));
@@ -330,8 +278,8 @@ namespace BassBoom.Cli.CliBase
             }
 
             // Populate music file info, as necessary
-            if (populate)
-                RadioControls.PopulateRadioStationInfo(cachedInfos[currentStation - 1].MusicPath);
+            if (Common.populate)
+                RadioControls.PopulateRadioStationInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
             drawn.Append(RadioControls.RenderStationName());
 
             // Now, print the list of stations.
@@ -339,18 +287,18 @@ namespace BassBoom.Cli.CliBase
             int startPos = 4;
             int endPos = ConsoleWrapper.WindowHeight - 10;
             int stationsPerPage = endPos - startPos;
-            int max = cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
-            for (int i = 0; i < cachedInfos.Count; i++)
+            int max = Common.cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
+            for (int i = 0; i < Common.cachedInfos.Count; i++)
             {
                 // Populate the first pane
-                string stationName = cachedInfos[i].StationName;
-                string duration = cachedInfos[i].DurationSpan;
+                string stationName = Common.cachedInfos[i].StationName;
+                string duration = Common.cachedInfos[i].DurationSpan;
                 string stationPreview = $"[{duration}] {stationName}";
                 choices.Add(new($"{i + 1}", stationPreview));
             }
             drawn.Append(
                 BoxFrameColor.RenderBoxFrame(2, 3, ConsoleWrapper.WindowWidth - 6, stationsPerPage) +
-                SelectionInputTools.RenderSelections([.. choices], 3, 4, currentStation - 1, stationsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                SelectionInputTools.RenderSelections([.. choices], 3, 4, Common.currentPos - 1, stationsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
         }

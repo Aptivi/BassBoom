@@ -379,7 +379,7 @@ namespace BassBoom.Basolia.Playback
                 string icy = Encoding.UTF8.GetString(metadataBytes).Replace("\0", "").Trim();
                 if (!string.IsNullOrEmpty(icy))
                     radioIcy = icy;
-                Debug.WriteLine($"{radioIcy}\n");
+                Debug.WriteLine($"{radioIcy}");
 
                 // Copy the data to MPG123
                 IntPtr data = Marshal.AllocHGlobal(buffer.Length);

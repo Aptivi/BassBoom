@@ -138,10 +138,13 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
 
             // Write current song
-            if (Player.cachedInfos.Count > 0)
-                drawn.Append(PlayerControls.RenderSongName(Player.cachedInfos[Player.currentSong - 1].MusicPath));
-            else if (Radio.cachedInfos.Count > 0)
-                drawn.Append(RadioControls.RenderStationName());
+            if (Common.cachedInfos.Count > 0)
+            {
+                if (Common.isRadioMode)
+                    drawn.Append(RadioControls.RenderStationName());
+                else
+                    drawn.Append(PlayerControls.RenderSongName(Common.cachedInfos[Common.currentPos - 1].MusicPath));
+            }
             else
                 drawn.Append(CenteredTextColor.RenderCentered(1, "Not playing. Music player is idle.", ConsoleColors.White, ConsoleColors.Black));
 
