@@ -158,15 +158,9 @@ namespace BassBoom.Cli.CliBase
                 // Get the equalizer value for this band
                 double val = EqualizerControls.GetEqualizer(i);
                 string eqType =
-                    // Bass bands: 1-8, Bass-Mid bands: 9-16, Mid-Treble bands: 17-24, Treble bands: 25-32
-                    i < 4 ? "Deep Bass" : // Band 1, 2, 3, 4
-                    i < 8 ? "Bass" :
-                    i < 12 ? "Deep Bass-Mid" :
-                    i < 16 ? "Bass-Mid" :
-                    i < 20 ? "Deep Mid-Treble" :
-                    i < 24 ? "Mid-Treble" :
-                    i < 28 ? "Deep Treble" :
-                    i < 32 ? "Treble" :
+                    i == 0 ? "Bass" :
+                    i == 1 ? "Upper Mid" :
+                    i > 1 ? "Treble" :
                     "Unknown band type";
 
                 // Now, render it
