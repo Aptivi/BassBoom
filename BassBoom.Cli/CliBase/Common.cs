@@ -69,7 +69,8 @@ namespace BassBoom.Cli.CliBase
         {
             exiting = true;
             advance = false;
-            PlaybackTools.Stop();
+            if (FileTools.IsOpened)
+                PlaybackTools.Stop();
         }
 
         internal static void Switch(string musicPath)

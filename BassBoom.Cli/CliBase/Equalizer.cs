@@ -30,6 +30,7 @@ using Terminaux.Reader;
 using Terminaux.Inputs;
 using System.Collections.Generic;
 using Terminaux.Inputs.Styles.Selection;
+using Terminaux.Base.Extensions;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -146,7 +147,10 @@ namespace BassBoom.Cli.CliBase
                     drawn.Append(PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath));
             }
             else
-                drawn.Append(CenteredTextColor.RenderCentered(1, "Not playing. Music player is idle.", ConsoleColors.White, ConsoleColors.Black));
+                drawn.Append(
+                    TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, 1) +
+                    CenteredTextColor.RenderCentered(1, "Not playing. Music player is idle.", ConsoleColors.White)
+                );
 
             // Now, print the list of bands and their values.
             var choices = new List<InputChoiceInfo>();

@@ -27,8 +27,10 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Terminaux.Base.Buffered;
+using Terminaux.Base.Extensions;
 using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
+using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 
 namespace BassBoom.Cli.CliBase
@@ -126,7 +128,9 @@ namespace BassBoom.Cli.CliBase
             string icy = PlaybackTools.RadioNowPlaying;
 
             // Print the music name
-            return CenteredTextColor.RenderCentered(1, "Now playing: {0}", ConsoleColors.White, ConsoleColors.Black, icy);
+            return
+                TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, 1) +
+                CenteredTextColor.RenderCentered(1, "Now playing: {0}", ConsoleColors.White, ConsoleColors.Black, icy);
         }
 
         internal static void RemoveCurrentStation()

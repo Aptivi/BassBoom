@@ -28,9 +28,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Terminaux.Base.Buffered;
+using Terminaux.Base.Extensions;
 using Terminaux.Colors.Data;
 using Terminaux.Inputs;
 using Terminaux.Inputs.Styles.Infobox;
+using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 
 namespace BassBoom.Cli.CliBase
@@ -273,7 +275,9 @@ namespace BassBoom.Cli.CliBase
             var (musicName, musicArtist, _) = GetMusicNameArtistGenre(musicPath);
 
             // Print the music name
-            return CenteredTextColor.RenderCentered(1, "Now playing: {0} - {1}", ConsoleColors.White, ConsoleColors.Black, musicArtist, musicName);
+            return
+                TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, 1) +
+                CenteredTextColor.RenderCentered(1, "Now playing: {0} - {1}", ConsoleColors.White, ConsoleColors.Black, musicArtist, musicName);
         }
 
         internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(string musicPath)
