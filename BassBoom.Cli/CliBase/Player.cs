@@ -159,14 +159,10 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.B:
                     PlayerControls.SeekBeginning();
                     PlayerControls.PreviousSong();
-                    playerThread = new(HandlePlay);
-                    PlayerControls.Play();
                     break;
                 case ConsoleKey.N:
                     PlayerControls.SeekBeginning();
                     PlayerControls.NextSong();
-                    playerThread = new(HandlePlay);
-                    PlayerControls.Play();
                     break;
                 case ConsoleKey.I:
                     PlayerControls.ShowSongInfo();

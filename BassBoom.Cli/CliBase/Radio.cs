@@ -148,13 +148,9 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.B:
                     RadioControls.PreviousStation();
-                    playerThread = new(HandlePlay);
-                    RadioControls.Play();
                     break;
                 case ConsoleKey.N:
                     RadioControls.NextStation();
-                    playerThread = new(HandlePlay);
-                    RadioControls.Play();
                     break;
                 case ConsoleKey.I:
                     RadioControls.ShowStationInfo();
