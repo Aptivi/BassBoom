@@ -42,8 +42,6 @@ namespace BassBoom.Cli.CliBase
     internal static class Radio
     {
         internal static Thread playerThread;
-        internal static FrameInfo frameInfo = null;
-        internal static (long rate, int channels, int encoding) formatInfo = new();
 
         public static void RadioLoop()
         {
@@ -64,6 +62,8 @@ namespace BassBoom.Cli.CliBase
             int hue = 0;
             screenPart.AddDynamicText(() =>
             {
+                if (Common.CurrentCachedInfo is null)
+                    return "";
                 var buffer = new StringBuilder();
                 string indicator = $"╣ Volume: {Common.volume:0.00} ╠";
                 var disco = PlaybackTools.Playing && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
@@ -272,14 +272,14 @@ namespace BassBoom.Cli.CliBase
             // In case we have no stations in the playlist...
             if (Common.cachedInfos.Count == 0)
             {
-                int height = (ConsoleWrapper.WindowHeight - 10) / 2;
+                int height = (ConsoleWrapper.WindowHeight - 6) / 2;
                 drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a radio station to the playlist."));
                 return drawn.ToString();
             }
 
             // Populate music file info, as necessary
             if (Common.populate)
-                RadioControls.PopulateRadioStationInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
+                RadioControls.PopulateRadioStationInfo(Common.CurrentCachedInfo.MusicPath);
             drawn.Append(RadioControls.RenderStationName());
 
             // Now, print the list of stations.

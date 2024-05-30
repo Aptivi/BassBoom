@@ -29,6 +29,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Terminaux.Base;
+using Terminaux.Base.Buffered;
 using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
@@ -46,9 +47,9 @@ namespace BassBoom.Cli.CliBase
             if (Common.cachedInfos.Count == 0)
                 return;
 
-            Player.position += (int)(Player.formatInfo.rate * seekRate);
-            if (Player.position > Player.total)
-                Player.position = Player.total;
+            Player.position += (int)(Common.CurrentCachedInfo.FormatInfo.rate * seekRate);
+            if (Player.position > Common.CurrentCachedInfo.Duration)
+                Player.position = Common.CurrentCachedInfo.Duration;
             PlaybackPositioningTools.SeekToFrame(Player.position);
         }
 
@@ -58,7 +59,7 @@ namespace BassBoom.Cli.CliBase
             if (Common.cachedInfos.Count == 0)
                 return;
 
-            Player.position -= (int)(Player.formatInfo.rate * seekRate);
+            Player.position -= (int)(Common.CurrentCachedInfo.FormatInfo.rate * seekRate);
             if (Player.position < 0)
                 Player.position = 0;
             PlaybackPositioningTools.SeekToFrame(Player.position);
@@ -130,13 +131,14 @@ namespace BassBoom.Cli.CliBase
         internal static void PromptForAddSong()
         {
             string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the music file");
+            ScreenTools.CurrentScreen.RequireRefresh();
             if (File.Exists(path))
             {
                 int currentPos = Player.position;
                 Common.populate = true;
                 PopulateMusicFileInfo(path);
                 Common.populate = true;
-                PopulateMusicFileInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
+                PopulateMusicFileInfo(Common.CurrentCachedInfo.MusicPath);
                 PlaybackPositioningTools.SeekToFrame(currentPos);
             }
             else
@@ -146,6 +148,7 @@ namespace BassBoom.Cli.CliBase
         internal static void PromptForAddDirectory()
         {
             string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the music library directory");
+            ScreenTools.CurrentScreen.RequireRefresh();
             if (Directory.Exists(path))
             {
                 int currentPos = Player.position;
@@ -158,7 +161,7 @@ namespace BassBoom.Cli.CliBase
                         PopulateMusicFileInfo(musicFile);
                     }
                     Common.populate = true;
-                    PopulateMusicFileInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
+                    PopulateMusicFileInfo(Common.CurrentCachedInfo.MusicPath);
                     PlaybackPositioningTools.SeekToFrame(currentPos);
                 }
             }
@@ -173,32 +176,20 @@ namespace BassBoom.Cli.CliBase
                 return;
             Common.populate = false;
             Common.Switch(musicPath);
-            if (Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
+            if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
-                var instance = Common.cachedInfos.Single((csi) => csi.MusicPath == musicPath);
-                Player.total = instance.Duration;
-                Player.formatInfo = instance.FormatInfo;
-                Player.totalSpan = AudioInfoTools.GetDurationSpanFromSamples(Player.total, Player.formatInfo.rate);
-                Player.frameInfo = instance.FrameInfo;
-                Player.managedV1 = instance.MetadataV1;
-                Player.managedV2 = instance.MetadataV2;
-                Player.lyricInstance = instance.LyricInstance;
-            }
-            else
-            {
+                ScreenTools.CurrentScreen.RequireRefresh();
                 InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
-                Player.total = AudioInfoTools.GetDuration(true);
-                Player.totalSpan = AudioInfoTools.GetDurationSpanFromSamples(Player.total);
-                Player.formatInfo = FormatTools.GetFormatInfo();
-                Player.frameInfo = AudioInfoTools.GetFrameInfo();
-                AudioInfoTools.GetId3Metadata(out Player.managedV1, out Player.managedV2);
+                var total = AudioInfoTools.GetDuration(true);
+                var formatInfo = FormatTools.GetFormatInfo();
+                var frameInfo = AudioInfoTools.GetFrameInfo();
+                AudioInfoTools.GetId3Metadata(out var managedV1, out var managedV2);
 
                 // Try to open the lyrics
-                OpenLyrics(musicPath);
-                var instance = new CachedSongInfo(musicPath, Player.managedV1, Player.managedV2, Player.total, Player.formatInfo, Player.frameInfo, Player.lyricInstance, "", false);
+                var lyric = OpenLyrics(musicPath);
+                var instance = new CachedSongInfo(musicPath, managedV1, managedV2, total, formatInfo, frameInfo, lyric, "", false);
                 Common.cachedInfos.Add(instance);
             }
-            TextWriterWhereColor.WriteWhere(new string(' ', ConsoleWrapper.WindowWidth), 0, 1);
         }
 
         internal static string RenderSongName(string musicPath)
@@ -212,8 +203,8 @@ namespace BassBoom.Cli.CliBase
 
         internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(string musicPath)
         {
-            var metadatav2 = Player.managedV2;
-            var metadatav1 = Player.managedV1;
+            var metadatav2 = Common.CurrentCachedInfo.MetadataV2;
+            var metadatav1 = Common.CurrentCachedInfo.MetadataV1;
             string musicName =
                 !string.IsNullOrEmpty(metadatav2.Title) ? metadatav2.Title :
                 !string.IsNullOrEmpty(metadatav1.Title) ? metadatav1.Title :
@@ -250,21 +241,22 @@ namespace BassBoom.Cli.CliBase
             return (musicName, musicArtist, musicGenre);
         }
 
-        internal static void OpenLyrics(string musicPath)
+        internal static Lyric OpenLyrics(string musicPath)
         {
             string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
             try
             {
                 InfoBoxColor.WriteInfoBox($"Trying to open lyrics file {lyricsPath}...", false);
                 if (File.Exists(lyricsPath))
-                    Player.lyricInstance = LyricReader.GetLyrics(lyricsPath);
+                    return LyricReader.GetLyrics(lyricsPath);
                 else
-                    Player.lyricInstance = null;
+                    return null;
             }
             catch (Exception ex)
             {
                 InfoBoxColor.WriteInfoBox($"Can't open lyrics file {lyricsPath}... {ex.Message}");
             }
+            return null;
         }
 
         internal static void RemoveCurrentSong()
@@ -280,7 +272,7 @@ namespace BassBoom.Cli.CliBase
                 if (Common.currentPos == 0)
                     Common.currentPos = 1;
                 Common.populate = true;
-                PopulateMusicFileInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
+                PopulateMusicFileInfo(Common.CurrentCachedInfo.MusicPath);
             }
         }
 
@@ -304,9 +296,9 @@ namespace BassBoom.Cli.CliBase
             string time = InfoBoxInputColor.WriteInfoBoxInput("Write the target position in this format: HH:MM:SS");
             if (TimeSpan.TryParse(time, out TimeSpan duration))
             {
-                Player.position = (int)(Common.cachedInfos[Common.currentPos - 1].FormatInfo.rate * duration.TotalSeconds);
-                if (Player.position > Player.total)
-                    Player.position = Player.total;
+                Player.position = (int)(Common.CurrentCachedInfo.FormatInfo.rate * duration.TotalSeconds);
+                if (Player.position > Common.CurrentCachedInfo.Duration)
+                    Player.position = Common.CurrentCachedInfo.Duration;
                 PlaybackPositioningTools.SeekToFrame(Player.position);
             }
         }
@@ -314,37 +306,39 @@ namespace BassBoom.Cli.CliBase
         internal static void ShowSongInfo()
         {
             var textsBuilder = new StringBuilder();
-            foreach (var text in Player.managedV2.Texts)
+            var idv2 = Common.CurrentCachedInfo.MetadataV2;
+            var idv1 = Common.CurrentCachedInfo.MetadataV1;
+            foreach (var text in idv2.Texts)
                 textsBuilder.AppendLine($"T - {text.Item1}: {text.Item2}");
-            foreach (var text in Player.managedV2.Extras)
+            foreach (var text in idv2.Extras)
                 textsBuilder.AppendLine($"E - {text.Item1}: {text.Item2}");
             InfoBoxColor.WriteInfoBox(
                 $$"""
                 Song info
                 =========
 
-                Artist: {{(!string.IsNullOrEmpty(Player.managedV2.Artist) ? Player.managedV2.Artist : !string.IsNullOrEmpty(Player.managedV1.Artist) ? Player.managedV1.Artist : "Unknown")}}
-                Title: {{(!string.IsNullOrEmpty(Player.managedV2.Title) ? Player.managedV2.Title : !string.IsNullOrEmpty(Player.managedV1.Title) ? Player.managedV1.Title : "")}}
-                Album: {{(!string.IsNullOrEmpty(Player.managedV2.Album) ? Player.managedV2.Album : !string.IsNullOrEmpty(Player.managedV1.Album) ? Player.managedV1.Album : "")}}
-                Genre: {{(!string.IsNullOrEmpty(Player.managedV2.Genre) ? Player.managedV2.Genre : !string.IsNullOrEmpty(Player.managedV1.Genre.ToString()) ? Player.managedV1.Genre.ToString() : "")}}
-                Comment: {{(!string.IsNullOrEmpty(Player.managedV2.Comment) ? Player.managedV2.Comment : !string.IsNullOrEmpty(Player.managedV1.Comment) ? Player.managedV1.Comment : "")}}
-                Duration: {{Player.totalSpan}}
-                Lyrics: {{(Player.lyricInstance is not null ? $"{Player.lyricInstance.Lines.Count} lines" : "No lyrics")}}
+                Artist: {{(!string.IsNullOrEmpty(idv2.Artist) ? idv2.Artist : !string.IsNullOrEmpty(idv1.Artist) ? idv1.Artist : "Unknown")}}
+                Title: {{(!string.IsNullOrEmpty(idv2.Title) ? idv2.Title : !string.IsNullOrEmpty(idv1.Title) ? idv1.Title : "")}}
+                Album: {{(!string.IsNullOrEmpty(idv2.Album) ? idv2.Album : !string.IsNullOrEmpty(idv1.Album) ? idv1.Album : "")}}
+                Genre: {{(!string.IsNullOrEmpty(idv2.Genre) ? idv2.Genre : !string.IsNullOrEmpty(idv1.Genre.ToString()) ? idv1.Genre.ToString() : "")}}
+                Comment: {{(!string.IsNullOrEmpty(idv2.Comment) ? idv2.Comment : !string.IsNullOrEmpty(idv1.Comment) ? idv1.Comment : "")}}
+                Duration: {{Common.CurrentCachedInfo.DurationSpan}}
+                Lyrics: {{(Common.CurrentCachedInfo.LyricInstance is not null ? $"{Common.CurrentCachedInfo.LyricInstance.Lines.Count} lines" : "No lyrics")}}
                 
                 Layer info
                 ==========
 
-                Version: {{Player.frameInfo.Version}}
-                Layer: {{Player.frameInfo.Layer}}
-                Rate: {{Player.frameInfo.Rate}}
-                Mode: {{Player.frameInfo.Mode}}
-                Mode Ext: {{Player.frameInfo.ModeExt}}
-                Frame Size: {{Player.frameInfo.FrameSize}}
-                Flags: {{Player.frameInfo.Flags}}
-                Emphasis: {{Player.frameInfo.Emphasis}}
-                Bitrate: {{Player.frameInfo.BitRate}}
-                ABR Rate: {{Player.frameInfo.AbrRate}}
-                VBR: {{Player.frameInfo.Vbr}}
+                Version: {{Common.CurrentCachedInfo.FrameInfo.Version}}
+                Layer: {{Common.CurrentCachedInfo.FrameInfo.Layer}}
+                Rate: {{Common.CurrentCachedInfo.FrameInfo.Rate}}
+                Mode: {{Common.CurrentCachedInfo.FrameInfo.Mode}}
+                Mode Ext: {{Common.CurrentCachedInfo.FrameInfo.ModeExt}}
+                Frame Size: {{Common.CurrentCachedInfo.FrameInfo.FrameSize}}
+                Flags: {{Common.CurrentCachedInfo.FrameInfo.Flags}}
+                Emphasis: {{Common.CurrentCachedInfo.FrameInfo.Emphasis}}
+                Bitrate: {{Common.CurrentCachedInfo.FrameInfo.BitRate}}
+                ABR Rate: {{Common.CurrentCachedInfo.FrameInfo.AbrRate}}
+                VBR: {{Common.CurrentCachedInfo.FrameInfo.Vbr}}
                 
                 Native State
                 ============

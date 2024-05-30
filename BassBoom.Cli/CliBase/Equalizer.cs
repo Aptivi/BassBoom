@@ -143,7 +143,7 @@ namespace BassBoom.Cli.CliBase
                 if (Common.isRadioMode)
                     drawn.Append(RadioControls.RenderStationName());
                 else
-                    drawn.Append(PlayerControls.RenderSongName(Common.cachedInfos[Common.currentPos - 1].MusicPath));
+                    drawn.Append(PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath));
             }
             else
                 drawn.Append(CenteredTextColor.RenderCentered(1, "Not playing. Music player is idle.", ConsoleColors.White, ConsoleColors.Black));

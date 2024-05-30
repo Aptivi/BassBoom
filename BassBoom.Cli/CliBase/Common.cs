@@ -46,6 +46,9 @@ namespace BassBoom.Cli.CliBase
         internal static bool isRadioMode = false;
         internal static readonly List<CachedSongInfo> cachedInfos = [];
 
+        internal static CachedSongInfo CurrentCachedInfo =>
+            cachedInfos.Count > 0 ? cachedInfos[currentPos - 1] : null;
+
         internal static void RaiseVolume()
         {
             volume += 0.05;

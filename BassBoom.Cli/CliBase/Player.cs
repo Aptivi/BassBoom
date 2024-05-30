@@ -43,13 +43,6 @@ namespace BassBoom.Cli.CliBase
     internal static class Player
     {
         internal static Thread playerThread;
-        internal static Lyric lyricInstance = null;
-        internal static FrameInfo frameInfo = null;
-        internal static Id3V1Metadata managedV1 = null;
-        internal static Id3V2Metadata managedV2 = null;
-        internal static TimeSpan totalSpan = new();
-        internal static int total = 0;
-        internal static (long rate, int channels, int encoding) formatInfo = new();
         internal static int position = 0;
         internal static readonly List<string> passedMusicPaths = [];
 
@@ -71,6 +64,8 @@ namespace BassBoom.Cli.CliBase
             int hue = 0;
             screenPart.AddDynamicText(() =>
             {
+                if (Common.CurrentCachedInfo is null)
+                    return "";
                 var buffer = new StringBuilder();
                 position = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDuration() : 0;
                 var posSpan = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDurationSpan() : new();
@@ -84,13 +79,13 @@ namespace BassBoom.Cli.CliBase
                 string indicator =
                     $"╣ Seek: {PlayerControls.seekRate:0.00} | " +
                     $"Volume: {Common.volume:0.00} ╠";
-                string lyric = lyricInstance is not null ? lyricInstance.GetLastLineCurrent() : "";
+                string lyric = Common.CurrentCachedInfo.LyricInstance is not null ? Common.CurrentCachedInfo.LyricInstance.GetLastLineCurrent() : "";
                 string finalLyric = string.IsNullOrWhiteSpace(lyric) ? "..." : lyric;
                 buffer.Append(
-                    ProgressBarColor.RenderProgress(100 * (position / (double)total), 2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, disco, disco) +
-                    TextWriterWhereColor.RenderWhereColor($"╣ {posSpan} / {totalSpan} ╠", 4, ConsoleWrapper.WindowHeight - 8, disco) +
+                    ProgressBarColor.RenderProgress(100 * (position / (double)Common.CurrentCachedInfo.Duration), 2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, disco, disco) +
+                    TextWriterWhereColor.RenderWhereColor($"╣ {posSpan} / {Common.CurrentCachedInfo.DurationSpan} ╠", 4, ConsoleWrapper.WindowHeight - 8, disco) +
                     TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 8, disco) +
-                    CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 6, lyricInstance is not null && PlaybackTools.Playing ? $"╣ {finalLyric} ╠" : "", disco)
+                    CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 6, Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.Playing ? $"╣ {finalLyric} ╠" : "", disco)
                 );
                 return buffer.ToString();
             });
@@ -290,10 +285,6 @@ namespace BassBoom.Cli.CliBase
                 InfoBoxColor.WriteInfoBox($"Playback failure: {ex.Message}");
                 Common.failedToPlay = true;
             }
-            finally
-            {
-                lyricInstance = null;
-            }
         }
 
         private static string HandleDraw()
@@ -331,7 +322,7 @@ namespace BassBoom.Cli.CliBase
                 }
                 else
                 {
-                    int height = (ConsoleWrapper.WindowHeight - 10) / 2;
+                    int height = (ConsoleWrapper.WindowHeight - 6) / 2;
                     drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a single song to the playlist, or 'S' to insert the whole music library."));
                     return drawn.ToString();
                 }
@@ -339,8 +330,8 @@ namespace BassBoom.Cli.CliBase
 
             // Populate music file info, as necessary
             if (Common.populate)
-                PlayerControls.PopulateMusicFileInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
-            drawn.Append(PlayerControls.RenderSongName(Common.cachedInfos[Common.currentPos - 1].MusicPath));
+                PlayerControls.PopulateMusicFileInfo(Common.CurrentCachedInfo.MusicPath);
+            drawn.Append(PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath));
 
             // Now, print the list of songs.
             var choices = new List<InputChoiceInfo>();

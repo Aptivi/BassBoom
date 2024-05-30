@@ -24,7 +24,7 @@ using BassBoom.Basolia.Playback;
 using BassBoom.Cli.Tools;
 using System.Linq;
 using System.Threading;
-using Terminaux.Base;
+using Terminaux.Base.Buffered;
 using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
@@ -93,10 +93,11 @@ namespace BassBoom.Cli.CliBase
         internal static void PromptForAddStation()
         {
             string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the radio station. The URL to the station must provide an MPEG radio station. AAC ones are not supported yet.");
+            ScreenTools.CurrentScreen.RequireRefresh();
             Common.populate = true;
             PopulateRadioStationInfo(path);
             Common.populate = true;
-            PopulateRadioStationInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
+            PopulateRadioStationInfo(Common.CurrentCachedInfo.MusicPath);
         }
 
         internal static void PopulateRadioStationInfo(string musicPath)
@@ -106,23 +107,16 @@ namespace BassBoom.Cli.CliBase
                 return;
             Common.populate = false;
             Common.Switch(musicPath);
-            if (Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
-            {
-                var instance = Common.cachedInfos.Single((csi) => csi.MusicPath == musicPath);
-                Radio.formatInfo = instance.FormatInfo;
-                Radio.frameInfo = instance.FrameInfo;
-            }
-            else
+            if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
                 InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
-                Radio.formatInfo = FormatTools.GetFormatInfo();
-                Radio.frameInfo = AudioInfoTools.GetFrameInfo();
+                var formatInfo = FormatTools.GetFormatInfo();
+                var frameInfo = AudioInfoTools.GetFrameInfo();
 
                 // Try to open the lyrics
-                var instance = new CachedSongInfo(musicPath, null, null, -1, Radio.formatInfo, Radio.frameInfo, null, FileTools.CurrentFile.StationName, true);
+                var instance = new CachedSongInfo(musicPath, null, null, -1, formatInfo, frameInfo, null, FileTools.CurrentFile.StationName, true);
                 Common.cachedInfos.Add(instance);
             }
-            TextWriterWhereColor.WriteWhere(new string(' ', ConsoleWrapper.WindowWidth), 0, 1);
         }
 
         internal static string RenderStationName()
@@ -147,7 +141,7 @@ namespace BassBoom.Cli.CliBase
                 if (Common.currentPos == 0)
                     Common.currentPos = 1;
                 Common.populate = true;
-                PopulateRadioStationInfo(Common.cachedInfos[Common.currentPos - 1].MusicPath);
+                PopulateRadioStationInfo(Common.CurrentCachedInfo.MusicPath);
             }
         }
 
@@ -168,24 +162,24 @@ namespace BassBoom.Cli.CliBase
                 Station info
                 =========
 
-                Radio station URL: {{Common.cachedInfos[Common.currentPos - 1].MusicPath}}
-                Radio station name: {{Common.cachedInfos[Common.currentPos - 1].StationName}}
+                Radio station URL: {{Common.CurrentCachedInfo.MusicPath}}
+                Radio station name: {{Common.CurrentCachedInfo.StationName}}
                 Radio station current song: {{PlaybackTools.RadioNowPlaying}}
                 
                 Layer info
                 ==========
 
-                Version: {{Radio.frameInfo.Version}}
-                Layer: {{Radio.frameInfo.Layer}}
-                Rate: {{Radio.frameInfo.Rate}}
-                Mode: {{Radio.frameInfo.Mode}}
-                Mode Ext: {{Radio.frameInfo.ModeExt}}
-                Frame Size: {{Radio.frameInfo.FrameSize}}
-                Flags: {{Radio.frameInfo.Flags}}
-                Emphasis: {{Radio.frameInfo.Emphasis}}
-                Bitrate: {{Radio.frameInfo.BitRate}}
-                ABR Rate: {{Radio.frameInfo.AbrRate}}
-                VBR: {{Radio.frameInfo.Vbr}}
+                Version: {{Common.CurrentCachedInfo.FrameInfo.Version}}
+                Layer: {{Common.CurrentCachedInfo.FrameInfo.Layer}}
+                Rate: {{Common.CurrentCachedInfo.FrameInfo.Rate}}
+                Mode: {{Common.CurrentCachedInfo.FrameInfo.Mode}}
+                Mode Ext: {{Common.CurrentCachedInfo.FrameInfo.ModeExt}}
+                Frame Size: {{Common.CurrentCachedInfo.FrameInfo.FrameSize}}
+                Flags: {{Common.CurrentCachedInfo.FrameInfo.Flags}}
+                Emphasis: {{Common.CurrentCachedInfo.FrameInfo.Emphasis}}
+                Bitrate: {{Common.CurrentCachedInfo.FrameInfo.BitRate}}
+                ABR Rate: {{Common.CurrentCachedInfo.FrameInfo.AbrRate}}
+                VBR: {{Common.CurrentCachedInfo.FrameInfo.Vbr}}
                 
                 Native State
                 ============
