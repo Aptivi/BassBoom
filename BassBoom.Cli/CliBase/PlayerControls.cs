@@ -470,6 +470,15 @@ namespace BassBoom.Cli.CliBase
                 Basolia version: {{InitBasolia.BasoliaVersion}}
                 MPG123 version: {{InitBasolia.MpgLibVersion}}
                 OUT123 version: {{InitBasolia.OutLibVersion}}
+                
+                Decoders
+                ========
+                
+                Supported decoders:
+                  - {{string.Join("\n  - ", DecodeTools.GetDecoders(true))}}
+                
+                All decoders:
+                  - {{string.Join("\n  - ", DecodeTools.GetDecoders(false))}}
 
                 System specifications
                 =====================

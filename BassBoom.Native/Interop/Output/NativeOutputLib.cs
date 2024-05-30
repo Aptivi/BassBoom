@@ -181,7 +181,7 @@ namespace BassBoom.Native.Interop.Output
         /// </summary>
         [DllImport(LibraryTools.LibraryNameOut, CharSet = CharSet.Ansi)]
         internal static extern int out123_devices(out123_handle* ao,
-            [MarshalAs(UnmanagedType.LPStr)] string driver, ref nint names, ref nint descr, ref nint active_driver);
+            [MarshalAs(UnmanagedType.LPStr)] string driver, out nint names, out nint descr, ref nint active_driver);
 
         /// <summary>
         /// MPG123_EXPORT void out123_stringlists_free(char **name, char **descr, int count);

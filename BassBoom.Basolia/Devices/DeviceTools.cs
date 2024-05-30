@@ -92,7 +92,7 @@ namespace BassBoom.Basolia.Devices
             {
                 // Query the devices
                 var handle = Mpg123Instance._out123Handle;
-                int devicesStatus = NativeOutputLib.out123_devices(handle, driver, ref names, ref descr, ref active);
+                int devicesStatus = NativeOutputLib.out123_devices(handle, driver, out names, out descr, ref active);
                 if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
                 activeDevice = Marshal.PtrToStringAnsi(active);

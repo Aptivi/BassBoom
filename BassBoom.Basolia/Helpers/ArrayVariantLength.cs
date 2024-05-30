@@ -25,21 +25,13 @@ namespace BassBoom.Basolia.Helpers
 {
     internal static class ArrayVariantLength
     {
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct ElementList
-        {
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
-            public IntPtr[] elements;
-        }
-
         internal static string[] GetStringsKnownLength(IntPtr arrayPointer, int elements)
         {
-            var stringsEnum = Marshal.PtrToStructure<ElementList>(arrayPointer);
             List<string> strings = [];
             for (int i = 0; i < elements; i++)
             {
-                var element = stringsEnum.elements[i];
-                string value = Marshal.PtrToStringAnsi(element);
+                IntPtr elementPtr = Marshal.ReadIntPtr(arrayPointer, i * IntPtr.Size);
+                string value = Marshal.PtrToStringAnsi(elementPtr);
                 strings.Add(value);
             }
             return [.. strings];
@@ -47,13 +39,14 @@ namespace BassBoom.Basolia.Helpers
 
         internal static string[] GetStringsUnknownLength(IntPtr arrayPointer)
         {
-            var stringsEnum = Marshal.PtrToStructure<ElementList>(arrayPointer);
             List<string> strings = [];
-            foreach (var element in stringsEnum.elements)
+            for (int i = 0; i < int.MaxValue; i++)
             {
-                if (element == IntPtr.Zero)
+                IntPtr elementPtr = Marshal.ReadIntPtr(arrayPointer, i * IntPtr.Size);
+                if (elementPtr == IntPtr.Zero)
                     break;
-                strings.Add(Marshal.PtrToStringAnsi(element));
+                string value = Marshal.PtrToStringAnsi(elementPtr);
+                strings.Add(value);
             }
             return [.. strings];
         }
