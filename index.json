@@ -167,7 +167,7 @@
   "api/BassBoom.Basolia.Playback.PlaybackState.html": {
     "href": "api/BassBoom.Basolia.Playback.PlaybackState.html",
     "title": "Enum PlaybackState | BassBoom Basolia API - Aptivi",
-    "keywords": "Enum PlaybackState Playback state Namespace: BassBoom.Basolia.Playback Assembly: BassBoom.Basolia.dll Syntax public enum PlaybackState Fields Name Description Paused Music has been paused by the user or by the call to the Pause() function Playing Music is playing Stopped Music has either stopped or not played yet"
+    "keywords": "Enum PlaybackState Playback state Namespace: BassBoom.Basolia.Playback Assembly: BassBoom.Basolia.dll Syntax public enum PlaybackState Fields Name Description Paused Music has been paused by the user or by the call to the Pause() function Playing Music is playing Stopped Music has either stopped or not played yet Stopping Music is stopping"
   },
   "api/BassBoom.Basolia.Playback.PlaybackTools.html": {
     "href": "api/BassBoom.Basolia.Playback.PlaybackTools.html",

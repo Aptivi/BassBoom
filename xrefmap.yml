@@ -2565,6 +2565,12 @@ references:
   commentId: F:BassBoom.Basolia.Playback.PlaybackState.Stopped
   fullName: BassBoom.Basolia.Playback.PlaybackState.Stopped
   nameWithType: PlaybackState.Stopped
+- uid: BassBoom.Basolia.Playback.PlaybackState.Stopping
+  name: Stopping
+  href: api/BassBoom.Basolia.Playback.PlaybackState.html#BassBoom_Basolia_Playback_PlaybackState_Stopping
+  commentId: F:BassBoom.Basolia.Playback.PlaybackState.Stopping
+  fullName: BassBoom.Basolia.Playback.PlaybackState.Stopping
+  nameWithType: PlaybackState.Stopping
 - uid: BassBoom.Basolia.Playback.PlaybackTools
   name: PlaybackTools
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html
