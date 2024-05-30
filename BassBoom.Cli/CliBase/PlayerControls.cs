@@ -141,6 +141,18 @@ namespace BassBoom.Cli.CliBase
             PlaybackPositioningTools.SeekLyric(lyric);
         }
 
+        internal static void SeekTo(TimeSpan target)
+        {
+            // In case we have no songs in the playlist...
+            if (Common.cachedInfos.Count == 0)
+                return;
+
+            Player.position = (int)(target.TotalSeconds * Common.CurrentCachedInfo.FormatInfo.rate);
+            if (Player.position > Common.CurrentCachedInfo.Duration)
+                Player.position = 0;
+            PlaybackPositioningTools.SeekToFrame(Player.position);
+        }
+
         internal static void Play()
         {
             // In case we have no songs in the playlist...

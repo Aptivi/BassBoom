@@ -178,6 +178,8 @@ namespace BassBoom.Cli.CliBase
                 [G] (when playing)  Seek to next lyric
                 [J] (when playing)  Seek to current lyric
                 [K] (when playing)  Seek to which lyric
+                [C]                 Set repeat checkpoint
+                [SHIFT] + [C]       Seek to repeat checkpoint
                 [E]                 Opens the equalizer
                 [D] (when playing)  Device and driver info
                 [Z]                 System info

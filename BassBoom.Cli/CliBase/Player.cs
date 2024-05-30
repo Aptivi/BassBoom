@@ -184,6 +184,14 @@ namespace BassBoom.Cli.CliBase
                     else
                         PlayerControls.RemoveCurrentSong();
                     break;
+                case ConsoleKey.C:
+                    if (Common.CurrentCachedInfo is null)
+                        return;
+                    if (keystroke.Modifiers == ConsoleModifiers.Shift)
+                        PlayerControls.SeekTo(Common.CurrentCachedInfo.RepeatCheckpoint);
+                    else
+                        Common.CurrentCachedInfo.RepeatCheckpoint = PlaybackPositioningTools.GetCurrentDurationSpan();
+                    break;
                 default:
                     Common.HandleKeypressCommon(keystroke, playerScreen, false);
                     break;
@@ -261,6 +269,14 @@ namespace BassBoom.Cli.CliBase
                     playerThread = new(HandlePlay);
                     PlayerControls.Play();
                     playerScreen.RequireRefresh();
+                    break;
+                case ConsoleKey.C:
+                    if (Common.CurrentCachedInfo is null)
+                        return;
+                    if (keystroke.Modifiers == ConsoleModifiers.Shift)
+                        PlayerControls.SeekTo(Common.CurrentCachedInfo.RepeatCheckpoint);
+                    else
+                        Common.CurrentCachedInfo.RepeatCheckpoint = PlaybackPositioningTools.GetCurrentDurationSpan();
                     break;
                 default:
                     Common.HandleKeypressCommon(keystroke, playerScreen, false);

@@ -19,6 +19,7 @@
 
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Lyrics;
+using System;
 
 namespace BassBoom.Cli.Tools
 {
@@ -68,6 +69,10 @@ namespace BassBoom.Cli.Tools
         /// Checks to see if this cached song info instance is a radio station or not
         /// </summary>
         public bool IsRadio { get; private set; }
+        /// <summary>
+        /// Repeat checkpoint (not for radio stations)
+        /// </summary>
+        public TimeSpan RepeatCheckpoint { get; internal set; } = new();
 
         /// <summary>
         /// A cached song information
