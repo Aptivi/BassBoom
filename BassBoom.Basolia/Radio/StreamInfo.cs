@@ -157,51 +157,70 @@ namespace BassBoom.Basolia.Radio
         /// <summary>
         /// Makes a new stream information which has all the streams
         /// </summary>
-        /// <param name="server">Shoutcast server class instance</param>
+        /// <param name="server">Radio server class instance</param>
         /// <param name="stream">Individual stream token</param>
-        internal StreamInfo(ShoutcastServer server, JToken stream)
+        internal StreamInfo(IRadioServer server, JToken stream)
         {
             try
             {
-                // Determine version of Shoutcast
-                if (server.ServerVersion == ShoutcastVersion.v1)
+                if (server is ShoutcastServer shoutcastServer)
                 {
-                    // Shoutcast version v1.x, so use the html fallback token.
-                    string[] response = server.streamHtmlToken.DocumentNode.SelectSingleNode("body").InnerText.Split(',');
-                    currentListeners = Convert.ToInt32(response[0]);
-                    streamStatus = Convert.ToInt32(response[1]);
-                    peakListeners = Convert.ToInt32(response[2]);
-                    maxListeners = Convert.ToInt32(response[3]);
-                    uniqueListeners = Convert.ToInt32(response[4]);
-                    bitRate = Convert.ToInt32(response[5]);
-                    songTitle = response[6];
+                    // Determine version of Shoutcast
+                    if (shoutcastServer.ServerVersion == ShoutcastVersion.v1)
+                    {
+                        // Shoutcast version v1.x, so use the html fallback token.
+                        string[] response = shoutcastServer.streamHtmlToken.DocumentNode.SelectSingleNode("body").InnerText.Split(',');
+                        currentListeners = Convert.ToInt32(response[0]);
+                        streamStatus = Convert.ToInt32(response[1]);
+                        peakListeners = Convert.ToInt32(response[2]);
+                        maxListeners = Convert.ToInt32(response[3]);
+                        uniqueListeners = Convert.ToInt32(response[4]);
+                        bitRate = Convert.ToInt32(response[5]);
+                        songTitle = response[6];
+                    }
+                    else
+                    {
+                        // Shoutcast version v2.x, so use the JToken.
+                        streamId = (int)stream["id"];
+                        currentListeners = (int)stream["currentlisteners"];
+                        peakListeners = (int)stream["peaklisteners"];
+                        maxListeners = (int)stream["maxlisteners"];
+                        uniqueListeners = (int)stream["uniquelisteners"];
+                        averageTime = (int)stream["averagetime"];
+                        streamGenre = (string)stream["servergenre"];
+                        streamGenre2 = (string)stream["servergenre2"];
+                        streamGenre3 = (string)stream["servergenre3"];
+                        streamGenre4 = (string)stream["servergenre4"];
+                        streamGenre5 = (string)stream["servergenre5"];
+                        streamHomepage = (string)stream["serverurl"];
+                        streamTitle = (string)stream["servertitle"];
+                        songTitle = (string)stream["songtitle"];
+                        streamHits = (int)stream["streamhits"];
+                        streamStatus = (int)stream["streamstatus"];
+                        backupStatus = (int)stream["backupstatus"];
+                        streamListed = (bool)stream["streamlisted"];
+                        streamPath = (string)stream["streampath"];
+                        streamUptime = (int)stream["streamuptime"];
+                        bitRate = (int)stream["bitrate"];
+                        sampleRate = (int)stream["samplerate"];
+                        mimeInfo = (string)stream["content"];
+                    }
                 }
-                else
+                else if (server is IcecastServer icecastServer)
                 {
-                    // Shoutcast version v2.x, so use the JToken.
-                    streamId = (int)stream["id"];
-                    currentListeners = (int)stream["currentlisteners"];
-                    peakListeners = (int)stream["peaklisteners"];
-                    maxListeners = (int)stream["maxlisteners"];
-                    uniqueListeners = (int)stream["uniquelisteners"];
-                    averageTime = (int)stream["averagetime"];
-                    streamGenre = (string)stream["servergenre"];
-                    streamGenre2 = (string)stream["servergenre2"];
-                    streamGenre3 = (string)stream["servergenre3"];
-                    streamGenre4 = (string)stream["servergenre4"];
-                    streamGenre5 = (string)stream["servergenre5"];
-                    streamHomepage = (string)stream["serverurl"];
-                    streamTitle = (string)stream["servertitle"];
-                    songTitle = (string)stream["songtitle"];
-                    streamHits = (int)stream["streamhits"];
-                    streamStatus = (int)stream["streamstatus"];
-                    backupStatus = (int)stream["backupstatus"];
-                    streamListed = (bool)stream["streamlisted"];
-                    streamPath = (string)stream["streampath"];
-                    streamUptime = (int)stream["streamuptime"];
+                    // Icecast server, so use the JToken.
+                    if (stream["dummy"] is not null)
+                        return;
+                    currentListeners = (int)stream["listeners"];
+                    peakListeners = (int)stream["listener_peak"];
+                    streamGenre = (string)stream["genre"];
+                    streamHomepage = (string)stream["server_url"];
+                    streamTitle = (string)stream["server_name"];
+                    songTitle = (string)stream["title"];
+                    streamListed = true;
+                    streamPath = (string)stream["listenurl"];
                     bitRate = (int)stream["bitrate"];
-                    sampleRate = (int)stream["samplerate"];
-                    mimeInfo = (string)stream["content"];
+                    mimeInfo = (string)stream["server_type"];
                 }
             }
             catch (Exception ex)

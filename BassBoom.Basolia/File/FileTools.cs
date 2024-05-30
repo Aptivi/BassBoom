@@ -123,9 +123,9 @@ namespace BassBoom.Basolia.File
                 throw new BasoliaException("Provide a path to a music file or a radio station", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if the radio station exists
-            ShoutcastServer.client.DefaultRequestHeaders.Add("Icy-MetaData", "1");
-            var reply = await ShoutcastServer.client.GetAsync(path, HttpCompletionOption.ResponseHeadersRead);
-            ShoutcastServer.client.DefaultRequestHeaders.Remove("Icy-MetaData");
+            RadioTools.client.DefaultRequestHeaders.Add("Icy-MetaData", "1");
+            var reply = await RadioTools.client.GetAsync(path, HttpCompletionOption.ResponseHeadersRead);
+            RadioTools.client.DefaultRequestHeaders.Remove("Icy-MetaData");
             if (!reply.IsSuccessStatusCode)
                 throw new BasoliaException($"This radio station doesn't exist. Error code: {(int)reply.StatusCode} ({reply.StatusCode}).", mpg123_errors.MPG123_BAD_FILE);
 

@@ -27,12 +27,11 @@ using System.Net.Http;
 
 namespace BassBoom.Basolia.Radio
 {
-    // TODO: Generalize this to support IceCast
     /// <summary>
     /// A Shoutcast server
     /// </summary>
     [DebuggerDisplay("{ServerHostFull,nq}: S[T:{TotalStreams}|A:{ActiveStreams}] | L[{CurrentListeners}]")]
-    public class ShoutcastServer
+    public class ShoutcastServer : IRadioServer
     {
         private ShoutcastVersion serverVersion;
         private int totalStreams;
@@ -45,75 +44,75 @@ namespace BassBoom.Basolia.Radio
         private readonly List<StreamInfo> streams = [];
         internal JToken streamToken;
         internal HtmlDocument streamHtmlToken = new();
-        internal static HttpClient client = new();
 
-        /// <summary>
-        /// Server IP address
-        /// </summary>
+        /// <inheritdoc/>
         public string ServerHost { get; }
-        /// <summary>
-        /// Server port
-        /// </summary>
+
+        /// <inheritdoc/>
         public int ServerPort { get; }
-        /// <summary>
-        /// Whether the Shoutcast server is using HTTPS or not
-        /// </summary>
+
+        /// <inheritdoc/>
         public bool ServerHttps { get; }
-        /// <summary>
-        /// Server IP address with port
-        /// </summary>
+
+        /// <inheritdoc/>
         public string ServerHostFull =>
             ServerHost + ":" + ServerPort;
-        /// <summary>
-        /// Server version (1.x, 2.x)
-        /// </summary>
-        public ShoutcastVersion ServerVersion =>
-            serverVersion;
-        /// <summary>
-        /// Total number of streams in the server
-        /// </summary>
+
+        /// <inheritdoc/>
         public int TotalStreams =>
             totalStreams;
-        /// <summary>
-        /// Active streams in the server
-        /// </summary>
+
+        /// <inheritdoc/>
         public int ActiveStreams =>
             activeStreams;
-        /// <summary>
-        /// How many people are listening to the server at this time?
-        /// </summary>
+
+        /// <inheritdoc/>
         public int CurrentListeners =>
             currentListeners;
-        /// <summary>
-        /// How many listeners did the server ever get at peak times?
-        /// </summary>
+
+        /// <inheritdoc/>
         public int PeakListeners =>
             peakListeners;
+
+        /// <inheritdoc/>
+        public StreamInfo[] Streams =>
+            [.. streams];
+
         /// <summary>
         /// How many people can listen to the server?
         /// </summary>
         public int MaxListeners =>
             maxListeners;
+
         /// <summary>
         /// How many unique listeners are there?
         /// </summary>
         public int UniqueListeners =>
             uniqueListeners;
+
         /// <summary>
         /// Average time on any active listener connections in seconds
         /// </summary>
         public int AverageTime =>
             averageTime;
+
         /// <summary>
         /// Average time on any active listener connections in the time span
         /// </summary>
         public TimeSpan AverageTimeSpan =>
             TimeSpan.FromSeconds(AverageTime);
+
         /// <summary>
-        /// Available streams and their statistics
+        /// Always <see cref="RadioServerType.Shoutcast"/> for SHOUTcast radio servers
         /// </summary>
-        public StreamInfo[] Streams =>
-            [.. streams];
+        public RadioServerType ServerType =>
+            RadioServerType.Shoutcast;
+
+        /// <summary>
+        /// Server version (1.x, 2.x)
+        /// </summary>
+        public ShoutcastVersion ServerVersion =>
+            serverVersion;
 
         /// <summary>
         /// Connects to the Shoutcast server and gets the information
@@ -191,14 +190,14 @@ namespace BassBoom.Basolia.Radio
             // /7.html
             Uri statisticsUri = new(ServerHostFull + "/statistics?json=1");
             Uri fallbackUri = new(ServerHostFull + "/7.html");
-            string serverResponse = await client.GetStringAsync(statisticsUri);
+            string serverResponse = await RadioTools.client.GetStringAsync(statisticsUri);
 
             // Shoutcast v1.x doesn't have /statistics...
             if (serverResponse.Contains("Invalid resource"))
             {
                 // Detected v1. Fallback to /7.html
                 serverVersion = ShoutcastVersion.v1;
-                serverResponse = await client.GetStringAsync(fallbackUri);
+                serverResponse = await RadioTools.client.GetStringAsync(fallbackUri);
                 streamHtmlToken.LoadHtml(serverResponse);
             }
             else

@@ -153,7 +153,10 @@ namespace BassBoom.Cli.CliBase
                     RadioControls.NextStation();
                     break;
                 case ConsoleKey.I:
-                    RadioControls.ShowStationInfo();
+                    if (keystroke.Modifiers == ConsoleModifiers.Control)
+                        RadioControls.ShowExtendedStationInfo();
+                    else
+                        RadioControls.ShowStationInfo();
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.A:
@@ -203,7 +206,10 @@ namespace BassBoom.Cli.CliBase
                     RadioControls.Stop();
                     break;
                 case ConsoleKey.I:
-                    RadioControls.ShowStationInfo();
+                    if (keystroke.Modifiers == ConsoleModifiers.Control)
+                        RadioControls.ShowExtendedStationInfo();
+                    else
+                        RadioControls.ShowStationInfo();
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.D:

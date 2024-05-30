@@ -21,8 +21,10 @@ using BassBoom.Basolia.Enumerations;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Playback;
+using BassBoom.Basolia.Radio;
 using BassBoom.Cli.Tools;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using Terminaux.Base.Buffered;
 using Terminaux.Colors.Data;
@@ -160,7 +162,7 @@ namespace BassBoom.Cli.CliBase
             InfoBoxColor.WriteInfoBox(
                 $$"""
                 Station info
-                =========
+                ============
 
                 Radio station URL: {{Common.CurrentCachedInfo.MusicPath}}
                 Radio station name: {{Common.CurrentCachedInfo.StationName}}
@@ -191,6 +193,43 @@ namespace BassBoom.Cli.CliBase
                 Encoding padding: {{PlaybackTools.GetNativeState(PlaybackStateType.EncodePadding)}}
                 Frankenstein stream: {{PlaybackTools.GetNativeState(PlaybackStateType.Frankenstein)}}
                 Fresh decoder: {{PlaybackTools.GetNativeState(PlaybackStateType.FreshDecoder)}}
+                """
+            );
+        }
+
+        internal static void ShowExtendedStationInfo()
+        {
+            var station = RadioTools.GetRadioInfo(Common.CurrentCachedInfo.MusicPath);
+            station.Refresh();
+            var streamBuilder = new StringBuilder();
+            foreach (var stream in station.Streams)
+            {
+                streamBuilder.AppendLine($"Name: {stream.StreamTitle}");
+                streamBuilder.AppendLine($"Home page: {stream.StreamHomepage}");
+                streamBuilder.AppendLine($"Genre: {stream.StreamGenre}");
+                streamBuilder.AppendLine($"Now playing: {stream.SongTitle}");
+                streamBuilder.AppendLine($"Stream path: {stream.StreamPath}");
+                streamBuilder.AppendLine($"Listeners: {stream.CurrentListeners} with {stream.PeakListeners} at peak");
+                streamBuilder.AppendLine($"Bit rate: {stream.BitRate} kbps");
+                streamBuilder.AppendLine($"Media type: {stream.MimeInfo}");
+                streamBuilder.AppendLine("===============================");
+            }
+            InfoBoxColor.WriteInfoBox(
+                $$"""
+                Radio server info
+                =================
+
+                Radio station URL: {{station.ServerHostFull}}
+                Radio station uses HTTPS: {{station.ServerHttps}}
+                Radio station server type: {{station.ServerType}}
+                Radio station streams: {{station.TotalStreams}} with {{station.ActiveStreams}} active
+                Radio station listeners: {{station.CurrentListeners}} with {{station.PeakListeners}} at peak
+                
+                Stream info
+                ===========
+
+                ===============================
+                {{streamBuilder}}
                 """
             );
         }
