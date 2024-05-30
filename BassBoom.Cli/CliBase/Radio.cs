@@ -171,7 +171,7 @@ namespace BassBoom.Cli.CliBase
                         RadioControls.RemoveCurrentStation();
                     break;
                 default:
-                    Common.HandleKeypressCommon(keystroke, playerScreen, false);
+                    Common.HandleKeypressCommon(keystroke, playerScreen, true);
                     break;
             }
         }
@@ -220,7 +220,7 @@ namespace BassBoom.Cli.CliBase
                     playerScreen.RequireRefresh();
                     break;
                 default:
-                    Common.HandleKeypressCommon(keystroke, playerScreen, false);
+                    Common.HandleKeypressCommon(keystroke, playerScreen, true);
                     break;
             }
         }
