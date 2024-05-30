@@ -375,6 +375,46 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Radio.IRadioServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Radio.IRadioServer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Radio.IcecastServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Radio.IcecastServer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Radio.RadioServerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Radio.RadioServerType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Radio.RadioTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Radio.RadioTools.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.Radio.ShoutcastServer.yml",
       "output": {
         ".html": {
