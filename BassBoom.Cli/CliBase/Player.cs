@@ -19,8 +19,6 @@
 
 using BassBoom.Basolia;
 using BassBoom.Basolia.File;
-using BassBoom.Basolia.Format;
-using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using System;
 using System.Collections.Generic;

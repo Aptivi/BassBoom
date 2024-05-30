@@ -18,7 +18,6 @@
 //
 
 using BassBoom.Basolia.Enumerations;
-using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
@@ -28,12 +27,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using Terminaux.Base;
 using Terminaux.Base.Buffered;
 using Terminaux.Colors.Data;
 using Terminaux.Inputs;
 using Terminaux.Inputs.Styles.Infobox;
-using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
 
 namespace BassBoom.Cli.CliBase
