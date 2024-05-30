@@ -172,6 +172,7 @@ namespace BassBoom.Cli.CliBase
             if (PlaybackTools.Playing || !Common.populate)
                 return;
             Common.populate = false;
+            Common.Switch(musicPath);
             if (Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
                 var instance = Common.cachedInfos.Single((csi) => csi.MusicPath == musicPath);
@@ -186,9 +187,6 @@ namespace BassBoom.Cli.CliBase
             else
             {
                 InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
-                if (FileTools.IsOpened)
-                    FileTools.CloseFile();
-                FileTools.OpenFile(musicPath);
                 Player.total = AudioInfoTools.GetDuration(true);
                 Player.totalSpan = AudioInfoTools.GetDurationSpanFromSamples(Player.total);
                 Player.formatInfo = FormatTools.GetFormatInfo();

@@ -19,6 +19,7 @@
 
 using BassBoom.Basolia;
 using BassBoom.Basolia.Devices;
+using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Playback;
 using BassBoom.Cli.Tools;
@@ -66,6 +67,16 @@ namespace BassBoom.Cli.CliBase
             exiting = true;
             advance = false;
             PlaybackTools.Stop();
+        }
+
+        internal static void Switch(string musicPath)
+        {
+            if (FileTools.IsOpened)
+                FileTools.CloseFile();
+            if (isRadioMode)
+                FileTools.OpenUrl(musicPath);
+            else
+                FileTools.OpenFile(musicPath);
         }
 
         internal static void ShowDeviceDriver()
