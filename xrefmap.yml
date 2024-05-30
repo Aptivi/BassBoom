@@ -2297,6 +2297,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent
   nameWithType: Lyric.GetLinesCurrent
+- uid: BassBoom.Basolia.Lyrics.Lyric.GetLinesFromSpan(System.TimeSpan)
+  name: GetLinesFromSpan(TimeSpan)
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLinesFromSpan_System_TimeSpan_
+  commentId: M:BassBoom.Basolia.Lyrics.Lyric.GetLinesFromSpan(System.TimeSpan)
+  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLinesFromSpan(System.TimeSpan)
+  nameWithType: Lyric.GetLinesFromSpan(TimeSpan)
+- uid: BassBoom.Basolia.Lyrics.Lyric.GetLinesFromSpan*
+  name: GetLinesFromSpan
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLinesFromSpan_
+  commentId: Overload:BassBoom.Basolia.Lyrics.Lyric.GetLinesFromSpan
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLinesFromSpan
+  nameWithType: Lyric.GetLinesFromSpan
 - uid: BassBoom.Basolia.Lyrics.Lyric.GetLinesToSpan(System.TimeSpan)
   name: GetLinesToSpan(TimeSpan)
   href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLinesToSpan_System_TimeSpan_
@@ -2310,6 +2323,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Lyrics.Lyric.GetLinesToSpan
   nameWithType: Lyric.GetLinesToSpan
+- uid: BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming
+  name: GetLinesUpcoming()
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLinesUpcoming
+  commentId: M:BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming
+  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming()
+  nameWithType: Lyric.GetLinesUpcoming()
+- uid: BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming*
+  name: GetLinesUpcoming
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLinesUpcoming_
+  commentId: Overload:BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming
+  nameWithType: Lyric.GetLinesUpcoming
 - uid: BassBoom.Basolia.Lyrics.Lyric.Lines
   name: Lines
   href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_Lines
@@ -2473,6 +2499,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan
   nameWithType: PlaybackPositioningTools.GetCurrentDurationSpan
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric(BassBoom.Basolia.Lyrics.LyricLine)
+  name: SeekLyric(LyricLine)
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekLyric_BassBoom_Basolia_Lyrics_LyricLine_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric(BassBoom.Basolia.Lyrics.LyricLine)
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric(BassBoom.Basolia.Lyrics.LyricLine)
+  nameWithType: PlaybackPositioningTools.SeekLyric(LyricLine)
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric*
+  name: SeekLyric
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekLyric_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric
+  nameWithType: PlaybackPositioningTools.SeekLyric
 - uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(System.Int32)
   name: SeekToFrame(int)
   href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToFrame_System_Int32_
