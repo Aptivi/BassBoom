@@ -25,6 +25,7 @@ using BassBoom.Native.Interop.Output;
 using BassBoom.Native.Runtime;
 using System;
 using System.Threading;
+using BassBoom.Basolia.Lyrics;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -140,6 +141,23 @@ namespace BassBoom.Basolia.Playback
                     if (status == (int)mpg123_errors.MPG123_ERR)
                         throw new BasoliaException($"Can't seek to frame #{frame} of the file", (mpg123_errors)status);
                 }
+            }
+        }
+
+        public static void SeekLyric(LyricLine lyricLine)
+        {
+            lock (PositionLock)
+            {
+                InitBasolia.CheckInited();
+
+                // Check to see if the file is open
+                if (!FileTools.IsOpened)
+                    throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+                // Get the length, convert it to frames, and seek
+                var length = lyricLine.LineSpan.TotalSeconds;
+                int frame = (int)(length * FormatTools.GetFormatInfo().rate);
+                SeekToFrame(frame);
             }
         }
 

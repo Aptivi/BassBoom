@@ -31,6 +31,7 @@ using System.Threading;
 using Terminaux.Base;
 using Terminaux.Base.Buffered;
 using Terminaux.Colors.Data;
+using Terminaux.Inputs;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
@@ -73,6 +74,71 @@ namespace BassBoom.Cli.CliBase
 
             PlaybackPositioningTools.SeekToTheBeginning();
             Player.position = 0;
+        }
+
+        internal static void SeekPreviousLyric()
+        {
+            // In case we have no songs in the playlist, or we have no lyrics...
+            if (Common.cachedInfos.Count == 0)
+                return;
+            if (Common.CurrentCachedInfo.LyricInstance is null)
+                return;
+
+            var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesCurrent();
+            if (lyrics.Length == 0)
+                return;
+            var lyric = lyrics.Length == 1 ? lyrics[0] : lyrics[lyrics.Length - 2];
+            PlaybackPositioningTools.SeekLyric(lyric);
+        }
+
+        internal static void SeekCurrentLyric()
+        {
+            // In case we have no songs in the playlist, or we have no lyrics...
+            if (Common.cachedInfos.Count == 0)
+                return;
+            if (Common.CurrentCachedInfo.LyricInstance is null)
+                return;
+
+            var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesCurrent();
+            if (lyrics.Length == 0)
+                return;
+            var lyric = lyrics[lyrics.Length - 1];
+            PlaybackPositioningTools.SeekLyric(lyric);
+        }
+
+        internal static void SeekNextLyric()
+        {
+            // In case we have no songs in the playlist, or we have no lyrics...
+            if (Common.cachedInfos.Count == 0)
+                return;
+            if (Common.CurrentCachedInfo.LyricInstance is null)
+                return;
+
+            var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesUpcoming();
+            if (lyrics.Length == 0)
+            {
+                SeekCurrentLyric();
+                return;
+            }
+            var lyric = lyrics[0];
+            PlaybackPositioningTools.SeekLyric(lyric);
+        }
+
+        internal static void SeekWhichLyric()
+        {
+            // In case we have no songs in the playlist, or we have no lyrics...
+            if (Common.cachedInfos.Count == 0)
+                return;
+            if (Common.CurrentCachedInfo.LyricInstance is null)
+                return;
+
+            var lyrics = Common.CurrentCachedInfo.LyricInstance.Lines;
+            var choices = lyrics.Select((line) => new InputChoiceInfo($"{line.LineSpan}", line.Line)).ToArray();
+            int index = InfoBoxSelectionColor.WriteInfoBoxSelection(choices, "Select a lyric to seek to");
+            if (index == -1)
+                return;
+            var lyric = lyrics[index];
+            PlaybackPositioningTools.SeekLyric(lyric);
         }
 
         internal static void Play()

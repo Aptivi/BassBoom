@@ -45,6 +45,16 @@ namespace BassBoom.Basolia.Lyrics
         }
 
         /// <summary>
+        /// Gets all the lines from the current music duration to the end
+        /// </summary>
+        /// <returns>Array of lyric lines from the current music duration to the end</returns>
+        public LyricLine[] GetLinesUpcoming()
+        {
+            var currentSpan = PlaybackPositioningTools.GetCurrentDurationSpan();
+            return GetLinesFromSpan(currentSpan);
+        }
+
+        /// <summary>
         /// Gets the last lyric line from the current music duration
         /// </summary>
         /// <returns>Last lyric line from the current music duration</returns>
@@ -75,6 +85,14 @@ namespace BassBoom.Basolia.Lyrics
         /// <returns>Array of lyric lines from the start to the current span</returns>
         public LyricLine[] GetLinesToSpan(TimeSpan span) =>
             Lines.Where((line) => line.LineSpan <= span).ToArray();
+
+        /// <summary>
+        /// Gets all the lines from the current span to the end
+        /// </summary>
+        /// <param name="span">Time span in which it usually represents the current music duration</param>
+        /// <returns>Array of lyric lines from the current span to the end</returns>
+        public LyricLine[] GetLinesFromSpan(TimeSpan span) =>
+            Lines.Where((line) => line.LineSpan > span).ToArray();
 
         /// <summary>
         /// Gets the last lyric line from the given time span

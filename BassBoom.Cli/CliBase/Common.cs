@@ -174,6 +174,10 @@ namespace BassBoom.Cli.CliBase
                 [R]                 Remove current song
                 [CTRL] + [R]        Remove all songs
                 [S] (when playing)  Selectively seek
+                [F] (when playing)  Seek to previous lyric
+                [G] (when playing)  Seek to next lyric
+                [J] (when playing)  Seek to current lyric
+                [K] (when playing)  Seek to which lyric
                 [E]                 Opens the equalizer
                 [D] (when playing)  Device and driver info
                 [Z]                 System info

@@ -213,6 +213,19 @@ namespace BassBoom.Cli.CliBase
                     playerThread = new(HandlePlay);
                     PlayerControls.Play();
                     break;
+                case ConsoleKey.F:
+                    PlayerControls.SeekPreviousLyric();
+                    break;
+                case ConsoleKey.G:
+                    PlayerControls.SeekNextLyric();
+                    break;
+                case ConsoleKey.J:
+                    PlayerControls.SeekCurrentLyric();
+                    break;
+                case ConsoleKey.K:
+                    PlayerControls.SeekWhichLyric();
+                    playerScreen.RequireRefresh();
+                    break;
                 case ConsoleKey.N:
                     PlayerControls.Stop(false);
                     PlayerControls.SeekBeginning();
