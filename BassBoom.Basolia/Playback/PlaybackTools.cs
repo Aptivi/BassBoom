@@ -149,7 +149,7 @@ namespace BassBoom.Basolia.Playback
                         FeedRadio();
                     }
                 } while (err == (int)mpg123_errors.MPG123_OK && Playing);
-                if (Playing)
+                if (Playing || state == PlaybackState.Stopping)
                     state = PlaybackState.Stopped;
             }
         }
@@ -187,7 +187,8 @@ namespace BassBoom.Basolia.Playback
                 throw new BasoliaException("Can't stop a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Stop the music and seek to the beginning
-            state = PlaybackState.Stopped;
+            state = state == PlaybackState.Playing ? PlaybackState.Stopping : PlaybackState.Stopped;
+            SpinWait.SpinUntil(() => state == PlaybackState.Stopped);
             if (!FileTools.IsRadioStation)
                 PlaybackPositioningTools.SeekToTheBeginning();
         }

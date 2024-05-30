@@ -35,6 +35,10 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Music has been paused by the user or by the call to the <see cref="PlaybackTools.Pause"/> function
         /// </summary>
-        Paused
+        Paused,
+        /// <summary>
+        /// Music is stopping
+        /// </summary>
+        Stopping,
     }
 }
