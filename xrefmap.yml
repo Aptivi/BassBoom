@@ -120,6 +120,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Devices.DeviceTools.GetDrivers
   nameWithType: DeviceTools.GetDrivers
+- uid: BassBoom.Basolia.Devices.DeviceTools.Reset
+  name: Reset()
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_Reset
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.Reset
+  fullName: BassBoom.Basolia.Devices.DeviceTools.Reset()
+  nameWithType: DeviceTools.Reset()
+- uid: BassBoom.Basolia.Devices.DeviceTools.Reset*
+  name: Reset
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_Reset_
+  commentId: Overload:BassBoom.Basolia.Devices.DeviceTools.Reset
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Devices.DeviceTools.Reset
+  nameWithType: DeviceTools.Reset
 - uid: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(System.String,System.String)
   name: SetActiveDevice(string, string)
   href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_SetActiveDevice_System_String_System_String_
