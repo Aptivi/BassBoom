@@ -213,7 +213,7 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.D:
                     RadioControls.Pause();
-                    Common.ShowDeviceDriver();
+                    Common.HandleKeypressCommon(keystroke, playerScreen, true);
                     playerThread = new(HandlePlay);
                     RadioControls.Play();
                     playerScreen.RequireRefresh();

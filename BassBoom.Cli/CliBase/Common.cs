@@ -26,9 +26,11 @@ using BassBoom.Cli.Tools;
 using SpecProbe.Platform;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Terminaux.Base.Buffered;
+using Terminaux.Inputs;
 using Terminaux.Inputs.Styles.Infobox;
 
 namespace BassBoom.Cli.CliBase
@@ -86,8 +88,22 @@ namespace BassBoom.Cli.CliBase
         internal static void ShowDeviceDriver()
         {
             var builder = new StringBuilder();
-            var currentTuple = DeviceTools.GetCurrent();
-            var currentCachedTuple = DeviceTools.GetCurrentCached();
+            var currentBuilder = new StringBuilder();
+            if (PlaybackTools.Playing)
+            {
+                var (driver, device) = DeviceTools.GetCurrent();
+                var cached = DeviceTools.GetCurrentCached();
+                currentBuilder.AppendLine(
+                    $$"""
+                    Device: {{device}}
+                    Driver: {{driver}}
+                    Device (cached): {{cached.device}}
+                    Driver (cached): {{cached.driver}}
+                    """
+                );
+            }
+            else
+                currentBuilder.AppendLine("Can't query current devices while not playing.");
             var drivers = DeviceTools.GetDrivers();
             string activeDevice = "";
             foreach (var driver in drivers)
@@ -109,10 +125,7 @@ namespace BassBoom.Cli.CliBase
                 Device and Driver
                 =================
 
-                Device: {{currentTuple.device}}
-                Driver: {{currentTuple.driver}}
-                Device (cached): {{currentCachedTuple.device}}
-                Driver (cached): {{currentCachedTuple.driver}}
+                {{currentBuilder}}
 
                 Available devices and drivers
                 =============================
@@ -182,7 +195,9 @@ namespace BassBoom.Cli.CliBase
                 [C]                 Set repeat checkpoint
                 [SHIFT] + [C]       Seek to repeat checkpoint
                 [E]                 Opens the equalizer
-                [D] (when playing)  Device and driver info
+                [D]                 Device and driver info
+                [CTRL] + [D]        Set device and driver
+                [SHIFT] + [D]       Reset device and driver
                 [Z]                 System info
                 """
             );
@@ -207,7 +222,9 @@ namespace BassBoom.Cli.CliBase
                 [R]                 Remove current radio station
                 [CTRL] + [R]        Remove all radio stations
                 [E]                 Opens the equalizer
-                [D] (when playing)  Device and driver info
+                [D]                 Device and driver info
+                [CTRL] + [D]        Set device and driver
+                [SHIFT] + [D]       Reset device and driver
                 [Z]                 System info
                 """
             );
@@ -240,6 +257,31 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.L:
                     enableDisco = !enableDisco;
+                    break;
+                case ConsoleKey.D:
+                    if (keystroke.Modifiers == ConsoleModifiers.Control)
+                    {
+                        var drivers = DeviceTools.GetDrivers().Select((kvp) => new InputChoiceInfo(kvp.Key, kvp.Value)).ToArray();
+                        int driverIdx = InfoBoxSelectionColor.WriteInfoBoxSelection(drivers, "Select a driver. ESC to quit.");
+                        playerScreen.RequireRefresh();
+                        if (driverIdx < 0)
+                            return;
+                        var driver = drivers[driverIdx];
+                        string active = "";
+                        var devices = DeviceTools.GetDevices(driver.ChoiceName, ref active).Select((kvp) => new InputChoiceInfo(kvp.Key, kvp.Value)).ToArray();
+                        int deviceIdx = InfoBoxSelectionColor.WriteInfoBoxSelection(devices, $"Select a device. Current driver is {active}. ESC to quit.");
+                        playerScreen.RequireRefresh();
+                        if (deviceIdx < 0)
+                            return;
+                        var device = devices[deviceIdx];
+                        DeviceTools.SetActiveDriver(driver.ChoiceName);
+                        DeviceTools.SetActiveDevice(driver.ChoiceName, device.ChoiceName);
+                    }
+                    else if (keystroke.Modifiers == ConsoleModifiers.Shift)
+                        DeviceTools.Reset();
+                    else
+                        ShowDeviceDriver();
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.Q:
                     Exit();

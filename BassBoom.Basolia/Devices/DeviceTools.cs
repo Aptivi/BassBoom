@@ -62,11 +62,13 @@ namespace BassBoom.Basolia.Devices
                 driverDescs = ArrayVariantLength.GetStringsKnownLength(descr, driverCount);
             }
 
-            // Iterate through each driver
+            // Iterate through each driver, but ignore the builtins as they're used for debugging.
             for (int i = 0; i < driverCount; i++)
             {
                 string name = driverNames[i];
                 string description = driverDescs[i];
+                if (description.Contains("(builtin)"))
+                    continue;
                 drivers.Add(name, description);
             }
             return new ReadOnlyDictionary<string, string>(drivers);
@@ -174,6 +176,15 @@ namespace BassBoom.Basolia.Devices
             if (!deviceList.ContainsKey(device))
                 throw new BasoliaException($"Device {device} doesn't exist", mpg123_errors.MPG123_ERR);
             activeDevice = device;
+        }
+
+        /// <summary>
+        /// Resets the driver and the device selection to their initial settings
+        /// </summary>
+        public static void Reset()
+        {
+            activeDriver = null;
+            activeDevice = null;
         }
     }
 }
