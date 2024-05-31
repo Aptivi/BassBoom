@@ -17,8 +17,8 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Init;
+using System.Runtime.InteropServices;
 
 namespace BassBoom.Native.Interop.Play
 {
@@ -36,66 +36,66 @@ namespace BassBoom.Native.Interop.Play
         /// <summary>
         /// MPG123_EXPORT void mpg123_rates(const long **list, size_t *number);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern void mpg123_rates(long[] list, int* number);
 
         /// <summary>
         /// MPG123_EXPORT void mpg123_encodings(const int **list, size_t *number);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern void mpg123_encodings(int[] list, int* number);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_encsize(int encoding);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_encsize(int encoding);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_format_none(mpg123_handle *mh);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_format_none(mpg123_handle* mh);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_format_all(mpg123_handle *mh);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_format_all(mpg123_handle* mh);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_format(mpg123_handle *mh
         /// , long rate, int channels, int encodings);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_format(mpg123_handle* mh, long rate, int channels, int encodings);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_format2(mpg123_handle *mh
         /// , long rate, int channels, int encodings);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_format2(mpg123_handle* mh, long rate, int channels, int encodings);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_format_support(mpg123_handle *mh
         /// , long rate, int encoding);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_format_support(mpg123_handle* mh, long rate, int encoding);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_getformat(mpg123_handle *mh
         /// , long *rate, int *channels, int *encoding);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_getformat(mpg123_handle* mh, out long rate, out int channels, out int encoding);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_getformat2(mpg123_handle *mh
         /// , long *rate, int *channels, int *encoding, int clear_flag);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_getformat2(mpg123_handle* mh, long* rate, int* channels, int* encoding, int clear_flag);
     }
 }

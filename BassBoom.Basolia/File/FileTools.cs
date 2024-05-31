@@ -19,9 +19,9 @@
 
 using BassBoom.Basolia.Playback;
 using BassBoom.Basolia.Radio;
+using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Play;
-using BassBoom.Native.Runtime;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -92,7 +92,7 @@ namespace BassBoom.Basolia.File
             unsafe
             {
                 // Open the file
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 int openStatus = NativeInput.mpg123_open(handle, path);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't open file", mpg123_errors.MPG123_ERR);
@@ -143,7 +143,7 @@ namespace BassBoom.Basolia.File
             unsafe
             {
                 // Open the radio station
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 int openStatus = NativeInput.mpg123_open_feed(handle);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't open radio station", mpg123_errors.MPG123_ERR);
@@ -175,7 +175,7 @@ namespace BassBoom.Basolia.File
             unsafe
             {
                 // Close the file
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 int closeStatus = NativeInput.mpg123_close(handle);
                 if (closeStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't close file", mpg123_errors.MPG123_ERR);

@@ -17,7 +17,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Native.Runtime;
 using BassBoom.Native.Interop.Analysis;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Basolia.File;
@@ -31,6 +30,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SpecProbe.Platform;
 using BassBoom.Basolia.Enumerations;
+using BassBoom.Native;
 
 namespace BassBoom.Basolia.Format
 {
@@ -64,7 +64,7 @@ namespace BassBoom.Basolia.Format
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 if (scan)
                 {
                     lock (PlaybackPositioningTools.PositionLock)
@@ -145,7 +145,7 @@ namespace BassBoom.Basolia.Format
 
             unsafe
             {
-                var outHandle = Mpg123Instance._out123Handle;
+                var outHandle = MpgNative._out123Handle;
 
                 // Get the output format to get the frame size
                 int getStatus = NativeOutputLib.out123_getformat(outHandle, null, null, null, out frameSize);
@@ -172,7 +172,7 @@ namespace BassBoom.Basolia.Format
 
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
 
                 // Get the frame length
                 getStatus = NativeStatus.mpg123_framelength(handle);
@@ -199,7 +199,7 @@ namespace BassBoom.Basolia.Format
 
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
 
                 // Get the samples per frame
                 getStatus = NativeStatus.mpg123_spf(handle);
@@ -226,7 +226,7 @@ namespace BassBoom.Basolia.Format
 
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
 
                 // Now, buffer the entire music file and create an empty array based on its size
                 bufferSize = NativeLowIo.mpg123_outblock(handle);
@@ -257,7 +257,7 @@ namespace BassBoom.Basolia.Format
             IntPtr v2 = IntPtr.Zero;
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
 
                 // We need to scan the file to get accurate info
                 if (!FileTools.IsRadioStation)
@@ -410,7 +410,7 @@ namespace BassBoom.Basolia.Format
             string icy = "";
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
 
                 // We need to scan the file to get accurate info
                 if (!FileTools.IsRadioStation)
@@ -464,7 +464,7 @@ namespace BassBoom.Basolia.Format
                 mpg123_frameinfo_win frameInfo = default;
                 unsafe
                 {
-                    var handle = Mpg123Instance._mpg123Handle;
+                    var handle = MpgNative._mpg123Handle;
 
                     // We need to scan the file to get accurate info, but it only works with files
                     if (!FileTools.IsRadioStation)
@@ -498,7 +498,7 @@ namespace BassBoom.Basolia.Format
                 mpg123_frameinfo frameInfo = default;
                 unsafe
                 {
-                    var handle = Mpg123Instance._mpg123Handle;
+                    var handle = MpgNative._mpg123Handle;
 
                     // We need to scan the file to get accurate info
                     if (!FileTools.IsRadioStation)

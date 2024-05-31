@@ -17,10 +17,9 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Native.Interop;
+using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
-using BassBoom.Native.Runtime;
 using System;
 using System.Reflection;
 
@@ -48,7 +47,7 @@ namespace BassBoom.Basolia
             {
                 if (!BasoliaInitialized)
                     throw new BasoliaException("Can't get version until the library is initialized", mpg123_errors.MPG123_NOT_INITIALIZED);
-                return LibraryTools.MpgLibVersion;
+                return MpgNative.MpgLibVersion;
             }
         }
 
@@ -61,7 +60,7 @@ namespace BassBoom.Basolia
             {
                 if (!BasoliaInitialized)
                     throw new BasoliaOutException("Can't get version until the library is initialized", out123_error.OUT123_ERR);
-                return LibraryTools.OutLibVersion;
+                return MpgNative.OutLibVersion;
             }
         }
 
@@ -78,13 +77,13 @@ namespace BassBoom.Basolia
         public static void Init(string root = "")
         {
             if (string.IsNullOrEmpty(root))
-                Mpg123Instance.InitializeLibrary();
+                MpgNative.InitializeLibrary();
             else
             {
-                string mpg = Mpg123Instance.GetAppropriateMpg123LibraryPath(root);
-                string @out = Mpg123Instance.GetAppropriateOut123LibraryPath(root);
-                string pthreads = Mpg123Instance.GetAppropriateWinpthreadsLibraryPath(root);
-                Mpg123Instance.InitializeLibrary(mpg, @out, pthreads);
+                string mpg = MpgNative.GetAppropriateMpg123LibraryPath(root);
+                string @out = MpgNative.GetAppropriateOut123LibraryPath(root);
+                string pthreads = MpgNative.GetAppropriateWinpthreadsLibraryPath(root);
+                MpgNative.InitializeLibrary(mpg, @out, pthreads);
             }
             _basoliaInited = true;
         }

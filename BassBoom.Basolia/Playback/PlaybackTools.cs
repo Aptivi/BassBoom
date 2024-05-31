@@ -22,7 +22,6 @@ using BassBoom.Basolia.Format;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
 using BassBoom.Native.Interop.Play;
-using BassBoom.Native.Runtime;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -34,6 +33,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using BassBoom.Basolia.Enumerations;
+using BassBoom.Native;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -96,8 +96,8 @@ namespace BassBoom.Basolia.Playback
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
-                var outHandle = Mpg123Instance._out123Handle;
+                var handle = MpgNative._mpg123Handle;
+                var outHandle = MpgNative._out123Handle;
 
                 // First, get formats and reset them
                 var (rate, channels, encoding) = FormatTools.GetFormatInfo();
@@ -211,7 +211,7 @@ namespace BassBoom.Basolia.Playback
             // Try to set the volume
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 int status = NativeVolume.mpg123_volume(handle, volume);
                 if (status != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't set volume to {volume}", (out123_error)status);
@@ -234,7 +234,7 @@ namespace BassBoom.Basolia.Playback
             // Try to get the volume
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 int status = NativeVolume.mpg123_getvolume(handle, ref baseLinearAddr, ref actualLinearAddr, ref decibelsRvaAddr);
                 if (status != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't get volume (base, really, and decibels)", (out123_error)status);
@@ -258,7 +258,7 @@ namespace BassBoom.Basolia.Playback
             // Try to set the equalizer value
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 int status = NativeVolume.mpg123_eq(handle, (mpg123_channels)channels, bandIdx, value);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set equalizer band {bandIdx + 1}/32 to {value} under {channels}", (mpg123_errors)status);
@@ -280,7 +280,7 @@ namespace BassBoom.Basolia.Playback
             // Try to set the equalizer value
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 int status = NativeVolume.mpg123_eq_bands(handle, (int)channels, bandIdxStart, bandIdxEnd, value);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set equalizer bands {bandIdxStart + 1}/32 -> {bandIdxEnd + 1}/32 to {value} under {channels}", (mpg123_errors)status);
@@ -300,7 +300,7 @@ namespace BassBoom.Basolia.Playback
             // Try to set the equalizer value
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 double eq = NativeVolume.mpg123_geteq(handle, (mpg123_channels)channels, bandIdx);
                 return eq;
             }
@@ -317,7 +317,7 @@ namespace BassBoom.Basolia.Playback
             // Try to set the equalizer value
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 int status = NativeVolume.mpg123_reset_eq(handle);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException("Can't reset equalizer bands to their initial values!", (mpg123_errors)status);
@@ -339,7 +339,7 @@ namespace BassBoom.Basolia.Playback
             {
                 long stateInt = 0;
                 double stateDouble = 0;
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 int status = NativeStatus.mpg123_getstate(handle, (mpg123_state)state, ref stateInt, ref stateDouble);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't get native state of {state}!", (mpg123_errors)status);
@@ -354,7 +354,7 @@ namespace BassBoom.Basolia.Playback
 
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
 
                 // Get the MP3 frame length first
                 string metaIntStr = FileTools.CurrentFile.Headers.GetValues("icy-metaint").First();
@@ -395,7 +395,7 @@ namespace BassBoom.Basolia.Playback
         {
             unsafe
             {
-                var outHandle = Mpg123Instance._out123Handle;
+                var outHandle = MpgNative._out123Handle;
                 IntPtr bufferPtr = Marshal.AllocHGlobal(Marshal.SizeOf<byte>() * buffer.Length);
                 Marshal.Copy(buffer, 0, bufferPtr, buffer.Length);
                 int size = NativeOutputLib.out123_play(outHandle, bufferPtr, buffer.Length);

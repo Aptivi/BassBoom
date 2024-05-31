@@ -118,71 +118,83 @@ namespace BassBoom.Native.Interop.Init
         /// <summary>
         /// const char *mpg123_distversion(unsigned int *major, unsigned int *minor, unsigned int *patch)
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern IntPtr mpg123_distversion(ref uint major, ref uint minor, ref uint patch);
 
         /// <summary>
         /// unsigned int mpg123_libversion(unsigned int *patch);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern uint mpg123_libversion(ref uint patch);
+
+        /// <summary>
+        /// MPG123_EXPORT int mpg123_init (void)
+        /// </summary>
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
+        internal static extern int mpg123_init();
 
         /// <summary>
         /// MPG123_EXPORT mpg123_handle* mpg123_new (const char* decoder, int* error)
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern mpg123_handle* mpg123_new([MarshalAs(UnmanagedType.LPStr)] string decoder, int* error);
 
         /// <summary>
         /// MPG123_EXPORT void mpg123_delete(mpg123_handle* mh)
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern void mpg123_delete(mpg123_handle* mh);
 
         /// <summary>
         /// MPG123_EXPORT void mpg123_free(void* ptr)
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern void mpg123_free(IntPtr ptr);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_param(mpg123_handle *mh
         /// , enum mpg123_parms type, long value, double fvalue);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_param(mpg123_handle* mh, mpg123_parms type, long value, double fvalue);
 
         /// <summary>                                           
         /// MPG123_EXPORT int mpg123_param2(mpg123_handle *mh    
         /// , int type, long value, double fvalue);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_param2(mpg123_handle* mh, int type, long value, double fvalue);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_getparam(mpg123_handle *mh
         /// , enum mpg123_parms type, long *value, double *fvalue);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_getparam(mpg123_handle* mh, mpg123_parms type, long* value, double* fvalue);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_getparam2(mpg123_handle *mh
         /// , int type, long *value, double *fvalue);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_getparam2(mpg123_handle* mh, int type, long* value, double* fvalue);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_feature(const enum mpg123_feature_set key);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_feature(mpg123_feature_set key);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_feature2(int key);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_feature2(int key);
+
+        /// <summary>
+        /// int setenv(const char *name, const char *value, int overwrite);
+        /// </summary>
+        [DllImport(MpgNative.LibcName, CharSet = CharSet.Ansi)]
+        internal static extern int setenv(string name, string value, int overwrite);
     }
 }

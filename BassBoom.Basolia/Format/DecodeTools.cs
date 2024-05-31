@@ -19,9 +19,9 @@
 
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Helpers;
+using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Play;
-using BassBoom.Native.Runtime;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -60,7 +60,7 @@ namespace BassBoom.Basolia.Format
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
 
                 // Get the frame
                 IntPtr numPtr, bytesPtr, audioPtr = IntPtr.Zero;
@@ -110,7 +110,7 @@ namespace BassBoom.Basolia.Format
             // Try to set the equalizer value
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 IntPtr decoderPtr = NativeDecoder.mpg123_current_decoder(handle);
                 return Marshal.PtrToStringAnsi(decoderPtr);
             }
@@ -129,7 +129,7 @@ namespace BassBoom.Basolia.Format
                 string[] supportedDecoders = GetDecoders(true);
                 if (!supportedDecoders.Contains(decoderName))
                     throw new BasoliaException($"Decoder {decoderName} not supported by your device", mpg123_errors.MPG123_BAD_DECODER);
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 int status = NativeDecoder.mpg123_decoder(handle, decoderName);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set decoder to {decoderName}", (mpg123_errors)status);

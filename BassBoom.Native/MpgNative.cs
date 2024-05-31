@@ -18,7 +18,6 @@
 //
 
 using BassBoom.Native.Exceptions;
-using BassBoom.Native.Interop;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
 using System;
@@ -33,12 +32,12 @@ using NativeLand;
 using NativeLand.Tools;
 #endif
 
-namespace BassBoom.Native.Runtime
+namespace BassBoom.Native
 {
     /// <summary>
     /// mpg123 instance class to enable Basolia to perform sound operations
     /// </summary>
-    internal unsafe class Mpg123Instance
+    internal static unsafe class MpgNative
     {
         internal static string mpg123LibPath = GetAppropriateMpg123LibraryPath();
         internal static string out123LibPath = GetAppropriateOut123LibraryPath();
@@ -47,10 +46,51 @@ namespace BassBoom.Native.Runtime
         internal static mpg123_handle* _mpg123Handle;
         internal static out123_handle* _out123Handle;
 
+        internal const string LibcName = "libc";
+        internal const string LibraryName = "mpg123";
+        internal const string LibraryNameOut = "out123";
+
         /// <summary>
-        /// Singleton of the mpg123 instance class
+        /// Absolute path to the mpg123 library
         /// </summary>
-        internal static Mpg123Instance Instance { get; } = new Mpg123Instance();
+        internal static string LibraryPath =>
+            mpg123LibPath;
+
+        /// <summary>
+        /// Absolute path to the out123 library
+        /// </summary>
+        internal static string LibraryPathOut =>
+            out123LibPath;
+
+        /// <summary>
+        /// MPG library version
+        /// </summary>
+        internal static Version MpgLibVersion
+        {
+            get
+            {
+                uint major = 0, minor = 0, patch = 0;
+                var versionHandle = NativeInit.mpg123_distversion(ref major, ref minor, ref patch);
+                string version = Marshal.PtrToStringAnsi(versionHandle);
+                Debug.WriteLine($"mpg123 version: {version}");
+                return new((int)major, (int)minor, (int)patch, 0);
+            }
+        }
+
+        /// <summary>
+        /// Output library version
+        /// </summary>
+        internal static Version OutLibVersion
+        {
+            get
+            {
+                uint major = 0, minor = 0, patch = 0;
+                var versionHandle = NativeOutputLib.out123_distversion(ref major, ref minor, ref patch);
+                string version = Marshal.PtrToStringAnsi(versionHandle);
+                Debug.WriteLine($"out123 version: {version}");
+                return new((int)major, (int)minor, (int)patch, 0);
+            }
+        }
 
         /// <summary>
         /// Initializes the mpg123 library
@@ -148,7 +188,7 @@ namespace BassBoom.Native.Runtime
                 Environment.SetEnvironmentVariable("MPG123_MODDIR", libPluginsPath);
             else
             {
-                int result = LibraryTools.setenv("MPG123_MODDIR", libPluginsPath, 1);
+                int result = NativeInit.setenv("MPG123_MODDIR", libPluginsPath, 1);
                 if (result != 0)
                     throw new BasoliaNativeLibraryException("Can't set environment variable MPG123_MODDIR");
             }
@@ -157,9 +197,9 @@ namespace BassBoom.Native.Runtime
             try
             {
                 // mpg123 returns 0 on init.
-                _ = LibraryTools.mpg123_init();
+                _ = NativeInit.mpg123_init();
                 var handle = NativeInit.mpg123_new(null, null);
-                Debug.WriteLine($"Verifying mpg123 version: {LibraryTools.MpgLibVersion}");
+                Debug.WriteLine($"Verifying mpg123 version: {MpgLibVersion}");
                 _mpg123Handle = handle;
             }
             catch (Exception ex)
@@ -172,7 +212,7 @@ namespace BassBoom.Native.Runtime
             try
             {
                 var handle = NativeOutputLib.out123_new();
-                Debug.WriteLine($"Verifying out123 version: {LibraryTools.OutLibVersion}");
+                Debug.WriteLine($"Verifying out123 version: {OutLibVersion}");
                 _out123Handle = handle;
             }
             catch (Exception ex)
@@ -185,10 +225,10 @@ namespace BassBoom.Native.Runtime
 #if NETCOREAPP
         private static nint ResolveLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
         {
-            IntPtr libHandle = IntPtr.Zero;
-            if (libraryName == LibraryTools.LibraryName)
+            nint libHandle = nint.Zero;
+            if (libraryName == LibraryName)
                 libHandle = NativeLibrary.Load(mpg123LibPath);
-            else if (libraryName == LibraryTools.LibraryNameOut)
+            else if (libraryName == LibraryNameOut)
                 libHandle = NativeLibrary.Load(out123LibPath);
             return libHandle;
         }
@@ -243,8 +283,5 @@ namespace BassBoom.Native.Runtime
                 return "";
             return runtimesPath;
         }
-
-        internal Mpg123Instance()
-        { }
     }
 }

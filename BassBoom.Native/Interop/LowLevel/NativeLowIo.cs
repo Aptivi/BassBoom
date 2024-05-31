@@ -17,9 +17,9 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Native.Interop.Init;
 using System;
 using System.Runtime.InteropServices;
-using BassBoom.Native.Interop.Init;
 
 namespace BassBoom.Native.Interop.LowLevel
 {
@@ -53,13 +53,13 @@ namespace BassBoom.Native.Interop.LowLevel
         /// MPG123_EXPORT int mpg123_replace_buffer(mpg123_handle *mh
         /// ,   void *data, size_t size);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_replace_buffer(mpg123_handle* mh, IntPtr data, int size);
 
         /// <summary>
         /// MPG123_EXPORT size_t mpg123_outblock(mpg123_handle *mh);
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_outblock(mpg123_handle* mh);
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace BassBoom.Native.Interop.LowLevel
         /// ,   off_t (*r_lseek)(int, off_t, int)
         /// );
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_replace_reader(mpg123_handle* mh, r_read r_read, r_lseek r_lseek);
 
         /// <summary>
@@ -77,13 +77,13 @@ namespace BassBoom.Native.Interop.LowLevel
         /// ,   off_t (*r_lseek)(void *, off_t, int)
         /// ,   void (*cleanup)(void*) );
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_replace_reader_handle(mpg123_handle* mh, r_read2 r_read, r_lseek2 r_lseek, _cleanup cleanup);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_reader64( mpg123_handle *mh, int (*r_read) (void *, void *, size_t, size_t *), int64_t (*r_lseek)(void *, int64_t, int), void (*cleanup)(void*) );
         /// </summary>
-        [DllImport(LibraryTools.LibraryName, CharSet = CharSet.Ansi)]
+        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
         internal static extern int mpg123_reader64(mpg123_handle* mh, r_read3 r_read, r_lseek3 r_lseek, _cleanup cleanup);
     }
 }

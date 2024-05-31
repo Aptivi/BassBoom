@@ -17,7 +17,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Native.Runtime;
 using BassBoom.Native.Interop.Play;
 using BassBoom.Native.Interop.Init;
 using System;
@@ -26,6 +25,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Analysis;
 using SpecProbe.Platform;
+using BassBoom.Native;
 
 namespace BassBoom.Basolia.Format
 {
@@ -45,7 +45,7 @@ namespace BassBoom.Basolia.Format
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
                 
                 // Get the rate, the number of channels, and encoding
                 int length = NativeOutput.mpg123_getformat(handle, out fileRate, out fileChannel, out fileEncoding);
@@ -69,7 +69,7 @@ namespace BassBoom.Basolia.Format
             nint fmtlist = IntPtr.Zero;
             unsafe
             {
-                var outHandle = Mpg123Instance._out123Handle;
+                var outHandle = MpgNative._out123Handle;
 
                 // Get the list of supported formats
                 getStatus = NativeOutputLib.out123_formats(outHandle, IntPtr.Zero, 0, 0, 0, ref fmtlist);

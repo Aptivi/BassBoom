@@ -18,9 +18,9 @@
 //
 
 using BassBoom.Basolia.Helpers;
+using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
-using BassBoom.Native.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -53,7 +53,7 @@ namespace BassBoom.Basolia.Devices
             unsafe
             {
                 // Query the drivers
-                var handle = Mpg123Instance._out123Handle;
+                var handle = MpgNative._out123Handle;
                 int driversStatus = NativeOutputLib.out123_drivers(handle, ref names, ref descr);
                 if (driversStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't query the drivers", mpg123_errors.MPG123_ERR);
@@ -93,7 +93,7 @@ namespace BassBoom.Basolia.Devices
             unsafe
             {
                 // Query the devices
-                var handle = Mpg123Instance._out123Handle;
+                var handle = MpgNative._out123Handle;
                 int devicesStatus = NativeOutputLib.out123_devices(handle, driver, out names, out descr, ref active);
                 if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
@@ -126,7 +126,7 @@ namespace BassBoom.Basolia.Devices
             unsafe
             {
                 // Query the devices
-                var handle = Mpg123Instance._out123Handle;
+                var handle = MpgNative._out123Handle;
                 IntPtr driverPtr = IntPtr.Zero;
                 IntPtr devicePtr = IntPtr.Zero;
                 int devicesStatus = NativeOutputLib.out123_driver_info(handle, ref driverPtr, ref devicePtr);

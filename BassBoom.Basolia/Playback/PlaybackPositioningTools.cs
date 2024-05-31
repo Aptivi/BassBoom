@@ -22,10 +22,10 @@ using BassBoom.Basolia.Format;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Play;
 using BassBoom.Native.Interop.Output;
-using BassBoom.Native.Runtime;
 using System;
 using System.Threading;
 using BassBoom.Basolia.Lyrics;
+using BassBoom.Native;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -51,7 +51,7 @@ namespace BassBoom.Basolia.Playback
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = Mpg123Instance._mpg123Handle;
+                var handle = MpgNative._mpg123Handle;
 
                 // Get the length
                 length = NativePositioning.mpg123_tell(handle);
@@ -95,8 +95,8 @@ namespace BassBoom.Basolia.Playback
                 // We're now entering the dangerous zone
                 unsafe
                 {
-                    var handle = Mpg123Instance._mpg123Handle;
-                    var outHandle = Mpg123Instance._out123Handle;
+                    var handle = MpgNative._mpg123Handle;
+                    var outHandle = MpgNative._out123Handle;
 
                     // Get the length
                     PlaybackTools.holding = true;
@@ -128,8 +128,8 @@ namespace BassBoom.Basolia.Playback
                 // We're now entering the dangerous zone
                 unsafe
                 {
-                    var handle = Mpg123Instance._mpg123Handle;
-                    var outHandle = Mpg123Instance._out123Handle;
+                    var handle = MpgNative._mpg123Handle;
+                    var outHandle = MpgNative._out123Handle;
 
                     // Get the length
                     PlaybackTools.holding = true;
@@ -185,7 +185,7 @@ namespace BassBoom.Basolia.Playback
                 // We're now entering the dangerous zone
                 unsafe
                 {
-                    var outHandle = Mpg123Instance._out123Handle;
+                    var outHandle = MpgNative._out123Handle;
                     NativeOutputLib.out123_drop(outHandle);
                 }
             }
