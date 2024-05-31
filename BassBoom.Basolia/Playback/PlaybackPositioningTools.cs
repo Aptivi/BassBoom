@@ -144,6 +144,11 @@ namespace BassBoom.Basolia.Playback
             }
         }
 
+        /// <summary>
+        /// Seeks according to the lyric line
+        /// </summary>
+        /// <param name="lyricLine">Lyric line instance</param>
+        /// <exception cref="BasoliaException"></exception>
         public static void SeekLyric(LyricLine lyricLine)
         {
             lock (PositionLock)
@@ -153,6 +158,8 @@ namespace BassBoom.Basolia.Playback
                 // Check to see if the file is open
                 if (!FileTools.IsOpened)
                     throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                if (lyricLine is null)
+                    throw new BasoliaException("Lyric line is not provided to seek to", mpg123_errors.MPG123_BAD_FILE);
 
                 // Get the length, convert it to frames, and seek
                 var length = lyricLine.LineSpan.TotalSeconds;

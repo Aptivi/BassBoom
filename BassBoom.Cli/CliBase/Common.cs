@@ -200,6 +200,7 @@ namespace BassBoom.Cli.CliBase
                 [Q]                 Exit
                 [UP/DOWN]           Volume control
                 [I]                 Radio station info
+                [CTRL] + [I]        Radio station extended info
                 [A]                 Add a radio station
                 [B]                 Previous radio station
                 [N]                 Next radio station

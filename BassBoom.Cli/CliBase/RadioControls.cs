@@ -203,7 +203,6 @@ namespace BassBoom.Cli.CliBase
         internal static void ShowExtendedStationInfo()
         {
             var station = RadioTools.GetRadioInfo(Common.CurrentCachedInfo.MusicPath);
-            station.Refresh();
             var streamBuilder = new StringBuilder();
             foreach (var stream in station.Streams)
             {

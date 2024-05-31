@@ -88,7 +88,7 @@ namespace BassBoom.Basolia.Radio
         /// <param name="serverHost">Server host name</param>
         /// <param name="serverPort">Server port</param>
         /// <param name="useHttps">Whether to use the HTTPS protocol or not</param>
-        public IcecastServer(string serverHost, int serverPort, bool useHttps)
+        internal IcecastServer(string serverHost, int serverPort, bool useHttps)
         {
             // Check to see if we're dealing with the secure Icecast server
             ServerHost = serverHost;
