@@ -2958,25 +2958,6 @@ references:
   commentId: T:BassBoom.Basolia.Radio.IcecastServer
   fullName: BassBoom.Basolia.Radio.IcecastServer
   nameWithType: IcecastServer
-- uid: BassBoom.Basolia.Radio.IcecastServer.#ctor(System.String,System.Int32,System.Boolean)
-  name: IcecastServer(string, int, bool)
-  href: api/BassBoom.Basolia.Radio.IcecastServer.html#BassBoom_Basolia_Radio_IcecastServer__ctor_System_String_System_Int32_System_Boolean_
-  commentId: M:BassBoom.Basolia.Radio.IcecastServer.#ctor(System.String,System.Int32,System.Boolean)
-  name.vb: New(String, Integer, Boolean)
-  fullName: BassBoom.Basolia.Radio.IcecastServer.IcecastServer(string, int, bool)
-  fullName.vb: BassBoom.Basolia.Radio.IcecastServer.New(String, Integer, Boolean)
-  nameWithType: IcecastServer.IcecastServer(string, int, bool)
-  nameWithType.vb: IcecastServer.New(String, Integer, Boolean)
-- uid: BassBoom.Basolia.Radio.IcecastServer.#ctor*
-  name: IcecastServer
-  href: api/BassBoom.Basolia.Radio.IcecastServer.html#BassBoom_Basolia_Radio_IcecastServer__ctor_
-  commentId: Overload:BassBoom.Basolia.Radio.IcecastServer.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: BassBoom.Basolia.Radio.IcecastServer.IcecastServer
-  fullName.vb: BassBoom.Basolia.Radio.IcecastServer.New
-  nameWithType: IcecastServer.IcecastServer
-  nameWithType.vb: IcecastServer.New
 - uid: BassBoom.Basolia.Radio.IcecastServer.ActiveStreams
   name: ActiveStreams
   href: api/BassBoom.Basolia.Radio.IcecastServer.html#BassBoom_Basolia_Radio_IcecastServer_ActiveStreams
@@ -3201,25 +3182,6 @@ references:
   commentId: T:BassBoom.Basolia.Radio.ShoutcastServer
   fullName: BassBoom.Basolia.Radio.ShoutcastServer
   nameWithType: ShoutcastServer
-- uid: BassBoom.Basolia.Radio.ShoutcastServer.#ctor(System.String,System.Int32,System.Boolean)
-  name: ShoutcastServer(string, int, bool)
-  href: api/BassBoom.Basolia.Radio.ShoutcastServer.html#BassBoom_Basolia_Radio_ShoutcastServer__ctor_System_String_System_Int32_System_Boolean_
-  commentId: M:BassBoom.Basolia.Radio.ShoutcastServer.#ctor(System.String,System.Int32,System.Boolean)
-  name.vb: New(String, Integer, Boolean)
-  fullName: BassBoom.Basolia.Radio.ShoutcastServer.ShoutcastServer(string, int, bool)
-  fullName.vb: BassBoom.Basolia.Radio.ShoutcastServer.New(String, Integer, Boolean)
-  nameWithType: ShoutcastServer.ShoutcastServer(string, int, bool)
-  nameWithType.vb: ShoutcastServer.New(String, Integer, Boolean)
-- uid: BassBoom.Basolia.Radio.ShoutcastServer.#ctor*
-  name: ShoutcastServer
-  href: api/BassBoom.Basolia.Radio.ShoutcastServer.html#BassBoom_Basolia_Radio_ShoutcastServer__ctor_
-  commentId: Overload:BassBoom.Basolia.Radio.ShoutcastServer.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: BassBoom.Basolia.Radio.ShoutcastServer.ShoutcastServer
-  fullName.vb: BassBoom.Basolia.Radio.ShoutcastServer.New
-  nameWithType: ShoutcastServer.ShoutcastServer
-  nameWithType.vb: ShoutcastServer.New
 - uid: BassBoom.Basolia.Radio.ShoutcastServer.ActiveStreams
   name: ActiveStreams
   href: api/BassBoom.Basolia.Radio.ShoutcastServer.html#BassBoom_Basolia_Radio_ShoutcastServer_ActiveStreams
