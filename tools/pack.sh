@@ -41,7 +41,7 @@ if [ ! $? == 0 ]; then
 fi
 
 # Inform success
-mv ~/tmp/$version-cli.zip .
-mv ~/tmp/$version-cli-48.zip .
+mv /tmp/$version-cli.zip .
+mv /tmp/$version-cli-48.zip .
 echo Build and pack successful.
 exit 0
