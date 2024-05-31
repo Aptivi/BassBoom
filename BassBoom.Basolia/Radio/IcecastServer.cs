@@ -41,7 +41,6 @@ namespace BassBoom.Basolia.Radio
         private readonly List<StreamInfo> streams = [];
         internal JToken streamToken;
         internal HtmlDocument streamHtmlToken = new();
-        internal static HttpClient client = new();
 
         /// <inheritdoc/>
         public string ServerHost { get; }
@@ -131,7 +130,7 @@ namespace BassBoom.Basolia.Radio
         {
             try
             {
-                await InitializeStatsAsync();
+                await InitializeStatsAsync().ConfigureAwait(false);
                 FinalizeIcecast();
             }
             catch (Exception ex)
@@ -144,7 +143,7 @@ namespace BassBoom.Basolia.Radio
         {
             // Use the full address to download the statistics.
             Uri statisticsUri = new(ServerHostFull + "/status-json.xsl");
-            string serverResponse = await client.GetStringAsync(statisticsUri);
+            string serverResponse = await RadioTools.client.GetStringAsync(statisticsUri).ConfigureAwait(false);
             streamToken = JToken.Parse(serverResponse)["icestats"];
         }
 

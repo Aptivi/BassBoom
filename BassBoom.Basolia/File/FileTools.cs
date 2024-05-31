@@ -105,7 +105,7 @@ namespace BassBoom.Basolia.File
         /// Opens a remote radio station
         /// </summary>
         public static void OpenUrl(string path) =>
-            OpenUrlAsync(path).Wait();
+            Task.Run(() => OpenUrlAsync(path)).Wait();
 
         /// <summary>
         /// Opens a remote radio station
@@ -123,8 +123,11 @@ namespace BassBoom.Basolia.File
                 throw new BasoliaException("Provide a path to a music file or a radio station", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if the radio station exists
+#if NET48
+            RadioTools.client = new();
+#endif
             RadioTools.client.DefaultRequestHeaders.Add("Icy-MetaData", "1");
-            var reply = await RadioTools.client.GetAsync(path, HttpCompletionOption.ResponseHeadersRead);
+            var reply = await RadioTools.client.GetAsync(path, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             RadioTools.client.DefaultRequestHeaders.Remove("Icy-MetaData");
             if (!reply.IsSuccessStatusCode)
                 throw new BasoliaException($"This radio station doesn't exist. Error code: {(int)reply.StatusCode} ({reply.StatusCode}).", mpg123_errors.MPG123_BAD_FILE);
@@ -147,7 +150,7 @@ namespace BassBoom.Basolia.File
                 isOpened = true;
                 isRadioStation = true;
             }
-            currentFile = new(true, path, reply.Content.ReadAsStreamAsync().Result, reply.Headers, reply.Headers.GetValues("icy-name").First());
+            currentFile = new(true, path, await reply.Content.ReadAsStreamAsync().ConfigureAwait(false), reply.Headers, reply.Headers.GetValues("icy-name").First());
 
             // If necessary, feed.
             PlaybackTools.FeedRadio();

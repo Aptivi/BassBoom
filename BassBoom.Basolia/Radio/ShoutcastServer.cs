@@ -168,7 +168,7 @@ namespace BassBoom.Basolia.Radio
         {
             try
             {
-                await InitializeStatsAsync();
+                await InitializeStatsAsync().ConfigureAwait(false);
 
                 // Determine version of Shoutcast
                 if (serverVersion == ShoutcastVersion.v1)
@@ -189,14 +189,14 @@ namespace BassBoom.Basolia.Radio
             // /7.html
             Uri statisticsUri = new(ServerHostFull + "/statistics?json=1");
             Uri fallbackUri = new(ServerHostFull + "/7.html");
-            string serverResponse = await RadioTools.client.GetStringAsync(statisticsUri);
+            string serverResponse = await RadioTools.client.GetStringAsync(statisticsUri).ConfigureAwait(false);
 
             // Shoutcast v1.x doesn't have /statistics...
             if (serverResponse.Contains("Invalid resource"))
             {
                 // Detected v1. Fallback to /7.html
                 serverVersion = ShoutcastVersion.v1;
-                serverResponse = await RadioTools.client.GetStringAsync(fallbackUri);
+                serverResponse = await RadioTools.client.GetStringAsync(fallbackUri).ConfigureAwait(false);
                 streamHtmlToken.LoadHtml(serverResponse);
             }
             else

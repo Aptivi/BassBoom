@@ -37,7 +37,7 @@ namespace BassBoom.Basolia.Radio
         /// <param name="radioUrl">Radio station URL</param>
         /// <returns>An instance of <see cref="IRadioServer"/>. <see langword="null"/> if type can't be determined. <see cref="ShoutcastServer"/> if this radio station server uses Shoutcast, and <see cref="IcecastServer"/> if it uses Icecast.</returns>
         public static IRadioServer GetRadioInfo(string radioUrl) =>
-            GetRadioInfoAsync(radioUrl).Result;
+            Task.Run(() => GetRadioInfoAsync(radioUrl)).GetAwaiter().GetResult();
 
         /// <summary>
         /// Gets extended radio station information asynchronously
@@ -52,8 +52,11 @@ namespace BassBoom.Basolia.Radio
             var uri = new Uri(radioUrl);
 
             // Check to see if the radio station exists
+#if NET48
+            client = new();
+#endif
             client.DefaultRequestHeaders.Add("Icy-MetaData", "1");
-            var reply = await client.GetAsync(radioUrl, HttpCompletionOption.ResponseHeadersRead);
+            var reply = await client.GetAsync(radioUrl, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             client.DefaultRequestHeaders.Remove("Icy-MetaData");
             if (!reply.IsSuccessStatusCode)
                 throw new BasoliaMiscException($"This radio station doesn't exist. Error code: {(int)reply.StatusCode} ({reply.StatusCode}).");
@@ -82,7 +85,7 @@ namespace BassBoom.Basolia.Radio
             };
             if (stats is null)
                 return null;
-            await stats.RefreshAsync();
+            await stats.RefreshAsync().ConfigureAwait(false);
             return stats;
         }
     }
