@@ -91,17 +91,10 @@ namespace BassBoom.Basolia
         /// <summary>
         /// Checks to see if the Basolia library is loaded or not
         /// </summary>
-        /// <returns>True if initialized; false otherwise.</returns>
-        public static bool IsInited() =>
-            _basoliaInited;
-
-        /// <summary>
-        /// Checks to see if the Basolia library is loaded or not
-        /// </summary>
         /// <exception cref="InvalidOperationException">Basolia didn't initialize the MPG123 library yet.</exception>
         public static void CheckInited()
         {
-            if (!IsInited())
+            if (!BasoliaInitialized)
                 throw new InvalidOperationException("Basolia didn't initialize the MPG123 library yet!");
         }
     }
