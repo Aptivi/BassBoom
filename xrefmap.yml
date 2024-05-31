@@ -2194,19 +2194,6 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.InitBasolia.Init
   nameWithType: InitBasolia.Init
-- uid: BassBoom.Basolia.InitBasolia.IsInited
-  name: IsInited()
-  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_IsInited
-  commentId: M:BassBoom.Basolia.InitBasolia.IsInited
-  fullName: BassBoom.Basolia.InitBasolia.IsInited()
-  nameWithType: InitBasolia.IsInited()
-- uid: BassBoom.Basolia.InitBasolia.IsInited*
-  name: IsInited
-  href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_IsInited_
-  commentId: Overload:BassBoom.Basolia.InitBasolia.IsInited
-  isSpec: "True"
-  fullName: BassBoom.Basolia.InitBasolia.IsInited
-  nameWithType: InitBasolia.IsInited
 - uid: BassBoom.Basolia.InitBasolia.MpgLibVersion
   name: MpgLibVersion
   href: api/BassBoom.Basolia.InitBasolia.html#BassBoom_Basolia_InitBasolia_MpgLibVersion
