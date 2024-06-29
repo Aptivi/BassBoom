@@ -209,8 +209,6 @@ namespace BassBoom.Basolia.Radio
                 else if (server is IcecastServer icecastServer)
                 {
                     // Icecast server, so use the JToken.
-                    if (stream["dummy"] is not null)
-                        return;
                     currentListeners = (int)stream["listeners"];
                     peakListeners = (int)stream["listener_peak"];
                     streamGenre = (string)stream["genre"];
