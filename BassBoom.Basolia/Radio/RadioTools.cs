@@ -60,14 +60,10 @@ namespace BassBoom.Basolia.Radio
             client.DefaultRequestHeaders.Remove("Icy-MetaData");
             if (!reply.IsSuccessStatusCode)
                 throw new BasoliaMiscException($"This radio station doesn't exist. Error code: {(int)reply.StatusCode} ({reply.StatusCode}).");
-
-            // Check to see if there are any ICY headers
-            if (!reply.Headers.Any((kvp) => kvp.Key.StartsWith("icy-")))
-                throw new BasoliaMiscException("This doesn't look like a radio station. Are you sure?");
             
             // Now, check the server type
             RadioServerType type = RadioServerType.Unknown;
-            if (reply.Headers.Server.ToString().Equals("icecast", StringComparison.OrdinalIgnoreCase))
+            if (reply.Headers.Server.ToString().ToLower().Contains("icecast"))
                 type = RadioServerType.Icecast;
             else if (reply.Headers.Contains("icy-notice2") && reply.Headers.GetValues("icy-notice2").First().ToLower().Contains("shoutcast"))
                 type = RadioServerType.Shoutcast;
