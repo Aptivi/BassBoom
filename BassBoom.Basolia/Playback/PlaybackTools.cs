@@ -75,7 +75,7 @@ namespace BassBoom.Basolia.Playback
                 string icy = RadioIcy;
                 if (icy.Length == 0 || !FileTools.IsRadioStation)
                     return "";
-                icy = Regex.Match(icy, @"StreamTitle='((?:[^']|\\')*)'").Groups[1].Value.Trim().Replace("\\'", "'");
+                icy = Regex.Match(icy, @"StreamTitle='(.+?(?=\';))'").Groups[1].Value.Trim().Replace("\\'", "'");
                 return icy;
             }
         }
