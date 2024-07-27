@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net48</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -33,8 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NativeLand" Version="1.0.1" Condition="'$(TargetFramework)' == 'net48'" />
-    <PackageReference Include="SpecProbe.Software" Version="1.5.0" />
+    <PackageReference Include="NativeLand" Version="2.0.0.1" />
+    <PackageReference Include="SpecProbe.Software" Version="1.6.0.1" />
   </ItemGroup>
 
 </Project>

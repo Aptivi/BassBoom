@@ -28,7 +28,7 @@ using BassBoom.Native.Interop.LowLevel;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Linq;
-using SpecProbe.Platform;
+using SpecProbe.Software.Platform;
 using BassBoom.Basolia.Enumerations;
 using BassBoom.Native;
 

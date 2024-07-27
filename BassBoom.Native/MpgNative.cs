@@ -25,12 +25,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using SpecProbe.Platform;
-
-#if !NETCOREAPP
+using SpecProbe.Software.Platform;
 using NativeLand;
-using NativeLand.Tools;
-#endif
 
 namespace BassBoom.Native
 {
@@ -119,70 +115,39 @@ namespace BassBoom.Native
             string oldLibPathOut = out123LibPath;
             mpg123LibPath = libPath;
             out123LibPath = libPathOut;
-#if NETCOREAPP
-            NativeLibrary.SetDllImportResolver(typeof(NativeInit).Assembly, ResolveLibrary);
-#else
-            var bytesMpg = File.ReadAllBytes(mpg123LibPath);
             var libManagerMpg = new LibraryManager(
-                new LibraryItem(Platform.Windows, Architecture.X86,
-                    new LibraryFile("mpg123.dll", bytesMpg)),
-                new LibraryItem(Platform.Windows, Architecture.X64,
-                    new LibraryFile("mpg123.dll", bytesMpg)),
-                new LibraryItem(Platform.Windows, Architecture.Arm,
-                    new LibraryFile("mpg123.dll", bytesMpg)),
-                new LibraryItem(Platform.Windows, Architecture.Arm64,
-                    new LibraryFile("mpg123.dll", bytesMpg)),
-                new LibraryItem(Platform.MacOS, Architecture.X64,
-                    new LibraryFile("libmpg123.dylib", bytesMpg)),
-                new LibraryItem(Platform.MacOS, Architecture.Arm64,
-                    new LibraryFile("libmpg123.dylib", bytesMpg)),
-                new LibraryItem(Platform.Linux, Architecture.X64,
-                    new LibraryFile("libmpg123.so", bytesMpg)),
-                new LibraryItem(Platform.Linux, Architecture.X86,
-                    new LibraryFile("libmpg123.so", bytesMpg)),
-                new LibraryItem(Platform.Linux, Architecture.Arm,
-                    new LibraryFile("libmpg123.so", bytesMpg)),
-                new LibraryItem(Platform.Linux, Architecture.Arm64,
-                    new LibraryFile("libmpg123.so", bytesMpg)));
-            var bytesOut = File.ReadAllBytes(out123LibPath);
+                new LibraryItem(Platform.Windows, Architecture.X86, new LibraryFile(mpg123LibPath)),
+                new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(mpg123LibPath)),
+                new LibraryItem(Platform.Windows, Architecture.Arm, new LibraryFile(mpg123LibPath)),
+                new LibraryItem(Platform.Windows, Architecture.Arm64, new LibraryFile(mpg123LibPath)),
+                new LibraryItem(Platform.MacOS, Architecture.X64, new LibraryFile(mpg123LibPath)),
+                new LibraryItem(Platform.MacOS, Architecture.Arm64, new LibraryFile(mpg123LibPath)),
+                new LibraryItem(Platform.Linux, Architecture.X64, new LibraryFile(mpg123LibPath)),
+                new LibraryItem(Platform.Linux, Architecture.X86, new LibraryFile(mpg123LibPath)),
+                new LibraryItem(Platform.Linux, Architecture.Arm, new LibraryFile(mpg123LibPath)),
+                new LibraryItem(Platform.Linux, Architecture.Arm64, new LibraryFile(mpg123LibPath)));
             var libManagerOut = new LibraryManager(
-                new LibraryItem(Platform.Windows, Architecture.X86,
-                    new LibraryFile("out123.dll", bytesOut)),
-                new LibraryItem(Platform.Windows, Architecture.X64,
-                    new LibraryFile("out123.dll", bytesOut)),
-                new LibraryItem(Platform.Windows, Architecture.Arm,
-                    new LibraryFile("out123.dll", bytesOut)),
-                new LibraryItem(Platform.Windows, Architecture.Arm64,
-                    new LibraryFile("out123.dll", bytesOut)),
-                new LibraryItem(Platform.MacOS, Architecture.X64,
-                    new LibraryFile("libout123.dylib", bytesOut)),
-                new LibraryItem(Platform.MacOS, Architecture.Arm64,
-                    new LibraryFile("libout123.dylib", bytesOut)),
-                new LibraryItem(Platform.Linux, Architecture.X64,
-                    new LibraryFile("libout123.so", bytesOut)),
-                new LibraryItem(Platform.Linux, Architecture.X86,
-                    new LibraryFile("libout123.so", bytesOut)),
-                new LibraryItem(Platform.Linux, Architecture.Arm,
-                    new LibraryFile("libout123.so", bytesOut)),
-                new LibraryItem(Platform.Linux, Architecture.Arm64,
-                    new LibraryFile("libout123.so", bytesOut)));
+                new LibraryItem(Platform.Windows, Architecture.X86, new LibraryFile(out123LibPath)),
+                new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(out123LibPath)),
+                new LibraryItem(Platform.Windows, Architecture.Arm, new LibraryFile(out123LibPath)),
+                new LibraryItem(Platform.Windows, Architecture.Arm64, new LibraryFile(out123LibPath)),
+                new LibraryItem(Platform.MacOS, Architecture.X64, new LibraryFile(out123LibPath)),
+                new LibraryItem(Platform.MacOS, Architecture.Arm64, new LibraryFile(out123LibPath)),
+                new LibraryItem(Platform.Linux, Architecture.X64, new LibraryFile(out123LibPath)),
+                new LibraryItem(Platform.Linux, Architecture.X86, new LibraryFile(out123LibPath)),
+                new LibraryItem(Platform.Linux, Architecture.Arm, new LibraryFile(out123LibPath)),
+                new LibraryItem(Platform.Linux, Architecture.Arm64, new LibraryFile(out123LibPath)));
             if (PlatformHelper.IsOnWindows())
             {
-                var bytesWinpthread = File.ReadAllBytes(winpthreadsLibPath);
                 var libManagerWinpthread = new LibraryManager(
-                    new LibraryItem(Platform.Windows, Architecture.X86,
-                        new LibraryFile("libwinpthread-1.dll", bytesWinpthread)),
-                    new LibraryItem(Platform.Windows, Architecture.X64,
-                        new LibraryFile("libwinpthread-1.dll", bytesWinpthread)),
-                    new LibraryItem(Platform.Windows, Architecture.Arm,
-                        new LibraryFile("libwinpthread-1.dll", bytesWinpthread)),
-                    new LibraryItem(Platform.Windows, Architecture.Arm64,
-                        new LibraryFile("libwinpthread-1.dll", bytesWinpthread)));
+                    new LibraryItem(Platform.Windows, Architecture.X86, new LibraryFile(winpthreadsLibPath)),
+                    new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(winpthreadsLibPath)),
+                    new LibraryItem(Platform.Windows, Architecture.Arm, new LibraryFile(winpthreadsLibPath)),
+                    new LibraryItem(Platform.Windows, Architecture.Arm64, new LibraryFile(winpthreadsLibPath)));
                 libManagerWinpthread.LoadNativeLibrary();
             }
             libManagerMpg.LoadNativeLibrary();
             libManagerOut.LoadNativeLibrary();
-#endif
             string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
             if (PlatformHelper.IsOnWindows())
                 Environment.SetEnvironmentVariable("MPG123_MODDIR", libPluginsPath);
@@ -221,18 +186,6 @@ namespace BassBoom.Native
                 throw new BasoliaNativeLibraryException($"out123 library path {libPathOut} doesn't contain a valid out123 library. out123_distversion() was called. {ex.Message}");
             }
         }
-
-#if NETCOREAPP
-        private static nint ResolveLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
-        {
-            nint libHandle = nint.Zero;
-            if (libraryName == LibraryName)
-                libHandle = NativeLibrary.Load(mpg123LibPath);
-            else if (libraryName == LibraryNameOut)
-                libHandle = NativeLibrary.Load(out123LibPath);
-            return libHandle;
-        }
-#endif
 
         internal static string GetAppropriateMpg123LibraryPath() =>
             GetAppropriateMpg123LibraryPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));

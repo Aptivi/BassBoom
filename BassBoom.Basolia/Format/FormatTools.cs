@@ -24,7 +24,7 @@ using BassBoom.Native.Interop.Output;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Analysis;
-using SpecProbe.Platform;
+using SpecProbe.Software.Platform;
 using BassBoom.Native;
 
 namespace BassBoom.Basolia.Format

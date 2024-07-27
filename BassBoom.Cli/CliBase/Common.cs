@@ -23,7 +23,7 @@ using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Playback;
 using BassBoom.Cli.Tools;
-using SpecProbe.Platform;
+using SpecProbe.Software.Platform;
 using System;
 using System.Collections.Generic;
 using System.Linq;
