@@ -20,6 +20,7 @@
 using System;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace BassBoom.Basolia.Radio
@@ -52,9 +53,8 @@ namespace BassBoom.Basolia.Radio
             var uri = new Uri(radioUrl);
 
             // Check to see if the radio station exists
-#if NET48
-            client = new();
-#endif
+            if (RuntimeInformation.FrameworkDescription.Contains("Framework"))
+                client = new();
             client.DefaultRequestHeaders.Add("Icy-MetaData", "1");
             var reply = await client.GetAsync(radioUrl, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             client.DefaultRequestHeaders.Remove("Icy-MetaData");
