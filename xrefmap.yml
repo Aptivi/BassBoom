@@ -35,24 +35,6 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Albums.MusicFileLabeler.LabelFiles
   nameWithType: MusicFileLabeler.LabelFiles
-- uid: BassBoom.Basolia.BasoliaException
-  name: BasoliaException
-  href: api/BassBoom.Basolia.BasoliaException.html
-  commentId: T:BassBoom.Basolia.BasoliaException
-  fullName: BassBoom.Basolia.BasoliaException
-  nameWithType: BasoliaException
-- uid: BassBoom.Basolia.BasoliaMiscException
-  name: BasoliaMiscException
-  href: api/BassBoom.Basolia.BasoliaMiscException.html
-  commentId: T:BassBoom.Basolia.BasoliaMiscException
-  fullName: BassBoom.Basolia.BasoliaMiscException
-  nameWithType: BasoliaMiscException
-- uid: BassBoom.Basolia.BasoliaOutException
-  name: BasoliaOutException
-  href: api/BassBoom.Basolia.BasoliaOutException.html
-  commentId: T:BassBoom.Basolia.BasoliaOutException
-  fullName: BassBoom.Basolia.BasoliaOutException
-  nameWithType: BasoliaOutException
 - uid: BassBoom.Basolia.Devices
   name: BassBoom.Basolia.Devices
   href: api/BassBoom.Basolia.Devices.html
@@ -351,6 +333,30 @@ references:
   commentId: F:BassBoom.Basolia.Enumerations.PlaybackStateType.FreshDecoder
   fullName: BassBoom.Basolia.Enumerations.PlaybackStateType.FreshDecoder
   nameWithType: PlaybackStateType.FreshDecoder
+- uid: BassBoom.Basolia.Exceptions
+  name: BassBoom.Basolia.Exceptions
+  href: api/BassBoom.Basolia.Exceptions.html
+  commentId: N:BassBoom.Basolia.Exceptions
+  fullName: BassBoom.Basolia.Exceptions
+  nameWithType: BassBoom.Basolia.Exceptions
+- uid: BassBoom.Basolia.Exceptions.BasoliaException
+  name: BasoliaException
+  href: api/BassBoom.Basolia.Exceptions.BasoliaException.html
+  commentId: T:BassBoom.Basolia.Exceptions.BasoliaException
+  fullName: BassBoom.Basolia.Exceptions.BasoliaException
+  nameWithType: BasoliaException
+- uid: BassBoom.Basolia.Exceptions.BasoliaMiscException
+  name: BasoliaMiscException
+  href: api/BassBoom.Basolia.Exceptions.BasoliaMiscException.html
+  commentId: T:BassBoom.Basolia.Exceptions.BasoliaMiscException
+  fullName: BassBoom.Basolia.Exceptions.BasoliaMiscException
+  nameWithType: BasoliaMiscException
+- uid: BassBoom.Basolia.Exceptions.BasoliaOutException
+  name: BasoliaOutException
+  href: api/BassBoom.Basolia.Exceptions.BasoliaOutException.html
+  commentId: T:BassBoom.Basolia.Exceptions.BasoliaOutException
+  fullName: BassBoom.Basolia.Exceptions.BasoliaOutException
+  nameWithType: BasoliaOutException
 - uid: BassBoom.Basolia.File
   name: BassBoom.Basolia.File
   href: api/BassBoom.Basolia.File.html

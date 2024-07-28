@@ -9,21 +9,6 @@
     "title": "Namespace BassBoom.Basolia.Albums | BassBoom Basolia API - Aptivi",
     "keywords": "Namespace BassBoom.Basolia.Albums Classes MusicFileLabeler Music file labeling tools for albums"
   },
-  "api/BassBoom.Basolia.BasoliaException.html": {
-    "href": "api/BassBoom.Basolia.BasoliaException.html",
-    "title": "Class BasoliaException | BassBoom Basolia API - Aptivi",
-    "keywords": "Class BasoliaException Basolia exception Inheritance object Exception BasoliaException Namespace: BassBoom.Basolia Assembly: BassBoom.Basolia.dll Syntax public class BasoliaException : Exception"
-  },
-  "api/BassBoom.Basolia.BasoliaMiscException.html": {
-    "href": "api/BassBoom.Basolia.BasoliaMiscException.html",
-    "title": "Class BasoliaMiscException | BassBoom Basolia API - Aptivi",
-    "keywords": "Class BasoliaMiscException Basolia miscellaneous exception (ones that don't have to do with MPG123 or OUT123) Inheritance object Exception BasoliaMiscException Namespace: BassBoom.Basolia Assembly: BassBoom.Basolia.dll Syntax public class BasoliaMiscException : Exception"
-  },
-  "api/BassBoom.Basolia.BasoliaOutException.html": {
-    "href": "api/BassBoom.Basolia.BasoliaOutException.html",
-    "title": "Class BasoliaOutException | BassBoom Basolia API - Aptivi",
-    "keywords": "Class BasoliaOutException Basolia output exception Inheritance object Exception BasoliaOutException Namespace: BassBoom.Basolia Assembly: BassBoom.Basolia.dll Syntax public class BasoliaOutException : Exception"
-  },
   "api/BassBoom.Basolia.Devices.DeviceTools.html": {
     "href": "api/BassBoom.Basolia.Devices.DeviceTools.html",
     "title": "Class DeviceTools | BassBoom Basolia API - Aptivi",
@@ -68,6 +53,26 @@
     "href": "api/BassBoom.Basolia.Enumerations.html",
     "title": "Namespace BassBoom.Basolia.Enumerations | BassBoom Basolia API - Aptivi",
     "keywords": "Namespace BassBoom.Basolia.Enumerations Enums FrameFlags Frame flags FrameMode Frame mode FrameVbr Frame variable bit rate FrameVersion Frame version PlaybackChannels Playback channels PlaybackStateType Playback state type for querying"
+  },
+  "api/BassBoom.Basolia.Exceptions.BasoliaException.html": {
+    "href": "api/BassBoom.Basolia.Exceptions.BasoliaException.html",
+    "title": "Class BasoliaException | BassBoom Basolia API - Aptivi",
+    "keywords": "Class BasoliaException Basolia exception Inheritance object Exception BasoliaException Namespace: BassBoom.Basolia.Exceptions Assembly: BassBoom.Basolia.dll Syntax public class BasoliaException : Exception"
+  },
+  "api/BassBoom.Basolia.Exceptions.BasoliaMiscException.html": {
+    "href": "api/BassBoom.Basolia.Exceptions.BasoliaMiscException.html",
+    "title": "Class BasoliaMiscException | BassBoom Basolia API - Aptivi",
+    "keywords": "Class BasoliaMiscException Basolia miscellaneous exception (ones that don't have to do with MPG123 or OUT123) Inheritance object Exception BasoliaMiscException Namespace: BassBoom.Basolia.Exceptions Assembly: BassBoom.Basolia.dll Syntax public class BasoliaMiscException : Exception"
+  },
+  "api/BassBoom.Basolia.Exceptions.BasoliaOutException.html": {
+    "href": "api/BassBoom.Basolia.Exceptions.BasoliaOutException.html",
+    "title": "Class BasoliaOutException | BassBoom Basolia API - Aptivi",
+    "keywords": "Class BasoliaOutException Basolia output exception Inheritance object Exception BasoliaOutException Namespace: BassBoom.Basolia.Exceptions Assembly: BassBoom.Basolia.dll Syntax public class BasoliaOutException : Exception"
+  },
+  "api/BassBoom.Basolia.Exceptions.html": {
+    "href": "api/BassBoom.Basolia.Exceptions.html",
+    "title": "Namespace BassBoom.Basolia.Exceptions | BassBoom Basolia API - Aptivi",
+    "keywords": "Namespace BassBoom.Basolia.Exceptions Classes BasoliaException Basolia exception BasoliaMiscException Basolia miscellaneous exception (ones that don't have to do with MPG123 or OUT123) BasoliaOutException Basolia output exception"
   },
   "api/BassBoom.Basolia.File.FileTools.html": {
     "href": "api/BassBoom.Basolia.File.FileTools.html",
@@ -222,7 +227,7 @@
   "api/BassBoom.Basolia.html": {
     "href": "api/BassBoom.Basolia.html",
     "title": "Namespace BassBoom.Basolia | BassBoom Basolia API - Aptivi",
-    "keywords": "Namespace BassBoom.Basolia Classes BasoliaException Basolia exception BasoliaMiscException Basolia miscellaneous exception (ones that don't have to do with MPG123 or OUT123) BasoliaOutException Basolia output exception InitBasolia Initialization code"
+    "keywords": "Namespace BassBoom.Basolia Classes InitBasolia Initialization code"
   },
   "index.html": {
     "href": "index.html",

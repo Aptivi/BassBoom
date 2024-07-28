@@ -35,36 +35,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.BasoliaException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.BasoliaException.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.BasoliaMiscException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.BasoliaMiscException.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BassBoom.Basolia.BasoliaOutException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BassBoom.Basolia.BasoliaOutException.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.yml",
       "output": {
         ".html": {
@@ -149,6 +119,46 @@
       "output": {
         ".html": {
           "relative_path": "api/BassBoom.Basolia.Enumerations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Exceptions.BasoliaException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Exceptions.BasoliaException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Exceptions.BasoliaMiscException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Exceptions.BasoliaMiscException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Exceptions.BasoliaOutException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Exceptions.BasoliaOutException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Exceptions.html"
         }
       },
       "version": ""
