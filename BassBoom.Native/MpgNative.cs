@@ -113,13 +113,14 @@ namespace BassBoom.Native
             if (!File.Exists(libPathOut))
                 throw new BasoliaNativeLibraryException($"out123 library path {libPath} doesn't exist.");
             if (PlatformHelper.IsOnWindows() && !File.Exists(libPathWinpthreads))
-                throw new BasoliaNativeLibraryException($"libwinpthreads library path {libPathWinpthreads} doesn't exist.");
+                throw new BasoliaNativeLibraryException($"libwinpthread-1 library path {libPathWinpthreads} doesn't exist.");
 
             // Set the library path
             string oldLibPath = mpg123LibPath;
             string oldLibPathOut = out123LibPath;
             mpg123LibPath = libPath;
             out123LibPath = libPathOut;
+            winpthreadsLibPath = libPathWinpthreads;
 
             // Start the libraries up
             libManagerMpg = new LibraryManager(
