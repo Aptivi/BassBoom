@@ -80,9 +80,9 @@ namespace BassBoom.Basolia
                 MpgNative.InitializeLibrary();
             else
             {
-                string mpg = MpgNative.GetAppropriateMpg123LibraryPath(root);
-                string @out = MpgNative.GetAppropriateOut123LibraryPath(root);
-                string pthreads = MpgNative.GetAppropriateWinpthreadsLibraryPath(root);
+                string mpg = MpgNative.GetLibPath(root, "mpg123");
+                string @out = MpgNative.GetLibPath(root, "out123");
+                string pthreads = MpgNative.GetLibPath(root, "libwinpthread-1", true);
                 MpgNative.InitializeLibrary(mpg, @out, pthreads);
             }
             _basoliaInited = true;

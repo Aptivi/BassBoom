@@ -35,9 +35,9 @@ namespace BassBoom.Native
     /// </summary>
     internal static unsafe class MpgNative
     {
-        internal static string mpg123LibPath = GetAppropriateMpg123LibraryPath();
-        internal static string out123LibPath = GetAppropriateOut123LibraryPath();
-        internal static string winpthreadsLibPath = GetAppropriateWinpthreadsLibraryPath();
+        internal static string mpg123LibPath = GetLibPath("mpg123");
+        internal static string out123LibPath = GetLibPath("out123");
+        internal static string winpthreadsLibPath = GetLibPath("libwinpthread-1", true);
 
         internal static mpg123_handle* _mpg123Handle;
         internal static out123_handle* _out123Handle;
@@ -120,6 +120,8 @@ namespace BassBoom.Native
             string oldLibPathOut = out123LibPath;
             mpg123LibPath = libPath;
             out123LibPath = libPathOut;
+
+            // Start the libraries up
             libManagerMpg = new LibraryManager(
                 new LibraryItem(Platform.Windows, Architecture.X86, new LibraryFile(mpg123LibPath)),
                 new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(mpg123LibPath)),
@@ -153,6 +155,8 @@ namespace BassBoom.Native
             }
             libManagerMpg.LoadNativeLibrary();
             libManagerOut.LoadNativeLibrary();
+
+            // Tell the library the path for the modules
             string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
             if (PlatformHelper.IsOnWindows())
                 Environment.SetEnvironmentVariable("MPG123_MODDIR", libPluginsPath);
@@ -192,53 +196,23 @@ namespace BassBoom.Native
             }
         }
 
-        internal static string GetAppropriateMpg123LibraryPath() =>
-            GetAppropriateMpg123LibraryPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+        internal static string GetLibPath(string libName, bool winOnly = false) =>
+            GetLibPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), libName, winOnly);
 
-        internal static string GetAppropriateMpg123LibraryPath(string root)
+        internal static string GetLibPath(string root, string libName, bool winOnly = false)
         {
-            string runtimesPath = root + "/";
-            string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
-            if (PlatformHelper.IsOnWindows())
-                runtimesPath += $"runtimes/win-{lowerArch}/native/mpg123.dll";
-            else if (PlatformHelper.IsOnMacOS())
-                runtimesPath += $"runtimes/osx-{lowerArch}/native/libmpg123.dylib";
-            else if (PlatformHelper.IsOnUnix())
-                runtimesPath += $"runtimes/linux-{lowerArch}/native/libmpg123.so";
-            else
-                runtimesPath += $"runtimes/freebsd-{lowerArch}/native/libmpg123.so";
-            return runtimesPath;
-        }
-
-        internal static string GetAppropriateOut123LibraryPath() =>
-            GetAppropriateOut123LibraryPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
-
-        internal static string GetAppropriateOut123LibraryPath(string root)
-        {
-            string runtimesPath = root + "/";
-            string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
-            if (PlatformHelper.IsOnWindows())
-                runtimesPath += $"runtimes/win-{lowerArch}/native/out123.dll";
-            else if (PlatformHelper.IsOnMacOS())
-                runtimesPath += $"runtimes/osx-{lowerArch}/native/libout123.dylib";
-            else if (PlatformHelper.IsOnUnix())
-                runtimesPath += $"runtimes/linux-{lowerArch}/native/libout123.so";
-            else
-                runtimesPath += $"runtimes/freebsd-{lowerArch}/native/libout123.so";
-            return runtimesPath;
-        }
-
-        internal static string GetAppropriateWinpthreadsLibraryPath() =>
-            GetAppropriateWinpthreadsLibraryPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
-
-        internal static string GetAppropriateWinpthreadsLibraryPath(string root)
-        {
-            string runtimesPath = root + "/";
-            string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
-            if (PlatformHelper.IsOnWindows())
-                runtimesPath += $"runtimes/win-{lowerArch}/native/libwinpthread-1.dll";
-            else
+            if (winOnly && !PlatformHelper.IsOnWindows())
                 return "";
+            string runtimesPath = root + "/";
+            string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
+            if (PlatformHelper.IsOnWindows())
+                runtimesPath += $"runtimes/win-{lowerArch}/native/{libName}.dll";
+            else if (PlatformHelper.IsOnMacOS())
+                runtimesPath += $"runtimes/osx-{lowerArch}/native/lib{libName}.dylib";
+            else if (PlatformHelper.IsOnUnix())
+                runtimesPath += $"runtimes/linux-{lowerArch}/native/lib{libName}.so";
+            else
+                runtimesPath += $"runtimes/freebsd-{lowerArch}/native/lib{libName}.so";
             return runtimesPath;
         }
     }
