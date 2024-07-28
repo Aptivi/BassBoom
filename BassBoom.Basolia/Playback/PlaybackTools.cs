@@ -101,23 +101,27 @@ namespace BassBoom.Basolia.Playback
 
                 // First, get formats and reset them
                 var (rate, channels, encoding) = FormatTools.GetFormatInfo();
-                int resetStatus = NativeOutput.mpg123_format_none(handle);
+                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeOutput.mpg123_format_none>(nameof(NativeOutput.mpg123_format_none));
+                int resetStatus = @delegate.Invoke(handle);
                 if (resetStatus != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't reset output encoding", (mpg123_errors)resetStatus);
 
                 // Set the format
-                int formatStatus = NativeOutput.mpg123_format(handle, rate, channels, encoding);
+                var delegate2 = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeOutput.mpg123_format>(nameof(NativeOutput.mpg123_format));
+                int formatStatus = delegate2.Invoke(handle, rate, channels, encoding);
                 if (formatStatus != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set output encoding", (mpg123_errors)formatStatus);
                 Debug.WriteLine($"Format {rate}, {channels}, {encoding}");
 
                 // Try to open output to device
-                int openStatus = NativeOutputLib.out123_open(outHandle, DeviceTools.activeDriver, DeviceTools.activeDevice);
+                var delegate3 = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_open>(nameof(NativeOutputLib.out123_open));
+                int openStatus = delegate3.Invoke(outHandle, DeviceTools.activeDriver, DeviceTools.activeDevice);
                 if (openStatus != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't open output to device {DeviceTools.activeDevice} on driver {DeviceTools.activeDriver}", (out123_error)openStatus);
 
                 // Start the output
-                int startStatus = NativeOutputLib.out123_start(outHandle, rate, channels, encoding);
+                var delegate4 = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_start>(nameof(NativeOutputLib.out123_start));
+                int startStatus = delegate4.Invoke(outHandle, rate, channels, encoding);
                 if (startStatus != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't start the output.", (out123_error)startStatus);
 
@@ -212,7 +216,8 @@ namespace BassBoom.Basolia.Playback
             unsafe
             {
                 var handle = MpgNative._mpg123Handle;
-                int status = NativeVolume.mpg123_volume(handle, volume);
+                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeVolume.mpg123_volume>(nameof(NativeVolume.mpg123_volume));
+                int status = @delegate.Invoke(handle, volume);
                 if (status != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't set volume to {volume}", (out123_error)status);
             }
@@ -235,7 +240,8 @@ namespace BassBoom.Basolia.Playback
             unsafe
             {
                 var handle = MpgNative._mpg123Handle;
-                int status = NativeVolume.mpg123_getvolume(handle, ref baseLinearAddr, ref actualLinearAddr, ref decibelsRvaAddr);
+                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeVolume.mpg123_getvolume>(nameof(NativeVolume.mpg123_getvolume));
+                int status = @delegate.Invoke(handle, ref baseLinearAddr, ref actualLinearAddr, ref decibelsRvaAddr);
                 if (status != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't get volume (base, really, and decibels)", (out123_error)status);
             }
@@ -259,7 +265,8 @@ namespace BassBoom.Basolia.Playback
             unsafe
             {
                 var handle = MpgNative._mpg123Handle;
-                int status = NativeVolume.mpg123_eq(handle, (mpg123_channels)channels, bandIdx, value);
+                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeVolume.mpg123_eq>(nameof(NativeVolume.mpg123_eq));
+                int status = @delegate.Invoke(handle, (mpg123_channels)channels, bandIdx, value);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set equalizer band {bandIdx + 1}/32 to {value} under {channels}", (mpg123_errors)status);
             }
@@ -281,7 +288,8 @@ namespace BassBoom.Basolia.Playback
             unsafe
             {
                 var handle = MpgNative._mpg123Handle;
-                int status = NativeVolume.mpg123_eq_bands(handle, (int)channels, bandIdxStart, bandIdxEnd, value);
+                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeVolume.mpg123_eq_bands>(nameof(NativeVolume.mpg123_eq_bands));
+                int status = @delegate.Invoke(handle, (int)channels, bandIdxStart, bandIdxEnd, value);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set equalizer bands {bandIdxStart + 1}/32 -> {bandIdxEnd + 1}/32 to {value} under {channels}", (mpg123_errors)status);
             }
@@ -301,7 +309,8 @@ namespace BassBoom.Basolia.Playback
             unsafe
             {
                 var handle = MpgNative._mpg123Handle;
-                double eq = NativeVolume.mpg123_geteq(handle, (mpg123_channels)channels, bandIdx);
+                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeVolume.mpg123_geteq>(nameof(NativeVolume.mpg123_geteq));
+                double eq = @delegate.Invoke(handle, (mpg123_channels)channels, bandIdx);
                 return eq;
             }
         }
@@ -318,7 +327,8 @@ namespace BassBoom.Basolia.Playback
             unsafe
             {
                 var handle = MpgNative._mpg123Handle;
-                int status = NativeVolume.mpg123_reset_eq(handle);
+                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeVolume.mpg123_reset_eq>(nameof(NativeVolume.mpg123_reset_eq));
+                int status = @delegate.Invoke(handle);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException("Can't reset equalizer bands to their initial values!", (mpg123_errors)status);
             }
@@ -340,7 +350,8 @@ namespace BassBoom.Basolia.Playback
                 long stateInt = 0;
                 double stateDouble = 0;
                 var handle = MpgNative._mpg123Handle;
-                int status = NativeStatus.mpg123_getstate(handle, (mpg123_state)state, ref stateInt, ref stateDouble);
+                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeStatus.mpg123_getstate>(nameof(NativeStatus.mpg123_getstate));
+                int status = @delegate.Invoke(handle, (mpg123_state)state, ref stateInt, ref stateDouble);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't get native state of {state}!", (mpg123_errors)status);
                 return (stateInt, stateDouble);
@@ -385,7 +396,8 @@ namespace BassBoom.Basolia.Playback
                 // Copy the data to MPG123
                 IntPtr data = Marshal.AllocHGlobal(buffer.Length);
                 Marshal.Copy(buffer, 0, data, buffer.Length);
-                int feedResult = NativeInput.mpg123_feed(handle, data, buffer.Length);
+                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeInput.mpg123_feed>(nameof(NativeInput.mpg123_feed));
+                int feedResult = @delegate.Invoke(handle, data, buffer.Length);
                 if (feedResult != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException("Can't feed.", mpg123_errors.MPG123_ERR);
             }
@@ -398,7 +410,8 @@ namespace BassBoom.Basolia.Playback
                 var outHandle = MpgNative._out123Handle;
                 IntPtr bufferPtr = Marshal.AllocHGlobal(Marshal.SizeOf<byte>() * buffer.Length);
                 Marshal.Copy(buffer, 0, bufferPtr, buffer.Length);
-                int size = NativeOutputLib.out123_play(outHandle, bufferPtr, buffer.Length);
+                var @delegate = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_play>(nameof(NativeOutputLib.out123_play));
+                int size = @delegate.Invoke(outHandle, bufferPtr, buffer.Length);
                 Marshal.FreeHGlobal(bufferPtr);
                 return size;
             }

@@ -54,7 +54,8 @@ namespace BassBoom.Basolia.Devices
             {
                 // Query the drivers
                 var handle = MpgNative._out123Handle;
-                int driversStatus = NativeOutputLib.out123_drivers(handle, ref names, ref descr);
+                var @delegate = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_drivers>(nameof(NativeOutputLib.out123_drivers));
+                int driversStatus = @delegate.Invoke(handle, ref names, ref descr);
                 if (driversStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't query the drivers", mpg123_errors.MPG123_ERR);
                 driverCount = driversStatus;
@@ -94,7 +95,8 @@ namespace BassBoom.Basolia.Devices
             {
                 // Query the devices
                 var handle = MpgNative._out123Handle;
-                int devicesStatus = NativeOutputLib.out123_devices(handle, driver, out names, out descr, ref active);
+                var @delegate = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_devices>(nameof(NativeOutputLib.out123_devices));
+                int devicesStatus = @delegate.Invoke(handle, driver, out names, out descr, ref active);
                 if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
                 activeDevice = Marshal.PtrToStringAnsi(active);
@@ -129,7 +131,8 @@ namespace BassBoom.Basolia.Devices
                 var handle = MpgNative._out123Handle;
                 IntPtr driverPtr = IntPtr.Zero;
                 IntPtr devicePtr = IntPtr.Zero;
-                int devicesStatus = NativeOutputLib.out123_driver_info(handle, ref driverPtr, ref devicePtr);
+                var @delegate = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_driver_info>(nameof(NativeOutputLib.out123_driver_info));
+                int devicesStatus = @delegate.Invoke(handle, ref driverPtr, ref devicePtr);
                 if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
                 string driver = Marshal.PtrToStringAnsi(driverPtr);

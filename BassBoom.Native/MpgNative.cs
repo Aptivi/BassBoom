@@ -85,7 +85,7 @@ namespace BassBoom.Native
             get
             {
                 uint major = 0, minor = 0, patch = 0;
-                var @delegate = libManagerMpg.GetNativeMethodDelegate<NativeOutputLib.out123_distversion>(nameof(NativeOutputLib.out123_distversion));
+                var @delegate = libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_distversion>(nameof(NativeOutputLib.out123_distversion));
                 var versionHandle = @delegate.Invoke(ref major, ref minor, ref patch);
                 string version = Marshal.PtrToStringAnsi(versionHandle);
                 Debug.WriteLine($"out123 version: {version}");
@@ -142,6 +142,15 @@ namespace BassBoom.Native
                 new LibraryItem(Platform.Linux, Architecture.X86, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.Arm, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.Arm64, new LibraryFile(out123LibPath)));
+            if (PlatformHelper.IsOnWindows())
+            {
+                var libManagerWinpthread = new LibraryManager(
+                    new LibraryItem(Platform.Windows, Architecture.X86, new LibraryFile(winpthreadsLibPath)),
+                    new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(winpthreadsLibPath)),
+                    new LibraryItem(Platform.Windows, Architecture.Arm, new LibraryFile(winpthreadsLibPath)),
+                    new LibraryItem(Platform.Windows, Architecture.Arm64, new LibraryFile(winpthreadsLibPath)));
+                libManagerWinpthread.LoadNativeLibrary();
+            }
             libManagerMpg.LoadNativeLibrary();
             libManagerOut.LoadNativeLibrary();
             string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
@@ -171,7 +180,7 @@ namespace BassBoom.Native
             // Do the same for the out123 library!
             try
             {
-                var @delegate = libManagerMpg.GetNativeMethodDelegate<NativeOutputLib.out123_new>(nameof(NativeOutputLib.out123_new));
+                var @delegate = libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_new>(nameof(NativeOutputLib.out123_new));
                 var handle = @delegate.Invoke();
                 Debug.WriteLine($"Verifying out123 version: {OutLibVersion}");
                 _out123Handle = handle;

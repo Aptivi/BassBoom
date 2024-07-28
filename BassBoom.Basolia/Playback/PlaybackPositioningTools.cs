@@ -54,7 +54,8 @@ namespace BassBoom.Basolia.Playback
                 var handle = MpgNative._mpg123Handle;
 
                 // Get the length
-                length = NativePositioning.mpg123_tell(handle);
+                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativePositioning.mpg123_tell>(nameof(NativePositioning.mpg123_tell));
+                length = @delegate.Invoke(handle);
                 if (length == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't determine the current duration of the file", mpg123_errors.MPG123_ERR);
             }
@@ -103,7 +104,8 @@ namespace BassBoom.Basolia.Playback
                     while (PlaybackTools.bufferPlaying)
                         Thread.Sleep(1);
                     Drop();
-                    int status = NativePositioning.mpg123_seek(handle, 0, 0);
+                    var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativePositioning.mpg123_seek>(nameof(NativePositioning.mpg123_seek));
+                    int status = @delegate.Invoke(handle, 0, 0);
                     PlaybackTools.holding = false;
                     if (status == (int)mpg123_errors.MPG123_ERR)
                         throw new BasoliaException("Can't seek to the beginning of the file", mpg123_errors.MPG123_LSEEK_FAILED);
@@ -136,7 +138,8 @@ namespace BassBoom.Basolia.Playback
                     while (PlaybackTools.bufferPlaying)
                         Thread.Sleep(1);
                     Drop();
-                    int status = NativePositioning.mpg123_seek(handle, frame, 0);
+                    var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativePositioning.mpg123_seek>(nameof(NativePositioning.mpg123_seek));
+                    int status = @delegate.Invoke(handle, frame, 0);
                     PlaybackTools.holding = false;
                     if (status == (int)mpg123_errors.MPG123_ERR)
                         throw new BasoliaException($"Can't seek to frame #{frame} of the file", (mpg123_errors)status);
@@ -186,7 +189,8 @@ namespace BassBoom.Basolia.Playback
                 unsafe
                 {
                     var outHandle = MpgNative._out123Handle;
-                    NativeOutputLib.out123_drop(outHandle);
+                    var @delegate = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_drop>(nameof(NativeOutputLib.out123_drop));
+                    @delegate.Invoke(outHandle);
                 }
             }
         }
