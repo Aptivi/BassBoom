@@ -31,6 +31,7 @@ using System.Linq;
 using SpecProbe.Software.Platform;
 using BassBoom.Basolia.Enumerations;
 using BassBoom.Native;
+using BassBoom.Basolia.Exceptions;
 
 namespace BassBoom.Basolia.Format
 {

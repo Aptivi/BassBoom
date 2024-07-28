@@ -17,7 +17,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Basolia;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Playback;
 using System;
@@ -35,6 +34,7 @@ using Terminaux.Writer.FancyWriters;
 using Terminaux.Reader;
 using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
+using BassBoom.Basolia.Exceptions;
 
 namespace BassBoom.Cli.CliBase
 {

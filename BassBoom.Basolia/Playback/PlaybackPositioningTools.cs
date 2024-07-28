@@ -26,6 +26,7 @@ using System;
 using System.Threading;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Native;
+using BassBoom.Basolia.Exceptions;
 
 namespace BassBoom.Basolia.Playback
 {

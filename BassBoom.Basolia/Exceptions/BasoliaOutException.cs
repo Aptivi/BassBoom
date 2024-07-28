@@ -22,7 +22,7 @@ using BassBoom.Native.Interop.Output;
 using System;
 using System.Runtime.InteropServices;
 
-namespace BassBoom.Basolia
+namespace BassBoom.Basolia.Exceptions
 {
     /// <summary>
     /// Basolia output exception

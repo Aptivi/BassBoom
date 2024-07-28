@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.Playback;
 using BassBoom.Basolia.Radio;
 using BassBoom.Native;

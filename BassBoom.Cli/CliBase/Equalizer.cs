@@ -16,7 +16,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
-using BassBoom.Basolia;
 using System;
 using System.Text;
 using Terminaux.Base;
@@ -31,6 +30,7 @@ using Terminaux.Inputs;
 using System.Collections.Generic;
 using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Base.Extensions;
+using BassBoom.Basolia.Exceptions;
 
 namespace BassBoom.Cli.CliBase
 {

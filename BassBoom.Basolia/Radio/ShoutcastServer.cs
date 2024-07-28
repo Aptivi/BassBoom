@@ -23,6 +23,7 @@ using Newtonsoft.Json.Linq;
 using HtmlAgilityPack;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using BassBoom.Basolia.Exceptions;
 
 namespace BassBoom.Basolia.Radio
 {

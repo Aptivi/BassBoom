@@ -34,6 +34,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using BassBoom.Basolia.Enumerations;
 using BassBoom.Native;
+using BassBoom.Basolia.Exceptions;
 
 namespace BassBoom.Basolia.Playback
 {

@@ -19,6 +19,7 @@
 
 using System;
 using System.Diagnostics;
+using BassBoom.Basolia.Exceptions;
 using Newtonsoft.Json.Linq;
 
 namespace BassBoom.Basolia.Radio

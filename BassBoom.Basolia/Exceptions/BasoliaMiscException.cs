@@ -19,7 +19,7 @@
 
 using System;
 
-namespace BassBoom.Basolia
+namespace BassBoom.Basolia.Exceptions
 {
     /// <summary>
     /// Basolia miscellaneous exception (ones that don't have to do with MPG123 or OUT123)

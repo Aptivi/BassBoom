@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.Helpers;
 using BassBoom.Native;
 using BassBoom.Native.Interop.Init;

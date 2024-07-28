@@ -24,6 +24,7 @@ using HtmlAgilityPack;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Linq;
+using BassBoom.Basolia.Exceptions;
 
 namespace BassBoom.Basolia.Radio
 {
