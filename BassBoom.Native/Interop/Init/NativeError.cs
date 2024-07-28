@@ -82,19 +82,16 @@ namespace BassBoom.Native.Interop.Init
         /// <summary>
         /// MPG123_EXPORT const char* mpg123_plain_strerror(int errcode);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern nint mpg123_plain_strerror(int errcode);
+        internal delegate nint mpg123_plain_strerror(int errcode);
 
         /// <summary>
         /// MPG123_EXPORT const char* mpg123_strerror(mpg123_handle *mh);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern nint mpg123_strerror(mpg123_handle* mh);
+        internal delegate nint mpg123_strerror(mpg123_handle* mh);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_errcode(mpg123_handle *mh);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_errcode(mpg123_handle* mh);
+        internal delegate int mpg123_errcode(mpg123_handle* mh);
     }
 }

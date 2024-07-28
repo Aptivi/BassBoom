@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Native;
 using BassBoom.Native.Interop.Output;
 using System;
 using System.Runtime.InteropServices;
@@ -34,7 +35,7 @@ namespace BassBoom.Basolia
         /// <param name="error">An OUT123 error value to use.</param>
         internal BasoliaOutException(out123_error error) :
             base($"General Basolia output system error\n" +
-                 $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeOutputLib.out123_plain_strerror((int)error))}]")
+                 $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeOutputLib.out123_plain_strerror>(nameof(NativeOutputLib.out123_plain_strerror)).Invoke((int)error))}]")
         { }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace BassBoom.Basolia
         /// <param name="error">An OUT123 error value to use.</param>
         internal BasoliaOutException(string message, out123_error error) :
             base($"{message}\n" +
-                 $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeOutputLib.out123_plain_strerror((int)error))}]")
+                 $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeOutputLib.out123_plain_strerror>(nameof(NativeOutputLib.out123_plain_strerror)).Invoke((int)error))}]")
         { }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace BassBoom.Basolia
         /// <param name="error">An OUT123 error value to use.</param>
         internal BasoliaOutException(string message, Exception innerException, out123_error error) :
             base($"{message}\n" +
-                 $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeOutputLib.out123_plain_strerror((int)error))}]", innerException)
+                 $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeOutputLib.out123_plain_strerror>(nameof(NativeOutputLib.out123_plain_strerror)).Invoke((int)error))}]", innerException)
         { }
     }
 }

@@ -85,233 +85,196 @@ namespace BassBoom.Native.Interop.Output
         /// <summary>
         /// MPG123_EXPORT const char *out123_distversion(unsigned int *major, unsigned int *minor, unsigned int *patch);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern IntPtr out123_distversion(ref uint major, ref uint minor, ref uint patch);
+        internal delegate IntPtr out123_distversion(ref uint major, ref uint minor, ref uint patch);
 
         /// <summary>
         /// MPG123_EXPORT unsigned int out123_libversion(unsigned int *patch);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern uint out123_libversion(ref uint patch);
+        internal delegate uint out123_libversion(ref uint patch);
 
         /// <summary>
         /// MPG123_EXPORT out123_handle *out123_new(void);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern out123_handle* out123_new();
+        internal delegate out123_handle* out123_new();
 
         /// <summary>
         /// MPG123_EXPORT void out123_del(out123_handle *ao);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern void out123_del(out123_handle* ao);
+        internal delegate void out123_del(out123_handle* ao);
 
         /// <summary>
         /// MPG123_EXPORT void out123_free(void *ptr);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern void out123_free(IntPtr ptr);
+        internal delegate void out123_free(IntPtr ptr);
 
         /// <summary>
         /// MPG123_EXPORT const char* out123_strerror(out123_handle *ao);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern nint out123_strerror(out123_handle* ao);
+        internal delegate nint out123_strerror(out123_handle* ao);
 
         /// <summary>
         /// MPG123_EXPORT int out123_errcode(out123_handle *ao);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_errcode(out123_handle* ao);
+        internal delegate int out123_errcode(out123_handle* ao);
 
         /// <summary>
         /// MPG123_EXPORT const char* out123_plain_strerror(int errcode);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern nint out123_plain_strerror(int errcode);
+        internal delegate nint out123_plain_strerror(int errcode);
 
         /// <summary>
         /// MPG123_EXPORT int out123_set_buffer(out123_handle *ao, size_t buffer_bytes);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_set_buffer(out123_handle* ao, int buffer_bytes);
+        internal delegate int out123_set_buffer(out123_handle* ao, int buffer_bytes);
 
         /// <summary>
         /// MPG123_EXPORT int out123_param( out123_handle *ao, enum out123_parms code
         /// ,                 long value, double fvalue, const char *svalue );
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_param(out123_handle* ao, out123_parms code, long @value, double fvalue, string svalue);
+        internal delegate int out123_param(out123_handle* ao, out123_parms code, long @value, double fvalue, string svalue);
 
         /// <summary>
         /// MPG123_EXPORT int out123_param2( out123_handle *ao, int code
         /// ,                 long value, double fvalue, const char *svalue );
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_param(out123_handle* ao, int code, long @value, double fvalue, string svalue);
+        internal delegate int out123_param2(out123_handle* ao, int code, long @value, double fvalue, string svalue);
 
         /// <summary>
         /// MPG123_EXPORT
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_getparam(out123_handle* ao, out123_parms code, long* ret_value, double* ret_fvalue, char* ret_svalue);
+        internal delegate int out123_getparam(out123_handle* ao, out123_parms code, long* ret_value, double* ret_fvalue, char* ret_svalue);
 
         /// <summary>
         /// MPG123_EXPORT int out123_getparam2( out123_handle *ao, int code
         /// ,                    long *ret_value, double *ret_fvalue, char* *ret_svalue );
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_getparam2(out123_handle* ao, int code, long* ret_value, double* ret_fvalue, char* ret_svalue);
+        internal delegate int out123_getparam2(out123_handle* ao, int code, long* ret_value, double* ret_fvalue, char* ret_svalue);
 
         /// <summary>
         /// MPG123_EXPORT int out123_param_from(out123_handle *ao, out123_handle* from_ao);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_param_from(out123_handle* ao, out123_handle* from_ao);
+        internal delegate int out123_param_from(out123_handle* ao, out123_handle* from_ao);
 
         /// <summary>
         /// MPG123_EXPORT int out123_drivers(out123_handle *ao, char ***names, char ***descr);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_drivers(out123_handle* ao, ref nint names, ref nint descr);
+        internal delegate int out123_drivers(out123_handle* ao, ref nint names, ref nint descr);
 
         /// <summary>
         /// MPG123_EXPORT int out123_devices( out123_handle *ao, const char *driver
         /// ,   char ***names, char ***descr, char **active_driver );
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_devices(out123_handle* ao,
+        internal delegate int out123_devices(out123_handle* ao,
             [MarshalAs(UnmanagedType.LPStr)] string driver, out nint names, out nint descr, ref nint active_driver);
 
         /// <summary>
         /// MPG123_EXPORT void out123_stringlists_free(char **name, char **descr, int count);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern void out123_stringlists_free(char** name, char** descr, int count);
+        internal delegate void out123_stringlists_free(char** name, char** descr, int count);
 
         /// <summary>
         /// MPG123_EXPORT int out123_open(out123_handle *ao, const char* driver, const char* device);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_open(out123_handle* ao, string driver, string device);
+        internal delegate int out123_open(out123_handle* ao, string driver, string device);
 
         /// <summary>
         /// MPG123_EXPORT int out123_driver_info(out123_handle *ao, char **driver, char **device);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_driver_info(out123_handle* ao, ref IntPtr driver, ref IntPtr device);
+        internal delegate int out123_driver_info(out123_handle* ao, ref IntPtr driver, ref IntPtr device);
 
         /// <summary>
         /// MPG123_EXPORT void out123_close(out123_handle *ao);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern void out123_close(out123_handle* ao);
+        internal delegate void out123_close(out123_handle* ao);
 
         /// <summary>
         /// MPG123_EXPORT int out123_encodings(out123_handle *ao, long rate, int channels);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_encodings(out123_handle* ao, long rate, int channels);
+        internal delegate int out123_encodings(out123_handle* ao, long rate, int channels);
 
         /// <summary>
         /// MPG123_EXPORT int out123_encsize(int encoding);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_encsize(int encoding);
+        internal delegate int out123_encsize(int encoding);
 
         /// <summary>
         /// MPG123_EXPORT int out123_formats( out123_handle *ao, const long *rates, int ratecount
         /// , int minchannels, int maxchannels
         /// , struct mpg123_fmt **fmtlist );
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_formats(out123_handle* ao, IntPtr rates, int ratecount, int minchannels, int maxchannels, ref IntPtr fmtlist);
+        internal delegate int out123_formats(out123_handle* ao, IntPtr rates, int ratecount, int minchannels, int maxchannels, ref IntPtr fmtlist);
 
         /// <summary>
         /// MPG123_EXPORT int out123_enc_list(int **enclist);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_enc_list(int** enclist);
+        internal delegate int out123_enc_list(int** enclist);
 
         /// <summary>
         /// MPG123_EXPORT int out123_enc_byname(const char *name);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_enc_byname(string name);
+        internal delegate int out123_enc_byname(string name);
 
         /// <summary>
         /// MPG123_EXPORT const char* out123_enc_name(int encoding);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern string out123_enc_name(int encoding);
+        internal delegate string out123_enc_name(int encoding);
 
         /// <summary>
         /// MPG123_EXPORT const char* out123_enc_longname(int encoding);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern string out123_enc_longname(int encoding);
+        internal delegate string out123_enc_longname(int encoding);
 
         /// <summary>
         /// MPG123_EXPORT int out123_start( out123_handle *ao
         /// ,                 long rate, int channels, int encoding );
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_start(out123_handle* ao, long rate, int channels, int encoding);
+        internal delegate int out123_start(out123_handle* ao, long rate, int channels, int encoding);
 
         /// <summary>
         /// MPG123_EXPORT void out123_pause(out123_handle *ao);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern void out123_pause(out123_handle* ao);
+        internal delegate void out123_pause(out123_handle* ao);
 
         /// <summary>
         /// MPG123_EXPORT void out123_continue(out123_handle *ao);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern void out123_continue(out123_handle* ao);
+        internal delegate void out123_continue(out123_handle* ao);
 
         /// <summary>
         /// MPG123_EXPORT void out123_stop(out123_handle *ao);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern void out123_stop(out123_handle *ao);
+        internal delegate void out123_stop(out123_handle *ao);
 
         /// <summary>
         /// MPG123_EXPORT size_t out123_play( out123_handle *ao
         ///                   , void *buffer, size_t bytes );
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_play(out123_handle* ao, IntPtr buffer, int bytes);
+        internal delegate int out123_play(out123_handle* ao, IntPtr buffer, int bytes);
 
         /// <summary>
         /// MPG123_EXPORT void out123_drop(out123_handle *ao);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern void out123_drop(out123_handle* ao);
+        internal delegate void out123_drop(out123_handle* ao);
 
         /// <summary>
         /// MPG123_EXPORT void out123_drain(out123_handle *ao);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void out123_drain(out123_handle* ao);
+        internal delegate void out123_drain(out123_handle* ao);
 
         /// <summary>
         /// MPG123_EXPORT void out123_ndrain(out123_handle *ao, size_t bytes);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern void out123_ndrain(out123_handle* ao, int bytes);
+        internal delegate void out123_ndrain(out123_handle* ao, int bytes);
 
         /// <summary>
         /// MPG123_EXPORT size_t out123_buffered(out123_handle *ao);
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_buffered(out123_handle* ao);
+        internal delegate int out123_buffered(out123_handle* ao);
 
         /// <summary>
         /// MPG123_EXPORT int out123_getformat( out123_handle *ao
         /// ,   long *rate, int *channels, int *encoding, int *framesize );
         /// </summary>
-        [DllImport(MpgNative.LibraryNameOut, CharSet = CharSet.Ansi)]
-        internal static extern int out123_getformat(out123_handle* ao, long* rate, int* channels, int* encoding, out int framesize);
+        internal delegate int out123_getformat(out123_handle* ao, long* rate, int* channels, int* encoding, out int framesize);
     }
 }

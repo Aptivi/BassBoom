@@ -42,6 +42,9 @@ namespace BassBoom.Native
         internal static mpg123_handle* _mpg123Handle;
         internal static out123_handle* _out123Handle;
 
+        internal static LibraryManager libManagerMpg;
+        internal static LibraryManager libManagerOut;
+
         internal const string LibcName = "libc";
         internal const string LibraryName = "mpg123";
         internal const string LibraryNameOut = "out123";
@@ -66,7 +69,8 @@ namespace BassBoom.Native
             get
             {
                 uint major = 0, minor = 0, patch = 0;
-                var versionHandle = NativeInit.mpg123_distversion(ref major, ref minor, ref patch);
+                var @delegate = libManagerMpg.GetNativeMethodDelegate<NativeInit.mpg123_distversion>(nameof(NativeInit.mpg123_distversion));
+                var versionHandle = @delegate.Invoke(ref major, ref minor, ref patch);
                 string version = Marshal.PtrToStringAnsi(versionHandle);
                 Debug.WriteLine($"mpg123 version: {version}");
                 return new((int)major, (int)minor, (int)patch, 0);
@@ -81,7 +85,8 @@ namespace BassBoom.Native
             get
             {
                 uint major = 0, minor = 0, patch = 0;
-                var versionHandle = NativeOutputLib.out123_distversion(ref major, ref minor, ref patch);
+                var @delegate = libManagerMpg.GetNativeMethodDelegate<NativeOutputLib.out123_distversion>(nameof(NativeOutputLib.out123_distversion));
+                var versionHandle = @delegate.Invoke(ref major, ref minor, ref patch);
                 string version = Marshal.PtrToStringAnsi(versionHandle);
                 Debug.WriteLine($"out123 version: {version}");
                 return new((int)major, (int)minor, (int)patch, 0);
@@ -115,7 +120,7 @@ namespace BassBoom.Native
             string oldLibPathOut = out123LibPath;
             mpg123LibPath = libPath;
             out123LibPath = libPathOut;
-            var libManagerMpg = new LibraryManager(
+            libManagerMpg = new LibraryManager(
                 new LibraryItem(Platform.Windows, Architecture.X86, new LibraryFile(mpg123LibPath)),
                 new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(mpg123LibPath)),
                 new LibraryItem(Platform.Windows, Architecture.Arm, new LibraryFile(mpg123LibPath)),
@@ -126,7 +131,7 @@ namespace BassBoom.Native
                 new LibraryItem(Platform.Linux, Architecture.X86, new LibraryFile(mpg123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.Arm, new LibraryFile(mpg123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.Arm64, new LibraryFile(mpg123LibPath)));
-            var libManagerOut = new LibraryManager(
+            libManagerOut = new LibraryManager(
                 new LibraryItem(Platform.Windows, Architecture.X86, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Windows, Architecture.Arm, new LibraryFile(out123LibPath)),
@@ -137,15 +142,6 @@ namespace BassBoom.Native
                 new LibraryItem(Platform.Linux, Architecture.X86, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.Arm, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.Arm64, new LibraryFile(out123LibPath)));
-            if (PlatformHelper.IsOnWindows())
-            {
-                var libManagerWinpthread = new LibraryManager(
-                    new LibraryItem(Platform.Windows, Architecture.X86, new LibraryFile(winpthreadsLibPath)),
-                    new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(winpthreadsLibPath)),
-                    new LibraryItem(Platform.Windows, Architecture.Arm, new LibraryFile(winpthreadsLibPath)),
-                    new LibraryItem(Platform.Windows, Architecture.Arm64, new LibraryFile(winpthreadsLibPath)));
-                libManagerWinpthread.LoadNativeLibrary();
-            }
             libManagerMpg.LoadNativeLibrary();
             libManagerOut.LoadNativeLibrary();
             string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
@@ -161,9 +157,8 @@ namespace BassBoom.Native
             // Verify that we've actually loaded the library!
             try
             {
-                // mpg123 returns 0 on init.
-                _ = NativeInit.mpg123_init();
-                var handle = NativeInit.mpg123_new(null, null);
+                var @delegate = libManagerMpg.GetNativeMethodDelegate<NativeInit.mpg123_new>(nameof(NativeInit.mpg123_new));
+                var handle = @delegate.Invoke(null, null);
                 Debug.WriteLine($"Verifying mpg123 version: {MpgLibVersion}");
                 _mpg123Handle = handle;
             }
@@ -176,7 +171,8 @@ namespace BassBoom.Native
             // Do the same for the out123 library!
             try
             {
-                var handle = NativeOutputLib.out123_new();
+                var @delegate = libManagerMpg.GetNativeMethodDelegate<NativeOutputLib.out123_new>(nameof(NativeOutputLib.out123_new));
+                var handle = @delegate.Invoke();
                 Debug.WriteLine($"Verifying out123 version: {OutLibVersion}");
                 _out123Handle = handle;
             }

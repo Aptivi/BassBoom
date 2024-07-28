@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using System;
 using System.Runtime.InteropServices;
@@ -34,7 +35,7 @@ namespace BassBoom.Basolia
         /// <param name="error">An MPG123 error value to use.</param>
         internal BasoliaException(mpg123_errors error) :
             base($"General Basolia error\n" +
-                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeError.mpg123_plain_strerror((int)error))}]")
+                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeError.mpg123_plain_strerror>(nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
         { }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace BassBoom.Basolia
         /// <param name="error">An MPG123 error value to use.</param>
         internal BasoliaException(string message, mpg123_errors error) :
             base($"{message}\n" +
-                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeError.mpg123_plain_strerror((int)error))}]")
+                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeError.mpg123_plain_strerror>(nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
         { }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace BassBoom.Basolia
         /// <param name="error">An MPG123 error value to use.</param>
         internal BasoliaException(string message, Exception innerException, mpg123_errors error) :
             base($"{message}\n" +
-                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeError.mpg123_plain_strerror((int)error))}]", innerException)
+                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeError.mpg123_plain_strerror>(nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]", innerException)
         { }
     }
 }

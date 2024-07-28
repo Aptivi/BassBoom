@@ -150,157 +150,132 @@ namespace BassBoom.Native.Interop.Analysis
         /// <summary>
         /// MPG123_EXPORT mpg123_string* mpg123_new_string(const char* val);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern mpg123_string* mpg123_new_string(string val);
+        internal delegate mpg123_string* mpg123_new_string(string val);
 
         /// <summary>
         /// MPG123_EXPORT void mpg123_delete_string(mpg123_string* sb);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern void mpg123_delete_string(mpg123_string* sb);
+        internal delegate void mpg123_delete_string(mpg123_string* sb);
 
         /// <summary>
         /// MPG123_EXPORT void mpg123_init_string(mpg123_string* sb);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern void mpg123_init_string(mpg123_string* sb);
+        internal delegate void mpg123_init_string(mpg123_string* sb);
 
         /// <summary>
         /// MPG123_EXPORT void mpg123_free_string(mpg123_string* sb);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern void mpg123_free_string(mpg123_string* sb);
+        internal delegate void mpg123_free_string(mpg123_string* sb);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_resize_string(mpg123_string* sb, size_t news);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_resize_string(mpg123_string* sb, int news);
+        internal delegate int mpg123_resize_string(mpg123_string* sb, int news);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_grow_string(mpg123_string* sb, size_t news);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_grow_string(mpg123_string* sb, int news);
+        internal delegate int mpg123_grow_string(mpg123_string* sb, int news);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_copy_string(mpg123_string* from, mpg123_string* to);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_copy_string(mpg123_string* from, mpg123_string* to);
+        internal delegate int mpg123_copy_string(mpg123_string* from, mpg123_string* to);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_move_string(mpg123_string* from, mpg123_string* to);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_move_string(mpg123_string* from, mpg123_string* to);
+        internal delegate int mpg123_move_string(mpg123_string* from, mpg123_string* to);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_add_string(mpg123_string* sb, const char* stuff);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_add_string(mpg123_string* sb, string stuff);
+        internal delegate int mpg123_add_string(mpg123_string* sb, string stuff);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_add_substring( mpg123_string *sb
         /// ,   const char *stuff, size_t from, size_t count );
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_add_substring(mpg123_string* sb, string stuff, int @from, int count);
+        internal delegate int mpg123_add_substring(mpg123_string* sb, string stuff, int @from, int count);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_set_string(mpg123_string* sb, const char* stuff);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_set_string(mpg123_string* sb, string stuff);
+        internal delegate int mpg123_set_string(mpg123_string* sb, string stuff);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_set_substring( mpg123_string *sb
         /// ,   const char *stuff, size_t from, size_t count );
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_set_substring(mpg123_string* sb, string stuff, int @from, int count);
+        internal delegate int mpg123_set_substring(mpg123_string* sb, string stuff, int @from, int count);
 
         /// <summary>
         /// MPG123_EXPORT size_t mpg123_strlen(mpg123_string *sb, int utf8);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_strlen(mpg123_string* sb, int utf8);
+        internal delegate int mpg123_strlen(mpg123_string* sb, int utf8);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_chomp_string(mpg123_string *sb);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_chomp_string(mpg123_string *sb);
+        internal delegate int mpg123_chomp_string(mpg123_string *sb);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_same_string(mpg123_string *a, mpg123_string *b);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_same_string(mpg123_string* a, mpg123_string* b);
+        internal delegate int mpg123_same_string(mpg123_string* a, mpg123_string* b);
 
         /// <summary>
         /// MPG123_EXPORT enum mpg123_text_encoding mpg123_enc_from_id3(unsigned char id3_enc_byte);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern mpg123_text_encoding mpg123_enc_from_id3(char id3_enc_byte);
+        internal delegate mpg123_text_encoding mpg123_enc_from_id3(char id3_enc_byte);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_enc_from_id3_2(unsigned char id3_enc_byte);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_enc_from_id3_2(char id3_enc_byte);
+        internal delegate int mpg123_enc_from_id3_2(char id3_enc_byte);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_store_utf8(mpg123_string *sb, enum mpg123_text_encoding enc, const unsigned char *source, size_t source_size);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_store_utf8(mpg123_string* sb, mpg123_text_encoding enc, char* source, int source_size);
+        internal delegate int mpg123_store_utf8(mpg123_string* sb, mpg123_text_encoding enc, char* source, int source_size);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_store_utf8_2(mpg123_string *sb
         /// ,   int enc, const unsigned char *source, size_t source_size);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_store_utf8_2(mpg123_string* sb, int enc, char* source, int source_size);
+        internal delegate int mpg123_store_utf8_2(mpg123_string* sb, int enc, char* source, int source_size);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_meta_check(mpg123_handle *mh);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_meta_check(mpg123_handle* mh);
+        internal delegate int mpg123_meta_check(mpg123_handle* mh);
 
         /// <summary>
         /// MPG123_EXPORT void mpg123_meta_free(mpg123_handle *mh);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern void mpg123_meta_free(mpg123_handle* mh);
+        internal delegate void mpg123_meta_free(mpg123_handle* mh);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_id3( mpg123_handle *mh
         /// ,   mpg123_id3v1 **v1, mpg123_id3v2 **v2 );
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_id3(mpg123_handle* mh, ref IntPtr v1, ref IntPtr v2);
+        internal delegate int mpg123_id3(mpg123_handle* mh, ref IntPtr v1, ref IntPtr v2);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_id3_raw( mpg123_handle *mh
         /// ,   unsigned char **v1, size_t *v1_size
         /// ,   unsigned char **v2, size_t *v2_size );
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_id3_raw(mpg123_handle* mh, ref IntPtr v1, ref int v1_size, ref IntPtr v2, ref int v2_size);
+        internal delegate int mpg123_id3_raw(mpg123_handle* mh, ref IntPtr v1, ref int v1_size, ref IntPtr v2, ref int v2_size);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_icy(mpg123_handle *mh, char **icy_meta);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_icy(mpg123_handle* mh, ref string icy_meta);
+        internal delegate int mpg123_icy(mpg123_handle* mh, ref string icy_meta);
 
         /// <summary>
         /// MPG123_EXPORT char* mpg123_icy2utf8(const char* icy_text);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern string mpg123_icy2utf8(string icy_text);
+        internal delegate string mpg123_icy2utf8(string icy_text);
     }
 }

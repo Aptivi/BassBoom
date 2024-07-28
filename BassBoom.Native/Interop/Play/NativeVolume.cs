@@ -38,71 +38,60 @@ namespace BassBoom.Native.Interop.Play
         /// MPG123_EXPORT int mpg123_eq( mpg123_handle *mh
         /// ,   enum mpg123_channels channel, int band, double val );
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_eq(mpg123_handle* mh, mpg123_channels channel, int band, double val);
+        internal delegate int mpg123_eq(mpg123_handle* mh, mpg123_channels channel, int band, double val);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_eq2( mpg123_handle *mh
         /// ,   int channel, int band, double val );
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_eq2(mpg123_handle* mh, int channel, int band, double val);
+        internal delegate int mpg123_eq2(mpg123_handle* mh, int channel, int band, double val);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_eq_bands( mpg123_handle *mh
         /// ,   int channel, int a, int b, double factor );
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_eq_bands(mpg123_handle* mh, int channel, int a, int b, double factor);
+        internal delegate int mpg123_eq_bands(mpg123_handle* mh, int channel, int a, int b, double factor);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_eq_change( mpg123_handle *mh
         /// ,   int channel, int a, int b, double db );
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_eq_change(mpg123_handle* mh, int channel, int a, int b, double db);
+        internal delegate int mpg123_eq_change(mpg123_handle* mh, int channel, int a, int b, double db);
 
         /// <summary>
         /// MPG123_EXPORT double mpg123_geteq(mpg123_handle *mh
         /// , enum mpg123_channels channel, int band);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern double mpg123_geteq(mpg123_handle* mh, mpg123_channels channel, int band);
+        internal delegate double mpg123_geteq(mpg123_handle* mh, mpg123_channels channel, int band);
 
         /// <summary>
         /// MPG123_EXPORT double mpg123_geteq2(mpg123_handle *mh, int channel, int band);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern double mpg123_geteq2(mpg123_handle* mh, int channel, int band);
+        internal delegate double mpg123_geteq2(mpg123_handle* mh, int channel, int band);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_reset_eq(mpg123_handle *mh);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_reset_eq(mpg123_handle* mh);
+        internal delegate int mpg123_reset_eq(mpg123_handle* mh);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_volume(mpg123_handle *mh, double vol);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_volume(mpg123_handle* mh, double vol);
+        internal delegate int mpg123_volume(mpg123_handle* mh, double vol);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_volume_change(mpg123_handle *mh, double change);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_volume_change(mpg123_handle *mh, double change);
+        internal delegate int mpg123_volume_change(mpg123_handle *mh, double change);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_volume_change_db(mpg123_handle *mh, double db);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_volume_change_db(mpg123_handle *mh, double db);
+        internal delegate int mpg123_volume_change_db(mpg123_handle *mh, double db);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_getvolume(mpg123_handle *mh, double *base, double *really, double *rva_db);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_getvolume(mpg123_handle* mh, ref double @base, ref double really, ref double rva_db);
+        internal delegate int mpg123_getvolume(mpg123_handle* mh, ref double @base, ref double really, ref double rva_db);
     }
 }

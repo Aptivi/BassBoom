@@ -30,25 +30,21 @@ namespace BassBoom.Native.Interop.Init
         /// <summary>
         /// MPG123_EXPORT const char **mpg123_decoders(void);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern IntPtr mpg123_decoders();
+        internal delegate IntPtr mpg123_decoders();
 
         /// <summary>
         /// MPG123_EXPORT const char **mpg123_supported_decoders(void);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern IntPtr mpg123_supported_decoders();
+        internal delegate IntPtr mpg123_supported_decoders();
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_decoder(mpg123_handle *mh, const char* decoder_name);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern int mpg123_decoder(mpg123_handle* mh, string decoder_name);
+        internal delegate int mpg123_decoder(mpg123_handle* mh, string decoder_name);
 
         /// <summary>
         /// MPG123_EXPORT const char* mpg123_current_decoder(mpg123_handle *mh);
         /// </summary>
-        [DllImport(MpgNative.LibraryName, CharSet = CharSet.Ansi)]
-        internal static extern IntPtr mpg123_current_decoder(mpg123_handle* mh);
+        internal delegate IntPtr mpg123_current_decoder(mpg123_handle* mh);
     }
 }
