@@ -33,8 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NativeLand" Version="2.0.0.1" />
-    <PackageReference Include="SpecProbe.Software" Version="1.6.0.1" />
+    <PackageReference Include="SpecProbe.Loader" Version="2.0.0" />
+    <PackageReference Include="SpecProbe.Software" Version="2.0.0" />
   </ItemGroup>
 
 </Project>

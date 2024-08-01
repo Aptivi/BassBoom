@@ -26,7 +26,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using SpecProbe.Software.Platform;
-using NativeLand;
+using SpecProbe.Loader;
 
 namespace BassBoom.Native
 {
