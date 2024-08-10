@@ -137,14 +137,13 @@ namespace BassBoom.Native
 
             // Tell the library the path for the modules
             string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
+            int result = -1;
             if (PlatformHelper.IsOnWindows())
-                Environment.SetEnvironmentVariable("MPG123_MODDIR", libPluginsPath);
+                result = NativeInit._putenv_s("MPG123_MODDIR", libPluginsPath);
             else
-            {
-                int result = NativeInit.setenv("MPG123_MODDIR", libPluginsPath, 1);
-                if (result != 0)
-                    throw new BasoliaNativeLibraryException("Can't set environment variable MPG123_MODDIR");
-            }
+                result = NativeInit.setenv("MPG123_MODDIR", libPluginsPath, 1);
+            if (result != 0)
+                throw new BasoliaNativeLibraryException("Can't set environment variable MPG123_MODDIR");
 
             // Verify that we've actually loaded the library!
             try
