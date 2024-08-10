@@ -124,33 +124,23 @@ namespace BassBoom.Native
 
             // Start the libraries up
             libManagerMpg = new LibraryManager(
-                new LibraryItem(Platform.Windows, Architecture.X86, new LibraryFile(mpg123LibPath)),
                 new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(mpg123LibPath)),
-                new LibraryItem(Platform.Windows, Architecture.Arm, new LibraryFile(mpg123LibPath)),
                 new LibraryItem(Platform.Windows, Architecture.Arm64, new LibraryFile(mpg123LibPath)),
                 new LibraryItem(Platform.MacOS, Architecture.X64, new LibraryFile(mpg123LibPath)),
                 new LibraryItem(Platform.MacOS, Architecture.Arm64, new LibraryFile(mpg123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.X64, new LibraryFile(mpg123LibPath)),
-                new LibraryItem(Platform.Linux, Architecture.X86, new LibraryFile(mpg123LibPath)),
-                new LibraryItem(Platform.Linux, Architecture.Arm, new LibraryFile(mpg123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.Arm64, new LibraryFile(mpg123LibPath)));
             libManagerOut = new LibraryManager(
-                new LibraryItem(Platform.Windows, Architecture.X86, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(out123LibPath)),
-                new LibraryItem(Platform.Windows, Architecture.Arm, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Windows, Architecture.Arm64, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.MacOS, Architecture.X64, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.MacOS, Architecture.Arm64, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.X64, new LibraryFile(out123LibPath)),
-                new LibraryItem(Platform.Linux, Architecture.X86, new LibraryFile(out123LibPath)),
-                new LibraryItem(Platform.Linux, Architecture.Arm, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.Arm64, new LibraryFile(out123LibPath)));
             if (PlatformHelper.IsOnWindows())
             {
                 var libManagerWinpthread = new LibraryManager(
-                    new LibraryItem(Platform.Windows, Architecture.X86, new LibraryFile(winpthreadsLibPath)),
                     new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(winpthreadsLibPath)),
-                    new LibraryItem(Platform.Windows, Architecture.Arm, new LibraryFile(winpthreadsLibPath)),
                     new LibraryItem(Platform.Windows, Architecture.Arm64, new LibraryFile(winpthreadsLibPath)));
                 libManagerWinpthread.LoadNativeLibrary();
             }
