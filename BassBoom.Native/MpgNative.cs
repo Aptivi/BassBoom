@@ -37,7 +37,6 @@ namespace BassBoom.Native
     {
         internal static string mpg123LibPath = GetLibPath("mpg123");
         internal static string out123LibPath = GetLibPath("out123");
-        internal static string winpthreadsLibPath = GetLibPath("libwinpthread-1", true);
 
         internal static mpg123_handle* _mpg123Handle;
         internal static out123_handle* _out123Handle;
@@ -97,30 +96,26 @@ namespace BassBoom.Native
         /// Initializes the mpg123 library
         /// </summary>
         internal static void InitializeLibrary() =>
-            InitializeLibrary(mpg123LibPath, out123LibPath, winpthreadsLibPath);
+            InitializeLibrary(mpg123LibPath, out123LibPath);
 
         /// <summary>
         /// Initializes the mpg123 library
         /// </summary>
         /// <param name="libPath">Absolute path to the mpg123 library</param>
         /// <param name="libPathOut">Absolute path to the out123 library</param>
-        /// <param name="libPathWinpthreads">Absolute path to the libwinpthreads library</param>
-        internal static void InitializeLibrary(string libPath, string libPathOut, string libPathWinpthreads)
+        internal static void InitializeLibrary(string libPath, string libPathOut)
         {
             // Check to see if we have this path
             if (!File.Exists(libPath))
                 throw new BasoliaNativeLibraryException($"mpg123 library path {libPath} doesn't exist.");
             if (!File.Exists(libPathOut))
                 throw new BasoliaNativeLibraryException($"out123 library path {libPath} doesn't exist.");
-            if (PlatformHelper.IsOnWindows() && !File.Exists(libPathWinpthreads))
-                throw new BasoliaNativeLibraryException($"libwinpthread-1 library path {libPathWinpthreads} doesn't exist.");
 
             // Set the library path
             string oldLibPath = mpg123LibPath;
             string oldLibPathOut = out123LibPath;
             mpg123LibPath = libPath;
             out123LibPath = libPathOut;
-            winpthreadsLibPath = libPathWinpthreads;
 
             // Start the libraries up
             libManagerMpg = new LibraryManager(
@@ -137,13 +132,6 @@ namespace BassBoom.Native
                 new LibraryItem(Platform.MacOS, Architecture.Arm64, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.X64, new LibraryFile(out123LibPath)),
                 new LibraryItem(Platform.Linux, Architecture.Arm64, new LibraryFile(out123LibPath)));
-            if (PlatformHelper.IsOnWindows())
-            {
-                var libManagerWinpthread = new LibraryManager(
-                    new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(winpthreadsLibPath)),
-                    new LibraryItem(Platform.Windows, Architecture.Arm64, new LibraryFile(winpthreadsLibPath)));
-                libManagerWinpthread.LoadNativeLibrary();
-            }
             libManagerMpg.LoadNativeLibrary();
             libManagerOut.LoadNativeLibrary();
 
@@ -187,13 +175,11 @@ namespace BassBoom.Native
             }
         }
 
-        internal static string GetLibPath(string libName, bool winOnly = false) =>
-            GetLibPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), libName, winOnly);
+        internal static string GetLibPath(string libName) =>
+            GetLibPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), libName);
 
-        internal static string GetLibPath(string root, string libName, bool winOnly = false)
+        internal static string GetLibPath(string root, string libName)
         {
-            if (winOnly && !PlatformHelper.IsOnWindows())
-                return "";
             string runtimesPath = root + "/";
             string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
             if (PlatformHelper.IsOnWindows())
