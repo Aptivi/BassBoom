@@ -118,20 +118,11 @@ namespace BassBoom.Native
             out123LibPath = libPathOut;
 
             // Start the libraries up
-            libManagerMpg = new LibraryManager(
-                new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(mpg123LibPath)),
-                new LibraryItem(Platform.Windows, Architecture.Arm64, new LibraryFile(mpg123LibPath)),
-                new LibraryItem(Platform.MacOS, Architecture.X64, new LibraryFile(mpg123LibPath)),
-                new LibraryItem(Platform.MacOS, Architecture.Arm64, new LibraryFile(mpg123LibPath)),
-                new LibraryItem(Platform.Linux, Architecture.X64, new LibraryFile(mpg123LibPath)),
-                new LibraryItem(Platform.Linux, Architecture.Arm64, new LibraryFile(mpg123LibPath)));
-            libManagerOut = new LibraryManager(
-                new LibraryItem(Platform.Windows, Architecture.X64, new LibraryFile(out123LibPath)),
-                new LibraryItem(Platform.Windows, Architecture.Arm64, new LibraryFile(out123LibPath)),
-                new LibraryItem(Platform.MacOS, Architecture.X64, new LibraryFile(out123LibPath)),
-                new LibraryItem(Platform.MacOS, Architecture.Arm64, new LibraryFile(out123LibPath)),
-                new LibraryItem(Platform.Linux, Architecture.X64, new LibraryFile(out123LibPath)),
-                new LibraryItem(Platform.Linux, Architecture.Arm64, new LibraryFile(out123LibPath)));
+            var architecture = PlatformHelper.GetArchitecture();
+            if (architecture == Architecture.X86 || architecture == Architecture.Arm)
+                throw new BasoliaNativeLibraryException("32-bit platforms are no longer supported.");
+            libManagerMpg = new LibraryManager(new LibraryFile(mpg123LibPath));
+            libManagerOut = new LibraryManager(new LibraryFile(out123LibPath));
             libManagerMpg.LoadNativeLibrary();
             libManagerOut.LoadNativeLibrary();
 
