@@ -23,14 +23,14 @@ if "%releaseconfig%" == "" set releaseconfig=Release
 
 :download
 echo Downloading packages...
-"%ProgramFiles%\dotnet\dotnet.exe" restore "..\BassBoom.sln" -t:restore --configuration %releaseconfig%
+"%ProgramFiles%\dotnet\dotnet.exe" restore "..\BassBoom.sln" -p:Configuration=%releaseconfig%
 if %errorlevel% == 0 goto :build
 echo There was an error trying to download packages (%errorlevel%).
 goto :finished
 
 :build
 echo Building BassBoom...
-"%ProgramFiles%\dotnet\dotnet.exe" build "..\BassBoom.sln" --configuration %releaseconfig%
+"%ProgramFiles%\dotnet\dotnet.exe" build "..\BassBoom.sln" -p:Configuration=%releaseconfig%
 if %errorlevel% == 0 goto :success
 echo There was an error trying to build (%errorlevel%).
 goto :finished

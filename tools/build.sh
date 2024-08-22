@@ -32,7 +32,7 @@ fi
 
 # Download packages
 echo Downloading packages...
-"$dotnetpath" restore "../BassBoom.sln" --configuration $releaseconf
+"$dotnetpath" restore "../BassBoom.sln" -p:Configuration=$releaseconf
 if [ ! $? == 0 ]; then
 	echo Download failed.
 	exit 1
@@ -40,7 +40,7 @@ fi
 
 # Build
 echo Building BassBoom...
-"$dotnetpath" build "../BassBoom.sln" --configuration $releaseconf
+"$dotnetpath" build "../BassBoom.sln" -p:Configuration=$releaseconf
 if [ ! $? == 0 ]; then
 	echo Build failed.
 	exit 1
