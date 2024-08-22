@@ -32,15 +32,15 @@ fi
 
 # Download packages
 echo Downloading packages...
-"$dotnetpath" msbuild "../BassBoom.sln" -t:restore -p:Configuration=$releaseconf
+"$dotnetpath" restore "../BassBoom.sln" --configuration $releaseconf
 if [ ! $? == 0 ]; then
 	echo Download failed.
 	exit 1
 fi
 
-# Build KS
-echo Building KS...
-"$dotnetpath" msbuild "../BassBoom.sln" -p:Configuration=$releaseconf
+# Build
+echo Building BassBoom...
+"$dotnetpath" build "../BassBoom.sln" --configuration $releaseconf
 if [ ! $? == 0 ]; then
 	echo Build failed.
 	exit 1
