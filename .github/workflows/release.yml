@@ -1,0 +1,58 @@
+name: Prepare release
+
+on:
+  push:
+    tags:
+      - '**'
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+          ref: ${{ github.ref }}
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Setup DocFX
+        run: dotnet tool install --global docfx
+      - name: Release Asset Preparation
+        id: release-asset
+        run: |
+          chmod +x tools/*.sh
+          make
+          cd tools ; ./pack.sh ; cd ..
+          make doc
+          cd tools ; ./docgen-pack.sh ; cd ..
+          echo "SUBJECT=$(cat CHANGES.TITLE)" >> "$GITHUB_OUTPUT"
+          echo 'BODY<<EOF' >> "$GITHUB_OUTPUT"
+          cat CHANGES >> "$GITHUB_OUTPUT"
+          echo 'EOF' >> "$GITHUB_OUTPUT"
+      - name: Binary Attestation
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: 'tools/*.zip'
+      - name: Release Making
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: CHANGES
+          name: ${{ steps.release-asset.outputs.SUBJECT }}
+          files: |
+            tools/*.zip
+      - name: Notify build
+        uses: tsickert/discord-webhook@v6.0.0
+        with:
+          webhook-url: ${{ secrets.WEBHOOK_URL }}
+          content: "<:bassboom:1268904972297441404> ${{ steps.release-asset.outputs.SUBJECT }} <:bassboom:1268904972297441404>\n\n${{ steps.release-asset.outputs.BODY }}"
+      - name: Package Publication
+        run: |
+          chmod +x tools/*.sh
+          cd tools ; NUGET_APIKEY=${{ secrets.NUGET_APIKEY }} ./push.sh ; cd ..
