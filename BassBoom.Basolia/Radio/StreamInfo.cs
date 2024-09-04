@@ -36,23 +36,23 @@ namespace BassBoom.Basolia.Radio
         private readonly int uniqueListeners;
         private readonly int averageTime;
         private readonly int streamId;
-        private readonly string streamGenre;
-        private readonly string streamGenre2;
-        private readonly string streamGenre3;
-        private readonly string streamGenre4;
-        private readonly string streamGenre5;
-        private readonly string streamHomepage;
-        private readonly string streamTitle;
-        private readonly string songTitle;
+        private readonly string streamGenre = "";
+        private readonly string streamGenre2 = "";
+        private readonly string streamGenre3 = "";
+        private readonly string streamGenre4 = "";
+        private readonly string streamGenre5 = "";
+        private readonly string streamHomepage = "";
+        private readonly string streamTitle = "";
+        private readonly string songTitle = "";
         private readonly long streamHits;
         private readonly int streamStatus;
         private readonly int backupStatus;
         private readonly bool streamListed;
-        private readonly string streamPath;
+        private readonly string streamPath = "";
         private readonly long streamUptime;
         private readonly int bitRate;
         private readonly int sampleRate;
-        private readonly string mimeInfo;
+        private readonly string mimeInfo = "";
 
         /// <summary>
         /// Stream ID starting from number one (1)
@@ -160,7 +160,7 @@ namespace BassBoom.Basolia.Radio
         /// </summary>
         /// <param name="server">Radio server class instance</param>
         /// <param name="stream">Individual stream token</param>
-        internal StreamInfo(IRadioServer server, JToken stream)
+        internal StreamInfo(IRadioServer server, JToken? stream)
         {
             try
             {
@@ -182,44 +182,49 @@ namespace BassBoom.Basolia.Radio
                     else
                     {
                         // Shoutcast version v2.x, so use the JToken.
-                        streamId = (int)stream["id"];
-                        currentListeners = (int)stream["currentlisteners"];
-                        peakListeners = (int)stream["peaklisteners"];
-                        maxListeners = (int)stream["maxlisteners"];
-                        uniqueListeners = (int)stream["uniquelisteners"];
-                        averageTime = (int)stream["averagetime"];
-                        streamGenre = (string)stream["servergenre"];
-                        streamGenre2 = (string)stream["servergenre2"];
-                        streamGenre3 = (string)stream["servergenre3"];
-                        streamGenre4 = (string)stream["servergenre4"];
-                        streamGenre5 = (string)stream["servergenre5"];
-                        streamHomepage = (string)stream["serverurl"];
-                        streamTitle = (string)stream["servertitle"];
-                        songTitle = (string)stream["songtitle"];
-                        streamHits = (int)stream["streamhits"];
-                        streamStatus = (int)stream["streamstatus"];
-                        backupStatus = (int)stream["backupstatus"];
-                        streamListed = (bool)stream["streamlisted"];
-                        streamPath = (string)stream["streampath"];
-                        streamUptime = (int)stream["streamuptime"];
-                        bitRate = (int)stream["bitrate"];
-                        sampleRate = (int)stream["samplerate"];
-                        mimeInfo = (string)stream["content"];
+                        if (stream is null)
+                            throw new BasoliaMiscException("There is no Shoutcast v2.x stream.");
+                        streamId = (int?)stream["id"] ?? 0;
+                        currentListeners = (int?)stream["currentlisteners"] ?? 0;
+                        peakListeners = (int?)stream["peaklisteners"] ?? 0;
+                        maxListeners = (int?)stream["maxlisteners"] ?? 0;
+                        uniqueListeners = (int?)stream["uniquelisteners"] ?? 0;
+                        averageTime = (int?)stream["averagetime"] ?? 0;
+                        streamGenre = (string?)stream["servergenre"] ?? "";
+                        streamGenre2 = (string?)stream["servergenre2"] ?? "";
+                        streamGenre3 = (string?)stream["servergenre3"] ?? "";
+                        streamGenre4 = (string?)stream["servergenre4"] ?? "";
+                        streamGenre5 = (string?)stream["servergenre5"] ?? "";
+                        streamHomepage = (string?)stream["serverurl"] ?? "";
+                        streamTitle = (string?)stream["servertitle"] ?? "";
+                        songTitle = (string?)stream["songtitle"] ?? "";
+                        streamHits = (int?)stream["streamhits"] ?? 0;
+                        streamStatus = (int?)stream["streamstatus"] ?? 0;
+                        backupStatus = (int?)stream["backupstatus"] ?? 0;
+                        streamListed = (bool?)stream["streamlisted"] ?? false;
+                        streamPath = (string?)stream["streampath"] ?? "";
+                        streamUptime = (int?)stream["streamuptime"] ?? 0;
+                        bitRate = (int?)stream["bitrate"] ?? 0;
+                        sampleRate = (int?)stream["samplerate"] ?? 0;
+                        mimeInfo = (string?)stream["content"] ?? "";
                     }
                 }
                 else if (server is IcecastServer icecastServer)
                 {
+                    if (stream is null)
+                        throw new BasoliaMiscException("There is no Icecast stream.");
+
                     // Icecast server, so use the JToken.
-                    currentListeners = (int)stream["listeners"];
-                    peakListeners = (int)stream["listener_peak"];
-                    streamGenre = (string)stream["genre"];
-                    streamHomepage = (string)stream["server_url"];
-                    streamTitle = (string)stream["server_name"];
-                    songTitle = (string)stream["title"];
+                    currentListeners = (int?)stream["listeners"] ?? 0;
+                    peakListeners = (int?)stream["listener_peak"] ?? 0;
+                    streamGenre = (string?)stream["genre"] ?? "";
+                    streamHomepage = (string?)stream["server_url"] ?? "";
+                    streamTitle = (string?)stream["server_name"] ?? "";
+                    songTitle = (string?)stream["title"] ?? "";
                     streamListed = true;
-                    streamPath = (string)stream["listenurl"];
-                    bitRate = (int)stream["bitrate"];
-                    mimeInfo = (string)stream["server_type"];
+                    streamPath = (string?)stream["listenurl"] ?? "";
+                    bitRate = (int?)stream["bitrate"] ?? 0;
+                    mimeInfo = (string?)stream["server_type"] ?? "";
                 }
             }
             catch (Exception ex)

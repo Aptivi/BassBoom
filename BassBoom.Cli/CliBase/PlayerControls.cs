@@ -47,6 +47,8 @@ namespace BassBoom.Cli.CliBase
             // In case we have no songs in the playlist...
             if (Common.cachedInfos.Count == 0)
                 return;
+            if (Common.CurrentCachedInfo is null)
+                return;
 
             Player.position += (int)(Common.CurrentCachedInfo.FormatInfo.rate * seekRate);
             if (Player.position > Common.CurrentCachedInfo.Duration)
@@ -58,6 +60,8 @@ namespace BassBoom.Cli.CliBase
         {
             // In case we have no songs in the playlist...
             if (Common.cachedInfos.Count == 0)
+                return;
+            if (Common.CurrentCachedInfo is null)
                 return;
 
             Player.position -= (int)(Common.CurrentCachedInfo.FormatInfo.rate * seekRate);
@@ -81,6 +85,8 @@ namespace BassBoom.Cli.CliBase
             // In case we have no songs in the playlist, or we have no lyrics...
             if (Common.cachedInfos.Count == 0)
                 return;
+            if (Common.CurrentCachedInfo is null)
+                return;
             if (Common.CurrentCachedInfo.LyricInstance is null)
                 return;
 
@@ -96,6 +102,8 @@ namespace BassBoom.Cli.CliBase
             // In case we have no songs in the playlist, or we have no lyrics...
             if (Common.cachedInfos.Count == 0)
                 return;
+            if (Common.CurrentCachedInfo is null)
+                return;
             if (Common.CurrentCachedInfo.LyricInstance is null)
                 return;
 
@@ -110,6 +118,8 @@ namespace BassBoom.Cli.CliBase
         {
             // In case we have no songs in the playlist, or we have no lyrics...
             if (Common.cachedInfos.Count == 0)
+                return;
+            if (Common.CurrentCachedInfo is null)
                 return;
             if (Common.CurrentCachedInfo.LyricInstance is null)
                 return;
@@ -129,6 +139,8 @@ namespace BassBoom.Cli.CliBase
             // In case we have no songs in the playlist, or we have no lyrics...
             if (Common.cachedInfos.Count == 0)
                 return;
+            if (Common.CurrentCachedInfo is null)
+                return;
             if (Common.CurrentCachedInfo.LyricInstance is null)
                 return;
 
@@ -146,6 +158,8 @@ namespace BassBoom.Cli.CliBase
             // In case we have no songs in the playlist...
             if (Common.cachedInfos.Count == 0)
                 return;
+            if (Common.CurrentCachedInfo is null)
+                return;
 
             Player.position = (int)(target.TotalSeconds * Common.CurrentCachedInfo.FormatInfo.rate);
             if (Player.position > Common.CurrentCachedInfo.Duration)
@@ -157,6 +171,8 @@ namespace BassBoom.Cli.CliBase
         {
             // In case we have no songs in the playlist...
             if (Common.cachedInfos.Count == 0)
+                return;
+            if (Player.playerThread is null)
                 return;
 
             if (PlaybackTools.State == PlaybackState.Stopped)
@@ -209,14 +225,14 @@ namespace BassBoom.Cli.CliBase
         internal static void PromptForAddSong()
         {
             string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the music file");
-            ScreenTools.CurrentScreen.RequireRefresh();
+            ScreenTools.CurrentScreen?.RequireRefresh();
             if (File.Exists(path))
             {
                 int currentPos = Player.position;
                 Common.populate = true;
                 PopulateMusicFileInfo(path);
                 Common.populate = true;
-                PopulateMusicFileInfo(Common.CurrentCachedInfo.MusicPath);
+                PopulateMusicFileInfo(Common.CurrentCachedInfo?.MusicPath ?? "");
                 PlaybackPositioningTools.SeekToFrame(currentPos);
             }
             else
@@ -226,7 +242,7 @@ namespace BassBoom.Cli.CliBase
         internal static void PromptForAddDirectory()
         {
             string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the music library directory");
-            ScreenTools.CurrentScreen.RequireRefresh();
+            ScreenTools.CurrentScreen?.RequireRefresh();
             if (Directory.Exists(path))
             {
                 int currentPos = Player.position;
@@ -239,7 +255,7 @@ namespace BassBoom.Cli.CliBase
                         PopulateMusicFileInfo(musicFile);
                     }
                     Common.populate = true;
-                    PopulateMusicFileInfo(Common.CurrentCachedInfo.MusicPath);
+                    PopulateMusicFileInfo(Common.CurrentCachedInfo?.MusicPath ?? "");
                     PlaybackPositioningTools.SeekToFrame(currentPos);
                 }
             }
@@ -256,7 +272,7 @@ namespace BassBoom.Cli.CliBase
             Common.Switch(musicPath);
             if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
-                ScreenTools.CurrentScreen.RequireRefresh();
+                ScreenTools.CurrentScreen?.RequireRefresh();
                 InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
                 var total = AudioInfoTools.GetDuration(true);
                 var formatInfo = FormatTools.GetFormatInfo();
@@ -283,20 +299,22 @@ namespace BassBoom.Cli.CliBase
 
         internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(string musicPath)
         {
+            if (Common.CurrentCachedInfo is null)
+                return ("", "", "");
             var metadatav2 = Common.CurrentCachedInfo.MetadataV2;
             var metadatav1 = Common.CurrentCachedInfo.MetadataV1;
             string musicName =
-                !string.IsNullOrEmpty(metadatav2.Title) ? metadatav2.Title :
-                !string.IsNullOrEmpty(metadatav1.Title) ? metadatav1.Title :
-                Path.GetFileNameWithoutExtension(musicPath);
+                (!string.IsNullOrEmpty(metadatav2?.Title) ? metadatav2?.Title :
+                 !string.IsNullOrEmpty(metadatav1?.Title) ? metadatav1?.Title :
+                 Path.GetFileNameWithoutExtension(musicPath)) ?? "";
             string musicArtist =
-                !string.IsNullOrEmpty(metadatav2.Artist) ? metadatav2.Artist :
-                !string.IsNullOrEmpty(metadatav1.Artist) ? metadatav1.Artist :
-                "Unknown Artist";
+                (!string.IsNullOrEmpty(metadatav2?.Artist) ? metadatav2?.Artist :
+                 !string.IsNullOrEmpty(metadatav1?.Artist) ? metadatav1?.Artist :
+                 "Unknown Artist") ?? "";
             string musicGenre =
-                !string.IsNullOrEmpty(metadatav2.Genre) ? metadatav2.Genre :
-                metadatav1.GenreIndex >= 0 ? $"{metadatav1.Genre} [{metadatav1.GenreIndex}]" :
-                "Unknown Genre";
+                (!string.IsNullOrEmpty(metadatav2?.Genre) ? metadatav2?.Genre :
+                 metadatav1?.GenreIndex >= 0 ? $"{metadatav1.Genre} [{metadatav1.GenreIndex}]" :
+                 "Unknown Genre") ?? "";
             return (musicName, musicArtist, musicGenre);
         }
 
@@ -307,21 +325,21 @@ namespace BassBoom.Cli.CliBase
             var metadatav1 = cachedInfo.MetadataV1;
             var path = cachedInfo.MusicPath;
             string musicName =
-                !string.IsNullOrEmpty(metadatav2.Title) ? metadatav2.Title :
-                !string.IsNullOrEmpty(metadatav1.Title) ? metadatav1.Title :
-                Path.GetFileNameWithoutExtension(path);
+                (!string.IsNullOrEmpty(metadatav2?.Title) ? metadatav2?.Title :
+                 !string.IsNullOrEmpty(metadatav1?.Title) ? metadatav1?.Title :
+                 Path.GetFileNameWithoutExtension(path)) ?? "";
             string musicArtist =
-                !string.IsNullOrEmpty(metadatav2.Artist) ? metadatav2.Artist :
-                !string.IsNullOrEmpty(metadatav1.Artist) ? metadatav1.Artist :
-                "Unknown Artist";
+                (!string.IsNullOrEmpty(metadatav2?.Artist) ? metadatav2?.Artist :
+                 !string.IsNullOrEmpty(metadatav1?.Artist) ? metadatav1?.Artist :
+                 "Unknown Artist") ?? "";
             string musicGenre =
-                !string.IsNullOrEmpty(metadatav2.Genre) ? metadatav2.Genre :
-                metadatav1.GenreIndex >= 0 ? $"{metadatav1.Genre} [{metadatav1.GenreIndex}]" :
-                "Unknown Genre";
+                (!string.IsNullOrEmpty(metadatav2?.Genre) ? metadatav2?.Genre :
+                 metadatav1?.GenreIndex >= 0 ? $"{metadatav1.Genre} [{metadatav1.GenreIndex}]" :
+                 "Unknown Genre") ?? "";
             return (musicName, musicArtist, musicGenre);
         }
 
-        internal static Lyric OpenLyrics(string musicPath)
+        internal static Lyric? OpenLyrics(string musicPath)
         {
             string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
             try
@@ -343,6 +361,8 @@ namespace BassBoom.Cli.CliBase
         {
             // In case we have no songs in the playlist...
             if (Common.cachedInfos.Count == 0)
+                return;
+            if (Common.CurrentCachedInfo is null)
                 return;
 
             Common.cachedInfos.RemoveAt(Common.currentPos - 1);
@@ -371,6 +391,8 @@ namespace BassBoom.Cli.CliBase
             // In case we have no songs in the playlist...
             if (Common.cachedInfos.Count == 0)
                 return;
+            if (Common.CurrentCachedInfo is null)
+                return;
 
             // Prompt the user to set the current position to the specified time
             string time = InfoBoxInputColor.WriteInfoBoxInput("Write the target position in this format: HH:MM:SS");
@@ -385,23 +407,25 @@ namespace BassBoom.Cli.CliBase
 
         internal static void ShowSongInfo()
         {
+            if (Common.CurrentCachedInfo is null)
+                return;
             var textsBuilder = new StringBuilder();
             var idv2 = Common.CurrentCachedInfo.MetadataV2;
             var idv1 = Common.CurrentCachedInfo.MetadataV1;
-            foreach (var text in idv2.Texts)
+            foreach (var text in idv2?.Texts ?? [])
                 textsBuilder.AppendLine($"T - {text.Item1}: {text.Item2}");
-            foreach (var text in idv2.Extras)
+            foreach (var text in idv2?.Extras ?? [])
                 textsBuilder.AppendLine($"E - {text.Item1}: {text.Item2}");
             InfoBoxColor.WriteInfoBox(
                 $$"""
                 Song info
                 =========
 
-                Artist: {{(!string.IsNullOrEmpty(idv2.Artist) ? idv2.Artist : !string.IsNullOrEmpty(idv1.Artist) ? idv1.Artist : "Unknown")}}
-                Title: {{(!string.IsNullOrEmpty(idv2.Title) ? idv2.Title : !string.IsNullOrEmpty(idv1.Title) ? idv1.Title : "")}}
-                Album: {{(!string.IsNullOrEmpty(idv2.Album) ? idv2.Album : !string.IsNullOrEmpty(idv1.Album) ? idv1.Album : "")}}
-                Genre: {{(!string.IsNullOrEmpty(idv2.Genre) ? idv2.Genre : !string.IsNullOrEmpty(idv1.Genre.ToString()) ? idv1.Genre.ToString() : "")}}
-                Comment: {{(!string.IsNullOrEmpty(idv2.Comment) ? idv2.Comment : !string.IsNullOrEmpty(idv1.Comment) ? idv1.Comment : "")}}
+                Artist: {{(!string.IsNullOrEmpty(idv2?.Artist) ? idv2?.Artist : !string.IsNullOrEmpty(idv1?.Artist) ? idv1?.Artist : "Unknown")}}
+                Title: {{(!string.IsNullOrEmpty(idv2?.Title) ? idv2?.Title : !string.IsNullOrEmpty(idv1?.Title) ? idv1?.Title : "")}}
+                Album: {{(!string.IsNullOrEmpty(idv2?.Album) ? idv2?.Album : !string.IsNullOrEmpty(idv1?.Album) ? idv1?.Album : "")}}
+                Genre: {{(!string.IsNullOrEmpty(idv2?.Genre) ? idv2?.Genre : !string.IsNullOrEmpty(idv1?.Genre.ToString()) ? idv1?.Genre.ToString() : "")}}
+                Comment: {{(!string.IsNullOrEmpty(idv2?.Comment) ? idv2?.Comment : !string.IsNullOrEmpty(idv1?.Comment) ? idv1?.Comment : "")}}
                 Duration: {{Common.CurrentCachedInfo.DurationSpan}}
                 Lyrics: {{(Common.CurrentCachedInfo.LyricInstance is not null ? $"{Common.CurrentCachedInfo.LyricInstance.Lines.Count} lines" : "No lyrics")}}
                 

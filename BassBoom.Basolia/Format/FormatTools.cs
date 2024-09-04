@@ -49,7 +49,7 @@ namespace BassBoom.Basolia.Format
                 var handle = MpgNative._mpg123Handle;
 
                 // Get the rate, the number of channels, and encoding
-                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeOutput.mpg123_getformat>(nameof(NativeOutput.mpg123_getformat));
+                var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_getformat>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_getformat));
                 int length = @delegate.Invoke(handle, out fileRate, out fileChannel, out fileEncoding);
                 if (length != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException("Can't determine the format of the file", mpg123_errors.MPG123_ERR);
@@ -74,7 +74,7 @@ namespace BassBoom.Basolia.Format
                 var outHandle = MpgNative._out123Handle;
 
                 // Get the list of supported formats
-                var @delegate = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_formats>(nameof(NativeOutputLib.out123_formats));
+                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_formats>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_formats));
                 getStatus = @delegate.Invoke(outHandle, IntPtr.Zero, 0, 0, 0, ref fmtlist);
                 if (getStatus == (int)out123_error.OUT123_ERR)
                     throw new BasoliaOutException("Can't get format information", (out123_error)getStatus);

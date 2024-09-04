@@ -133,7 +133,7 @@ namespace BassBoom.Native.Interop.Init
         /// <summary>
         /// MPG123_EXPORT mpg123_handle* mpg123_new (const char* decoder, int* error)
         /// </summary>
-        internal delegate mpg123_handle* mpg123_new([MarshalAs(UnmanagedType.LPStr)] string decoder, int* error);
+        internal delegate mpg123_handle* mpg123_new([MarshalAs(UnmanagedType.LPStr)] string? decoder, int* error);
 
         /// <summary>
         /// MPG123_EXPORT void mpg123_delete(mpg123_handle* mh)

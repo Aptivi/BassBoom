@@ -30,8 +30,8 @@ namespace BassBoom.Basolia.File
     {
         private bool isLink;
         private string path;
-        private Stream stream;
-        private HttpResponseHeaders headers;
+        private Stream? stream;
+        private HttpResponseHeaders? headers;
         private string stationName;
 
         /// <summary>
@@ -49,13 +49,13 @@ namespace BassBoom.Basolia.File
         /// <summary>
         /// Radio station stream
         /// </summary>
-        public Stream Stream =>
+        public Stream? Stream =>
             stream;
 
         /// <summary>
         /// Radio station ICY headers
         /// </summary>
-        public HttpResponseHeaders Headers =>
+        public HttpResponseHeaders? Headers =>
             headers;
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace BassBoom.Basolia.File
         public string StationName =>
             stationName;
 
-        internal FileType(bool isLink, string path, Stream stream, HttpResponseHeaders headers, string stationName)
+        internal FileType(bool isLink, string path, Stream? stream, HttpResponseHeaders? headers, string stationName)
         {
             this.isLink = isLink;
             this.path = path ?? throw new ArgumentNullException(nameof(path));

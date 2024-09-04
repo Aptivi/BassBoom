@@ -30,10 +30,10 @@ namespace BassBoom.Basolia.Format
         private readonly string year = "";
         private readonly string comment = "";
         private readonly string genre = "";
-        private readonly (string, string)[] comments;
-        private readonly (string, string)[] texts;
-        private readonly (string, string)[] extras;
-        private readonly (string, string)[] pictures;
+        private readonly (string, string)[] comments = [];
+        private readonly (string, string)[] texts = [];
+        private readonly (string, string)[] extras = [];
+        private readonly (string, string)[] pictures = [];
 
         /// <summary>
         /// Title of the song (usually the song name)

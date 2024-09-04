@@ -42,6 +42,8 @@ namespace BassBoom.Cli.CliBase
             // In case we have no stations in the playlist...
             if (Common.cachedInfos.Count == 0)
                 return;
+            if (Radio.playerThread is null)
+                return;
 
             // There could be a chance that the music has fully stopped without any user interaction, but since we're on
             // a radio station, we should seek nothing; just drop.
@@ -96,11 +98,11 @@ namespace BassBoom.Cli.CliBase
         internal static void PromptForAddStation()
         {
             string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the radio station. The URL to the station must provide an MPEG radio station. AAC ones are not supported yet.");
-            ScreenTools.CurrentScreen.RequireRefresh();
+            ScreenTools.CurrentScreen?.RequireRefresh();
             Common.populate = true;
             PopulateRadioStationInfo(path);
             Common.populate = true;
-            PopulateRadioStationInfo(Common.CurrentCachedInfo.MusicPath);
+            PopulateRadioStationInfo(Common.CurrentCachedInfo?.MusicPath ?? "");
         }
 
         internal static void PopulateRadioStationInfo(string musicPath)
@@ -117,7 +119,7 @@ namespace BassBoom.Cli.CliBase
                 var frameInfo = AudioInfoTools.GetFrameInfo();
 
                 // Try to open the lyrics
-                var instance = new CachedSongInfo(musicPath, null, null, -1, formatInfo, frameInfo, null, FileTools.CurrentFile.StationName, true);
+                var instance = new CachedSongInfo(musicPath, null, null, -1, formatInfo, frameInfo, null, FileTools.CurrentFile?.StationName ?? "", true);
                 Common.cachedInfos.Add(instance);
             }
         }
@@ -137,6 +139,8 @@ namespace BassBoom.Cli.CliBase
         {
             // In case we have no stations in the playlist...
             if (Common.cachedInfos.Count == 0)
+                return;
+            if (Common.CurrentCachedInfo is null)
                 return;
 
             Common.cachedInfos.RemoveAt(Common.currentPos - 1);
@@ -162,6 +166,8 @@ namespace BassBoom.Cli.CliBase
 
         internal static void ShowStationInfo()
         {
+            if (Common.CurrentCachedInfo is null)
+                return;
             InfoBoxColor.WriteInfoBox(
                 $$"""
                 Station info
@@ -202,38 +208,45 @@ namespace BassBoom.Cli.CliBase
 
         internal static void ShowExtendedStationInfo()
         {
+            if (Common.CurrentCachedInfo is null)
+                return;
             var station = RadioTools.GetRadioInfo(Common.CurrentCachedInfo.MusicPath);
             var streamBuilder = new StringBuilder();
-            foreach (var stream in station.Streams)
+            if (station is not null)
             {
-                streamBuilder.AppendLine($"Name: {stream.StreamTitle}");
-                streamBuilder.AppendLine($"Home page: {stream.StreamHomepage}");
-                streamBuilder.AppendLine($"Genre: {stream.StreamGenre}");
-                streamBuilder.AppendLine($"Now playing: {stream.SongTitle}");
-                streamBuilder.AppendLine($"Stream path: {stream.StreamPath}");
-                streamBuilder.AppendLine($"Listeners: {stream.CurrentListeners} with {stream.PeakListeners} at peak");
-                streamBuilder.AppendLine($"Bit rate: {stream.BitRate} kbps");
-                streamBuilder.AppendLine($"Media type: {stream.MimeInfo}");
-                streamBuilder.AppendLine("===============================");
-            }
-            InfoBoxColor.WriteInfoBox(
-                $$"""
-                Radio server info
-                =================
+                foreach (var stream in station.Streams)
+                {
+                    streamBuilder.AppendLine($"Name: {stream.StreamTitle}");
+                    streamBuilder.AppendLine($"Home page: {stream.StreamHomepage}");
+                    streamBuilder.AppendLine($"Genre: {stream.StreamGenre}");
+                    streamBuilder.AppendLine($"Now playing: {stream.SongTitle}");
+                    streamBuilder.AppendLine($"Stream path: {stream.StreamPath}");
+                    streamBuilder.AppendLine($"Listeners: {stream.CurrentListeners} with {stream.PeakListeners} at peak");
+                    streamBuilder.AppendLine($"Bit rate: {stream.BitRate} kbps");
+                    streamBuilder.AppendLine($"Media type: {stream.MimeInfo}");
+                    streamBuilder.AppendLine("===============================");
+                }
+                InfoBoxColor.WriteInfoBox(
+                    $$"""
+                    Radio server info
+                    =================
 
-                Radio station URL: {{station.ServerHostFull}}
-                Radio station uses HTTPS: {{station.ServerHttps}}
-                Radio station server type: {{station.ServerType}}
-                Radio station streams: {{station.TotalStreams}} with {{station.ActiveStreams}} active
-                Radio station listeners: {{station.CurrentListeners}} with {{station.PeakListeners}} at peak
+                    Radio station URL: {{station.ServerHostFull}}
+                    Radio station uses HTTPS: {{station.ServerHttps}}
+                    Radio station server type: {{station.ServerType}}
+                    Radio station streams: {{station.TotalStreams}} with {{station.ActiveStreams}} active
+                    Radio station listeners: {{station.CurrentListeners}} with {{station.PeakListeners}} at peak
                 
-                Stream info
-                ===========
+                    Stream info
+                    ===========
 
-                ===============================
-                {{streamBuilder}}
-                """
-            );
+                    ===============================
+                    {{streamBuilder}}
+                    """
+                );
+            }
+            else
+                InfoBoxColor.WriteInfoBox($"Unable to get extended radio station info for {Common.CurrentCachedInfo.MusicPath}");
         }
     }
 }

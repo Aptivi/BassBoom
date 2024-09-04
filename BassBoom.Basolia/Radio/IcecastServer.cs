@@ -39,7 +39,7 @@ namespace BassBoom.Basolia.Radio
         private int currentListeners;
         private int peakListeners;
         private readonly List<StreamInfo> streams = [];
-        internal JToken streamToken;
+        internal JToken? streamToken;
         internal HtmlDocument streamHtmlToken = new();
 
         /// <inheritdoc/>
@@ -151,13 +151,16 @@ namespace BassBoom.Basolia.Radio
         {
             // Use all the keys in the first object except the "streams" and "version", where we'd later use the former in StreamInfo to install
             // all the streams into the new class instance.
-            var sources = (JArray)streamToken["source"];
+            if (streamToken is null)
+                throw new BasoliaMiscException("Stream token is null.");
+            var sources = (JArray?)streamToken["source"] ??
+                throw new BasoliaMiscException("There are no sources.");
             var inactive = sources.Where((token) => token["server_name"] is null);
             var active = sources.Except(inactive);
             totalStreams = sources.Count;
             activeStreams = active.Count();
-            currentListeners = active.Max((token) => (int)token["listeners"]);
-            peakListeners = active.Max((token) => (int)token["listener_peak"]);
+            currentListeners = active.Max((token) => (int?)token["listeners"] ?? 0);
+            peakListeners = active.Max((token) => (int?)token["listener_peak"] ?? 0);
 
             // Now, deal with the stream settings.
             streams.Clear();

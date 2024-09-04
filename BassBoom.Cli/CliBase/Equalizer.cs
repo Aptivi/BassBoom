@@ -145,7 +145,7 @@ namespace BassBoom.Cli.CliBase
                 if (Common.isRadioMode)
                     drawn.Append(RadioControls.RenderStationName());
                 else
-                    drawn.Append(PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath));
+                    drawn.Append(PlayerControls.RenderSongName(Common.CurrentCachedInfo?.MusicPath ?? ""));
             }
             else
                 drawn.Append(

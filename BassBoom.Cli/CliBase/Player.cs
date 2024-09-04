@@ -31,7 +31,6 @@ using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
-using Terminaux.Reader;
 using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
 using BassBoom.Basolia.Exceptions;
@@ -41,7 +40,7 @@ namespace BassBoom.Cli.CliBase
 {
     internal static class Player
     {
-        internal static Thread playerThread;
+        internal static Thread? playerThread;
         internal static int position = 0;
         internal static readonly List<string> passedMusicPaths = [];
 
@@ -353,9 +352,12 @@ namespace BassBoom.Cli.CliBase
             }
 
             // Populate music file info, as necessary
-            if (Common.populate)
-                PlayerControls.PopulateMusicFileInfo(Common.CurrentCachedInfo.MusicPath);
-            drawn.Append(PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath));
+            if (Common.CurrentCachedInfo is not null)
+            {
+                if (Common.populate)
+                    PlayerControls.PopulateMusicFileInfo(Common.CurrentCachedInfo.MusicPath);
+                drawn.Append(PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath));
+            }
 
             // Now, print the list of songs.
             var choices = new List<InputChoiceInfo>();

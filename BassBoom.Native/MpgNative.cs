@@ -41,8 +41,8 @@ namespace BassBoom.Native
         internal static mpg123_handle* _mpg123Handle;
         internal static out123_handle* _out123Handle;
 
-        internal static LibraryManager libManagerMpg;
-        internal static LibraryManager libManagerOut;
+        internal static LibraryManager? libManagerMpg;
+        internal static LibraryManager? libManagerOut;
 
         internal const string LibcName = "libc";
         internal const string LibraryName = "mpg123";
@@ -68,7 +68,7 @@ namespace BassBoom.Native
             get
             {
                 uint major = 0, minor = 0, patch = 0;
-                var @delegate = libManagerMpg.GetNativeMethodDelegate<NativeInit.mpg123_distversion>(nameof(NativeInit.mpg123_distversion));
+                var @delegate = GetDelegate<NativeInit.mpg123_distversion>(libManagerMpg, nameof(NativeInit.mpg123_distversion));
                 var versionHandle = @delegate.Invoke(ref major, ref minor, ref patch);
                 string version = Marshal.PtrToStringAnsi(versionHandle);
                 Debug.WriteLine($"mpg123 version: {version}");
@@ -84,7 +84,7 @@ namespace BassBoom.Native
             get
             {
                 uint major = 0, minor = 0, patch = 0;
-                var @delegate = libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_distversion>(nameof(NativeOutputLib.out123_distversion));
+                var @delegate = GetDelegate<NativeOutputLib.out123_distversion>(libManagerOut, nameof(NativeOutputLib.out123_distversion));
                 var versionHandle = @delegate.Invoke(ref major, ref minor, ref patch);
                 string version = Marshal.PtrToStringAnsi(versionHandle);
                 Debug.WriteLine($"out123 version: {version}");
@@ -139,7 +139,7 @@ namespace BassBoom.Native
             // Verify that we've actually loaded the library!
             try
             {
-                var @delegate = libManagerMpg.GetNativeMethodDelegate<NativeInit.mpg123_new>(nameof(NativeInit.mpg123_new));
+                var @delegate = GetDelegate<NativeInit.mpg123_new>(libManagerMpg, nameof(NativeInit.mpg123_new));
                 var handle = @delegate.Invoke(null, null);
                 Debug.WriteLine($"Verifying mpg123 version: {MpgLibVersion}");
                 _mpg123Handle = handle;
@@ -153,7 +153,7 @@ namespace BassBoom.Native
             // Do the same for the out123 library!
             try
             {
-                var @delegate = libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_new>(nameof(NativeOutputLib.out123_new));
+                var @delegate = GetDelegate<NativeOutputLib.out123_new>(libManagerOut, nameof(NativeOutputLib.out123_new));
                 var handle = @delegate.Invoke();
                 Debug.WriteLine($"Verifying out123 version: {OutLibVersion}");
                 _out123Handle = handle;
@@ -181,6 +181,15 @@ namespace BassBoom.Native
             else
                 runtimesPath += $"runtimes/freebsd-{lowerArch}/native/lib{libName}.so";
             return runtimesPath;
+        }
+
+        internal static TDelegate GetDelegate<TDelegate>(LibraryManager? libraryManager, string function)
+            where TDelegate : Delegate
+        {
+            if (libraryManager is null)
+                throw new BasoliaNativeLibraryException($"Can't get delegate for {function} without initializing the library first");
+            return libraryManager.GetNativeMethodDelegate<TDelegate>(function) ??
+                throw new BasoliaNativeLibraryException($"Can't get delegate for {function}");
         }
     }
 }

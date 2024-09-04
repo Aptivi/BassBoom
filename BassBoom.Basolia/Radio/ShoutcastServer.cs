@@ -42,7 +42,7 @@ namespace BassBoom.Basolia.Radio
         private int uniqueListeners;
         private int averageTime;
         private readonly List<StreamInfo> streams = [];
-        internal JToken streamToken;
+        internal JToken? streamToken;
         internal HtmlDocument streamHtmlToken = new();
 
         /// <inheritdoc/>
@@ -226,17 +226,21 @@ namespace BassBoom.Basolia.Radio
             // Shoutcast version v2.x, so use the JToken.
             // Use all the keys in the first object except the "streams" and "version", where we'd later use the former in StreamInfo to install
             // all the streams into the new class instance.
-            totalStreams = (int)streamToken["totalstreams"];
-            activeStreams = (int)streamToken["activestreams"];
-            currentListeners = (int)streamToken["currentlisteners"];
-            peakListeners = (int)streamToken["peaklisteners"];
-            maxListeners = (int)streamToken["maxlisteners"];
-            uniqueListeners = (int)streamToken["uniquelisteners"];
-            averageTime = (int)streamToken["averagetime"];
+            if (streamToken is null)
+                throw new BasoliaMiscException("Shoutcast v2.x stream token is null");
+            totalStreams = (int?)streamToken["totalstreams"] ?? 0;
+            activeStreams = (int?)streamToken["activestreams"] ?? 0;
+            currentListeners = (int?)streamToken["currentlisteners"] ?? 0;
+            peakListeners = (int?)streamToken["peaklisteners"] ?? 0;
+            maxListeners = (int?)streamToken["maxlisteners"] ?? 0;
+            uniqueListeners = (int?)streamToken["uniquelisteners"] ?? 0;
+            averageTime = (int?)streamToken["averagetime"] ?? 0;
 
             // Now, deal with the stream settings.
             streams.Clear();
-            foreach (JToken stream in streamToken["streams"])
+            var listStreams = streamToken["streams"] ??
+                throw new BasoliaMiscException("There are no streams.");
+            foreach (JToken stream in listStreams)
             {
                 StreamInfo streamInfo = new(this, stream);
                 streams.Add(streamInfo);

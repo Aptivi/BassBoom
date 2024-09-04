@@ -33,16 +33,16 @@ namespace BassBoom.Cli
 {
     internal class BassBoomCli
     {
-        private static readonly Version version = Assembly.GetAssembly(typeof(InitBasolia)).GetName().Version;
-        internal static Version mpgVer;
-        internal static Version outVer;
+        private static readonly Version? version = Assembly.GetAssembly(typeof(InitBasolia))?.GetName().Version;
+        internal static Version? mpgVer;
+        internal static Version? outVer;
         internal static Color white = new(ConsoleColors.White);
 
         static int Main(string[] args)
         {
             try
             {
-                ConsoleMisc.SetTitle($"BassBoom CLI - Basolia v{version.ToString(3)} - Beta {version.Minor}");
+                ConsoleMisc.SetTitle($"BassBoom CLI - Basolia v{version?.ToString(3)} - Beta {version?.Minor}");
 
                 // First, prompt for the music path if no arguments are provided.
                 string[] arguments = args.Where((arg) => !arg.StartsWith("-")).ToArray();

@@ -37,7 +37,7 @@ namespace BassBoom.Basolia.File
     {
         private static bool isOpened = false;
         private static bool isRadioStation = false;
-        private static FileType currentFile;
+        private static FileType? currentFile;
         private static readonly string[] supportedExts =
         [
             ".mp3",
@@ -68,7 +68,7 @@ namespace BassBoom.Basolia.File
         /// <summary>
         /// Current file
         /// </summary>
-        public static FileType CurrentFile =>
+        public static FileType? CurrentFile =>
             currentFile;
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace BassBoom.Basolia.File
             {
                 // Open the file
                 var handle = MpgNative._mpg123Handle;
-                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeInput.mpg123_open>(nameof(NativeInput.mpg123_open));
+                var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_open>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_open));
                 int openStatus = @delegate.Invoke(handle, path);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't open file", mpg123_errors.MPG123_ERR);
@@ -146,7 +146,7 @@ namespace BassBoom.Basolia.File
             {
                 // Open the radio station
                 var handle = MpgNative._mpg123Handle;
-                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeInput.mpg123_open_feed>(nameof(NativeInput.mpg123_open_feed));
+                var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_open_feed>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_open_feed));
                 int openStatus = @delegate.Invoke(handle);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't open radio station", mpg123_errors.MPG123_ERR);
@@ -179,7 +179,7 @@ namespace BassBoom.Basolia.File
             {
                 // Close the file
                 var handle = MpgNative._mpg123Handle;
-                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeInput.mpg123_close>(nameof(NativeInput.mpg123_close));
+                var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_close>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_close));
                 int closeStatus = @delegate.Invoke(handle);
                 if (closeStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't close file", mpg123_errors.MPG123_ERR);

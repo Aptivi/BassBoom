@@ -34,8 +34,8 @@ namespace BassBoom.Basolia.Devices
     /// </summary>
     public static class DeviceTools
     {
-        internal static string activeDriver;
-        internal static string activeDevice;
+        internal static string? activeDriver;
+        internal static string? activeDevice;
 
         /// <summary>
         /// Gets a read only dictionary that lists all the drivers
@@ -55,7 +55,7 @@ namespace BassBoom.Basolia.Devices
             {
                 // Query the drivers
                 var handle = MpgNative._out123Handle;
-                var @delegate = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_drivers>(nameof(NativeOutputLib.out123_drivers));
+                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_drivers>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_drivers));
                 int driversStatus = @delegate.Invoke(handle, ref names, ref descr);
                 if (driversStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't query the drivers", mpg123_errors.MPG123_ERR);
@@ -96,7 +96,7 @@ namespace BassBoom.Basolia.Devices
             {
                 // Query the devices
                 var handle = MpgNative._out123Handle;
-                var @delegate = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_devices>(nameof(NativeOutputLib.out123_devices));
+                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_devices>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_devices));
                 int devicesStatus = @delegate.Invoke(handle, driver, out names, out descr, ref active);
                 if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
@@ -132,7 +132,7 @@ namespace BassBoom.Basolia.Devices
                 var handle = MpgNative._out123Handle;
                 IntPtr driverPtr = IntPtr.Zero;
                 IntPtr devicePtr = IntPtr.Zero;
-                var @delegate = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_driver_info>(nameof(NativeOutputLib.out123_driver_info));
+                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_driver_info>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_driver_info));
                 int devicesStatus = @delegate.Invoke(handle, ref driverPtr, ref devicePtr);
                 if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
@@ -147,7 +147,7 @@ namespace BassBoom.Basolia.Devices
         /// </summary>
         /// <returns>Current cached device and driver</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static (string driver, string device) GetCurrentCached()
+        public static (string? driver, string? device) GetCurrentCached()
         {
             InitBasolia.CheckInited();
             return (activeDriver, activeDevice);
@@ -174,6 +174,7 @@ namespace BassBoom.Basolia.Devices
         /// <exception cref="BasoliaException"></exception>
         public static void SetActiveDevice(string driver, string device)
         {
+            activeDevice = "";
             var deviceList = GetDevices(driver, ref activeDevice);
             if (string.IsNullOrEmpty(device))
                 return;

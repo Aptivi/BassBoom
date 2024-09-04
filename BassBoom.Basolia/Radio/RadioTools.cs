@@ -38,7 +38,7 @@ namespace BassBoom.Basolia.Radio
         /// </summary>
         /// <param name="radioUrl">Radio station URL</param>
         /// <returns>An instance of <see cref="IRadioServer"/>. <see langword="null"/> if type can't be determined. <see cref="ShoutcastServer"/> if this radio station server uses Shoutcast, and <see cref="IcecastServer"/> if it uses Icecast.</returns>
-        public static IRadioServer GetRadioInfo(string radioUrl) =>
+        public static IRadioServer? GetRadioInfo(string radioUrl) =>
             Task.Run(() => GetRadioInfoAsync(radioUrl)).GetAwaiter().GetResult();
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace BassBoom.Basolia.Radio
         /// </summary>
         /// <param name="radioUrl">Radio station URL</param>
         /// <returns>An instance of <see cref="IRadioServer"/>. <see langword="null"/> if type can't be determined. <see cref="ShoutcastServer"/> if this radio station server uses Shoutcast, and <see cref="IcecastServer"/> if it uses Icecast.</returns>
-        public static async Task<IRadioServer> GetRadioInfoAsync(string radioUrl)
+        public static async Task<IRadioServer?> GetRadioInfoAsync(string radioUrl)
         {
             // Check to see if we provided a path
             if (string.IsNullOrEmpty(radioUrl))
@@ -72,7 +72,7 @@ namespace BassBoom.Basolia.Radio
                 throw new BasoliaMiscException("Can't determine radio station server type.");
 
             // Return the appropriate parsed server stats instance
-            IRadioServer stats = type switch
+            IRadioServer? stats = type switch
             {
                 RadioServerType.Shoutcast =>
                     new ShoutcastServer(uri.Host, uri.Port, uri.Scheme == "https"),

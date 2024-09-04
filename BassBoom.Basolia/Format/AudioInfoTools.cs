@@ -71,7 +71,7 @@ namespace BassBoom.Basolia.Format
                     lock (PlaybackPositioningTools.PositionLock)
                     {
                         // We need to scan the file to get accurate duration
-                        var delegate2 = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeStatus.mpg123_scan>(nameof(NativeStatus.mpg123_scan));
+                        var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                         int scanStatus = delegate2.Invoke(handle);
                         if (scanStatus == (int)mpg123_errors.MPG123_ERR)
                             throw new BasoliaException("Can't scan file for length information", mpg123_errors.MPG123_ERR);
@@ -79,7 +79,7 @@ namespace BassBoom.Basolia.Format
                 }
 
                 // Get the actual length
-                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeStatus.mpg123_length>(nameof(NativeStatus.mpg123_length));
+                var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_length>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_length));
                 length = @delegate.Invoke(handle);
                 if (length == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't determine the length of the file", mpg123_errors.MPG123_ERR);
@@ -151,7 +151,7 @@ namespace BassBoom.Basolia.Format
                 var outHandle = MpgNative._out123Handle;
 
                 // Get the output format to get the frame size
-                var @delegate = MpgNative.libManagerOut.GetNativeMethodDelegate<NativeOutputLib.out123_getformat>(nameof(NativeOutputLib.out123_getformat));
+                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_getformat>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_getformat));
                 int getStatus = @delegate.Invoke(outHandle, null, null, null, out frameSize);
                 if (getStatus != (int)out123_error.OUT123_OK)
                     throw new BasoliaOutException($"Can't get the output.", (out123_error)getStatus);
@@ -179,7 +179,7 @@ namespace BassBoom.Basolia.Format
                 var handle = MpgNative._mpg123Handle;
 
                 // Get the frame length
-                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeStatus.mpg123_framelength>(nameof(NativeStatus.mpg123_framelength));
+                var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_framelength>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_framelength));
                 getStatus = @delegate.Invoke(handle);
                 if (getStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException($"Can't get the frame length.", mpg123_errors.MPG123_ERR);
@@ -207,7 +207,7 @@ namespace BassBoom.Basolia.Format
                 var handle = MpgNative._mpg123Handle;
 
                 // Get the samples per frame
-                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeStatus.mpg123_spf>(nameof(NativeStatus.mpg123_spf));
+                var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_spf>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_spf));
                 getStatus = @delegate.Invoke(handle);
                 if (getStatus < 0)
                     throw new BasoliaException($"Can't get the samples per frame.", mpg123_errors.MPG123_ERR);
@@ -235,7 +235,7 @@ namespace BassBoom.Basolia.Format
                 var handle = MpgNative._mpg123Handle;
 
                 // Now, buffer the entire music file and create an empty array based on its size
-                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeLowIo.mpg123_outblock>(nameof(NativeLowIo.mpg123_outblock));
+                var @delegate = MpgNative.GetDelegate<NativeLowIo.mpg123_outblock>(MpgNative.libManagerMpg, nameof(NativeLowIo.mpg123_outblock));
                 bufferSize = @delegate.Invoke(handle);
                 Debug.WriteLine($"Buffer size is {bufferSize}");
             }
@@ -269,14 +269,14 @@ namespace BassBoom.Basolia.Format
                 // We need to scan the file to get accurate info
                 if (!FileTools.IsRadioStation)
                 {
-                    var delegate2 = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeStatus.mpg123_scan>(nameof(NativeStatus.mpg123_scan));
+                    var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                     int scanStatus = delegate2.Invoke(handle);
                     if (scanStatus == (int)mpg123_errors.MPG123_ERR)
                         throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
                 }
 
                 // Now, get the metadata info.
-                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeMetadata.mpg123_id3>(nameof(NativeMetadata.mpg123_id3));
+                var @delegate = MpgNative.GetDelegate<NativeMetadata.mpg123_id3>(MpgNative.libManagerMpg, nameof(NativeMetadata.mpg123_id3));
                 int getStatus = @delegate.Invoke(handle, ref v1, ref v2);
                 if (getStatus != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException("Can't get metadata information", (mpg123_errors)getStatus);
@@ -424,14 +424,14 @@ namespace BassBoom.Basolia.Format
                 // We need to scan the file to get accurate info
                 if (!FileTools.IsRadioStation)
                 {
-                    var delegate2 = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeStatus.mpg123_scan>(nameof(NativeStatus.mpg123_scan));
+                    var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                     int scanStatus = delegate2.Invoke(handle);
                     if (scanStatus == (int)mpg123_errors.MPG123_ERR)
                         throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
                 }
 
                 // Now, get the metadata info.
-                var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeMetadata.mpg123_icy>(nameof(NativeMetadata.mpg123_icy));
+                var @delegate = MpgNative.GetDelegate<NativeMetadata.mpg123_icy>(MpgNative.libManagerMpg, nameof(NativeMetadata.mpg123_icy));
                 int getStatus = @delegate.Invoke(handle, ref icy);
                 if (getStatus != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException("Can't get metadata information", (mpg123_errors)getStatus);
@@ -480,14 +480,14 @@ namespace BassBoom.Basolia.Format
                     // We need to scan the file to get accurate info, but it only works with files
                     if (!FileTools.IsRadioStation)
                     {
-                        var delegate2 = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeStatus.mpg123_scan>(nameof(NativeStatus.mpg123_scan));
+                        var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                         int scanStatus = delegate2.Invoke(handle);
                         if (scanStatus == (int)mpg123_errors.MPG123_ERR)
                             throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
                     }
 
                     // Now, get the frame info.
-                    var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeStatus.mpg123_info_win>(nameof(NativeStatus.mpg123_info));
+                    var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_info_win>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_info));
                     int getStatus = @delegate.Invoke(handle, ref frameInfo);
                     if (getStatus != (int)mpg123_errors.MPG123_OK)
                         throw new BasoliaException("Can't get frame information", (mpg123_errors)getStatus);
@@ -516,14 +516,14 @@ namespace BassBoom.Basolia.Format
                     // We need to scan the file to get accurate info
                     if (!FileTools.IsRadioStation)
                     {
-                        var delegate2 = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeStatus.mpg123_scan>(nameof(NativeStatus.mpg123_scan));
+                        var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                         int scanStatus = delegate2.Invoke(handle);
                         if (scanStatus == (int)mpg123_errors.MPG123_ERR)
                             throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
                     }
 
                     // Now, get the frame info.
-                    var @delegate = MpgNative.libManagerMpg.GetNativeMethodDelegate<NativeStatus.mpg123_info>(nameof(NativeStatus.mpg123_info));
+                    var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_info>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_info));
                     int getStatus = @delegate.Invoke(handle, ref frameInfo);
                     if (getStatus != (int)mpg123_errors.MPG123_OK)
                         throw new BasoliaException("Can't get frame information", (mpg123_errors)getStatus);

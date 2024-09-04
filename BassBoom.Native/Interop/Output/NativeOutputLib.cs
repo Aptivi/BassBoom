@@ -175,7 +175,7 @@ namespace BassBoom.Native.Interop.Output
         /// <summary>
         /// MPG123_EXPORT int out123_open(out123_handle *ao, const char* driver, const char* device);
         /// </summary>
-        internal delegate int out123_open(out123_handle* ao, string driver, string device);
+        internal delegate int out123_open(out123_handle* ao, string? driver, string? device);
 
         /// <summary>
         /// MPG123_EXPORT int out123_driver_info(out123_handle *ao, char **driver, char **device);

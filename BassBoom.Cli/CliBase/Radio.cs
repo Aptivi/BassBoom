@@ -41,7 +41,7 @@ namespace BassBoom.Cli.CliBase
 {
     internal static class Radio
     {
-        internal static Thread playerThread;
+        internal static Thread? playerThread;
 
         public static void RadioLoop()
         {
@@ -280,9 +280,12 @@ namespace BassBoom.Cli.CliBase
             }
 
             // Populate music file info, as necessary
-            if (Common.populate)
-                RadioControls.PopulateRadioStationInfo(Common.CurrentCachedInfo.MusicPath);
-            drawn.Append(RadioControls.RenderStationName());
+            if (Common.CurrentCachedInfo is not null)
+            {
+                if (Common.populate)
+                    RadioControls.PopulateRadioStationInfo(Common.CurrentCachedInfo.MusicPath);
+                drawn.Append(RadioControls.RenderStationName());
+            }
 
             // Now, print the list of stations.
             var choices = new List<InputChoiceInfo>();
