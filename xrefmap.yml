@@ -723,13 +723,13 @@ references:
   fullName: BassBoom.Basolia.Format.DecodeTools
   nameWithType: DecodeTools
 - uid: BassBoom.Basolia.Format.DecodeTools.DecodeFrame(System.Int32@,System.Byte[]@,System.Int32@)
-  name: DecodeFrame(ref int, ref byte[], ref int)
+  name: DecodeFrame(ref int, ref byte[]?, ref int)
   href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_DecodeFrame_System_Int32__System_Byte____System_Int32__
   commentId: M:BassBoom.Basolia.Format.DecodeTools.DecodeFrame(System.Int32@,System.Byte[]@,System.Int32@)
   name.vb: DecodeFrame(Integer, Byte(), Integer)
-  fullName: BassBoom.Basolia.Format.DecodeTools.DecodeFrame(ref int, ref byte[], ref int)
+  fullName: BassBoom.Basolia.Format.DecodeTools.DecodeFrame(ref int, ref byte[]?, ref int)
   fullName.vb: BassBoom.Basolia.Format.DecodeTools.DecodeFrame(Integer, Byte(), Integer)
-  nameWithType: DecodeTools.DecodeFrame(ref int, ref byte[], ref int)
+  nameWithType: DecodeTools.DecodeFrame(ref int, ref byte[]?, ref int)
   nameWithType.vb: DecodeTools.DecodeFrame(Integer, Byte(), Integer)
 - uid: BassBoom.Basolia.Format.DecodeTools.DecodeFrame*
   name: DecodeFrame
