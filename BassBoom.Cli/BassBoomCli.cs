@@ -22,12 +22,12 @@ using BassBoom.Cli.CliBase;
 using System;
 using System.IO;
 using System.Reflection;
-using Terminaux.ResizeListener;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Base.Extensions;
 using System.Linq;
 using Terminaux.Colors;
 using Terminaux.Colors.Data;
+using Terminaux.Base;
 
 namespace BassBoom.Cli
 {
@@ -70,7 +70,7 @@ namespace BassBoom.Cli
                 outVer = InitBasolia.OutLibVersion;
 
                 // Now, open an interactive TUI
-                ConsoleResizeListener.StartResizeListener();
+                ConsoleResizeHandler.StartResizeListener();
                 if (isRadio)
                     Radio.RadioLoop();
                 else

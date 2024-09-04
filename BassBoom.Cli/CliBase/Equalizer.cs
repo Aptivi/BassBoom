@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Base.Extensions;
 using BassBoom.Basolia.Exceptions;
+using Terminaux.Inputs.Styles;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -56,7 +57,7 @@ namespace BassBoom.Cli.CliBase
                     ScreenTools.Render();
 
                     // Handle the keystroke
-                    var keystroke = TermReader.ReadKey();
+                    var keystroke = Input.ReadKey();
                     HandleKeypress(keystroke);
                 }
                 catch (BasoliaException bex)

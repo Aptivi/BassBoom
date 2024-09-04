@@ -35,6 +35,7 @@ using Terminaux.Reader;
 using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
 using BassBoom.Basolia.Exceptions;
+using Terminaux.Inputs.Styles;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -105,7 +106,7 @@ namespace BassBoom.Cli.CliBase
                     // Handle the keystroke
                     if (ConsoleWrapper.KeyAvailable)
                     {
-                        var keystroke = TermReader.ReadKey();
+                        var keystroke = Input.ReadKey();
                         if (PlaybackTools.Playing)
                             HandleKeypressPlayMode(keystroke, playerScreen);
                         else
