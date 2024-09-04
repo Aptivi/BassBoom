@@ -1,10 +1,10 @@
-We've made another small release to update SpecProbe to 3.0.0 to accommodate the next Nitrocid version.
+BassBoom is now null-aware!
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[*]` Updated SpecProbe to 3.0.0
+- `[+]` Added nullable support
 
 Review the commit history if you want to get a deep insight about the changes.
 
