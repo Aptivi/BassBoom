@@ -8,7 +8,7 @@
         <DebugType>portable</DebugType>
         <SignAssembly>True</SignAssembly>
         <Nullable>enable</Nullable>
-        <WarningsAsErrors>CS8002,nullable</WarningsAsErrors>
+        <WarningsAsErrors>CS9057,CS8002,nullable</WarningsAsErrors>
         <RootPath>$(MSBuildThisFileDirectory)</RootPath>
         <AssemblyOriginatorKeyFile>$(RootPath)\aptivi_snk.snk</AssemblyOriginatorKeyFile>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
