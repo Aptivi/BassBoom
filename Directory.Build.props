@@ -9,6 +9,7 @@
         <SignAssembly>True</SignAssembly>
         <Nullable>enable</Nullable>
         <WarningsAsErrors>CS9057,CS8002,nullable</WarningsAsErrors>
+        <EnableSourceControlManagerQueries>true</EnableSourceControlManagerQueries>
         <RootPath>$(MSBuildThisFileDirectory)</RootPath>
         <AssemblyOriginatorKeyFile>$(RootPath)\aptivi_snk.snk</AssemblyOriginatorKeyFile>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
