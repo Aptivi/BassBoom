@@ -1,10 +1,10 @@
-BassBoom is now null-aware!
+BassBoom now allows you to natively play more than one audio file at the same time! Useful for games and DJ software!
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[+]` Added nullable support
+- `[+]` Added parallel playing support
 
 Review the commit history if you want to get a deep insight about the changes.
 
