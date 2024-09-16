@@ -23,6 +23,7 @@ using BassBoom.Basolia.Radio;
 using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Play;
+using SpecProbe.Software.Platform;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices;
@@ -126,7 +127,7 @@ namespace BassBoom.Basolia.File
                 throw new BasoliaException("Provide a path to a music file or a radio station", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if the radio station exists
-            if (RuntimeInformation.FrameworkDescription.Contains("Framework"))
+            if (PlatformHelper.IsDotNetFx())
                 RadioTools.client = new();
             RadioTools.client.DefaultRequestHeaders.Add("Icy-MetaData", "1");
             var reply = await RadioTools.client.GetAsync(path, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
