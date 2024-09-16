@@ -35,6 +35,31 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Albums.MusicFileLabeler.LabelFiles
   nameWithType: MusicFileLabeler.LabelFiles
+- uid: BassBoom.Basolia.BasoliaMedia
+  name: BasoliaMedia
+  href: api/BassBoom.Basolia.BasoliaMedia.html
+  commentId: T:BassBoom.Basolia.BasoliaMedia
+  fullName: BassBoom.Basolia.BasoliaMedia
+  nameWithType: BasoliaMedia
+- uid: BassBoom.Basolia.BasoliaMedia.#ctor(System.String)
+  name: BasoliaMedia(string)
+  href: api/BassBoom.Basolia.BasoliaMedia.html#BassBoom_Basolia_BasoliaMedia__ctor_System_String_
+  commentId: M:BassBoom.Basolia.BasoliaMedia.#ctor(System.String)
+  name.vb: New(String)
+  fullName: BassBoom.Basolia.BasoliaMedia.BasoliaMedia(string)
+  fullName.vb: BassBoom.Basolia.BasoliaMedia.New(String)
+  nameWithType: BasoliaMedia.BasoliaMedia(string)
+  nameWithType.vb: BasoliaMedia.New(String)
+- uid: BassBoom.Basolia.BasoliaMedia.#ctor*
+  name: BasoliaMedia
+  href: api/BassBoom.Basolia.BasoliaMedia.html#BassBoom_Basolia_BasoliaMedia__ctor_
+  commentId: Overload:BassBoom.Basolia.BasoliaMedia.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BassBoom.Basolia.BasoliaMedia.BasoliaMedia
+  fullName.vb: BassBoom.Basolia.BasoliaMedia.New
+  nameWithType: BasoliaMedia.BasoliaMedia
+  nameWithType.vb: BasoliaMedia.New
 - uid: BassBoom.Basolia.Devices
   name: BassBoom.Basolia.Devices
   href: api/BassBoom.Basolia.Devices.html
@@ -47,12 +72,15 @@ references:
   commentId: T:BassBoom.Basolia.Devices.DeviceTools
   fullName: BassBoom.Basolia.Devices.DeviceTools
   nameWithType: DeviceTools
-- uid: BassBoom.Basolia.Devices.DeviceTools.GetCurrent
-  name: GetCurrent()
-  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetCurrent
-  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetCurrent
-  fullName: BassBoom.Basolia.Devices.DeviceTools.GetCurrent()
-  nameWithType: DeviceTools.GetCurrent()
+- uid: BassBoom.Basolia.Devices.DeviceTools.GetCurrent(BassBoom.Basolia.BasoliaMedia)
+  name: GetCurrent(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetCurrent_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetCurrent(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetCurrent(BasoliaMedia)
+  fullName: BassBoom.Basolia.Devices.DeviceTools.GetCurrent(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.GetCurrent(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: DeviceTools.GetCurrent(BasoliaMedia?)
+  nameWithType.vb: DeviceTools.GetCurrent(BasoliaMedia)
 - uid: BassBoom.Basolia.Devices.DeviceTools.GetCurrent*
   name: GetCurrent
   href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetCurrent_
@@ -73,15 +101,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached
   nameWithType: DeviceTools.GetCurrentCached
-- uid: BassBoom.Basolia.Devices.DeviceTools.GetDevices(System.String,System.String@)
-  name: GetDevices(string, ref string)
-  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetDevices_System_String_System_String__
-  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetDevices(System.String,System.String@)
-  name.vb: GetDevices(String, String)
-  fullName: BassBoom.Basolia.Devices.DeviceTools.GetDevices(string, ref string)
-  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.GetDevices(String, String)
-  nameWithType: DeviceTools.GetDevices(string, ref string)
-  nameWithType.vb: DeviceTools.GetDevices(String, String)
+- uid: BassBoom.Basolia.Devices.DeviceTools.GetDevices(BassBoom.Basolia.BasoliaMedia,System.String,System.String@)
+  name: GetDevices(BasoliaMedia?, string, ref string)
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetDevices_BassBoom_Basolia_BasoliaMedia_System_String_System_String__
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetDevices(BassBoom.Basolia.BasoliaMedia,System.String,System.String@)
+  name.vb: GetDevices(BasoliaMedia, String, String)
+  fullName: BassBoom.Basolia.Devices.DeviceTools.GetDevices(BassBoom.Basolia.BasoliaMedia?, string, ref string)
+  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.GetDevices(BassBoom.Basolia.BasoliaMedia, String, String)
+  nameWithType: DeviceTools.GetDevices(BasoliaMedia?, string, ref string)
+  nameWithType.vb: DeviceTools.GetDevices(BasoliaMedia, String, String)
 - uid: BassBoom.Basolia.Devices.DeviceTools.GetDevices*
   name: GetDevices
   href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetDevices_
@@ -89,12 +117,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Devices.DeviceTools.GetDevices
   nameWithType: DeviceTools.GetDevices
-- uid: BassBoom.Basolia.Devices.DeviceTools.GetDrivers
-  name: GetDrivers()
-  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetDrivers
-  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetDrivers
-  fullName: BassBoom.Basolia.Devices.DeviceTools.GetDrivers()
-  nameWithType: DeviceTools.GetDrivers()
+- uid: BassBoom.Basolia.Devices.DeviceTools.GetDrivers(BassBoom.Basolia.BasoliaMedia)
+  name: GetDrivers(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetDrivers_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetDrivers(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetDrivers(BasoliaMedia)
+  fullName: BassBoom.Basolia.Devices.DeviceTools.GetDrivers(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.GetDrivers(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: DeviceTools.GetDrivers(BasoliaMedia?)
+  nameWithType.vb: DeviceTools.GetDrivers(BasoliaMedia)
 - uid: BassBoom.Basolia.Devices.DeviceTools.GetDrivers*
   name: GetDrivers
   href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetDrivers_
@@ -115,15 +146,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Devices.DeviceTools.Reset
   nameWithType: DeviceTools.Reset
-- uid: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(System.String,System.String)
-  name: SetActiveDevice(string, string)
-  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_SetActiveDevice_System_String_System_String_
-  commentId: M:BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(System.String,System.String)
-  name.vb: SetActiveDevice(String, String)
-  fullName: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(string, string)
-  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(String, String)
-  nameWithType: DeviceTools.SetActiveDevice(string, string)
-  nameWithType.vb: DeviceTools.SetActiveDevice(String, String)
+- uid: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(BassBoom.Basolia.BasoliaMedia,System.String,System.String)
+  name: SetActiveDevice(BasoliaMedia?, string, string)
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_SetActiveDevice_BassBoom_Basolia_BasoliaMedia_System_String_System_String_
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(BassBoom.Basolia.BasoliaMedia,System.String,System.String)
+  name.vb: SetActiveDevice(BasoliaMedia, String, String)
+  fullName: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(BassBoom.Basolia.BasoliaMedia?, string, string)
+  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(BassBoom.Basolia.BasoliaMedia, String, String)
+  nameWithType: DeviceTools.SetActiveDevice(BasoliaMedia?, string, string)
+  nameWithType.vb: DeviceTools.SetActiveDevice(BasoliaMedia, String, String)
 - uid: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice*
   name: SetActiveDevice
   href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_SetActiveDevice_
@@ -131,15 +162,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice
   nameWithType: DeviceTools.SetActiveDevice
-- uid: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(System.String)
-  name: SetActiveDriver(string)
-  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_SetActiveDriver_System_String_
-  commentId: M:BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(System.String)
-  name.vb: SetActiveDriver(String)
-  fullName: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(string)
-  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(String)
-  nameWithType: DeviceTools.SetActiveDriver(string)
-  nameWithType.vb: DeviceTools.SetActiveDriver(String)
+- uid: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(BassBoom.Basolia.BasoliaMedia,System.String)
+  name: SetActiveDriver(BasoliaMedia?, string)
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_SetActiveDriver_BassBoom_Basolia_BasoliaMedia_System_String_
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(BassBoom.Basolia.BasoliaMedia,System.String)
+  name.vb: SetActiveDriver(BasoliaMedia, String)
+  fullName: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(BassBoom.Basolia.BasoliaMedia?, string)
+  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(BassBoom.Basolia.BasoliaMedia, String)
+  nameWithType: DeviceTools.SetActiveDriver(BasoliaMedia?, string)
+  nameWithType.vb: DeviceTools.SetActiveDriver(BasoliaMedia, String)
 - uid: BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver*
   name: SetActiveDriver
   href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_SetActiveDriver_
@@ -369,12 +400,15 @@ references:
   commentId: T:BassBoom.Basolia.File.FileTools
   fullName: BassBoom.Basolia.File.FileTools
   nameWithType: FileTools
-- uid: BassBoom.Basolia.File.FileTools.CloseFile
-  name: CloseFile()
-  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_CloseFile
-  commentId: M:BassBoom.Basolia.File.FileTools.CloseFile
-  fullName: BassBoom.Basolia.File.FileTools.CloseFile()
-  nameWithType: FileTools.CloseFile()
+- uid: BassBoom.Basolia.File.FileTools.CloseFile(BassBoom.Basolia.BasoliaMedia)
+  name: CloseFile(BasoliaMedia?)
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_CloseFile_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.File.FileTools.CloseFile(BassBoom.Basolia.BasoliaMedia)
+  name.vb: CloseFile(BasoliaMedia)
+  fullName: BassBoom.Basolia.File.FileTools.CloseFile(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.File.FileTools.CloseFile(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: FileTools.CloseFile(BasoliaMedia?)
+  nameWithType.vb: FileTools.CloseFile(BasoliaMedia)
 - uid: BassBoom.Basolia.File.FileTools.CloseFile*
   name: CloseFile
   href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_CloseFile_
@@ -421,15 +455,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.File.FileTools.IsRadioStation
   nameWithType: FileTools.IsRadioStation
-- uid: BassBoom.Basolia.File.FileTools.OpenFile(System.String)
-  name: OpenFile(string)
-  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenFile_System_String_
-  commentId: M:BassBoom.Basolia.File.FileTools.OpenFile(System.String)
-  name.vb: OpenFile(String)
-  fullName: BassBoom.Basolia.File.FileTools.OpenFile(string)
-  fullName.vb: BassBoom.Basolia.File.FileTools.OpenFile(String)
-  nameWithType: FileTools.OpenFile(string)
-  nameWithType.vb: FileTools.OpenFile(String)
+- uid: BassBoom.Basolia.File.FileTools.OpenFile(BassBoom.Basolia.BasoliaMedia,System.String)
+  name: OpenFile(BasoliaMedia?, string)
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenFile_BassBoom_Basolia_BasoliaMedia_System_String_
+  commentId: M:BassBoom.Basolia.File.FileTools.OpenFile(BassBoom.Basolia.BasoliaMedia,System.String)
+  name.vb: OpenFile(BasoliaMedia, String)
+  fullName: BassBoom.Basolia.File.FileTools.OpenFile(BassBoom.Basolia.BasoliaMedia?, string)
+  fullName.vb: BassBoom.Basolia.File.FileTools.OpenFile(BassBoom.Basolia.BasoliaMedia, String)
+  nameWithType: FileTools.OpenFile(BasoliaMedia?, string)
+  nameWithType.vb: FileTools.OpenFile(BasoliaMedia, String)
 - uid: BassBoom.Basolia.File.FileTools.OpenFile*
   name: OpenFile
   href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenFile_
@@ -437,15 +471,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.File.FileTools.OpenFile
   nameWithType: FileTools.OpenFile
-- uid: BassBoom.Basolia.File.FileTools.OpenUrl(System.String)
-  name: OpenUrl(string)
-  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenUrl_System_String_
-  commentId: M:BassBoom.Basolia.File.FileTools.OpenUrl(System.String)
-  name.vb: OpenUrl(String)
-  fullName: BassBoom.Basolia.File.FileTools.OpenUrl(string)
-  fullName.vb: BassBoom.Basolia.File.FileTools.OpenUrl(String)
-  nameWithType: FileTools.OpenUrl(string)
-  nameWithType.vb: FileTools.OpenUrl(String)
+- uid: BassBoom.Basolia.File.FileTools.OpenUrl(BassBoom.Basolia.BasoliaMedia,System.String)
+  name: OpenUrl(BasoliaMedia?, string)
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenUrl_BassBoom_Basolia_BasoliaMedia_System_String_
+  commentId: M:BassBoom.Basolia.File.FileTools.OpenUrl(BassBoom.Basolia.BasoliaMedia,System.String)
+  name.vb: OpenUrl(BasoliaMedia, String)
+  fullName: BassBoom.Basolia.File.FileTools.OpenUrl(BassBoom.Basolia.BasoliaMedia?, string)
+  fullName.vb: BassBoom.Basolia.File.FileTools.OpenUrl(BassBoom.Basolia.BasoliaMedia, String)
+  nameWithType: FileTools.OpenUrl(BasoliaMedia?, string)
+  nameWithType.vb: FileTools.OpenUrl(BasoliaMedia, String)
 - uid: BassBoom.Basolia.File.FileTools.OpenUrl*
   name: OpenUrl
   href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenUrl_
@@ -453,15 +487,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.File.FileTools.OpenUrl
   nameWithType: FileTools.OpenUrl
-- uid: BassBoom.Basolia.File.FileTools.OpenUrlAsync(System.String)
-  name: OpenUrlAsync(string)
-  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenUrlAsync_System_String_
-  commentId: M:BassBoom.Basolia.File.FileTools.OpenUrlAsync(System.String)
-  name.vb: OpenUrlAsync(String)
-  fullName: BassBoom.Basolia.File.FileTools.OpenUrlAsync(string)
-  fullName.vb: BassBoom.Basolia.File.FileTools.OpenUrlAsync(String)
-  nameWithType: FileTools.OpenUrlAsync(string)
-  nameWithType.vb: FileTools.OpenUrlAsync(String)
+- uid: BassBoom.Basolia.File.FileTools.OpenUrlAsync(BassBoom.Basolia.BasoliaMedia,System.String)
+  name: OpenUrlAsync(BasoliaMedia?, string)
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenUrlAsync_BassBoom_Basolia_BasoliaMedia_System_String_
+  commentId: M:BassBoom.Basolia.File.FileTools.OpenUrlAsync(BassBoom.Basolia.BasoliaMedia,System.String)
+  name.vb: OpenUrlAsync(BasoliaMedia, String)
+  fullName: BassBoom.Basolia.File.FileTools.OpenUrlAsync(BassBoom.Basolia.BasoliaMedia?, string)
+  fullName.vb: BassBoom.Basolia.File.FileTools.OpenUrlAsync(BassBoom.Basolia.BasoliaMedia, String)
+  nameWithType: FileTools.OpenUrlAsync(BasoliaMedia?, string)
+  nameWithType.vb: FileTools.OpenUrlAsync(BasoliaMedia, String)
 - uid: BassBoom.Basolia.File.FileTools.OpenUrlAsync*
   name: OpenUrlAsync
   href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenUrlAsync_
@@ -565,12 +599,15 @@ references:
   commentId: T:BassBoom.Basolia.Format.AudioInfoTools
   fullName: BassBoom.Basolia.Format.AudioInfoTools
   nameWithType: AudioInfoTools
-- uid: BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize
-  name: GetBufferSize()
-  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetBufferSize
-  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize
-  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize()
-  nameWithType: AudioInfoTools.GetBufferSize()
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize(BassBoom.Basolia.BasoliaMedia)
+  name: GetBufferSize(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetBufferSize_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetBufferSize(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: AudioInfoTools.GetBufferSize(BasoliaMedia?)
+  nameWithType.vb: AudioInfoTools.GetBufferSize(BasoliaMedia)
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize*
   name: GetBufferSize
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetBufferSize_
@@ -578,15 +615,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetBufferSize
   nameWithType: AudioInfoTools.GetBufferSize
-- uid: BassBoom.Basolia.Format.AudioInfoTools.GetDuration(System.Boolean)
-  name: GetDuration(bool)
-  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDuration_System_Boolean_
-  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetDuration(System.Boolean)
-  name.vb: GetDuration(Boolean)
-  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDuration(bool)
-  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetDuration(Boolean)
-  nameWithType: AudioInfoTools.GetDuration(bool)
-  nameWithType.vb: AudioInfoTools.GetDuration(Boolean)
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetDuration(BassBoom.Basolia.BasoliaMedia,System.Boolean)
+  name: GetDuration(BasoliaMedia?, bool)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDuration_BassBoom_Basolia_BasoliaMedia_System_Boolean_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetDuration(BassBoom.Basolia.BasoliaMedia,System.Boolean)
+  name.vb: GetDuration(BasoliaMedia, Boolean)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDuration(BassBoom.Basolia.BasoliaMedia?, bool)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetDuration(BassBoom.Basolia.BasoliaMedia, Boolean)
+  nameWithType: AudioInfoTools.GetDuration(BasoliaMedia?, bool)
+  nameWithType.vb: AudioInfoTools.GetDuration(BasoliaMedia, Boolean)
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetDuration*
   name: GetDuration
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDuration_
@@ -594,15 +631,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDuration
   nameWithType: AudioInfoTools.GetDuration
-- uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(System.Boolean)
-  name: GetDurationSpan(bool)
-  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpan_System_Boolean_
-  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(System.Boolean)
-  name.vb: GetDurationSpan(Boolean)
-  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(bool)
-  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(Boolean)
-  nameWithType: AudioInfoTools.GetDurationSpan(bool)
-  nameWithType.vb: AudioInfoTools.GetDurationSpan(Boolean)
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(BassBoom.Basolia.BasoliaMedia,System.Boolean)
+  name: GetDurationSpan(BasoliaMedia?, bool)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpan_BassBoom_Basolia_BasoliaMedia_System_Boolean_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(BassBoom.Basolia.BasoliaMedia,System.Boolean)
+  name.vb: GetDurationSpan(BasoliaMedia, Boolean)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(BassBoom.Basolia.BasoliaMedia?, bool)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan(BassBoom.Basolia.BasoliaMedia, Boolean)
+  nameWithType: AudioInfoTools.GetDurationSpan(BasoliaMedia?, bool)
+  nameWithType.vb: AudioInfoTools.GetDurationSpan(BasoliaMedia, Boolean)
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan*
   name: GetDurationSpan
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpan_
@@ -610,15 +647,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpan
   nameWithType: AudioInfoTools.GetDurationSpan
-- uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32)
-  name: GetDurationSpanFromSamples(int)
-  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_System_Int32_
-  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32)
-  name.vb: GetDurationSpanFromSamples(Integer)
-  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(int)
-  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(Integer)
-  nameWithType: AudioInfoTools.GetDurationSpanFromSamples(int)
-  nameWithType.vb: AudioInfoTools.GetDurationSpanFromSamples(Integer)
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(BassBoom.Basolia.BasoliaMedia,System.Int32)
+  name: GetDurationSpanFromSamples(BasoliaMedia?, int)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_BassBoom_Basolia_BasoliaMedia_System_Int32_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(BassBoom.Basolia.BasoliaMedia,System.Int32)
+  name.vb: GetDurationSpanFromSamples(BasoliaMedia, Integer)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(BassBoom.Basolia.BasoliaMedia?, int)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(BassBoom.Basolia.BasoliaMedia, Integer)
+  nameWithType: AudioInfoTools.GetDurationSpanFromSamples(BasoliaMedia?, int)
+  nameWithType.vb: AudioInfoTools.GetDurationSpanFromSamples(BasoliaMedia, Integer)
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples(System.Int32,System.Int64)
   name: GetDurationSpanFromSamples(int, long)
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetDurationSpanFromSamples_System_Int32_System_Int64_
@@ -635,12 +672,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetDurationSpanFromSamples
   nameWithType: AudioInfoTools.GetDurationSpanFromSamples
-- uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo
-  name: GetFrameInfo()
-  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameInfo
-  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo
-  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo()
-  nameWithType: AudioInfoTools.GetFrameInfo()
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo(BassBoom.Basolia.BasoliaMedia)
+  name: GetFrameInfo(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameInfo_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetFrameInfo(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: AudioInfoTools.GetFrameInfo(BasoliaMedia?)
+  nameWithType.vb: AudioInfoTools.GetFrameInfo(BasoliaMedia)
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo*
   name: GetFrameInfo
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameInfo_
@@ -648,12 +688,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameInfo
   nameWithType: AudioInfoTools.GetFrameInfo
-- uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength
-  name: GetFrameLength()
-  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameLength
-  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength
-  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength()
-  nameWithType: AudioInfoTools.GetFrameLength()
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength(BassBoom.Basolia.BasoliaMedia)
+  name: GetFrameLength(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameLength_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetFrameLength(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: AudioInfoTools.GetFrameLength(BasoliaMedia?)
+  nameWithType.vb: AudioInfoTools.GetFrameLength(BasoliaMedia)
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength*
   name: GetFrameLength
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameLength_
@@ -661,12 +704,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameLength
   nameWithType: AudioInfoTools.GetFrameLength
-- uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize
-  name: GetFrameSize()
-  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameSize
-  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize
-  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize()
-  nameWithType: AudioInfoTools.GetFrameSize()
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize(BassBoom.Basolia.BasoliaMedia)
+  name: GetFrameSize(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameSize_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetFrameSize(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: AudioInfoTools.GetFrameSize(BasoliaMedia?)
+  nameWithType.vb: AudioInfoTools.GetFrameSize(BasoliaMedia)
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize*
   name: GetFrameSize
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetFrameSize_
@@ -674,12 +720,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize
   nameWithType: AudioInfoTools.GetFrameSize
-- uid: BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata
-  name: GetIcyMetadata()
-  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetIcyMetadata
-  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata
-  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata()
-  nameWithType: AudioInfoTools.GetIcyMetadata()
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata(BassBoom.Basolia.BasoliaMedia)
+  name: GetIcyMetadata(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetIcyMetadata_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetIcyMetadata(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: AudioInfoTools.GetIcyMetadata(BasoliaMedia?)
+  nameWithType.vb: AudioInfoTools.GetIcyMetadata(BasoliaMedia)
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata*
   name: GetIcyMetadata
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetIcyMetadata_
@@ -687,15 +736,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata
   nameWithType: AudioInfoTools.GetIcyMetadata
-- uid: BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata(BassBoom.Basolia.Format.Id3V1Metadata@,BassBoom.Basolia.Format.Id3V2Metadata@)
-  name: GetId3Metadata(out Id3V1Metadata, out Id3V2Metadata)
-  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetId3Metadata_BassBoom_Basolia_Format_Id3V1Metadata__BassBoom_Basolia_Format_Id3V2Metadata__
-  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata(BassBoom.Basolia.Format.Id3V1Metadata@,BassBoom.Basolia.Format.Id3V2Metadata@)
-  name.vb: GetId3Metadata(Id3V1Metadata, Id3V2Metadata)
-  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata(out BassBoom.Basolia.Format.Id3V1Metadata, out BassBoom.Basolia.Format.Id3V2Metadata)
-  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata(BassBoom.Basolia.Format.Id3V1Metadata, BassBoom.Basolia.Format.Id3V2Metadata)
-  nameWithType: AudioInfoTools.GetId3Metadata(out Id3V1Metadata, out Id3V2Metadata)
-  nameWithType.vb: AudioInfoTools.GetId3Metadata(Id3V1Metadata, Id3V2Metadata)
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Format.Id3V1Metadata@,BassBoom.Basolia.Format.Id3V2Metadata@)
+  name: GetId3Metadata(BasoliaMedia?, out Id3V1Metadata, out Id3V2Metadata)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetId3Metadata_BassBoom_Basolia_BasoliaMedia_BassBoom_Basolia_Format_Id3V1Metadata__BassBoom_Basolia_Format_Id3V2Metadata__
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Format.Id3V1Metadata@,BassBoom.Basolia.Format.Id3V2Metadata@)
+  name.vb: GetId3Metadata(BasoliaMedia, Id3V1Metadata, Id3V2Metadata)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata(BassBoom.Basolia.BasoliaMedia?, out BassBoom.Basolia.Format.Id3V1Metadata, out BassBoom.Basolia.Format.Id3V2Metadata)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata(BassBoom.Basolia.BasoliaMedia, BassBoom.Basolia.Format.Id3V1Metadata, BassBoom.Basolia.Format.Id3V2Metadata)
+  nameWithType: AudioInfoTools.GetId3Metadata(BasoliaMedia?, out Id3V1Metadata, out Id3V2Metadata)
+  nameWithType.vb: AudioInfoTools.GetId3Metadata(BasoliaMedia, Id3V1Metadata, Id3V2Metadata)
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata*
   name: GetId3Metadata
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetId3Metadata_
@@ -703,12 +752,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetId3Metadata
   nameWithType: AudioInfoTools.GetId3Metadata
-- uid: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame
-  name: GetSamplesPerFrame()
-  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetSamplesPerFrame
-  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame
-  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame()
-  nameWithType: AudioInfoTools.GetSamplesPerFrame()
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame(BassBoom.Basolia.BasoliaMedia)
+  name: GetSamplesPerFrame(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetSamplesPerFrame_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetSamplesPerFrame(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: AudioInfoTools.GetSamplesPerFrame(BasoliaMedia?)
+  nameWithType.vb: AudioInfoTools.GetSamplesPerFrame(BasoliaMedia)
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame*
   name: GetSamplesPerFrame
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetSamplesPerFrame_
@@ -722,15 +774,15 @@ references:
   commentId: T:BassBoom.Basolia.Format.DecodeTools
   fullName: BassBoom.Basolia.Format.DecodeTools
   nameWithType: DecodeTools
-- uid: BassBoom.Basolia.Format.DecodeTools.DecodeFrame(System.Int32@,System.Byte[]@,System.Int32@)
-  name: DecodeFrame(ref int, ref byte[]?, ref int)
-  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_DecodeFrame_System_Int32__System_Byte____System_Int32__
-  commentId: M:BassBoom.Basolia.Format.DecodeTools.DecodeFrame(System.Int32@,System.Byte[]@,System.Int32@)
-  name.vb: DecodeFrame(Integer, Byte(), Integer)
-  fullName: BassBoom.Basolia.Format.DecodeTools.DecodeFrame(ref int, ref byte[]?, ref int)
-  fullName.vb: BassBoom.Basolia.Format.DecodeTools.DecodeFrame(Integer, Byte(), Integer)
-  nameWithType: DecodeTools.DecodeFrame(ref int, ref byte[]?, ref int)
-  nameWithType.vb: DecodeTools.DecodeFrame(Integer, Byte(), Integer)
+- uid: BassBoom.Basolia.Format.DecodeTools.DecodeFrame(BassBoom.Basolia.BasoliaMedia,System.Int32@,System.Byte[]@,System.Int32@)
+  name: DecodeFrame(BasoliaMedia?, ref int, ref byte[]?, ref int)
+  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_DecodeFrame_BassBoom_Basolia_BasoliaMedia_System_Int32__System_Byte____System_Int32__
+  commentId: M:BassBoom.Basolia.Format.DecodeTools.DecodeFrame(BassBoom.Basolia.BasoliaMedia,System.Int32@,System.Byte[]@,System.Int32@)
+  name.vb: DecodeFrame(BasoliaMedia, Integer, Byte(), Integer)
+  fullName: BassBoom.Basolia.Format.DecodeTools.DecodeFrame(BassBoom.Basolia.BasoliaMedia?, ref int, ref byte[]?, ref int)
+  fullName.vb: BassBoom.Basolia.Format.DecodeTools.DecodeFrame(BassBoom.Basolia.BasoliaMedia, Integer, Byte(), Integer)
+  nameWithType: DecodeTools.DecodeFrame(BasoliaMedia?, ref int, ref byte[]?, ref int)
+  nameWithType.vb: DecodeTools.DecodeFrame(BasoliaMedia, Integer, Byte(), Integer)
 - uid: BassBoom.Basolia.Format.DecodeTools.DecodeFrame*
   name: DecodeFrame
   href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_DecodeFrame_
@@ -738,19 +790,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.DecodeTools.DecodeFrame
   nameWithType: DecodeTools.DecodeFrame
-- uid: BassBoom.Basolia.Format.DecodeTools.Decoder
-  name: Decoder
-  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_Decoder
-  commentId: P:BassBoom.Basolia.Format.DecodeTools.Decoder
-  fullName: BassBoom.Basolia.Format.DecodeTools.Decoder
-  nameWithType: DecodeTools.Decoder
-- uid: BassBoom.Basolia.Format.DecodeTools.Decoder*
-  name: Decoder
-  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_Decoder_
-  commentId: Overload:BassBoom.Basolia.Format.DecodeTools.Decoder
+- uid: BassBoom.Basolia.Format.DecodeTools.GetCurrentDecoder(BassBoom.Basolia.BasoliaMedia)
+  name: GetCurrentDecoder(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_GetCurrentDecoder_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.DecodeTools.GetCurrentDecoder(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetCurrentDecoder(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.DecodeTools.GetCurrentDecoder(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.DecodeTools.GetCurrentDecoder(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: DecodeTools.GetCurrentDecoder(BasoliaMedia?)
+  nameWithType.vb: DecodeTools.GetCurrentDecoder(BasoliaMedia)
+- uid: BassBoom.Basolia.Format.DecodeTools.GetCurrentDecoder*
+  name: GetCurrentDecoder
+  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_GetCurrentDecoder_
+  commentId: Overload:BassBoom.Basolia.Format.DecodeTools.GetCurrentDecoder
   isSpec: "True"
-  fullName: BassBoom.Basolia.Format.DecodeTools.Decoder
-  nameWithType: DecodeTools.Decoder
+  fullName: BassBoom.Basolia.Format.DecodeTools.GetCurrentDecoder
+  nameWithType: DecodeTools.GetCurrentDecoder
 - uid: BassBoom.Basolia.Format.DecodeTools.GetDecoders(System.Boolean)
   name: GetDecoders(bool)
   href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_GetDecoders_System_Boolean_
@@ -767,6 +822,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.DecodeTools.GetDecoders
   nameWithType: DecodeTools.GetDecoders
+- uid: BassBoom.Basolia.Format.DecodeTools.SetCurrentDecoder(BassBoom.Basolia.BasoliaMedia,System.String)
+  name: SetCurrentDecoder(BasoliaMedia?, string)
+  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_SetCurrentDecoder_BassBoom_Basolia_BasoliaMedia_System_String_
+  commentId: M:BassBoom.Basolia.Format.DecodeTools.SetCurrentDecoder(BassBoom.Basolia.BasoliaMedia,System.String)
+  name.vb: SetCurrentDecoder(BasoliaMedia, String)
+  fullName: BassBoom.Basolia.Format.DecodeTools.SetCurrentDecoder(BassBoom.Basolia.BasoliaMedia?, string)
+  fullName.vb: BassBoom.Basolia.Format.DecodeTools.SetCurrentDecoder(BassBoom.Basolia.BasoliaMedia, String)
+  nameWithType: DecodeTools.SetCurrentDecoder(BasoliaMedia?, string)
+  nameWithType.vb: DecodeTools.SetCurrentDecoder(BasoliaMedia, String)
+- uid: BassBoom.Basolia.Format.DecodeTools.SetCurrentDecoder*
+  name: SetCurrentDecoder
+  href: api/BassBoom.Basolia.Format.DecodeTools.html#BassBoom_Basolia_Format_DecodeTools_SetCurrentDecoder_
+  commentId: Overload:BassBoom.Basolia.Format.DecodeTools.SetCurrentDecoder
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.DecodeTools.SetCurrentDecoder
+  nameWithType: DecodeTools.SetCurrentDecoder
 - uid: BassBoom.Basolia.Format.FormatInfo
   name: FormatInfo
   href: api/BassBoom.Basolia.Format.FormatInfo.html
@@ -818,12 +889,15 @@ references:
   commentId: T:BassBoom.Basolia.Format.FormatTools
   fullName: BassBoom.Basolia.Format.FormatTools
   nameWithType: FormatTools
-- uid: BassBoom.Basolia.Format.FormatTools.GetFormatInfo
-  name: GetFormatInfo()
-  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetFormatInfo
-  commentId: M:BassBoom.Basolia.Format.FormatTools.GetFormatInfo
-  fullName: BassBoom.Basolia.Format.FormatTools.GetFormatInfo()
-  nameWithType: FormatTools.GetFormatInfo()
+- uid: BassBoom.Basolia.Format.FormatTools.GetFormatInfo(BassBoom.Basolia.BasoliaMedia)
+  name: GetFormatInfo(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetFormatInfo_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.FormatTools.GetFormatInfo(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetFormatInfo(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.FormatTools.GetFormatInfo(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.FormatTools.GetFormatInfo(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: FormatTools.GetFormatInfo(BasoliaMedia?)
+  nameWithType.vb: FormatTools.GetFormatInfo(BasoliaMedia)
 - uid: BassBoom.Basolia.Format.FormatTools.GetFormatInfo*
   name: GetFormatInfo
   href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetFormatInfo_
@@ -831,12 +905,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.FormatTools.GetFormatInfo
   nameWithType: FormatTools.GetFormatInfo
-- uid: BassBoom.Basolia.Format.FormatTools.GetFormats
-  name: GetFormats()
-  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetFormats
-  commentId: M:BassBoom.Basolia.Format.FormatTools.GetFormats
-  fullName: BassBoom.Basolia.Format.FormatTools.GetFormats()
-  nameWithType: FormatTools.GetFormats()
+- uid: BassBoom.Basolia.Format.FormatTools.GetFormats(BassBoom.Basolia.BasoliaMedia)
+  name: GetFormats(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetFormats_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.FormatTools.GetFormats(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetFormats(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.FormatTools.GetFormats(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.FormatTools.GetFormats(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: FormatTools.GetFormats(BasoliaMedia?)
+  nameWithType.vb: FormatTools.GetFormats(BasoliaMedia)
 - uid: BassBoom.Basolia.Format.FormatTools.GetFormats*
   name: GetFormats
   href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetFormats_
@@ -2251,12 +2328,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Lyrics.Lyric.GetLastLineAtSpan
   nameWithType: Lyric.GetLastLineAtSpan
-- uid: BassBoom.Basolia.Lyrics.Lyric.GetLastLineCurrent
-  name: GetLastLineCurrent()
-  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLastLineCurrent
-  commentId: M:BassBoom.Basolia.Lyrics.Lyric.GetLastLineCurrent
-  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLastLineCurrent()
-  nameWithType: Lyric.GetLastLineCurrent()
+- uid: BassBoom.Basolia.Lyrics.Lyric.GetLastLineCurrent(BassBoom.Basolia.BasoliaMedia)
+  name: GetLastLineCurrent(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLastLineCurrent_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Lyrics.Lyric.GetLastLineCurrent(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetLastLineCurrent(BasoliaMedia)
+  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLastLineCurrent(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Lyrics.Lyric.GetLastLineCurrent(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: Lyric.GetLastLineCurrent(BasoliaMedia?)
+  nameWithType.vb: Lyric.GetLastLineCurrent(BasoliaMedia)
 - uid: BassBoom.Basolia.Lyrics.Lyric.GetLastLineCurrent*
   name: GetLastLineCurrent
   href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLastLineCurrent_
@@ -2277,12 +2357,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsAtSpan
   nameWithType: Lyric.GetLastLineWordsAtSpan
-- uid: BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent
-  name: GetLastLineWordsCurrent()
-  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLastLineWordsCurrent
-  commentId: M:BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent
-  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent()
-  nameWithType: Lyric.GetLastLineWordsCurrent()
+- uid: BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent(BassBoom.Basolia.BasoliaMedia)
+  name: GetLastLineWordsCurrent(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLastLineWordsCurrent_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetLastLineWordsCurrent(BasoliaMedia)
+  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: Lyric.GetLastLineWordsCurrent(BasoliaMedia?)
+  nameWithType.vb: Lyric.GetLastLineWordsCurrent(BasoliaMedia)
 - uid: BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent*
   name: GetLastLineWordsCurrent
   href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLastLineWordsCurrent_
@@ -2290,12 +2373,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Lyrics.Lyric.GetLastLineWordsCurrent
   nameWithType: Lyric.GetLastLineWordsCurrent
-- uid: BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent
-  name: GetLinesCurrent()
-  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLinesCurrent
-  commentId: M:BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent
-  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent()
-  nameWithType: Lyric.GetLinesCurrent()
+- uid: BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent(BassBoom.Basolia.BasoliaMedia)
+  name: GetLinesCurrent(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLinesCurrent_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetLinesCurrent(BasoliaMedia)
+  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: Lyric.GetLinesCurrent(BasoliaMedia?)
+  nameWithType.vb: Lyric.GetLinesCurrent(BasoliaMedia)
 - uid: BassBoom.Basolia.Lyrics.Lyric.GetLinesCurrent*
   name: GetLinesCurrent
   href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLinesCurrent_
@@ -2329,12 +2415,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Lyrics.Lyric.GetLinesToSpan
   nameWithType: Lyric.GetLinesToSpan
-- uid: BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming
-  name: GetLinesUpcoming()
-  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLinesUpcoming
-  commentId: M:BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming
-  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming()
-  nameWithType: Lyric.GetLinesUpcoming()
+- uid: BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming(BassBoom.Basolia.BasoliaMedia)
+  name: GetLinesUpcoming(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLinesUpcoming_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetLinesUpcoming(BasoliaMedia)
+  fullName: BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: Lyric.GetLinesUpcoming(BasoliaMedia?)
+  nameWithType.vb: Lyric.GetLinesUpcoming(BasoliaMedia)
 - uid: BassBoom.Basolia.Lyrics.Lyric.GetLinesUpcoming*
   name: GetLinesUpcoming
   href: api/BassBoom.Basolia.Lyrics.Lyric.html#BassBoom_Basolia_Lyrics_Lyric_GetLinesUpcoming_
@@ -2466,12 +2555,15 @@ references:
   commentId: T:BassBoom.Basolia.Playback.PlaybackPositioningTools
   fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools
   nameWithType: PlaybackPositioningTools
-- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.Drop
-  name: Drop()
-  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_Drop
-  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.Drop
-  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.Drop()
-  nameWithType: PlaybackPositioningTools.Drop()
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.Drop(BassBoom.Basolia.BasoliaMedia)
+  name: Drop(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_Drop_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.Drop(BassBoom.Basolia.BasoliaMedia)
+  name.vb: Drop(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.Drop(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackPositioningTools.Drop(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackPositioningTools.Drop(BasoliaMedia?)
+  nameWithType.vb: PlaybackPositioningTools.Drop(BasoliaMedia)
 - uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.Drop*
   name: Drop
   href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_Drop_
@@ -2479,12 +2571,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.Drop
   nameWithType: PlaybackPositioningTools.Drop
-- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration
-  name: GetCurrentDuration()
-  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_GetCurrentDuration
-  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration
-  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration()
-  nameWithType: PlaybackPositioningTools.GetCurrentDuration()
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration(BassBoom.Basolia.BasoliaMedia)
+  name: GetCurrentDuration(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_GetCurrentDuration_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetCurrentDuration(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackPositioningTools.GetCurrentDuration(BasoliaMedia?)
+  nameWithType.vb: PlaybackPositioningTools.GetCurrentDuration(BasoliaMedia)
 - uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration*
   name: GetCurrentDuration
   href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_GetCurrentDuration_
@@ -2492,12 +2587,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDuration
   nameWithType: PlaybackPositioningTools.GetCurrentDuration
-- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan
-  name: GetCurrentDurationSpan()
-  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_GetCurrentDurationSpan
-  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan
-  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan()
-  nameWithType: PlaybackPositioningTools.GetCurrentDurationSpan()
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan(BassBoom.Basolia.BasoliaMedia)
+  name: GetCurrentDurationSpan(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_GetCurrentDurationSpan_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetCurrentDurationSpan(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackPositioningTools.GetCurrentDurationSpan(BasoliaMedia?)
+  nameWithType.vb: PlaybackPositioningTools.GetCurrentDurationSpan(BasoliaMedia)
 - uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan*
   name: GetCurrentDurationSpan
   href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_GetCurrentDurationSpan_
@@ -2505,12 +2603,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.GetCurrentDurationSpan
   nameWithType: PlaybackPositioningTools.GetCurrentDurationSpan
-- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric(BassBoom.Basolia.Lyrics.LyricLine)
-  name: SeekLyric(LyricLine)
-  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekLyric_BassBoom_Basolia_Lyrics_LyricLine_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric(BassBoom.Basolia.Lyrics.LyricLine)
-  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric(BassBoom.Basolia.Lyrics.LyricLine)
-  nameWithType: PlaybackPositioningTools.SeekLyric(LyricLine)
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Lyrics.LyricLine)
+  name: SeekLyric(BasoliaMedia?, LyricLine)
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekLyric_BassBoom_Basolia_BasoliaMedia_BassBoom_Basolia_Lyrics_LyricLine_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Lyrics.LyricLine)
+  name.vb: SeekLyric(BasoliaMedia, LyricLine)
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric(BassBoom.Basolia.BasoliaMedia?, BassBoom.Basolia.Lyrics.LyricLine)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric(BassBoom.Basolia.BasoliaMedia, BassBoom.Basolia.Lyrics.LyricLine)
+  nameWithType: PlaybackPositioningTools.SeekLyric(BasoliaMedia?, LyricLine)
+  nameWithType.vb: PlaybackPositioningTools.SeekLyric(BasoliaMedia, LyricLine)
 - uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric*
   name: SeekLyric
   href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekLyric_
@@ -2518,15 +2619,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekLyric
   nameWithType: PlaybackPositioningTools.SeekLyric
-- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(System.Int32)
-  name: SeekToFrame(int)
-  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToFrame_System_Int32_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(System.Int32)
-  name.vb: SeekToFrame(Integer)
-  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(int)
-  fullName.vb: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(Integer)
-  nameWithType: PlaybackPositioningTools.SeekToFrame(int)
-  nameWithType.vb: PlaybackPositioningTools.SeekToFrame(Integer)
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(BassBoom.Basolia.BasoliaMedia,System.Int32)
+  name: SeekToFrame(BasoliaMedia?, int)
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToFrame_BassBoom_Basolia_BasoliaMedia_System_Int32_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(BassBoom.Basolia.BasoliaMedia,System.Int32)
+  name.vb: SeekToFrame(BasoliaMedia, Integer)
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(BassBoom.Basolia.BasoliaMedia?, int)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame(BassBoom.Basolia.BasoliaMedia, Integer)
+  nameWithType: PlaybackPositioningTools.SeekToFrame(BasoliaMedia?, int)
+  nameWithType.vb: PlaybackPositioningTools.SeekToFrame(BasoliaMedia, Integer)
 - uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame*
   name: SeekToFrame
   href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToFrame_
@@ -2534,12 +2635,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToFrame
   nameWithType: PlaybackPositioningTools.SeekToFrame
-- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning
-  name: SeekToTheBeginning()
-  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToTheBeginning
-  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning
-  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning()
-  nameWithType: PlaybackPositioningTools.SeekToTheBeginning()
+- uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning(BassBoom.Basolia.BasoliaMedia)
+  name: SeekToTheBeginning(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToTheBeginning_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning(BassBoom.Basolia.BasoliaMedia)
+  name.vb: SeekToTheBeginning(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackPositioningTools.SeekToTheBeginning(BasoliaMedia?)
+  nameWithType.vb: PlaybackPositioningTools.SeekToTheBeginning(BasoliaMedia)
 - uid: BassBoom.Basolia.Playback.PlaybackPositioningTools.SeekToTheBeginning*
   name: SeekToTheBeginning
   href: api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html#BassBoom_Basolia_Playback_PlaybackPositioningTools_SeekToTheBeginning_
@@ -2583,15 +2687,15 @@ references:
   commentId: T:BassBoom.Basolia.Playback.PlaybackTools
   fullName: BassBoom.Basolia.Playback.PlaybackTools
   nameWithType: PlaybackTools
-- uid: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32)
-  name: GetEqualizer(PlaybackChannels, int)
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetEqualizer_BassBoom_Basolia_Enumerations_PlaybackChannels_System_Int32_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32)
-  name.vb: GetEqualizer(PlaybackChannels, Integer)
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels, int)
-  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels, Integer)
-  nameWithType: PlaybackTools.GetEqualizer(PlaybackChannels, int)
-  nameWithType.vb: PlaybackTools.GetEqualizer(PlaybackChannels, Integer)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32)
+  name: GetEqualizer(BasoliaMedia?, PlaybackChannels, int)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetEqualizer_BassBoom_Basolia_BasoliaMedia_BassBoom_Basolia_Enumerations_PlaybackChannels_System_Int32_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32)
+  name.vb: GetEqualizer(BasoliaMedia, PlaybackChannels, Integer)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.BasoliaMedia?, BassBoom.Basolia.Enumerations.PlaybackChannels, int)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.BasoliaMedia, BassBoom.Basolia.Enumerations.PlaybackChannels, Integer)
+  nameWithType: PlaybackTools.GetEqualizer(BasoliaMedia?, PlaybackChannels, int)
+  nameWithType.vb: PlaybackTools.GetEqualizer(BasoliaMedia, PlaybackChannels, Integer)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer*
   name: GetEqualizer
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetEqualizer_
@@ -2599,12 +2703,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer
   nameWithType: PlaybackTools.GetEqualizer
-- uid: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Basolia.Enumerations.PlaybackStateType)
-  name: GetNativeState(PlaybackStateType)
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetNativeState_BassBoom_Basolia_Enumerations_PlaybackStateType_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Basolia.Enumerations.PlaybackStateType)
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Basolia.Enumerations.PlaybackStateType)
-  nameWithType: PlaybackTools.GetNativeState(PlaybackStateType)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Enumerations.PlaybackStateType)
+  name: GetNativeState(BasoliaMedia?, PlaybackStateType)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetNativeState_BassBoom_Basolia_BasoliaMedia_BassBoom_Basolia_Enumerations_PlaybackStateType_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Enumerations.PlaybackStateType)
+  name.vb: GetNativeState(BasoliaMedia, PlaybackStateType)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Basolia.BasoliaMedia?, BassBoom.Basolia.Enumerations.PlaybackStateType)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState(BassBoom.Basolia.BasoliaMedia, BassBoom.Basolia.Enumerations.PlaybackStateType)
+  nameWithType: PlaybackTools.GetNativeState(BasoliaMedia?, PlaybackStateType)
+  nameWithType.vb: PlaybackTools.GetNativeState(BasoliaMedia, PlaybackStateType)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState*
   name: GetNativeState
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetNativeState_
@@ -2612,12 +2719,63 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.GetNativeState
   nameWithType: PlaybackTools.GetNativeState
-- uid: BassBoom.Basolia.Playback.PlaybackTools.GetVolume
-  name: GetVolume()
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetVolume
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetVolume
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetVolume()
-  nameWithType: PlaybackTools.GetVolume()
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetRadioIcy(BassBoom.Basolia.BasoliaMedia)
+  name: GetRadioIcy(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetRadioIcy_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetRadioIcy(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetRadioIcy(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetRadioIcy(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.GetRadioIcy(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.GetRadioIcy(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.GetRadioIcy(BasoliaMedia)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetRadioIcy*
+  name: GetRadioIcy
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetRadioIcy_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.GetRadioIcy
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetRadioIcy
+  nameWithType: PlaybackTools.GetRadioIcy
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetRadioNowPlaying(BassBoom.Basolia.BasoliaMedia)
+  name: GetRadioNowPlaying(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetRadioNowPlaying_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetRadioNowPlaying(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetRadioNowPlaying(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetRadioNowPlaying(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.GetRadioNowPlaying(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.GetRadioNowPlaying(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.GetRadioNowPlaying(BasoliaMedia)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetRadioNowPlaying*
+  name: GetRadioNowPlaying
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetRadioNowPlaying_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.GetRadioNowPlaying
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetRadioNowPlaying
+  nameWithType: PlaybackTools.GetRadioNowPlaying
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetState(BassBoom.Basolia.BasoliaMedia)
+  name: GetState(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetState_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetState(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetState(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetState(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.GetState(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.GetState(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.GetState(BasoliaMedia)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetState*
+  name: GetState
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetState_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.GetState
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetState
+  nameWithType: PlaybackTools.GetState
+- uid: BassBoom.Basolia.Playback.PlaybackTools.GetVolume(BassBoom.Basolia.BasoliaMedia)
+  name: GetVolume(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetVolume_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.GetVolume(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetVolume(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.GetVolume(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.GetVolume(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.GetVolume(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.GetVolume(BasoliaMedia)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.GetVolume*
   name: GetVolume
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetVolume_
@@ -2625,12 +2783,31 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.GetVolume
   nameWithType: PlaybackTools.GetVolume
-- uid: BassBoom.Basolia.Playback.PlaybackTools.Pause
-  name: Pause()
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Pause
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.Pause
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.Pause()
-  nameWithType: PlaybackTools.Pause()
+- uid: BassBoom.Basolia.Playback.PlaybackTools.IsPlaying(BassBoom.Basolia.BasoliaMedia)
+  name: IsPlaying(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_IsPlaying_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.IsPlaying(BassBoom.Basolia.BasoliaMedia)
+  name.vb: IsPlaying(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.IsPlaying(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.IsPlaying(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.IsPlaying(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.IsPlaying(BasoliaMedia)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.IsPlaying*
+  name: IsPlaying
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_IsPlaying_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.IsPlaying
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.IsPlaying
+  nameWithType: PlaybackTools.IsPlaying
+- uid: BassBoom.Basolia.Playback.PlaybackTools.Pause(BassBoom.Basolia.BasoliaMedia)
+  name: Pause(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Pause_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.Pause(BassBoom.Basolia.BasoliaMedia)
+  name.vb: Pause(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.Pause(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.Pause(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.Pause(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.Pause(BasoliaMedia)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.Pause*
   name: Pause
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Pause_
@@ -2638,12 +2815,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.Pause
   nameWithType: PlaybackTools.Pause
-- uid: BassBoom.Basolia.Playback.PlaybackTools.Play
-  name: Play()
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Play
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.Play
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.Play()
-  nameWithType: PlaybackTools.Play()
+- uid: BassBoom.Basolia.Playback.PlaybackTools.Play(BassBoom.Basolia.BasoliaMedia)
+  name: Play(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Play_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.Play(BassBoom.Basolia.BasoliaMedia)
+  name.vb: Play(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.Play(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.Play(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.Play(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.Play(BasoliaMedia)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.Play*
   name: Play
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Play_
@@ -2651,12 +2831,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.Play
   nameWithType: PlaybackTools.Play
-- uid: BassBoom.Basolia.Playback.PlaybackTools.PlayAsync
-  name: PlayAsync()
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_PlayAsync
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.PlayAsync
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.PlayAsync()
-  nameWithType: PlaybackTools.PlayAsync()
+- uid: BassBoom.Basolia.Playback.PlaybackTools.PlayAsync(BassBoom.Basolia.BasoliaMedia)
+  name: PlayAsync(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_PlayAsync_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.PlayAsync(BassBoom.Basolia.BasoliaMedia)
+  name.vb: PlayAsync(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.PlayAsync(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.PlayAsync(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.PlayAsync(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.PlayAsync(BasoliaMedia)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.PlayAsync*
   name: PlayAsync
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_PlayAsync_
@@ -2664,51 +2847,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.PlayAsync
   nameWithType: PlaybackTools.PlayAsync
-- uid: BassBoom.Basolia.Playback.PlaybackTools.Playing
-  name: Playing
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Playing
-  commentId: P:BassBoom.Basolia.Playback.PlaybackTools.Playing
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.Playing
-  nameWithType: PlaybackTools.Playing
-- uid: BassBoom.Basolia.Playback.PlaybackTools.Playing*
-  name: Playing
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Playing_
-  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.Playing
-  isSpec: "True"
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.Playing
-  nameWithType: PlaybackTools.Playing
-- uid: BassBoom.Basolia.Playback.PlaybackTools.RadioIcy
-  name: RadioIcy
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_RadioIcy
-  commentId: P:BassBoom.Basolia.Playback.PlaybackTools.RadioIcy
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.RadioIcy
-  nameWithType: PlaybackTools.RadioIcy
-- uid: BassBoom.Basolia.Playback.PlaybackTools.RadioIcy*
-  name: RadioIcy
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_RadioIcy_
-  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.RadioIcy
-  isSpec: "True"
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.RadioIcy
-  nameWithType: PlaybackTools.RadioIcy
-- uid: BassBoom.Basolia.Playback.PlaybackTools.RadioNowPlaying
-  name: RadioNowPlaying
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_RadioNowPlaying
-  commentId: P:BassBoom.Basolia.Playback.PlaybackTools.RadioNowPlaying
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.RadioNowPlaying
-  nameWithType: PlaybackTools.RadioNowPlaying
-- uid: BassBoom.Basolia.Playback.PlaybackTools.RadioNowPlaying*
-  name: RadioNowPlaying
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_RadioNowPlaying_
-  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.RadioNowPlaying
-  isSpec: "True"
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.RadioNowPlaying
-  nameWithType: PlaybackTools.RadioNowPlaying
-- uid: BassBoom.Basolia.Playback.PlaybackTools.ResetEqualizer
-  name: ResetEqualizer()
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_ResetEqualizer
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.ResetEqualizer
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.ResetEqualizer()
-  nameWithType: PlaybackTools.ResetEqualizer()
+- uid: BassBoom.Basolia.Playback.PlaybackTools.ResetEqualizer(BassBoom.Basolia.BasoliaMedia)
+  name: ResetEqualizer(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_ResetEqualizer_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.ResetEqualizer(BassBoom.Basolia.BasoliaMedia)
+  name.vb: ResetEqualizer(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.ResetEqualizer(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.ResetEqualizer(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.ResetEqualizer(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.ResetEqualizer(BasoliaMedia)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.ResetEqualizer*
   name: ResetEqualizer
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_ResetEqualizer_
@@ -2716,15 +2863,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.ResetEqualizer
   nameWithType: PlaybackTools.ResetEqualizer
-- uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Double)
-  name: SetEqualizer(PlaybackChannels, int, double)
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizer_BassBoom_Basolia_Enumerations_PlaybackChannels_System_Int32_System_Double_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Double)
-  name.vb: SetEqualizer(PlaybackChannels, Integer, Double)
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels, int, double)
-  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.Enumerations.PlaybackChannels, Integer, Double)
-  nameWithType: PlaybackTools.SetEqualizer(PlaybackChannels, int, double)
-  nameWithType.vb: PlaybackTools.SetEqualizer(PlaybackChannels, Integer, Double)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Double)
+  name: SetEqualizer(BasoliaMedia?, PlaybackChannels, int, double)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizer_BassBoom_Basolia_BasoliaMedia_BassBoom_Basolia_Enumerations_PlaybackChannels_System_Int32_System_Double_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Double)
+  name.vb: SetEqualizer(BasoliaMedia, PlaybackChannels, Integer, Double)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.BasoliaMedia?, BassBoom.Basolia.Enumerations.PlaybackChannels, int, double)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer(BassBoom.Basolia.BasoliaMedia, BassBoom.Basolia.Enumerations.PlaybackChannels, Integer, Double)
+  nameWithType: PlaybackTools.SetEqualizer(BasoliaMedia?, PlaybackChannels, int, double)
+  nameWithType.vb: PlaybackTools.SetEqualizer(BasoliaMedia, PlaybackChannels, Integer, Double)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer*
   name: SetEqualizer
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizer_
@@ -2732,15 +2879,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizer
   nameWithType: PlaybackTools.SetEqualizer
-- uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Int32,System.Double)
-  name: SetEqualizerRange(PlaybackChannels, int, int, double)
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizerRange_BassBoom_Basolia_Enumerations_PlaybackChannels_System_Int32_System_Int32_System_Double_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Int32,System.Double)
-  name.vb: SetEqualizerRange(PlaybackChannels, Integer, Integer, Double)
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.Enumerations.PlaybackChannels, int, int, double)
-  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.Enumerations.PlaybackChannels, Integer, Integer, Double)
-  nameWithType: PlaybackTools.SetEqualizerRange(PlaybackChannels, int, int, double)
-  nameWithType.vb: PlaybackTools.SetEqualizerRange(PlaybackChannels, Integer, Integer, Double)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Int32,System.Double)
+  name: SetEqualizerRange(BasoliaMedia?, PlaybackChannels, int, int, double)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizerRange_BassBoom_Basolia_BasoliaMedia_BassBoom_Basolia_Enumerations_PlaybackChannels_System_Int32_System_Int32_System_Double_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32,System.Int32,System.Double)
+  name.vb: SetEqualizerRange(BasoliaMedia, PlaybackChannels, Integer, Integer, Double)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.BasoliaMedia?, BassBoom.Basolia.Enumerations.PlaybackChannels, int, int, double)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange(BassBoom.Basolia.BasoliaMedia, BassBoom.Basolia.Enumerations.PlaybackChannels, Integer, Integer, Double)
+  nameWithType: PlaybackTools.SetEqualizerRange(BasoliaMedia?, PlaybackChannels, int, int, double)
+  nameWithType.vb: PlaybackTools.SetEqualizerRange(BasoliaMedia, PlaybackChannels, Integer, Integer, Double)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange*
   name: SetEqualizerRange
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetEqualizerRange_
@@ -2748,15 +2895,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange
   nameWithType: PlaybackTools.SetEqualizerRange
-- uid: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(System.Double)
-  name: SetVolume(double)
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetVolume_System_Double_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetVolume(System.Double)
-  name.vb: SetVolume(Double)
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(double)
-  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(Double)
-  nameWithType: PlaybackTools.SetVolume(double)
-  nameWithType.vb: PlaybackTools.SetVolume(Double)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia,System.Double)
+  name: SetVolume(BasoliaMedia?, double)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetVolume_BassBoom_Basolia_BasoliaMedia_System_Double_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia,System.Double)
+  name.vb: SetVolume(BasoliaMedia, Double)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia?, double)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia, Double)
+  nameWithType: PlaybackTools.SetVolume(BasoliaMedia?, double)
+  nameWithType.vb: PlaybackTools.SetVolume(BasoliaMedia, Double)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.SetVolume*
   name: SetVolume
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetVolume_
@@ -2764,25 +2911,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.SetVolume
   nameWithType: PlaybackTools.SetVolume
-- uid: BassBoom.Basolia.Playback.PlaybackTools.State
-  name: State
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_State
-  commentId: P:BassBoom.Basolia.Playback.PlaybackTools.State
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.State
-  nameWithType: PlaybackTools.State
-- uid: BassBoom.Basolia.Playback.PlaybackTools.State*
-  name: State
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_State_
-  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.State
-  isSpec: "True"
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.State
-  nameWithType: PlaybackTools.State
-- uid: BassBoom.Basolia.Playback.PlaybackTools.Stop
-  name: Stop()
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Stop
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.Stop
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.Stop()
-  nameWithType: PlaybackTools.Stop()
+- uid: BassBoom.Basolia.Playback.PlaybackTools.Stop(BassBoom.Basolia.BasoliaMedia)
+  name: Stop(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Stop_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.Stop(BassBoom.Basolia.BasoliaMedia)
+  name.vb: Stop(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.Stop(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.Stop(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.Stop(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.Stop(BasoliaMedia)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.Stop*
   name: Stop
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Stop_
