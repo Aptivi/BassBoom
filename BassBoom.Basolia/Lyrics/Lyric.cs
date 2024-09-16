@@ -37,30 +37,33 @@ namespace BassBoom.Basolia.Lyrics
         /// <summary>
         /// Gets all the lines from the start to the current music duration
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>Array of lyric lines from the start to the current music duration</returns>
-        public LyricLine[] GetLinesCurrent()
+        public LyricLine[] GetLinesCurrent(BasoliaMedia? basolia)
         {
-            var currentSpan = PlaybackPositioningTools.GetCurrentDurationSpan();
+            var currentSpan = PlaybackPositioningTools.GetCurrentDurationSpan(basolia);
             return GetLinesToSpan(currentSpan);
         }
 
         /// <summary>
         /// Gets all the lines from the current music duration to the end
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>Array of lyric lines from the current music duration to the end</returns>
-        public LyricLine[] GetLinesUpcoming()
+        public LyricLine[] GetLinesUpcoming(BasoliaMedia? basolia)
         {
-            var currentSpan = PlaybackPositioningTools.GetCurrentDurationSpan();
+            var currentSpan = PlaybackPositioningTools.GetCurrentDurationSpan(basolia);
             return GetLinesFromSpan(currentSpan);
         }
 
         /// <summary>
         /// Gets the last lyric line from the current music duration
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>Last lyric line from the current music duration</returns>
-        public string GetLastLineCurrent()
+        public string GetLastLineCurrent(BasoliaMedia? basolia)
         {
-            var processedLines = GetLinesCurrent();
+            var processedLines = GetLinesCurrent(basolia);
             if (processedLines.Length > 0)
                 return processedLines[processedLines.Length - 1].Line;
             return "";
@@ -69,10 +72,11 @@ namespace BassBoom.Basolia.Lyrics
         /// <summary>
         /// Gets the last lyric line words from the current music duration
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>Last lyric line word from the current music duration</returns>
-        public List<LyricLineWord> GetLastLineWordsCurrent()
+        public List<LyricLineWord> GetLastLineWordsCurrent(BasoliaMedia? basolia)
         {
-            var processedLines = GetLinesCurrent();
+            var processedLines = GetLinesCurrent(basolia);
             if (processedLines.Length > 0)
                 return processedLines[processedLines.Length - 1].LineWords;
             return [];

@@ -40,11 +40,14 @@ namespace BassBoom.Basolia.Devices
         /// <summary>
         /// Gets a read only dictionary that lists all the drivers
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>A dictionary containing the driver names and their descriptions</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static ReadOnlyDictionary<string, string> GetDrivers()
+        public static ReadOnlyDictionary<string, string> GetDrivers(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             Dictionary<string, string> drivers = [];
 
             // We're now entering the dangerous zone
@@ -54,7 +57,7 @@ namespace BassBoom.Basolia.Devices
             unsafe
             {
                 // Query the drivers
-                var handle = MpgNative._out123Handle;
+                var handle = basolia._out123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_drivers>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_drivers));
                 int driversStatus = @delegate.Invoke(handle, ref names, ref descr);
                 if (driversStatus == (int)mpg123_errors.MPG123_ERR)
@@ -79,13 +82,16 @@ namespace BassBoom.Basolia.Devices
         /// <summary>
         /// Gets a read only dictionary that lists all the devices detected by the driver
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="driver">A specific driver to use</param>
         /// <param name="activeDevice">An output for the active device name</param>
         /// <returns>A dictionary containing the device names and their descriptions</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static ReadOnlyDictionary<string, string> GetDevices(string driver, ref string activeDevice)
+        public static ReadOnlyDictionary<string, string> GetDevices(BasoliaMedia? basolia, string driver, ref string activeDevice)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             Dictionary<string, string> devices = [];
 
             // We're now entering the dangerous zone
@@ -95,7 +101,7 @@ namespace BassBoom.Basolia.Devices
             unsafe
             {
                 // Query the devices
-                var handle = MpgNative._out123Handle;
+                var handle = basolia._out123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_devices>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_devices));
                 int devicesStatus = @delegate.Invoke(handle, driver, out names, out descr, ref active);
                 if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
@@ -119,17 +125,20 @@ namespace BassBoom.Basolia.Devices
         /// <summary>
         /// Gets the current device and driver
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>Current device and driver</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static (string driver, string device) GetCurrent()
+        public static (string driver, string device) GetCurrent(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // We're now entering the dangerous zone
             unsafe
             {
                 // Query the devices
-                var handle = MpgNative._out123Handle;
+                var handle = basolia._out123Handle;
                 IntPtr driverPtr = IntPtr.Zero;
                 IntPtr devicePtr = IntPtr.Zero;
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_driver_info>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_driver_info));
@@ -156,11 +165,14 @@ namespace BassBoom.Basolia.Devices
         /// <summary>
         /// Sets the active driver
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="driver">Driver to use</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void SetActiveDriver(string driver)
+        public static void SetActiveDriver(BasoliaMedia? basolia, string driver)
         {
-            var driverList = GetDrivers();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            var driverList = GetDrivers(basolia);
             if (!driverList.ContainsKey(driver))
                 throw new BasoliaException($"Driver {driver} doesn't exist", mpg123_errors.MPG123_ERR);
             activeDriver = driver;
@@ -169,13 +181,16 @@ namespace BassBoom.Basolia.Devices
         /// <summary>
         /// Sets the active device
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="driver">Driver to use</param>
         /// <param name="device">Device to use</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void SetActiveDevice(string driver, string device)
+        public static void SetActiveDevice(BasoliaMedia? basolia, string driver, string device)
         {
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             activeDevice = "";
-            var deviceList = GetDevices(driver, ref activeDevice);
+            var deviceList = GetDevices(basolia, driver, ref activeDevice);
             if (string.IsNullOrEmpty(device))
                 return;
             if (!deviceList.ContainsKey(device))

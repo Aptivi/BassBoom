@@ -32,17 +32,17 @@ namespace BassBoom.Cli.CliBase
             bands[band];
 
         internal static double GetEqualizer(int band) =>
-            PlaybackTools.GetEqualizer(PlaybackChannels.Both, band);
+            PlaybackTools.GetEqualizer(BassBoomCli.basolia, PlaybackChannels.Both, band);
 
         internal static void SetEqualizer(int band, double value)
         {
-            PlaybackTools.SetEqualizer(PlaybackChannels.Both, band, value);
+            PlaybackTools.SetEqualizer(BassBoomCli.basolia, PlaybackChannels.Both, band, value);
             UpdateEqualizers();
         }
 
         internal static void ResetEqualizers()
         {
-            PlaybackTools.ResetEqualizer();
+            PlaybackTools.ResetEqualizer(BassBoomCli.basolia);
             UpdateEqualizers();
         }
 

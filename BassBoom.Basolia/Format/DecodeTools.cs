@@ -35,24 +35,18 @@ namespace BassBoom.Basolia.Format
     public static class DecodeTools
     {
         /// <summary>
-        /// Decoder to use
-        /// </summary>
-        public static string Decoder
-        {
-            get => GetCurrentDecoder();
-            set => SetCurrentDecoder(value);
-        }
-
-        /// <summary>
         /// Decodes next MPEG frame to internal buffer or reads a frame and returns after setting a new format.
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="num">Frame offset</param>
         /// <param name="audio">Array of decoded audio bytes</param>
         /// <param name="bytes">Number of bytes to read</param>
         /// <returns>MPG123_OK on success.</returns>
-        public static int DecodeFrame(ref int num, ref byte[]? audio, ref int bytes)
+        public static int DecodeFrame(BasoliaMedia? basolia, ref int num, ref byte[]? audio, ref int bytes)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
@@ -61,7 +55,7 @@ namespace BassBoom.Basolia.Format
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
 
                 // Get the frame
                 IntPtr numPtr, bytesPtr, audioPtr = IntPtr.Zero;
@@ -104,23 +98,38 @@ namespace BassBoom.Basolia.Format
             }
         }
 
-        private static string GetCurrentDecoder()
+        /// <summary>
+        /// Gets the current decoder
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <returns></returns>
+        public static string GetCurrentDecoder(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeDecoder.mpg123_current_decoder>(MpgNative.libManagerMpg, nameof(NativeDecoder.mpg123_current_decoder));
                 IntPtr decoderPtr = @delegate.Invoke(handle);
                 return Marshal.PtrToStringAnsi(decoderPtr);
             }
         }
 
-        private static void SetCurrentDecoder(string decoderName)
+        /// <summary>
+        /// Sets the current decoder
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="decoderName">Decoder name</param>
+        /// <exception cref="BasoliaException"></exception>
+        public static void SetCurrentDecoder(BasoliaMedia? basolia, string decoderName)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
@@ -131,7 +140,7 @@ namespace BassBoom.Basolia.Format
                 string[] supportedDecoders = GetDecoders(true);
                 if (!supportedDecoders.Contains(decoderName))
                     throw new BasoliaException($"Decoder {decoderName} not supported by your device", mpg123_errors.MPG123_BAD_DECODER);
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeDecoder.mpg123_decoder>(MpgNative.libManagerMpg, nameof(NativeDecoder.mpg123_decoder));
                 int status = @delegate.Invoke(handle, decoderName);
                 if (status != (int)mpg123_errors.MPG123_OK)

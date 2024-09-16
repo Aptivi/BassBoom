@@ -40,10 +40,14 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Gets the current duration of the file (samples)
         /// </summary>
-        public static int GetCurrentDuration()
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <returns>Current duration in samples</returns>
+        public static int GetCurrentDuration(BasoliaMedia? basolia)
         {
             int length;
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
@@ -52,7 +56,7 @@ namespace BassBoom.Basolia.Playback
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
 
                 // Get the length
                 var @delegate = MpgNative.GetDelegate<NativePositioning.mpg123_tell>(MpgNative.libManagerMpg, nameof(NativePositioning.mpg123_tell));
@@ -68,15 +72,19 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Gets the current duration of the file (time span)
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>A time span instance that describes the current duration of the file</returns>
-        public static TimeSpan GetCurrentDurationSpan()
+        public static TimeSpan GetCurrentDurationSpan(BasoliaMedia? basolia)
         {
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+
             // First, get the format information
-            var formatInfo = FormatTools.GetFormatInfo();
+            var formatInfo = FormatTools.GetFormatInfo(basolia);
 
             // Get the required values
             long rate = formatInfo.rate;
-            int durationSamples = GetCurrentDuration();
+            int durationSamples = GetCurrentDuration(basolia);
             long seconds = durationSamples / rate;
             return TimeSpan.FromSeconds(seconds);
         }
@@ -84,11 +92,14 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Seeks to the beginning of the music
         /// </summary>
-        public static void SeekToTheBeginning()
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static void SeekToTheBeginning(BasoliaMedia? basolia)
         {
             lock (PositionLock)
             {
                 InitBasolia.CheckInited();
+                if (basolia is null)
+                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened)
@@ -97,17 +108,17 @@ namespace BassBoom.Basolia.Playback
                 // We're now entering the dangerous zone
                 unsafe
                 {
-                    var handle = MpgNative._mpg123Handle;
-                    var outHandle = MpgNative._out123Handle;
+                    var handle = basolia._mpg123Handle;
+                    var outHandle = basolia._out123Handle;
 
                     // Get the length
-                    PlaybackTools.holding = true;
-                    while (PlaybackTools.bufferPlaying)
+                    basolia.holding = true;
+                    while (basolia.bufferPlaying)
                         Thread.Sleep(1);
-                    Drop();
+                    Drop(basolia);
                     var @delegate = MpgNative.GetDelegate<NativePositioning.mpg123_seek>(MpgNative.libManagerMpg, nameof(NativePositioning.mpg123_seek));
                     int status = @delegate.Invoke(handle, 0, 0);
-                    PlaybackTools.holding = false;
+                    basolia.holding = false;
                     if (status == (int)mpg123_errors.MPG123_ERR)
                         throw new BasoliaException("Can't seek to the beginning of the file", mpg123_errors.MPG123_LSEEK_FAILED);
                 }
@@ -117,12 +128,15 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Seeks to a specific frame
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="frame">An MPEG frame number</param>
-        public static void SeekToFrame(int frame)
+        public static void SeekToFrame(BasoliaMedia? basolia, int frame)
         {
             lock (PositionLock)
             {
                 InitBasolia.CheckInited();
+                if (basolia is null)
+                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened)
@@ -131,17 +145,17 @@ namespace BassBoom.Basolia.Playback
                 // We're now entering the dangerous zone
                 unsafe
                 {
-                    var handle = MpgNative._mpg123Handle;
-                    var outHandle = MpgNative._out123Handle;
+                    var handle = basolia._mpg123Handle;
+                    var outHandle = basolia._out123Handle;
 
                     // Get the length
-                    PlaybackTools.holding = true;
-                    while (PlaybackTools.bufferPlaying)
+                    basolia.holding = true;
+                    while (basolia.bufferPlaying)
                         Thread.Sleep(1);
-                    Drop();
+                    Drop(basolia);
                     var @delegate = MpgNative.GetDelegate<NativePositioning.mpg123_seek>(MpgNative.libManagerMpg, nameof(NativePositioning.mpg123_seek));
                     int status = @delegate.Invoke(handle, frame, 0);
-                    PlaybackTools.holding = false;
+                    basolia.holding = false;
                     if (status == (int)mpg123_errors.MPG123_ERR)
                         throw new BasoliaException($"Can't seek to frame #{frame} of the file", (mpg123_errors)status);
                 }
@@ -151,13 +165,16 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Seeks according to the lyric line
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="lyricLine">Lyric line instance</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void SeekLyric(LyricLine lyricLine)
+        public static void SeekLyric(BasoliaMedia? basolia, LyricLine lyricLine)
         {
             lock (PositionLock)
             {
                 InitBasolia.CheckInited();
+                if (basolia is null)
+                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened)
@@ -167,20 +184,23 @@ namespace BassBoom.Basolia.Playback
 
                 // Get the length, convert it to frames, and seek
                 var length = lyricLine.LineSpan.TotalSeconds;
-                int frame = (int)(length * FormatTools.GetFormatInfo().rate);
-                SeekToFrame(frame);
+                int frame = (int)(length * FormatTools.GetFormatInfo(basolia).rate);
+                SeekToFrame(basolia, frame);
             }
         }
 
         /// <summary>
         /// Drops all MPEG frames to the device
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void Drop()
+        public static void Drop(BasoliaMedia? basolia)
         {
             lock (PositionLock)
             {
                 InitBasolia.CheckInited();
+                if (basolia is null)
+                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened)
@@ -189,7 +209,7 @@ namespace BassBoom.Basolia.Playback
                 // We're now entering the dangerous zone
                 unsafe
                 {
-                    var outHandle = MpgNative._out123Handle;
+                    var outHandle = basolia._out123Handle;
                     var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_drop>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_drop));
                     @delegate.Invoke(outHandle);
                 }

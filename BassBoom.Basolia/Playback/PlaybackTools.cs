@@ -43,52 +43,65 @@ namespace BassBoom.Basolia.Playback
     /// </summary>
     public static class PlaybackTools
     {
-        internal static bool bufferPlaying = false;
-        internal static bool holding = false;
-        internal static string radioIcy = "";
-        private static PlaybackState state = PlaybackState.Stopped;
-
         /// <summary>
         /// Checks to see whether the music is playing
         /// </summary>
-        public static bool Playing =>
-            state == PlaybackState.Playing;
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static bool IsPlaying(BasoliaMedia? basolia)
+        {
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            return basolia.state == PlaybackState.Playing;
+        }
 
         /// <summary>
         /// The current state of the playback
         /// </summary>
-        public static PlaybackState State =>
-            state;
-
-        /// <summary>
-        /// Current radio ICY metadata
-        /// </summary>
-        public static string RadioIcy =>
-            radioIcy;
-
-        /// <summary>
-        /// Current radio ICY metadata
-        /// </summary>
-        public static string RadioNowPlaying
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static PlaybackState GetState(BasoliaMedia? basolia)
         {
-            get
-            {
-                string icy = RadioIcy;
-                if (icy.Length == 0 || !FileTools.IsRadioStation)
-                    return "";
-                icy = Regex.Match(icy, @"StreamTitle='(.+?(?=\';))'").Groups[1].Value.Trim().Replace("\\'", "'");
-                return icy;
-            }
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            return basolia.state;
+        }
+
+        /// <summary>
+        /// Current radio ICY metadata
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static string GetRadioIcy(BasoliaMedia? basolia)
+        {
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            return basolia.radioIcy;
+        }
+
+        /// <summary>
+        /// Current radio ICY metadata
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static string GetRadioNowPlaying(BasoliaMedia? basolia)
+        {
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            string icy = GetRadioIcy(basolia);
+            if (icy.Length == 0 || !FileTools.IsRadioStation)
+                return "";
+            icy = Regex.Match(icy, @"StreamTitle='(.+?(?=\';))'").Groups[1].Value.Trim().Replace("\\'", "'");
+            return icy;
         }
 
         /// <summary>
         /// Plays the currently open file (synchronous)
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <exception cref="BasoliaException"></exception>
         /// <exception cref="BasoliaOutException"></exception>
-        public static void Play()
+        public static void Play(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
@@ -97,11 +110,11 @@ namespace BassBoom.Basolia.Playback
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
-                var outHandle = MpgNative._out123Handle;
+                var handle = basolia._mpg123Handle;
+                var outHandle = basolia._out123Handle;
 
                 // First, get formats and reset them
-                var (rate, channels, encoding) = FormatTools.GetFormatInfo();
+                var (rate, channels, encoding) = FormatTools.GetFormatInfo(basolia);
                 var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_format_none>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_format_none));
                 int resetStatus = @delegate.Invoke(handle);
                 if (resetStatus != (int)mpg123_errors.MPG123_OK)
@@ -127,10 +140,10 @@ namespace BassBoom.Basolia.Playback
                     throw new BasoliaOutException($"Can't start the output.", (out123_error)startStatus);
 
                 // Now, buffer the entire music file and create an empty array based on its size
-                var bufferSize = AudioInfoTools.GetBufferSize();
+                var bufferSize = AudioInfoTools.GetBufferSize(basolia);
                 Debug.WriteLine($"Buffer size is {bufferSize}");
                 int err;
-                state = PlaybackState.Playing;
+                basolia.state = PlaybackState.Playing;
                 do
                 {
                     int num = 0;
@@ -138,74 +151,83 @@ namespace BassBoom.Basolia.Playback
                     byte[]? audio = null;
 
                     // First, let Basolia "hold on" until hold is released
-                    while (holding)
+                    while (basolia.holding)
                         Thread.Sleep(1);
 
                     // Now, play the MPEG buffer to the device
-                    bufferPlaying = true;
-                    err = DecodeTools.DecodeFrame(ref num, ref audio, ref audioBytes);
-                    PlayBuffer(audio);
-                    bufferPlaying = false;
+                    basolia.bufferPlaying = true;
+                    err = DecodeTools.DecodeFrame(basolia, ref num, ref audio, ref audioBytes);
+                    PlayBuffer(basolia, audio);
+                    basolia.bufferPlaying = false;
 
                     // Check to see if we need more (radio)
                     if (FileTools.IsRadioStation && err == (int)mpg123_errors.MPG123_NEED_MORE)
                     {
                         err = (int)mpg123_errors.MPG123_OK;
-                        FeedRadio();
+                        FeedRadio(basolia);
                     }
-                } while (err == (int)mpg123_errors.MPG123_OK && Playing);
-                if (Playing || state == PlaybackState.Stopping)
-                    state = PlaybackState.Stopped;
+                } while (err == (int)mpg123_errors.MPG123_OK && IsPlaying(basolia));
+                if (IsPlaying(basolia) || basolia.state == PlaybackState.Stopping)
+                    basolia.state = PlaybackState.Stopped;
             }
         }
 
         /// <summary>
         /// Plays the currently open file (asynchronous)
         /// </summary>
-        public static async Task PlayAsync() =>
-            await Task.Run(Play);
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static async Task PlayAsync(BasoliaMedia? basolia) =>
+            await Task.Run(() => Play(basolia));
 
         /// <summary>
         /// Pauses the currently open file
         /// </summary>
         /// <exception cref="BasoliaException"></exception>
-        public static void Pause()
+        public static void Pause(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't pause a file that's not open", mpg123_errors.MPG123_BAD_FILE);
-            state = PlaybackState.Paused;
+            basolia.state = PlaybackState.Paused;
         }
 
         /// <summary>
         /// Stops the playback
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void Stop()
+        public static void Stop(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't stop a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Stop the music and seek to the beginning
-            state = state == PlaybackState.Playing ? PlaybackState.Stopping : PlaybackState.Stopped;
-            SpinWait.SpinUntil(() => state == PlaybackState.Stopped);
+            basolia.state = basolia.state == PlaybackState.Playing ? PlaybackState.Stopping : PlaybackState.Stopped;
+            SpinWait.SpinUntil(() => basolia.state == PlaybackState.Stopped);
             if (!FileTools.IsRadioStation)
-                PlaybackPositioningTools.SeekToTheBeginning();
+                PlaybackPositioningTools.SeekToTheBeginning(basolia);
         }
 
         /// <summary>
         /// Sets the volume of this application
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="volume">Volume from 0.0 to 1.0, inclusive</param>
         /// <exception cref="BasoliaOutException"></exception>
-        public static void SetVolume(double volume)
+        public static void SetVolume(BasoliaMedia? basolia, double volume)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check the volume
             if (volume < 0)
@@ -216,7 +238,7 @@ namespace BassBoom.Basolia.Playback
             // Try to set the volume
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_volume>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_volume));
                 int status = @delegate.Invoke(handle, volume);
                 if (status != (int)out123_error.OUT123_OK)
@@ -227,11 +249,14 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Gets the volume information
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>A base linear volume from 0.0 to 1.0, an actual linear volume from 0.0 to 1.0, and the RVA volume in decibels (dB)</returns>
         /// <exception cref="BasoliaOutException"></exception>
-        public static (double baseLinear, double actualLinear, double decibelsRva) GetVolume()
+        public static (double baseLinear, double actualLinear, double decibelsRva) GetVolume(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             double baseLinearAddr = 0;
             double actualLinearAddr = 0;
@@ -240,7 +265,7 @@ namespace BassBoom.Basolia.Playback
             // Try to get the volume
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_getvolume>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_getvolume));
                 int status = @delegate.Invoke(handle, ref baseLinearAddr, ref actualLinearAddr, ref decibelsRvaAddr);
                 if (status != (int)out123_error.OUT123_OK)
@@ -254,18 +279,21 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Sets the equalizer band to any value
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="channels">Mono, stereo, or both</param>
         /// <param name="bandIdx">Band index from 0 to 31</param>
         /// <param name="value">Value of the equalizer</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void SetEqualizer(PlaybackChannels channels, int bandIdx, double value)
+        public static void SetEqualizer(BasoliaMedia? basolia, PlaybackChannels channels, int bandIdx, double value)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_eq>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_eq));
                 int status = @delegate.Invoke(handle, (mpg123_channels)channels, bandIdx, value);
                 if (status != (int)mpg123_errors.MPG123_OK)
@@ -276,19 +304,22 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Sets the equalizer bands to any value
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="channels">Mono, stereo, or both</param>
         /// <param name="bandIdxStart">Band index from 0 to 31 (first band to start from)</param>
         /// <param name="bandIdxEnd">Band index from 0 to 31 (second band to end to)</param>
         /// <param name="value">Value of the equalizer</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void SetEqualizerRange(PlaybackChannels channels, int bandIdxStart, int bandIdxEnd, double value)
+        public static void SetEqualizerRange(BasoliaMedia? basolia, PlaybackChannels channels, int bandIdxStart, int bandIdxEnd, double value)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_eq_bands>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_eq_bands));
                 int status = @delegate.Invoke(handle, (int)channels, bandIdxStart, bandIdxEnd, value);
                 if (status != (int)mpg123_errors.MPG123_OK)
@@ -299,17 +330,20 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Gets the equalizer band value
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="channels">Mono, stereo, or both</param>
         /// <param name="bandIdx">Band index from 0 to 31</param>
         /// <exception cref="BasoliaException"></exception>
-        public static double GetEqualizer(PlaybackChannels channels, int bandIdx)
+        public static double GetEqualizer(BasoliaMedia? basolia, PlaybackChannels channels, int bandIdx)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_geteq>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_geteq));
                 double eq = @delegate.Invoke(handle, (mpg123_channels)channels, bandIdx);
                 return eq;
@@ -319,15 +353,18 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Resets the equalizer band to its natural value
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void ResetEqualizer()
+        public static void ResetEqualizer(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_reset_eq>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_reset_eq));
                 int status = @delegate.Invoke(handle);
                 if (status != (int)mpg123_errors.MPG123_OK)
@@ -338,19 +375,22 @@ namespace BassBoom.Basolia.Playback
         /// <summary>
         /// Gets the native state
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="state">A native state to get</param>
         /// <returns>A number that represents the value of this state</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static (long, double) GetNativeState(PlaybackStateType state)
+        public static (long, double) GetNativeState(BasoliaMedia? basolia, PlaybackStateType state)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
             {
                 long stateInt = 0;
                 double stateDouble = 0;
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_getstate>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_getstate));
                 int status = @delegate.Invoke(handle, (mpg123_state)state, ref stateInt, ref stateDouble);
                 if (status != (int)mpg123_errors.MPG123_OK)
@@ -359,7 +399,7 @@ namespace BassBoom.Basolia.Playback
             }
         }
 
-        internal static void FeedRadio()
+        internal static void FeedRadio(BasoliaMedia? basolia)
         {
             if (!FileTools.IsOpened || !FileTools.IsRadioStation)
                 return;
@@ -369,10 +409,12 @@ namespace BassBoom.Basolia.Playback
                 return;
             if (FileTools.CurrentFile.Stream is null)
                 return;
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
 
                 // Get the MP3 frame length first
                 string metaIntStr = FileTools.CurrentFile.Headers.GetValues("icy-metaint").First();
@@ -397,8 +439,8 @@ namespace BassBoom.Basolia.Playback
                 FileTools.CurrentFile.Stream.Read(metadataBytes, 0, metaBytesToRead);
                 string icy = Encoding.UTF8.GetString(metadataBytes).Replace("\0", "").Trim();
                 if (!string.IsNullOrEmpty(icy))
-                    radioIcy = icy;
-                Debug.WriteLine($"{radioIcy}");
+                    basolia.radioIcy = icy;
+                Debug.WriteLine($"{basolia.radioIcy}");
 
                 // Copy the data to MPG123
                 IntPtr data = Marshal.AllocHGlobal(buffer.Length);
@@ -410,13 +452,15 @@ namespace BassBoom.Basolia.Playback
             }
         }
 
-        internal static int PlayBuffer(byte[]? buffer)
+        internal static int PlayBuffer(BasoliaMedia? basolia, byte[]? buffer)
         {
             if (buffer is null)
                 return 0;
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             unsafe
             {
-                var outHandle = MpgNative._out123Handle;
+                var outHandle = basolia._out123Handle;
                 IntPtr bufferPtr = Marshal.AllocHGlobal(Marshal.SizeOf<byte>() * buffer.Length);
                 Marshal.Copy(buffer, 0, bufferPtr, buffer.Length);
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_play>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_play));

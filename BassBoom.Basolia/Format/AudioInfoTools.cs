@@ -43,19 +43,22 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the duration of the file in samples
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="scan">Whether to scan the whole music file or not (seeks to the beginning of the music; don't use during playback.</param>
         /// <returns>Number of samples detected by MPG123. If you want to get seconds, use <see cref="FormatTools.GetFormatInfo"/>'s rate result to divide the samples by it.</returns>
-        public static int GetDuration(bool scan)
+        public static int GetDuration(BasoliaMedia? basolia, bool scan)
         {
             int length;
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
-            if (PlaybackTools.Playing)
+            if (PlaybackTools.IsPlaying(basolia))
                 throw new BasoliaException("Trying to get the duration during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
 
             // Always zero for radio stations
@@ -65,7 +68,7 @@ namespace BassBoom.Basolia.Format
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 if (scan)
                 {
                     lock (PlaybackPositioningTools.PositionLock)
@@ -92,16 +95,20 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the duration of the file in the time span
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="scan">Whether to scan the whole music file or not (seeks to the beginning of the music; don't use during playback.</param>
         /// <returns>A <see cref="TimeSpan"/> instance containing the duration in human-readable format</returns>
-        public static TimeSpan GetDurationSpan(bool scan)
+        public static TimeSpan GetDurationSpan(BasoliaMedia? basolia, bool scan)
         {
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+
             // First, get the format information
-            var formatInfo = FormatTools.GetFormatInfo();
+            var formatInfo = FormatTools.GetFormatInfo(basolia);
 
             // Get the required values
             long rate = formatInfo.rate;
-            int durationSamples = GetDuration(scan);
+            int durationSamples = GetDuration(basolia, scan);
             long seconds = durationSamples / rate;
             return TimeSpan.FromSeconds(seconds);
         }
@@ -109,12 +116,16 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the duration from the number of samples
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="samples">Number of samples</param>
         /// <returns>A <see cref="TimeSpan"/> instance containing the duration in human-readable format</returns>
-        public static TimeSpan GetDurationSpanFromSamples(int samples)
+        public static TimeSpan GetDurationSpanFromSamples(BasoliaMedia? basolia, int samples)
         {
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+
             // First, get the format information
-            var (rate, _, _) = FormatTools.GetFormatInfo();
+            var (rate, _, _) = FormatTools.GetFormatInfo(basolia);
             return GetDurationSpanFromSamples(samples, rate);
         }
 
@@ -134,13 +145,16 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the frame size from the currently open music file
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>The MPEG frame size</returns>
         /// <exception cref="BasoliaException"></exception>
         /// <exception cref="BasoliaOutException"></exception>
-        public static int GetFrameSize()
+        public static int GetFrameSize(BasoliaMedia? basolia)
         {
             int frameSize;
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
@@ -148,7 +162,7 @@ namespace BassBoom.Basolia.Format
 
             unsafe
             {
-                var outHandle = MpgNative._out123Handle;
+                var outHandle = basolia._out123Handle;
 
                 // Get the output format to get the frame size
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_getformat>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_getformat));
@@ -163,12 +177,15 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the frame length
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>Frame length in samples</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static int GetFrameLength()
+        public static int GetFrameLength(BasoliaMedia? basolia)
         {
             int getStatus;
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
@@ -176,7 +193,7 @@ namespace BassBoom.Basolia.Format
 
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
 
                 // Get the frame length
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_framelength>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_framelength));
@@ -191,12 +208,15 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the number of samples per frame
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>Number of samples per frame</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static int GetSamplesPerFrame()
+        public static int GetSamplesPerFrame(BasoliaMedia? basolia)
         {
             int getStatus;
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
@@ -204,7 +224,7 @@ namespace BassBoom.Basolia.Format
 
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
 
                 // Get the samples per frame
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_spf>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_spf));
@@ -219,12 +239,15 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the buffer size from the currently open music file.
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>Buffer size</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static int GetBufferSize()
+        public static int GetBufferSize(BasoliaMedia? basolia)
         {
             int bufferSize;
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
@@ -232,7 +255,7 @@ namespace BassBoom.Basolia.Format
 
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
 
                 // Now, buffer the entire music file and create an empty array based on its size
                 var @delegate = MpgNative.GetDelegate<NativeLowIo.mpg123_outblock>(MpgNative.libManagerMpg, nameof(NativeLowIo.mpg123_outblock));
@@ -245,26 +268,29 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the ID3 metadata (v2 and v1)
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="managedV1">An output to the managed instance of the ID3 metadata version 1</param>
         /// <param name="managedV2">An output to the managed instance of the ID3 metadata version 2</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void GetId3Metadata(out Id3V1Metadata managedV1, out Id3V2Metadata managedV2)
+        public static void GetId3Metadata(BasoliaMedia? basolia, out Id3V1Metadata managedV1, out Id3V2Metadata managedV2)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
-            if (PlaybackTools.Playing)
+            if (PlaybackTools.IsPlaying(basolia))
                 throw new BasoliaException("Trying to get the ID3 metadata during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
 
             IntPtr v1 = IntPtr.Zero;
             IntPtr v2 = IntPtr.Zero;
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
 
                 // We need to scan the file to get accurate info
                 if (!FileTools.IsRadioStation)
@@ -402,24 +428,27 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the ICY metadata
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>A string containing ICY metadata</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static string GetIcyMetadata()
+        public static string GetIcyMetadata(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
-            if (PlaybackTools.Playing)
+            if (PlaybackTools.IsPlaying(basolia))
                 throw new BasoliaException("Trying to get the ICY metadata during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
 
             string icy = "";
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
 
                 // We need to scan the file to get accurate info
                 if (!FileTools.IsRadioStation)
@@ -442,18 +471,21 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the frame information
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>An instance of <see cref="FrameInfo"/> containing MPEG frame information about the music file</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static FrameInfo GetFrameInfo()
+        public static FrameInfo GetFrameInfo(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened)
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
-            if (PlaybackTools.Playing)
+            if (PlaybackTools.IsPlaying(basolia))
                 throw new BasoliaException("Trying to get the frame information during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
             
             // Some variables
@@ -475,7 +507,7 @@ namespace BassBoom.Basolia.Format
                 mpg123_frameinfo_win frameInfo = default;
                 unsafe
                 {
-                    var handle = MpgNative._mpg123Handle;
+                    var handle = basolia._mpg123Handle;
 
                     // We need to scan the file to get accurate info, but it only works with files
                     if (!FileTools.IsRadioStation)
@@ -511,7 +543,7 @@ namespace BassBoom.Basolia.Format
                 mpg123_frameinfo frameInfo = default;
                 unsafe
                 {
-                    var handle = MpgNative._mpg123Handle;
+                    var handle = basolia._mpg123Handle;
 
                     // We need to scan the file to get accurate info
                     if (!FileTools.IsRadioStation)

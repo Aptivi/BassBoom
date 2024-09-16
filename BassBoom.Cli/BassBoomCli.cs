@@ -36,6 +36,7 @@ namespace BassBoom.Cli
         private static readonly Version? version = Assembly.GetAssembly(typeof(InitBasolia))?.GetName().Version;
         internal static Version? mpgVer;
         internal static Version? outVer;
+        internal static BasoliaMedia? basolia;
         internal static Color white = new(ConsoleColors.White);
 
         static int Main(string[] args)
@@ -63,7 +64,7 @@ namespace BassBoom.Cli
                 }
 
                 // Initialize Basolia
-                InitBasolia.Init();
+                basolia = new();
 
                 // Initialize versions
                 mpgVer = InitBasolia.MpgLibVersion;

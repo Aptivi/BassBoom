@@ -38,9 +38,6 @@ namespace BassBoom.Native
         internal static string mpg123LibPath = GetLibPath("mpg123");
         internal static string out123LibPath = GetLibPath("out123");
 
-        internal static mpg123_handle* _mpg123Handle;
-        internal static out123_handle* _out123Handle;
-
         internal static LibraryManager? libManagerMpg;
         internal static LibraryManager? libManagerOut;
 
@@ -117,51 +114,32 @@ namespace BassBoom.Native
             mpg123LibPath = libPath;
             out123LibPath = libPathOut;
 
-            // Start the libraries up
-            var architecture = PlatformHelper.GetArchitecture();
-            if (architecture == Architecture.X86 || architecture == Architecture.Arm)
-                throw new BasoliaNativeLibraryException("32-bit platforms are no longer supported.");
-            libManagerMpg = new LibraryManager(new LibraryFile(mpg123LibPath));
-            libManagerOut = new LibraryManager(new LibraryFile(out123LibPath));
-            libManagerMpg.LoadNativeLibrary();
-            libManagerOut.LoadNativeLibrary();
-
-            // Tell the library the path for the modules
-            string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
-            int result = -1;
-            if (PlatformHelper.IsOnWindows())
-                result = NativeInit._putenv_s("MPG123_MODDIR", libPluginsPath);
-            else
-                result = NativeInit.setenv("MPG123_MODDIR", libPluginsPath, 1);
-            if (result != 0)
-                throw new BasoliaNativeLibraryException("Can't set environment variable MPG123_MODDIR");
-
-            // Verify that we've actually loaded the library!
             try
             {
-                var @delegate = GetDelegate<NativeInit.mpg123_new>(libManagerMpg, nameof(NativeInit.mpg123_new));
-                var handle = @delegate.Invoke(null, null);
-                Debug.WriteLine($"Verifying mpg123 version: {MpgLibVersion}");
-                _mpg123Handle = handle;
+                // Start the libraries up
+                var architecture = PlatformHelper.GetArchitecture();
+                if (architecture == Architecture.X86 || architecture == Architecture.Arm)
+                    throw new BasoliaNativeLibraryException("32-bit platforms are no longer supported.");
+                libManagerMpg = new LibraryManager(new LibraryFile(mpg123LibPath));
+                libManagerOut = new LibraryManager(new LibraryFile(out123LibPath));
+                libManagerMpg.LoadNativeLibrary();
+                libManagerOut.LoadNativeLibrary();
+
+                // Tell the library the path for the modules
+                string libPluginsPath = Path.GetDirectoryName(mpg123LibPath) + "/plugins/";
+                int result = -1;
+                if (PlatformHelper.IsOnWindows())
+                    result = NativeInit._putenv_s("MPG123_MODDIR", libPluginsPath);
+                else
+                    result = NativeInit.setenv("MPG123_MODDIR", libPluginsPath, 1);
+                if (result != 0)
+                    throw new BasoliaNativeLibraryException("Can't set environment variable MPG123_MODDIR");
             }
             catch (Exception ex)
             {
                 mpg123LibPath = oldLibPath;
-                throw new BasoliaNativeLibraryException($"mpg123 library path {libPath} doesn't contain a valid mpg123 library. out123_distversion() was called. {ex.Message}");
-            }
-
-            // Do the same for the out123 library!
-            try
-            {
-                var @delegate = GetDelegate<NativeOutputLib.out123_new>(libManagerOut, nameof(NativeOutputLib.out123_new));
-                var handle = @delegate.Invoke();
-                Debug.WriteLine($"Verifying out123 version: {OutLibVersion}");
-                _out123Handle = handle;
-            }
-            catch (Exception ex)
-            {
                 out123LibPath = oldLibPathOut;
-                throw new BasoliaNativeLibraryException($"out123 library path {libPathOut} doesn't contain a valid out123 library. out123_distversion() was called. {ex.Message}");
+                throw new BasoliaNativeLibraryException($"Failed to load libraries. {mpg123LibPath}. {ex.Message}");
             }
         }
 

@@ -53,7 +53,7 @@ namespace BassBoom.Cli.CliBase
             Player.position += (int)(Common.CurrentCachedInfo.FormatInfo.rate * seekRate);
             if (Player.position > Common.CurrentCachedInfo.Duration)
                 Player.position = Common.CurrentCachedInfo.Duration;
-            PlaybackPositioningTools.SeekToFrame(Player.position);
+            PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, Player.position);
         }
 
         internal static void SeekBackward()
@@ -67,7 +67,7 @@ namespace BassBoom.Cli.CliBase
             Player.position -= (int)(Common.CurrentCachedInfo.FormatInfo.rate * seekRate);
             if (Player.position < 0)
                 Player.position = 0;
-            PlaybackPositioningTools.SeekToFrame(Player.position);
+            PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, Player.position);
         }
 
         internal static void SeekBeginning()
@@ -76,7 +76,7 @@ namespace BassBoom.Cli.CliBase
             if (Common.cachedInfos.Count == 0)
                 return;
 
-            PlaybackPositioningTools.SeekToTheBeginning();
+            PlaybackPositioningTools.SeekToTheBeginning(BassBoomCli.basolia);
             Player.position = 0;
         }
 
@@ -90,11 +90,11 @@ namespace BassBoom.Cli.CliBase
             if (Common.CurrentCachedInfo.LyricInstance is null)
                 return;
 
-            var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesCurrent();
+            var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesCurrent(BassBoomCli.basolia);
             if (lyrics.Length == 0)
                 return;
             var lyric = lyrics.Length == 1 ? lyrics[0] : lyrics[lyrics.Length - 2];
-            PlaybackPositioningTools.SeekLyric(lyric);
+            PlaybackPositioningTools.SeekLyric(BassBoomCli.basolia, lyric);
         }
 
         internal static void SeekCurrentLyric()
@@ -107,11 +107,11 @@ namespace BassBoom.Cli.CliBase
             if (Common.CurrentCachedInfo.LyricInstance is null)
                 return;
 
-            var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesCurrent();
+            var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesCurrent(BassBoomCli.basolia);
             if (lyrics.Length == 0)
                 return;
             var lyric = lyrics[lyrics.Length - 1];
-            PlaybackPositioningTools.SeekLyric(lyric);
+            PlaybackPositioningTools.SeekLyric(BassBoomCli.basolia, lyric);
         }
 
         internal static void SeekNextLyric()
@@ -124,14 +124,14 @@ namespace BassBoom.Cli.CliBase
             if (Common.CurrentCachedInfo.LyricInstance is null)
                 return;
 
-            var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesUpcoming();
+            var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesUpcoming(BassBoomCli.basolia);
             if (lyrics.Length == 0)
             {
                 SeekCurrentLyric();
                 return;
             }
             var lyric = lyrics[0];
-            PlaybackPositioningTools.SeekLyric(lyric);
+            PlaybackPositioningTools.SeekLyric(BassBoomCli.basolia, lyric);
         }
 
         internal static void SeekWhichLyric()
@@ -150,7 +150,7 @@ namespace BassBoom.Cli.CliBase
             if (index == -1)
                 return;
             var lyric = lyrics[index];
-            PlaybackPositioningTools.SeekLyric(lyric);
+            PlaybackPositioningTools.SeekLyric(BassBoomCli.basolia, lyric);
         }
 
         internal static void SeekTo(TimeSpan target)
@@ -164,7 +164,7 @@ namespace BassBoom.Cli.CliBase
             Player.position = (int)(target.TotalSeconds * Common.CurrentCachedInfo.FormatInfo.rate);
             if (Player.position > Common.CurrentCachedInfo.Duration)
                 Player.position = 0;
-            PlaybackPositioningTools.SeekToFrame(Player.position);
+            PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, Player.position);
         }
 
         internal static void Play()
@@ -175,12 +175,12 @@ namespace BassBoom.Cli.CliBase
             if (Player.playerThread is null)
                 return;
 
-            if (PlaybackTools.State == PlaybackState.Stopped)
+            if (PlaybackTools.GetState(BassBoomCli.basolia) == PlaybackState.Stopped)
                 // There could be a chance that the music has fully stopped without any user interaction.
-                PlaybackPositioningTools.SeekToTheBeginning();
+                PlaybackPositioningTools.SeekToTheBeginning(BassBoomCli.basolia);
             Common.advance = true;
             Player.playerThread.Start();
-            SpinWait.SpinUntil(() => PlaybackTools.Playing || Common.failedToPlay);
+            SpinWait.SpinUntil(() => PlaybackTools.IsPlaying(BassBoomCli.basolia) || Common.failedToPlay);
             Common.failedToPlay = false;
         }
 
@@ -188,7 +188,7 @@ namespace BassBoom.Cli.CliBase
         {
             Common.advance = false;
             Common.paused = true;
-            PlaybackTools.Pause();
+            PlaybackTools.Pause(BassBoomCli.basolia);
         }
 
         internal static void Stop(bool resetCurrentSong = true)
@@ -197,7 +197,7 @@ namespace BassBoom.Cli.CliBase
             Common.paused = false;
             if (resetCurrentSong)
                 Common.currentPos = 1;
-            PlaybackTools.Stop();
+            PlaybackTools.Stop(BassBoomCli.basolia);
         }
 
         internal static void NextSong()
@@ -233,7 +233,7 @@ namespace BassBoom.Cli.CliBase
                 PopulateMusicFileInfo(path);
                 Common.populate = true;
                 PopulateMusicFileInfo(Common.CurrentCachedInfo?.MusicPath ?? "");
-                PlaybackPositioningTools.SeekToFrame(currentPos);
+                PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, currentPos);
             }
             else
                 InfoBoxColor.WriteInfoBox($"File \"{path}\" doesn't exist.");
@@ -256,7 +256,7 @@ namespace BassBoom.Cli.CliBase
                     }
                     Common.populate = true;
                     PopulateMusicFileInfo(Common.CurrentCachedInfo?.MusicPath ?? "");
-                    PlaybackPositioningTools.SeekToFrame(currentPos);
+                    PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, currentPos);
                 }
             }
             else
@@ -266,7 +266,7 @@ namespace BassBoom.Cli.CliBase
         internal static void PopulateMusicFileInfo(string musicPath)
         {
             // Try to open the file after loading the library
-            if (PlaybackTools.Playing || !Common.populate)
+            if (PlaybackTools.IsPlaying(BassBoomCli.basolia) || !Common.populate)
                 return;
             Common.populate = false;
             Common.Switch(musicPath);
@@ -274,10 +274,10 @@ namespace BassBoom.Cli.CliBase
             {
                 ScreenTools.CurrentScreen?.RequireRefresh();
                 InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
-                var total = AudioInfoTools.GetDuration(true);
-                var formatInfo = FormatTools.GetFormatInfo();
-                var frameInfo = AudioInfoTools.GetFrameInfo();
-                AudioInfoTools.GetId3Metadata(out var managedV1, out var managedV2);
+                var total = AudioInfoTools.GetDuration(BassBoomCli.basolia, true);
+                var formatInfo = FormatTools.GetFormatInfo(BassBoomCli.basolia);
+                var frameInfo = AudioInfoTools.GetFrameInfo(BassBoomCli.basolia);
+                AudioInfoTools.GetId3Metadata(BassBoomCli.basolia, out var managedV1, out var managedV2);
 
                 // Try to open the lyrics
                 var lyric = OpenLyrics(musicPath);
@@ -401,7 +401,7 @@ namespace BassBoom.Cli.CliBase
                 Player.position = (int)(Common.CurrentCachedInfo.FormatInfo.rate * duration.TotalSeconds);
                 if (Player.position > Common.CurrentCachedInfo.Duration)
                     Player.position = Common.CurrentCachedInfo.Duration;
-                PlaybackPositioningTools.SeekToFrame(Player.position);
+                PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, Player.position);
             }
         }
 
@@ -447,13 +447,13 @@ namespace BassBoom.Cli.CliBase
                 Native State
                 ============
 
-                Accurate rendering: {{PlaybackTools.GetNativeState(PlaybackStateType.Accurate)}}
-                Buffer fill: {{PlaybackTools.GetNativeState(PlaybackStateType.BufferFill)}}
-                Decoding delay: {{PlaybackTools.GetNativeState(PlaybackStateType.DecodeDelay)}}
-                Encoding delay: {{PlaybackTools.GetNativeState(PlaybackStateType.EncodeDelay)}}
-                Encoding padding: {{PlaybackTools.GetNativeState(PlaybackStateType.EncodePadding)}}
-                Frankenstein stream: {{PlaybackTools.GetNativeState(PlaybackStateType.Frankenstein)}}
-                Fresh decoder: {{PlaybackTools.GetNativeState(PlaybackStateType.FreshDecoder)}}
+                Accurate rendering: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Accurate)}}
+                Buffer fill: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.BufferFill)}}
+                Decoding delay: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.DecodeDelay)}}
+                Encoding delay: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodeDelay)}}
+                Encoding padding: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodePadding)}}
+                Frankenstein stream: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Frankenstein)}}
+                Fresh decoder: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.FreshDecoder)}}
 
                 Texts and Extras
                 ================

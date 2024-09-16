@@ -47,11 +47,11 @@ namespace BassBoom.Cli.CliBase
 
             // There could be a chance that the music has fully stopped without any user interaction, but since we're on
             // a radio station, we should seek nothing; just drop.
-            if (PlaybackTools.State == PlaybackState.Stopped)
-                PlaybackPositioningTools.Drop();
+            if (PlaybackTools.GetState(BassBoomCli.basolia) == PlaybackState.Stopped)
+                PlaybackPositioningTools.Drop(BassBoomCli.basolia);
             Common.advance = true;
             Radio.playerThread.Start();
-            SpinWait.SpinUntil(() => PlaybackTools.Playing || Common.failedToPlay);
+            SpinWait.SpinUntil(() => PlaybackTools.IsPlaying(BassBoomCli.basolia) || Common.failedToPlay);
             Common.failedToPlay = false;
         }
 
@@ -59,7 +59,7 @@ namespace BassBoom.Cli.CliBase
         {
             Common.advance = false;
             Common.paused = true;
-            PlaybackTools.Pause();
+            PlaybackTools.Pause(BassBoomCli.basolia);
         }
 
         internal static void Stop(bool resetCurrentStation = true)
@@ -68,7 +68,7 @@ namespace BassBoom.Cli.CliBase
             Common.paused = false;
             if (resetCurrentStation)
                 Common.currentPos = 1;
-            PlaybackTools.Stop();
+            PlaybackTools.Stop(BassBoomCli.basolia);
         }
 
         internal static void NextStation()
@@ -77,7 +77,7 @@ namespace BassBoom.Cli.CliBase
             if (Common.cachedInfos.Count == 0)
                 return;
 
-            PlaybackTools.Stop();
+            PlaybackTools.Stop(BassBoomCli.basolia);
             Common.currentPos++;
             if (Common.currentPos > Common.cachedInfos.Count)
                 Common.currentPos = 1;
@@ -89,7 +89,7 @@ namespace BassBoom.Cli.CliBase
             if (Common.cachedInfos.Count == 0)
                 return;
 
-            PlaybackTools.Stop();
+            PlaybackTools.Stop(BassBoomCli.basolia);
             Common.currentPos--;
             if (Common.currentPos <= 0)
                 Common.currentPos = Common.cachedInfos.Count;
@@ -108,15 +108,15 @@ namespace BassBoom.Cli.CliBase
         internal static void PopulateRadioStationInfo(string musicPath)
         {
             // Try to open the file after loading the library
-            if (PlaybackTools.Playing || !Common.populate)
+            if (PlaybackTools.IsPlaying(BassBoomCli.basolia) || !Common.populate)
                 return;
             Common.populate = false;
             Common.Switch(musicPath);
             if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
                 InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
-                var formatInfo = FormatTools.GetFormatInfo();
-                var frameInfo = AudioInfoTools.GetFrameInfo();
+                var formatInfo = FormatTools.GetFormatInfo(BassBoomCli.basolia);
+                var frameInfo = AudioInfoTools.GetFrameInfo(BassBoomCli.basolia);
 
                 // Try to open the lyrics
                 var instance = new CachedSongInfo(musicPath, null, null, -1, formatInfo, frameInfo, null, FileTools.CurrentFile?.StationName ?? "", true);
@@ -127,7 +127,7 @@ namespace BassBoom.Cli.CliBase
         internal static string RenderStationName()
         {
             // Render the station name
-            string icy = PlaybackTools.RadioNowPlaying;
+            string icy = PlaybackTools.GetRadioNowPlaying(BassBoomCli.basolia);
 
             // Print the music name
             return
@@ -175,7 +175,7 @@ namespace BassBoom.Cli.CliBase
 
                 Radio station URL: {{Common.CurrentCachedInfo.MusicPath}}
                 Radio station name: {{Common.CurrentCachedInfo.StationName}}
-                Radio station current song: {{PlaybackTools.RadioNowPlaying}}
+                Radio station current song: {{PlaybackTools.GetRadioNowPlaying(BassBoomCli.basolia)}}
                 
                 Layer info
                 ==========
@@ -195,13 +195,13 @@ namespace BassBoom.Cli.CliBase
                 Native State
                 ============
                 
-                Accurate rendering: {{PlaybackTools.GetNativeState(PlaybackStateType.Accurate)}}
-                Buffer fill: {{PlaybackTools.GetNativeState(PlaybackStateType.BufferFill)}}
-                Decoding delay: {{PlaybackTools.GetNativeState(PlaybackStateType.DecodeDelay)}}
-                Encoding delay: {{PlaybackTools.GetNativeState(PlaybackStateType.EncodeDelay)}}
-                Encoding padding: {{PlaybackTools.GetNativeState(PlaybackStateType.EncodePadding)}}
-                Frankenstein stream: {{PlaybackTools.GetNativeState(PlaybackStateType.Frankenstein)}}
-                Fresh decoder: {{PlaybackTools.GetNativeState(PlaybackStateType.FreshDecoder)}}
+                Accurate rendering: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Accurate)}}
+                Buffer fill: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.BufferFill)}}
+                Decoding delay: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.DecodeDelay)}}
+                Encoding delay: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodeDelay)}}
+                Encoding padding: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodePadding)}}
+                Frankenstein stream: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Frankenstein)}}
+                Fresh decoder: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.FreshDecoder)}}
                 """
             );
         }

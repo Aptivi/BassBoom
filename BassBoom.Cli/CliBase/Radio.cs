@@ -45,7 +45,7 @@ namespace BassBoom.Cli.CliBase
 
         public static void RadioLoop()
         {
-            Common.volume = PlaybackTools.GetVolume().baseLinear;
+            Common.volume = PlaybackTools.GetVolume(BassBoomCli.basolia).baseLinear;
             Common.isRadioMode = true;
 
             // Populate the screen
@@ -66,8 +66,8 @@ namespace BassBoom.Cli.CliBase
                     return "";
                 var buffer = new StringBuilder();
                 string indicator = $"╣ Volume: {Common.volume:0.00} ╠";
-                var disco = PlaybackTools.Playing && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
-                if (PlaybackTools.Playing)
+                var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
+                if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                 {
                     hue++;
                     if (hue >= 360)
@@ -98,7 +98,7 @@ namespace BassBoom.Cli.CliBase
                     if (ConsoleWrapper.KeyAvailable)
                     {
                         var keystroke = Input.ReadKey();
-                        if (PlaybackTools.Playing)
+                        if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                             HandleKeypressPlayMode(keystroke, radioScreen);
                         else
                             HandleKeypressIdleMode(keystroke, radioScreen);
@@ -106,22 +106,22 @@ namespace BassBoom.Cli.CliBase
                 }
                 catch (BasoliaException bex)
                 {
-                    if (PlaybackTools.Playing)
-                        PlaybackTools.Stop();
+                    if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
+                        PlaybackTools.Stop(BassBoomCli.basolia);
                     InfoBoxColor.WriteInfoBox("There's an error with Basolia when trying to process the music file.\n\n" + bex.Message);
                     radioScreen.RequireRefresh();
                 }
                 catch (BasoliaOutException bex)
                 {
-                    if (PlaybackTools.Playing)
-                        PlaybackTools.Stop();
+                    if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
+                        PlaybackTools.Stop(BassBoomCli.basolia);
                     InfoBoxColor.WriteInfoBox("There's an error with Basolia output when trying to process the music file.\n\n" + bex.Message);
                     radioScreen.RequireRefresh();
                 }
                 catch (Exception ex)
                 {
-                    if (PlaybackTools.Playing)
-                        PlaybackTools.Stop();
+                    if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
+                        PlaybackTools.Stop(BassBoomCli.basolia);
                     InfoBoxColor.WriteInfoBox("There's an unknown error when trying to process the music file.\n\n" + ex.Message);
                     radioScreen.RequireRefresh();
                 }
@@ -129,7 +129,7 @@ namespace BassBoom.Cli.CliBase
 
             // Close the file if open
             if (FileTools.IsOpened)
-                FileTools.CloseFile();
+                FileTools.CloseFile(BassBoomCli.basolia);
 
             // Restore state
             ConsoleWrapper.CursorVisible = true;
@@ -240,7 +240,7 @@ namespace BassBoom.Cli.CliBase
                     TextWriterRaw.WritePlain(RadioControls.RenderStationName(), false);
                     if (Common.paused)
                         Common.paused = false;
-                    PlaybackTools.Play();
+                    PlaybackTools.Play(BassBoomCli.basolia);
                 }
             }
             catch (Exception ex)

@@ -75,9 +75,11 @@ namespace BassBoom.Basolia.File
         /// <summary>
         /// Opens a media file
         /// </summary>
-        public static void OpenFile(string path)
+        public static void OpenFile(BasoliaMedia? basolia, string path)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (IsOpened)
@@ -95,7 +97,7 @@ namespace BassBoom.Basolia.File
             unsafe
             {
                 // Open the file
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_open>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_open));
                 int openStatus = @delegate.Invoke(handle, path);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
@@ -108,15 +110,17 @@ namespace BassBoom.Basolia.File
         /// <summary>
         /// Opens a remote radio station
         /// </summary>
-        public static void OpenUrl(string path) =>
-            Task.Run(() => OpenUrlAsync(path)).Wait();
+        public static void OpenUrl(BasoliaMedia? basolia, string path) =>
+            Task.Run(() => OpenUrlAsync(basolia, path)).Wait();
 
         /// <summary>
         /// Opens a remote radio station
         /// </summary>
-        public static async Task OpenUrlAsync(string path)
+        public static async Task OpenUrlAsync(BasoliaMedia? basolia, string path)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (IsOpened)
@@ -146,7 +150,7 @@ namespace BassBoom.Basolia.File
             unsafe
             {
                 // Open the radio station
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_open_feed>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_open_feed));
                 int openStatus = @delegate.Invoke(handle);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
@@ -157,29 +161,32 @@ namespace BassBoom.Basolia.File
             currentFile = new(true, path, await reply.Content.ReadAsStreamAsync().ConfigureAwait(false), reply.Headers, reply.Headers.GetValues("icy-name").First());
 
             // If necessary, feed.
-            PlaybackTools.FeedRadio();
+            PlaybackTools.FeedRadio(basolia);
         }
 
         /// <summary>
         /// Closes a currently opened media file
         /// </summary>
-        public static void CloseFile()
+        public static void CloseFile(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!IsOpened)
                 throw new BasoliaException("Can't close a file or a radio station that's already closed", mpg123_errors.MPG123_BAD_FILE);
 
             // First, stop the playing song
-            if (PlaybackTools.State == PlaybackState.Playing || PlaybackTools.State == PlaybackState.Paused)
-                PlaybackTools.Stop();
+            var state = PlaybackTools.GetState(basolia);
+            if (state == PlaybackState.Playing || state == PlaybackState.Paused)
+                PlaybackTools.Stop(basolia);
 
             // We're now entering the dangerous zone
             unsafe
             {
                 // Close the file
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_close>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_close));
                 int closeStatus = @delegate.Invoke(handle);
                 if (closeStatus == (int)mpg123_errors.MPG123_ERR)

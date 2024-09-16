@@ -57,7 +57,7 @@ namespace BassBoom.Cli.CliBase
             volume += 0.05;
             if (volume > 1)
                 volume = 1;
-            PlaybackTools.SetVolume(volume);
+            PlaybackTools.SetVolume(BassBoomCli.basolia, volume);
         }
 
         internal static void LowerVolume()
@@ -65,7 +65,7 @@ namespace BassBoom.Cli.CliBase
             volume -= 0.05;
             if (volume < 0)
                 volume = 0;
-            PlaybackTools.SetVolume(volume);
+            PlaybackTools.SetVolume(BassBoomCli.basolia, volume);
         }
 
         internal static void Exit()
@@ -73,26 +73,26 @@ namespace BassBoom.Cli.CliBase
             exiting = true;
             advance = false;
             if (FileTools.IsOpened)
-                PlaybackTools.Stop();
+                PlaybackTools.Stop(BassBoomCli.basolia);
         }
 
         internal static void Switch(string musicPath)
         {
             if (FileTools.IsOpened)
-                FileTools.CloseFile();
+                FileTools.CloseFile(BassBoomCli.basolia);
             if (isRadioMode)
-                FileTools.OpenUrl(musicPath);
+                FileTools.OpenUrl(BassBoomCli.basolia, musicPath);
             else
-                FileTools.OpenFile(musicPath);
+                FileTools.OpenFile(BassBoomCli.basolia, musicPath);
         }
 
         internal static void ShowDeviceDriver()
         {
             var builder = new StringBuilder();
             var currentBuilder = new StringBuilder();
-            if (PlaybackTools.Playing)
+            if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
             {
-                var (driver, device) = DeviceTools.GetCurrent();
+                var (driver, device) = DeviceTools.GetCurrent(BassBoomCli.basolia);
                 var cached = DeviceTools.GetCurrentCached();
                 currentBuilder.AppendLine(
                     $$"""
@@ -105,14 +105,14 @@ namespace BassBoom.Cli.CliBase
             }
             else
                 currentBuilder.AppendLine("Can't query current devices while not playing.");
-            var drivers = DeviceTools.GetDrivers();
+            var drivers = DeviceTools.GetDrivers(BassBoomCli.basolia);
             string activeDevice = "";
             foreach (var driver in drivers)
             {
                 try
                 {
                     builder.AppendLine($"- {driver.Key}: {driver.Value}");
-                    var devices = DeviceTools.GetDevices(driver.Key, ref activeDevice);
+                    var devices = DeviceTools.GetDevices(BassBoomCli.basolia, driver.Key, ref activeDevice);
                     foreach (var device in devices)
                         builder.AppendLine($"  - {device.Key}: {device.Value}");
                 }
@@ -262,21 +262,21 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.D:
                     if (keystroke.Modifiers == ConsoleModifiers.Control)
                     {
-                        var drivers = DeviceTools.GetDrivers().Select((kvp) => new InputChoiceInfo(kvp.Key, kvp.Value)).ToArray();
+                        var drivers = DeviceTools.GetDrivers(BassBoomCli.basolia).Select((kvp) => new InputChoiceInfo(kvp.Key, kvp.Value)).ToArray();
                         int driverIdx = InfoBoxSelectionColor.WriteInfoBoxSelection(drivers, "Select a driver. ESC to quit.");
                         playerScreen.RequireRefresh();
                         if (driverIdx < 0)
                             return;
                         var driver = drivers[driverIdx];
                         string active = "";
-                        var devices = DeviceTools.GetDevices(driver.ChoiceName, ref active).Select((kvp) => new InputChoiceInfo(kvp.Key, kvp.Value)).ToArray();
+                        var devices = DeviceTools.GetDevices(BassBoomCli.basolia, driver.ChoiceName, ref active).Select((kvp) => new InputChoiceInfo(kvp.Key, kvp.Value)).ToArray();
                         int deviceIdx = InfoBoxSelectionColor.WriteInfoBoxSelection(devices, $"Select a device. Current driver is {active}. ESC to quit.");
                         playerScreen.RequireRefresh();
                         if (deviceIdx < 0)
                             return;
                         var device = devices[deviceIdx];
-                        DeviceTools.SetActiveDriver(driver.ChoiceName);
-                        DeviceTools.SetActiveDevice(driver.ChoiceName, device.ChoiceName);
+                        DeviceTools.SetActiveDriver(BassBoomCli.basolia, driver.ChoiceName);
+                        DeviceTools.SetActiveDevice(BassBoomCli.basolia, driver.ChoiceName, device.ChoiceName);
                     }
                     else if (keystroke.Modifiers == ConsoleModifiers.Shift)
                         DeviceTools.Reset();

@@ -38,15 +38,17 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the format information
         /// </summary>
-        public static (long rate, int channels, int encoding) GetFormatInfo()
+        public static (long rate, int channels, int encoding) GetFormatInfo(BasoliaMedia? basolia)
         {
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             long fileRate;
             int fileChannel, fileEncoding;
 
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = MpgNative._mpg123Handle;
+                var handle = basolia._mpg123Handle;
 
                 // Get the rate, the number of channels, and encoding
                 var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_getformat>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_getformat));
@@ -62,8 +64,10 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the supported formats
         /// </summary>
-        public static FormatInfo[] GetFormats()
+        public static FormatInfo[] GetFormats(BasoliaMedia? basolia)
         {
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             var formats = new List<FormatInfo>();
 
             // We're now entering the dangerous zone
@@ -71,7 +75,7 @@ namespace BassBoom.Basolia.Format
             nint fmtlist = IntPtr.Zero;
             unsafe
             {
-                var outHandle = MpgNative._out123Handle;
+                var outHandle = basolia._out123Handle;
 
                 // Get the list of supported formats
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_formats>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_formats));

@@ -18,6 +18,7 @@
 //
 
 using BassBoom.Basolia.Exceptions;
+using SpecProbe.Software.Platform;
 using System;
 using System.Linq;
 using System.Net.Http;
@@ -54,7 +55,7 @@ namespace BassBoom.Basolia.Radio
             var uri = new Uri(radioUrl);
 
             // Check to see if the radio station exists
-            if (RuntimeInformation.FrameworkDescription.Contains("Framework"))
+            if (PlatformHelper.IsDotNetFx())
                 client = new();
             client.DefaultRequestHeaders.Add("Icy-MetaData", "1");
             var reply = await client.GetAsync(radioUrl, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
