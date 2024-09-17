@@ -1,10 +1,10 @@
-BassBoom now allows you to natively play more than one audio file at the same time! Useful for games and DJ software!
+You can now launch the BassBoom music player through Chocolatey!
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[+]` Added parallel playing support
+- `[+]` Added Chocolatey support
 
 Review the commit history if you want to get a deep insight about the changes.
 
