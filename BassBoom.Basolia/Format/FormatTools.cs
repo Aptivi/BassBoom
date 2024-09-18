@@ -40,6 +40,7 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the format information
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         public static (long rate, int channels, int encoding) GetFormatInfo(BasoliaMedia? basolia)
         {
             if (basolia is null)
@@ -123,7 +124,7 @@ namespace BassBoom.Basolia.Format
             // We're now entering the dangerous zone
             unsafe
             {
-                // Get the encodings
+                // Get the encoding name
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_enc_name>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_enc_name));
                 IntPtr namePtr = @delegate.Invoke(encoding);
                 encodingName = Marshal.PtrToStringAnsi(namePtr);
@@ -151,7 +152,7 @@ namespace BassBoom.Basolia.Format
             // We're now entering the dangerous zone
             unsafe
             {
-                // Get the encodings
+                // Get the encoding description
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_enc_longname>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_enc_longname));
                 IntPtr descriptionPtr = @delegate.Invoke(encoding);
                 encodingDescription = Marshal.PtrToStringAnsi(descriptionPtr);
@@ -164,8 +165,10 @@ namespace BassBoom.Basolia.Format
         /// <summary>
         /// Gets the supported formats
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         public static FormatInfo[] GetFormats(BasoliaMedia? basolia)
         {
+            InitBasolia.CheckInited();
             if (basolia is null)
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             var formats = new List<FormatInfo>();
