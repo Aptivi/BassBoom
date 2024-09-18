@@ -217,12 +217,12 @@ namespace BassBoom.Native.Interop.Output
         /// <summary>
         /// MPG123_EXPORT const char* out123_enc_name(int encoding);
         /// </summary>
-        internal delegate string out123_enc_name(int encoding);
+        internal delegate IntPtr out123_enc_name(int encoding);
 
         /// <summary>
         /// MPG123_EXPORT const char* out123_enc_longname(int encoding);
         /// </summary>
-        internal delegate string out123_enc_longname(int encoding);
+        internal delegate IntPtr out123_enc_longname(int encoding);
 
         /// <summary>
         /// MPG123_EXPORT int out123_start( out123_handle *ao

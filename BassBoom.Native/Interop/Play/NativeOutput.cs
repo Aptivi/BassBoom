@@ -18,6 +18,7 @@
 //
 
 using BassBoom.Native.Interop.Init;
+using System;
 using System.Runtime.InteropServices;
 
 namespace BassBoom.Native.Interop.Play
@@ -36,12 +37,12 @@ namespace BassBoom.Native.Interop.Play
         /// <summary>
         /// MPG123_EXPORT void mpg123_rates(const long **list, size_t *number);
         /// </summary>
-        internal delegate void mpg123_rates(long[] list, int* number);
+        internal delegate void mpg123_rates(out IntPtr list, out int number);
 
         /// <summary>
         /// MPG123_EXPORT void mpg123_encodings(const int **list, size_t *number);
         /// </summary>
-        internal delegate void mpg123_encodings(int[] list, int* number);
+        internal delegate void mpg123_encodings(out IntPtr list, out int number);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_encsize(int encoding);

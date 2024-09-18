@@ -27,6 +27,8 @@ using BassBoom.Native.Interop.Analysis;
 using SpecProbe.Software.Platform;
 using BassBoom.Native;
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Helpers;
+using System.Linq;
 
 namespace BassBoom.Basolia.Format
 {
@@ -59,6 +61,104 @@ namespace BassBoom.Basolia.Format
 
             // We're now entering the safe zone
             return (fileRate, fileChannel, fileEncoding);
+        }
+        
+        /// <summary>
+        /// Gets the rate list supported by the library
+        /// </summary>
+        public static int[] GetRates()
+        {
+            InitBasolia.CheckInited();
+            int[] rates;
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                // Get the rates
+                var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_rates>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_rates));
+                @delegate.Invoke(out IntPtr ratesPtr, out int count);
+                rates = ArrayVariantLength.GetIntegersKnownLength(ratesPtr, count);
+            }
+
+            // We're now entering the safe zone
+            return rates;
+        }
+        
+        /// <summary>
+        /// Gets the encoding list supported by the library
+        /// </summary>
+        public static int[] GetEncodings()
+        {
+            InitBasolia.CheckInited();
+            int[] encodings = [];
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                // Get the encodings
+                var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_encodings>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_encodings));
+                @delegate.Invoke(out IntPtr encodingsPtr, out int count);
+                encodings = ArrayVariantLength.GetIntegersKnownLength(encodingsPtr, count);
+            }
+
+            // We're now entering the safe zone
+            return encodings;
+        }
+
+        /// <summary>
+        /// Gets the encoding name
+        /// </summary>
+        /// <param name="encoding">Encoding ID</param>
+        /// <returns>Name of the encoding in short form</returns>
+        public static string GetEncodingName(int encoding)
+        {
+            InitBasolia.CheckInited();
+            string encodingName = "";
+
+            // Check the encoding
+            int[] encodings = GetEncodings();
+            if (!encodings.Contains(encoding))
+                throw new BasoliaException($"Encoding {encoding} not found.", mpg123_errors.MPG123_BAD_TYPES);
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                // Get the encodings
+                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_enc_name>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_enc_name));
+                IntPtr namePtr = @delegate.Invoke(encoding);
+                encodingName = Marshal.PtrToStringAnsi(namePtr);
+            }
+
+            // We're now entering the safe zone
+            return encodingName;
+        }
+
+        /// <summary>
+        /// Gets the encoding description
+        /// </summary>
+        /// <param name="encoding">Encoding ID</param>
+        /// <returns>Description of the encoding in short form</returns>
+        public static string GetEncodingDescription(int encoding)
+        {
+            InitBasolia.CheckInited();
+            string encodingDescription = "";
+
+            // Check the encoding
+            int[] encodings = GetEncodings();
+            if (!encodings.Contains(encoding))
+                throw new BasoliaException($"Encoding {encoding} not found.", mpg123_errors.MPG123_BAD_TYPES);
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                // Get the encodings
+                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_enc_longname>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_enc_longname));
+                IntPtr descriptionPtr = @delegate.Invoke(encoding);
+                encodingDescription = Marshal.PtrToStringAnsi(descriptionPtr);
+            }
+
+            // We're now entering the safe zone
+            return encodingDescription;
         }
 
         /// <summary>

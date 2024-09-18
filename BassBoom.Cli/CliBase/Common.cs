@@ -142,6 +142,17 @@ namespace BassBoom.Cli.CliBase
 
         internal static void ShowSpecs()
         {
+            var encodingsBuilder = new StringBuilder();
+            int[] encodings = FormatTools.GetEncodings();
+            foreach (int encoding in encodings)
+            {
+                // Get the name and the description
+                string name = FormatTools.GetEncodingName(encoding);
+                string desc = FormatTools.GetEncodingDescription(encoding);
+
+                encodingsBuilder.AppendLine($"  - {name} [{encoding}]: {desc}");
+            }
+
             InfoBoxColor.WriteInfoBox(
                 $$"""
                 BassBoom specifications
@@ -159,6 +170,14 @@ namespace BassBoom.Cli.CliBase
 
                 All decoders:
                   - {{string.Join("\n  - ", DecodeTools.GetDecoders(false))}}
+
+                Encodings and Rates
+                ===================
+
+                Encodings:
+                {{encodingsBuilder}}
+                Rates:
+                  - {{string.Join("\n  - ", FormatTools.GetRates())}}
 
                 System specifications
                 =====================
