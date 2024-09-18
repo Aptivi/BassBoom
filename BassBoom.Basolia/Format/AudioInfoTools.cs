@@ -237,6 +237,37 @@ namespace BassBoom.Basolia.Format
         }
 
         /// <summary>
+        /// Gets the number of seconds per frame
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <returns>Number of seconds per frame</returns>
+        /// <exception cref="BasoliaException"></exception>
+        public static double GetSecondsPerFrame(BasoliaMedia? basolia)
+        {
+            double getStatus;
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+
+            // Check to see if the file is open
+            if (!FileTools.IsOpened(basolia))
+                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+
+            unsafe
+            {
+                var handle = basolia._mpg123Handle;
+
+                // Get the seconds per frame
+                var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_tpf>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_tpf));
+                getStatus = @delegate.Invoke(handle);
+                if (getStatus < 0)
+                    throw new BasoliaException($"Can't get the seconds per frame.", mpg123_errors.MPG123_ERR);
+                Debug.WriteLine($"Got frame tpf {getStatus}");
+            }
+            return getStatus;
+        }
+
+        /// <summary>
         /// Gets the buffer size from the currently open music file.
         /// </summary>
         /// <param name="basolia">Basolia instance that contains a valid handle</param>

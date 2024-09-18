@@ -173,6 +173,24 @@ namespace BassBoom.Cli.CliBase
                 foreach (int rate in rates)
                     ratesBuilder.AppendLine($"  - {rate} hertz");
 
+                // For playing files (not radio stations), add even more values
+                var playingBuilder = new StringBuilder();
+                if (FileTools.IsOpened(BassBoomCli.basolia) && !isRadioMode)
+                {
+                    int durationSamples = AudioInfoTools.GetDuration(BassBoomCli.basolia, true);
+                    int frameLength = AudioInfoTools.GetFrameLength(BassBoomCli.basolia);
+                    int samplesFrame = AudioInfoTools.GetSamplesPerFrame(BassBoomCli.basolia);
+                    double secondsFrame = AudioInfoTools.GetSecondsPerFrame(BassBoomCli.basolia);
+                    playingBuilder.Append(
+                        $"""
+
+                        Duration in samples: {durationSamples}
+                        Frame length: {frameLength}
+                        Samples/frame: {samplesFrame}
+                        Seconds/frame: {secondsFrame}
+                        """);
+                }
+
                 // Now, grab the necessary values and add them, too.
                 devSpecs.Append(
                     $"""
@@ -195,7 +213,7 @@ namespace BassBoom.Cli.CliBase
                     Buffer info
                     -----------
 
-                    Generic buffer size: {AudioInfoTools.GetGenericBufferSize()}
+                    Generic buffer size: {AudioInfoTools.GetGenericBufferSize()}{playingBuilder}
                     """);
             }
 
