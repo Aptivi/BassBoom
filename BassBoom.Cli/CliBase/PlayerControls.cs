@@ -273,7 +273,7 @@ namespace BassBoom.Cli.CliBase
             if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
                 ScreenTools.CurrentScreen?.RequireRefresh();
-                InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
+                InfoBoxColor.WriteInfoBox($"Opening {musicPath}...", false);
                 var total = AudioInfoTools.GetDuration(BassBoomCli.basolia, true);
                 var formatInfo = FormatTools.GetFormatInfo(BassBoomCli.basolia);
                 var frameInfo = AudioInfoTools.GetFrameInfo(BassBoomCli.basolia);

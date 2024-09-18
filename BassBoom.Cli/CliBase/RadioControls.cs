@@ -114,7 +114,7 @@ namespace BassBoom.Cli.CliBase
             Common.Switch(musicPath);
             if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
-                InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
+                InfoBoxColor.WriteInfoBox($"Opening {musicPath}...", false);
                 var formatInfo = FormatTools.GetFormatInfo(BassBoomCli.basolia);
                 var frameInfo = AudioInfoTools.GetFrameInfo(BassBoomCli.basolia);
 
