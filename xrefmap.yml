@@ -735,6 +735,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetFrameSize
   nameWithType: AudioInfoTools.GetFrameSize
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetGenericBufferSize
+  name: GetGenericBufferSize()
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetGenericBufferSize
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetGenericBufferSize
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetGenericBufferSize()
+  nameWithType: AudioInfoTools.GetGenericBufferSize()
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetGenericBufferSize*
+  name: GetGenericBufferSize
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetGenericBufferSize_
+  commentId: Overload:BassBoom.Basolia.Format.AudioInfoTools.GetGenericBufferSize
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetGenericBufferSize
+  nameWithType: AudioInfoTools.GetGenericBufferSize
 - uid: BassBoom.Basolia.Format.AudioInfoTools.GetIcyMetadata(BassBoom.Basolia.BasoliaMedia)
   name: GetIcyMetadata(BasoliaMedia?)
   href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetIcyMetadata_BassBoom_Basolia_BasoliaMedia_
