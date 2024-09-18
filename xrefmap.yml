@@ -904,6 +904,51 @@ references:
   commentId: T:BassBoom.Basolia.Format.FormatTools
   fullName: BassBoom.Basolia.Format.FormatTools
   nameWithType: FormatTools
+- uid: BassBoom.Basolia.Format.FormatTools.GetEncodingDescription(System.Int32)
+  name: GetEncodingDescription(int)
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetEncodingDescription_System_Int32_
+  commentId: M:BassBoom.Basolia.Format.FormatTools.GetEncodingDescription(System.Int32)
+  name.vb: GetEncodingDescription(Integer)
+  fullName: BassBoom.Basolia.Format.FormatTools.GetEncodingDescription(int)
+  fullName.vb: BassBoom.Basolia.Format.FormatTools.GetEncodingDescription(Integer)
+  nameWithType: FormatTools.GetEncodingDescription(int)
+  nameWithType.vb: FormatTools.GetEncodingDescription(Integer)
+- uid: BassBoom.Basolia.Format.FormatTools.GetEncodingDescription*
+  name: GetEncodingDescription
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetEncodingDescription_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.GetEncodingDescription
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.GetEncodingDescription
+  nameWithType: FormatTools.GetEncodingDescription
+- uid: BassBoom.Basolia.Format.FormatTools.GetEncodingName(System.Int32)
+  name: GetEncodingName(int)
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetEncodingName_System_Int32_
+  commentId: M:BassBoom.Basolia.Format.FormatTools.GetEncodingName(System.Int32)
+  name.vb: GetEncodingName(Integer)
+  fullName: BassBoom.Basolia.Format.FormatTools.GetEncodingName(int)
+  fullName.vb: BassBoom.Basolia.Format.FormatTools.GetEncodingName(Integer)
+  nameWithType: FormatTools.GetEncodingName(int)
+  nameWithType.vb: FormatTools.GetEncodingName(Integer)
+- uid: BassBoom.Basolia.Format.FormatTools.GetEncodingName*
+  name: GetEncodingName
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetEncodingName_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.GetEncodingName
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.GetEncodingName
+  nameWithType: FormatTools.GetEncodingName
+- uid: BassBoom.Basolia.Format.FormatTools.GetEncodings
+  name: GetEncodings()
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetEncodings
+  commentId: M:BassBoom.Basolia.Format.FormatTools.GetEncodings
+  fullName: BassBoom.Basolia.Format.FormatTools.GetEncodings()
+  nameWithType: FormatTools.GetEncodings()
+- uid: BassBoom.Basolia.Format.FormatTools.GetEncodings*
+  name: GetEncodings
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetEncodings_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.GetEncodings
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.GetEncodings
+  nameWithType: FormatTools.GetEncodings
 - uid: BassBoom.Basolia.Format.FormatTools.GetFormatInfo(BassBoom.Basolia.BasoliaMedia)
   name: GetFormatInfo(BasoliaMedia?)
   href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetFormatInfo_BassBoom_Basolia_BasoliaMedia_
@@ -936,6 +981,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.FormatTools.GetFormats
   nameWithType: FormatTools.GetFormats
+- uid: BassBoom.Basolia.Format.FormatTools.GetRates
+  name: GetRates()
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetRates
+  commentId: M:BassBoom.Basolia.Format.FormatTools.GetRates
+  fullName: BassBoom.Basolia.Format.FormatTools.GetRates()
+  nameWithType: FormatTools.GetRates()
+- uid: BassBoom.Basolia.Format.FormatTools.GetRates*
+  name: GetRates
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetRates_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.GetRates
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.GetRates
+  nameWithType: FormatTools.GetRates
 - uid: BassBoom.Basolia.Format.FrameInfo
   name: FrameInfo
   href: api/BassBoom.Basolia.Format.FrameInfo.html
