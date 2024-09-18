@@ -215,6 +215,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Format.ChannelCount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Format.ChannelCount.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.Format.DecodeTools.yml",
       "output": {
         ".html": {
@@ -487,11 +497,11 @@
       "type": "Toc",
       "source_relative_path": "api/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "api/toc.json"
-        },
         ".html": {
           "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
         }
       },
       "version": ""
@@ -530,11 +540,11 @@
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "toc.json"
-        },
         ".html": {
           "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
       "version": ""

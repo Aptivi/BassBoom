@@ -783,6 +783,36 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame
   nameWithType: AudioInfoTools.GetSamplesPerFrame
+- uid: BassBoom.Basolia.Format.ChannelCount
+  name: ChannelCount
+  href: api/BassBoom.Basolia.Format.ChannelCount.html
+  commentId: T:BassBoom.Basolia.Format.ChannelCount
+  fullName: BassBoom.Basolia.Format.ChannelCount
+  nameWithType: ChannelCount
+- uid: BassBoom.Basolia.Format.ChannelCount.Both
+  name: Both
+  href: api/BassBoom.Basolia.Format.ChannelCount.html#BassBoom_Basolia_Format_ChannelCount_Both
+  commentId: F:BassBoom.Basolia.Format.ChannelCount.Both
+  fullName: BassBoom.Basolia.Format.ChannelCount.Both
+  nameWithType: ChannelCount.Both
+- uid: BassBoom.Basolia.Format.ChannelCount.Mono
+  name: Mono
+  href: api/BassBoom.Basolia.Format.ChannelCount.html#BassBoom_Basolia_Format_ChannelCount_Mono
+  commentId: F:BassBoom.Basolia.Format.ChannelCount.Mono
+  fullName: BassBoom.Basolia.Format.ChannelCount.Mono
+  nameWithType: ChannelCount.Mono
+- uid: BassBoom.Basolia.Format.ChannelCount.Stereo
+  name: Stereo
+  href: api/BassBoom.Basolia.Format.ChannelCount.html#BassBoom_Basolia_Format_ChannelCount_Stereo
+  commentId: F:BassBoom.Basolia.Format.ChannelCount.Stereo
+  fullName: BassBoom.Basolia.Format.ChannelCount.Stereo
+  nameWithType: ChannelCount.Stereo
+- uid: BassBoom.Basolia.Format.ChannelCount.Unknown
+  name: Unknown
+  href: api/BassBoom.Basolia.Format.ChannelCount.html#BassBoom_Basolia_Format_ChannelCount_Unknown
+  commentId: F:BassBoom.Basolia.Format.ChannelCount.Unknown
+  fullName: BassBoom.Basolia.Format.ChannelCount.Unknown
+  nameWithType: ChannelCount.Unknown
 - uid: BassBoom.Basolia.Format.DecodeTools
   name: DecodeTools
   href: api/BassBoom.Basolia.Format.DecodeTools.html
@@ -904,6 +934,22 @@ references:
   commentId: T:BassBoom.Basolia.Format.FormatTools
   fullName: BassBoom.Basolia.Format.FormatTools
   nameWithType: FormatTools
+- uid: BassBoom.Basolia.Format.FormatTools.AllFormats(BassBoom.Basolia.BasoliaMedia)
+  name: AllFormats(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_AllFormats_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.FormatTools.AllFormats(BassBoom.Basolia.BasoliaMedia)
+  name.vb: AllFormats(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.FormatTools.AllFormats(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.FormatTools.AllFormats(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: FormatTools.AllFormats(BasoliaMedia?)
+  nameWithType.vb: FormatTools.AllFormats(BasoliaMedia)
+- uid: BassBoom.Basolia.Format.FormatTools.AllFormats*
+  name: AllFormats
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_AllFormats_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.AllFormats
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.AllFormats
+  nameWithType: FormatTools.AllFormats
 - uid: BassBoom.Basolia.Format.FormatTools.GetEncodingDescription(System.Int32)
   name: GetEncodingDescription(int)
   href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetEncodingDescription_System_Int32_
@@ -936,6 +982,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.FormatTools.GetEncodingName
   nameWithType: FormatTools.GetEncodingName
+- uid: BassBoom.Basolia.Format.FormatTools.GetEncodingSize(System.Int32)
+  name: GetEncodingSize(int)
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetEncodingSize_System_Int32_
+  commentId: M:BassBoom.Basolia.Format.FormatTools.GetEncodingSize(System.Int32)
+  name.vb: GetEncodingSize(Integer)
+  fullName: BassBoom.Basolia.Format.FormatTools.GetEncodingSize(int)
+  fullName.vb: BassBoom.Basolia.Format.FormatTools.GetEncodingSize(Integer)
+  nameWithType: FormatTools.GetEncodingSize(int)
+  nameWithType.vb: FormatTools.GetEncodingSize(Integer)
+- uid: BassBoom.Basolia.Format.FormatTools.GetEncodingSize*
+  name: GetEncodingSize
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetEncodingSize_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.GetEncodingSize
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.GetEncodingSize
+  nameWithType: FormatTools.GetEncodingSize
 - uid: BassBoom.Basolia.Format.FormatTools.GetEncodings
   name: GetEncodings()
   href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetEncodings
@@ -994,6 +1056,54 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.FormatTools.GetRates
   nameWithType: FormatTools.GetRates
+- uid: BassBoom.Basolia.Format.FormatTools.IsFormatSupported(BassBoom.Basolia.BasoliaMedia,System.Int64,System.Int32,BassBoom.Basolia.Format.ChannelCount@)
+  name: IsFormatSupported(BasoliaMedia?, long, int, out ChannelCount)
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_IsFormatSupported_BassBoom_Basolia_BasoliaMedia_System_Int64_System_Int32_BassBoom_Basolia_Format_ChannelCount__
+  commentId: M:BassBoom.Basolia.Format.FormatTools.IsFormatSupported(BassBoom.Basolia.BasoliaMedia,System.Int64,System.Int32,BassBoom.Basolia.Format.ChannelCount@)
+  name.vb: IsFormatSupported(BasoliaMedia, Long, Integer, ChannelCount)
+  fullName: BassBoom.Basolia.Format.FormatTools.IsFormatSupported(BassBoom.Basolia.BasoliaMedia?, long, int, out BassBoom.Basolia.Format.ChannelCount)
+  fullName.vb: BassBoom.Basolia.Format.FormatTools.IsFormatSupported(BassBoom.Basolia.BasoliaMedia, Long, Integer, BassBoom.Basolia.Format.ChannelCount)
+  nameWithType: FormatTools.IsFormatSupported(BasoliaMedia?, long, int, out ChannelCount)
+  nameWithType.vb: FormatTools.IsFormatSupported(BasoliaMedia, Long, Integer, ChannelCount)
+- uid: BassBoom.Basolia.Format.FormatTools.IsFormatSupported*
+  name: IsFormatSupported
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_IsFormatSupported_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.IsFormatSupported
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.IsFormatSupported
+  nameWithType: FormatTools.IsFormatSupported
+- uid: BassBoom.Basolia.Format.FormatTools.NoFormat(BassBoom.Basolia.BasoliaMedia)
+  name: NoFormat(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_NoFormat_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.FormatTools.NoFormat(BassBoom.Basolia.BasoliaMedia)
+  name.vb: NoFormat(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.FormatTools.NoFormat(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.FormatTools.NoFormat(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: FormatTools.NoFormat(BasoliaMedia?)
+  nameWithType.vb: FormatTools.NoFormat(BasoliaMedia)
+- uid: BassBoom.Basolia.Format.FormatTools.NoFormat*
+  name: NoFormat
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_NoFormat_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.NoFormat
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.NoFormat
+  nameWithType: FormatTools.NoFormat
+- uid: BassBoom.Basolia.Format.FormatTools.UseFormat(BassBoom.Basolia.BasoliaMedia,System.Int64,BassBoom.Basolia.Format.ChannelCount,System.Int32)
+  name: UseFormat(BasoliaMedia?, long, ChannelCount, int)
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_UseFormat_BassBoom_Basolia_BasoliaMedia_System_Int64_BassBoom_Basolia_Format_ChannelCount_System_Int32_
+  commentId: M:BassBoom.Basolia.Format.FormatTools.UseFormat(BassBoom.Basolia.BasoliaMedia,System.Int64,BassBoom.Basolia.Format.ChannelCount,System.Int32)
+  name.vb: UseFormat(BasoliaMedia, Long, ChannelCount, Integer)
+  fullName: BassBoom.Basolia.Format.FormatTools.UseFormat(BassBoom.Basolia.BasoliaMedia?, long, BassBoom.Basolia.Format.ChannelCount, int)
+  fullName.vb: BassBoom.Basolia.Format.FormatTools.UseFormat(BassBoom.Basolia.BasoliaMedia, Long, BassBoom.Basolia.Format.ChannelCount, Integer)
+  nameWithType: FormatTools.UseFormat(BasoliaMedia?, long, ChannelCount, int)
+  nameWithType.vb: FormatTools.UseFormat(BasoliaMedia, Long, ChannelCount, Integer)
+- uid: BassBoom.Basolia.Format.FormatTools.UseFormat*
+  name: UseFormat
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_UseFormat_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.UseFormat
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.UseFormat
+  nameWithType: FormatTools.UseFormat
 - uid: BassBoom.Basolia.Format.FrameInfo
   name: FrameInfo
   href: api/BassBoom.Basolia.Format.FrameInfo.html
