@@ -266,6 +266,28 @@ namespace BassBoom.Basolia.Format
         }
 
         /// <summary>
+        /// Gets the generic buffer size that is suitable in most cases
+        /// </summary>
+        /// <returns>Buffer size</returns>
+        /// <exception cref="BasoliaException"></exception>
+        public static int GetGenericBufferSize()
+        {
+            InitBasolia.CheckInited();
+            int bufferSize;
+
+            unsafe
+            {
+                // Get the generic buffer size
+                var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_safe_buffer>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_safe_buffer));
+                bufferSize = @delegate.Invoke();
+                if (bufferSize < 0)
+                    throw new BasoliaException($"Can't get the generic buffer size.", mpg123_errors.MPG123_ERR);
+                Debug.WriteLine($"Got buffsize {bufferSize}");
+            }
+            return bufferSize;
+        }
+
+        /// <summary>
         /// Gets the ID3 metadata (v2 and v1)
         /// </summary>
         /// <param name="basolia">Basolia instance that contains a valid handle</param>
