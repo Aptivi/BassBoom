@@ -164,11 +164,12 @@ namespace BassBoom.Cli.CliBase
                 string eqType =
                     i == 0 ? "Bass" :
                     i == 1 ? "Upper Mid" :
-                    i > 1 ? "Treble" :
+                    i == 2 ? "Treble" :
+                    i > 2 ? "Device-specific band" :
                     "Unknown band type";
 
                 // Now, render it
-                string bandData = $"[{val:0.00}] Equalizer Band #{i + 1} - {eqType}";
+                string bandData = $"[{val:0.00}] Band #{i + 1} - {eqType}";
                 choices.Add(new($"{i + 1}", bandData));
             }
             drawn.Append(
