@@ -1085,6 +1085,38 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.FormatTools.GetRates
   nameWithType: FormatTools.GetRates
+- uid: BassBoom.Basolia.Format.FormatTools.GetSampleSize(System.Int32)
+  name: GetSampleSize(int)
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetSampleSize_System_Int32_
+  commentId: M:BassBoom.Basolia.Format.FormatTools.GetSampleSize(System.Int32)
+  name.vb: GetSampleSize(Integer)
+  fullName: BassBoom.Basolia.Format.FormatTools.GetSampleSize(int)
+  fullName.vb: BassBoom.Basolia.Format.FormatTools.GetSampleSize(Integer)
+  nameWithType: FormatTools.GetSampleSize(int)
+  nameWithType.vb: FormatTools.GetSampleSize(Integer)
+- uid: BassBoom.Basolia.Format.FormatTools.GetSampleSize*
+  name: GetSampleSize
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetSampleSize_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.GetSampleSize
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.GetSampleSize
+  nameWithType: FormatTools.GetSampleSize
+- uid: BassBoom.Basolia.Format.FormatTools.GetZeroSample(System.Int32,System.Int32,System.Int32)
+  name: GetZeroSample(int, int, int)
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetZeroSample_System_Int32_System_Int32_System_Int32_
+  commentId: M:BassBoom.Basolia.Format.FormatTools.GetZeroSample(System.Int32,System.Int32,System.Int32)
+  name.vb: GetZeroSample(Integer, Integer, Integer)
+  fullName: BassBoom.Basolia.Format.FormatTools.GetZeroSample(int, int, int)
+  fullName.vb: BassBoom.Basolia.Format.FormatTools.GetZeroSample(Integer, Integer, Integer)
+  nameWithType: FormatTools.GetZeroSample(int, int, int)
+  nameWithType.vb: FormatTools.GetZeroSample(Integer, Integer, Integer)
+- uid: BassBoom.Basolia.Format.FormatTools.GetZeroSample*
+  name: GetZeroSample
+  href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_GetZeroSample_
+  commentId: Overload:BassBoom.Basolia.Format.FormatTools.GetZeroSample
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.FormatTools.GetZeroSample
+  nameWithType: FormatTools.GetZeroSample
 - uid: BassBoom.Basolia.Format.FormatTools.IsFormatSupported(BassBoom.Basolia.BasoliaMedia,System.Int64,System.Int32,BassBoom.Basolia.Format.ChannelCount@)
   name: IsFormatSupported(BasoliaMedia?, long, int, out ChannelCount)
   href: api/BassBoom.Basolia.Format.FormatTools.html#BassBoom_Basolia_Format_FormatTools_IsFormatSupported_BassBoom_Basolia_BasoliaMedia_System_Int64_System_Int32_BassBoom_Basolia_Format_ChannelCount__
