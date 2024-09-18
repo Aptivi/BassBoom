@@ -49,6 +49,7 @@ namespace BassBoom.Cli.CliBase
         internal static bool failedToPlay = false;
         internal static bool isRadioMode = false;
         internal static bool redraw = true;
+        internal static bool volBoost = false;
         internal static readonly List<CachedSongInfo> cachedInfos = [];
 
         internal static CachedSongInfo? CurrentCachedInfo =>
@@ -56,10 +57,11 @@ namespace BassBoom.Cli.CliBase
 
         internal static void RaiseVolume()
         {
+            double maxVolume = volBoost ? 3 : 1;
             volume += 0.05;
-            if (volume > 1)
-                volume = 1;
-            PlaybackTools.SetVolume(BassBoomCli.basolia, volume);
+            if (volume > maxVolume)
+                volume = maxVolume;
+            PlaybackTools.SetVolume(BassBoomCli.basolia, volume, volBoost);
         }
 
         internal static void LowerVolume()
@@ -67,7 +69,7 @@ namespace BassBoom.Cli.CliBase
             volume -= 0.05;
             if (volume < 0)
                 volume = 0;
-            PlaybackTools.SetVolume(BassBoomCli.basolia, volume);
+            PlaybackTools.SetVolume(BassBoomCli.basolia, volume, volBoost);
         }
 
         internal static void Exit()
@@ -214,6 +216,9 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.L:
                     enableDisco = !enableDisco;
+                    break;
+                case ConsoleKey.V:
+                    volBoost = !volBoost;
                     break;
                 case ConsoleKey.D:
                     if (keystroke.Modifiers == ConsoleModifiers.Control)

@@ -221,19 +221,21 @@ namespace BassBoom.Basolia.Playback
         /// Sets the volume of this application
         /// </summary>
         /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <param name="volume">Volume from 0.0 to 1.0, inclusive</param>
+        /// <param name="volume">Volume from 0.0 to 1.0 (volume booster off) or 3.0 (volume booster on), inclusive</param>
+        /// <param name="volBoost">Whether to allow volumes larger than 1.0 up to 3.0</param>
         /// <exception cref="BasoliaOutException"></exception>
-        public static void SetVolume(BasoliaMedia? basolia, double volume)
+        public static void SetVolume(BasoliaMedia? basolia, double volume, bool volBoost = false)
         {
             InitBasolia.CheckInited();
             if (basolia is null)
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check the volume
+            double maxVolume = volBoost ? 3 : 1;
             if (volume < 0)
                 volume = 0;
-            if (volume > 1)
-                volume = 1;
+            if (volume > maxVolume)
+                volume = maxVolume;
 
             // Try to set the volume
             unsafe

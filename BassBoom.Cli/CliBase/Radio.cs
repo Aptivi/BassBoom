@@ -38,6 +38,7 @@ using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
 using Terminaux.Writer.MiscWriters.Tools;
 using Terminaux.Writer.MiscWriters;
+using Terminaux.Base.Extensions;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -59,6 +60,7 @@ namespace BassBoom.Cli.CliBase
             new("Remove current radio station", ConsoleKey.R),
             new("Remove all radio stations", ConsoleKey.R, ConsoleModifiers.Control),
             new("Disco Mode!", ConsoleKey.L),
+            new("Enable volume boost", ConsoleKey.V),
             new("Open the equalizer", ConsoleKey.E),
             new("Device and driver information", ConsoleKey.D),
             new("Set device and driver", ConsoleKey.D, ConsoleModifiers.Control),
@@ -88,7 +90,8 @@ namespace BassBoom.Cli.CliBase
                 if (Common.CurrentCachedInfo is null)
                     return "";
                 var buffer = new StringBuilder();
-                string indicator = $"┤ Volume: {Common.volume:0.00} ├";
+                string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
+                string indicator = $"┤ {boostIndicator}Volume: {Common.volume:0.00}{ColorTools.RenderResetForeground()} ├";
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
                 if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                 {
@@ -98,7 +101,7 @@ namespace BassBoom.Cli.CliBase
                 }
                 buffer.Append(
                     BoxFrameColor.RenderBoxFrame(2, ConsoleWrapper.WindowHeight - 5, ConsoleWrapper.WindowWidth - 6, 1, disco) +
-                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 5, disco)
+                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 5, disco)
                 );
                 return buffer.ToString();
             });

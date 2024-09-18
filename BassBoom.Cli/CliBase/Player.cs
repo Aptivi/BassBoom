@@ -37,6 +37,7 @@ using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
 using Terminaux.Writer.MiscWriters.Tools;
 using Terminaux.Writer.MiscWriters;
+using Terminaux.Base.Extensions;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -78,6 +79,7 @@ namespace BassBoom.Cli.CliBase
             new("Set repeat checkpoint", ConsoleKey.C),
             new("Seek to repeat checkpoint", ConsoleKey.C, ConsoleModifiers.Shift),
             new("Disco Mode!", ConsoleKey.L),
+            new("Enable volume boost", ConsoleKey.V),
             new("Open the equalizer", ConsoleKey.E),
             new("Device and driver information", ConsoleKey.D),
             new("Set device and driver", ConsoleKey.D, ConsoleModifiers.Control),
@@ -115,15 +117,16 @@ namespace BassBoom.Cli.CliBase
                     if (hue >= 360)
                         hue = 0;
                 }
+                string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
                 string indicator =
                     $"┤ Seek: {PlayerControls.seekRate:0.00} | " +
-                    $"Volume: {Common.volume:0.00} ├";
+                    $"{boostIndicator}Volume: {Common.volume:0.00}{ColorTools.RenderResetForeground()} ├";
                 string lyric = Common.CurrentCachedInfo.LyricInstance is not null ? Common.CurrentCachedInfo.LyricInstance.GetLastLineCurrent(BassBoomCli.basolia) : "";
                 string finalLyric = string.IsNullOrWhiteSpace(lyric) ? "..." : lyric;
                 buffer.Append(
                     ProgressBarColor.RenderProgress(100 * (position / (double)Common.CurrentCachedInfo.Duration), 2, ConsoleWrapper.WindowHeight - 5, ConsoleWrapper.WindowWidth - 6, disco, disco) +
                     TextWriterWhereColor.RenderWhereColor($"┤ {posSpan} / {Common.CurrentCachedInfo.DurationSpan} ├", 4, ConsoleWrapper.WindowHeight - 5, disco) +
-                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 5, disco) +
+                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 5, disco) +
                     CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 3, Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.IsPlaying(BassBoomCli.basolia) ? $"┤ {finalLyric} ├" : "", disco)
                 );
                 return buffer.ToString();
