@@ -341,5 +341,50 @@ namespace BassBoom.Basolia.Format
                     throw new BasoliaException($"Can't set output encoding to {rate}, {channels}, {encoding}", (mpg123_errors)formatStatus);
             }
         }
+
+        #region Library-independent functions
+        /// <summary>
+        /// Gets a PCM sample size for a given encoding (library doesn't need to be initialized)
+        /// </summary>
+        /// <param name="encoding">Encoding</param>
+        /// <returns>Sample size in bytes</returns>
+        public static int GetSampleSize(int encoding)
+        {
+            int sampleSize = 0;
+            var enumEncoding = (mpg123_enc_enum)encoding;
+            if (enumEncoding.HasFlag(mpg123_enc_enum.MPG123_ENC_8))
+                sampleSize = 1;
+            else if (enumEncoding.HasFlag(mpg123_enc_enum.MPG123_ENC_16))
+                sampleSize = 2;
+            else if (enumEncoding.HasFlag(mpg123_enc_enum.MPG123_ENC_24))
+                sampleSize = 3;
+            else if (enumEncoding.HasFlag(mpg123_enc_enum.MPG123_ENC_32) ||
+                enumEncoding == mpg123_enc_enum.MPG123_ENC_FLOAT_32)
+                sampleSize = 4;
+            else if (enumEncoding == mpg123_enc_enum.MPG123_ENC_FLOAT_64)
+                sampleSize = 8;
+            return sampleSize;
+        }
+
+        /// <summary>
+        /// Gets a zero sample representation
+        /// </summary>
+        /// <param name="encoding">Encoding</param>
+        /// <param name="sampleSize">Sample size in bytes. See <see cref="GetSampleSize(int)"/></param>
+        /// <param name="lsbOffset">LSB offset in bytes</param>
+        /// <returns>Zero sample size in bytes</returns>
+        public static int GetZeroSample(int encoding, int sampleSize, int lsbOffset)
+        {
+            var enumEncoding = (mpg123_enc_enum)encoding;
+            if (enumEncoding == mpg123_enc_enum.MPG123_ENC_ULAW_8)
+                return lsbOffset == 0 ? 0xff : 0x00;
+            else if (enumEncoding == mpg123_enc_enum.MPG123_ENC_ALAW_8)
+                return lsbOffset == 0 ? 0xd5 : 0x00;
+            else if ((enumEncoding & (mpg123_enc_enum.MPG123_ENC_SIGNED | mpg123_enc_enum.MPG123_ENC_FLOAT)) > 0 ||
+                sampleSize != (lsbOffset + 1))
+                return 0x00;
+            return 0x80;
+        }
+        #endregion
     }
 }
