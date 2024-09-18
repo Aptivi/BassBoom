@@ -88,12 +88,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Devices.DeviceTools.GetCurrent
   nameWithType: DeviceTools.GetCurrent
-- uid: BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached
-  name: GetCurrentCached()
-  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetCurrentCached
-  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached
-  fullName: BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached()
-  nameWithType: DeviceTools.GetCurrentCached()
+- uid: BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached(BassBoom.Basolia.BasoliaMedia)
+  name: GetCurrentCached(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetCurrentCached_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetCurrentCached(BasoliaMedia)
+  fullName: BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: DeviceTools.GetCurrentCached(BasoliaMedia?)
+  nameWithType.vb: DeviceTools.GetCurrentCached(BasoliaMedia)
 - uid: BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached*
   name: GetCurrentCached
   href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_GetCurrentCached_
@@ -133,12 +136,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Devices.DeviceTools.GetDrivers
   nameWithType: DeviceTools.GetDrivers
-- uid: BassBoom.Basolia.Devices.DeviceTools.Reset
-  name: Reset()
-  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_Reset
-  commentId: M:BassBoom.Basolia.Devices.DeviceTools.Reset
-  fullName: BassBoom.Basolia.Devices.DeviceTools.Reset()
-  nameWithType: DeviceTools.Reset()
+- uid: BassBoom.Basolia.Devices.DeviceTools.Reset(BassBoom.Basolia.BasoliaMedia)
+  name: Reset(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_Reset_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Devices.DeviceTools.Reset(BassBoom.Basolia.BasoliaMedia)
+  name.vb: Reset(BasoliaMedia)
+  fullName: BassBoom.Basolia.Devices.DeviceTools.Reset(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Devices.DeviceTools.Reset(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: DeviceTools.Reset(BasoliaMedia?)
+  nameWithType.vb: DeviceTools.Reset(BasoliaMedia)
 - uid: BassBoom.Basolia.Devices.DeviceTools.Reset*
   name: Reset
   href: api/BassBoom.Basolia.Devices.DeviceTools.html#BassBoom_Basolia_Devices_DeviceTools_Reset_
@@ -416,12 +422,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.File.FileTools.CloseFile
   nameWithType: FileTools.CloseFile
-- uid: BassBoom.Basolia.File.FileTools.CurrentFile
-  name: CurrentFile
-  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_CurrentFile
-  commentId: P:BassBoom.Basolia.File.FileTools.CurrentFile
-  fullName: BassBoom.Basolia.File.FileTools.CurrentFile
-  nameWithType: FileTools.CurrentFile
+- uid: BassBoom.Basolia.File.FileTools.CurrentFile(BassBoom.Basolia.BasoliaMedia)
+  name: CurrentFile(BasoliaMedia?)
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_CurrentFile_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.File.FileTools.CurrentFile(BassBoom.Basolia.BasoliaMedia)
+  name.vb: CurrentFile(BasoliaMedia)
+  fullName: BassBoom.Basolia.File.FileTools.CurrentFile(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.File.FileTools.CurrentFile(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: FileTools.CurrentFile(BasoliaMedia?)
+  nameWithType.vb: FileTools.CurrentFile(BasoliaMedia)
 - uid: BassBoom.Basolia.File.FileTools.CurrentFile*
   name: CurrentFile
   href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_CurrentFile_
@@ -429,12 +438,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.File.FileTools.CurrentFile
   nameWithType: FileTools.CurrentFile
-- uid: BassBoom.Basolia.File.FileTools.IsOpened
-  name: IsOpened
-  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_IsOpened
-  commentId: P:BassBoom.Basolia.File.FileTools.IsOpened
-  fullName: BassBoom.Basolia.File.FileTools.IsOpened
-  nameWithType: FileTools.IsOpened
+- uid: BassBoom.Basolia.File.FileTools.IsOpened(BassBoom.Basolia.BasoliaMedia)
+  name: IsOpened(BasoliaMedia?)
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_IsOpened_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.File.FileTools.IsOpened(BassBoom.Basolia.BasoliaMedia)
+  name.vb: IsOpened(BasoliaMedia)
+  fullName: BassBoom.Basolia.File.FileTools.IsOpened(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.File.FileTools.IsOpened(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: FileTools.IsOpened(BasoliaMedia?)
+  nameWithType.vb: FileTools.IsOpened(BasoliaMedia)
 - uid: BassBoom.Basolia.File.FileTools.IsOpened*
   name: IsOpened
   href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_IsOpened_
@@ -442,12 +454,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.File.FileTools.IsOpened
   nameWithType: FileTools.IsOpened
-- uid: BassBoom.Basolia.File.FileTools.IsRadioStation
-  name: IsRadioStation
-  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_IsRadioStation
-  commentId: P:BassBoom.Basolia.File.FileTools.IsRadioStation
-  fullName: BassBoom.Basolia.File.FileTools.IsRadioStation
-  nameWithType: FileTools.IsRadioStation
+- uid: BassBoom.Basolia.File.FileTools.IsRadioStation(BassBoom.Basolia.BasoliaMedia)
+  name: IsRadioStation(BasoliaMedia?)
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_IsRadioStation_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.File.FileTools.IsRadioStation(BassBoom.Basolia.BasoliaMedia)
+  name.vb: IsRadioStation(BasoliaMedia)
+  fullName: BassBoom.Basolia.File.FileTools.IsRadioStation(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.File.FileTools.IsRadioStation(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: FileTools.IsRadioStation(BasoliaMedia?)
+  nameWithType.vb: FileTools.IsRadioStation(BasoliaMedia)
 - uid: BassBoom.Basolia.File.FileTools.IsRadioStation*
   name: IsRadioStation
   href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_IsRadioStation_
