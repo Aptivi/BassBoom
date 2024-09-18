@@ -281,17 +281,10 @@ namespace BassBoom.Cli.CliBase
             // First, print the keystrokes
             drawn.Append(KeybindingsWriter.RenderKeybindings(Player.showBindings, 0, ConsoleWrapper.WindowHeight - 1));
 
-            // Print the separator and the music file info
-            string separator = new('═', ConsoleWrapper.WindowWidth);
-            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
-
-            // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
-
             // In case we have no stations in the playlist...
             if (Common.cachedInfos.Count == 0)
             {
-                int height = (ConsoleWrapper.WindowHeight - 6) / 2;
+                int height = (ConsoleWrapper.WindowHeight - 2) / 2;
                 drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a radio station to the playlist."));
                 return drawn.ToString();
             }
