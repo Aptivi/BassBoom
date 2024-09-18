@@ -87,7 +87,7 @@ namespace BassBoom.Cli.CliBase
                 if (Common.CurrentCachedInfo is null)
                     return "";
                 var buffer = new StringBuilder();
-                string indicator = $"╣ Volume: {Common.volume:0.00} ╠";
+                string indicator = $"┤ Volume: {Common.volume:0.00} ├";
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
                 if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                 {

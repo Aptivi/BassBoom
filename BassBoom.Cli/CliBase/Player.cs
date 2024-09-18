@@ -115,15 +115,15 @@ namespace BassBoom.Cli.CliBase
                         hue = 0;
                 }
                 string indicator =
-                    $"╣ Seek: {PlayerControls.seekRate:0.00} | " +
-                    $"Volume: {Common.volume:0.00} ╠";
+                    $"┤ Seek: {PlayerControls.seekRate:0.00} | " +
+                    $"Volume: {Common.volume:0.00} ├";
                 string lyric = Common.CurrentCachedInfo.LyricInstance is not null ? Common.CurrentCachedInfo.LyricInstance.GetLastLineCurrent(BassBoomCli.basolia) : "";
                 string finalLyric = string.IsNullOrWhiteSpace(lyric) ? "..." : lyric;
                 buffer.Append(
                     ProgressBarColor.RenderProgress(100 * (position / (double)Common.CurrentCachedInfo.Duration), 2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, disco, disco) +
-                    TextWriterWhereColor.RenderWhereColor($"╣ {posSpan} / {Common.CurrentCachedInfo.DurationSpan} ╠", 4, ConsoleWrapper.WindowHeight - 8, disco) +
+                    TextWriterWhereColor.RenderWhereColor($"┤ {posSpan} / {Common.CurrentCachedInfo.DurationSpan} ├", 4, ConsoleWrapper.WindowHeight - 8, disco) +
                     TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 8, disco) +
-                    CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 6, Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.IsPlaying(BassBoomCli.basolia) ? $"╣ {finalLyric} ╠" : "", disco)
+                    CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 6, Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.IsPlaying(BassBoomCli.basolia) ? $"┤ {finalLyric} ├" : "", disco)
                 );
                 return buffer.ToString();
             });
