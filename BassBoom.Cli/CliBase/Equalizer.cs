@@ -23,13 +23,10 @@ using Terminaux.Base.Buffered;
 using Terminaux.Colors;
 using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
-using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.FancyWriters;
-using Terminaux.Reader;
 using Terminaux.Inputs;
 using System.Collections.Generic;
 using Terminaux.Inputs.Styles.Selection;
-using Terminaux.Base.Extensions;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
 using Terminaux.Writer.MiscWriters.Tools;
@@ -54,7 +51,6 @@ namespace BassBoom.Cli.CliBase
         internal static void OpenEqualizer(Screen screen)
         {
             // First, initialize a screen part to handle drawing
-            Common.redraw = true;
             ScreenPart screenPart = new();
             screenPart.AddDynamicText(HandleDraw);
             screen.RemoveBufferedParts();
@@ -125,20 +121,16 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.Q:
                     exiting = true;
+                    Common.redraw = true;
                     break;
             }
         }
 
         private static string HandleDraw()
         {
-            if (!Common.redraw)
-                return "";
-            Common.redraw = false;
-
             // Prepare things
             var drawn = new StringBuilder();
             ConsoleWrapper.CursorVisible = false;
-            ColorTools.LoadBack();
 
             // First, print the keystrokes
             drawn.Append(KeybindingsWriter.RenderKeybindings(showBindings, 0, ConsoleWrapper.WindowHeight - 1));
