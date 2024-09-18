@@ -121,10 +121,10 @@ namespace BassBoom.Cli.CliBase
                 string lyric = Common.CurrentCachedInfo.LyricInstance is not null ? Common.CurrentCachedInfo.LyricInstance.GetLastLineCurrent(BassBoomCli.basolia) : "";
                 string finalLyric = string.IsNullOrWhiteSpace(lyric) ? "..." : lyric;
                 buffer.Append(
-                    ProgressBarColor.RenderProgress(100 * (position / (double)Common.CurrentCachedInfo.Duration), 2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, disco, disco) +
-                    TextWriterWhereColor.RenderWhereColor($"┤ {posSpan} / {Common.CurrentCachedInfo.DurationSpan} ├", 4, ConsoleWrapper.WindowHeight - 8, disco) +
-                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 8, disco) +
-                    CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 6, Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.IsPlaying(BassBoomCli.basolia) ? $"┤ {finalLyric} ├" : "", disco)
+                    ProgressBarColor.RenderProgress(100 * (position / (double)Common.CurrentCachedInfo.Duration), 2, ConsoleWrapper.WindowHeight - 5, ConsoleWrapper.WindowWidth - 6, disco, disco) +
+                    TextWriterWhereColor.RenderWhereColor($"┤ {posSpan} / {Common.CurrentCachedInfo.DurationSpan} ├", 4, ConsoleWrapper.WindowHeight - 5, disco) +
+                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 5, disco) +
+                    CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 3, Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.IsPlaying(BassBoomCli.basolia) ? $"┤ {finalLyric} ├" : "", disco)
                 );
                 return buffer.ToString();
             });
@@ -335,7 +335,6 @@ namespace BassBoom.Cli.CliBase
                         Common.populate = true;
                     Common.currentPos = Common.cachedInfos.IndexOf(musicFile) + 1;
                     PlayerControls.PopulateMusicFileInfo(musicFile.MusicPath);
-                    TextWriterRaw.WritePlain(PlayerControls.RenderSongName(musicFile.MusicPath), false);
                     if (Common.paused)
                     {
                         Common.paused = false;
@@ -381,17 +380,18 @@ namespace BassBoom.Cli.CliBase
             }
 
             // Populate music file info, as necessary
+            string name = "";
             if (Common.CurrentCachedInfo is not null)
             {
                 if (Common.populate)
                     PlayerControls.PopulateMusicFileInfo(Common.CurrentCachedInfo.MusicPath);
-                drawn.Append(PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath));
+                name = PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath);
             }
 
             // Now, print the list of songs.
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
-            int endPos = ConsoleWrapper.WindowHeight - 10;
+            int endPos = ConsoleWrapper.WindowHeight - 5;
             int songsPerPage = endPos - startPos;
             int max = Common.cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
             for (int i = 0; i < Common.cachedInfos.Count; i++)
@@ -403,8 +403,8 @@ namespace BassBoom.Cli.CliBase
                 choices.Add(new($"{i + 1}", songPreview));
             }
             drawn.Append(
-                BoxFrameColor.RenderBoxFrame(2, 3, ConsoleWrapper.WindowWidth - 6, songsPerPage) +
-                SelectionInputTools.RenderSelections([.. choices], 3, 4, Common.currentPos - 1, songsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, songsPerPage) +
+                SelectionInputTools.RenderSelections([.. choices], 3, 2, Common.currentPos - 1, songsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
         }

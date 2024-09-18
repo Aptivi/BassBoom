@@ -130,9 +130,7 @@ namespace BassBoom.Cli.CliBase
             string icy = PlaybackTools.GetRadioNowPlaying(BassBoomCli.basolia);
 
             // Print the music name
-            return
-                TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, 1) +
-                CenteredTextColor.RenderCentered(1, "Now playing: {0}", ConsoleColors.White, ConsoleColors.Black, 0, 0, icy);
+            return $"Now playing: {icy}";
         }
 
         internal static void RemoveCurrentStation()

@@ -139,23 +139,14 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(KeybindingsWriter.RenderKeybindings(showBindings, 0, ConsoleWrapper.WindowHeight - 1));
 
             // Write current song
+            string name = "Not playing. Music player is idle.";
             if (Common.cachedInfos.Count > 0)
-            {
-                if (Common.isRadioMode)
-                    drawn.Append(RadioControls.RenderStationName());
-                else
-                    drawn.Append(PlayerControls.RenderSongName(Common.CurrentCachedInfo?.MusicPath ?? ""));
-            }
-            else
-                drawn.Append(
-                    TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, 1) +
-                    CenteredTextColor.RenderCentered(1, "Not playing. Music player is idle.", ConsoleColors.White)
-                );
+                name = Common.isRadioMode ? RadioControls.RenderStationName() : PlayerControls.RenderSongName(Common.CurrentCachedInfo?.MusicPath ?? "");
 
             // Now, print the list of bands and their values.
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
-            int endPos = ConsoleWrapper.WindowHeight - 6;
+            int endPos = ConsoleWrapper.WindowHeight - 1;
             int bandsPerPage = endPos - startPos;
             for (int i = 0; i < 32; i++)
             {
@@ -173,8 +164,8 @@ namespace BassBoom.Cli.CliBase
                 choices.Add(new($"{i + 1}", bandData));
             }
             drawn.Append(
-                BoxFrameColor.RenderBoxFrame(2, 3, ConsoleWrapper.WindowWidth - 6, bandsPerPage) +
-                SelectionInputTools.RenderSelections([.. choices], 3, 4, currentBandIdx, bandsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, bandsPerPage) +
+                SelectionInputTools.RenderSelections([.. choices], 3, 2, currentBandIdx, bandsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
         }

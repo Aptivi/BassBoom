@@ -97,8 +97,8 @@ namespace BassBoom.Cli.CliBase
                         hue = 0;
                 }
                 buffer.Append(
-                    BoxFrameColor.RenderBoxFrame(2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, 1, disco) +
-                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 8, disco)
+                    BoxFrameColor.RenderBoxFrame(2, ConsoleWrapper.WindowHeight - 5, ConsoleWrapper.WindowWidth - 6, 1, disco) +
+                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 5, disco)
                 );
                 return buffer.ToString();
             });
@@ -291,17 +291,18 @@ namespace BassBoom.Cli.CliBase
             }
 
             // Populate music file info, as necessary
+            string name = "";
             if (Common.CurrentCachedInfo is not null)
             {
                 if (Common.populate)
                     RadioControls.PopulateRadioStationInfo(Common.CurrentCachedInfo.MusicPath);
-                drawn.Append(RadioControls.RenderStationName());
+                name = RadioControls.RenderStationName();
             }
 
             // Now, print the list of stations.
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
-            int endPos = ConsoleWrapper.WindowHeight - 10;
+            int endPos = ConsoleWrapper.WindowHeight - 5;
             int stationsPerPage = endPos - startPos;
             int max = Common.cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
             for (int i = 0; i < Common.cachedInfos.Count; i++)
@@ -313,8 +314,8 @@ namespace BassBoom.Cli.CliBase
                 choices.Add(new($"{i + 1}", stationPreview));
             }
             drawn.Append(
-                BoxFrameColor.RenderBoxFrame(2, 3, ConsoleWrapper.WindowWidth - 6, stationsPerPage) +
-                SelectionInputTools.RenderSelections([.. choices], 3, 4, Common.currentPos - 1, stationsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, stationsPerPage) +
+                SelectionInputTools.RenderSelections([.. choices], 3, 2, Common.currentPos - 1, stationsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
             );
             return drawn.ToString();
         }
