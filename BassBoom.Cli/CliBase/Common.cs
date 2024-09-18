@@ -33,6 +33,7 @@ using Terminaux.Base.Buffered;
 using Terminaux.Inputs;
 using Terminaux.Inputs.Styles;
 using Terminaux.Inputs.Styles.Infobox;
+using Terminaux.Writer.MiscWriters;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -170,64 +171,15 @@ namespace BassBoom.Cli.CliBase
 
         internal static void ShowHelp()
         {
-            InfoBoxColor.WriteInfoBox(
-                """
-                Available keystrokes
-                ====================
-
-                [SPACE]             Play/Pause
-                [ESC]               Stop
-                [Q]                 Exit
-                [UP/DOWN]           Volume control
-                [<-/->]             Seek control
-                [CTRL] + [<-/->]    Seek duration control
-                [I]                 Song info
-                [A]                 Add a music file
-                [S] (when idle)     Add a music directory to the playlist
-                [B]                 Previous song
-                [N]                 Next song
-                [R]                 Remove current song
-                [CTRL] + [R]        Remove all songs
-                [S] (when playing)  Selectively seek
-                [F] (when playing)  Seek to previous lyric
-                [G] (when playing)  Seek to next lyric
-                [J] (when playing)  Seek to current lyric
-                [K] (when playing)  Seek to which lyric
-                [C]                 Set repeat checkpoint
-                [SHIFT] + [C]       Seek to repeat checkpoint
-                [E]                 Opens the equalizer
-                [D]                 Device and driver info
-                [CTRL] + [D]        Set device and driver
-                [SHIFT] + [D]       Reset device and driver
-                [Z]                 System info
-                """
+            InfoBoxColor.WriteInfoBox("Available keystrokes",
+                KeybindingsWriter.RenderKeybindingHelpText(Player.allBindings)
             );
         }
 
         internal static void ShowHelpRadio()
         {
-            InfoBoxColor.WriteInfoBox(
-                """
-                Available keystrokes
-                ====================
-
-                [SPACE]             Play/Pause
-                [ESC]               Stop
-                [Q]                 Exit
-                [UP/DOWN]           Volume control
-                [I]                 Radio station info
-                [CTRL] + [I]        Radio station extended info
-                [A]                 Add a radio station
-                [B]                 Previous radio station
-                [N]                 Next radio station
-                [R]                 Remove current radio station
-                [CTRL] + [R]        Remove all radio stations
-                [E]                 Opens the equalizer
-                [D]                 Device and driver info
-                [CTRL] + [D]        Set device and driver
-                [SHIFT] + [D]       Reset device and driver
-                [Z]                 System info
-                """
+            InfoBoxColor.WriteInfoBox("Available keystrokes",
+                KeybindingsWriter.RenderKeybindingHelpText(Radio.allBindings)
             );
         }
 

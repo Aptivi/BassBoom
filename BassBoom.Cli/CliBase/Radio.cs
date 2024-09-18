@@ -36,12 +36,34 @@ using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
+using Terminaux.Writer.MiscWriters.Tools;
+using Terminaux.Writer.MiscWriters;
 
 namespace BassBoom.Cli.CliBase
 {
     internal static class Radio
     {
         internal static Thread? playerThread;
+        internal static readonly Keybinding[] allBindings =
+        [
+            new("Play/Pause", ConsoleKey.Spacebar),
+            new("Stop", ConsoleKey.Escape),
+            new("Exit", ConsoleKey.Q),
+            new("Increase volume", ConsoleKey.UpArrow),
+            new("Decrease volume", ConsoleKey.DownArrow),
+            new("Radio station information", ConsoleKey.I),
+            new("Radio station extended information", ConsoleKey.I, ConsoleModifiers.Control),
+            new("Add a radio station", ConsoleKey.A),
+            new("Previous radio station", ConsoleKey.B),
+            new("Next radio station", ConsoleKey.N),
+            new("Remove current radio station", ConsoleKey.R),
+            new("Remove all radio stations", ConsoleKey.R, ConsoleModifiers.Control),
+            new("Open the equalizer", ConsoleKey.E),
+            new("Device and driver information", ConsoleKey.D),
+            new("Set device and driver", ConsoleKey.D, ConsoleModifiers.Control),
+            new("Reset device and driver", ConsoleKey.D, ConsoleModifiers.Shift),
+            new("System information", ConsoleKey.Z),
+        ];
 
         public static void RadioLoop()
         {
@@ -257,12 +279,7 @@ namespace BassBoom.Cli.CliBase
             ConsoleWrapper.CursorVisible = false;
 
             // First, print the keystrokes
-            string keystrokes =
-                "[SPACE] Play/Pause" +
-                " - [ESC] Stop" +
-                " - [Q] Exit" +
-                " - [H] Help";
-            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 2, keystrokes));
+            drawn.Append(KeybindingsWriter.RenderKeybindings(Player.showBindings, 0, ConsoleWrapper.WindowHeight - 1));
 
             // Print the separator and the music file info
             string separator = new('═', ConsoleWrapper.WindowWidth);

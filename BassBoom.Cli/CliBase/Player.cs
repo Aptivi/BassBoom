@@ -35,6 +35,8 @@ using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
+using Terminaux.Writer.MiscWriters.Tools;
+using Terminaux.Writer.MiscWriters;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -43,6 +45,44 @@ namespace BassBoom.Cli.CliBase
         internal static Thread? playerThread;
         internal static int position = 0;
         internal static readonly List<string> passedMusicPaths = [];
+        internal static readonly Keybinding[] showBindings =
+        [
+            new("Play/Pause", ConsoleKey.Spacebar),
+            new("Stop", ConsoleKey.Escape),
+            new("Exit", ConsoleKey.Q),
+            new("Help", ConsoleKey.H),
+        ];
+        internal static readonly Keybinding[] allBindings =
+        [
+            new("Play/Pause", ConsoleKey.Spacebar),
+            new("Stop", ConsoleKey.Escape),
+            new("Exit", ConsoleKey.Q),
+            new("Increase volume", ConsoleKey.UpArrow),
+            new("Decrease volume", ConsoleKey.DownArrow),
+            new("Seek backwards", ConsoleKey.LeftArrow),
+            new("Seek forwards", ConsoleKey.RightArrow),
+            new("Decrease seek duration", ConsoleKey.LeftArrow, ConsoleModifiers.Control),
+            new("Increase seek duration", ConsoleKey.RightArrow, ConsoleModifiers.Control),
+            new("Song information", ConsoleKey.I),
+            new("Add a music file", ConsoleKey.A),
+            new("Add a music directory to the list (when idle)", ConsoleKey.S),
+            new("Previous song", ConsoleKey.B),
+            new("Next song", ConsoleKey.N),
+            new("Remove current song", ConsoleKey.R),
+            new("Remove all songs", ConsoleKey.R, ConsoleModifiers.Control),
+            new("Selectively seek (when playing)", ConsoleKey.S),
+            new("Seek to previous lyric (when playing)", ConsoleKey.F),
+            new("Seek to next lyric (when playing)", ConsoleKey.G),
+            new("Seek to current lyric (when playing)", ConsoleKey.J),
+            new("Seek to which lyric (when playing)", ConsoleKey.K),
+            new("Set repeat checkpoint", ConsoleKey.C),
+            new("Seek to repeat checkpoint", ConsoleKey.C, ConsoleModifiers.Shift),
+            new("Open the equalizer", ConsoleKey.E),
+            new("Device and driver information", ConsoleKey.D),
+            new("Set device and driver", ConsoleKey.D, ConsoleModifiers.Control),
+            new("Reset device and driver", ConsoleKey.D, ConsoleModifiers.Shift),
+            new("System information", ConsoleKey.Z),
+        ];
 
         public static void PlayerLoop()
         {
@@ -317,12 +357,7 @@ namespace BassBoom.Cli.CliBase
             ConsoleWrapper.CursorVisible = false;
 
             // First, print the keystrokes
-            string keystrokes =
-                "[SPACE] Play/Pause" +
-                " - [ESC] Stop" +
-                " - [Q] Exit" +
-                " - [H] Help";
-            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 2, keystrokes));
+            drawn.Append(KeybindingsWriter.RenderKeybindings(showBindings, 0, ConsoleWrapper.WindowHeight - 1));
 
             // Print the separator and the music file info
             string separator = new('═', ConsoleWrapper.WindowWidth);
