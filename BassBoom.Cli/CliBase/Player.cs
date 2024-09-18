@@ -134,7 +134,6 @@ namespace BassBoom.Cli.CliBase
 
             // Render the buffer
             playerScreen.AddBufferedPart("BassBoom Player", screenPart);
-            playerScreen.ResetResize = false;
 
             // Then, the main loop
             while (!Common.exiting)

@@ -71,7 +71,7 @@ namespace BassBoom.Cli
                 outVer = InitBasolia.OutLibVersion;
 
                 // Now, open an interactive TUI
-                ConsoleResizeHandler.StartResizeListener();
+                ConsoleResizeHandler.StartResizeListener((_, _, _, _) => Common.redraw = true);
                 if (isRadio)
                     Radio.RadioLoop();
                 else

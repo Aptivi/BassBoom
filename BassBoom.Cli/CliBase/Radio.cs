@@ -108,7 +108,6 @@ namespace BassBoom.Cli.CliBase
 
             // Render the buffer
             radioScreen.AddBufferedPart("BassBoom Player", screenPart);
-            radioScreen.ResetResize = false;
 
             // Then, the main loop
             while (!Common.exiting)
