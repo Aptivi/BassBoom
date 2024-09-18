@@ -2910,15 +2910,15 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.SetEqualizerRange
   nameWithType: PlaybackTools.SetEqualizerRange
-- uid: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia,System.Double)
-  name: SetVolume(BasoliaMedia?, double)
-  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetVolume_BassBoom_Basolia_BasoliaMedia_System_Double_
-  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia,System.Double)
-  name.vb: SetVolume(BasoliaMedia, Double)
-  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia?, double)
-  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia, Double)
-  nameWithType: PlaybackTools.SetVolume(BasoliaMedia?, double)
-  nameWithType.vb: PlaybackTools.SetVolume(BasoliaMedia, Double)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia,System.Double,System.Boolean)
+  name: SetVolume(BasoliaMedia?, double, bool)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetVolume_BassBoom_Basolia_BasoliaMedia_System_Double_System_Boolean_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia,System.Double,System.Boolean)
+  name.vb: SetVolume(BasoliaMedia, Double, Boolean)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia?, double, bool)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.SetVolume(BassBoom.Basolia.BasoliaMedia, Double, Boolean)
+  nameWithType: PlaybackTools.SetVolume(BasoliaMedia?, double, bool)
+  nameWithType.vb: PlaybackTools.SetVolume(BasoliaMedia, Double, Boolean)
 - uid: BassBoom.Basolia.Playback.PlaybackTools.SetVolume*
   name: SetVolume
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_SetVolume_
