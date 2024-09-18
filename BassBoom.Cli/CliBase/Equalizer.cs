@@ -32,6 +32,8 @@ using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Base.Extensions;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
+using Terminaux.Writer.MiscWriters.Tools;
+using Terminaux.Writer.MiscWriters;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -39,6 +41,15 @@ namespace BassBoom.Cli.CliBase
     {
         internal static bool exiting = false;
         internal static int currentBandIdx = 0;
+        internal static readonly Keybinding[] showBindings =
+        [
+            new("Decrease", ConsoleKey.LeftArrow),
+            new("Increase", ConsoleKey.RightArrow),
+            new("Previous band", ConsoleKey.UpArrow),
+            new("Next band", ConsoleKey.DownArrow),
+            new("Reset", ConsoleKey.R),
+            new("Exit", ConsoleKey.Q),
+        ];
 
         internal static void OpenEqualizer(Screen screen)
         {
@@ -125,19 +136,7 @@ namespace BassBoom.Cli.CliBase
             ColorTools.LoadBack();
 
             // First, print the keystrokes
-            string keystrokes =
-                "[<-|->] Change" +
-                " - [UP|DOWN] Select Band" +
-                " - [R] Reset" +
-                " - [Q] Exit";
-            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 2, keystrokes));
-
-            // Print the separator and the music file info
-            string separator = new('═', ConsoleWrapper.WindowWidth);
-            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
-
-            // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(KeybindingsWriter.RenderKeybindings(showBindings, 0, ConsoleWrapper.WindowHeight - 1));
 
             // Write current song
             if (Common.cachedInfos.Count > 0)
