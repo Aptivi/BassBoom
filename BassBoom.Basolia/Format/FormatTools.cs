@@ -220,5 +220,126 @@ namespace BassBoom.Basolia.Format
             // We're now entering the safe zone
             return [.. formats];
         }
+
+        /// <summary>
+        /// Is this format supported?
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="rate">Rate</param>
+        /// <param name="encoding">Encoding</param>
+        /// <param name="channelCount">Mono, stereo, or both?</param>
+        public static bool IsFormatSupported(BasoliaMedia? basolia, long rate, int encoding, out ChannelCount channelCount)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                var handle = basolia._mpg123Handle;
+
+                // Check for support
+                var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_format_support>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_format_support));
+                int channelCountInt = @delegate.Invoke(handle, rate, encoding);
+                channelCount = channelCountInt == 0 ? ChannelCount.Unknown : (ChannelCount)channelCountInt;
+            }
+
+            // We're now entering the safe zone
+            return channelCount != ChannelCount.Unknown;
+        }
+
+        /// <summary>
+        /// Is this format supported?
+        /// </summary>
+        /// <param name="encoding">Encoding</param>
+        public static int GetEncodingSize(int encoding)
+        {
+            InitBasolia.CheckInited();
+            int size = -1;
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                // Check for support
+                var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_encsize>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_encsize));
+                size = @delegate.Invoke(encoding);
+            }
+
+            // We're now entering the safe zone
+            return size;
+        }
+
+        /// <summary>
+        /// Makes the underlying media handler accept no format
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static void NoFormat(BasoliaMedia? basolia)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                var handle = basolia._mpg123Handle;
+
+                // Check for support
+                var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_format_none>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_format_none));
+                int resetStatus = @delegate.Invoke(handle);
+                if (resetStatus != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException($"Can't reset output encoding", (mpg123_errors)resetStatus);
+            }
+        }
+
+        /// <summary>
+        /// Makes the underlying media handler accept all formats
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static void AllFormats(BasoliaMedia? basolia)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                var handle = basolia._mpg123Handle;
+
+                // Check for support
+                var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_format_all>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_format_all));
+                int resetStatus = @delegate.Invoke(handle);
+                if (resetStatus != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException($"Can't set output format", (mpg123_errors)resetStatus);
+            }
+        }
+
+        /// <summary>
+        /// Makes the underlying media handler use this specific format
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="rate">Rate</param>
+        /// <param name="encoding">Encoding</param>
+        /// <param name="channels">Mono, stereo, or both?</param>
+        public static void UseFormat(BasoliaMedia? basolia, long rate, ChannelCount channels, int encoding)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                var handle = basolia._mpg123Handle;
+
+                // Check for support
+                var delegate2 = MpgNative.GetDelegate<NativeOutput.mpg123_format>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_format));
+                int formatStatus = delegate2.Invoke(handle, rate, (int)channels, encoding);
+                if (formatStatus != (int)mpg123_errors.MPG123_OK)
+                    throw new BasoliaException($"Can't set output encoding to {rate}, {channels}, {encoding}", (mpg123_errors)formatStatus);
+            }
+        }
     }
 }

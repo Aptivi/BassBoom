@@ -149,9 +149,15 @@ namespace BassBoom.Cli.CliBase
                 // Get the name and the description
                 string name = FormatTools.GetEncodingName(encoding);
                 string desc = FormatTools.GetEncodingDescription(encoding);
+                int size = FormatTools.GetEncodingSize(encoding);
 
-                encodingsBuilder.AppendLine($"  - {name} [{encoding}]: {desc}");
+                encodingsBuilder.AppendLine($"  - {name} [{encoding}, {size} bytes]: {desc}");
             }
+            
+            var ratesBuilder = new StringBuilder();
+            int[] rates = FormatTools.GetRates();
+            foreach (int rate in rates)
+                ratesBuilder.AppendLine($"  - {rate} hertz");
 
             InfoBoxColor.WriteInfoBox(
                 $$"""
@@ -177,8 +183,7 @@ namespace BassBoom.Cli.CliBase
                 Encodings:
                 {{encodingsBuilder}}
                 Rates:
-                  - {{string.Join("\n  - ", FormatTools.GetRates())}}
-
+                {{ratesBuilder}}
                 System specifications
                 =====================
 
