@@ -54,6 +54,7 @@ namespace BassBoom.Cli.CliBase
         internal static void OpenEqualizer(Screen screen)
         {
             // First, initialize a screen part to handle drawing
+            Common.redraw = true;
             ScreenPart screenPart = new();
             screenPart.AddDynamicText(HandleDraw);
             screen.RemoveBufferedParts();
@@ -130,6 +131,10 @@ namespace BassBoom.Cli.CliBase
 
         private static string HandleDraw()
         {
+            if (!Common.redraw)
+                return "";
+            Common.redraw = false;
+
             // Prepare things
             var drawn = new StringBuilder();
             ConsoleWrapper.CursorVisible = false;

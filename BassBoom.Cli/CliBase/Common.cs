@@ -48,6 +48,7 @@ namespace BassBoom.Cli.CliBase
         internal static bool paused = false;
         internal static bool failedToPlay = false;
         internal static bool isRadioMode = false;
+        internal static bool redraw = true;
         internal static readonly List<CachedSongInfo> cachedInfos = [];
 
         internal static CachedSongInfo? CurrentCachedInfo =>
@@ -198,14 +199,17 @@ namespace BassBoom.Cli.CliBase
                         ShowHelpRadio();
                     else
                         ShowHelp();
+                    redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.E:
                     Equalizer.OpenEqualizer(playerScreen);
+                    redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.Z:
                     ShowSpecs();
+                    redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.L:
@@ -234,6 +238,7 @@ namespace BassBoom.Cli.CliBase
                         DeviceTools.Reset();
                     else
                         ShowDeviceDriver();
+                    redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.Q:

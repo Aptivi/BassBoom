@@ -198,21 +198,26 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.B:
                     PlayerControls.SeekBeginning();
                     PlayerControls.PreviousSong();
+                    Common.redraw = true;
                     break;
                 case ConsoleKey.N:
                     PlayerControls.SeekBeginning();
                     PlayerControls.NextSong();
+                    Common.redraw = true;
                     break;
                 case ConsoleKey.I:
                     PlayerControls.ShowSongInfo();
+                    Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.A:
                     PlayerControls.PromptForAddSong();
+                    Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.S:
                     PlayerControls.PromptForAddDirectory();
+                    Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.R:
@@ -222,6 +227,7 @@ namespace BassBoom.Cli.CliBase
                         PlayerControls.RemoveAllSongs();
                     else
                         PlayerControls.RemoveCurrentSong();
+                    Common.redraw = true;
                     break;
                 case ConsoleKey.C:
                     if (Common.CurrentCachedInfo is null)
@@ -259,6 +265,7 @@ namespace BassBoom.Cli.CliBase
                     PlayerControls.PreviousSong();
                     playerThread = new(HandlePlay);
                     PlayerControls.Play();
+                    Common.redraw = true;
                     break;
                 case ConsoleKey.F:
                     PlayerControls.SeekPreviousLyric();
@@ -279,9 +286,11 @@ namespace BassBoom.Cli.CliBase
                     PlayerControls.NextSong();
                     playerThread = new(HandlePlay);
                     PlayerControls.Play();
+                    Common.redraw = true;
                     break;
                 case ConsoleKey.Spacebar:
                     PlayerControls.Pause();
+                    Common.redraw = true;
                     break;
                 case ConsoleKey.R:
                     PlayerControls.Stop(false);
@@ -290,16 +299,19 @@ namespace BassBoom.Cli.CliBase
                         PlayerControls.RemoveAllSongs();
                     else
                         PlayerControls.RemoveCurrentSong();
+                    Common.redraw = true;
                     break;
                 case ConsoleKey.Escape:
                     PlayerControls.Stop();
                     break;
                 case ConsoleKey.I:
                     PlayerControls.ShowSongInfo();
+                    Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.S:
                     PlayerControls.PromptSeek();
+                    Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.D:
@@ -307,6 +319,7 @@ namespace BassBoom.Cli.CliBase
                     Common.HandleKeypressCommon(keystroke, playerScreen, false);
                     playerThread = new(HandlePlay);
                     PlayerControls.Play();
+                    Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.C:
@@ -352,6 +365,10 @@ namespace BassBoom.Cli.CliBase
 
         private static string HandleDraw()
         {
+            if (!Common.redraw)
+                return "";
+            Common.redraw = false;
+
             // Prepare things
             var drawn = new StringBuilder();
             ConsoleWrapper.CursorVisible = false;
