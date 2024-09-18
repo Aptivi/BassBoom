@@ -140,24 +140,64 @@ namespace BassBoom.Cli.CliBase
             );
         }
 
-        internal static void ShowSpecs()
+        internal static void ShowSpecs(bool devMode = false)
         {
-            var encodingsBuilder = new StringBuilder();
-            int[] encodings = FormatTools.GetEncodings();
-            foreach (int encoding in encodings)
+            var devSpecs = new StringBuilder();
+            if (devMode)
             {
-                // Get the name and the description
-                string name = FormatTools.GetEncodingName(encoding);
-                string desc = FormatTools.GetEncodingDescription(encoding);
-                int size = FormatTools.GetEncodingSize(encoding);
+                devSpecs.AppendLine(
+                    """
 
-                encodingsBuilder.AppendLine($"  - {name} [{encoding}, {size} bytes]: {desc}");
+
+                    Extra specs (for developers)
+                    ============================
+
+                    """);
+
+                // Get all encodings and add them to a separate builder
+                var encodingsBuilder = new StringBuilder();
+                int[] encodings = FormatTools.GetEncodings();
+                foreach (int encoding in encodings)
+                {
+                    // Get the name and the description
+                    string name = FormatTools.GetEncodingName(encoding);
+                    string desc = FormatTools.GetEncodingDescription(encoding);
+                    int size = FormatTools.GetEncodingSize(encoding);
+
+                    encodingsBuilder.AppendLine($"  - {name} [{encoding}, {size} bytes]: {desc}");
+                }
+
+                // Get all rates and add them to a separate builder
+                var ratesBuilder = new StringBuilder();
+                int[] rates = FormatTools.GetRates();
+                foreach (int rate in rates)
+                    ratesBuilder.AppendLine($"  - {rate} hertz");
+
+                // Now, grab the necessary values and add them, too.
+                devSpecs.Append(
+                    $"""
+                    Decoders
+                    --------
+                    
+                    Supported decoders:
+                      - {string.Join("\n  - ", DecodeTools.GetDecoders(true))}
+                    
+                    All decoders:
+                      - {string.Join("\n  - ", DecodeTools.GetDecoders(false))}
+                    
+                    Encodings and Rates
+                    -------------------
+                    
+                    Encodings:
+                    {encodingsBuilder}
+                    Rates:
+                    {ratesBuilder}
+                    Buffer info
+                    -----------
+
+                    Generic buffer size: {AudioInfoTools.GetGenericBufferSize()}
+                    """);
             }
-            
-            var ratesBuilder = new StringBuilder();
-            int[] rates = FormatTools.GetRates();
-            foreach (int rate in rates)
-                ratesBuilder.AppendLine($"  - {rate} hertz");
 
             InfoBoxColor.WriteInfoBox(
                 $$"""
@@ -168,22 +208,6 @@ namespace BassBoom.Cli.CliBase
                 MPG123 version: {{InitBasolia.MpgLibVersion}}
                 OUT123 version: {{InitBasolia.OutLibVersion}}
 
-                Decoders
-                ========
-
-                Supported decoders:
-                  - {{string.Join("\n  - ", DecodeTools.GetDecoders(true))}}
-
-                All decoders:
-                  - {{string.Join("\n  - ", DecodeTools.GetDecoders(false))}}
-
-                Encodings and Rates
-                ===================
-
-                Encodings:
-                {{encodingsBuilder}}
-                Rates:
-                {{ratesBuilder}}
                 System specifications
                 =====================
 
@@ -191,7 +215,7 @@ namespace BassBoom.Cli.CliBase
                 System Architecture: {{RuntimeInformation.OSArchitecture}}
                 Process Architecture: {{RuntimeInformation.ProcessArchitecture}}
                 System description: {{RuntimeInformation.OSDescription}}
-                .NET description: {{RuntimeInformation.FrameworkDescription}}
+                .NET description: {{RuntimeInformation.FrameworkDescription}}{{devSpecs}}
                 """
             );
         }
@@ -234,7 +258,7 @@ namespace BassBoom.Cli.CliBase
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.Z:
-                    ShowSpecs();
+                    ShowSpecs(keystroke.Modifiers == ConsoleModifiers.Shift);
                     redraw = true;
                     playerScreen.RequireRefresh();
                     break;
