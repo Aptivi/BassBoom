@@ -796,6 +796,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.AudioInfoTools.GetSamplesPerFrame
   nameWithType: AudioInfoTools.GetSamplesPerFrame
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetSecondsPerFrame(BassBoom.Basolia.BasoliaMedia)
+  name: GetSecondsPerFrame(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetSecondsPerFrame_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Format.AudioInfoTools.GetSecondsPerFrame(BassBoom.Basolia.BasoliaMedia)
+  name.vb: GetSecondsPerFrame(BasoliaMedia)
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetSecondsPerFrame(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Format.AudioInfoTools.GetSecondsPerFrame(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: AudioInfoTools.GetSecondsPerFrame(BasoliaMedia?)
+  nameWithType.vb: AudioInfoTools.GetSecondsPerFrame(BasoliaMedia)
+- uid: BassBoom.Basolia.Format.AudioInfoTools.GetSecondsPerFrame*
+  name: GetSecondsPerFrame
+  href: api/BassBoom.Basolia.Format.AudioInfoTools.html#BassBoom_Basolia_Format_AudioInfoTools_GetSecondsPerFrame_
+  commentId: Overload:BassBoom.Basolia.Format.AudioInfoTools.GetSecondsPerFrame
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Format.AudioInfoTools.GetSecondsPerFrame
+  nameWithType: AudioInfoTools.GetSecondsPerFrame
 - uid: BassBoom.Basolia.Format.ChannelCount
   name: ChannelCount
   href: api/BassBoom.Basolia.Format.ChannelCount.html
