@@ -34,9 +34,6 @@ namespace BassBoom.Basolia.Devices
     /// </summary>
     public static class DeviceTools
     {
-        internal static string? activeDriver;
-        internal static string? activeDevice;
-
         /// <summary>
         /// Gets a read only dictionary that lists all the drivers
         /// </summary>
@@ -154,12 +151,15 @@ namespace BassBoom.Basolia.Devices
         /// <summary>
         /// Gets the current cached device and driver
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>Current cached device and driver</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static (string? driver, string? device) GetCurrentCached()
+        public static (string? driver, string? device) GetCurrentCached(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
-            return (activeDriver, activeDevice);
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            return (basolia.activeDriver, basolia.activeDevice);
         }
 
         /// <summary>
@@ -170,12 +170,13 @@ namespace BassBoom.Basolia.Devices
         /// <exception cref="BasoliaException"></exception>
         public static void SetActiveDriver(BasoliaMedia? basolia, string driver)
         {
+            InitBasolia.CheckInited();
             if (basolia is null)
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             var driverList = GetDrivers(basolia);
             if (!driverList.ContainsKey(driver))
                 throw new BasoliaException($"Driver {driver} doesn't exist", mpg123_errors.MPG123_ERR);
-            activeDriver = driver;
+            basolia.activeDriver = driver;
         }
 
         /// <summary>
@@ -187,24 +188,29 @@ namespace BassBoom.Basolia.Devices
         /// <exception cref="BasoliaException"></exception>
         public static void SetActiveDevice(BasoliaMedia? basolia, string driver, string device)
         {
+            InitBasolia.CheckInited();
             if (basolia is null)
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
-            activeDevice = "";
-            var deviceList = GetDevices(basolia, driver, ref activeDevice);
+            basolia.activeDevice = "";
+            var deviceList = GetDevices(basolia, driver, ref basolia.activeDevice);
             if (string.IsNullOrEmpty(device))
                 return;
             if (!deviceList.ContainsKey(device))
                 throw new BasoliaException($"Device {device} doesn't exist", mpg123_errors.MPG123_ERR);
-            activeDevice = device;
+            basolia.activeDevice = device;
         }
 
         /// <summary>
         /// Resets the driver and the device selection to their initial settings
         /// </summary>
-        public static void Reset()
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static void Reset(BasoliaMedia? basolia)
         {
-            activeDriver = null;
-            activeDevice = null;
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            basolia.activeDriver = null;
+            basolia.activeDevice = null;
         }
     }
 }

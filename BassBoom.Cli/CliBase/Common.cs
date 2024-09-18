@@ -74,13 +74,13 @@ namespace BassBoom.Cli.CliBase
         {
             exiting = true;
             advance = false;
-            if (FileTools.IsOpened)
+            if (FileTools.IsOpened(BassBoomCli.basolia))
                 PlaybackTools.Stop(BassBoomCli.basolia);
         }
 
         internal static void Switch(string musicPath)
         {
-            if (FileTools.IsOpened)
+            if (FileTools.IsOpened(BassBoomCli.basolia))
                 FileTools.CloseFile(BassBoomCli.basolia);
             if (isRadioMode)
                 FileTools.OpenUrl(BassBoomCli.basolia, musicPath);
@@ -95,7 +95,7 @@ namespace BassBoom.Cli.CliBase
             if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
             {
                 var (driver, device) = DeviceTools.GetCurrent(BassBoomCli.basolia);
-                var cached = DeviceTools.GetCurrentCached();
+                var cached = DeviceTools.GetCurrentCached(BassBoomCli.basolia);
                 currentBuilder.AppendLine(
                     $$"""
                     Device: {{device}}
@@ -235,7 +235,7 @@ namespace BassBoom.Cli.CliBase
                         DeviceTools.SetActiveDevice(BassBoomCli.basolia, driver.ChoiceName, device.ChoiceName);
                     }
                     else if (keystroke.Modifiers == ConsoleModifiers.Shift)
-                        DeviceTools.Reset();
+                        DeviceTools.Reset(BassBoomCli.basolia);
                     else
                         ShowDeviceDriver();
                     redraw = true;

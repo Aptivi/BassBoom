@@ -36,9 +36,6 @@ namespace BassBoom.Basolia.File
     /// </summary>
     public static class FileTools
     {
-        private static bool isOpened = false;
-        private static bool isRadioStation = false;
-        private static FileType? currentFile;
         private static readonly string[] supportedExts =
         [
             ".mp3",
@@ -57,24 +54,44 @@ namespace BassBoom.Basolia.File
         /// <summary>
         /// Is the file open?
         /// </summary>
-        public static bool IsOpened =>
-            isOpened;
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static bool IsOpened(BasoliaMedia? basolia)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            return basolia.isOpened;
+        }
 
         /// <summary>
         /// Is the radio station open?
         /// </summary>
-        public static bool IsRadioStation =>
-            isRadioStation;
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static bool IsRadioStation(BasoliaMedia? basolia)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            return basolia.isRadioStation;
+        }
 
         /// <summary>
         /// Current file
         /// </summary>
-        public static FileType? CurrentFile =>
-            currentFile;
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        public static FileType? CurrentFile(BasoliaMedia? basolia)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            return basolia.currentFile;
+        }
 
         /// <summary>
         /// Opens a media file
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="path">Path to a valid media file</param>
         public static void OpenFile(BasoliaMedia? basolia, string path)
         {
             InitBasolia.CheckInited();
@@ -82,7 +99,7 @@ namespace BassBoom.Basolia.File
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (IsOpened)
+            if (IsOpened(basolia))
                 throw new BasoliaException("Can't open this file while the current file or a radio station is still open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we provided a path
@@ -102,20 +119,24 @@ namespace BassBoom.Basolia.File
                 int openStatus = @delegate.Invoke(handle, path);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't open file", mpg123_errors.MPG123_ERR);
-                isOpened = true;
+                basolia.isOpened = true;
             }
-            currentFile = new(false, path, null, null, "");
+            basolia.currentFile = new(false, path, null, null, "");
         }
 
         /// <summary>
         /// Opens a remote radio station
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="path">URL Path to a valid media file</param>
         public static void OpenUrl(BasoliaMedia? basolia, string path) =>
             Task.Run(() => OpenUrlAsync(basolia, path)).Wait();
 
         /// <summary>
         /// Opens a remote radio station
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="path">URL Path to a valid media file</param>
         public static async Task OpenUrlAsync(BasoliaMedia? basolia, string path)
         {
             InitBasolia.CheckInited();
@@ -123,7 +144,7 @@ namespace BassBoom.Basolia.File
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (IsOpened)
+            if (IsOpened(basolia))
                 throw new BasoliaException("Can't open this URL while the current file or a radio station is still open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we provided a path
@@ -155,10 +176,10 @@ namespace BassBoom.Basolia.File
                 int openStatus = @delegate.Invoke(handle);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't open radio station", mpg123_errors.MPG123_ERR);
-                isOpened = true;
-                isRadioStation = true;
+                basolia.isOpened = true;
+                basolia.isRadioStation = true;
             }
-            currentFile = new(true, path, await reply.Content.ReadAsStreamAsync().ConfigureAwait(false), reply.Headers, reply.Headers.GetValues("icy-name").First());
+            basolia.currentFile = new(true, path, await reply.Content.ReadAsStreamAsync().ConfigureAwait(false), reply.Headers, reply.Headers.GetValues("icy-name").First());
 
             // If necessary, feed.
             PlaybackTools.FeedRadio(basolia);
@@ -167,6 +188,7 @@ namespace BassBoom.Basolia.File
         /// <summary>
         /// Closes a currently opened media file
         /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
         public static void CloseFile(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
@@ -174,7 +196,7 @@ namespace BassBoom.Basolia.File
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!IsOpened)
+            if (!IsOpened(basolia))
                 throw new BasoliaException("Can't close a file or a radio station that's already closed", mpg123_errors.MPG123_BAD_FILE);
 
             // First, stop the playing song
@@ -191,9 +213,9 @@ namespace BassBoom.Basolia.File
                 int closeStatus = @delegate.Invoke(handle);
                 if (closeStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't close file", mpg123_errors.MPG123_ERR);
-                isOpened = false;
-                isRadioStation = false;
-                currentFile = null;
+                basolia.isOpened = false;
+                basolia.isRadioStation = false;
+                basolia.currentFile = null;
             }
         }
     }

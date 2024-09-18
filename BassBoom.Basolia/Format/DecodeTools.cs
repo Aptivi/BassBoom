@@ -49,7 +49,7 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't decode the frame of a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone

@@ -50,7 +50,7 @@ namespace BassBoom.Basolia.Playback
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't play a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone
@@ -102,7 +102,7 @@ namespace BassBoom.Basolia.Playback
                     throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
-                if (!FileTools.IsOpened)
+                if (!FileTools.IsOpened(basolia))
                     throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
                 // We're now entering the dangerous zone
@@ -139,7 +139,7 @@ namespace BassBoom.Basolia.Playback
                     throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
-                if (!FileTools.IsOpened)
+                if (!FileTools.IsOpened(basolia))
                     throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
                 // We're now entering the dangerous zone
@@ -177,7 +177,7 @@ namespace BassBoom.Basolia.Playback
                     throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
-                if (!FileTools.IsOpened)
+                if (!FileTools.IsOpened(basolia))
                     throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
                 if (lyricLine is null)
                     throw new BasoliaException("Lyric line is not provided to seek to", mpg123_errors.MPG123_BAD_FILE);
@@ -203,7 +203,7 @@ namespace BassBoom.Basolia.Playback
                     throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
-                if (!FileTools.IsOpened)
+                if (!FileTools.IsOpened(basolia))
                     throw new BasoliaException("Can't drop.", mpg123_errors.MPG123_BAD_FILE);
 
                 // We're now entering the dangerous zone

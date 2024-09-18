@@ -151,7 +151,7 @@ namespace BassBoom.Cli.CliBase
             }
 
             // Close the file if open
-            if (FileTools.IsOpened)
+            if (FileTools.IsOpened(BassBoomCli.basolia))
                 FileTools.CloseFile(BassBoomCli.basolia);
 
             // Restore state

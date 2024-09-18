@@ -106,8 +106,8 @@ namespace BassBoom.Cli.CliBase
                 if (Common.CurrentCachedInfo is null)
                     return "";
                 var buffer = new StringBuilder();
-                position = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDuration(BassBoomCli.basolia) : 0;
-                var posSpan = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDurationSpan(BassBoomCli.basolia) : new();
+                position = FileTools.IsOpened(BassBoomCli.basolia) ? PlaybackPositioningTools.GetCurrentDuration(BassBoomCli.basolia) : 0;
+                var posSpan = FileTools.IsOpened(BassBoomCli.basolia) ? PlaybackPositioningTools.GetCurrentDurationSpan(BassBoomCli.basolia) : new();
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
                 if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                 {
@@ -177,7 +177,7 @@ namespace BassBoom.Cli.CliBase
             }
 
             // Close the file if open
-            if (FileTools.IsOpened)
+            if (FileTools.IsOpened(BassBoomCli.basolia))
                 FileTools.CloseFile(BassBoomCli.basolia);
 
             // Restore state

@@ -119,7 +119,7 @@ namespace BassBoom.Cli.CliBase
                 var frameInfo = AudioInfoTools.GetFrameInfo(BassBoomCli.basolia);
 
                 // Try to open the lyrics
-                var instance = new CachedSongInfo(musicPath, null, null, -1, formatInfo, frameInfo, null, FileTools.CurrentFile?.StationName ?? "", true);
+                var instance = new CachedSongInfo(musicPath, null, null, -1, formatInfo, frameInfo, null, FileTools.CurrentFile(BassBoomCli.basolia)?.StationName ?? "", true);
                 Common.cachedInfos.Add(instance);
             }
         }

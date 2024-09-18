@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia.File;
 using BassBoom.Basolia.Playback;
 using BassBoom.Native;
 using BassBoom.Native.Exceptions;
@@ -36,6 +37,11 @@ namespace BassBoom.Basolia
         internal bool holding = false;
         internal string radioIcy = "";
         internal PlaybackState state = PlaybackState.Stopped;
+        internal string? activeDriver;
+        internal string? activeDevice;
+        internal bool isOpened = false;
+        internal bool isRadioStation = false;
+        internal FileType? currentFile;
 
         internal mpg123_handle* _mpg123Handle;
         internal out123_handle* _out123Handle;

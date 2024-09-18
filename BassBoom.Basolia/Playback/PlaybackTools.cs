@@ -85,7 +85,7 @@ namespace BassBoom.Basolia.Playback
             if (basolia is null)
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             string icy = GetRadioIcy(basolia);
-            if (icy.Length == 0 || !FileTools.IsRadioStation)
+            if (icy.Length == 0 || !FileTools.IsRadioStation(basolia))
                 return "";
             icy = Regex.Match(icy, @"StreamTitle='(.+?(?=\';))'").Groups[1].Value.Trim().Replace("\\'", "'");
             return icy;
@@ -104,7 +104,7 @@ namespace BassBoom.Basolia.Playback
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't play a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone
@@ -129,9 +129,9 @@ namespace BassBoom.Basolia.Playback
 
                 // Try to open output to device
                 var delegate3 = MpgNative.GetDelegate<NativeOutputLib.out123_open>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_open));
-                int openStatus = delegate3.Invoke(outHandle, DeviceTools.activeDriver, DeviceTools.activeDevice);
+                int openStatus = delegate3.Invoke(outHandle, basolia.activeDriver, basolia.activeDevice);
                 if (openStatus != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException($"Can't open output to device {DeviceTools.activeDevice} on driver {DeviceTools.activeDriver}", (out123_error)openStatus);
+                    throw new BasoliaOutException($"Can't open output to device {basolia.activeDevice} on driver {basolia.activeDriver}", (out123_error)openStatus);
 
                 // Start the output
                 var delegate4 = MpgNative.GetDelegate<NativeOutputLib.out123_start>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_start));
@@ -161,7 +161,7 @@ namespace BassBoom.Basolia.Playback
                     basolia.bufferPlaying = false;
 
                     // Check to see if we need more (radio)
-                    if (FileTools.IsRadioStation && err == (int)mpg123_errors.MPG123_NEED_MORE)
+                    if (FileTools.IsRadioStation(basolia) && err == (int)mpg123_errors.MPG123_NEED_MORE)
                     {
                         err = (int)mpg123_errors.MPG123_OK;
                         FeedRadio(basolia);
@@ -190,7 +190,7 @@ namespace BassBoom.Basolia.Playback
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't pause a file that's not open", mpg123_errors.MPG123_BAD_FILE);
             basolia.state = PlaybackState.Paused;
         }
@@ -207,13 +207,13 @@ namespace BassBoom.Basolia.Playback
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't stop a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Stop the music and seek to the beginning
             basolia.state = basolia.state == PlaybackState.Playing ? PlaybackState.Stopping : PlaybackState.Stopped;
             SpinWait.SpinUntil(() => basolia.state == PlaybackState.Stopped);
-            if (!FileTools.IsRadioStation)
+            if (!FileTools.IsRadioStation(basolia))
                 PlaybackPositioningTools.SeekToTheBeginning(basolia);
         }
 
@@ -401,13 +401,14 @@ namespace BassBoom.Basolia.Playback
 
         internal static void FeedRadio(BasoliaMedia? basolia)
         {
-            if (!FileTools.IsOpened || !FileTools.IsRadioStation)
+            if (!FileTools.IsOpened(basolia) || !FileTools.IsRadioStation(basolia))
                 return;
-            if (FileTools.CurrentFile is null)
+            var currentRadio = FileTools.CurrentFile(basolia);
+            if (currentRadio is null)
                 return;
-            if (FileTools.CurrentFile.Headers is null)
+            if (currentRadio.Headers is null)
                 return;
-            if (FileTools.CurrentFile.Stream is null)
+            if (currentRadio.Stream is null)
                 return;
             if (basolia is null)
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
@@ -417,7 +418,7 @@ namespace BassBoom.Basolia.Playback
                 var handle = basolia._mpg123Handle;
 
                 // Get the MP3 frame length first
-                string metaIntStr = FileTools.CurrentFile.Headers.GetValues("icy-metaint").First();
+                string metaIntStr = currentRadio.Headers.GetValues("icy-metaint").First();
                 int metaInt = int.Parse(metaIntStr);
 
                 // Now, get the MP3 frame
@@ -426,17 +427,17 @@ namespace BassBoom.Basolia.Playback
                 int numBytesToRead = metaInt;
                 do
                 {
-                    int n = FileTools.CurrentFile.Stream.Read(buffer, numBytesRead, 1);
+                    int n = currentRadio.Stream.Read(buffer, numBytesRead, 1);
                     numBytesRead += n;
                     numBytesToRead -= n;
                 } while (numBytesToRead > 0);
 
                 // Fetch the metadata.
-                int lengthOfMetaData = FileTools.CurrentFile.Stream.ReadByte();
+                int lengthOfMetaData = currentRadio.Stream.ReadByte();
                 int metaBytesToRead = lengthOfMetaData * 16;
                 Debug.WriteLine($"Buffer: {lengthOfMetaData} [{metaBytesToRead}]");
                 byte[] metadataBytes = new byte[metaBytesToRead];
-                FileTools.CurrentFile.Stream.Read(metadataBytes, 0, metaBytesToRead);
+                currentRadio.Stream.Read(metadataBytes, 0, metaBytesToRead);
                 string icy = Encoding.UTF8.GetString(metadataBytes).Replace("\0", "").Trim();
                 if (!string.IsNullOrEmpty(icy))
                     basolia.radioIcy = icy;

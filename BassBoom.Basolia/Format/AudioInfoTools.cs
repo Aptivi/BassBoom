@@ -54,7 +54,7 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
@@ -62,7 +62,7 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Trying to get the duration during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
 
             // Always zero for radio stations
-            if (FileTools.IsRadioStation)
+            if (FileTools.IsRadioStation(basolia))
                 return 0;
 
             // We're now entering the dangerous zone
@@ -157,7 +157,7 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             unsafe
@@ -188,7 +188,7 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             unsafe
@@ -219,7 +219,7 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             unsafe
@@ -250,7 +250,7 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             unsafe
@@ -279,7 +279,7 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
@@ -293,7 +293,7 @@ namespace BassBoom.Basolia.Format
                 var handle = basolia._mpg123Handle;
 
                 // We need to scan the file to get accurate info
-                if (!FileTools.IsRadioStation)
+                if (!FileTools.IsRadioStation(basolia))
                 {
                     var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                     int scanStatus = delegate2.Invoke(handle);
@@ -438,7 +438,7 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
@@ -451,7 +451,7 @@ namespace BassBoom.Basolia.Format
                 var handle = basolia._mpg123Handle;
 
                 // We need to scan the file to get accurate info
-                if (!FileTools.IsRadioStation)
+                if (!FileTools.IsRadioStation(basolia))
                 {
                     var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                     int scanStatus = delegate2.Invoke(handle);
@@ -481,7 +481,7 @@ namespace BassBoom.Basolia.Format
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
-            if (!FileTools.IsOpened)
+            if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
@@ -510,7 +510,7 @@ namespace BassBoom.Basolia.Format
                     var handle = basolia._mpg123Handle;
 
                     // We need to scan the file to get accurate info, but it only works with files
-                    if (!FileTools.IsRadioStation)
+                    if (!FileTools.IsRadioStation(basolia))
                     {
                         var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                         int scanStatus = delegate2.Invoke(handle);
@@ -546,7 +546,7 @@ namespace BassBoom.Basolia.Format
                     var handle = basolia._mpg123Handle;
 
                     // We need to scan the file to get accurate info
-                    if (!FileTools.IsRadioStation)
+                    if (!FileTools.IsRadioStation(basolia))
                     {
                         var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                         int scanStatus = delegate2.Invoke(handle);
