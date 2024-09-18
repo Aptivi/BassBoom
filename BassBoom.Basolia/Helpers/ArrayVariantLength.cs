@@ -51,12 +51,12 @@ namespace BassBoom.Basolia.Helpers
             return [.. strings];
         }
 
-        internal static int[] GetIntegersKnownLength(IntPtr arrayPointer, int elements)
+        internal static int[] GetIntegersKnownLength(IntPtr arrayPointer, int elements, int size)
         {
             List<int> ints = [];
             for (int i = 0; i < elements; i++)
             {
-                IntPtr elementPtr = arrayPointer + i * sizeof(int);
+                IntPtr elementPtr = arrayPointer + i * size;
                 int value = Marshal.ReadInt32(elementPtr);
                 ints.Add(value);
             }

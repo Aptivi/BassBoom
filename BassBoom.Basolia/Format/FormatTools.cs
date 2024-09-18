@@ -78,7 +78,7 @@ namespace BassBoom.Basolia.Format
                 // Get the rates
                 var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_rates>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_rates));
                 @delegate.Invoke(out IntPtr ratesPtr, out int count);
-                rates = ArrayVariantLength.GetIntegersKnownLength(ratesPtr, count);
+                rates = ArrayVariantLength.GetIntegersKnownLength(ratesPtr, count, PlatformHelper.IsOnWindows() ? sizeof(int) : sizeof(long));
             }
 
             // We're now entering the safe zone
@@ -99,7 +99,7 @@ namespace BassBoom.Basolia.Format
                 // Get the encodings
                 var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_encodings>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_encodings));
                 @delegate.Invoke(out IntPtr encodingsPtr, out int count);
-                encodings = ArrayVariantLength.GetIntegersKnownLength(encodingsPtr, count);
+                encodings = ArrayVariantLength.GetIntegersKnownLength(encodingsPtr, count, sizeof(int));
             }
 
             // We're now entering the safe zone
