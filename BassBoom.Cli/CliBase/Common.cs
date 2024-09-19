@@ -288,6 +288,8 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.V:
                     volBoost = !volBoost;
+                    if (!volBoost && volume > 1.0)
+                        RaiseVolume();
                     break;
                 case ConsoleKey.D:
                     if (keystroke.Modifiers == ConsoleModifiers.Control)
