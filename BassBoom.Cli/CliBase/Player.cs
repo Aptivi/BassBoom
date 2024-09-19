@@ -347,7 +347,10 @@ namespace BassBoom.Cli.CliBase
                     if (!Common.advance || Common.exiting)
                         return;
                     else
+                    {
+                        Common.redraw = true;
                         Common.populate = true;
+                    }
                     Common.currentPos = Common.cachedInfos.IndexOf(musicFile) + 1;
                     PlayerControls.PopulateMusicFileInfo(musicFile.MusicPath);
                     if (Common.paused)
