@@ -17,7 +17,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Init;
 
 namespace BassBoom.Native.Interop.Analysis

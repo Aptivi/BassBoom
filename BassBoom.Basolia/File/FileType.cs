@@ -28,11 +28,11 @@ namespace BassBoom.Basolia.File
     /// </summary>
     public class FileType
     {
-        private bool isLink;
-        private string path;
-        private Stream? stream;
-        private HttpResponseHeaders? headers;
-        private string stationName;
+        private readonly bool isLink;
+        private readonly string path;
+        private readonly Stream? stream;
+        private readonly HttpResponseHeaders? headers;
+        private readonly string stationName;
 
         /// <summary>
         /// Is this file type a link?

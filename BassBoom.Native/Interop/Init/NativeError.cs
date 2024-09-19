@@ -17,8 +17,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using System.Runtime.InteropServices;
-
 namespace BassBoom.Native.Interop.Init
 {
     internal enum mpg123_errors

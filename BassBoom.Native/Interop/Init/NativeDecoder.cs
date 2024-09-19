@@ -18,7 +18,6 @@
 //
 
 using System;
-using System.Runtime.InteropServices;
 
 namespace BassBoom.Native.Interop.Init
 {

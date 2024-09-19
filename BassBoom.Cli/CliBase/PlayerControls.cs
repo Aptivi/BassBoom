@@ -28,13 +28,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Terminaux.Base.Buffered;
-using Terminaux.Base.Extensions;
-using Terminaux.Colors.Data;
-using Terminaux.Inputs;
 using Terminaux.Inputs.Styles;
 using Terminaux.Inputs.Styles.Infobox;
-using Terminaux.Writer.ConsoleWriters;
-using Terminaux.Writer.FancyWriters;
 
 namespace BassBoom.Cli.CliBase
 {

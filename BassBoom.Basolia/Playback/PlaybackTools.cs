@@ -26,7 +26,6 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using BassBoom.Basolia.Devices;
 using System.Runtime.InteropServices;
 using BassBoom.Native.Interop.Analysis;
 using System.Linq;

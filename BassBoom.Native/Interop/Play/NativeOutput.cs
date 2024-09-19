@@ -19,7 +19,6 @@
 
 using BassBoom.Native.Interop.Init;
 using System;
-using System.Runtime.InteropServices;
 
 namespace BassBoom.Native.Interop.Play
 {

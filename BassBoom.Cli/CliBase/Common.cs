@@ -30,7 +30,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Terminaux.Base.Buffered;
-using Terminaux.Inputs;
 using Terminaux.Inputs.Styles;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.MiscWriters;
