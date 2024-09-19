@@ -395,6 +395,76 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Playback.Playlists.Enumerations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Playback.Playlists.Enumerations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Playback.Playlists.Instances.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Playback.Playlists.Instances.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Playback.Playlists.Playlist.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Playback.Playlists.Playlist.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Playback.Playlists.PlaylistParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Playback.Playlists.PlaylistParser.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BassBoom.Basolia.Playback.Playlists.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BassBoom.Basolia.Playback.Playlists.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BassBoom.Basolia.Playback.yml",
       "output": {
         ".html": {

@@ -3219,6 +3219,163 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.Stop
   nameWithType: PlaybackTools.Stop
+- uid: BassBoom.Basolia.Playback.Playlists
+  name: BassBoom.Basolia.Playback.Playlists
+  href: api/BassBoom.Basolia.Playback.Playlists.html
+  commentId: N:BassBoom.Basolia.Playback.Playlists
+  fullName: BassBoom.Basolia.Playback.Playlists
+  nameWithType: BassBoom.Basolia.Playback.Playlists
+- uid: BassBoom.Basolia.Playback.Playlists.Enumerations
+  name: BassBoom.Basolia.Playback.Playlists.Enumerations
+  href: api/BassBoom.Basolia.Playback.Playlists.Enumerations.html
+  commentId: N:BassBoom.Basolia.Playback.Playlists.Enumerations
+  fullName: BassBoom.Basolia.Playback.Playlists.Enumerations
+  nameWithType: BassBoom.Basolia.Playback.Playlists.Enumerations
+- uid: BassBoom.Basolia.Playback.Playlists.Enumerations.SongType
+  name: SongType
+  href: api/BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.html
+  commentId: T:BassBoom.Basolia.Playback.Playlists.Enumerations.SongType
+  fullName: BassBoom.Basolia.Playback.Playlists.Enumerations.SongType
+  nameWithType: SongType
+- uid: BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.File
+  name: File
+  href: api/BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.html#BassBoom_Basolia_Playback_Playlists_Enumerations_SongType_File
+  commentId: F:BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.File
+  fullName: BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.File
+  nameWithType: SongType.File
+- uid: BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.Radio
+  name: Radio
+  href: api/BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.html#BassBoom_Basolia_Playback_Playlists_Enumerations_SongType_Radio
+  commentId: F:BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.Radio
+  fullName: BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.Radio
+  nameWithType: SongType.Radio
+- uid: BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.URL
+  name: URL
+  href: api/BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.html#BassBoom_Basolia_Playback_Playlists_Enumerations_SongType_URL
+  commentId: F:BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.URL
+  fullName: BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.URL
+  nameWithType: SongType.URL
+- uid: BassBoom.Basolia.Playback.Playlists.Instances
+  name: BassBoom.Basolia.Playback.Playlists.Instances
+  href: api/BassBoom.Basolia.Playback.Playlists.Instances.html
+  commentId: N:BassBoom.Basolia.Playback.Playlists.Instances
+  fullName: BassBoom.Basolia.Playback.Playlists.Instances
+  nameWithType: BassBoom.Basolia.Playback.Playlists.Instances
+- uid: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo
+  name: TrackInfo
+  href: api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.html
+  commentId: T:BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo
+  fullName: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo
+  nameWithType: TrackInfo
+- uid: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Duration
+  name: Duration
+  href: api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.html#BassBoom_Basolia_Playback_Playlists_Instances_TrackInfo_Duration
+  commentId: P:BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Duration
+  fullName: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Duration
+  nameWithType: TrackInfo.Duration
+- uid: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Duration*
+  name: Duration
+  href: api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.html#BassBoom_Basolia_Playback_Playlists_Instances_TrackInfo_Duration_
+  commentId: Overload:BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Duration
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Duration
+  nameWithType: TrackInfo.Duration
+- uid: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Name
+  name: Name
+  href: api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.html#BassBoom_Basolia_Playback_Playlists_Instances_TrackInfo_Name
+  commentId: P:BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Name
+  fullName: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Name
+  nameWithType: TrackInfo.Name
+- uid: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Name*
+  name: Name
+  href: api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.html#BassBoom_Basolia_Playback_Playlists_Instances_TrackInfo_Name_
+  commentId: Overload:BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Name
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Name
+  nameWithType: TrackInfo.Name
+- uid: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Path
+  name: Path
+  href: api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.html#BassBoom_Basolia_Playback_Playlists_Instances_TrackInfo_Path
+  commentId: P:BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Path
+  fullName: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Path
+  nameWithType: TrackInfo.Path
+- uid: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Path*
+  name: Path
+  href: api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.html#BassBoom_Basolia_Playback_Playlists_Instances_TrackInfo_Path_
+  commentId: Overload:BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Path
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Path
+  nameWithType: TrackInfo.Path
+- uid: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Type
+  name: Type
+  href: api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.html#BassBoom_Basolia_Playback_Playlists_Instances_TrackInfo_Type
+  commentId: P:BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Type
+  fullName: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Type
+  nameWithType: TrackInfo.Type
+- uid: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Type*
+  name: Type
+  href: api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.html#BassBoom_Basolia_Playback_Playlists_Instances_TrackInfo_Type_
+  commentId: Overload:BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Type
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.Type
+  nameWithType: TrackInfo.Type
+- uid: BassBoom.Basolia.Playback.Playlists.Playlist
+  name: Playlist
+  href: api/BassBoom.Basolia.Playback.Playlists.Playlist.html
+  commentId: T:BassBoom.Basolia.Playback.Playlists.Playlist
+  fullName: BassBoom.Basolia.Playback.Playlists.Playlist
+  nameWithType: Playlist
+- uid: BassBoom.Basolia.Playback.Playlists.Playlist.Tracks
+  name: Tracks
+  href: api/BassBoom.Basolia.Playback.Playlists.Playlist.html#BassBoom_Basolia_Playback_Playlists_Playlist_Tracks
+  commentId: P:BassBoom.Basolia.Playback.Playlists.Playlist.Tracks
+  fullName: BassBoom.Basolia.Playback.Playlists.Playlist.Tracks
+  nameWithType: Playlist.Tracks
+- uid: BassBoom.Basolia.Playback.Playlists.Playlist.Tracks*
+  name: Tracks
+  href: api/BassBoom.Basolia.Playback.Playlists.Playlist.html#BassBoom_Basolia_Playback_Playlists_Playlist_Tracks_
+  commentId: Overload:BassBoom.Basolia.Playback.Playlists.Playlist.Tracks
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.Playlists.Playlist.Tracks
+  nameWithType: Playlist.Tracks
+- uid: BassBoom.Basolia.Playback.Playlists.PlaylistParser
+  name: PlaylistParser
+  href: api/BassBoom.Basolia.Playback.Playlists.PlaylistParser.html
+  commentId: T:BassBoom.Basolia.Playback.Playlists.PlaylistParser
+  fullName: BassBoom.Basolia.Playback.Playlists.PlaylistParser
+  nameWithType: PlaylistParser
+- uid: BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylist(System.String)
+  name: ParsePlaylist(string)
+  href: api/BassBoom.Basolia.Playback.Playlists.PlaylistParser.html#BassBoom_Basolia_Playback_Playlists_PlaylistParser_ParsePlaylist_System_String_
+  commentId: M:BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylist(System.String)
+  name.vb: ParsePlaylist(String)
+  fullName: BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylist(string)
+  fullName.vb: BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylist(String)
+  nameWithType: PlaylistParser.ParsePlaylist(string)
+  nameWithType.vb: PlaylistParser.ParsePlaylist(String)
+- uid: BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylist*
+  name: ParsePlaylist
+  href: api/BassBoom.Basolia.Playback.Playlists.PlaylistParser.html#BassBoom_Basolia_Playback_Playlists_PlaylistParser_ParsePlaylist_
+  commentId: Overload:BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylist
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylist
+  nameWithType: PlaylistParser.ParsePlaylist
+- uid: BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylistFrom(System.String,System.String)
+  name: ParsePlaylistFrom(string, string)
+  href: api/BassBoom.Basolia.Playback.Playlists.PlaylistParser.html#BassBoom_Basolia_Playback_Playlists_PlaylistParser_ParsePlaylistFrom_System_String_System_String_
+  commentId: M:BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylistFrom(System.String,System.String)
+  name.vb: ParsePlaylistFrom(String, String)
+  fullName: BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylistFrom(string, string)
+  fullName.vb: BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylistFrom(String, String)
+  nameWithType: PlaylistParser.ParsePlaylistFrom(string, string)
+  nameWithType.vb: PlaylistParser.ParsePlaylistFrom(String, String)
+- uid: BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylistFrom*
+  name: ParsePlaylistFrom
+  href: api/BassBoom.Basolia.Playback.Playlists.PlaylistParser.html#BassBoom_Basolia_Playback_Playlists_PlaylistParser_ParsePlaylistFrom_
+  commentId: Overload:BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylistFrom
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.Playlists.PlaylistParser.ParsePlaylistFrom
+  nameWithType: PlaylistParser.ParsePlaylistFrom
 - uid: BassBoom.Basolia.Radio
   name: BassBoom.Basolia.Radio
   href: api/BassBoom.Basolia.Radio.html
@@ -3257,6 +3414,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Radio.IRadioServer.CurrentListeners
   nameWithType: IRadioServer.CurrentListeners
+- uid: BassBoom.Basolia.Radio.IRadioServer.MimeType
+  name: MimeType
+  href: api/BassBoom.Basolia.Radio.IRadioServer.html#BassBoom_Basolia_Radio_IRadioServer_MimeType
+  commentId: P:BassBoom.Basolia.Radio.IRadioServer.MimeType
+  fullName: BassBoom.Basolia.Radio.IRadioServer.MimeType
+  nameWithType: IRadioServer.MimeType
+- uid: BassBoom.Basolia.Radio.IRadioServer.MimeType*
+  name: MimeType
+  href: api/BassBoom.Basolia.Radio.IRadioServer.html#BassBoom_Basolia_Radio_IRadioServer_MimeType_
+  commentId: Overload:BassBoom.Basolia.Radio.IRadioServer.MimeType
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Radio.IRadioServer.MimeType
+  nameWithType: IRadioServer.MimeType
 - uid: BassBoom.Basolia.Radio.IRadioServer.PeakListeners
   name: PeakListeners
   href: api/BassBoom.Basolia.Radio.IRadioServer.html#BassBoom_Basolia_Radio_IRadioServer_PeakListeners
@@ -3419,6 +3589,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Radio.IcecastServer.CurrentListeners
   nameWithType: IcecastServer.CurrentListeners
+- uid: BassBoom.Basolia.Radio.IcecastServer.MimeType
+  name: MimeType
+  href: api/BassBoom.Basolia.Radio.IcecastServer.html#BassBoom_Basolia_Radio_IcecastServer_MimeType
+  commentId: P:BassBoom.Basolia.Radio.IcecastServer.MimeType
+  fullName: BassBoom.Basolia.Radio.IcecastServer.MimeType
+  nameWithType: IcecastServer.MimeType
+- uid: BassBoom.Basolia.Radio.IcecastServer.MimeType*
+  name: MimeType
+  href: api/BassBoom.Basolia.Radio.IcecastServer.html#BassBoom_Basolia_Radio_IcecastServer_MimeType_
+  commentId: Overload:BassBoom.Basolia.Radio.IcecastServer.MimeType
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Radio.IcecastServer.MimeType
+  nameWithType: IcecastServer.MimeType
 - uid: BassBoom.Basolia.Radio.IcecastServer.PeakListeners
   name: PeakListeners
   href: api/BassBoom.Basolia.Radio.IcecastServer.html#BassBoom_Basolia_Radio_IcecastServer_PeakListeners
@@ -3611,6 +3794,38 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Radio.RadioTools.GetRadioInfoAsync
   nameWithType: RadioTools.GetRadioInfoAsync
+- uid: BassBoom.Basolia.Radio.RadioTools.IsRadio(System.String,System.String@)
+  name: IsRadio(string, out string)
+  href: api/BassBoom.Basolia.Radio.RadioTools.html#BassBoom_Basolia_Radio_RadioTools_IsRadio_System_String_System_String__
+  commentId: M:BassBoom.Basolia.Radio.RadioTools.IsRadio(System.String,System.String@)
+  name.vb: IsRadio(String, String)
+  fullName: BassBoom.Basolia.Radio.RadioTools.IsRadio(string, out string)
+  fullName.vb: BassBoom.Basolia.Radio.RadioTools.IsRadio(String, String)
+  nameWithType: RadioTools.IsRadio(string, out string)
+  nameWithType.vb: RadioTools.IsRadio(String, String)
+- uid: BassBoom.Basolia.Radio.RadioTools.IsRadio*
+  name: IsRadio
+  href: api/BassBoom.Basolia.Radio.RadioTools.html#BassBoom_Basolia_Radio_RadioTools_IsRadio_
+  commentId: Overload:BassBoom.Basolia.Radio.RadioTools.IsRadio
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Radio.RadioTools.IsRadio
+  nameWithType: RadioTools.IsRadio
+- uid: BassBoom.Basolia.Radio.RadioTools.IsRadioAsync(System.String)
+  name: IsRadioAsync(string)
+  href: api/BassBoom.Basolia.Radio.RadioTools.html#BassBoom_Basolia_Radio_RadioTools_IsRadioAsync_System_String_
+  commentId: M:BassBoom.Basolia.Radio.RadioTools.IsRadioAsync(System.String)
+  name.vb: IsRadioAsync(String)
+  fullName: BassBoom.Basolia.Radio.RadioTools.IsRadioAsync(string)
+  fullName.vb: BassBoom.Basolia.Radio.RadioTools.IsRadioAsync(String)
+  nameWithType: RadioTools.IsRadioAsync(string)
+  nameWithType.vb: RadioTools.IsRadioAsync(String)
+- uid: BassBoom.Basolia.Radio.RadioTools.IsRadioAsync*
+  name: IsRadioAsync
+  href: api/BassBoom.Basolia.Radio.RadioTools.html#BassBoom_Basolia_Radio_RadioTools_IsRadioAsync_
+  commentId: Overload:BassBoom.Basolia.Radio.RadioTools.IsRadioAsync
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Radio.RadioTools.IsRadioAsync
+  nameWithType: RadioTools.IsRadioAsync
 - uid: BassBoom.Basolia.Radio.ShoutcastServer
   name: ShoutcastServer
   href: api/BassBoom.Basolia.Radio.ShoutcastServer.html
@@ -3682,6 +3897,19 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Radio.ShoutcastServer.MaxListeners
   nameWithType: ShoutcastServer.MaxListeners
+- uid: BassBoom.Basolia.Radio.ShoutcastServer.MimeType
+  name: MimeType
+  href: api/BassBoom.Basolia.Radio.ShoutcastServer.html#BassBoom_Basolia_Radio_ShoutcastServer_MimeType
+  commentId: P:BassBoom.Basolia.Radio.ShoutcastServer.MimeType
+  fullName: BassBoom.Basolia.Radio.ShoutcastServer.MimeType
+  nameWithType: ShoutcastServer.MimeType
+- uid: BassBoom.Basolia.Radio.ShoutcastServer.MimeType*
+  name: MimeType
+  href: api/BassBoom.Basolia.Radio.ShoutcastServer.html#BassBoom_Basolia_Radio_ShoutcastServer_MimeType_
+  commentId: Overload:BassBoom.Basolia.Radio.ShoutcastServer.MimeType
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Radio.ShoutcastServer.MimeType
+  nameWithType: ShoutcastServer.MimeType
 - uid: BassBoom.Basolia.Radio.ShoutcastServer.PeakListeners
   name: PeakListeners
   href: api/BassBoom.Basolia.Radio.ShoutcastServer.html#BassBoom_Basolia_Radio_ShoutcastServer_PeakListeners
