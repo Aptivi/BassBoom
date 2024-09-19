@@ -330,8 +330,7 @@ namespace BassBoom.Cli.CliBase
             {
                 // Populate the first pane
                 string stationName = Common.cachedInfos[i].StationName;
-                string duration = Common.cachedInfos[i].DurationSpan;
-                string stationPreview = $"[{duration}] {stationName}";
+                string stationPreview = $"{stationName}";
                 choices.Add(new($"{i + 1}", stationPreview));
             }
             drawn.Append(
