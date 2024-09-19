@@ -114,7 +114,7 @@ namespace BassBoom.Basolia.Radio
         {
             // Check to see if we provided a path
             if (string.IsNullOrEmpty(radioUrl))
-                throw new BasoliaMiscException("Provide a path to a radio station");
+                return ("", false);
             var uri = new Uri(radioUrl);
 
             // Check to see if the radio station exists
@@ -124,11 +124,11 @@ namespace BassBoom.Basolia.Radio
             var reply = await client.GetAsync(radioUrl, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             client.DefaultRequestHeaders.Remove("Icy-MetaData");
             if (!reply.IsSuccessStatusCode)
-                throw new BasoliaMiscException($"This radio station doesn't exist. Error code: {(int)reply.StatusCode} ({reply.StatusCode}).");
+                return ("", false);
 
             // Check for radio statio and get the MIME type
             if (!reply.Headers.Any((kvp) => kvp.Key.StartsWith("icy-")))
-                throw new BasoliaMiscException("This doesn't look like a radio station. Are you sure?");
+                return ("", false);
             var contentType = reply.Content.Headers.ContentType;
             string streamType = contentType.MediaType;
 
