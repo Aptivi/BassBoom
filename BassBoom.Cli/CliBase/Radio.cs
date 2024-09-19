@@ -61,6 +61,7 @@ namespace BassBoom.Cli.CliBase
             new("Remove all radio stations", ConsoleKey.R, ConsoleModifiers.Control),
             new("Disco Mode!", ConsoleKey.L),
             new("Enable volume boost", ConsoleKey.V),
+            new("Save to playlist", ConsoleKey.F1),
             new("Open the equalizer", ConsoleKey.E),
             new("Device and driver information", ConsoleKey.D),
             new("Set device and driver", ConsoleKey.D, ConsoleModifiers.Control),

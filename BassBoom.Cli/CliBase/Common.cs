@@ -26,6 +26,7 @@ using BassBoom.Cli.Tools;
 using SpecProbe.Software.Platform;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -314,6 +315,27 @@ namespace BassBoom.Cli.CliBase
                         DeviceTools.Reset(BassBoomCli.basolia);
                     else
                         ShowDeviceDriver();
+                    redraw = true;
+                    playerScreen.RequireRefresh();
+                    break;
+                case ConsoleKey.F1:
+                    string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the playlist file that you would like to save");
+                    playerScreen.RequireRefresh();
+                    if (string.IsNullOrEmpty(path))
+                    {
+                        redraw = true;
+                        playerScreen.RequireRefresh();
+                        break;
+                    }
+
+                    // Check for extension
+                    string extension = Path.GetExtension(path);
+                    if (extension != ".m3u" && extension != ".m3u8")
+                        path += ".m3u";
+                    
+                    // Get a list of paths and write the file
+                    string[] paths = cachedInfos.Select((csi) => csi.MusicPath).ToArray();
+                    File.WriteAllLines(path, paths);
                     redraw = true;
                     playerScreen.RequireRefresh();
                     break;

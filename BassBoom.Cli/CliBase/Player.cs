@@ -81,6 +81,7 @@ namespace BassBoom.Cli.CliBase
             new("Seek to repeat checkpoint", ConsoleKey.C, ConsoleModifiers.Shift),
             new("Disco Mode!", ConsoleKey.L),
             new("Enable volume boost", ConsoleKey.V),
+            new("Save to playlist", ConsoleKey.F1),
             new("Open the equalizer", ConsoleKey.E),
             new("Device and driver information", ConsoleKey.D),
             new("Set device and driver", ConsoleKey.D, ConsoleModifiers.Control),
