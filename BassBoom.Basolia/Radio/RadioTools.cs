@@ -61,7 +61,13 @@ namespace BassBoom.Basolia.Radio
             client.DefaultRequestHeaders.Remove("Icy-MetaData");
             if (!reply.IsSuccessStatusCode)
                 throw new BasoliaMiscException($"This radio station doesn't exist. Error code: {(int)reply.StatusCode} ({reply.StatusCode}).");
-            
+
+            // Check for radio statio and get the MIME type
+            if (!reply.Headers.Any((kvp) => kvp.Key.StartsWith("icy-")))
+                throw new BasoliaMiscException("This doesn't look like a radio station. Are you sure?");
+            var contentType = reply.Content.Headers.ContentType;
+            string streamType = contentType.MediaType;
+
             // Now, check the server type
             RadioServerType type = RadioServerType.Unknown;
             if (reply.Headers.Server.ToString().ToLower().Contains("icecast"))
@@ -75,15 +81,64 @@ namespace BassBoom.Basolia.Radio
             IRadioServer? stats = type switch
             {
                 RadioServerType.Shoutcast =>
-                    new ShoutcastServer(uri.Host, uri.Port, uri.Scheme == "https"),
+                    new ShoutcastServer(uri.Host, uri.Port, uri.Scheme == "https", streamType),
                 RadioServerType.Icecast =>
-                    new IcecastServer(uri.Host, uri.Port, uri.Scheme == "https"),
+                    new IcecastServer(uri.Host, uri.Port, uri.Scheme == "https", streamType),
                 _ => null,
             };
             if (stats is null)
                 return null;
             await stats.RefreshAsync().ConfigureAwait(false);
             return stats;
+        }
+
+        /// <summary>
+        /// Checks to see if this is a radio station or not
+        /// </summary>
+        /// <param name="radioUrl">Radio station URL</param>
+        /// <param name="streamType">Output stream type</param>
+        /// <returns>True if it is a radio station; false otherwise.</returns>
+        public static bool IsRadio(string radioUrl, out string streamType)
+        {
+            var result = Task.Run(() => IsRadioAsync(radioUrl)).GetAwaiter().GetResult();
+            streamType = result.Item1;
+            return result.Item2;
+        }
+
+        /// <summary>
+        /// Checks to see if this is a radio station or not
+        /// </summary>
+        /// <param name="radioUrl">Radio station URL</param>
+        /// <returns>True if it is a radio station; false otherwise.</returns>
+        public static async Task<(string, bool)> IsRadioAsync(string radioUrl)
+        {
+            // Check to see if we provided a path
+            if (string.IsNullOrEmpty(radioUrl))
+                throw new BasoliaMiscException("Provide a path to a radio station");
+            var uri = new Uri(radioUrl);
+
+            // Check to see if the radio station exists
+            if (PlatformHelper.IsDotNetFx())
+                client = new();
+            client.DefaultRequestHeaders.Add("Icy-MetaData", "1");
+            var reply = await client.GetAsync(radioUrl, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+            client.DefaultRequestHeaders.Remove("Icy-MetaData");
+            if (!reply.IsSuccessStatusCode)
+                throw new BasoliaMiscException($"This radio station doesn't exist. Error code: {(int)reply.StatusCode} ({reply.StatusCode}).");
+
+            // Check for radio statio and get the MIME type
+            if (!reply.Headers.Any((kvp) => kvp.Key.StartsWith("icy-")))
+                throw new BasoliaMiscException("This doesn't look like a radio station. Are you sure?");
+            var contentType = reply.Content.Headers.ContentType;
+            string streamType = contentType.MediaType;
+
+            // Now, check the server type
+            if (reply.Headers.Server.ToString().ToLower().Contains("icecast"))
+                return (streamType, true);
+            else if (reply.Headers.Contains("icy-notice2") && reply.Headers.GetValues("icy-notice2").First().ToLower().Contains("shoutcast"))
+                return (streamType, true);
+            else
+                return (streamType, false);
         }
     }
 }

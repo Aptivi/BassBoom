@@ -21,8 +21,11 @@ using BassBoom.Basolia.Enumerations;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Playback;
+using BassBoom.Basolia.Playback.Playlists;
+using BassBoom.Basolia.Playback.Playlists.Enumerations;
 using BassBoom.Basolia.Radio;
 using BassBoom.Cli.Tools;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -99,6 +102,33 @@ namespace BassBoom.Cli.CliBase
             PopulateRadioStationInfo(path);
             Common.populate = true;
             PopulateRadioStationInfo(Common.CurrentCachedInfo?.MusicPath ?? "");
+        }
+
+        internal static void PromptForAddStations()
+        {
+            string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the playlist of radio stations. The URLs to the stations must provide an MPEG radio station. AAC ones are not supported yet.");
+            string extension = Path.GetExtension(path);
+            ScreenTools.CurrentScreen?.RequireRefresh();
+            if (File.Exists(path) && (extension == ".m3u" || extension == ".m3u8"))
+            {
+                int currentPos = Player.position;
+                var playlist = PlaylistParser.ParsePlaylist(path);
+                if (playlist.Tracks.Length > 0)
+                {
+                    foreach (var track in playlist.Tracks)
+                    {
+                        if (track.Type == SongType.Radio)
+                        {
+                            Common.populate = true;
+                            PopulateRadioStationInfo(track.Path);
+                        }
+                    }
+                    Common.populate = true;
+                    PopulateRadioStationInfo(Common.CurrentCachedInfo?.MusicPath ?? "");
+                }
+            }
+            else
+                InfoBoxColor.WriteInfoBox("Radio station playlist is not found.");
         }
 
         internal static void PopulateRadioStationInfo(string musicPath)

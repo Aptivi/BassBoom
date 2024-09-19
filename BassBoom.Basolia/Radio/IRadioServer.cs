@@ -47,6 +47,11 @@ namespace BassBoom.Basolia.Radio
         public string ServerHostFull { get; }
 
         /// <summary>
+        /// MIME type of a stream
+        /// </summary>
+        public string MimeType { get; }
+
+        /// <summary>
         /// Server type (SHOUTcast, IceCast, ...)
         /// </summary>
         public RadioServerType ServerType { get; }

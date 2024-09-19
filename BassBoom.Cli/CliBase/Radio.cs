@@ -54,6 +54,7 @@ namespace BassBoom.Cli.CliBase
             new("Radio station information", ConsoleKey.I),
             new("Radio station extended information", ConsoleKey.I, ConsoleModifiers.Control),
             new("Add a radio station", ConsoleKey.A),
+            new("Add a radio station group from playlist", ConsoleKey.A, ConsoleModifiers.Shift),
             new("Previous radio station", ConsoleKey.B),
             new("Next radio station", ConsoleKey.N),
             new("Remove current radio station", ConsoleKey.R),
@@ -188,7 +189,10 @@ namespace BassBoom.Cli.CliBase
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.A:
-                    RadioControls.PromptForAddStation();
+                    if (keystroke.Modifiers == ConsoleModifiers.Shift)
+                        RadioControls.PromptForAddStations();
+                    else
+                        RadioControls.PromptForAddStation();
                     Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;

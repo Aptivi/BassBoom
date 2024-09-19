@@ -21,6 +21,8 @@ using BassBoom.Basolia.Enumerations;
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
+using BassBoom.Basolia.Playback.Playlists;
+using BassBoom.Basolia.Playback.Playlists.Enumerations;
 using BassBoom.Cli.Tools;
 using System;
 using System.IO;
@@ -232,6 +234,34 @@ namespace BassBoom.Cli.CliBase
             }
             else
                 InfoBoxColor.WriteInfoBox($"File \"{path}\" doesn't exist.");
+        }
+
+        internal static void PromptForAddSongs()
+        {
+            string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the music playlist");
+            string extension = Path.GetExtension(path);
+            ScreenTools.CurrentScreen?.RequireRefresh();
+            if (File.Exists(path) && (extension == ".m3u" || extension == ".m3u8"))
+            {
+                int currentPos = Player.position;
+                var playlist = PlaylistParser.ParsePlaylist(path);
+                if (playlist.Tracks.Length > 0)
+                {
+                    foreach (var track in playlist.Tracks)
+                    {
+                        if (track.Type == SongType.File)
+                        {
+                            Common.populate = true;
+                            PopulateMusicFileInfo(track.Path);
+                        }
+                    }
+                    Common.populate = true;
+                    PopulateMusicFileInfo(Common.CurrentCachedInfo?.MusicPath ?? "");
+                    PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, currentPos);
+                }
+            }
+            else
+                InfoBoxColor.WriteInfoBox("Music playlist is not found.");
         }
 
         internal static void PromptForAddDirectory()

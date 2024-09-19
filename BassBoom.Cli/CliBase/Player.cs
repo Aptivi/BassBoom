@@ -66,6 +66,7 @@ namespace BassBoom.Cli.CliBase
             new("Increase seek duration", ConsoleKey.RightArrow, ConsoleModifiers.Control),
             new("Song information", ConsoleKey.I),
             new("Add a music file", ConsoleKey.A),
+            new("Add a music group from playlist", ConsoleKey.A, ConsoleModifiers.Shift),
             new("Add a music directory to the list (when idle)", ConsoleKey.S),
             new("Previous song", ConsoleKey.B),
             new("Next song", ConsoleKey.N),
@@ -213,7 +214,10 @@ namespace BassBoom.Cli.CliBase
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.A:
-                    PlayerControls.PromptForAddSong();
+                    if (keystroke.Modifiers == ConsoleModifiers.Shift)
+                        PlayerControls.PromptForAddSongs();
+                    else
+                        PlayerControls.PromptForAddSong();
                     Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;

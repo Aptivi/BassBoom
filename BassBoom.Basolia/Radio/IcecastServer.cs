@@ -38,6 +38,7 @@ namespace BassBoom.Basolia.Radio
         private int activeStreams;
         private int currentListeners;
         private int peakListeners;
+        private string mimeType = "";
         private readonly List<StreamInfo> streams = [];
         internal JToken? streamToken;
         internal HtmlDocument streamHtmlToken = new();
@@ -75,6 +76,10 @@ namespace BassBoom.Basolia.Radio
         public StreamInfo[] Streams =>
             [.. streams];
 
+        /// <inheritdoc/>
+        public string MimeType =>
+            mimeType;
+
         /// <summary>
         /// Always <see cref="RadioServerType.Icecast"/> for Icecast radio servers
         /// </summary>
@@ -87,7 +92,8 @@ namespace BassBoom.Basolia.Radio
         /// <param name="serverHost">Server host name</param>
         /// <param name="serverPort">Server port</param>
         /// <param name="useHttps">Whether to use the HTTPS protocol or not</param>
-        internal IcecastServer(string serverHost, int serverPort, bool useHttps)
+        /// <param name="streamType">Stream type</param>
+        internal IcecastServer(string serverHost, int serverPort, bool useHttps, string streamType)
         {
             // Check to see if we're dealing with the secure Icecast server
             ServerHost = serverHost;
@@ -105,6 +111,7 @@ namespace BassBoom.Basolia.Radio
 
             // Install the values initially
             ServerPort = serverPort;
+            mimeType = streamType;
         }
 
         /// <summary>

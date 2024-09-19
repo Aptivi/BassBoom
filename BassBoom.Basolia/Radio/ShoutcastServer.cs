@@ -41,6 +41,7 @@ namespace BassBoom.Basolia.Radio
         private int maxListeners;
         private int uniqueListeners;
         private int averageTime;
+        private string mimeType = "";
         private readonly List<StreamInfo> streams = [];
         internal JToken? streamToken;
         internal HtmlDocument streamHtmlToken = new();
@@ -77,6 +78,10 @@ namespace BassBoom.Basolia.Radio
         /// <inheritdoc/>
         public StreamInfo[] Streams =>
             [.. streams];
+
+        /// <inheritdoc/>
+        public string MimeType =>
+            mimeType;
 
         /// <summary>
         /// How many people can listen to the server?
@@ -120,7 +125,8 @@ namespace BassBoom.Basolia.Radio
         /// <param name="serverHost">Server host name</param>
         /// <param name="serverPort">Server port</param>
         /// <param name="useHttps">Whether to use the HTTPS protocol or not</param>
-        internal ShoutcastServer(string serverHost, int serverPort, bool useHttps)
+        /// <param name="streamType">Stream type</param>
+        internal ShoutcastServer(string serverHost, int serverPort, bool useHttps, string streamType)
         {
             // Check to see if we're dealing with the secure Shoutcast server
             ServerHost = serverHost;
@@ -139,6 +145,7 @@ namespace BassBoom.Basolia.Radio
             // Install the values initially
             ServerPort = serverPort;
             serverVersion = ShoutcastVersion.v2;
+            mimeType = streamType;
         }
 
         /// <summary>
