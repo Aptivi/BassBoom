@@ -1,10 +1,14 @@
-You can now launch the BassBoom music player through Chocolatey!
+BassBoom has become more powerful than never before! Celebrating both the 10th year anniversary of the News series and the introduction of "The Mirage", we've added some more features in both the library and the application, as well as made many improvements.
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[+]` Added Chocolatey support
+- `[+]` Added more APIs to the Basolia library
+- `[+]` Added volume booster
+- `[+]` Added M3U playlist parser
+- `[*]` Improved the look of the music player
+- `[*]` General improvements and bug fixes
 
 Review the commit history if you want to get a deep insight about the changes.
 
