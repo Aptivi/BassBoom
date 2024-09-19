@@ -82,6 +82,7 @@ namespace BassBoom.Cli.CliBase
             new("Disco Mode!", ConsoleKey.L),
             new("Enable volume boost", ConsoleKey.V),
             new("Save to playlist", ConsoleKey.F1),
+            new("Play test sound (to test device and driver)", ConsoleKey.F2),
             new("Open the equalizer", ConsoleKey.E),
             new("Device and driver information", ConsoleKey.D),
             new("Set device and driver", ConsoleKey.D, ConsoleModifiers.Control),
@@ -248,6 +249,11 @@ namespace BassBoom.Cli.CliBase
                         PlayerControls.SeekTo(Common.CurrentCachedInfo.RepeatCheckpoint);
                     else
                         Common.CurrentCachedInfo.RepeatCheckpoint = PlaybackPositioningTools.GetCurrentDurationSpan(BassBoomCli.basolia);
+                    break;
+                case ConsoleKey.F2:
+                    PlayerControls.PlayTest();
+                    Common.redraw = true;
+                    playerScreen.RequireRefresh();
                     break;
                 default:
                     Common.HandleKeypressCommon(keystroke, playerScreen, false);

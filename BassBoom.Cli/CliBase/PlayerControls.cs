@@ -25,6 +25,7 @@ using BassBoom.Basolia.Playback;
 using BassBoom.Basolia.Playback.Playlists;
 using BassBoom.Basolia.Playback.Playlists.Enumerations;
 using BassBoom.Cli.Tools;
+using SpecProbe.Software.Platform;
 using System;
 using System.IO;
 using System.Linq;
@@ -427,6 +428,37 @@ namespace BassBoom.Cli.CliBase
                     Player.position = Common.CurrentCachedInfo.Duration;
                 PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, Player.position);
             }
+        }
+
+        internal static void PlayTest()
+        {
+            if (Common.CurrentCachedInfo is not null)
+                return;
+
+            // Ignore all settings while playing test sound, because it IS a test session.
+            InfoBoxColor.WriteInfoBox("Playing test sound...", false);
+
+            // Extract the test sound asset to a temporary file
+            string path = PlatformHelper.IsOnWindows() ? $"{Environment.GetEnvironmentVariable("TEMP")}" : $"{Environment.GetEnvironmentVariable("TEMP")}";
+            string fullPath = $"{path}/{DateTime.Now:ddMMyyyyHHmmssfff}.mp3";
+            var stream = typeof(PlayerControls).Assembly.GetManifestResourceStream("BassBoom.Cli.sample.mp3") ??
+                throw new Exception("Missing test sound data.");
+            var target = File.OpenWrite(fullPath);
+            stream.CopyTo(target);
+
+            // Now, close the file and play it
+            target.Close();
+            FileTools.OpenFile(BassBoomCli.basolia, fullPath);
+            PlaybackTools.Play(BassBoomCli.basolia);
+            FileTools.CloseFile(BassBoomCli.basolia);
+            File.Delete(fullPath);
+
+            // Ask the user if everything is OK.
+            int answer = InfoBoxButtonsColor.WriteInfoBoxButtons("Sound test", [new InputChoiceInfo("Yes", "Yes"), new InputChoiceInfo("No", "No")], "Is everything OK in this current configuration?");
+            if (answer == 0)
+                InfoBoxColor.WriteInfoBox("Congratulations! You've set up everything properly!");
+            else if (answer == 1)
+                InfoBoxColor.WriteInfoBox("Check your device and try again.");
         }
 
         internal static void ShowSongInfo()
