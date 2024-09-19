@@ -121,7 +121,7 @@ namespace BassBoom.Cli.CliBase
                 string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
                 string indicator =
                     $"┤ Seek: {PlayerControls.seekRate:0.00} | " +
-                    $"{boostIndicator}Volume: {Common.volume:0.00}{ColorTools.RenderResetForeground()} ├";
+                    $"{boostIndicator}Volume: {Common.volume * 100:0}%{ColorTools.RenderResetForeground()} ├";
                 string lyric = Common.CurrentCachedInfo.LyricInstance is not null ? Common.CurrentCachedInfo.LyricInstance.GetLastLineCurrent(BassBoomCli.basolia) : "";
                 string finalLyric = string.IsNullOrWhiteSpace(lyric) ? "..." : lyric;
                 buffer.Append(

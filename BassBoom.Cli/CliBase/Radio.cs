@@ -91,7 +91,7 @@ namespace BassBoom.Cli.CliBase
                     return "";
                 var buffer = new StringBuilder();
                 string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
-                string indicator = $"┤ {boostIndicator}Volume: {Common.volume:0.00}{ColorTools.RenderResetForeground()} ├";
+                string indicator = $"┤ {boostIndicator}Volume: {Common.volume * 100:0}%{ColorTools.RenderResetForeground()} ├";
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
                 if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                 {
