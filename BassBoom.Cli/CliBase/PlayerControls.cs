@@ -18,6 +18,7 @@
 //
 
 using BassBoom.Basolia.Enumerations;
+using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
@@ -271,7 +272,7 @@ namespace BassBoom.Cli.CliBase
             if (Directory.Exists(path))
             {
                 int currentPos = Player.position;
-                var cachedInfos = Directory.GetFiles(path, "*.mp3");
+                var cachedInfos = Directory.EnumerateFiles(path).Where((pathStr) => FileTools.SupportedExtensions.Contains(Path.GetExtension(pathStr))).ToArray();
                 if (cachedInfos.Length > 0)
                 {
                     foreach (string musicFile in cachedInfos)
