@@ -109,6 +109,10 @@ namespace BassBoom.Cli.CliBase
                 if (Common.CurrentCachedInfo is null)
                     return "";
                 var buffer = new StringBuilder();
+                string name = PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath);
+                int startPos = 4;
+                int endPos = ConsoleWrapper.WindowHeight - 5;
+                int songsPerPage = endPos - startPos;
                 position = FileTools.IsOpened(BassBoomCli.basolia) ? PlaybackPositioningTools.GetCurrentDuration(BassBoomCli.basolia) : 0;
                 var posSpan = FileTools.IsOpened(BassBoomCli.basolia) ? PlaybackPositioningTools.GetCurrentDurationSpan(BassBoomCli.basolia) : new();
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
@@ -121,10 +125,11 @@ namespace BassBoom.Cli.CliBase
                 string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
                 string indicator =
                     $"┤ Seek: {PlayerControls.seekRate:0.00} | " +
-                    $"{boostIndicator}Volume: {Common.volume * 100:0}%{ColorTools.RenderResetForeground()} ├";
+                    $"{boostIndicator}Volume: {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
                 string lyric = Common.CurrentCachedInfo.LyricInstance is not null ? Common.CurrentCachedInfo.LyricInstance.GetLastLineCurrent(BassBoomCli.basolia) : "";
                 string finalLyric = string.IsNullOrWhiteSpace(lyric) ? "..." : lyric;
                 buffer.Append(
+                    BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, songsPerPage, disco) +
                     ProgressBarColor.RenderProgress(100 * (position / (double)Common.CurrentCachedInfo.Duration), 2, ConsoleWrapper.WindowHeight - 5, ConsoleWrapper.WindowWidth - 6, disco, disco) +
                     TextWriterWhereColor.RenderWhereColor($"┤ {posSpan} / {Common.CurrentCachedInfo.DurationSpan} ├", 4, ConsoleWrapper.WindowHeight - 5, disco) +
                     TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 5, disco) +

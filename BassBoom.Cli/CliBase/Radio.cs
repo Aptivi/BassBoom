@@ -89,10 +89,14 @@ namespace BassBoom.Cli.CliBase
             {
                 if (Common.CurrentCachedInfo is null)
                     return "";
+                string name = RadioControls.RenderStationName();
+                int startPos = 4;
+                int endPos = ConsoleWrapper.WindowHeight - 1;
+                int stationsPerPage = endPos - startPos;
                 var buffer = new StringBuilder();
                 string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
-                string indicator = $"┤ {boostIndicator}Volume: {Common.volume * 100:0}%{ColorTools.RenderResetForeground()} ├";
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
+                string indicator = $"┤ {boostIndicator}Volume: {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
                 if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                 {
                     hue++;
@@ -100,8 +104,8 @@ namespace BassBoom.Cli.CliBase
                         hue = 0;
                 }
                 buffer.Append(
-                    BoxFrameColor.RenderBoxFrame(2, ConsoleWrapper.WindowHeight - 5, ConsoleWrapper.WindowWidth - 6, 1, disco) +
-                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 5, disco)
+                    BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, stationsPerPage, disco) +
+                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 3, disco)
                 );
                 return buffer.ToString();
             });
@@ -323,7 +327,7 @@ namespace BassBoom.Cli.CliBase
             // Now, print the list of stations.
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
-            int endPos = ConsoleWrapper.WindowHeight - 5;
+            int endPos = ConsoleWrapper.WindowHeight - 1;
             int stationsPerPage = endPos - startPos;
             int max = Common.cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
             for (int i = 0; i < Common.cachedInfos.Count; i++)
