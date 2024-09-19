@@ -2931,6 +2931,22 @@ references:
   commentId: T:BassBoom.Basolia.Playback.PlaybackTools
   fullName: BassBoom.Basolia.Playback.PlaybackTools
   nameWithType: PlaybackTools
+- uid: BassBoom.Basolia.Playback.PlaybackTools.CloseOutput(BassBoom.Basolia.BasoliaMedia)
+  name: CloseOutput(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_CloseOutput_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.CloseOutput(BassBoom.Basolia.BasoliaMedia)
+  name.vb: CloseOutput(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.CloseOutput(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.CloseOutput(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.CloseOutput(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.CloseOutput(BasoliaMedia)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.CloseOutput*
+  name: CloseOutput
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_CloseOutput_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.CloseOutput
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.CloseOutput
+  nameWithType: PlaybackTools.CloseOutput
 - uid: BassBoom.Basolia.Playback.PlaybackTools.GetEqualizer(BassBoom.Basolia.BasoliaMedia,BassBoom.Basolia.Enumerations.PlaybackChannels,System.Int32)
   name: GetEqualizer(BasoliaMedia?, PlaybackChannels, int)
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_GetEqualizer_BassBoom_Basolia_BasoliaMedia_BassBoom_Basolia_Enumerations_PlaybackChannels_System_Int32_
@@ -3043,6 +3059,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.IsPlaying
   nameWithType: PlaybackTools.IsPlaying
+- uid: BassBoom.Basolia.Playback.PlaybackTools.OpenOutput(BassBoom.Basolia.BasoliaMedia)
+  name: OpenOutput(BasoliaMedia?)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_OpenOutput_BassBoom_Basolia_BasoliaMedia_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.OpenOutput(BassBoom.Basolia.BasoliaMedia)
+  name.vb: OpenOutput(BasoliaMedia)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.OpenOutput(BassBoom.Basolia.BasoliaMedia?)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.OpenOutput(BassBoom.Basolia.BasoliaMedia)
+  nameWithType: PlaybackTools.OpenOutput(BasoliaMedia?)
+  nameWithType.vb: PlaybackTools.OpenOutput(BasoliaMedia)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.OpenOutput*
+  name: OpenOutput
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_OpenOutput_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.OpenOutput
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.OpenOutput
+  nameWithType: PlaybackTools.OpenOutput
 - uid: BassBoom.Basolia.Playback.PlaybackTools.Pause(BassBoom.Basolia.BasoliaMedia)
   name: Pause(BasoliaMedia?)
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Pause_BassBoom_Basolia_BasoliaMedia_
@@ -3155,6 +3187,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Playback.PlaybackTools.SetVolume
   nameWithType: PlaybackTools.SetVolume
+- uid: BassBoom.Basolia.Playback.PlaybackTools.StartOutput(BassBoom.Basolia.BasoliaMedia,System.Int64,BassBoom.Basolia.Format.ChannelCount,System.Int32)
+  name: StartOutput(BasoliaMedia?, long, ChannelCount, int)
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_StartOutput_BassBoom_Basolia_BasoliaMedia_System_Int64_BassBoom_Basolia_Format_ChannelCount_System_Int32_
+  commentId: M:BassBoom.Basolia.Playback.PlaybackTools.StartOutput(BassBoom.Basolia.BasoliaMedia,System.Int64,BassBoom.Basolia.Format.ChannelCount,System.Int32)
+  name.vb: StartOutput(BasoliaMedia, Long, ChannelCount, Integer)
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.StartOutput(BassBoom.Basolia.BasoliaMedia?, long, BassBoom.Basolia.Format.ChannelCount, int)
+  fullName.vb: BassBoom.Basolia.Playback.PlaybackTools.StartOutput(BassBoom.Basolia.BasoliaMedia, Long, BassBoom.Basolia.Format.ChannelCount, Integer)
+  nameWithType: PlaybackTools.StartOutput(BasoliaMedia?, long, ChannelCount, int)
+  nameWithType.vb: PlaybackTools.StartOutput(BasoliaMedia, Long, ChannelCount, Integer)
+- uid: BassBoom.Basolia.Playback.PlaybackTools.StartOutput*
+  name: StartOutput
+  href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_StartOutput_
+  commentId: Overload:BassBoom.Basolia.Playback.PlaybackTools.StartOutput
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Playback.PlaybackTools.StartOutput
+  nameWithType: PlaybackTools.StartOutput
 - uid: BassBoom.Basolia.Playback.PlaybackTools.Stop(BassBoom.Basolia.BasoliaMedia)
   name: Stop(BasoliaMedia?)
   href: api/BassBoom.Basolia.Playback.PlaybackTools.html#BassBoom_Basolia_Playback_PlaybackTools_Stop_BassBoom_Basolia_BasoliaMedia_
