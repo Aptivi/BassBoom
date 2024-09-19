@@ -34,6 +34,7 @@ using System.Text.RegularExpressions;
 using BassBoom.Basolia.Enumerations;
 using BassBoom.Native;
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Devices;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -121,16 +122,10 @@ namespace BassBoom.Basolia.Playback
                 Debug.WriteLine($"Format {rate}, {channels}, {encoding}");
 
                 // Try to open output to device
-                var delegate3 = MpgNative.GetDelegate<NativeOutputLib.out123_open>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_open));
-                int openStatus = delegate3.Invoke(outHandle, basolia.activeDriver, basolia.activeDevice);
-                if (openStatus != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException($"Can't open output to device {basolia.activeDevice} on driver {basolia.activeDriver}", (out123_error)openStatus);
+                OpenOutput(basolia);
 
                 // Start the output
-                var delegate4 = MpgNative.GetDelegate<NativeOutputLib.out123_start>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_start));
-                int startStatus = delegate4.Invoke(outHandle, rate, channels, encoding);
-                if (startStatus != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException($"Can't start the output.", (out123_error)startStatus);
+                StartOutput(basolia, rate, (ChannelCount)channels, encoding);
 
                 // Now, buffer the entire music file and create an empty array based on its size
                 var bufferSize = AudioInfoTools.GetBufferSize(basolia);
@@ -391,6 +386,88 @@ namespace BassBoom.Basolia.Playback
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't get native state of {state}!", (mpg123_errors)status);
                 return (stateInt, stateDouble);
+            }
+        }
+
+        /// <summary>
+        /// Opens the output to the device. You can set your preferred driver and device using <see cref="DeviceTools.SetActiveDriver(BasoliaMedia?, string)"/> and <see cref="DeviceTools.SetActiveDevice(BasoliaMedia?, string, string)"/>.
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <exception cref="BasoliaException"></exception>
+        public static void OpenOutput(BasoliaMedia? basolia)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            if (basolia.isOutputOpen)
+                return;
+
+            // Try to open output to device
+            unsafe
+            {
+                var outHandle = basolia._out123Handle;
+                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_open>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_open));
+                int openStatus = @delegate.Invoke(outHandle, basolia.activeDriver, basolia.activeDevice);
+                if (openStatus != (int)out123_error.OUT123_OK)
+                    throw new BasoliaOutException($"Can't open output to device {basolia.activeDevice} on driver {basolia.activeDriver}", (out123_error)openStatus);
+                basolia.isOutputOpen = true;
+            }
+        }
+
+        /// <summary>
+        /// Opens the output to the device. You can set your preferred driver and device using <see cref="DeviceTools.SetActiveDriver(BasoliaMedia?, string)"/> and <see cref="DeviceTools.SetActiveDevice(BasoliaMedia?, string, string)"/>.
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="rate">Rate to open. It must be supported and must match what you've set in <see cref="FormatTools.UseFormat(BasoliaMedia?, long, ChannelCount, int)"/></param>
+        /// <param name="channels">Channels to open. They must be supported and must match what you've set in <see cref="FormatTools.UseFormat(BasoliaMedia?, long, ChannelCount, int)"/></param>
+        /// <param name="encoding">Encoding to open. It must be supported and must match what you've set in <see cref="FormatTools.UseFormat(BasoliaMedia?, long, ChannelCount, int)"/></param>
+        /// <exception cref="BasoliaException"></exception>
+        public static void StartOutput(BasoliaMedia? basolia, long rate, ChannelCount channels, int encoding)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+
+            // Sanity checks
+            bool supported = FormatTools.IsFormatSupported(basolia, rate, encoding, out _);
+            if (!basolia.isOutputOpen)
+                throw new BasoliaOutException("You need to open the output", out123_error.OUT123_NOT_LIVE);
+            if (!supported)
+                throw new BasoliaOutException($"Selected rate [{rate} hz] and encoding [{encoding}] is not supported", out123_error.OUT123_NOT_SUPPORTED);
+
+            // Try to open output to device
+            unsafe
+            {
+                var outHandle = basolia._out123Handle;
+                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_start>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_start));
+                int startStatus = @delegate.Invoke(outHandle, rate, (int)channels, encoding);
+                if (startStatus != (int)out123_error.OUT123_OK)
+                    throw new BasoliaOutException($"Can't start the output.", (out123_error)startStatus);
+            }
+        }
+
+        /// <summary>
+        /// Closes the output to the device.
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <exception cref="BasoliaException"></exception>
+        public static void CloseOutput(BasoliaMedia? basolia)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            if (!basolia.isOutputOpen)
+                return;
+
+            // Try to open output to device
+            unsafe
+            {
+                var outHandle = basolia._out123Handle;
+                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_stop>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_stop));
+                @delegate.Invoke(outHandle);
+                var delegate2 = MpgNative.GetDelegate<NativeOutputLib.out123_close>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_close));
+                delegate2.Invoke(outHandle);
+                basolia.isOutputOpen = false;
             }
         }
 

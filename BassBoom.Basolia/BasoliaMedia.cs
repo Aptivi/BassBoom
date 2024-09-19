@@ -41,6 +41,7 @@ namespace BassBoom.Basolia
         internal string? activeDevice;
         internal bool isOpened = false;
         internal bool isRadioStation = false;
+        internal bool isOutputOpen = false;
         internal FileType? currentFile;
 
         internal mpg123_handle* _mpg123Handle;

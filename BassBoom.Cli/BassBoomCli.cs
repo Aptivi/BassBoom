@@ -28,6 +28,7 @@ using System.Linq;
 using Terminaux.Colors;
 using Terminaux.Colors.Data;
 using Terminaux.Base;
+using BassBoom.Basolia.Playback;
 
 namespace BassBoom.Cli
 {
@@ -76,6 +77,9 @@ namespace BassBoom.Cli
                     Radio.RadioLoop();
                 else
                     Player.PlayerLoop();
+
+                // Close the output if necessary
+                PlaybackTools.CloseOutput(basolia);
             }
             catch (Exception ex)
             {
