@@ -439,7 +439,7 @@ namespace BassBoom.Cli.CliBase
             InfoBoxColor.WriteInfoBox("Playing test sound...", false);
 
             // Extract the test sound asset to a temporary file
-            string path = PlatformHelper.IsOnWindows() ? $"{Environment.GetEnvironmentVariable("TEMP")}" : $"{Environment.GetEnvironmentVariable("TEMP")}";
+            string path = PlatformHelper.IsOnWindows() ? $"{Environment.GetEnvironmentVariable("TEMP")}" : $"/tmp/";
             string fullPath = $"{path}/{DateTime.Now:ddMMyyyyHHmmssfff}.mp3";
             var stream = typeof(PlayerControls).Assembly.GetManifestResourceStream("BassBoom.Cli.sample.mp3") ??
                 throw new Exception("Missing test sound data.");
