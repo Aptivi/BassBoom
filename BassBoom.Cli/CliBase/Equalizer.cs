@@ -70,15 +70,15 @@ namespace BassBoom.Cli.CliBase
                 }
                 catch (BasoliaException bex)
                 {
-                    InfoBoxColor.WriteInfoBox("There's an error with Basolia when trying to process the equalizer operation.\n\n" + bex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia when trying to process the equalizer operation.\n\n" + bex.Message);
                 }
                 catch (BasoliaOutException bex)
                 {
-                    InfoBoxColor.WriteInfoBox("There's an error with Basolia output when trying to process the equalizer operation.\n\n" + bex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia output when trying to process the equalizer operation.\n\n" + bex.Message);
                 }
                 catch (Exception ex)
                 {
-                    InfoBoxColor.WriteInfoBox("There's an unknown error when trying to process the equalizer operation.\n\n" + ex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal("There's an unknown error when trying to process the equalizer operation.\n\n" + ex.Message);
                 }
             }
 

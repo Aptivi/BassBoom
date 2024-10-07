@@ -235,7 +235,7 @@ namespace BassBoom.Cli.CliBase
                 PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, currentPos);
             }
             else
-                InfoBoxColor.WriteInfoBox($"File \"{path}\" doesn't exist.");
+                InfoBoxModalColor.WriteInfoBoxModal($"File \"{path}\" doesn't exist.");
         }
 
         internal static void PromptForAddSongs()
@@ -263,7 +263,7 @@ namespace BassBoom.Cli.CliBase
                 }
             }
             else
-                InfoBoxColor.WriteInfoBox("Music playlist is not found.");
+                InfoBoxModalColor.WriteInfoBoxModal("Music playlist is not found.");
         }
 
         internal static void PromptForAddDirectory()
@@ -287,7 +287,7 @@ namespace BassBoom.Cli.CliBase
                 }
             }
             else
-                InfoBoxColor.WriteInfoBox("Music library directory is not found.");
+                InfoBoxModalColor.WriteInfoBoxModal("Music library directory is not found.");
         }
 
         internal static void PopulateMusicFileInfo(string musicPath)
@@ -300,7 +300,7 @@ namespace BassBoom.Cli.CliBase
             if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
                 ScreenTools.CurrentScreen?.RequireRefresh();
-                InfoBoxColor.WriteInfoBox($"Opening {musicPath}...", false);
+                InfoBoxNonModalColor.WriteInfoBox($"Opening {musicPath}...", false);
                 var total = AudioInfoTools.GetDuration(BassBoomCli.basolia, true);
                 var formatInfo = FormatTools.GetFormatInfo(BassBoomCli.basolia);
                 var frameInfo = AudioInfoTools.GetFrameInfo(BassBoomCli.basolia);
@@ -369,7 +369,7 @@ namespace BassBoom.Cli.CliBase
             string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
             try
             {
-                InfoBoxColor.WriteInfoBox($"Trying to open lyrics file {lyricsPath}...", false);
+                InfoBoxNonModalColor.WriteInfoBox($"Trying to open lyrics file {lyricsPath}...", false);
                 if (File.Exists(lyricsPath))
                     return LyricReader.GetLyrics(lyricsPath);
                 else
@@ -377,7 +377,7 @@ namespace BassBoom.Cli.CliBase
             }
             catch (Exception ex)
             {
-                InfoBoxColor.WriteInfoBox($"Can't open lyrics file {lyricsPath}... {ex.Message}");
+                InfoBoxModalColor.WriteInfoBoxModal($"Can't open lyrics file {lyricsPath}... {ex.Message}");
             }
             return null;
         }
@@ -436,7 +436,7 @@ namespace BassBoom.Cli.CliBase
                 return;
 
             // Ignore all settings while playing test sound, because it IS a test session.
-            InfoBoxColor.WriteInfoBox("Playing test sound...", false);
+            InfoBoxNonModalColor.WriteInfoBox("Playing test sound...", false);
 
             // Extract the test sound asset to a temporary file
             string path = PlatformHelper.IsOnWindows() ? $"{Environment.GetEnvironmentVariable("TEMP")}" : $"/tmp/";
@@ -456,9 +456,9 @@ namespace BassBoom.Cli.CliBase
             // Ask the user if everything is OK.
             int answer = InfoBoxButtonsColor.WriteInfoBoxButtons("Sound test", [new InputChoiceInfo("Yes", "Yes"), new InputChoiceInfo("No", "No")], "Is everything OK in this current configuration?");
             if (answer == 0)
-                InfoBoxColor.WriteInfoBox("Congratulations! You've set up everything properly!");
+                InfoBoxModalColor.WriteInfoBoxModal("Congratulations! You've set up everything properly!");
             else if (answer == 1)
-                InfoBoxColor.WriteInfoBox("Check your device and try again.");
+                InfoBoxModalColor.WriteInfoBoxModal("Check your device and try again.");
         }
 
         internal static void ShowSongInfo()
@@ -472,7 +472,7 @@ namespace BassBoom.Cli.CliBase
                 textsBuilder.AppendLine($"T - {text.Item1}: {text.Item2}");
             foreach (var text in idv2?.Extras ?? [])
                 textsBuilder.AppendLine($"E - {text.Item1}: {text.Item2}");
-            InfoBoxColor.WriteInfoBox(
+            InfoBoxModalColor.WriteInfoBoxModal(
                 $$"""
                 Song info
                 =========
