@@ -144,6 +144,21 @@
     "title": "Namespace BassBoom.Basolia.Format | BassBoom Basolia API - Aptivi",
     "keywords": "Namespace BassBoom.Basolia.Format Classes AudioInfoTools Audio information tools DecodeTools Decoder tools FormatInfo Format information FormatTools Audio format tools FrameInfo Frame information Id3V1Metadata The managed world version of the ID3v1 metadata class instance Id3V2Metadata The managed world version of the ID3v2 metadata class instance Enums ChannelCount Channel count Id3V1Genre Genre known by the ID3v1 specification"
   },
+  "api/BassBoom.Basolia.Independent.PlayForget.html": {
+    "href": "api/BassBoom.Basolia.Independent.PlayForget.html",
+    "title": "Class PlayForget | BassBoom Basolia API - Aptivi",
+    "keywords": "Class PlayForget Play and Forget class (to initialize playback and to forget) Inheritance object PlayForget Namespace: BassBoom.Basolia.Independent Assembly: BassBoom.Basolia.dll Syntax public static class PlayForget Methods | Edit this page View Source PlayFile(string, PlayForgetSettings?) Plays the file Declaration public static void PlayFile(string path, PlayForgetSettings? settings = null) Parameters Type Name Description string path Path to a music file PlayForgetSettings settings Settings of the play/forget technique | Edit this page View Source PlayStream(Stream, PlayForgetSettings?) Plays the stream Declaration public static void PlayStream(Stream stream, PlayForgetSettings? settings = null) Parameters Type Name Description Stream stream Stream that contains valid MPEG audio stream PlayForgetSettings settings Settings of the play/forget technique"
+  },
+  "api/BassBoom.Basolia.Independent.PlayForgetSettings.html": {
+    "href": "api/BassBoom.Basolia.Independent.PlayForgetSettings.html",
+    "title": "Class PlayForgetSettings | BassBoom Basolia API - Aptivi",
+    "keywords": "Class PlayForgetSettings Settings for the Play and Forget technique Inheritance object PlayForgetSettings Namespace: BassBoom.Basolia.Independent Assembly: BassBoom.Basolia.dll Syntax public class PlayForgetSettings Constructors | Edit this page View Source PlayForgetSettings() Makes a new instance of the Play/Forget technique settings Declaration public PlayForgetSettings() Exceptions Type Condition BasoliaMiscException | Edit this page View Source PlayForgetSettings(double, bool, string) Makes a new instance of the Play/Forget technique settings Declaration public PlayForgetSettings(double volume, bool volBoost, string rootLibPath) Parameters Type Name Description double volume Volume boost bool volBoost Volume in fractional floating point integer (0.5 resembles 50%) string rootLibPath Root path to the library Exceptions Type Condition BasoliaMiscException Properties | Edit this page View Source RootLibPath Root path to the library Declaration public string RootLibPath { get; } Property Value Type Description string | Edit this page View Source Volume Volume in fractional floating point integer (0.5 resembles 50%) Declaration public double Volume { get; set; } Property Value Type Description double | Edit this page View Source VolumeBoost Volume boost Declaration public bool VolumeBoost { get; set; } Property Value Type Description bool"
+  },
+  "api/BassBoom.Basolia.Independent.html": {
+    "href": "api/BassBoom.Basolia.Independent.html",
+    "title": "Namespace BassBoom.Basolia.Independent | BassBoom Basolia API - Aptivi",
+    "keywords": "Namespace BassBoom.Basolia.Independent Classes PlayForget Play and Forget class (to initialize playback and to forget) PlayForgetSettings Settings for the Play and Forget technique"
+  },
   "api/BassBoom.Basolia.InitBasolia.html": {
     "href": "api/BassBoom.Basolia.InitBasolia.html",
     "title": "Class InitBasolia | BassBoom Basolia API - Aptivi",

@@ -2492,6 +2492,123 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Format.Id3V2Metadata.Year
   nameWithType: Id3V2Metadata.Year
+- uid: BassBoom.Basolia.Independent
+  name: BassBoom.Basolia.Independent
+  href: api/BassBoom.Basolia.Independent.html
+  commentId: N:BassBoom.Basolia.Independent
+  fullName: BassBoom.Basolia.Independent
+  nameWithType: BassBoom.Basolia.Independent
+- uid: BassBoom.Basolia.Independent.PlayForget
+  name: PlayForget
+  href: api/BassBoom.Basolia.Independent.PlayForget.html
+  commentId: T:BassBoom.Basolia.Independent.PlayForget
+  fullName: BassBoom.Basolia.Independent.PlayForget
+  nameWithType: PlayForget
+- uid: BassBoom.Basolia.Independent.PlayForget.PlayFile(System.String,BassBoom.Basolia.Independent.PlayForgetSettings)
+  name: PlayFile(string, PlayForgetSettings?)
+  href: api/BassBoom.Basolia.Independent.PlayForget.html#BassBoom_Basolia_Independent_PlayForget_PlayFile_System_String_BassBoom_Basolia_Independent_PlayForgetSettings_
+  commentId: M:BassBoom.Basolia.Independent.PlayForget.PlayFile(System.String,BassBoom.Basolia.Independent.PlayForgetSettings)
+  name.vb: PlayFile(String, PlayForgetSettings)
+  fullName: BassBoom.Basolia.Independent.PlayForget.PlayFile(string, BassBoom.Basolia.Independent.PlayForgetSettings?)
+  fullName.vb: BassBoom.Basolia.Independent.PlayForget.PlayFile(String, BassBoom.Basolia.Independent.PlayForgetSettings)
+  nameWithType: PlayForget.PlayFile(string, PlayForgetSettings?)
+  nameWithType.vb: PlayForget.PlayFile(String, PlayForgetSettings)
+- uid: BassBoom.Basolia.Independent.PlayForget.PlayFile*
+  name: PlayFile
+  href: api/BassBoom.Basolia.Independent.PlayForget.html#BassBoom_Basolia_Independent_PlayForget_PlayFile_
+  commentId: Overload:BassBoom.Basolia.Independent.PlayForget.PlayFile
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Independent.PlayForget.PlayFile
+  nameWithType: PlayForget.PlayFile
+- uid: BassBoom.Basolia.Independent.PlayForget.PlayStream(System.IO.Stream,BassBoom.Basolia.Independent.PlayForgetSettings)
+  name: PlayStream(Stream, PlayForgetSettings?)
+  href: api/BassBoom.Basolia.Independent.PlayForget.html#BassBoom_Basolia_Independent_PlayForget_PlayStream_System_IO_Stream_BassBoom_Basolia_Independent_PlayForgetSettings_
+  commentId: M:BassBoom.Basolia.Independent.PlayForget.PlayStream(System.IO.Stream,BassBoom.Basolia.Independent.PlayForgetSettings)
+  name.vb: PlayStream(Stream, PlayForgetSettings)
+  fullName: BassBoom.Basolia.Independent.PlayForget.PlayStream(System.IO.Stream, BassBoom.Basolia.Independent.PlayForgetSettings?)
+  fullName.vb: BassBoom.Basolia.Independent.PlayForget.PlayStream(System.IO.Stream, BassBoom.Basolia.Independent.PlayForgetSettings)
+  nameWithType: PlayForget.PlayStream(Stream, PlayForgetSettings?)
+  nameWithType.vb: PlayForget.PlayStream(Stream, PlayForgetSettings)
+- uid: BassBoom.Basolia.Independent.PlayForget.PlayStream*
+  name: PlayStream
+  href: api/BassBoom.Basolia.Independent.PlayForget.html#BassBoom_Basolia_Independent_PlayForget_PlayStream_
+  commentId: Overload:BassBoom.Basolia.Independent.PlayForget.PlayStream
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Independent.PlayForget.PlayStream
+  nameWithType: PlayForget.PlayStream
+- uid: BassBoom.Basolia.Independent.PlayForgetSettings
+  name: PlayForgetSettings
+  href: api/BassBoom.Basolia.Independent.PlayForgetSettings.html
+  commentId: T:BassBoom.Basolia.Independent.PlayForgetSettings
+  fullName: BassBoom.Basolia.Independent.PlayForgetSettings
+  nameWithType: PlayForgetSettings
+- uid: BassBoom.Basolia.Independent.PlayForgetSettings.#ctor
+  name: PlayForgetSettings()
+  href: api/BassBoom.Basolia.Independent.PlayForgetSettings.html#BassBoom_Basolia_Independent_PlayForgetSettings__ctor
+  commentId: M:BassBoom.Basolia.Independent.PlayForgetSettings.#ctor
+  name.vb: New()
+  fullName: BassBoom.Basolia.Independent.PlayForgetSettings.PlayForgetSettings()
+  fullName.vb: BassBoom.Basolia.Independent.PlayForgetSettings.New()
+  nameWithType: PlayForgetSettings.PlayForgetSettings()
+  nameWithType.vb: PlayForgetSettings.New()
+- uid: BassBoom.Basolia.Independent.PlayForgetSettings.#ctor(System.Double,System.Boolean,System.String)
+  name: PlayForgetSettings(double, bool, string)
+  href: api/BassBoom.Basolia.Independent.PlayForgetSettings.html#BassBoom_Basolia_Independent_PlayForgetSettings__ctor_System_Double_System_Boolean_System_String_
+  commentId: M:BassBoom.Basolia.Independent.PlayForgetSettings.#ctor(System.Double,System.Boolean,System.String)
+  name.vb: New(Double, Boolean, String)
+  fullName: BassBoom.Basolia.Independent.PlayForgetSettings.PlayForgetSettings(double, bool, string)
+  fullName.vb: BassBoom.Basolia.Independent.PlayForgetSettings.New(Double, Boolean, String)
+  nameWithType: PlayForgetSettings.PlayForgetSettings(double, bool, string)
+  nameWithType.vb: PlayForgetSettings.New(Double, Boolean, String)
+- uid: BassBoom.Basolia.Independent.PlayForgetSettings.#ctor*
+  name: PlayForgetSettings
+  href: api/BassBoom.Basolia.Independent.PlayForgetSettings.html#BassBoom_Basolia_Independent_PlayForgetSettings__ctor_
+  commentId: Overload:BassBoom.Basolia.Independent.PlayForgetSettings.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BassBoom.Basolia.Independent.PlayForgetSettings.PlayForgetSettings
+  fullName.vb: BassBoom.Basolia.Independent.PlayForgetSettings.New
+  nameWithType: PlayForgetSettings.PlayForgetSettings
+  nameWithType.vb: PlayForgetSettings.New
+- uid: BassBoom.Basolia.Independent.PlayForgetSettings.RootLibPath
+  name: RootLibPath
+  href: api/BassBoom.Basolia.Independent.PlayForgetSettings.html#BassBoom_Basolia_Independent_PlayForgetSettings_RootLibPath
+  commentId: P:BassBoom.Basolia.Independent.PlayForgetSettings.RootLibPath
+  fullName: BassBoom.Basolia.Independent.PlayForgetSettings.RootLibPath
+  nameWithType: PlayForgetSettings.RootLibPath
+- uid: BassBoom.Basolia.Independent.PlayForgetSettings.RootLibPath*
+  name: RootLibPath
+  href: api/BassBoom.Basolia.Independent.PlayForgetSettings.html#BassBoom_Basolia_Independent_PlayForgetSettings_RootLibPath_
+  commentId: Overload:BassBoom.Basolia.Independent.PlayForgetSettings.RootLibPath
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Independent.PlayForgetSettings.RootLibPath
+  nameWithType: PlayForgetSettings.RootLibPath
+- uid: BassBoom.Basolia.Independent.PlayForgetSettings.Volume
+  name: Volume
+  href: api/BassBoom.Basolia.Independent.PlayForgetSettings.html#BassBoom_Basolia_Independent_PlayForgetSettings_Volume
+  commentId: P:BassBoom.Basolia.Independent.PlayForgetSettings.Volume
+  fullName: BassBoom.Basolia.Independent.PlayForgetSettings.Volume
+  nameWithType: PlayForgetSettings.Volume
+- uid: BassBoom.Basolia.Independent.PlayForgetSettings.Volume*
+  name: Volume
+  href: api/BassBoom.Basolia.Independent.PlayForgetSettings.html#BassBoom_Basolia_Independent_PlayForgetSettings_Volume_
+  commentId: Overload:BassBoom.Basolia.Independent.PlayForgetSettings.Volume
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Independent.PlayForgetSettings.Volume
+  nameWithType: PlayForgetSettings.Volume
+- uid: BassBoom.Basolia.Independent.PlayForgetSettings.VolumeBoost
+  name: VolumeBoost
+  href: api/BassBoom.Basolia.Independent.PlayForgetSettings.html#BassBoom_Basolia_Independent_PlayForgetSettings_VolumeBoost
+  commentId: P:BassBoom.Basolia.Independent.PlayForgetSettings.VolumeBoost
+  fullName: BassBoom.Basolia.Independent.PlayForgetSettings.VolumeBoost
+  nameWithType: PlayForgetSettings.VolumeBoost
+- uid: BassBoom.Basolia.Independent.PlayForgetSettings.VolumeBoost*
+  name: VolumeBoost
+  href: api/BassBoom.Basolia.Independent.PlayForgetSettings.html#BassBoom_Basolia_Independent_PlayForgetSettings_VolumeBoost_
+  commentId: Overload:BassBoom.Basolia.Independent.PlayForgetSettings.VolumeBoost
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Independent.PlayForgetSettings.VolumeBoost
+  nameWithType: PlayForgetSettings.VolumeBoost
 - uid: BassBoom.Basolia.InitBasolia
   name: InitBasolia
   href: api/BassBoom.Basolia.InitBasolia.html
