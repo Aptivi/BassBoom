@@ -282,7 +282,6 @@ namespace BassBoom.Cli.CliBase
                         Common.populate = true;
                     Common.currentPos = Common.cachedInfos.IndexOf(musicFile) + 1;
                     RadioControls.PopulateRadioStationInfo(musicFile.MusicPath);
-                    TextWriterRaw.WritePlain(RadioControls.RenderStationName(), false);
                     if (Common.paused)
                         Common.paused = false;
                     PlaybackTools.Play(BassBoomCli.basolia);
