@@ -486,6 +486,38 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.File.FileTools.OpenFile
   nameWithType: FileTools.OpenFile
+- uid: BassBoom.Basolia.File.FileTools.OpenFrom(BassBoom.Basolia.BasoliaMedia,System.IO.Stream)
+  name: OpenFrom(BasoliaMedia?, Stream?)
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenFrom_BassBoom_Basolia_BasoliaMedia_System_IO_Stream_
+  commentId: M:BassBoom.Basolia.File.FileTools.OpenFrom(BassBoom.Basolia.BasoliaMedia,System.IO.Stream)
+  name.vb: OpenFrom(BasoliaMedia, Stream)
+  fullName: BassBoom.Basolia.File.FileTools.OpenFrom(BassBoom.Basolia.BasoliaMedia?, System.IO.Stream?)
+  fullName.vb: BassBoom.Basolia.File.FileTools.OpenFrom(BassBoom.Basolia.BasoliaMedia, System.IO.Stream)
+  nameWithType: FileTools.OpenFrom(BasoliaMedia?, Stream?)
+  nameWithType.vb: FileTools.OpenFrom(BasoliaMedia, Stream)
+- uid: BassBoom.Basolia.File.FileTools.OpenFrom*
+  name: OpenFrom
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenFrom_
+  commentId: Overload:BassBoom.Basolia.File.FileTools.OpenFrom
+  isSpec: "True"
+  fullName: BassBoom.Basolia.File.FileTools.OpenFrom
+  nameWithType: FileTools.OpenFrom
+- uid: BassBoom.Basolia.File.FileTools.OpenFromAsync(BassBoom.Basolia.BasoliaMedia,System.IO.Stream)
+  name: OpenFromAsync(BasoliaMedia?, Stream?)
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenFromAsync_BassBoom_Basolia_BasoliaMedia_System_IO_Stream_
+  commentId: M:BassBoom.Basolia.File.FileTools.OpenFromAsync(BassBoom.Basolia.BasoliaMedia,System.IO.Stream)
+  name.vb: OpenFromAsync(BasoliaMedia, Stream)
+  fullName: BassBoom.Basolia.File.FileTools.OpenFromAsync(BassBoom.Basolia.BasoliaMedia?, System.IO.Stream?)
+  fullName.vb: BassBoom.Basolia.File.FileTools.OpenFromAsync(BassBoom.Basolia.BasoliaMedia, System.IO.Stream)
+  nameWithType: FileTools.OpenFromAsync(BasoliaMedia?, Stream?)
+  nameWithType.vb: FileTools.OpenFromAsync(BasoliaMedia, Stream)
+- uid: BassBoom.Basolia.File.FileTools.OpenFromAsync*
+  name: OpenFromAsync
+  href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenFromAsync_
+  commentId: Overload:BassBoom.Basolia.File.FileTools.OpenFromAsync
+  isSpec: "True"
+  fullName: BassBoom.Basolia.File.FileTools.OpenFromAsync
+  nameWithType: FileTools.OpenFromAsync
 - uid: BassBoom.Basolia.File.FileTools.OpenUrl(BassBoom.Basolia.BasoliaMedia,System.String)
   name: OpenUrl(BasoliaMedia?, string)
   href: api/BassBoom.Basolia.File.FileTools.html#BassBoom_Basolia_File_FileTools_OpenUrl_BassBoom_Basolia_BasoliaMedia_System_String_
