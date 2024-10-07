@@ -105,7 +105,7 @@ namespace BassBoom.Cli.CliBase
                         hue = 0;
                 }
                 buffer.Append(
-                    BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, stationsPerPage, disco) +
+                    BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, stationsPerPage, disco, ColorTools.CurrentBackgroundColor, disco) +
                     TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 3, disco)
                 );
                 return buffer.ToString();
