@@ -1,10 +1,12 @@
-We've made an emergency release for the test sound feature.
+We've added features that let you play from a stream
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[*]` Fixed test sound in Linux
+- `[+]` Added playing from stream
+- `[+]` Added Play/Forget
+- `[*]` General improvements and bug fixes
 
 Review the commit history if you want to get a deep insight about the changes.
 
