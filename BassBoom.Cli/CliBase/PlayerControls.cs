@@ -439,19 +439,13 @@ namespace BassBoom.Cli.CliBase
             InfoBoxNonModalColor.WriteInfoBox("Playing test sound...", false);
 
             // Extract the test sound asset to a temporary file
-            string path = PlatformHelper.IsOnWindows() ? $"{Environment.GetEnvironmentVariable("TEMP")}" : $"/tmp/";
-            string fullPath = $"{path}/{DateTime.Now:ddMMyyyyHHmmssfff}.mp3";
             var stream = typeof(PlayerControls).Assembly.GetManifestResourceStream("BassBoom.Cli.sample.mp3") ??
                 throw new Exception("Missing test sound data.");
-            var target = File.OpenWrite(fullPath);
-            stream.CopyTo(target);
 
             // Now, close the file and play it
-            target.Close();
-            FileTools.OpenFile(BassBoomCli.basolia, fullPath);
+            FileTools.OpenFrom(BassBoomCli.basolia, stream);
             PlaybackTools.Play(BassBoomCli.basolia);
             FileTools.CloseFile(BassBoomCli.basolia);
-            File.Delete(fullPath);
 
             // Ask the user if everything is OK.
             int answer = InfoBoxButtonsColor.WriteInfoBoxButtons("Sound test", [new InputChoiceInfo("Yes", "Yes"), new InputChoiceInfo("No", "No")], "Is everything OK in this current configuration?");

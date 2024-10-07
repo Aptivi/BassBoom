@@ -110,9 +110,6 @@ namespace BassBoom.Basolia.Playback
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = basolia._mpg123Handle;
-                var outHandle = basolia._out123Handle;
-
                 // Reset the format. Orders here matter.
                 var (rate, channels, encoding) = FormatTools.GetFormatInfo(basolia);
                 FormatTools.NoFormat(basolia);
@@ -487,8 +484,6 @@ namespace BassBoom.Basolia.Playback
 
             unsafe
             {
-                var handle = basolia._mpg123Handle;
-
                 // Get the MP3 frame length first
                 string metaIntStr = currentRadio.Headers.GetValues("icy-metaint").First();
                 int metaInt = int.Parse(metaIntStr);
@@ -514,6 +509,41 @@ namespace BassBoom.Basolia.Playback
                 if (!string.IsNullOrEmpty(icy))
                     basolia.radioIcy = icy;
                 Debug.WriteLine($"{basolia.radioIcy}");
+
+                // Copy the data to MPG123
+                CopyBuffer(basolia, buffer);
+            }
+        }
+
+        internal static async Task FeedStream(BasoliaMedia? basolia)
+        {
+            if (!FileTools.IsOpened(basolia) || FileTools.IsRadioStation(basolia))
+                return;
+            var currentStream = FileTools.CurrentFile(basolia);
+            if (currentStream is null)
+                return;
+            if (currentStream.Stream is null)
+                return;
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+
+            // Now, get the MP3 frame
+            byte[] buffer = new byte[currentStream.Stream.Length];
+            await currentStream.Stream.ReadAsync(buffer, 0, (int)currentStream.Stream.Length);
+
+            // Copy the data to MPG123
+            CopyBuffer(basolia, buffer);
+        }
+
+        internal static void CopyBuffer(BasoliaMedia? basolia, byte[]? buffer)
+        {
+            if (buffer is null)
+                return;
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+            unsafe
+            {
+                var handle = basolia._mpg123Handle;
 
                 // Copy the data to MPG123
                 IntPtr data = Marshal.AllocHGlobal(buffer.Length);

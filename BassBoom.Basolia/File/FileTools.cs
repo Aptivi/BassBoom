@@ -24,6 +24,7 @@ using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Play;
 using SpecProbe.Software.Platform;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -185,6 +186,50 @@ namespace BassBoom.Basolia.File
         }
 
         /// <summary>
+        /// Opens a stream
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="audioStream">MPEG audio stream</param>
+        public static void OpenFrom(BasoliaMedia? basolia, Stream? audioStream) =>
+            Task.Run(() => OpenFromAsync(basolia, audioStream)).Wait();
+
+        /// <summary>
+        /// Opens a stream
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="audioStream">MPEG audio stream</param>
+        public static async Task OpenFromAsync(BasoliaMedia? basolia, Stream? audioStream)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+
+            // Check to see if the file is open
+            if (IsOpened(basolia))
+                throw new BasoliaException("Can't open this URL while the current file or a radio station is still open", mpg123_errors.MPG123_BAD_FILE);
+
+            // Check to see if we provided a stream
+            if (audioStream is null)
+                throw new BasoliaException("Audio stream is not provided", mpg123_errors.MPG123_BAD_FILE);
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                // Open the stream
+                var handle = basolia._mpg123Handle;
+                var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_open_feed>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_open_feed));
+                int openStatus = @delegate.Invoke(handle);
+                if (openStatus == (int)mpg123_errors.MPG123_ERR)
+                    throw new BasoliaException("Can't open stream", mpg123_errors.MPG123_ERR);
+                basolia.isOpened = true;
+            }
+            basolia.currentFile = new(false, "", audioStream, null, "");
+
+            // If necessary, feed.
+            await PlaybackTools.FeedStream(basolia);
+        }
+
+        /// <summary>
         /// Closes a currently opened media file
         /// </summary>
         /// <param name="basolia">Basolia instance that contains a valid handle</param>
@@ -214,6 +259,7 @@ namespace BassBoom.Basolia.File
                     throw new BasoliaException("Can't close file", mpg123_errors.MPG123_ERR);
                 basolia.isOpened = false;
                 basolia.isRadioStation = false;
+                basolia.currentFile?.Stream?.Close();
                 basolia.currentFile = null;
             }
         }
