@@ -17,31 +17,34 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# This script builds and packs the artifacts. Use when you have MSBuild installed.
-version=$(grep "<Version>" ../Directory.Build.props | cut -d "<" -f 2 | cut -d ">" -f 2)
-releaseconf=$1
-if [ -z $releaseconf ]; then
-	releaseconf=Release
-fi
+# Convenience functions
+checkerror() {
+    if [ $1 != 0 ]
+    then
+        printf "$2 - Error $1\n" >&2
+        exit $1
+    fi
+}
+
+# This script builds KS and packs the artifacts. Use when you have MSBuild installed.
+ksversion=$(grep "<Version>" ../Directory.Build.props | cut -d "<" -f 2 | cut -d ">" -f 2)
+checkerror $? "Failed to get version. Check to make sure that the version is specified correctly in D.B.props"
 
 # Check for dependencies
 zippath=`which zip`
-if [ ! $? == 0 ]; then
-	echo zip is not found.
-	exit 1
-fi
+checkerror $? "zip is not found"
 
 # Pack binary
 echo Packing binary...
 cd "../BassBoom.Cli/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-cli.zip . && cd -
+checkerror $? "Failed to pack"
 cd "../BassBoom.Cli/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-cli-48.zip . && cd -
-if [ ! $? == 0 ]; then
-	echo Packing using zip failed.
-	exit 1
-fi
+checkerror $? "Failed to pack"
 
 # Inform success
 mv /tmp/$version-cli.zip .
+checkerror $? "Failed to move archive from temporary folder"
 mv /tmp/$version-cli-48.zip .
+checkerror $? "Failed to move archive from temporary folder"
 echo Build and pack successful.
 exit 0
