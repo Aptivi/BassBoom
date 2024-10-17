@@ -114,7 +114,7 @@ namespace BassBoom.Cli.CliBase
             Common.Switch(musicPath);
             if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
-                InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
+                InfoBoxNonModalColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...");
                 var formatInfo = FormatTools.GetFormatInfo();
                 var frameInfo = AudioInfoTools.GetFrameInfo();
 
@@ -168,7 +168,7 @@ namespace BassBoom.Cli.CliBase
         {
             if (Common.CurrentCachedInfo is null)
                 return;
-            InfoBoxColor.WriteInfoBox(
+            InfoBoxModalColor.WriteInfoBoxModal(
                 $$"""
                 Station info
                 ============
@@ -226,7 +226,7 @@ namespace BassBoom.Cli.CliBase
                     streamBuilder.AppendLine($"Media type: {stream.MimeInfo}");
                     streamBuilder.AppendLine("===============================");
                 }
-                InfoBoxColor.WriteInfoBox(
+                InfoBoxModalColor.WriteInfoBoxModal(
                     $$"""
                     Radio server info
                     =================
@@ -246,7 +246,7 @@ namespace BassBoom.Cli.CliBase
                 );
             }
             else
-                InfoBoxColor.WriteInfoBox($"Unable to get extended radio station info for {Common.CurrentCachedInfo.MusicPath}");
+                InfoBoxModalColor.WriteInfoBoxModal($"Unable to get extended radio station info for {Common.CurrentCachedInfo.MusicPath}");
         }
     }
 }

@@ -121,7 +121,7 @@ namespace BassBoom.Cli.CliBase
                     continue;
                 }
             }
-            InfoBoxColor.WriteInfoBox(
+            InfoBoxModalColor.WriteInfoBoxModal(
                 $$"""
                 Device and Driver
                 =================
@@ -138,7 +138,7 @@ namespace BassBoom.Cli.CliBase
 
         internal static void ShowSpecs()
         {
-            InfoBoxColor.WriteInfoBox(
+            InfoBoxModalColor.WriteInfoBoxModal(
                 $$"""
                 BassBoom specifications
                 =======================
@@ -170,7 +170,7 @@ namespace BassBoom.Cli.CliBase
 
         internal static void ShowHelp()
         {
-            InfoBoxColor.WriteInfoBox(
+            InfoBoxModalColor.WriteInfoBoxModal(
                 """
                 Available keystrokes
                 ====================
@@ -206,7 +206,7 @@ namespace BassBoom.Cli.CliBase
 
         internal static void ShowHelpRadio()
         {
-            InfoBoxColor.WriteInfoBox(
+            InfoBoxModalColor.WriteInfoBoxModal(
                 """
                 Available keystrokes
                 ====================

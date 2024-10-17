@@ -236,7 +236,7 @@ namespace BassBoom.Cli.CliBase
                 PlaybackPositioningTools.SeekToFrame(currentPos);
             }
             else
-                InfoBoxColor.WriteInfoBox($"File \"{path}\" doesn't exist.");
+                InfoBoxModalColor.WriteInfoBoxModal($"File \"{path}\" doesn't exist.");
         }
 
         internal static void PromptForAddDirectory()
@@ -260,7 +260,7 @@ namespace BassBoom.Cli.CliBase
                 }
             }
             else
-                InfoBoxColor.WriteInfoBox("Music library directory is not found.");
+                InfoBoxModalColor.WriteInfoBoxModal("Music library directory is not found.");
         }
 
         internal static void PopulateMusicFileInfo(string musicPath)
@@ -273,7 +273,7 @@ namespace BassBoom.Cli.CliBase
             if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
                 ScreenTools.CurrentScreen?.RequireRefresh();
-                InfoBoxColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...", false);
+                InfoBoxNonModalColor.WriteInfoBox($"Loading BassBoom to open {musicPath}...");
                 var total = AudioInfoTools.GetDuration(true);
                 var formatInfo = FormatTools.GetFormatInfo();
                 var frameInfo = AudioInfoTools.GetFrameInfo();
@@ -344,7 +344,7 @@ namespace BassBoom.Cli.CliBase
             string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
             try
             {
-                InfoBoxColor.WriteInfoBox($"Trying to open lyrics file {lyricsPath}...", false);
+                InfoBoxNonModalColor.WriteInfoBox($"Trying to open lyrics file {lyricsPath}...");
                 if (File.Exists(lyricsPath))
                     return LyricReader.GetLyrics(lyricsPath);
                 else
@@ -352,7 +352,7 @@ namespace BassBoom.Cli.CliBase
             }
             catch (Exception ex)
             {
-                InfoBoxColor.WriteInfoBox($"Can't open lyrics file {lyricsPath}... {ex.Message}");
+                InfoBoxModalColor.WriteInfoBoxModal($"Can't open lyrics file {lyricsPath}... {ex.Message}");
             }
             return null;
         }
@@ -416,7 +416,7 @@ namespace BassBoom.Cli.CliBase
                 textsBuilder.AppendLine($"T - {text.Item1}: {text.Item2}");
             foreach (var text in idv2?.Extras ?? [])
                 textsBuilder.AppendLine($"E - {text.Item1}: {text.Item2}");
-            InfoBoxColor.WriteInfoBox(
+            InfoBoxModalColor.WriteInfoBoxModal(
                 $$"""
                 Song info
                 =========
