@@ -1,10 +1,10 @@
-BassBoom is now null-aware!
+BassBoom is now more secure by fixing a security issue pertaining to System.Text.Json!
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[+]` Added nullable support
+- `[*]` Fixed a security issue concerning System.Text.Json
 
 Review the commit history if you want to get a deep insight about the changes.
 
