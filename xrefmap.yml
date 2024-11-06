@@ -2520,6 +2520,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Independent.PlayForget.PlayFile
   nameWithType: PlayForget.PlayFile
+- uid: BassBoom.Basolia.Independent.PlayForget.PlayFileAsync(System.String,BassBoom.Basolia.Independent.PlayForgetSettings)
+  name: PlayFileAsync(string, PlayForgetSettings?)
+  href: api/BassBoom.Basolia.Independent.PlayForget.html#BassBoom_Basolia_Independent_PlayForget_PlayFileAsync_System_String_BassBoom_Basolia_Independent_PlayForgetSettings_
+  commentId: M:BassBoom.Basolia.Independent.PlayForget.PlayFileAsync(System.String,BassBoom.Basolia.Independent.PlayForgetSettings)
+  name.vb: PlayFileAsync(String, PlayForgetSettings)
+  fullName: BassBoom.Basolia.Independent.PlayForget.PlayFileAsync(string, BassBoom.Basolia.Independent.PlayForgetSettings?)
+  fullName.vb: BassBoom.Basolia.Independent.PlayForget.PlayFileAsync(String, BassBoom.Basolia.Independent.PlayForgetSettings)
+  nameWithType: PlayForget.PlayFileAsync(string, PlayForgetSettings?)
+  nameWithType.vb: PlayForget.PlayFileAsync(String, PlayForgetSettings)
+- uid: BassBoom.Basolia.Independent.PlayForget.PlayFileAsync*
+  name: PlayFileAsync
+  href: api/BassBoom.Basolia.Independent.PlayForget.html#BassBoom_Basolia_Independent_PlayForget_PlayFileAsync_
+  commentId: Overload:BassBoom.Basolia.Independent.PlayForget.PlayFileAsync
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Independent.PlayForget.PlayFileAsync
+  nameWithType: PlayForget.PlayFileAsync
 - uid: BassBoom.Basolia.Independent.PlayForget.PlayStream(System.IO.Stream,BassBoom.Basolia.Independent.PlayForgetSettings)
   name: PlayStream(Stream, PlayForgetSettings?)
   href: api/BassBoom.Basolia.Independent.PlayForget.html#BassBoom_Basolia_Independent_PlayForget_PlayStream_System_IO_Stream_BassBoom_Basolia_Independent_PlayForgetSettings_
@@ -2536,6 +2552,22 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Independent.PlayForget.PlayStream
   nameWithType: PlayForget.PlayStream
+- uid: BassBoom.Basolia.Independent.PlayForget.PlayStreamAsync(System.IO.Stream,BassBoom.Basolia.Independent.PlayForgetSettings)
+  name: PlayStreamAsync(Stream, PlayForgetSettings?)
+  href: api/BassBoom.Basolia.Independent.PlayForget.html#BassBoom_Basolia_Independent_PlayForget_PlayStreamAsync_System_IO_Stream_BassBoom_Basolia_Independent_PlayForgetSettings_
+  commentId: M:BassBoom.Basolia.Independent.PlayForget.PlayStreamAsync(System.IO.Stream,BassBoom.Basolia.Independent.PlayForgetSettings)
+  name.vb: PlayStreamAsync(Stream, PlayForgetSettings)
+  fullName: BassBoom.Basolia.Independent.PlayForget.PlayStreamAsync(System.IO.Stream, BassBoom.Basolia.Independent.PlayForgetSettings?)
+  fullName.vb: BassBoom.Basolia.Independent.PlayForget.PlayStreamAsync(System.IO.Stream, BassBoom.Basolia.Independent.PlayForgetSettings)
+  nameWithType: PlayForget.PlayStreamAsync(Stream, PlayForgetSettings?)
+  nameWithType.vb: PlayForget.PlayStreamAsync(Stream, PlayForgetSettings)
+- uid: BassBoom.Basolia.Independent.PlayForget.PlayStreamAsync*
+  name: PlayStreamAsync
+  href: api/BassBoom.Basolia.Independent.PlayForget.html#BassBoom_Basolia_Independent_PlayForget_PlayStreamAsync_
+  commentId: Overload:BassBoom.Basolia.Independent.PlayForget.PlayStreamAsync
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Independent.PlayForget.PlayStreamAsync
+  nameWithType: PlayForget.PlayStreamAsync
 - uid: BassBoom.Basolia.Independent.PlayForgetSettings
   name: PlayForgetSettings
   href: api/BassBoom.Basolia.Independent.PlayForgetSettings.html
