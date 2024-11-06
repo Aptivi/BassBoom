@@ -1,10 +1,10 @@
-BassBoom is now more secure by fixing a security issue pertaining to System.Text.Json!
+BassBoom is now more secure by fixing a security issue pertaining to MPG123!
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[*]` Fixed a security issue concerning System.Text.Json
+- `[*]` Fixed [CVE-2024-10573](https://nvd.nist.gov/vuln/detail/CVE-2024-10573)
 
 Review the commit history if you want to get a deep insight about the changes.
 
