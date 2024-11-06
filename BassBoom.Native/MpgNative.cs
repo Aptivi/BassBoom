@@ -122,7 +122,10 @@ namespace BassBoom.Native
                 if (architecture == Architecture.X86 || architecture == Architecture.Arm)
                     throw new BasoliaNativeLibraryException("32-bit platforms are no longer supported.");
                 libManagerMpg = new LibraryManager(new LibraryFile(mpg123LibPath));
-                libManagerOut = new LibraryManager([new LibraryFile(pthreadLibPath), new LibraryFile(out123LibPath)]);
+                libManagerOut = new LibraryManager(
+                    architecture == Architecture.X64 && PlatformHelper.IsOnWindows() ?
+                    [new LibraryFile(pthreadLibPath), new LibraryFile(out123LibPath)] :
+                    [new LibraryFile(out123LibPath)]);
                 libManagerMpg.LoadNativeLibrary();
                 libManagerOut.LoadNativeLibrary();
 
