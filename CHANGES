@@ -1,10 +1,10 @@
-We've added features to Play-n-Forget that lets you play sounds asynchronously.
+We've updated MPG123 to version 1.32.9 as there was a security vulnerability that was fixed.
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[+]` Added asynchronous Play/Forget
+- `[*]` Fixed [CVE-2024-10573](https://nvd.nist.gov/vuln/detail/CVE-2024-10573)
 
 Review the commit history if you want to get a deep insight about the changes.
 
