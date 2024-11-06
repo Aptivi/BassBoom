@@ -26,7 +26,11 @@ checkerror() {
     fi
 }
 
-# This script builds KS and packs the artifacts. Use when you have MSBuild installed.
+# This script builds and packs the artifacts. Use when you have MSBuild installed.
+releaseconf=$1
+if [ -z $releaseconf ]; then
+	releaseconf=Release
+fi
 ksversion=$(grep "<Version>" ../Directory.Build.props | cut -d "<" -f 2 | cut -d ">" -f 2)
 checkerror $? "Failed to get version. Check to make sure that the version is specified correctly in D.B.props"
 
