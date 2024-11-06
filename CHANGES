@@ -1,12 +1,10 @@
-We've added features that let you play from a stream
+We've added features to Play-n-Forget that lets you play sounds asynchronously.
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[+]` Added playing from stream
-- `[+]` Added Play/Forget
-- `[*]` General improvements and bug fixes
+- `[+]` Added asynchronous Play/Forget
 
 Review the commit history if you want to get a deep insight about the changes.
 

@@ -20,6 +20,7 @@
 using BassBoom.Basolia.Enumerations;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
+using BassBoom.Basolia.Independent;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Basolia.Playback;
 using BassBoom.Basolia.Playback.Playlists;
@@ -443,9 +444,7 @@ namespace BassBoom.Cli.CliBase
                 throw new Exception("Missing test sound data.");
 
             // Now, close the file and play it
-            FileTools.OpenFrom(BassBoomCli.basolia, stream);
-            PlaybackTools.Play(BassBoomCli.basolia);
-            FileTools.CloseFile(BassBoomCli.basolia);
+            PlayForget.PlayStream(stream);
 
             // Ask the user if everything is OK.
             int answer = InfoBoxButtonsColor.WriteInfoBoxButtons("Sound test", [new InputChoiceInfo("Yes", "Yes"), new InputChoiceInfo("No", "No")], "Is everything OK in this current configuration?");
