@@ -37,6 +37,7 @@ namespace BassBoom.Native
     {
         internal static string mpg123LibPath = GetLibPath("mpg123");
         internal static string out123LibPath = GetLibPath("out123");
+        internal static string pthreadLibPath = GetLibPath("libwinpthread-1");
 
         internal static LibraryManager? libManagerMpg;
         internal static LibraryManager? libManagerOut;
@@ -121,7 +122,7 @@ namespace BassBoom.Native
                 if (architecture == Architecture.X86 || architecture == Architecture.Arm)
                     throw new BasoliaNativeLibraryException("32-bit platforms are no longer supported.");
                 libManagerMpg = new LibraryManager(new LibraryFile(mpg123LibPath));
-                libManagerOut = new LibraryManager(new LibraryFile(out123LibPath));
+                libManagerOut = new LibraryManager([new LibraryFile(pthreadLibPath), new LibraryFile(out123LibPath)]);
                 libManagerMpg.LoadNativeLibrary();
                 libManagerOut.LoadNativeLibrary();
 
