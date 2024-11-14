@@ -1,5 +1,5 @@
 ﻿//
-// BassBoom  Copyright (C) 2023  Aptivi
+// BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
 //
