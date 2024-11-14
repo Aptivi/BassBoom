@@ -16,6 +16,8 @@
     
 *A cross-platform music app and library*
 
+Notice: this branch tracks development of what will be the next-gen BassBoom. The latest version series is [v0.2.x](https://github.com/Aptivi/BassBoom/tree/x/oob/v0.2.x), and there won't be v0.3.x or beyond.
+
 <br>
 <br>
 
