@@ -10,6 +10,17 @@ Your pull requests should follow the template.
 
 You should be descriptive about what your change is trying to do and what's your opinion about how it affects the whole project. Moreover, it's vital to test your changes before trying to start a pull request to ensure that there are no problems in your initial version. **Always** draft your pull requests.
 
+## Windows compatibility
+
+*This doesn't apply to projects that don't use C# or aren't exclusive to Windows.*
+
+When contributing changes to any part of the code, especially when creating files, your pull requests should follow the below requirements:
+
+  - File names should not contain forbidden characters, such as `/ \ : * ? " < > |`, and control characters, such as a new line, as files with such names don't sit well with Windows.
+  - File names should always be treated as case sensitive, even if *nix systems allow you to create files with same name but different casing, as files that fall into this category don't sit well with Windows.
+  - When creating shell scripts in Windows, you should give it executable permissions with `git update-index --chmod=+x <SHELLSCRIPT>` prior to committing, as Windows in general has no concept of Unix permissions.
+  - In general, make sure that any of your changes don't cause incompatibilities with Windows in any way in both build-time and run-time.
+
 ## Code guidelines
 
 When it comes to coding your changes, they should follow the below coding guidelines to retain the style of our projects' code. These are the below code guidelines:
@@ -148,7 +159,7 @@ Type - Attributes - Summary
 
 ---
 
-Description
+Description wrapped with 75 characters word-wise
 
 ---
 
@@ -171,6 +182,10 @@ For types, you should select exactly one type from the following types:
 * `dev`: for development checkpoints (version bump, etc.)
 * `fin`: for development finish points
 * `chg`: for minor changes to previous commits
+* `int`: for continuous integration changes
+* `bkp`: for backports (an empty commit for cherry-picked commits or a full commit for non-cherry-picked backports)
+* `prj`: for project initialization
+* `pkg`: for packaging-related changes, such as Debian, PKGBUILD, Flatpak, etc.
 * `und`: for other changes that don't apply
 
 Additionally, attributes are optional and can be specified. Multiple attributes should be separated with the pipe character (`|`). However, there are special cases that you may need to handle when you're committing your changes to your pull request:
@@ -201,6 +216,38 @@ Take note that if you've set a commit that is a backport, make sure that the typ
   * `ptp`: for prototyping
   * `brk`: for breaking changes
 
+In addition to that, if you've backported a commit from a different branch or tag, you must specify this stanza directly after the description section, just like this:
+
+* For tags:
+    ```
+    The following commits or tags are used for this backport:
+      - D877EC56... [Tag 1]
+      - C6100AF1... [Tag 2]
+    ```
+* For backported commits:
+    ```
+    The following commits or tags are used for this backport:
+      - E3218765...
+      - FAE890DA7...
+      - BE2701D2...
+    ```
+
+If you want to specify a command output, you must specify the output name, the description, the command used, and the output. This is placed directly after the description section and, if it exists, the backported commits section, like this:
+
+```
+Output
+
+List of files
+
+  - ls
+
+total 151
+drwxr-xr-x 1 Aptivi None     0 Nov  6 12:52 .
+drwxr-xr-x 1 Aptivi None     0 Aug  2 09:07 ..
+-rw-r--r-- 1 Aptivi None  4351 Nov 15  2022 DIR_COLORS
+(...)
+```
+
 ## Releases
 
 When planning for a new version, always start the development of the next version by changing the version found in all the relevant files (usually `Directory.Build.props` for C# projects) before starting to push commits that add new features and everything else. When development finishes, before the release tag can be pushed, the `CHANGES` file should be changed to reflect the new release, as long as it follows this convention:
@@ -221,9 +268,15 @@ Review the commit history if you want to get a deep insight about the changes.
 ### Feedback?
 
 If you have issues with this version, report to us by [making a new issue ticket](https://github.com/Aptivi/PROJECT/issues/new).
+
+### Sum hashes
+
+To verify integrity of your download, compare the SHA256 sum of your downloaded file with the following information:
+
+
 ```
 
-Also, the `CHANGES.TITLE` file should be changed to match the version whose development finished but tag not pushed, as long as it follows this format:
+Two new lines are applied intentionally so that the hash list gets rendered in a way that you'd expect, because the hash sum list gets populated automatically. Also, the `CHANGES.TITLE` file should be changed to match the version whose development finished but tag not pushed, as long as it follows this format:
 
 ```
 [servicing] PROJECT v1.0.0: Release Name
@@ -234,11 +287,11 @@ The type at the beginning is necessary as it can tell us and the users in what s
   * `alpha`: Indicates that this release is an alpha version
   * `beta`: Indicates that this release is a beta version
   * `release`: Indicates that this release is a major release (i.e. changes the major part and/or the minor part)
-  * `servicing`: Indicates that this release is a minore release (i.e. changes the build part and/or the patch part)
+  * `servicing`: Indicates that this release is a minor release (i.e. changes the build part and/or the patch part)
 
 ## Assistance of AI
 
-Although artifical intelligence (AI) is a next-gen technology that every company are leaning to, which we are proud of, but when contributing code or other things to this project, we rely on human work to ensure maximum quality. This means that you are not allowed to use any kind of AI assistance to generate code and non-code contributions, such as ChatGPT and others, in fear of licensing issues, potential security issues, and current hallucination issues. Any usage of such tools when contributing will be immediately rejected.
+Although artifical intelligence (AI) is a next-gen technology that every company is leaning to, which we are proud of, but when contributing code or other things to this project, we rely on human work to ensure maximum quality. This means that you are not allowed to use any kind of AI assistance to generate code and non-code contributions, such as ChatGPT and others, in fear of licensing issues, potential security issues, and current hallucination issues. Any usage of such tools when contributing will be immediately rejected.
 
 ## Engagement with the Community
 
