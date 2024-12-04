@@ -35,6 +35,7 @@ namespace BassBoom.Native
     /// </summary>
     internal static unsafe class MpgNative
     {
+        internal static string baseRoot = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
         internal static string mpg123LibPath = GetLibPath("mpg123");
         internal static string out123LibPath = GetLibPath("out123");
         internal static string pthreadLibPath = GetLibPath("libwinpthread-1");
@@ -97,26 +98,32 @@ namespace BassBoom.Native
         /// Initializes the mpg123 library
         /// </summary>
         internal static void InitializeLibrary() =>
-            InitializeLibrary(mpg123LibPath, out123LibPath);
+            InitializeLibrary(baseRoot);
 
         /// <summary>
         /// Initializes the mpg123 library
         /// </summary>
-        /// <param name="libPath">Absolute path to the mpg123 library</param>
-        /// <param name="libPathOut">Absolute path to the out123 library</param>
-        internal static void InitializeLibrary(string libPath, string libPathOut)
+        /// <param name="root">Absolute path to the root directory containing library files</param>
+        internal static void InitializeLibrary(string root)
         {
             // Check to see if we have this path
-            if (!File.Exists(libPath))
-                throw new BasoliaNativeLibraryException($"mpg123 library path {libPath} doesn't exist.");
-            if (!File.Exists(libPathOut))
-                throw new BasoliaNativeLibraryException($"out123 library path {libPath} doesn't exist.");
+            string resultMpgPath = GetLibPath(root, "mpg123");
+            string resultOutPath = GetLibPath(root, "out123");
+            string resultWinPath = GetLibPath(root, "libwinpthread-1");
+            if (!File.Exists(resultMpgPath))
+                throw new BasoliaNativeLibraryException($"mpg123 library path {resultMpgPath} doesn't exist.");
+            if (!File.Exists(resultOutPath))
+                throw new BasoliaNativeLibraryException($"out123 library path {resultOutPath} doesn't exist.");
+            if (!File.Exists(resultWinPath) && PlatformHelper.IsOnWindows())
+                throw new BasoliaNativeLibraryException($"libwinpthread library path {resultWinPath} doesn't exist.");
 
             // Set the library path
             string oldLibPath = mpg123LibPath;
             string oldLibPathOut = out123LibPath;
-            mpg123LibPath = libPath;
-            out123LibPath = libPathOut;
+            string oldLibPathWin = pthreadLibPath;
+            mpg123LibPath = resultMpgPath;
+            out123LibPath = resultOutPath;
+            pthreadLibPath = resultWinPath;
 
             // Start the libraries up
             var architecture = PlatformHelper.GetArchitecture();
@@ -151,7 +158,8 @@ namespace BassBoom.Native
             catch (Exception ex)
             {
                 mpg123LibPath = oldLibPath;
-                throw new BasoliaNativeLibraryException($"mpg123 library path {libPath} doesn't contain a valid mpg123 library. out123_distversion() was called. {ex.Message}");
+                pthreadLibPath = oldLibPathWin;
+                throw new BasoliaNativeLibraryException($"mpg123 library path {mpg123LibPath} doesn't contain a valid mpg123 library. out123_distversion() was called. {ex.Message}");
             }
 
             // Do the same for the out123 library!
@@ -165,7 +173,8 @@ namespace BassBoom.Native
             catch (Exception ex)
             {
                 out123LibPath = oldLibPathOut;
-                throw new BasoliaNativeLibraryException($"out123 library path {libPathOut} doesn't contain a valid out123 library. out123_distversion() was called. {ex.Message}");
+                pthreadLibPath = oldLibPathWin;
+                throw new BasoliaNativeLibraryException($"out123 library path {out123LibPath} doesn't contain a valid out123 library. out123_distversion() was called. {ex.Message}");
             }
         }
 
