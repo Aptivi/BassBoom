@@ -80,11 +80,7 @@ namespace BassBoom.Basolia
             if (string.IsNullOrEmpty(root))
                 MpgNative.InitializeLibrary();
             else
-            {
-                string mpg = MpgNative.GetLibPath(root, "mpg123");
-                string @out = MpgNative.GetLibPath(root, "out123");
-                MpgNative.InitializeLibrary(mpg, @out);
-            }
+                MpgNative.InitializeLibrary(root);
             _basoliaInited = true;
         }
 
