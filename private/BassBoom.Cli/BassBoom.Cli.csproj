@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0;net48</TargetFrameworks>
     <OutputType>Exe</OutputType>
-    <ApplicationIcon>../BassBoom/Assets/OfficialAppIcon-BassBoom.ico</ApplicationIcon>
+    <ApplicationIcon>../../assets/OfficialAppIcon-BassBoom.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BassBoom.Basolia\BassBoom.Basolia.csproj" />
+    <ProjectReference Include="..\..\public\BassBoom.Basolia\BassBoom.Basolia.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,8 +22,8 @@
   </Target>
 
   <ItemGroup>
-    <None Remove="..\BassBoom\Assets\sample.mp3" />
-    <EmbeddedResource Include="..\BassBoom\Assets\sample.mp3" />
+    <None Remove="../../assets/sample.mp3" />
+    <EmbeddedResource Include="../../assets/sample.mp3" />
   </ItemGroup>
 
 </Project>

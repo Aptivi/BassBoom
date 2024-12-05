@@ -5,7 +5,7 @@
 <br>
     
 <img
-  src = 'https://cdn.jsdelivr.net/gh/Aptivi/BassBoom@main/BassBoom/OfficialAppIcon-BassBoom-512.png'
+  src = 'https://cdn.jsdelivr.net/gh/Aptivi/BassBoom@main/assets/OfficialAppIcon-BassBoom-512.png'
   width = 256
   align = center
 />
