@@ -40,9 +40,9 @@ checkerror $? "zip is not found"
 
 # Pack binary
 echo Packing binary...
-cd "../BassBoom.Cli/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-cli.zip . && cd -
+cd "../private/BassBoom.Cli/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-cli.zip . && cd -
 checkerror $? "Failed to pack"
-cd "../BassBoom.Cli/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-cli-48.zip . && cd -
+cd "../private/BassBoom.Cli/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-cli-48.zip . && cd -
 checkerror $? "Failed to pack"
 
 # Inform success

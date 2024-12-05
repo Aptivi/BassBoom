@@ -24,8 +24,8 @@ if "%releaseconfig%" == "" set releaseconfig=Release
 
 :packbin
 echo Packing binary...
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-cli.zip "..\BassBoom.Cli\bin\%releaseconfig%\net8.0\*"
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-cli-48.zip "..\BassBoom.Cli\bin\%releaseconfig%\net48\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-cli.zip "..\private\BassBoom.Cli\bin\%releaseconfig%\net8.0\*"
+"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-cli-48.zip "..\private\BassBoom.Cli\bin\%releaseconfig%\net48\*"
 if %errorlevel% == 0 goto :complete
 echo There was an error trying to pack binary (%errorlevel%).
 goto :finished
