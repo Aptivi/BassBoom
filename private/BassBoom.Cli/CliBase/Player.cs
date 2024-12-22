@@ -35,9 +35,9 @@ using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
-using Terminaux.Writer.MiscWriters.Tools;
 using Terminaux.Writer.MiscWriters;
 using Terminaux.Base.Extensions;
+using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 
 namespace BassBoom.Cli.CliBase
 {

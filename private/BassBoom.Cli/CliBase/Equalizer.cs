@@ -30,8 +30,8 @@ using System.Collections.Generic;
 using Terminaux.Inputs.Styles.Selection;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
-using Terminaux.Writer.MiscWriters.Tools;
 using Terminaux.Writer.MiscWriters;
+using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 
 namespace BassBoom.Cli.CliBase
 {
