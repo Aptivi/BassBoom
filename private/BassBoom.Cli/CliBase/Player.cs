@@ -38,6 +38,9 @@ using Terminaux.Inputs.Styles;
 using Terminaux.Writer.MiscWriters;
 using Terminaux.Base.Extensions;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
+using Terminaux.Writer.CyclicWriters;
+using Terminaux.Colors.Transformation;
+using Terminaux.Writer.CyclicWriters.Renderer;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -110,13 +113,21 @@ namespace BassBoom.Cli.CliBase
             {
                 if (Common.CurrentCachedInfo is null)
                     return "";
+
+                // Get the song name
                 var buffer = new StringBuilder();
                 string name = PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath);
+
+                // Get the positions and the amount of songs per page
                 int startPos = 4;
                 int endPos = ConsoleWrapper.WindowHeight - 5;
                 int songsPerPage = endPos - startPos;
+
+                // Get the position
                 position = FileTools.IsOpened(BassBoomCli.basolia) ? PlaybackPositioningTools.GetCurrentDuration(BassBoomCli.basolia) : 0;
                 var posSpan = FileTools.IsOpened(BassBoomCli.basolia) ? PlaybackPositioningTools.GetCurrentDurationSpan(BassBoomCli.basolia) : new();
+
+                // Disco effect!
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
                 if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                 {
@@ -124,18 +135,53 @@ namespace BassBoom.Cli.CliBase
                     if (hue >= 360)
                         hue = 0;
                 }
+
+                // Render the song list box frame and the duration bar
+                var listBoxFrame = new BoxFrame()
+                {
+                    Text = name,
+                    Left = 2,
+                    Top = 1,
+                    InteriorWidth = ConsoleWrapper.WindowWidth - 6,
+                    InteriorHeight = songsPerPage,
+                    FrameColor = disco,
+                    TitleColor = disco,
+                    BackgroundColor = disco,
+                };
+                var durationBar = new SimpleProgress((int)(100 * (position / (double)Common.CurrentCachedInfo.Duration)), 100)
+                {
+                    LeftMargin = 1,
+                    RightMargin = 1,
+                    ShowPercentage = false,
+                    ProgressForegroundColor = TransformationTools.GetDarkBackground(disco),
+                    ProgressActiveForegroundColor = disco,
+                };
+                buffer.Append(
+                    listBoxFrame.Render() +
+                    ContainerTools.RenderRenderable(listBoxFrame, new(2, ConsoleWrapper.WindowHeight - 5))
+                );
+
+                // Render the indicator
                 string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
                 string indicator =
                     $"┤ Seek: {PlayerControls.seekRate:0.00} | " +
                     $"{boostIndicator}Volume: {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
+
+                // Render the lyric
                 string lyric = Common.CurrentCachedInfo.LyricInstance is not null ? Common.CurrentCachedInfo.LyricInstance.GetLastLineCurrent(BassBoomCli.basolia) : "";
                 string finalLyric = string.IsNullOrWhiteSpace(lyric) ? "..." : lyric;
+
+                // Render the results
+                var lyricText = new AlignedText()
+                {
+                    Top = ConsoleWrapper.WindowHeight - 3,
+                    ForegroundColor = disco,
+                    Text = Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.IsPlaying(BassBoomCli.basolia) ? $"┤ {finalLyric} ├" : ""
+                };
                 buffer.Append(
-                    BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, songsPerPage, disco, ColorTools.CurrentBackgroundColor, disco) +
-                    ProgressBarColor.RenderProgress(100 * (position / (double)Common.CurrentCachedInfo.Duration), 2, ConsoleWrapper.WindowHeight - 5, ConsoleWrapper.WindowWidth - 6, disco, disco) +
                     TextWriterWhereColor.RenderWhereColor($"┤ {posSpan} / {Common.CurrentCachedInfo.DurationSpan} ├", 4, ConsoleWrapper.WindowHeight - 5, disco) +
                     TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 5, disco) +
-                    CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 3, Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.IsPlaying(BassBoomCli.basolia) ? $"┤ {finalLyric} ├" : "", disco)
+                    lyricText.Render()
                 );
                 return buffer.ToString();
             });
@@ -395,7 +441,14 @@ namespace BassBoom.Cli.CliBase
             ConsoleWrapper.CursorVisible = false;
 
             // First, print the keystrokes
-            drawn.Append(KeybindingsWriter.RenderKeybindings(showBindings, 0, ConsoleWrapper.WindowHeight - 1));
+            var keybindings = new Keybindings()
+            {
+                KeybindingList = showBindings,
+                Left = 0,
+                Top = ConsoleWrapper.WindowHeight - 1,
+                Width = ConsoleWrapper.WindowWidth - 1,
+            };
+            drawn.Append(keybindings.Render());
 
             // In case we have no songs in the playlist...
             if (Common.cachedInfos.Count == 0)
@@ -412,7 +465,16 @@ namespace BassBoom.Cli.CliBase
                 else
                 {
                     int height = (ConsoleWrapper.WindowHeight - 2) / 2;
-                    drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a single song to the playlist, or 'S' to insert the whole music library."));
+                    var message = new AlignedText()
+                    {
+                        Top = height,
+                        Text = "Press 'A' to insert a single song to the playlist, or 'S' to insert the whole music library.",
+                        Settings = new()
+                        {
+                            Alignment = TextAlignment.Middle
+                        }
+                    };
+                    drawn.Append(message.Render());
                     return drawn.ToString();
                 }
             }
@@ -426,7 +488,7 @@ namespace BassBoom.Cli.CliBase
                 name = PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath);
             }
 
-            // Now, print the list of songs.
+            // Now, populate the input choice information instances that represent songs
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
             int endPos = ConsoleWrapper.WindowHeight - 5;
@@ -440,9 +502,32 @@ namespace BassBoom.Cli.CliBase
                 string songPreview = $"[{duration}] {musicArtist} - {musicName}";
                 choices.Add(new($"{i + 1}", songPreview));
             }
+
+            // Render the selections inside the box
+            var playlistBoxFrame = new BoxFrame()
+            {
+                Text = name,
+                Left = 2,
+                Top = 1,
+                InteriorWidth = ConsoleWrapper.WindowWidth - 6,
+                InteriorHeight = songsPerPage,
+            };
+            var playlistSelections = new Selection([.. choices])
+            {
+                Left = 3,
+                Top = 2,
+                CurrentSelection = Common.currentPos - 1,
+                Height = songsPerPage,
+                Width = ConsoleWrapper.WindowWidth - 6,
+                Settings = new()
+                {
+                    SelectedOptionColor = ConsoleColors.Green,
+                    OptionColor = ConsoleColors.Silver,
+                }
+            };
             drawn.Append(
-                BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, songsPerPage) +
-                SelectionInputTools.RenderSelections([.. choices], 3, 2, Common.currentPos - 1, songsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                playlistBoxFrame.Render() +
+                playlistSelections.Render()
             );
             return drawn.ToString();
         }
