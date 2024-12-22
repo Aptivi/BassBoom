@@ -1,10 +1,10 @@
-This release is an urgent one that fixes a critical problem with regards to how BassBoom finds libraries.
+This version is a small release that updates SpecProbe.
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[*]` Refactored library loading mechanism
+- `[*]` Updated SpecProbe
 
 Review the commit history if you want to get a deep insight about the changes.
 
