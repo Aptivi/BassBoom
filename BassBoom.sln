@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Launchers", "Launchers", "{
 		assets\bassboom.cmd = assets\bassboom.cmd
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{EAF3283F-F536-4B25-95C8-0488FBEB26D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildTargets", "private\BuildTargets\BuildTargets.csproj", "{D3B2593C-8920-4844-B8A2-9F422A1985A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +43,16 @@ Global
 		{7EBD3EB6-554E-46E1-B72E-8CF9F7E34F8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EBD3EB6-554E-46E1-B72E-8CF9F7E34F8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EBD3EB6-554E-46E1-B72E-8CF9F7E34F8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3B2593C-8920-4844-B8A2-9F422A1985A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3B2593C-8920-4844-B8A2-9F422A1985A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3B2593C-8920-4844-B8A2-9F422A1985A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3B2593C-8920-4844-B8A2-9F422A1985A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3B2593C-8920-4844-B8A2-9F422A1985A1} = {EAF3283F-F536-4B25-95C8-0488FBEB26D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {91352AF3-A9CB-4699-B632-9978AF4F3BC2}
