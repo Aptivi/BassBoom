@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildTargets", "private\BuildTargets\BuildTargets.csproj", "{D3B2593C-8920-4844-B8A2-9F422A1985A1}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BassBoom.Native", "public\BassBoom.Native\BassBoom.Native.csproj", "{E72C2A3C-70EC-48E7-91CD-4F76F7722AAB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BassBoom.Basolia", "public\BassBoom.Basolia\BassBoom.Basolia.csproj", "{738C2D2F-E4DC-4FDB-8766-BC41DE5DDFF2}"
@@ -22,8 +24,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Launchers", "Launchers", "{
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{EAF3283F-F536-4B25-95C8-0488FBEB26D2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildTargets", "private\BuildTargets\BuildTargets.csproj", "{D3B2593C-8920-4844-B8A2-9F422A1985A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
