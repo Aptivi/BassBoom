@@ -37,13 +37,13 @@ namespace BassBoom.Native.Interop.Init
         internal delegate IntPtr mpg123_supported_decoders();
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_decoder(mpg123_handle *mh, const char* decoder_name);
+        /// MPG123_EXPORT int mpg123_decoder(mpv_handle *mh, const char* decoder_name);
         /// </summary>
-        internal delegate int mpg123_decoder(mpg123_handle* mh, string decoder_name);
+        internal delegate int mpg123_decoder(mpv_handle* mh, string decoder_name);
 
         /// <summary>
-        /// MPG123_EXPORT const char* mpg123_current_decoder(mpg123_handle *mh);
+        /// MPG123_EXPORT const char* mpg123_current_decoder(mpv_handle *mh);
         /// </summary>
-        internal delegate IntPtr mpg123_current_decoder(mpg123_handle* mh);
+        internal delegate IntPtr mpg123_current_decoder(mpv_handle* mh);
     }
 }

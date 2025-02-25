@@ -246,32 +246,32 @@ namespace BassBoom.Native.Interop.Analysis
         internal delegate int mpg123_store_utf8_2(mpg123_string* sb, int enc, char* source, int source_size);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_meta_check(mpg123_handle *mh);
+        /// MPG123_EXPORT int mpg123_meta_check(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_meta_check(mpg123_handle* mh);
+        internal delegate int mpg123_meta_check(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT void mpg123_meta_free(mpg123_handle *mh);
+        /// MPG123_EXPORT void mpg123_meta_free(mpv_handle *mh);
         /// </summary>
-        internal delegate void mpg123_meta_free(mpg123_handle* mh);
+        internal delegate void mpg123_meta_free(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_id3( mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_id3( mpv_handle *mh
         /// ,   mpg123_id3v1 **v1, mpg123_id3v2 **v2 );
         /// </summary>
-        internal delegate int mpg123_id3(mpg123_handle* mh, ref IntPtr v1, ref IntPtr v2);
+        internal delegate int mpg123_id3(mpv_handle* mh, ref IntPtr v1, ref IntPtr v2);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_id3_raw( mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_id3_raw( mpv_handle *mh
         /// ,   unsigned char **v1, size_t *v1_size
         /// ,   unsigned char **v2, size_t *v2_size );
         /// </summary>
-        internal delegate int mpg123_id3_raw(mpg123_handle* mh, ref IntPtr v1, ref int v1_size, ref IntPtr v2, ref int v2_size);
+        internal delegate int mpg123_id3_raw(mpv_handle* mh, ref IntPtr v1, ref int v1_size, ref IntPtr v2, ref int v2_size);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_icy(mpg123_handle *mh, char **icy_meta);
+        /// MPG123_EXPORT int mpg123_icy(mpv_handle *mh, char **icy_meta);
         /// </summary>
-        internal delegate int mpg123_icy(mpg123_handle* mh, ref string icy_meta);
+        internal delegate int mpg123_icy(mpv_handle* mh, ref string icy_meta);
 
         /// <summary>
         /// MPG123_EXPORT char* mpg123_icy2utf8(const char* icy_text);

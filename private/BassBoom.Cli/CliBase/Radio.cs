@@ -163,13 +163,6 @@ namespace BassBoom.Cli.CliBase
                     InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia when trying to process the music file.\n\n" + bex.Message);
                     radioScreen.RequireRefresh();
                 }
-                catch (BasoliaOutException bex)
-                {
-                    if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
-                        PlaybackTools.Stop(BassBoomCli.basolia);
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia output when trying to process the music file.\n\n" + bex.Message);
-                    radioScreen.RequireRefresh();
-                }
                 catch (Exception ex)
                 {
                     if (PlaybackTools.IsPlaying(BassBoomCli.basolia))

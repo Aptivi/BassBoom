@@ -30,10 +30,10 @@ namespace BassBoom.Native.Interop.Analysis
     internal static unsafe class NativeParameters
     {
         /// <summary>
-        /// MPG123_EXPORT mpg123_handle *mpg123_parnew( mpg123_pars *mp
+        /// MPG123_EXPORT mpv_handle *mpg123_parnew( mpg123_pars *mp
         /// ,   const char* decoder, int *error );
         /// </summary>
-        internal delegate mpg123_handle* mpg123_parnew(mpg123_pars* mp, string decoder, int* error);
+        internal delegate mpv_handle* mpg123_parnew(mpg123_pars* mp, string decoder, int* error);
 
         /// <summary>
         /// MPG123_EXPORT mpg123_pars *mpg123_new_pars(int *error);

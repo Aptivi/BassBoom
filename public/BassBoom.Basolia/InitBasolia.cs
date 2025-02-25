@@ -40,28 +40,15 @@ namespace BassBoom.Basolia
             _basoliaInited;
 
         /// <summary>
-        /// MPG library version
+        /// Native library version
         /// </summary>
-        public static Version MpgLibVersion
+        public static Version NativeLibVersion
         {
             get
             {
                 if (!BasoliaInitialized)
                     throw new BasoliaException("Can't get version until the library is initialized", mpg123_errors.MPG123_NOT_INITIALIZED);
-                return MpgNative.MpgLibVersion;
-            }
-        }
-
-        /// <summary>
-        /// Output library version
-        /// </summary>
-        public static Version OutLibVersion
-        {
-            get
-            {
-                if (!BasoliaInitialized)
-                    throw new BasoliaOutException("Can't get version until the library is initialized", out123_error.OUT123_ERR);
-                return MpgNative.OutLibVersion;
+                return NativeInitializer.NativeLibVersion;
             }
         }
 
@@ -72,18 +59,17 @@ namespace BassBoom.Basolia
             Assembly.GetExecutingAssembly().GetName().Version;
         
         /// <summary>
-        /// Initializes the MPG123 library for Basolia to function
+        /// Initializes the libmpv library for Basolia to function
         /// </summary>
         /// <param name="root">Sets the root path to the library files</param>
         public static void Init(string root = "")
         {
             if (string.IsNullOrEmpty(root))
-                MpgNative.InitializeLibrary();
+                NativeInitializer.InitializeLibrary();
             else
             {
-                string mpg = MpgNative.GetLibPath(root, "mpg123");
-                string @out = MpgNative.GetLibPath(root, "out123");
-                MpgNative.InitializeLibrary(mpg, @out);
+                string mpg = NativeInitializer.GetLibPath(root, "libmpv-2");
+                NativeInitializer.InitializeLibrary(mpg);
             }
             _basoliaInited = true;
         }
@@ -91,11 +77,11 @@ namespace BassBoom.Basolia
         /// <summary>
         /// Checks to see if the Basolia library is loaded or not
         /// </summary>
-        /// <exception cref="InvalidOperationException">Basolia didn't initialize the MPG123 library yet.</exception>
+        /// <exception cref="InvalidOperationException">Basolia didn't initialize the libmpv library yet.</exception>
         public static void CheckInited()
         {
             if (!BasoliaInitialized)
-                throw new InvalidOperationException("Basolia didn't initialize the MPG123 library yet!");
+                throw new InvalidOperationException("Basolia didn't initialize the libmpv library yet!");
         }
     }
 }

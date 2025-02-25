@@ -83,13 +83,13 @@ namespace BassBoom.Native.Interop.Init
         internal delegate nint mpg123_plain_strerror(int errcode);
 
         /// <summary>
-        /// MPG123_EXPORT const char* mpg123_strerror(mpg123_handle *mh);
+        /// MPG123_EXPORT const char* mpg123_strerror(mpv_handle *mh);
         /// </summary>
-        internal delegate nint mpg123_strerror(mpg123_handle* mh);
+        internal delegate nint mpg123_strerror(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_errcode(mpg123_handle *mh);
+        /// MPG123_EXPORT int mpg123_errcode(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_errcode(mpg123_handle* mh);
+        internal delegate int mpg123_errcode(mpv_handle* mh);
     }
 }

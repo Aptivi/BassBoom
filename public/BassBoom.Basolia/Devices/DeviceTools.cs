@@ -47,32 +47,7 @@ namespace BassBoom.Basolia.Devices
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             Dictionary<string, string> drivers = [];
 
-            // We're now entering the dangerous zone
-            nint names = IntPtr.Zero, descr = IntPtr.Zero;
-            int driverCount;
-            string[] driverNames, driverDescs;
-            unsafe
-            {
-                // Query the drivers
-                var handle = basolia._out123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_drivers>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_drivers));
-                int driversStatus = @delegate.Invoke(handle, ref names, ref descr);
-                if (driversStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't query the drivers", mpg123_errors.MPG123_ERR);
-                driverCount = driversStatus;
-                driverNames = ArrayVariantLength.GetStringsKnownLength(names, driverCount);
-                driverDescs = ArrayVariantLength.GetStringsKnownLength(descr, driverCount);
-            }
-
-            // Iterate through each driver, but ignore the builtins as they're used for debugging.
-            for (int i = 0; i < driverCount; i++)
-            {
-                string name = driverNames[i];
-                string description = driverDescs[i];
-                if (description.Contains("(builtin)"))
-                    continue;
-                drivers.Add(name, description);
-            }
+            // TODO: Unstub this function
             return new ReadOnlyDictionary<string, string>(drivers);
         }
 
@@ -91,31 +66,7 @@ namespace BassBoom.Basolia.Devices
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             Dictionary<string, string> devices = [];
 
-            // We're now entering the dangerous zone
-            nint names = IntPtr.Zero, descr = IntPtr.Zero, active = IntPtr.Zero;
-            int deviceCount;
-            string[] deviceNames, deviceDescs;
-            unsafe
-            {
-                // Query the devices
-                var handle = basolia._out123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_devices>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_devices));
-                int devicesStatus = @delegate.Invoke(handle, driver, out names, out descr, ref active);
-                if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
-                activeDevice = Marshal.PtrToStringAnsi(active);
-                deviceCount = devicesStatus;
-                deviceNames = ArrayVariantLength.GetStringsKnownLength(names, deviceCount);
-                deviceDescs = ArrayVariantLength.GetStringsKnownLength(descr, deviceCount);
-            }
-
-            // Iterate through each device
-            for (int i = 0; i < deviceCount; i++)
-            {
-                string name = deviceNames[i];
-                string description = deviceDescs[i];
-                devices.Add(name, description);
-            }
+            // TODO: Unstub this function
             return new ReadOnlyDictionary<string, string>(devices);
         }
 
@@ -131,21 +82,8 @@ namespace BassBoom.Basolia.Devices
             if (basolia is null)
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
 
-            // We're now entering the dangerous zone
-            unsafe
-            {
-                // Query the devices
-                var handle = basolia._out123Handle;
-                IntPtr driverPtr = IntPtr.Zero;
-                IntPtr devicePtr = IntPtr.Zero;
-                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_driver_info>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_driver_info));
-                int devicesStatus = @delegate.Invoke(handle, ref driverPtr, ref devicePtr);
-                if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
-                string driver = Marshal.PtrToStringAnsi(driverPtr);
-                string device = Marshal.PtrToStringAnsi(devicePtr);
-                return (driver, device);
-            }
+            // TODO: Unstub this function
+            return ("", "");
         }
 
         /// <summary>

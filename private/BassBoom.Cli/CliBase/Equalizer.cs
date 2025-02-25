@@ -74,10 +74,6 @@ namespace BassBoom.Cli.CliBase
                 {
                     InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia when trying to process the equalizer operation.\n\n" + bex.Message);
                 }
-                catch (BasoliaOutException bex)
-                {
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia output when trying to process the equalizer operation.\n\n" + bex.Message);
-                }
                 catch (Exception ex)
                 {
                     InfoBoxModalColor.WriteInfoBoxModal("There's an unknown error when trying to process the equalizer operation.\n\n" + ex.Message);

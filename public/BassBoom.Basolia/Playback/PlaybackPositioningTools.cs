@@ -56,10 +56,10 @@ namespace BassBoom.Basolia.Playback
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = basolia._mpg123Handle;
+                var handle = basolia._libmpvHandle;
 
                 // Get the length
-                var @delegate = MpgNative.GetDelegate<NativePositioning.mpg123_tell>(MpgNative.libManagerMpg, nameof(NativePositioning.mpg123_tell));
+                var @delegate = NativeInitializer.GetDelegate<NativePositioning.mpg123_tell>(NativeInitializer.libManagerMpv, nameof(NativePositioning.mpg123_tell));
                 length = @delegate.Invoke(handle);
                 if (length == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't determine the current duration of the file", mpg123_errors.MPG123_ERR);
@@ -105,23 +105,7 @@ namespace BassBoom.Basolia.Playback
                 if (!FileTools.IsOpened(basolia))
                     throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
-                // We're now entering the dangerous zone
-                unsafe
-                {
-                    var handle = basolia._mpg123Handle;
-                    var outHandle = basolia._out123Handle;
-
-                    // Get the length
-                    basolia.holding = true;
-                    while (basolia.bufferPlaying)
-                        Thread.Sleep(1);
-                    Drop(basolia);
-                    var @delegate = MpgNative.GetDelegate<NativePositioning.mpg123_seek>(MpgNative.libManagerMpg, nameof(NativePositioning.mpg123_seek));
-                    int status = @delegate.Invoke(handle, 0, 0);
-                    basolia.holding = false;
-                    if (status == (int)mpg123_errors.MPG123_ERR)
-                        throw new BasoliaException("Can't seek to the beginning of the file", mpg123_errors.MPG123_LSEEK_FAILED);
-                }
+                // TODO: Unstub this function
             }
         }
 
@@ -142,23 +126,7 @@ namespace BassBoom.Basolia.Playback
                 if (!FileTools.IsOpened(basolia))
                     throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
-                // We're now entering the dangerous zone
-                unsafe
-                {
-                    var handle = basolia._mpg123Handle;
-                    var outHandle = basolia._out123Handle;
-
-                    // Get the length
-                    basolia.holding = true;
-                    while (basolia.bufferPlaying)
-                        Thread.Sleep(1);
-                    Drop(basolia);
-                    var @delegate = MpgNative.GetDelegate<NativePositioning.mpg123_seek>(MpgNative.libManagerMpg, nameof(NativePositioning.mpg123_seek));
-                    int status = @delegate.Invoke(handle, frame, 0);
-                    basolia.holding = false;
-                    if (status == (int)mpg123_errors.MPG123_ERR)
-                        throw new BasoliaException($"Can't seek to frame #{frame} of the file", (mpg123_errors)status);
-                }
+                // TODO: Unstub this function
             }
         }
 
@@ -206,13 +174,7 @@ namespace BassBoom.Basolia.Playback
                 if (!FileTools.IsOpened(basolia))
                     throw new BasoliaException("Can't drop.", mpg123_errors.MPG123_BAD_FILE);
 
-                // We're now entering the dangerous zone
-                unsafe
-                {
-                    var outHandle = basolia._out123Handle;
-                    var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_drop>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_drop));
-                    @delegate.Invoke(outHandle);
-                }
+                // TODO: Unstub this function
             }
         }
     }

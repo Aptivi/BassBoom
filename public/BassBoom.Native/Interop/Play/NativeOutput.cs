@@ -49,43 +49,43 @@ namespace BassBoom.Native.Interop.Play
         internal delegate int mpg123_encsize(int encoding);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_format_none(mpg123_handle *mh);
+        /// MPG123_EXPORT int mpg123_format_none(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_format_none(mpg123_handle* mh);
+        internal delegate int mpg123_format_none(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_format_all(mpg123_handle *mh);
+        /// MPG123_EXPORT int mpg123_format_all(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_format_all(mpg123_handle* mh);
+        internal delegate int mpg123_format_all(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_format(mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_format(mpv_handle *mh
         /// , long rate, int channels, int encodings);
         /// </summary>
-        internal delegate int mpg123_format(mpg123_handle* mh, long rate, int channels, int encodings);
+        internal delegate int mpg123_format(mpv_handle* mh, long rate, int channels, int encodings);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_format2(mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_format2(mpv_handle *mh
         /// , long rate, int channels, int encodings);
         /// </summary>
-        internal delegate int mpg123_format2(mpg123_handle* mh, long rate, int channels, int encodings);
+        internal delegate int mpg123_format2(mpv_handle* mh, long rate, int channels, int encodings);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_format_support(mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_format_support(mpv_handle *mh
         /// , long rate, int encoding);
         /// </summary>
-        internal delegate int mpg123_format_support(mpg123_handle* mh, long rate, int encoding);
+        internal delegate int mpg123_format_support(mpv_handle* mh, long rate, int encoding);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_getformat(mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_getformat(mpv_handle *mh
         /// , long *rate, int *channels, int *encoding);
         /// </summary>
-        internal delegate int mpg123_getformat(mpg123_handle* mh, out long rate, out int channels, out int encoding);
+        internal delegate int mpg123_getformat(mpv_handle* mh, out long rate, out int channels, out int encoding);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_getformat2(mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_getformat2(mpv_handle *mh
         /// , long *rate, int *channels, int *encoding, int clear_flag);
         /// </summary>
-        internal delegate int mpg123_getformat2(mpg123_handle* mh, long* rate, int* channels, int* encoding, int clear_flag);
+        internal delegate int mpg123_getformat2(mpv_handle* mh, long* rate, int* channels, int* encoding, int clear_flag);
     }
 }

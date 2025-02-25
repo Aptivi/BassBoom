@@ -96,7 +96,7 @@ namespace BassBoom.Basolia.Playback
         /// </summary>
         /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <exception cref="BasoliaException"></exception>
-        /// <exception cref="BasoliaOutException"></exception>
+        /// <exception cref="BasoliaException"></exception>
         public static void Play(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
@@ -208,7 +208,7 @@ namespace BassBoom.Basolia.Playback
         /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <param name="volume">Volume from 0.0 to 1.0 (volume booster off) or 3.0 (volume booster on), inclusive</param>
         /// <param name="volBoost">Whether to allow volumes larger than 1.0 up to 3.0</param>
-        /// <exception cref="BasoliaOutException"></exception>
+        /// <exception cref="BasoliaException"></exception>
         public static void SetVolume(BasoliaMedia? basolia, double volume, bool volBoost = false)
         {
             InitBasolia.CheckInited();
@@ -222,15 +222,7 @@ namespace BassBoom.Basolia.Playback
             if (volume > maxVolume)
                 volume = maxVolume;
 
-            // Try to set the volume
-            unsafe
-            {
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_volume>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_volume));
-                int status = @delegate.Invoke(handle, volume);
-                if (status != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException($"Can't set volume to {volume}", (out123_error)status);
-            }
+            // TODO: Unstub this function
         }
 
         /// <summary>
@@ -238,7 +230,7 @@ namespace BassBoom.Basolia.Playback
         /// </summary>
         /// <param name="basolia">Basolia instance that contains a valid handle</param>
         /// <returns>A base linear volume from 0.0 to 1.0, an actual linear volume from 0.0 to 1.0, and the RVA volume in decibels (dB)</returns>
-        /// <exception cref="BasoliaOutException"></exception>
+        /// <exception cref="BasoliaException"></exception>
         public static (double baseLinear, double actualLinear, double decibelsRva) GetVolume(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
@@ -249,17 +241,7 @@ namespace BassBoom.Basolia.Playback
             double actualLinearAddr = 0;
             double decibelsRvaAddr = 0;
 
-            // Try to get the volume
-            unsafe
-            {
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_getvolume>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_getvolume));
-                int status = @delegate.Invoke(handle, ref baseLinearAddr, ref actualLinearAddr, ref decibelsRvaAddr);
-                if (status != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException($"Can't get volume (base, really, and decibels)", (out123_error)status);
-            }
-
-            // Get the volume information
+            // TODO: Unstub this function
             return (baseLinearAddr, actualLinearAddr, decibelsRvaAddr);
         }
 
@@ -280,8 +262,8 @@ namespace BassBoom.Basolia.Playback
             // Try to set the equalizer value
             unsafe
             {
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_eq>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_eq));
+                var handle = basolia._libmpvHandle;
+                var @delegate = NativeInitializer.GetDelegate<NativeVolume.mpg123_eq>(NativeInitializer.libManagerMpv, nameof(NativeVolume.mpg123_eq));
                 int status = @delegate.Invoke(handle, (mpg123_channels)channels, bandIdx, value);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set equalizer band {bandIdx + 1}/32 to {value} under {channels}", (mpg123_errors)status);
@@ -306,8 +288,8 @@ namespace BassBoom.Basolia.Playback
             // Try to set the equalizer value
             unsafe
             {
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_eq_bands>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_eq_bands));
+                var handle = basolia._libmpvHandle;
+                var @delegate = NativeInitializer.GetDelegate<NativeVolume.mpg123_eq_bands>(NativeInitializer.libManagerMpv, nameof(NativeVolume.mpg123_eq_bands));
                 int status = @delegate.Invoke(handle, (int)channels, bandIdxStart, bandIdxEnd, value);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set equalizer bands {bandIdxStart + 1}/32 -> {bandIdxEnd + 1}/32 to {value} under {channels}", (mpg123_errors)status);
@@ -330,8 +312,8 @@ namespace BassBoom.Basolia.Playback
             // Try to set the equalizer value
             unsafe
             {
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_geteq>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_geteq));
+                var handle = basolia._libmpvHandle;
+                var @delegate = NativeInitializer.GetDelegate<NativeVolume.mpg123_geteq>(NativeInitializer.libManagerMpv, nameof(NativeVolume.mpg123_geteq));
                 double eq = @delegate.Invoke(handle, (mpg123_channels)channels, bandIdx);
                 return eq;
             }
@@ -351,8 +333,8 @@ namespace BassBoom.Basolia.Playback
             // Try to set the equalizer value
             unsafe
             {
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_reset_eq>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_reset_eq));
+                var handle = basolia._libmpvHandle;
+                var @delegate = NativeInitializer.GetDelegate<NativeVolume.mpg123_reset_eq>(NativeInitializer.libManagerMpv, nameof(NativeVolume.mpg123_reset_eq));
                 int status = @delegate.Invoke(handle);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException("Can't reset equalizer bands to their initial values!", (mpg123_errors)status);
@@ -377,8 +359,8 @@ namespace BassBoom.Basolia.Playback
             {
                 long stateInt = 0;
                 double stateDouble = 0;
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_getstate>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_getstate));
+                var handle = basolia._libmpvHandle;
+                var @delegate = NativeInitializer.GetDelegate<NativeStatus.mpg123_getstate>(NativeInitializer.libManagerMpv, nameof(NativeStatus.mpg123_getstate));
                 int status = @delegate.Invoke(handle, (mpg123_state)state, ref stateInt, ref stateDouble);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't get native state of {state}!", (mpg123_errors)status);
@@ -399,16 +381,7 @@ namespace BassBoom.Basolia.Playback
             if (basolia.isOutputOpen)
                 return;
 
-            // Try to open output to device
-            unsafe
-            {
-                var outHandle = basolia._out123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_open>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_open));
-                int openStatus = @delegate.Invoke(outHandle, basolia.activeDriver, basolia.activeDevice);
-                if (openStatus != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException($"Can't open output to device {basolia.activeDevice} on driver {basolia.activeDriver}", (out123_error)openStatus);
-                basolia.isOutputOpen = true;
-            }
+            // TODO: Unstub this function
         }
 
         /// <summary>
@@ -428,19 +401,11 @@ namespace BassBoom.Basolia.Playback
             // Sanity checks
             bool supported = FormatTools.IsFormatSupported(basolia, rate, encoding, out _);
             if (!basolia.isOutputOpen)
-                throw new BasoliaOutException("You need to open the output", out123_error.OUT123_NOT_LIVE);
+                throw new BasoliaMiscException("You need to open the output");
             if (!supported)
-                throw new BasoliaOutException($"Selected rate [{rate} hz] and encoding [{encoding}] is not supported", out123_error.OUT123_NOT_SUPPORTED);
+                throw new BasoliaMiscException($"Selected rate [{rate} hz] and encoding [{encoding}] is not supported");
 
-            // Try to open output to device
-            unsafe
-            {
-                var outHandle = basolia._out123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_start>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_start));
-                int startStatus = @delegate.Invoke(outHandle, rate, (int)channels, encoding);
-                if (startStatus != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException($"Can't start the output.", (out123_error)startStatus);
-            }
+            // TODO: Unstub this function
         }
 
         /// <summary>
@@ -456,16 +421,7 @@ namespace BassBoom.Basolia.Playback
             if (!basolia.isOutputOpen)
                 return;
 
-            // Try to open output to device
-            unsafe
-            {
-                var outHandle = basolia._out123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_stop>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_stop));
-                @delegate.Invoke(outHandle);
-                var delegate2 = MpgNative.GetDelegate<NativeOutputLib.out123_close>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_close));
-                delegate2.Invoke(outHandle);
-                basolia.isOutputOpen = false;
-            }
+            // TODO: Unstub this function
         }
 
         internal static void FeedRadio(BasoliaMedia? basolia)
@@ -543,12 +499,12 @@ namespace BassBoom.Basolia.Playback
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             unsafe
             {
-                var handle = basolia._mpg123Handle;
+                var handle = basolia._libmpvHandle;
 
                 // Copy the data to MPG123
                 IntPtr data = Marshal.AllocHGlobal(buffer.Length);
                 Marshal.Copy(buffer, 0, data, buffer.Length);
-                var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_feed>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_feed));
+                var @delegate = NativeInitializer.GetDelegate<NativeInput.mpg123_feed>(NativeInitializer.libManagerMpv, nameof(NativeInput.mpg123_feed));
                 int feedResult = @delegate.Invoke(handle, data, buffer.Length);
                 if (feedResult != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException("Can't feed.", mpg123_errors.MPG123_ERR);
@@ -561,16 +517,9 @@ namespace BassBoom.Basolia.Playback
                 return 0;
             if (basolia is null)
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
-            unsafe
-            {
-                var outHandle = basolia._out123Handle;
-                IntPtr bufferPtr = Marshal.AllocHGlobal(Marshal.SizeOf<byte>() * buffer.Length);
-                Marshal.Copy(buffer, 0, bufferPtr, buffer.Length);
-                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_play>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_play));
-                int size = @delegate.Invoke(outHandle, bufferPtr, buffer.Length);
-                Marshal.FreeHGlobal(bufferPtr);
-                return size;
-            }
+
+            // TODO: Unstub this function
+            return 0;
         }
     }
 }

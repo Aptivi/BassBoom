@@ -55,13 +55,13 @@ namespace BassBoom.Basolia.Format
             // We're now entering the dangerous zone
             unsafe
             {
-                var handle = basolia._mpg123Handle;
+                var handle = basolia._libmpvHandle;
 
                 // Get the frame
                 IntPtr numPtr, bytesPtr, audioPtr = IntPtr.Zero;
                 numPtr = new IntPtr(num);
                 bytesPtr = new IntPtr(bytes);
-                var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_decode_frame>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_decode_frame));
+                var @delegate = NativeInitializer.GetDelegate<NativeInput.mpg123_decode_frame>(NativeInitializer.libManagerMpv, nameof(NativeInput.mpg123_decode_frame));
                 int decodeStatus = @delegate.Invoke(handle, ref numPtr, ref audioPtr, ref bytesPtr);
                 num = numPtr.ToInt32();
                 bytes = bytesPtr.ToInt32();
@@ -90,8 +90,8 @@ namespace BassBoom.Basolia.Format
             // Try to set the equalizer value
             unsafe
             {
-                var @delegate = MpgNative.GetDelegate<NativeDecoder.mpg123_supported_decoders>(MpgNative.libManagerMpg, nameof(NativeDecoder.mpg123_supported_decoders));
-                var delegate2 = MpgNative.GetDelegate<NativeDecoder.mpg123_decoders>(MpgNative.libManagerMpg, nameof(NativeDecoder.mpg123_decoders));
+                var @delegate = NativeInitializer.GetDelegate<NativeDecoder.mpg123_supported_decoders>(NativeInitializer.libManagerMpv, nameof(NativeDecoder.mpg123_supported_decoders));
+                var delegate2 = NativeInitializer.GetDelegate<NativeDecoder.mpg123_decoders>(NativeInitializer.libManagerMpv, nameof(NativeDecoder.mpg123_decoders));
                 IntPtr decodersPtr = onlySupported ? @delegate.Invoke() : delegate2.Invoke();
                 string[] decoders = ArrayVariantLength.GetStringsUnknownLength(decodersPtr);
                 return decoders;
@@ -112,8 +112,8 @@ namespace BassBoom.Basolia.Format
             // Try to set the equalizer value
             unsafe
             {
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeDecoder.mpg123_current_decoder>(MpgNative.libManagerMpg, nameof(NativeDecoder.mpg123_current_decoder));
+                var handle = basolia._libmpvHandle;
+                var @delegate = NativeInitializer.GetDelegate<NativeDecoder.mpg123_current_decoder>(NativeInitializer.libManagerMpv, nameof(NativeDecoder.mpg123_current_decoder));
                 IntPtr decoderPtr = @delegate.Invoke(handle);
                 return Marshal.PtrToStringAnsi(decoderPtr);
             }
@@ -140,8 +140,8 @@ namespace BassBoom.Basolia.Format
                 string[] supportedDecoders = GetDecoders(true);
                 if (!supportedDecoders.Contains(decoderName))
                     throw new BasoliaException($"Decoder {decoderName} not supported by your device", mpg123_errors.MPG123_BAD_DECODER);
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeDecoder.mpg123_decoder>(MpgNative.libManagerMpg, nameof(NativeDecoder.mpg123_decoder));
+                var handle = basolia._libmpvHandle;
+                var @delegate = NativeInitializer.GetDelegate<NativeDecoder.mpg123_decoder>(NativeInitializer.libManagerMpv, nameof(NativeDecoder.mpg123_decoder));
                 int status = @delegate.Invoke(handle, decoderName);
                 if (status != (int)mpg123_errors.MPG123_OK)
                     throw new BasoliaException($"Can't set decoder to {decoderName}", (mpg123_errors)status);

@@ -44,8 +44,7 @@ namespace BassBoom.Basolia
         internal bool isOutputOpen = false;
         internal FileType? currentFile;
 
-        internal mpg123_handle* _mpg123Handle;
-        internal out123_handle* _out123Handle;
+        internal mpv_handle* _libmpvHandle;
 
         /// <summary>
         /// Makes a new Basolia instance and initializes the library, if necessary.
@@ -60,27 +59,14 @@ namespace BassBoom.Basolia
             // Verify that we've actually loaded the library!
             try
             {
-                var @delegate = MpgNative.GetDelegate<NativeInit.mpg123_new>(MpgNative.libManagerMpg, nameof(NativeInit.mpg123_new));
-                var handle = @delegate.Invoke(null, null);
-                Debug.WriteLine($"Verifying mpg123 version: {MpgNative.MpgLibVersion}");
-                _mpg123Handle = handle;
-            }
-            catch (Exception ex)
-            {
-                throw new BasoliaNativeLibraryException($"mpg123 library path {MpgNative.mpg123LibPath} doesn't contain a valid mpg123 library. mpg123_new() was called. {ex.Message}");
-            }
-
-            // Do the same for the out123 library!
-            try
-            {
-                var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_new>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_new));
+                var @delegate = NativeInitializer.GetDelegate<NativeInit.mpv_create>(NativeInitializer.libManagerMpv, nameof(NativeInit.mpv_create));
                 var handle = @delegate.Invoke();
-                Debug.WriteLine($"Verifying out123 version: {MpgNative.OutLibVersion}");
-                _out123Handle = handle;
+                Debug.WriteLine($"Verifying libmpv version: {NativeInitializer.NativeLibVersion}");
+                _libmpvHandle = handle;
             }
             catch (Exception ex)
             {
-                throw new BasoliaNativeLibraryException($"out123 library path {MpgNative.out123LibPath} doesn't contain a valid out123 library. out123_new() was called. {ex.Message}");
+                throw new BasoliaNativeLibraryException($"libmpv library path {NativeInitializer.libmpvLibPath} doesn't contain a valid libmpv library. mpv_create() was called. {ex.Message}");
             }
         }
     }

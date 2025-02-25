@@ -114,8 +114,8 @@ namespace BassBoom.Basolia.File
             unsafe
             {
                 // Open the file
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_open>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_open));
+                var handle = basolia._libmpvHandle;
+                var @delegate = NativeInitializer.GetDelegate<NativeInput.mpg123_open>(NativeInitializer.libManagerMpv, nameof(NativeInput.mpg123_open));
                 int openStatus = @delegate.Invoke(handle, path);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't open file", mpg123_errors.MPG123_ERR);
@@ -171,8 +171,8 @@ namespace BassBoom.Basolia.File
             unsafe
             {
                 // Open the radio station
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_open_feed>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_open_feed));
+                var handle = basolia._libmpvHandle;
+                var @delegate = NativeInitializer.GetDelegate<NativeInput.mpg123_open_feed>(NativeInitializer.libManagerMpv, nameof(NativeInput.mpg123_open_feed));
                 int openStatus = @delegate.Invoke(handle);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't open radio station", mpg123_errors.MPG123_ERR);
@@ -216,8 +216,8 @@ namespace BassBoom.Basolia.File
             unsafe
             {
                 // Open the stream
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_open_feed>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_open_feed));
+                var handle = basolia._libmpvHandle;
+                var @delegate = NativeInitializer.GetDelegate<NativeInput.mpg123_open_feed>(NativeInitializer.libManagerMpv, nameof(NativeInput.mpg123_open_feed));
                 int openStatus = @delegate.Invoke(handle);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't open stream", mpg123_errors.MPG123_ERR);
@@ -252,8 +252,8 @@ namespace BassBoom.Basolia.File
             unsafe
             {
                 // Close the file
-                var handle = basolia._mpg123Handle;
-                var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_close>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_close));
+                var handle = basolia._libmpvHandle;
+                var @delegate = NativeInitializer.GetDelegate<NativeInput.mpg123_close>(NativeInitializer.libManagerMpv, nameof(NativeInput.mpg123_close));
                 int closeStatus = @delegate.Invoke(handle);
                 if (closeStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException("Can't close file", mpg123_errors.MPG123_ERR);

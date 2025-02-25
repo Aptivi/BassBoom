@@ -133,24 +133,24 @@ namespace BassBoom.Native.Interop.Analysis
     internal static unsafe class NativeStatus
     {
         /// <summary>
-        /// MPG123_EXPORT int mpg123_info(mpg123_handle *mh, struct mpg123_frameinfo *mi);
+        /// MPG123_EXPORT int mpg123_info(mpv_handle *mh, struct mpg123_frameinfo *mi);
         /// </summary>
-        internal delegate int mpg123_info(mpg123_handle* mh, ref mpg123_frameinfo mi);
+        internal delegate int mpg123_info(mpv_handle* mh, ref mpg123_frameinfo mi);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_info2(mpg123_handle *mh, struct mpg123_frameinfo2 *mi);
+        /// MPG123_EXPORT int mpg123_info2(mpv_handle *mh, struct mpg123_frameinfo2 *mi);
         /// </summary>
-        internal delegate int mpg123_info2(mpg123_handle* mh, ref mpg123_frameinfo2 mi);
+        internal delegate int mpg123_info2(mpv_handle* mh, ref mpg123_frameinfo2 mi);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_info(mpg123_handle *mh, struct mpg123_frameinfo *mi);
+        /// MPG123_EXPORT int mpg123_info(mpv_handle *mh, struct mpg123_frameinfo *mi);
         /// </summary>
-        internal delegate int mpg123_info_win(mpg123_handle* mh, ref mpg123_frameinfo_win mi);
+        internal delegate int mpg123_info_win(mpv_handle* mh, ref mpg123_frameinfo_win mi);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_info2(mpg123_handle *mh, struct mpg123_frameinfo2 *mi);
+        /// MPG123_EXPORT int mpg123_info2(mpv_handle *mh, struct mpg123_frameinfo2 *mi);
         /// </summary>
-        internal delegate int mpg123_info2_win(mpg123_handle* mh, ref mpg123_frameinfo2_win mi);
+        internal delegate int mpg123_info2_win(mpv_handle* mh, ref mpg123_frameinfo2_win mi);
 
         /// <summary>
         /// MPG123_EXPORT size_t mpg123_safe_buffer(void);
@@ -158,65 +158,65 @@ namespace BassBoom.Native.Interop.Analysis
         internal delegate int mpg123_safe_buffer();
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_scan(mpg123_handle *mh);
+        /// MPG123_EXPORT int mpg123_scan(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_scan(mpg123_handle* mh);
+        internal delegate int mpg123_scan(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT off_t mpg123_framelength(mpg123_handle *mh);
+        /// MPG123_EXPORT off_t mpg123_framelength(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_framelength(mpg123_handle* mh);
+        internal delegate int mpg123_framelength(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT off_t mpg123_length(mpg123_handle *mh);
+        /// MPG123_EXPORT off_t mpg123_length(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_length(mpg123_handle* mh);
+        internal delegate int mpg123_length(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_set_filesize(mpg123_handle *mh, off_t size);
+        /// MPG123_EXPORT int mpg123_set_filesize(mpv_handle *mh, off_t size);
         /// </summary>
-        internal delegate int mpg123_set_filesize(mpg123_handle* mh, int size);
+        internal delegate int mpg123_set_filesize(mpv_handle* mh, int size);
 
         /// <summary>
-        /// MPG123_EXPORT int64_t mpg123_framelength64(mpg123_handle *mh);
+        /// MPG123_EXPORT int64_t mpg123_framelength64(mpv_handle *mh);
         /// </summary>
-        internal delegate long mpg123_framelength64(mpg123_handle* mh);
+        internal delegate long mpg123_framelength64(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int64_t mpg123_length64(mpg123_handle *mh);
+        /// MPG123_EXPORT int64_t mpg123_length64(mpv_handle *mh);
         /// </summary>
-        internal delegate long mpg123_length64(mpg123_handle* mh);
+        internal delegate long mpg123_length64(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_set_filesize64(mpg123_handle *mh, int64_t size);
+        /// MPG123_EXPORT int mpg123_set_filesize64(mpv_handle *mh, int64_t size);
         /// </summary>
-        internal delegate int mpg123_set_filesize64(mpg123_handle* mh, long size);
+        internal delegate int mpg123_set_filesize64(mpv_handle* mh, long size);
 
         /// <summary>
-        /// MPG123_EXPORT double mpg123_tpf(mpg123_handle *mh);
+        /// MPG123_EXPORT double mpg123_tpf(mpv_handle *mh);
         /// </summary>
-        internal delegate double mpg123_tpf(mpg123_handle* mh);
+        internal delegate double mpg123_tpf(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_spf(mpg123_handle *mh);
+        /// MPG123_EXPORT int mpg123_spf(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_spf(mpg123_handle* mh);
+        internal delegate int mpg123_spf(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT long mpg123_clip(mpg123_handle *mh);
+        /// MPG123_EXPORT long mpg123_clip(mpv_handle *mh);
         /// </summary>
-        internal delegate long mpg123_clip(mpg123_handle* mh);
+        internal delegate long mpg123_clip(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_getstate( mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_getstate( mpv_handle *mh
         /// ,   enum mpg123_state key, long *val, double *fval );
         /// </summary>
-        internal delegate int mpg123_getstate(mpg123_handle* mh, mpg123_state key, ref long val, ref double fval);
+        internal delegate int mpg123_getstate(mpv_handle* mh, mpg123_state key, ref long val, ref double fval);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_getstate2( mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_getstate2( mpv_handle *mh
         /// ,   int key, long *val, double *fval );
         /// </summary>
-        internal delegate int mpg123_getstate2(mpg123_handle* mh, int key, ref long val, ref double fval);
+        internal delegate int mpg123_getstate2(mpv_handle* mh, int key, ref long val, ref double fval);
     }
 }

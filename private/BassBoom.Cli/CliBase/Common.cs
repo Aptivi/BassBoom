@@ -228,8 +228,7 @@ namespace BassBoom.Cli.CliBase
                 =======================
 
                 Basolia version: {{InitBasolia.BasoliaVersion}}
-                MPG123 version: {{InitBasolia.MpgLibVersion}}
-                OUT123 version: {{InitBasolia.OutLibVersion}}
+                libmpv version: {{InitBasolia.NativeLibVersion}}
 
                 System specifications
                 =====================

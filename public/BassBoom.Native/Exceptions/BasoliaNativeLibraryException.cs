@@ -25,17 +25,17 @@ namespace BassBoom.Native.Exceptions
     {
         internal BasoliaNativeLibraryException() :
             base($"Native library error\n" +
-                 $"Library path is {MpgNative.mpg123LibPath}")
+                 $"Library path is {NativeInitializer.libmpvLibPath}")
         { }
 
         internal BasoliaNativeLibraryException(string message) :
             base($"{message}\n" +
-                 $"Library path is {MpgNative.mpg123LibPath}")
+                 $"Library path is {NativeInitializer.libmpvLibPath}")
         { }
 
         internal BasoliaNativeLibraryException(string message, Exception innerException) :
             base($"{message}\n" +
-                 $"Library path is {MpgNative.mpg123LibPath}", innerException)
+                 $"Library path is {NativeInitializer.libmpvLibPath}", innerException)
         { }
     }
 }

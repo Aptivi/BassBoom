@@ -27,108 +27,108 @@ namespace BassBoom.Native.Interop.Play
     internal static unsafe class NativePositioning
     {
         /// <summary>
-        /// MPG123_EXPORT off_t mpg123_tell(mpg123_handle *mh);
+        /// MPG123_EXPORT off_t mpg123_tell(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_tell(mpg123_handle* mh);
+        internal delegate int mpg123_tell(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int64_t mpg123_tell64(mpg123_handle *mh);
+        /// MPG123_EXPORT int64_t mpg123_tell64(mpv_handle *mh);
         /// </summary>
-        internal delegate long mpg123_tell64(mpg123_handle* mh);
+        internal delegate long mpg123_tell64(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT off_t mpg123_tellframe(mpg123_handle *mh);
+        /// MPG123_EXPORT off_t mpg123_tellframe(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_tellframe(mpg123_handle* mh);
+        internal delegate int mpg123_tellframe(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int64_t mpg123_tellframe64(mpg123_handle *mh);
+        /// MPG123_EXPORT int64_t mpg123_tellframe64(mpv_handle *mh);
         /// </summary>
-        internal delegate long mpg123_tellframe64(mpg123_handle* mh);
+        internal delegate long mpg123_tellframe64(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT off_t mpg123_tell_stream(mpg123_handle *mh);
+        /// MPG123_EXPORT off_t mpg123_tell_stream(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_tell_stream(mpg123_handle* mh);
+        internal delegate int mpg123_tell_stream(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int64_t mpg123_tell_stream64(mpg123_handle *mh);
+        /// MPG123_EXPORT int64_t mpg123_tell_stream64(mpv_handle *mh);
         /// </summary>
-        internal delegate long mpg123_tell_stream64(mpg123_handle* mh);
+        internal delegate long mpg123_tell_stream64(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT off_t mpg123_seek( mpg123_handle *mh
+        /// MPG123_EXPORT off_t mpg123_seek( mpv_handle *mh
         /// ,   off_t sampleoff, int whence );
         /// </summary>
-        internal delegate int mpg123_seek(mpg123_handle* mh, int sampleoff, int whence);
+        internal delegate int mpg123_seek(mpv_handle* mh, int sampleoff, int whence);
 
         /// <summary>
-        /// MPG123_EXPORT int64_t mpg123_seek64( mpg123_handle *mh
+        /// MPG123_EXPORT int64_t mpg123_seek64( mpv_handle *mh
         /// ,   int64_t sampleoff, int whence );
         /// </summary>
-        internal delegate long mpg123_seek64(mpg123_handle* mh, long sampleoff, int whence);
+        internal delegate long mpg123_seek64(mpv_handle* mh, long sampleoff, int whence);
 
         /// <summary>
-        /// MPG123_EXPORT off_t mpg123_feedseek( mpg123_handle *mh
+        /// MPG123_EXPORT off_t mpg123_feedseek( mpv_handle *mh
         /// ,   off_t sampleoff, int whence, off_t *input_offset );
         /// </summary>
-        internal delegate int mpg123_feedseek(mpg123_handle* mh, int sampleoff, int whence, int* input_offset);
+        internal delegate int mpg123_feedseek(mpv_handle* mh, int sampleoff, int whence, int* input_offset);
 
         /// <summary>
-        /// MPG123_EXPORT int64_t mpg123_feedseek64( mpg123_handle *mh
+        /// MPG123_EXPORT int64_t mpg123_feedseek64( mpv_handle *mh
         /// ,   int64_t sampleoff, int whence, int64_t *input_offset );
         /// </summary>
-        internal delegate long mpg123_feedseek64(mpg123_handle* mh, long sampleoff, int whence, long* input_offset);
+        internal delegate long mpg123_feedseek64(mpv_handle* mh, long sampleoff, int whence, long* input_offset);
 
         /// <summary>
-        /// MPG123_EXPORT off_t mpg123_seek_frame( mpg123_handle *mh
+        /// MPG123_EXPORT off_t mpg123_seek_frame( mpv_handle *mh
         /// ,   off_t frameoff, int whence );
         /// </summary>
-        internal delegate int mpg123_seek_frame(mpg123_handle* mh, int frameoff, int whence);
+        internal delegate int mpg123_seek_frame(mpv_handle* mh, int frameoff, int whence);
 
         /// <summary>
-        /// MPG123_EXPORT int64_t mpg123_seek_frame64( mpg123_handle *mh
+        /// MPG123_EXPORT int64_t mpg123_seek_frame64( mpv_handle *mh
         /// ,   int64_t frameoff, int whence );
         /// </summary>
-        internal delegate long mpg123_seek_frame64(mpg123_handle* mh, long frameoff, int whence);
+        internal delegate long mpg123_seek_frame64(mpv_handle* mh, long frameoff, int whence);
 
         /// <summary>
-        /// MPG123_EXPORT off_t mpg123_timeframe(mpg123_handle *mh, double sec);
+        /// MPG123_EXPORT off_t mpg123_timeframe(mpv_handle *mh, double sec);
         /// </summary>
-        internal delegate int mpg123_timeframe(mpg123_handle *mh, double sec);
+        internal delegate int mpg123_timeframe(mpv_handle *mh, double sec);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_index( mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_index( mpv_handle *mh
         /// ,   off_t **offsets, off_t *step, size_t * fill);
         /// </summary>
-        internal delegate int mpg123_index(mpg123_handle* mh, int*[] offsets, int* step, int* fill);
+        internal delegate int mpg123_index(mpv_handle* mh, int*[] offsets, int* step, int* fill);
 
         /// <summary>
-        /// MPG123_EXPORT int64_t mpg123_timeframe64(mpg123_handle *mh, double sec);
+        /// MPG123_EXPORT int64_t mpg123_timeframe64(mpv_handle *mh, double sec);
         /// </summary>
-        internal delegate long mpg123_timeframe64(mpg123_handle* mh, double sec);
+        internal delegate long mpg123_timeframe64(mpv_handle* mh, double sec);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_index64( mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_index64( mpv_handle *mh
         /// ,   int64_t **offsets, int64_t *step, size_t *fill );
         /// </summary>
-        internal delegate int mpg123_index64(mpg123_handle* mh, long*[] offsets, long* step, int* fill);
+        internal delegate int mpg123_index64(mpv_handle* mh, long*[] offsets, long* step, int* fill);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_set_index( mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_set_index( mpv_handle *mh
         /// ,   off_t *offsets, off_t step, size_t fill );
         /// </summary>
-        internal delegate int mpg123_set_index(mpg123_handle* mh, int* offsets, int step, int fill);
+        internal delegate int mpg123_set_index(mpv_handle* mh, int* offsets, int step, int fill);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_set_index64( mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_set_index64( mpv_handle *mh
         /// ,   int64_t *offsets, int64_t step, size_t fill );
         /// </summary>
-        internal delegate int mpg123_set_index64(mpg123_handle* mh, long* offsets, long step, int fill);
+        internal delegate int mpg123_set_index64(mpv_handle* mh, long* offsets, long step, int fill);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_position( mpg123_handle *mh, off_t frame_offset, off_t buffered_bytes, off_t *current_frame, off_t *frames_left, double *current_seconds, double *seconds_left);
+        /// MPG123_EXPORT int mpg123_position( mpv_handle *mh, off_t frame_offset, off_t buffered_bytes, off_t *current_frame, off_t *frames_left, double *current_seconds, double *seconds_left);
         /// </summary>
-        internal delegate int mpg123_position(mpg123_handle* mh, int frame_offset, int buffered_bytes, int* current_frame, int* frames_left, double* current_seconds, double* seconds_left);
+        internal delegate int mpg123_position(mpv_handle* mh, int frame_offset, int buffered_bytes, int* current_frame, int* frames_left, double* current_seconds, double* seconds_left);
     }
 }

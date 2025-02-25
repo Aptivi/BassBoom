@@ -36,7 +36,6 @@ namespace BassBoom.Cli
     {
         private static readonly Version? version = Assembly.GetAssembly(typeof(InitBasolia))?.GetName().Version;
         internal static Version? mpgVer;
-        internal static Version? outVer;
         internal static BasoliaMedia? basolia;
         internal static Color white = new(ConsoleColors.White);
 
@@ -68,8 +67,7 @@ namespace BassBoom.Cli
                 basolia = new();
 
                 // Initialize versions
-                mpgVer = InitBasolia.MpgLibVersion;
-                outVer = InitBasolia.OutLibVersion;
+                mpgVer = InitBasolia.NativeLibVersion;
 
                 // Now, open an interactive TUI
                 ConsoleResizeHandler.StartResizeListener((_, _, _, _) => Common.redraw = true);

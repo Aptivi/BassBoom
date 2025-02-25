@@ -35,7 +35,7 @@ namespace BassBoom.Basolia.Exceptions
         /// <param name="error">An MPG123 error value to use.</param>
         internal BasoliaException(mpg123_errors error) :
             base($"General Basolia error\n" +
-                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeError.mpg123_plain_strerror>(MpgNative.libManagerMpg, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
+                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeInitializer.GetDelegate<NativeError.mpg123_plain_strerror>(NativeInitializer.libManagerMpv, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
         { }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace BassBoom.Basolia.Exceptions
         /// <param name="error">An MPG123 error value to use.</param>
         internal BasoliaException(string message, mpg123_errors error) :
             base($"{message}\n" +
-                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeError.mpg123_plain_strerror>(MpgNative.libManagerMpg, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
+                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeInitializer.GetDelegate<NativeError.mpg123_plain_strerror>(NativeInitializer.libManagerMpv, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
         { }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace BassBoom.Basolia.Exceptions
         /// <param name="error">An MPG123 error value to use.</param>
         internal BasoliaException(string message, Exception innerException, mpg123_errors error) :
             base($"{message}\n" +
-                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeError.mpg123_plain_strerror>(MpgNative.libManagerMpg, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]", innerException)
+                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeInitializer.GetDelegate<NativeError.mpg123_plain_strerror>(NativeInitializer.libManagerMpv, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]", innerException)
         { }
     }
 }

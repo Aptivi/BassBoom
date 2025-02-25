@@ -50,35 +50,35 @@ namespace BassBoom.Native.Interop.LowLevel
         internal delegate void _cleanup(IntPtr val1);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_replace_buffer(mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_replace_buffer(mpv_handle *mh
         /// ,   void *data, size_t size);
         /// </summary>
-        internal delegate int mpg123_replace_buffer(mpg123_handle* mh, IntPtr data, int size);
+        internal delegate int mpg123_replace_buffer(mpv_handle* mh, IntPtr data, int size);
 
         /// <summary>
-        /// MPG123_EXPORT size_t mpg123_outblock(mpg123_handle *mh);
+        /// MPG123_EXPORT size_t mpg123_outblock(mpv_handle *mh);
         /// </summary>
-        internal delegate int mpg123_outblock(mpg123_handle* mh);
+        internal delegate int mpg123_outblock(mpv_handle* mh);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_replace_reader( mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_replace_reader( mpv_handle *mh
         /// ,   mpg123_ssize_t (*r_read) (int, void *, size_t)
         /// ,   off_t (*r_lseek)(int, off_t, int)
         /// );
         /// </summary>
-        internal delegate int mpg123_replace_reader(mpg123_handle* mh, r_read r_read, r_lseek r_lseek);
+        internal delegate int mpg123_replace_reader(mpv_handle* mh, r_read r_read, r_lseek r_lseek);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_replace_reader_handle( mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_replace_reader_handle( mpv_handle *mh
         /// ,   mpg123_ssize_t (*r_read) (void *, void *, size_t)
         /// ,   off_t (*r_lseek)(void *, off_t, int)
         /// ,   void (*cleanup)(void*) );
         /// </summary>
-        internal delegate int mpg123_replace_reader_handle(mpg123_handle* mh, r_read2 r_read, r_lseek2 r_lseek, _cleanup cleanup);
+        internal delegate int mpg123_replace_reader_handle(mpv_handle* mh, r_read2 r_read, r_lseek2 r_lseek, _cleanup cleanup);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_reader64( mpg123_handle *mh, int (*r_read) (void *, void *, size_t, size_t *), int64_t (*r_lseek)(void *, int64_t, int), void (*cleanup)(void*) );
+        /// MPG123_EXPORT int mpg123_reader64( mpv_handle *mh, int (*r_read) (void *, void *, size_t, size_t *), int64_t (*r_lseek)(void *, int64_t, int), void (*cleanup)(void*) );
         /// </summary>
-        internal delegate int mpg123_reader64(mpg123_handle* mh, r_read3 r_read, r_lseek3 r_lseek, _cleanup cleanup);
+        internal delegate int mpg123_reader64(mpv_handle* mh, r_read3 r_read, r_lseek3 r_lseek, _cleanup cleanup);
     }
 }

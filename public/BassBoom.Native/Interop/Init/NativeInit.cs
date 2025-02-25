@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
 namespace BassBoom.Native.Interop.Init
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal struct mpg123_handle
+    internal struct mpv_handle
     { }
 
     internal enum mpg123_parms
@@ -116,14 +116,9 @@ namespace BassBoom.Native.Interop.Init
     internal static unsafe class NativeInit
     {
         /// <summary>
-        /// const char *mpg123_distversion(unsigned int *major, unsigned int *minor, unsigned int *patch)
+        /// MPV_EXPORT unsigned long mpv_client_api_version(void);
         /// </summary>
-        internal delegate IntPtr mpg123_distversion(ref uint major, ref uint minor, ref uint patch);
-
-        /// <summary>
-        /// unsigned int mpg123_libversion(unsigned int *patch);
-        /// </summary>
-        internal delegate uint mpg123_libversion(ref uint patch);
+        internal delegate ulong mpv_client_api_version();
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_init (void)
@@ -131,14 +126,14 @@ namespace BassBoom.Native.Interop.Init
         internal delegate int mpg123_init();
 
         /// <summary>
-        /// MPG123_EXPORT mpg123_handle* mpg123_new (const char* decoder, int* error)
+        /// MPV_EXPORT mpv_handle *mpv_create(void);
         /// </summary>
-        internal delegate mpg123_handle* mpg123_new([MarshalAs(UnmanagedType.LPStr)] string? decoder, int* error);
+        internal delegate mpv_handle* mpv_create();
 
         /// <summary>
-        /// MPG123_EXPORT void mpg123_delete(mpg123_handle* mh)
+        /// MPG123_EXPORT void mpg123_delete(mpv_handle* mh)
         /// </summary>
-        internal delegate void mpg123_delete(mpg123_handle* mh);
+        internal delegate void mpg123_delete(mpv_handle* mh);
 
         /// <summary>
         /// MPG123_EXPORT void mpg123_free(void* ptr)
@@ -146,28 +141,28 @@ namespace BassBoom.Native.Interop.Init
         internal delegate void mpg123_free(IntPtr ptr);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_param(mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_param(mpv_handle *mh
         /// , enum mpg123_parms type, long value, double fvalue);
         /// </summary>
-        internal delegate int mpg123_param(mpg123_handle* mh, mpg123_parms type, long value, double fvalue);
+        internal delegate int mpg123_param(mpv_handle* mh, mpg123_parms type, long value, double fvalue);
 
         /// <summary>                                           
-        /// MPG123_EXPORT int mpg123_param2(mpg123_handle *mh    
+        /// MPG123_EXPORT int mpg123_param2(mpv_handle *mh    
         /// , int type, long value, double fvalue);
         /// </summary>
-        internal delegate int mpg123_param2(mpg123_handle* mh, int type, long value, double fvalue);
+        internal delegate int mpg123_param2(mpv_handle* mh, int type, long value, double fvalue);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_getparam(mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_getparam(mpv_handle *mh
         /// , enum mpg123_parms type, long *value, double *fvalue);
         /// </summary>
-        internal delegate int mpg123_getparam(mpg123_handle* mh, mpg123_parms type, long* value, double* fvalue);
+        internal delegate int mpg123_getparam(mpv_handle* mh, mpg123_parms type, long* value, double* fvalue);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_getparam2(mpg123_handle *mh
+        /// MPG123_EXPORT int mpg123_getparam2(mpv_handle *mh
         /// , int type, long *value, double *fvalue);
         /// </summary>
-        internal delegate int mpg123_getparam2(mpg123_handle* mh, int type, long* value, double* fvalue);
+        internal delegate int mpg123_getparam2(mpv_handle* mh, int type, long* value, double* fvalue);
 
         /// <summary>
         /// MPG123_EXPORT int mpg123_feature(const enum mpg123_feature_set key);
@@ -182,7 +177,7 @@ namespace BassBoom.Native.Interop.Init
         /// <summary>
         /// int setenv(const char *name, const char *value, int overwrite);
         /// </summary>
-        [DllImport(MpgNative.LibcName, CharSet = CharSet.Ansi)]
+        [DllImport(NativeInitializer.LibcName, CharSet = CharSet.Ansi)]
         internal static extern int setenv(string name, string value, int overwrite);
 
         [DllImport("UCRTBASE.DLL")]
