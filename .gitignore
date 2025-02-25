@@ -410,3 +410,6 @@ DocGen/api/
 
 # Vim
 *.swp
+
+# Native libraries
+public/BassBoom.Native/runtimes/
