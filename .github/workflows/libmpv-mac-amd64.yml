@@ -17,9 +17,9 @@ jobs:
         with:
           submodules: 'true'
           ref: ${{ github.ref }}
-      - name: Installing mpg
+      - name: Installing mpv
         run: |
-          brew install mpg
+          brew install mpv
       - name: Copying the library
         run: |
           cp /usr/local/Cellar/mpv/*/lib/libmpv.2.dylib libmpv-2.dylib
