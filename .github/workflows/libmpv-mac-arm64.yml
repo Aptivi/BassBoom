@@ -22,7 +22,7 @@ jobs:
           brew install mpv
       - name: Copying the library
         run: |
-          cp /usr/local/Cellar/mpv/*/lib/libmpv.2.dylib libmpv-2.dylib
+          cp /opt/homebrew/Cellar/mpv/*/lib/libmpv.2.dylib libmpv-2.dylib
       - name: Uploading the library
         uses: actions/upload-artifact@v4
         with:
