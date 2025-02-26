@@ -87,7 +87,7 @@ namespace BassBoom.Native
                 var architecture = PlatformHelper.GetArchitecture();
                 if (architecture == Architecture.X86 || architecture == Architecture.Arm)
                     throw new BasoliaNativeLibraryException("32-bit platforms are no longer supported.");
-                libManagerMpv = new LibraryManager(new LibraryFile(libmpvLibPath));
+                libManagerMpv = new LibraryManager(new LibraryFile(libmpvLibPath, "libmpv.so.2", "libmpv.2.dylib"));
                 libManagerMpv.LoadNativeLibrary();
             }
             catch (Exception ex)
