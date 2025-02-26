@@ -412,4 +412,5 @@ DocGen/api/
 *.swp
 
 # Native libraries
-public/BassBoom.Native/runtimes/
+public/BassBoom.Native/runtimes/win-x64/
+public/BassBoom.Native/runtimes/win-arm64/

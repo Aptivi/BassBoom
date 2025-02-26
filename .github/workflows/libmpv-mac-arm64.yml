@@ -1,0 +1,30 @@
+name: libmpv library (macOS - ARM64)
+
+on:
+  push:
+    branches:
+      - x/exp/libmpv
+  pull_request:
+    branches:
+      - x/exp/libmpv
+    
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+          ref: ${{ github.ref }}
+      - name: Installing mpg
+        run: |
+          brew install mpg
+      - name: Copying the library
+        run: |
+          cp /usr/local/Cellar/mpv/*/lib/libmpv.2.dylib libmpv-2.dylib
+      - name: Uploading the library
+        uses: actions/upload-artifact@v4
+        with:
+          name: "libmpv library"
+          path: libmpv-2.dylib
