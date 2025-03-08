@@ -12,7 +12,7 @@ checkerror() {
     fi
 }
 
-# This script builds and packs the artifacts. Use when you have MSBuild installed.
+# This script builds and packs the artifacts.
 releaseconf=$1
 if [ -z $releaseconf ]; then
 	releaseconf=Release

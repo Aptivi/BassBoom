@@ -2,7 +2,7 @@
 
 set ROOTDIR=%~dp0\..
 
-REM This script builds the documentation and packs the artifacts. Use when you have VS installed.
+REM This script builds the documentation and packs the artifacts.
 for /f "tokens=*" %%g in ('findstr "<Version>" %ROOTDIR%\Directory.Build.props') do (set MIDVER=%%g)
 for /f "tokens=1 delims=<" %%a in ("%MIDVER:~9%") do (set version=%%a)
 

@@ -12,8 +12,8 @@ checkerror() {
     fi
 }
 
-# This script builds KS and packs the artifacts. Use when you have MSBuild installed.
-ksversion=$(grep "<Version>" $ROOTDIR/Directory.Build.props | cut -d "<" -f 2 | cut -d ">" -f 2)
+# This script builds the documentation and packs the artifacts. Use when you have MSBuild installed.
+version=$(grep "<Version>" $ROOTDIR/Directory.Build.props | cut -d "<" -f 2 | cut -d ">" -f 2)
 checkerror $? "Failed to get version. Check to make sure that the version is specified correctly in D.B.props"
 
 # Check for dependencies
@@ -22,7 +22,7 @@ checkerror $? "zip is not found"
 
 # Pack documentation
 echo Packing documentation...
-cd "$ROOTDIR/docs/" && "$zippath" -r /tmp/$ksversion-doc.zip . && cd -
+cd "$ROOTDIR/docs/" && "$zippath" -r /tmp/$version-doc.zip . && cd -
 checkerror $? "Failed to pack"
 
 # Inform success
@@ -32,7 +32,7 @@ rm -rf "$ROOTDIR/DocGen/obj"
 checkerror $? "Failed to remove obj folder"
 rm -rf "$ROOTDIR/docs"
 checkerror $? "Failed to remove docs folder"
-mv /tmp/$ksversion-doc.zip "$ROOTDIR/tools"
+mv /tmp/$version-doc.zip "$ROOTDIR/tools"
 checkerror $? "Failed to move archive from temporary folder"
 echo Pack successful.
 exit 0

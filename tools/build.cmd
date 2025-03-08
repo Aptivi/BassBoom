@@ -1,6 +1,6 @@
 @echo off
 
-REM This script builds and packs the artifacts. Use when you have VS installed.
+REM This script builds and packs the artifacts.
 set releaseconfig=%1
 if "%releaseconfig%" == "" set releaseconfig=Release
 

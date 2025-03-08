@@ -14,7 +14,7 @@ fi
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOTNET_NOLOGO=1
 
-# Build KS
+# Build docs
 echo Building documentation...
 docfx $ROOTDIR/DocGen/docfx.json
 if [ ! $? == 0 ]; then

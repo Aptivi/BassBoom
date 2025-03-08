@@ -12,7 +12,7 @@ checkerror() {
     fi
 }
 
-# This script pushes. Use when you have dotnet installed.
+# This script pushes.
 releaseconf=$1
 if [ -z $releaseconf ]; then
 	releaseconf=Release
