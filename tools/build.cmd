@@ -38,7 +38,7 @@ echo There was an error trying to download packages (%errorlevel%).
 goto :finished
 
 :build
-echo Building BassBoom...
+echo Building...
 "%ProgramFiles%\dotnet\dotnet.exe" build "%ROOTDIR%\BassBoom.sln" -p:Configuration=%releaseconfig% %buildoptions%
 if %errorlevel% == 0 goto :success
 echo There was an error trying to build (%errorlevel%).
