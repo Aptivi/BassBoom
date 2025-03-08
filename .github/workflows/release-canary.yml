@@ -2,11 +2,9 @@ name: Prepare release (canary)
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main", "x/exp/libmpv" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main", "x/exp/libmpv" ]
     
 jobs:
   build:
