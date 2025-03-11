@@ -3,6 +3,15 @@
 # Repository root
 ROOTDIR=$( cd -- "$( dirname -- "$0" )/.." &> /dev/null && pwd )
 
+# Vendor functions
+prebuild() { return 0; }
+build() { return 0; }
+postbuild() { return 0; }
+
+# Sourcing the vendor script
+export VENDOR_ERRORCODE=0
+source $ROOTDIR/tools/vendor.sh
+
 # Convenience functions
 checkerror() {
     if [ $1 != 0 ]
@@ -12,46 +21,24 @@ checkerror() {
     fi
 }
 
-# This script builds.
-releaseconf=$1
-if [ -z $releaseconf ]; then
-	releaseconf=Release
-fi
+checkvendorerror() {
+    if [ $VENDOR_ERRORCODE == 0 ]
+    then
+        export VENDOR_ERRORCODE=$1
+    fi
+}
 
-# Check for dependencies
-dotnetpath=`which dotnet`
-checkerror $? "dotnet is not found"
-sevenzpath=`which 7z`
-checkerror $? "7z is not found"
+# Run any vendor actions before build
+prebuild $@
+checkerror $VENDOR_ERRORCODE "Failed to run prebuild function from the vendor"
 
-# Turn off telemetry and logo
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export DOTNET_NOLOGO=1
+# Build using vendor action
+build $@
+checkerror $VENDOR_ERRORCODE "Failed to run build function from the vendor"
 
-# Download compiled Windows libmpv libraries
-if [ ! -f /tmp/mpv-dev-x86_64-20250225-git-5459b0f.7z ]; then
-    curl -L --output /tmp/mpv-dev-x86_64-20250225-git-5459b0f.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-02-25-5459b0f/mpv-dev-x86_64-20250225-git-5459b0f.7z
-fi
-if [ ! -f /tmp/mpv-dev-aarch64-20250225-git-5459b0f.7z ]; then
-    curl -L --output /tmp/mpv-dev-aarch64-20250225-git-5459b0f.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-02-25-5459b0f/mpv-dev-aarch64-20250225-git-5459b0f.7z
-fi
-cd $ROOTDIR/tools && "$sevenzpath" x /tmp/mpv-dev-x86_64-20250225-git-5459b0f.7z libmpv-2.dll && cd -
-mkdir -p $ROOTDIR/public/BassBoom.Native/runtimes/win-x64/native/
-mv $ROOTDIR/tools/libmpv-2.dll $ROOTDIR/public/BassBoom.Native/runtimes/win-x64/native/
-
-cd $ROOTDIR/tools && "$sevenzpath" x /tmp/mpv-dev-aarch64-20250225-git-5459b0f.7z libmpv-2.dll && cd -
-mkdir -p $ROOTDIR/public/BassBoom.Native/runtimes/win-arm64/native/
-mv $ROOTDIR/tools/libmpv-2.dll $ROOTDIR/public/BassBoom.Native/runtimes/win-arm64/native/
-
-# Download packages
-echo Downloading packages...
-"$dotnetpath" restore "$ROOTDIR/BassBoom.sln" -p:Configuration=$releaseconf ${@:2}
-checkerror $? "Failed to download packages"
-
-# Build
-echo Building...
-"$dotnetpath" build "$ROOTDIR/BassBoom.sln" -p:Configuration=$releaseconf ${@:2}
-checkerror $? "Failed to build"
+# Run any vendor actions after build
+postbuild $@
+checkerror $VENDOR_ERRORCODE "Failed to run postbuild function from the vendor"
 
 # Inform success
 echo Build successful.

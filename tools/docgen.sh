@@ -3,25 +3,32 @@
 # Repository root
 ROOTDIR=$( cd -- "$( dirname -- "$0" )/.." &> /dev/null && pwd )
 
-# Check for dependencies
-msbuildpath=`which docfx`
-if [ ! $? == 0 ]; then
-	echo DocFX is not found.
-	exit 1
-fi
+# Vendor functions
+docgenerate() { return 0; }
 
-# Turn off telemetry and logo
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export DOTNET_NOLOGO=1
+# Sourcing the vendor script
+export VENDOR_ERRORCODE=0
+source $ROOTDIR/tools/vendor.sh
 
-# Build docs
-echo Building documentation...
-docfx $ROOTDIR/DocGen/docfx.json
-if [ ! $? == 0 ]; then
-	echo Build failed.
-	exit 1
-fi
+# Convenience functions
+checkerror() {
+    if [ $1 != 0 ]
+    then
+        printf "$2 - Error $1\n" >&2
+        exit $1
+    fi
+}
+
+checkvendorerror() {
+    if [ $VENDOR_ERRORCODE == 0 ]
+    then
+        export VENDOR_ERRORCODE=$1
+    fi
+}
+
+# Generate using vendor action
+docgenerate $@
+checkerror $VENDOR_ERRORCODE "Failed to run documentation generation function from the vendor"
 
 # Inform success
 echo Build successful.
-exit 0

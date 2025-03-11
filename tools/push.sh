@@ -3,6 +3,13 @@
 # Repository root
 ROOTDIR=$( cd -- "$( dirname -- "$0" )/.." &> /dev/null && pwd )
 
+# Vendor functions
+pushall() { return 0; }
+
+# Sourcing the vendor script
+export VENDOR_ERRORCODE=0
+source $ROOTDIR/tools/vendor.sh
+
 # Convenience functions
 checkerror() {
     if [ $1 != 0 ]
@@ -12,23 +19,16 @@ checkerror() {
     fi
 }
 
-# This script pushes.
-releaseconf=$1
-if [ -z $releaseconf ]; then
-	releaseconf=Release
-fi
-nugetsource=$2
-if [ -z $nugetsource ]; then
-	nugetsource=nuget.org
-fi
-dotnetpath=`which dotnet`
-checkerror $? "dotnet is not found"
+checkvendorerror() {
+    if [ $VENDOR_ERRORCODE == 0 ]
+    then
+        export VENDOR_ERRORCODE=$1
+    fi
+}
 
-# Push packages
-echo Pushing packages...
-find $ROOTDIR -type f -path "*/bin/$releaseconf/*.nupkg" -exec sh -c "echo {} ; dotnet nuget push {} --api-key $NUGET_APIKEY --source \"$nugetsource\"" \;
-checkerror $? "Failed to push"
+# Push all artifacts using vendor action
+pushall $@
+checkerror $VENDOR_ERRORCODE "Failed to run artifact pushing function from the vendor"
 
 # Inform success
 echo Push successful.
-exit 0

@@ -3,6 +3,13 @@
 # Repository root
 ROOTDIR=$( cd -- "$( dirname -- "$0" )/.." &> /dev/null && pwd )
 
+# Vendor functions
+packall() { return 0; }
+
+# Sourcing the vendor script
+export VENDOR_ERRORCODE=0
+source $ROOTDIR/tools/vendor.sh
+
 # Convenience functions
 checkerror() {
     if [ $1 != 0 ]
@@ -12,29 +19,16 @@ checkerror() {
     fi
 }
 
-# This script builds and packs the artifacts.
-releaseconf=$1
-if [ -z $releaseconf ]; then
-	releaseconf=Release
-fi
-version=$(grep "<Version>" $ROOTDIR/Directory.Build.props | cut -d "<" -f 2 | cut -d ">" -f 2)
-checkerror $? "Failed to get version. Check to make sure that the version is specified correctly in D.B.props"
+checkvendorerror() {
+    if [ $VENDOR_ERRORCODE == 0 ]
+    then
+        export VENDOR_ERRORCODE=$1
+    fi
+}
 
-# Check for dependencies
-zippath=`which zip`
-checkerror $? "zip is not found"
-
-# Pack binary
-echo Packing binary...
-cd "$ROOTDIR/private/BassBoom.Cli/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-cli.zip . && cd -
-checkerror $? "Failed to pack"
-cd "$ROOTDIR/private/BassBoom.Cli/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-cli-48.zip . && cd -
-checkerror $? "Failed to pack"
+# Pack all artifacts using vendor action
+packall $@
+checkerror $VENDOR_ERRORCODE "Failed to run artifact packing function from the vendor"
 
 # Inform success
-mv /tmp/$version-cli.zip $ROOTDIR/tools/
-checkerror $? "Failed to move archive from temporary folder"
-mv /tmp/$version-cli-48.zip $ROOTDIR/tools/
-checkerror $? "Failed to move archive from temporary folder"
-echo Build and pack successful.
-exit 0
+echo Pack successful.
