@@ -8,7 +8,7 @@ docgenerate() { return 0; }
 
 # Sourcing the vendor script
 export VENDOR_ERRORCODE=0
-source $ROOTDIR/tools/vendor.sh
+source $ROOTDIR/vendor.sh
 
 # Convenience functions
 checkerror() {
