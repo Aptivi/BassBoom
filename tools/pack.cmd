@@ -2,22 +2,15 @@
 
 set ROOTDIR=%~dp0\..
 
-for /f "tokens=*" %%g in ('findstr "<Version>" %ROOTDIR%\Directory.Build.props') do (set MIDVER=%%g)
-for /f "tokens=1 delims=<" %%a in ("%MIDVER:~9%") do (set version=%%a)
-set releaseconfig=%1
-if "%releaseconfig%" == "" set releaseconfig=Release
+REM Run any vendor actions on pack
+if exist %ROOTDIR%\vnd\vendor-pack.cmd call %ROOTDIR%\vnd\vendor-pack.cmd %*
+if %errorlevel% neq 0 goto :failure
 
-:packbin
-echo Packing binary...
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-cli.zip "%ROOTDIR%\private\BassBoom.Cli\bin\%releaseconfig%\net8.0\*"
-"%ProgramFiles%\7-Zip\7z.exe" a -tzip %temp%/%version%-cli-48.zip "%ROOTDIR%\private\BassBoom.Cli\bin\%releaseconfig%\net48\*"
-if %errorlevel% == 0 goto :complete
-echo There was an error trying to pack binary (%errorlevel%).
+REM Inform success
+echo Pack successful
 goto :finished
 
-:complete
-move %temp%\%version%-cli.zip %ROOTDIR%\tools\
-move %temp%\%version%-cli-48.zip %ROOTDIR%\tools\
+:failure
+echo Pack failed
 
-echo Pack successful.
 :finished

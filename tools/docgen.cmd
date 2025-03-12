@@ -1,23 +1,16 @@
 @echo off
 
-echo Finding DocFX...
-if exist %USERPROFILE%\.dotnet\tools\docfx.exe goto :build
-echo You don't have DocFX installed. Download and install .NET and DocFX.
-goto :finished
-
-:build
-REM Turn off telemetry and logo
-set DOTNET_CLI_TELEMETRY_OPTOUT=1
-set DOTNET_NOLOGO=1
-
 set ROOTDIR=%~dp0\..
 
-echo Building the documentation...
-%USERPROFILE%\.dotnet\tools\docfx.exe "%ROOTDIR%\DocGen\docfx.json"
-if %errorlevel% == 0 goto :success
-echo There was an error trying to build documentation (%errorlevel%).
+REM Run any vendor actions on doc generation
+if exist %ROOTDIR%\vnd\vendor-docgen.cmd call %ROOTDIR%\vnd\vendor-docgen.cmd %*
+if %errorlevel% neq 0 goto :failure
+
+REM Inform success
+echo Build successful
 goto :finished
 
-:success
-echo Build and pack successful.
+:failure
+echo Build failed
+
 :finished
