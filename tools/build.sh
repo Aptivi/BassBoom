@@ -10,7 +10,7 @@ postbuild() { return 0; }
 
 # Sourcing the vendor script
 export VENDOR_ERRORCODE=0
-source $ROOTDIR/vendor.sh
+source $ROOTDIR/vnd/vendor.sh
 
 # Convenience functions
 checkerror() {
