@@ -12,20 +12,7 @@ REM Turn off telemetry and logo
 set DOTNET_CLI_TELEMETRY_OPTOUT=1
 set DOTNET_NOLOGO=1
 
-:download
-echo Downloading packages...
-"%ProgramFiles%\dotnet\dotnet.exe" restore "%ROOTDIR%\BassBoom.sln" -p:Configuration=%releaseconfig% %buildoptions%
-if %errorlevel% == 0 goto :build
-echo There was an error trying to download packages (%errorlevel%).
-goto :finished
+set ROOTDIR=%~dp0\..
 
-:build
-echo Building...
+echo Building with configuration %releaseconfig%...
 "%ProgramFiles%\dotnet\dotnet.exe" build "%ROOTDIR%\BassBoom.sln" -p:Configuration=%releaseconfig% %buildoptions%
-if %errorlevel% == 0 goto :success
-echo There was an error trying to build (%errorlevel%).
-goto :finished
-
-:success
-echo Build successful.
-:finished
