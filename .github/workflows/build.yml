@@ -31,7 +31,7 @@ jobs:
         run: |
           curl -L --output 7z2409.tar.xz https://www.7-zip.org/a/7z2409-mac.tar.xz
           tar xvf 7z2409.tar.xz
-          mkdir /usr/local/bin
+          mkdir -p /usr/local/bin
           mv 7zz /usr/local/bin/7z
           chmod +x /usr/local/bin/7z
       - name: Solution Compilation (Windows)
