@@ -26,6 +26,14 @@ jobs:
       - name: Setup Mono (Unix)
         if: matrix.runs-on == 'ubuntu-latest'
         run: sudo apt install mono-complete
+      - name: Setup real 7zip (macOS)
+        if: matrix.runs-on == 'macos-latest'
+        run: |
+          curl -L --output 7z2409.tar.xz https://www.7-zip.org/a/7z2409-mac.tar.xz
+          tar xvf 7z2409.tar.xz
+          mkdir /usr/local/bin
+          mv 7zz /usr/local/bin/7z
+          chmod +x /usr/local/bin/7z
       - name: Solution Compilation (Windows)
         if: matrix.runs-on == 'windows-latest'
         run: ./tools/build.cmd Debug -p:ContinuousIntegrationBuild=true
