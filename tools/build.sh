@@ -8,10 +8,6 @@ prebuild() { return 0; }
 build() { return 0; }
 postbuild() { return 0; }
 
-# Sourcing the vendor script
-export VENDOR_ERRORCODE=0
-source $ROOTDIR/vnd/vendor.sh
-
 # Convenience functions
 checkerror() {
     if [ $1 != 0 ]
@@ -21,6 +17,12 @@ checkerror() {
     fi
 }
 
+# Sourcing the vendor script
+export VENDOR_ERRORCODE=0
+source $ROOTDIR/vnd/vendor.sh
+checkerror $VENDOR_ERRORCODE "Failed to source the vendor script"
+
+# Vendor error function
 checkvendorerror() {
     if [ $VENDOR_ERRORCODE == 0 ]
     then
