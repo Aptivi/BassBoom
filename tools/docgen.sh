@@ -27,7 +27,7 @@ checkvendorerror() {
 }
 
 # Generate using vendor action
-docgenerate $@
+docgenerate "$@"
 checkerror $VENDOR_ERRORCODE "Failed to run documentation generation function from the vendor"
 
 # Inform success

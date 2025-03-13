@@ -27,7 +27,7 @@ checkvendorerror() {
 }
 
 # Pack using vendor action
-docpack $@
+docpack "$@"
 checkerror $VENDOR_ERRORCODE "Failed to run documentation pack function from the vendor"
 
 # Inform success

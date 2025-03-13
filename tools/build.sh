@@ -29,15 +29,15 @@ checkvendorerror() {
 }
 
 # Run any vendor actions before build
-prebuild $@
+prebuild "$@"
 checkerror $VENDOR_ERRORCODE "Failed to run prebuild function from the vendor"
 
 # Build using vendor action
-build $@
+build "$@"
 checkerror $VENDOR_ERRORCODE "Failed to run build function from the vendor"
 
 # Run any vendor actions after build
-postbuild $@
+postbuild "$@"
 checkerror $VENDOR_ERRORCODE "Failed to run postbuild function from the vendor"
 
 # Inform success

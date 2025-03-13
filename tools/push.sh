@@ -27,7 +27,7 @@ checkvendorerror() {
 }
 
 # Push all artifacts using vendor action
-pushall $@
+pushall "$@"
 checkerror $VENDOR_ERRORCODE "Failed to run artifact pushing function from the vendor"
 
 # Inform success

@@ -16,11 +16,14 @@ all: all-online
 
 all-online: invoke-build
 
-dbg: invoke-build ENVIRONMENT=Debug
+dbg:
+	$(MAKE) invoke-build ENVIRONMENT=Debug
 
-dbg-ci: invoke-build-ci ENVIRONMENT=Debug
+dbg-ci:
+	$(MAKE) invoke-build-ci ENVIRONMENT=Debug
 
-rel-ci: invoke-build-ci ENVIRONMENT=Release
+rel-ci:
+	$(MAKE) invoke-build-ci ENVIRONMENT=Release
 
 doc: invoke-doc-build
 
@@ -31,11 +34,11 @@ clean:
 
 invoke-build:
 	chmod +x ./tools/build.sh
-	./tools/build.sh $(ENVIRONMENT) || (echo Retrying with heap limit 0x$(DOTNET_HEAP_LIMIT)... && DOTNET_GCHeapHardLimit=$(DOTNET_HEAP_LIMIT) ./tools/build.sh $(ENVIRONMENT))
+	./tools/build.sh "$(ENVIRONMENT)" || (echo Retrying with heap limit 0x$(DOTNET_HEAP_LIMIT)... && DOTNET_GCHeapHardLimit=$(DOTNET_HEAP_LIMIT) ./tools/build.sh "$(ENVIRONMENT)")
 
 invoke-build-ci:
 	chmod +x ./tools/build.sh
-	./tools/build.sh $(ENVIRONMENT) -p:ContinuousIntegrationBuild=true || (echo Retrying with heap limit 0x$(DOTNET_HEAP_LIMIT)... && DOTNET_GCHeapHardLimit=$(DOTNET_HEAP_LIMIT) ./tools/build.sh $(ENVIRONMENT) -p:ContinuousIntegrationBuild=true)
+	./tools/build.sh "$(ENVIRONMENT)" -p:ContinuousIntegrationBuild=true || (echo Retrying with heap limit 0x$(DOTNET_HEAP_LIMIT)... && DOTNET_GCHeapHardLimit=$(DOTNET_HEAP_LIMIT) ./tools/build.sh "$(ENVIRONMENT)" -p:ContinuousIntegrationBuild=true)
 
 invoke-doc-build:
 	chmod +x ./tools/docgen.sh

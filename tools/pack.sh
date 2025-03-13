@@ -27,7 +27,7 @@ checkvendorerror() {
 }
 
 # Pack all artifacts using vendor action
-packall $@
+packall "$@"
 checkerror $VENDOR_ERRORCODE "Failed to run artifact packing function from the vendor"
 
 # Inform success
