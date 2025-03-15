@@ -34,4 +34,3 @@ jobs:
         run: make rel-ci
       - name: Testing
         run: dotnet test --no-build --configuration Release
-        
