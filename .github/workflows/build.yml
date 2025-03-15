@@ -26,6 +26,9 @@ jobs:
       - name: Setup Mono (Unix)
         if: matrix.runs-on == 'ubuntu-latest'
         run: sudo apt install mono-complete
+      - name: Setup real 7zip (macOS)
+        if: matrix.runs-on == 'macos-latest'
+        uses: milliewalky/setup-7-zip@v2
       - name: Solution Compilation (Windows)
         if: matrix.runs-on == 'windows-latest'
         run: ./tools/build.cmd Debug -p:ContinuousIntegrationBuild=true

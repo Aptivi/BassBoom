@@ -12,7 +12,7 @@ OUTPUTS  := \
 BINARIES = assets/bassboom
 MANUALS = assets/bassboom.1
 DESKTOPS = assets/bassboom.desktop
-BRANDINGS = assets/OfficialAppIcon-AptiviApp-512.png
+BRANDINGS = assets/OfficialAppIcon-BassBoom-512.png
 
 ARCH := $(shell if [ `uname -m` = "x86_64" ]; then echo "linux-x64"; else echo "linux-arm64"; fi)
 
