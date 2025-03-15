@@ -46,7 +46,7 @@ rel-ci:
 doc: invoke-doc-build
 
 clean:
-	rm -rf $(OUTPUTS)
+	find $(ROOT_DIR) -type d \( $(OUTPUTS) \) -print -exec rm -rf {} +
 
 all-offline:
 	$(MAKE) invoke-build-offline

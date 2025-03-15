@@ -14,8 +14,8 @@ checkerror() {
 
 # Restore packages
 echo "- Restoring packages..."
-echo "  - HOME=$ROOTDIR/nuget dotnet restore $ROOTDIR/AptiviApp.sln"
-HOME=$ROOTDIR/nuget dotnet restore $ROOTDIR/AptiviApp.sln
+echo "  - HOME=$ROOTDIR/nuget dotnet restore $ROOTDIR/BassBoom.sln"
+HOME=$ROOTDIR/nuget dotnet restore $ROOTDIR/BassBoom.sln
 checkerror $? "  - Failed to restore NuGet packages"
 
 # Copy dependencies to deps
