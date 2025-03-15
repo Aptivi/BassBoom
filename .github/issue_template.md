@@ -1,12 +1,3 @@
----
-name: Report an issue
-about: Thank you for reporting a bug to us.
-title: "[BUG] [featureName] - [issue]"
-labels: ''
-assignees: ''
-
----
-
 ### Description
 <!-- Describe how this bug happened, and general information about it. Note that you need to be as descriptive as possible. -->
 

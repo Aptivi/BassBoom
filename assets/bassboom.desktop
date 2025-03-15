@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=BassBoom (/usr/lib/bassboom)
+Comment=Cross-platform music player written in C#
+Exec=/usr/bin/bassboom
+Icon=/usr/lib/bassboom/OfficialAppIcon-BassBoom-512.png
+Terminal=true
+Type=Application
+Categories=Audio;AudioVideo;Music;ConsoleOnly;

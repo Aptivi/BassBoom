@@ -2,9 +2,9 @@ name: Build Project (Release)
 
 on:
   push:
-    branches: [ "main", "x/exp/libmpv" ]
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x", "x/exp/libmpv" ]
   pull_request:
-    branches: [ "main", "x/exp/libmpv" ]
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x", "x/exp/libmpv" ]
     
 jobs:
   build:
@@ -26,9 +26,6 @@ jobs:
       - name: Setup Mono (Unix)
         if: matrix.runs-on == 'ubuntu-latest'
         run: sudo apt install mono-complete
-      - name: Setup real 7zip (macOS)
-        if: matrix.runs-on == 'macos-latest'
-        uses: milliewalky/setup-7-zip@v2
       - name: Solution Compilation (Windows)
         if: matrix.runs-on == 'windows-latest'
         run: ./tools/build.cmd Release -p:ContinuousIntegrationBuild=true
@@ -37,4 +34,3 @@ jobs:
         run: make rel-ci
       - name: Testing
         run: dotnet test --no-build --configuration Release
-        

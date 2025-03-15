@@ -2,9 +2,9 @@ name: "CodeQL Analysis"
 
 on:
   push:
-    branches: [ "main", "x/exp/libmpv" ]
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x", "x/exp/libmpv" ]
   pull_request:
-    branches: [ "main", "x/exp/libmpv" ]
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x", "x/exp/libmpv" ]
   schedule:
     - cron: '06 12 * * *'
 

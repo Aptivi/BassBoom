@@ -1,0 +1,39 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui"
+     xmlns:netfx="http://wixtoolset.org/schemas/v4/wxs/netfx">
+    <Package Name="BassBoom 1.0.x" Manufacturer="Aptivi" Version="1.0.0.0" UpgradeCode="b44c5027-1ced-41bb-b18f-a2f0af758fc2" Scope="perMachine">
+        <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+        <Feature Id="Main">
+            <ComponentGroupRef Id="FullComponent" />
+            <ComponentRef Id="ApplicationProgramsFolder" />
+            <ComponentRef Id="DesktopIcon" />
+        </Feature>
+
+        <Icon Id="icon.ico" SourceFile="..\..\..\assets\OfficialAppIcon-BassBoom.ico"/>
+        <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+
+        <ui:WixUI
+            Id="WixUI_InstallDir"
+            InstallDirectory="INSTALLFOLDER"
+            />
+
+        <netfx:DotNetCompatibilityCheck
+            Property="DOTNETRUNTIMECHECK"
+            RollForward="major"
+            RuntimeType="desktop"
+            Platform="x64"
+            Version="8.0.0"
+            />
+
+        <netfx:DotNetCompatibilityCheck
+            Property="DOTNETRUNTIMECHECK"
+            RollForward="major"
+            RuntimeType="desktop"
+            Platform="arm64"
+            Version="8.0.0"
+            />
+
+        <WixVariable Id="WixUILicenseRtf" Value="..\..\..\LICENSE.RTF"/>
+    </Package>
+</Wix>
