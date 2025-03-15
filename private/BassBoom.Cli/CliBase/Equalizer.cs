@@ -32,6 +32,8 @@ using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Base.Extensions;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
+using Terminaux.Writer.CyclicWriters;
+using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -125,38 +127,45 @@ namespace BassBoom.Cli.CliBase
             ColorTools.LoadBack();
 
             // First, print the keystrokes
-            string keystrokes =
-                "[<-|->] Change" +
-                " - [UP|DOWN] Select Band" +
-                " - [R] Reset" +
-                " - [Q] Exit";
-            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 2, keystrokes));
+            var keystrokes = new AlignedText()
+            {
+                Text =
+                    "[<-|->] Change" +
+                    " - [UP|DOWN] Select Band" +
+                    " - [R] Reset" +
+                    " - [Q] Exit",
+                Top = ConsoleWrapper.WindowHeight - 2,
+                Settings = new()
+                {
+                    Alignment = TextAlignment.Middle,
+                }
+            };
+            drawn.Append(keystrokes.Render());
 
-            // Print the separator and the music file info
-            string separator = new('═', ConsoleWrapper.WindowWidth);
-            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
+            // Print the separator
+            var separator = new AlignedText()
+            {
+                Text = new('═', ConsoleWrapper.WindowWidth),
+                Top = ConsoleWrapper.WindowHeight - 4,
+                Settings = new()
+                {
+                    Alignment = TextAlignment.Middle,
+                }
+            };
+            drawn.Append(separator.Render());
 
             // Write powered by...
             drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
 
             // Write current song
+            string name = "Not playing. Music player is idle.";
             if (Common.cachedInfos.Count > 0)
-            {
-                if (Common.isRadioMode)
-                    drawn.Append(RadioControls.RenderStationName());
-                else
-                    drawn.Append(PlayerControls.RenderSongName(Common.CurrentCachedInfo?.MusicPath ?? ""));
-            }
-            else
-                drawn.Append(
-                    TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, 1) +
-                    CenteredTextColor.RenderCentered(1, "Not playing. Music player is idle.", ConsoleColors.White)
-                );
+                name = Common.isRadioMode ? RadioControls.RenderStationName() : PlayerControls.RenderSongName(Common.CurrentCachedInfo?.MusicPath ?? "");
 
             // Now, print the list of bands and their values.
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
-            int endPos = ConsoleWrapper.WindowHeight - 6;
+            int endPos = ConsoleWrapper.WindowHeight - 1;
             int bandsPerPage = endPos - startPos;
             for (int i = 0; i < 32; i++)
             {
@@ -165,16 +174,40 @@ namespace BassBoom.Cli.CliBase
                 string eqType =
                     i == 0 ? "Bass" :
                     i == 1 ? "Upper Mid" :
-                    i > 1 ? "Treble" :
+                    i == 2 ? "Treble" :
+                    i > 2 ? "Device-specific band" :
                     "Unknown band type";
 
                 // Now, render it
-                string bandData = $"[{val:0.00}] Equalizer Band #{i + 1} - {eqType}";
+                string bandData = $"[{val:0.00}] Band #{i + 1} - {eqType}";
                 choices.Add(new($"{i + 1}", bandData));
             }
+
+            // Print the list of bands and their values.
+            var bandBoxFrame = new BoxFrame()
+            {
+                Text = name,
+                Left = 2,
+                Top = 1,
+                InteriorWidth = ConsoleWrapper.WindowWidth - 6,
+                InteriorHeight = bandsPerPage
+            };
+            var bandSelections = new Selection([.. choices])
+            {
+                Left = 3,
+                Top = 2,
+                CurrentSelection = Common.currentPos - 1,
+                Height = bandsPerPage,
+                Width = ConsoleWrapper.WindowWidth - 6,
+                Settings = new()
+                {
+                    SelectedOptionColor = ConsoleColors.Green,
+                    OptionColor = ConsoleColors.Silver,
+                }
+            };
             drawn.Append(
-                BoxFrameColor.RenderBoxFrame(2, 3, ConsoleWrapper.WindowWidth - 6, bandsPerPage) +
-                SelectionInputTools.RenderSelections([.. choices], 3, 4, currentBandIdx, bandsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                bandBoxFrame.Render() +
+                bandSelections.Render()
             );
             return drawn.ToString();
         }

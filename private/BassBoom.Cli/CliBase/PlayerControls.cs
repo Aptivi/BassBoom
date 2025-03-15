@@ -292,9 +292,7 @@ namespace BassBoom.Cli.CliBase
             var (musicName, musicArtist, _) = GetMusicNameArtistGenre(musicPath);
 
             // Print the music name
-            return
-                TextWriterWhereColor.RenderWhere(ConsoleClearing.GetClearLineToRightSequence(), 0, 1) +
-                CenteredTextColor.RenderCentered(1, "Now playing: {0} - {1}", ConsoleColors.White, ConsoleColors.Black, 0, 0, musicArtist, musicName);
+            return $"Now playing: {musicArtist} - {musicName}";
         }
 
         internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(string musicPath)

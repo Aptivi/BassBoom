@@ -35,6 +35,11 @@ using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
+using Terminaux.Writer.CyclicWriters;
+using Terminaux.Writer.CyclicWriters.Renderer;
+using Terminaux.Colors.Transformation;
+using Terminaux.Base.Extensions;
+using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -64,9 +69,21 @@ namespace BassBoom.Cli.CliBase
             {
                 if (Common.CurrentCachedInfo is null)
                     return "";
+
+                // Get the song name
                 var buffer = new StringBuilder();
+                string name = PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath);
+
+                // Get the positions and the amount of songs per page
+                int startPos = 4;
+                int endPos = ConsoleWrapper.WindowHeight - 5;
+                int songsPerPage = endPos - startPos;
+
+                // Get the position
                 position = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDuration() : 0;
                 var posSpan = FileTools.IsOpened ? PlaybackPositioningTools.GetCurrentDurationSpan() : new();
+
+                // Disco effect!
                 var disco = PlaybackTools.Playing && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
                 if (PlaybackTools.Playing)
                 {
@@ -74,16 +91,52 @@ namespace BassBoom.Cli.CliBase
                     if (hue >= 360)
                         hue = 0;
                 }
+
+                // Render the song list box frame and the duration bar
+                var listBoxFrame = new BoxFrame()
+                {
+                    Text = name,
+                    Left = 2,
+                    Top = 1,
+                    InteriorWidth = ConsoleWrapper.WindowWidth - 6,
+                    InteriorHeight = songsPerPage,
+                    FrameColor = disco,
+                    TitleColor = disco,
+                    BackgroundColor = disco,
+                };
+                var durationBar = new SimpleProgress((int)(100 * (position / (double)Common.CurrentCachedInfo.Duration)), 100)
+                {
+                    LeftMargin = 1,
+                    RightMargin = 1,
+                    ShowPercentage = false,
+                    ProgressForegroundColor = TransformationTools.GetDarkBackground(disco),
+                    ProgressActiveForegroundColor = disco,
+                };
+                buffer.Append(
+                    listBoxFrame.Render() +
+                    ContainerTools.RenderRenderable(listBoxFrame, new(2, ConsoleWrapper.WindowHeight - 5))
+                );
+
+                // Render the indicator
                 string indicator =
-                    $"╣ Seek: {PlayerControls.seekRate:0.00} | " +
-                    $"Volume: {Common.volume:0.00} ╠";
+                    $"┤ Seek: {PlayerControls.seekRate:0.00} | " +
+                    $"Volume: {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
+
+                // Render the lyric
                 string lyric = Common.CurrentCachedInfo.LyricInstance is not null ? Common.CurrentCachedInfo.LyricInstance.GetLastLineCurrent() : "";
                 string finalLyric = string.IsNullOrWhiteSpace(lyric) ? "..." : lyric;
+
+                // Render the results
+                var lyricText = new AlignedText()
+                {
+                    Top = ConsoleWrapper.WindowHeight - 3,
+                    ForegroundColor = disco,
+                    Text = Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.Playing ? $"┤ {finalLyric} ├" : ""
+                };
                 buffer.Append(
-                    ProgressBarColor.RenderProgress(100 * (position / (double)Common.CurrentCachedInfo.Duration), 2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, disco, disco) +
-                    TextWriterWhereColor.RenderWhereColor($"╣ {posSpan} / {Common.CurrentCachedInfo.DurationSpan} ╠", 4, ConsoleWrapper.WindowHeight - 8, disco) +
-                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 8, disco) +
-                    CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 6, Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.Playing ? $"╣ {finalLyric} ╠" : "", disco)
+                    TextWriterWhereColor.RenderWhereColor($"┤ {posSpan} / {Common.CurrentCachedInfo.DurationSpan} ├", 4, ConsoleWrapper.WindowHeight - 5, disco) +
+                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 5, disco) +
+                    lyricText.Render()
                 );
                 return buffer.ToString();
             });
@@ -317,16 +370,32 @@ namespace BassBoom.Cli.CliBase
             ConsoleWrapper.CursorVisible = false;
 
             // First, print the keystrokes
-            string keystrokes =
-                "[SPACE] Play/Pause" +
-                " - [ESC] Stop" +
-                " - [Q] Exit" +
-                " - [H] Help";
-            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 2, keystrokes));
+            var keystrokes = new AlignedText()
+            {
+                Text =
+                    "[SPACE] Play/Pause" +
+                    " - [ESC] Stop" +
+                    " - [Q] Exit" +
+                    " - [H] Help",
+                Top = ConsoleWrapper.WindowHeight - 2,
+                Settings = new()
+                {
+                    Alignment = TextAlignment.Middle,
+                }
+            };
+            drawn.Append(keystrokes.Render());
 
-            // Print the separator and the music file info
-            string separator = new('═', ConsoleWrapper.WindowWidth);
-            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
+            // Print the separator
+            var separator = new AlignedText()
+            {
+                Text = new('═', ConsoleWrapper.WindowWidth),
+                Top = ConsoleWrapper.WindowHeight - 4,
+                Settings = new()
+                {
+                    Alignment = TextAlignment.Middle,
+                }
+            };
+            drawn.Append(separator.Render());
 
             // Write powered by...
             drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
@@ -346,17 +415,27 @@ namespace BassBoom.Cli.CliBase
                 else
                 {
                     int height = (ConsoleWrapper.WindowHeight - 6) / 2;
-                    drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a single song to the playlist, or 'S' to insert the whole music library."));
+                    var message = new AlignedText()
+                    {
+                        Top = height,
+                        Text = "Press 'A' to insert a single song to the playlist, or 'S' to insert the whole music library.",
+                        Settings = new()
+                        {
+                            Alignment = TextAlignment.Middle
+                        }
+                    };
+                    drawn.Append(message.Render());
                     return drawn.ToString();
                 }
             }
 
             // Populate music file info, as necessary
+            string name = "";
             if (Common.CurrentCachedInfo is not null)
             {
                 if (Common.populate)
                     PlayerControls.PopulateMusicFileInfo(Common.CurrentCachedInfo.MusicPath);
-                drawn.Append(PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath));
+                name = PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath);
             }
 
             // Now, print the list of songs.
@@ -373,9 +452,32 @@ namespace BassBoom.Cli.CliBase
                 string songPreview = $"[{duration}] {musicArtist} - {musicName}";
                 choices.Add(new($"{i + 1}", songPreview));
             }
+
+            // Render the selections inside the box
+            var playlistBoxFrame = new BoxFrame()
+            {
+                Text = name,
+                Left = 2,
+                Top = 1,
+                InteriorWidth = ConsoleWrapper.WindowWidth - 6,
+                InteriorHeight = songsPerPage,
+            };
+            var playlistSelections = new Selection([.. choices])
+            {
+                Left = 3,
+                Top = 2,
+                CurrentSelection = Common.currentPos - 1,
+                Height = songsPerPage,
+                Width = ConsoleWrapper.WindowWidth - 6,
+                Settings = new()
+                {
+                    SelectedOptionColor = ConsoleColors.Green,
+                    OptionColor = ConsoleColors.Silver,
+                }
+            };
             drawn.Append(
-                BoxFrameColor.RenderBoxFrame(2, 3, ConsoleWrapper.WindowWidth - 6, songsPerPage) +
-                SelectionInputTools.RenderSelections([.. choices], 3, 4, Common.currentPos - 1, songsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                playlistBoxFrame.Render() +
+                playlistSelections.Render()
             );
             return drawn.ToString();
         }

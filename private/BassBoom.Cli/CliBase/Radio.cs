@@ -36,6 +36,9 @@ using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
+using Terminaux.Writer.CyclicWriters;
+using Terminaux.Base.Extensions;
+using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -64,18 +67,41 @@ namespace BassBoom.Cli.CliBase
             {
                 if (Common.CurrentCachedInfo is null)
                     return "";
+
+                // Get the name
+                string name = RadioControls.RenderStationName();
+
+                // Get the positions and the amount of stations per page
+                int startPos = 4;
+                int endPos = ConsoleWrapper.WindowHeight - 1;
+                int stationsPerPage = endPos - startPos;
+
+                // Disco effect!
                 var buffer = new StringBuilder();
-                string indicator = $"╣ Volume: {Common.volume:0.00} ╠";
                 var disco = PlaybackTools.Playing && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
+                string indicator = $"┤ Volume: {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
                 if (PlaybackTools.Playing)
                 {
                     hue++;
                     if (hue >= 360)
                         hue = 0;
                 }
+
+                // Render the station list box frame and the indicator
+                var listBoxFrame = new BoxFrame()
+                {
+                    Text = name,
+                    Left = 2,
+                    Top = 1,
+                    InteriorWidth = ConsoleWrapper.WindowWidth - 6,
+                    InteriorHeight = stationsPerPage,
+                    FrameColor = disco,
+                    TitleColor = disco,
+                    BackgroundColor = disco,
+                };
                 buffer.Append(
-                    BoxFrameColor.RenderBoxFrame(2, ConsoleWrapper.WindowHeight - 8, ConsoleWrapper.WindowWidth - 6, 1, disco) +
-                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - indicator.Length - 4, ConsoleWrapper.WindowHeight - 8, disco)
+                    listBoxFrame.Render() +
+                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 3, disco)
                 );
                 return buffer.ToString();
             });
@@ -257,16 +283,32 @@ namespace BassBoom.Cli.CliBase
             ConsoleWrapper.CursorVisible = false;
 
             // First, print the keystrokes
-            string keystrokes =
-                "[SPACE] Play/Pause" +
-                " - [ESC] Stop" +
-                " - [Q] Exit" +
-                " - [H] Help";
-            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 2, keystrokes));
+            var keystrokes = new AlignedText()
+            {
+                Text =
+                    "[SPACE] Play/Pause" +
+                    " - [ESC] Stop" +
+                    " - [Q] Exit" +
+                    " - [H] Help",
+                Top = ConsoleWrapper.WindowHeight - 2,
+                Settings = new()
+                {
+                    Alignment = TextAlignment.Middle,
+                }
+            };
+            drawn.Append(keystrokes.Render());
 
-            // Print the separator and the music file info
-            string separator = new('═', ConsoleWrapper.WindowWidth);
-            drawn.Append(CenteredTextColor.RenderCentered(ConsoleWrapper.WindowHeight - 4, separator));
+            // Print the separator
+            var separator = new AlignedText()
+            {
+                Text = new('═', ConsoleWrapper.WindowWidth),
+                Top = ConsoleWrapper.WindowHeight - 4,
+                Settings = new()
+                {
+                    Alignment = TextAlignment.Middle,
+                }
+            };
+            drawn.Append(separator.Render());
 
             // Write powered by...
             drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
@@ -275,16 +317,26 @@ namespace BassBoom.Cli.CliBase
             if (Common.cachedInfos.Count == 0)
             {
                 int height = (ConsoleWrapper.WindowHeight - 6) / 2;
-                drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a radio station to the playlist."));
+                var message = new AlignedText()
+                {
+                    Top = height,
+                    Text = "Press 'A' to insert a radio station to the playlist.",
+                    Settings = new()
+                    {
+                        Alignment = TextAlignment.Middle
+                    }
+                };
+                drawn.Append(message.Render());
                 return drawn.ToString();
             }
 
             // Populate music file info, as necessary
+            string name = "";
             if (Common.CurrentCachedInfo is not null)
             {
                 if (Common.populate)
                     RadioControls.PopulateRadioStationInfo(Common.CurrentCachedInfo.MusicPath);
-                drawn.Append(RadioControls.RenderStationName());
+                name = RadioControls.RenderStationName();
             }
 
             // Now, print the list of stations.
@@ -301,9 +353,32 @@ namespace BassBoom.Cli.CliBase
                 string stationPreview = $"[{duration}] {stationName}";
                 choices.Add(new($"{i + 1}", stationPreview));
             }
+
+            // Print the list of stations.
+            var playlistBoxFrame = new BoxFrame()
+            {
+                Text = name,
+                Left = 2,
+                Top = 1,
+                InteriorWidth = ConsoleWrapper.WindowWidth - 6,
+                InteriorHeight = stationsPerPage
+            };
+            var playlistSelections = new Selection([.. choices])
+            {
+                Left = 3,
+                Top = 2,
+                CurrentSelection = Common.currentPos - 1,
+                Height = stationsPerPage,
+                Width = ConsoleWrapper.WindowWidth - 6,
+                Settings = new()
+                {
+                    SelectedOptionColor = ConsoleColors.Green,
+                    OptionColor = ConsoleColors.Silver,
+                }
+            };
             drawn.Append(
-                BoxFrameColor.RenderBoxFrame(2, 3, ConsoleWrapper.WindowWidth - 6, stationsPerPage) +
-                SelectionInputTools.RenderSelections([.. choices], 3, 4, Common.currentPos - 1, stationsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                playlistBoxFrame.Render() +
+                playlistSelections.Render()
             );
             return drawn.ToString();
         }
