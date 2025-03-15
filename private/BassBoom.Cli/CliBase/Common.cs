@@ -33,6 +33,7 @@ using System.Text;
 using Terminaux.Base.Buffered;
 using Terminaux.Inputs.Styles;
 using Terminaux.Inputs.Styles.Infobox;
+using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 using Terminaux.Writer.MiscWriters;
 
 namespace BassBoom.Cli.CliBase
@@ -245,14 +246,14 @@ namespace BassBoom.Cli.CliBase
         internal static void ShowHelp()
         {
             InfoBoxModalColor.WriteInfoBoxModal("Available keystrokes",
-                KeybindingsWriter.RenderKeybindingHelpText(Player.allBindings)
+                KeybindingTools.RenderKeybindingHelpText(Player.allBindings)
             );
         }
 
         internal static void ShowHelpRadio()
         {
             InfoBoxModalColor.WriteInfoBoxModal("Available keystrokes",
-                KeybindingsWriter.RenderKeybindingHelpText(Radio.allBindings)
+                KeybindingTools.RenderKeybindingHelpText(Radio.allBindings)
             );
         }
 

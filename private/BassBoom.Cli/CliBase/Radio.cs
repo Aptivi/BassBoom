@@ -35,9 +35,10 @@ using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
-using Terminaux.Writer.MiscWriters.Tools;
+using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 using Terminaux.Writer.MiscWriters;
 using Terminaux.Base.Extensions;
+using Terminaux.Writer.CyclicWriters;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -90,12 +91,20 @@ namespace BassBoom.Cli.CliBase
             {
                 if (Common.CurrentCachedInfo is null)
                     return "";
+
+                // Get the name
                 string name = RadioControls.RenderStationName();
+
+                // Get the positions and the amount of stations per page
                 int startPos = 4;
                 int endPos = ConsoleWrapper.WindowHeight - 1;
                 int stationsPerPage = endPos - startPos;
+
+                // Get the boost indicator
                 var buffer = new StringBuilder();
                 string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
+
+                // Disco effect!
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
                 string indicator = $"┤ {boostIndicator}Volume: {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
                 if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
@@ -104,8 +113,21 @@ namespace BassBoom.Cli.CliBase
                     if (hue >= 360)
                         hue = 0;
                 }
+
+                // Render the station list box frame and the indicator
+                var listBoxFrame = new BoxFrame()
+                {
+                    Text = name,
+                    Left = 2,
+                    Top = 1,
+                    InteriorWidth = ConsoleWrapper.WindowWidth - 6,
+                    InteriorHeight = stationsPerPage,
+                    FrameColor = disco,
+                    TitleColor = disco,
+                    BackgroundColor = disco,
+                };
                 buffer.Append(
-                    BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, stationsPerPage, disco, ColorTools.CurrentBackgroundColor, disco) +
+                    listBoxFrame.Render() +
                     TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 3, disco)
                 );
                 return buffer.ToString();
@@ -305,13 +327,29 @@ namespace BassBoom.Cli.CliBase
             ConsoleWrapper.CursorVisible = false;
 
             // First, print the keystrokes
-            drawn.Append(KeybindingsWriter.RenderKeybindings(Player.showBindings, 0, ConsoleWrapper.WindowHeight - 1));
+            var keybindings = new Keybindings()
+            {
+                KeybindingList = Player.showBindings,
+                Left = 0,
+                Top = ConsoleWrapper.WindowHeight - 1,
+                Width = ConsoleWrapper.WindowWidth - 1,
+            };
+            drawn.Append(keybindings.Render());
 
             // In case we have no stations in the playlist...
             if (Common.cachedInfos.Count == 0)
             {
                 int height = (ConsoleWrapper.WindowHeight - 2) / 2;
-                drawn.Append(CenteredTextColor.RenderCentered(height, "Press 'A' to insert a radio station to the playlist."));
+                var message = new AlignedText()
+                {
+                    Top = height,
+                    Text = "Press 'A' to insert a radio station to the playlist.",
+                    Settings = new()
+                    {
+                        Alignment = TextAlignment.Middle
+                    }
+                };
+                drawn.Append(message.Render());
                 return drawn.ToString();
             }
 
@@ -337,9 +375,32 @@ namespace BassBoom.Cli.CliBase
                 string stationPreview = $"{stationName}";
                 choices.Add(new($"{i + 1}", stationPreview));
             }
+
+            // Print the list of stations.
+            var playlistBoxFrame = new BoxFrame()
+            {
+                Text = name,
+                Left = 2,
+                Top = 1,
+                InteriorWidth = ConsoleWrapper.WindowWidth - 6,
+                InteriorHeight = stationsPerPage
+            };
+            var playlistSelections = new Selection([.. choices])
+            {
+                Left = 3,
+                Top = 2,
+                CurrentSelection = Common.currentPos - 1,
+                Height = stationsPerPage,
+                Width = ConsoleWrapper.WindowWidth - 6,
+                Settings = new()
+                {
+                    SelectedOptionColor = ConsoleColors.Green,
+                    OptionColor = ConsoleColors.Silver,
+                }
+            };
             drawn.Append(
-                BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, stationsPerPage) +
-                SelectionInputTools.RenderSelections([.. choices], 3, 2, Common.currentPos - 1, stationsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                playlistBoxFrame.Render() +
+                playlistSelections.Render()
             );
             return drawn.ToString();
         }

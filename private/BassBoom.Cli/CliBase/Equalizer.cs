@@ -29,8 +29,9 @@ using System.Collections.Generic;
 using Terminaux.Inputs.Styles.Selection;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
-using Terminaux.Writer.MiscWriters.Tools;
+using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 using Terminaux.Writer.MiscWriters;
+using Terminaux.Writer.CyclicWriters;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -133,7 +134,14 @@ namespace BassBoom.Cli.CliBase
             ConsoleWrapper.CursorVisible = false;
 
             // First, print the keystrokes
-            drawn.Append(KeybindingsWriter.RenderKeybindings(showBindings, 0, ConsoleWrapper.WindowHeight - 1));
+            var keybindings = new Keybindings()
+            {
+                KeybindingList = Player.showBindings,
+                Left = 0,
+                Top = ConsoleWrapper.WindowHeight - 1,
+                Width = ConsoleWrapper.WindowWidth - 1,
+            };
+            drawn.Append(keybindings.Render());
 
             // Write current song
             string name = "Not playing. Music player is idle.";
@@ -160,9 +168,32 @@ namespace BassBoom.Cli.CliBase
                 string bandData = $"[{val:0.00}] Band #{i + 1} - {eqType}";
                 choices.Add(new($"{i + 1}", bandData));
             }
+
+            // Print the list of bands and their values.
+            var bandBoxFrame = new BoxFrame()
+            {
+                Text = name,
+                Left = 2,
+                Top = 1,
+                InteriorWidth = ConsoleWrapper.WindowWidth - 6,
+                InteriorHeight = bandsPerPage
+            };
+            var bandSelections = new Selection([.. choices])
+            {
+                Left = 3,
+                Top = 2,
+                CurrentSelection = Common.currentPos - 1,
+                Height = bandsPerPage,
+                Width = ConsoleWrapper.WindowWidth - 6,
+                Settings = new()
+                {
+                    SelectedOptionColor = ConsoleColors.Green,
+                    OptionColor = ConsoleColors.Silver,
+                }
+            };
             drawn.Append(
-                BoxFrameColor.RenderBoxFrame(name, 2, 1, ConsoleWrapper.WindowWidth - 6, bandsPerPage) +
-                SelectionInputTools.RenderSelections([.. choices], 3, 2, currentBandIdx, bandsPerPage, ConsoleWrapper.WindowWidth - 6, selectedForegroundColor: new Color(ConsoleColors.Green), foregroundColor: new Color(ConsoleColors.Silver))
+                bandBoxFrame.Render() +
+                bandSelections.Render()
             );
             return drawn.ToString();
         }
