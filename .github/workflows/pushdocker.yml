@@ -26,7 +26,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@master
         with:
-          images: eofla/application
+          images: eofla/bassboom
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@master
@@ -39,6 +39,6 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: eofla/application
+          subject-name: eofla/bassboom
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
