@@ -18,6 +18,13 @@ echo "  - HOME=$ROOTDIR/nuget dotnet restore $ROOTDIR/BassBoom.sln"
 HOME=$ROOTDIR/nuget dotnet restore $ROOTDIR/BassBoom.sln
 checkerror $? "  - Failed to restore NuGet packages"
 
+# Download libmpv for Windows
+echo "- Downloading libmpv for Windows..."
+echo "  - curl -L --output $ROOTDIR/vnd/mpv-dev-x86_64-20250225-git-5459b0f.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-02-25-5459b0f/mpv-dev-x86_64-20250225-git-5459b0f.7z"
+curl -L --output $ROOTDIR/vnd/mpv-dev-x86_64-20250225-git-5459b0f.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-02-25-5459b0f/mpv-dev-x86_64-20250225-git-5459b0f.7z
+echo "  - curl -L --output $ROOTDIR/vnd/mpv-dev-aarch64-20250225-git-5459b0f.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-02-25-5459b0f/mpv-dev-aarch64-20250225-git-5459b0f.7z"
+curl -L --output $ROOTDIR/vnd/mpv-dev-aarch64-20250225-git-5459b0f.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-02-25-5459b0f/mpv-dev-aarch64-20250225-git-5459b0f.7z
+
 # Copy dependencies to deps
 echo "- Copying dependencies to deps..."
 echo "  - mkdir $ROOTDIR/deps"
