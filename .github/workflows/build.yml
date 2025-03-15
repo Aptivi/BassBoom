@@ -34,4 +34,3 @@ jobs:
         run: make dbg-ci
       - name: Testing
         run: dotnet test --no-build --configuration Debug
-        

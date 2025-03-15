@@ -1,0 +1,17 @@
+Source: bassboom-1
+Section: misc
+Priority: optional
+Maintainer: Aptivi CEO <ceo@aptivi.anonaddy.com>
+Build-Depends: debhelper-compat (= 12), dotnet-sdk-8.0 (>= 8.0.100), tzdata (>= 2021a)
+Standards-Version: 4.4.0
+Homepage: https://aptivi.gitbook.io/bassboom-manual
+Vcs-Browser: https://github.com/Aptivi/BassBoom
+Vcs-Git: https://github.com/Aptivi/BassBoom.git
+
+Package: bassboom-1
+Architecture: amd64 arm64
+Depends: ${shlibs:Depends}, ${misc:Depends}, dotnet-runtime-8.0 (>= 8.0), tzdata (>= 2021a)
+Provides: bassboom
+Description: Cross-platform music player written in C#
+ BassBoom is an application that plays music and online radio stations using
+ the libmpg123 library bundled with this application.
