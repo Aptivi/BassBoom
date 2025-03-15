@@ -3,7 +3,7 @@
         <Version>0.2.6</Version>
         <Authors>Aptivi</Authors>
         <Company>Aptivi</Company>
-        <Copyright>Copyright (c) 2021-2024 Aptivi</Copyright>
+        <Copyright>Copyright (c) 2023-2025 Aptivi</Copyright>
         <LangVersion>latest</LangVersion>
         <DebugType>portable</DebugType>
         <SignAssembly>True</SignAssembly>

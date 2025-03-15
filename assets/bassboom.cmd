@@ -1,6 +1,6 @@
 @echo off
 
-REM    BassBoom  Copyright (C) 2022-2024  Aptivi
+REM    BassBoom  Copyright (C) 2023-2025  Aptivi
 REM
 REM    This file is part of BassBoom
 REM
