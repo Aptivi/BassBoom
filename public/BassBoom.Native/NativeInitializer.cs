@@ -78,7 +78,11 @@ namespace BassBoom.Native
 
             try
             {
-                // Start the libraries up
+                // Set the LC_NUMERIC environment variable to C to avoid issues in Linux systems
+                if (!PlatformHelper.IsOnWindows())
+                    NativeInit.setenv("LC_NUMERIC", "C", 1);
+
+                // Start the library up
                 var architecture = PlatformHelper.GetArchitecture();
                 if (architecture == Architecture.X86 || architecture == Architecture.Arm)
                     throw new BasoliaNativeLibraryException("32-bit platforms are no longer supported.");
@@ -88,7 +92,7 @@ namespace BassBoom.Native
             catch (Exception ex)
             {
                 libmpvLibPath = oldLibPath;
-                throw new BasoliaNativeLibraryException($"Failed to load libraries. {libmpvLibPath}. {ex.Message}");
+                throw new BasoliaNativeLibraryException($"Failed to load library. {libmpvLibPath}. {ex.Message}");
             }
         }
 
