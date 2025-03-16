@@ -17,33 +17,44 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using System;
-
-namespace BassBoom.Native.Interop.Init
+namespace BassBoom.Native.Interop.Enumerations
 {
     /// <summary>
-    /// Decoder group from mpg123
+    /// MPV log level
     /// </summary>
-    internal static unsafe class NativeDecoder
+    public enum MpvLogLevel
     {
         /// <summary>
-        /// MPG123_EXPORT const char **mpg123_decoders(void);
+        /// No logging
         /// </summary>
-        internal delegate IntPtr mpg123_decoders();
-
+        MPV_LOG_LEVEL_NONE = 0,
         /// <summary>
-        /// MPG123_EXPORT const char **mpg123_supported_decoders(void);
+        /// Fatal errors
         /// </summary>
-        internal delegate IntPtr mpg123_supported_decoders();
-
+        MPV_LOG_LEVEL_FATAL = 10,
         /// <summary>
-        /// MPG123_EXPORT int mpg123_decoder(mpv_handle *mh, const char* decoder_name);
+        /// Continuable errors
         /// </summary>
-        internal delegate int mpg123_decoder(mpv_handle* mh, string decoder_name);
-
+        MPV_LOG_LEVEL_ERROR = 20,
         /// <summary>
-        /// MPG123_EXPORT const char* mpg123_current_decoder(mpv_handle *mh);
+        /// Warning messages
         /// </summary>
-        internal delegate IntPtr mpg123_current_decoder(mpv_handle* mh);
+        MPV_LOG_LEVEL_WARN = 30,
+        /// <summary>
+        /// Informational messages
+        /// </summary>
+        MPV_LOG_LEVEL_INFO = 40,
+        /// <summary>
+        /// Verbose messages
+        /// </summary>
+        MPV_LOG_LEVEL_V = 50,
+        /// <summary>
+        /// Debug messages
+        /// </summary>
+        MPV_LOG_LEVEL_DEBUG = 60,
+        /// <summary>
+        /// Deeper debug messages
+        /// </summary>
+        MPV_LOG_LEVEL_TRACE = 70,
     }
 }

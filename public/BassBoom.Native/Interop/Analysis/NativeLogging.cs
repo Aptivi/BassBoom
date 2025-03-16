@@ -17,16 +17,32 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-namespace BassBoom.Native.Interop.Init
+using BassBoom.Native.Interop.Enumerations;
+using BassBoom.Native.Interop.Init;
+using System.Runtime.InteropServices;
+
+namespace BassBoom.Native.Interop.Analysis
 {
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct MpvEventLogMessage
+    {
+        [MarshalAs(UnmanagedType.LPStr)]
+        public string prefix;
+        [MarshalAs(UnmanagedType.LPStr)]
+        public string level;
+        [MarshalAs(UnmanagedType.LPStr)]
+        public string text;
+        public MpvLogLevel log_level;
+    }
+
     /// <summary>
-    /// Error group from libmpv
+    /// Logging group from libmpv
     /// </summary>
-    internal static unsafe class NativeError
+    internal static unsafe class NativeLogging
     {
         /// <summary>
-        /// MPV_EXPORT const char *mpv_error_string(int error);
+        /// MPV_EXPORT int mpv_request_log_messages(mpv_handle *ctx, const char *min_level);
         /// </summary>
-        internal delegate nint mpv_error_string(int error);
+        internal delegate int mpv_request_log_messages(MpvHandle* ctx, string min_level);
     }
 }

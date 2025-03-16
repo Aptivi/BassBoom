@@ -44,7 +44,7 @@ namespace BassBoom.Basolia
         internal bool isOutputOpen = false;
         internal FileType? currentFile;
 
-        internal mpv_handle* _libmpvHandle;
+        internal MpvHandle* _libmpvHandle;
 
         /// <summary>
         /// Makes a new Basolia instance and initializes the library, if necessary.

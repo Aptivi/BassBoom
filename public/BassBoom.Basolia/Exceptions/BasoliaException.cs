@@ -18,6 +18,7 @@
 //
 
 using BassBoom.Native;
+using BassBoom.Native.Interop.Analysis;
 using BassBoom.Native.Interop.Init;
 using System;
 using System.Runtime.InteropServices;

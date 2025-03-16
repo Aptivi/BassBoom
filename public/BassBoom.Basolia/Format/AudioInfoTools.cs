@@ -279,7 +279,7 @@ namespace BassBoom.Basolia.Format
                 var handle = basolia._libmpvHandle;
 
                 // Now, buffer the entire music file and create an empty array based on its size
-                var @delegate = NativeInitializer.GetDelegate<NativeLowIo.mpg123_outblock>(NativeInitializer.libManagerMpv, nameof(NativeLowIo.mpg123_outblock));
+                var @delegate = NativeInitializer.GetDelegate<NativeEvent.mpg123_outblock>(NativeInitializer.libManagerMpv, nameof(NativeEvent.mpg123_outblock));
                 bufferSize = @delegate.Invoke(handle);
                 Debug.WriteLine($"Buffer size is {bufferSize}");
             }

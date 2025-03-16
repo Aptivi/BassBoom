@@ -21,7 +21,7 @@ using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Helpers;
 using BassBoom.Native;
-using BassBoom.Native.Interop.Init;
+using BassBoom.Native.Interop.Analysis;
 using BassBoom.Native.Interop.Play;
 using System;
 using System.Linq;

@@ -17,101 +17,18 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Native.Interop.Analysis;
 using System;
 using System.Runtime.InteropServices;
 
 namespace BassBoom.Native.Interop.Init
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal struct mpv_handle
+    internal struct MpvHandle
     { }
 
-    internal enum mpg123_parms
-    {
-        MPG123_VERBOSE = 0,
-        MPG123_FLAGS,
-        MPG123_ADD_FLAGS,
-        MPG123_FORCE_RATE,
-        MPG123_DOWN_SAMPLE,
-        MPG123_RVA,
-        MPG123_DOWNSPEED,
-        MPG123_UPSPEED,
-        MPG123_START_FRAME,
-        MPG123_DECODE_FRAMES,
-        MPG123_ICY_INTERVAL,
-        MPG123_OUTSCALE,
-        MPG123_TIMEOUT,
-        MPG123_REMOVE_FLAGS,
-        MPG123_RESYNC_LIMIT,
-        MPG123_INDEX_SIZE,
-        MPG123_PREFRAMES,
-        MPG123_FEEDPOOL,
-        MPG123_FEEDBUFFER,
-        MPG123_FREEFORMAT_SIZE
-    }
-
-    internal enum mpg123_param_flags
-    {
-        MPG123_FORCE_MONO = 0x7,
-        MPG123_MONO_LEFT = 0x1,
-        MPG123_MONO_RIGHT = 0x2,
-        MPG123_MONO_MIX = 0x4,
-        MPG123_FORCE_STEREO = 0x8,
-        MPG123_FORCE_8BIT = 0x10,
-        MPG123_QUIET = 0x20,
-        MPG123_GAPLESS = 0x40,
-        MPG123_NO_RESYNC = 0x80,
-        MPG123_SEEKBUFFER = 0x100,
-        MPG123_FUZZY = 0x200,
-        MPG123_FORCE_FLOAT = 0x400,
-        MPG123_PLAIN_ID3TEXT = 0x800,
-        MPG123_IGNORE_STREAMLENGTH = 0x1000,
-        MPG123_SKIP_ID3V2 = 0x2000,
-        MPG123_IGNORE_INFOFRAME = 0x4000,
-        MPG123_AUTO_RESAMPLE = 0x8000,
-        MPG123_PICTURE = 0x10000,
-        MPG123_NO_PEEK_END = 0x20000,
-        MPG123_FORCE_SEEKABLE = 0x40000,
-        MPG123_STORE_RAW_ID3 = 0x80000,
-        MPG123_FORCE_ENDIAN = 0x100000,
-        MPG123_BIG_ENDIAN = 0x200000,
-        MPG123_NO_READAHEAD = 0x400000,
-        MPG123_FLOAT_FALLBACK = 0x800000,
-        MPG123_NO_FRANKENSTEIN = 0x1000000
-    }
-
-    internal enum mpg123_param_rva
-    {
-        MPG123_RVA_OFF = 0,
-        MPG123_RVA_MIX = 1,
-        MPG123_RVA_ALBUM = 2,
-        MPG123_RVA_MAX = MPG123_RVA_ALBUM
-    }
-
-    internal enum mpg123_feature_set
-    {
-        MPG123_FEATURE_ABI_UTF8OPEN = 0,
-        MPG123_FEATURE_OUTPUT_8BIT,
-        MPG123_FEATURE_OUTPUT_16BIT,
-        MPG123_FEATURE_OUTPUT_32BIT,
-        MPG123_FEATURE_INDEX,
-        MPG123_FEATURE_PARSE_ID3V2,
-        MPG123_FEATURE_DECODE_LAYER1,
-        MPG123_FEATURE_DECODE_LAYER2,
-        MPG123_FEATURE_DECODE_LAYER3,
-        MPG123_FEATURE_DECODE_ACCURATE,
-        MPG123_FEATURE_DECODE_DOWNSAMPLE,
-        MPG123_FEATURE_DECODE_NTOM,
-        MPG123_FEATURE_PARSE_ICY,
-        MPG123_FEATURE_TIMEOUT_READ,
-        MPG123_FEATURE_EQUALIZER,
-        MPG123_FEATURE_MOREINFO,
-        MPG123_FEATURE_OUTPUT_FLOAT32,
-        MPG123_FEATURE_OUTPUT_FLOAT64
-    }
-
     /// <summary>
-    /// Init group from mpg123
+    /// Initialization group from libmpv
     /// </summary>
     internal static unsafe class NativeInit
     {
@@ -121,58 +38,99 @@ namespace BassBoom.Native.Interop.Init
         internal delegate ulong mpv_client_api_version();
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_init (void)
-        /// </summary>
-        internal delegate int mpg123_init();
-
-        /// <summary>
         /// MPV_EXPORT mpv_handle *mpv_create(void);
         /// </summary>
-        internal delegate mpv_handle* mpv_create();
+        internal delegate MpvHandle* mpv_create();
 
         /// <summary>
-        /// MPG123_EXPORT void mpg123_delete(mpv_handle* mh)
+        /// MPV_EXPORT int mpv_initialize(mpv_handle *ctx);
         /// </summary>
-        internal delegate void mpg123_delete(mpv_handle* mh);
+        internal delegate int mpv_initialize(MpvHandle* ctx);
 
         /// <summary>
-        /// MPG123_EXPORT void mpg123_free(void* ptr)
+        /// MPV_EXPORT void mpv_destroy(mpv_handle *ctx);
         /// </summary>
-        internal delegate void mpg123_free(IntPtr ptr);
+        internal delegate void mpv_destroy(MpvHandle* ctx);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_param(mpv_handle *mh
-        /// , enum mpg123_parms type, long value, double fvalue);
+        /// MPV_EXPORT void mpv_terminate_destroy(mpv_handle *ctx);
         /// </summary>
-        internal delegate int mpg123_param(mpv_handle* mh, mpg123_parms type, long value, double fvalue);
+        internal delegate void mpv_terminate_destroy(MpvHandle* ctx);
+
+        /// <summary>
+        /// MPV_EXPORT void mpv_free(void *data);
+        /// </summary>
+        internal delegate void mpv_free(IntPtr data);
+
+        /// <summary>
+        /// MPV_EXPORT mpv_handle *mpv_create_client(mpv_handle *ctx, const char *name);
+        /// </summary>
+        internal delegate MpvHandle* mpv_create_client(MpvHandle* ctx, string name);
+
+        /// <summary>
+        /// MPV_EXPORT mpv_handle *mpv_create_weak_client(mpv_handle *ctx, const char *name);
+        /// </summary>
+        internal delegate MpvHandle* mpv_create_weak_client(MpvHandle* ctx, string name);
+
+        /// <summary>
+        /// MPV_EXPORT const char *mpv_client_name(mpv_handle *ctx);
+        /// </summary>
+        internal delegate nint mpv_client_name(MpvHandle* ctx);
 
         /// <summary>                                           
-        /// MPG123_EXPORT int mpg123_param2(mpv_handle *mh    
-        /// , int type, long value, double fvalue);
+        /// MPV_EXPORT int64_t mpv_client_id(mpv_handle *ctx);
         /// </summary>
-        internal delegate int mpg123_param2(mpv_handle* mh, int type, long value, double fvalue);
+        internal delegate long mpv_client_id(MpvHandle* ctx);
+
+        /// <summary>                                           
+        /// MPV_EXPORT int mpv_load_config_file(mpv_handle *ctx, const char *filename);
+        /// </summary>
+        internal delegate int mpv_load_config_file(MpvHandle* ctx, string filename);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_getparam(mpv_handle *mh
-        /// , enum mpg123_parms type, long *value, double *fvalue);
+        /// MPV_EXPORT int64_t mpv_get_time_ns(mpv_handle *ctx);
         /// </summary>
-        internal delegate int mpg123_getparam(mpv_handle* mh, mpg123_parms type, long* value, double* fvalue);
+        internal delegate long mpv_get_time_ns(MpvHandle* ctx);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_getparam2(mpv_handle *mh
-        /// , int type, long *value, double *fvalue);
+        /// MPV_EXPORT int64_t mpv_get_time_us(mpv_handle *ctx);
         /// </summary>
-        internal delegate int mpg123_getparam2(mpv_handle* mh, int type, long* value, double* fvalue);
+        internal delegate long mpv_get_time_us(MpvHandle* ctx);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_feature(const enum mpg123_feature_set key);
+        /// MPV_EXPORT int mpv_command(mpv_handle *ctx, const char **args);
         /// </summary>
-        internal delegate int mpg123_feature(mpg123_feature_set key);
+        internal delegate int mpv_command(MpvHandle* ctx, string args);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_feature2(int key);
+        /// MPV_EXPORT int mpv_command_node(mpv_handle *ctx, mpv_node *args, mpv_node *result);
         /// </summary>
-        internal delegate int mpg123_feature2(int key);
+        internal delegate int mpv_command_node(MpvHandle* ctx, MpvNode args, out nint result);
+
+        /// <summary>
+        /// MPV_EXPORT int mpv_command_async(mpv_handle *ctx, uint64_t reply_userdata, const char **args);
+        /// </summary>
+        internal delegate int mpv_command_async(MpvHandle* ctx, ulong reply_userdata, string args);
+
+        /// <summary>
+        /// MPV_EXPORT int mpv_command_node_async(mpv_handle *ctx, uint64_t reply_userdata, mpv_node *args);
+        /// </summary>
+        internal delegate int mpv_command_node_async(MpvHandle* ctx, ulong reply_userdata, MpvNode args);
+
+        /// <summary>
+        /// MPV_EXPORT int mpv_command_ret(mpv_handle *ctx, const char **args, mpv_node *result);
+        /// </summary>
+        internal delegate int mpv_command_ret(MpvHandle* ctx, string args, out nint result);
+
+        /// <summary>
+        /// MPV_EXPORT int mpv_command_string(mpv_handle *ctx, const char *args);
+        /// </summary>
+        internal delegate int mpv_command_string(MpvHandle* ctx, string args);
+
+        /// <summary>
+        /// MPV_EXPORT void mpv_abort_async_command(mpv_handle *ctx, uint64_t reply_userdata);
+        /// </summary>
+        internal delegate void mpv_abort_async_command(MpvHandle* ctx, ulong reply_userdata);
 
         /// <summary>
         /// int setenv(const char *name, const char *value, int overwrite);

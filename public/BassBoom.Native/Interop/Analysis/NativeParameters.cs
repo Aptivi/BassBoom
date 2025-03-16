@@ -17,83 +17,74 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Native.Interop.Enumerations;
 using BassBoom.Native.Interop.Init;
 
 namespace BassBoom.Native.Interop.Analysis
 {
-    internal unsafe struct mpg123_pars
-    { }
-
     /// <summary>
-    /// Parameters group from mpg123
+    /// Parameters group from libmpv
     /// </summary>
     internal static unsafe class NativeParameters
     {
         /// <summary>
-        /// MPG123_EXPORT mpv_handle *mpg123_parnew( mpg123_pars *mp
-        /// ,   const char* decoder, int *error );
+        /// MPV_EXPORT int mpv_set_option(mpv_handle *ctx, const char *name, mpv_format format, void *data);
         /// </summary>
-        internal delegate mpv_handle* mpg123_parnew(mpg123_pars* mp, string decoder, int* error);
+        internal delegate int mpv_set_option(MpvHandle* ctx, string name, MpvValueFormat format, nint data);
 
         /// <summary>
-        /// MPG123_EXPORT mpg123_pars *mpg123_new_pars(int *error);
+        /// MPV_EXPORT int mpv_set_option_string(mpv_handle *ctx, const char *name, const char *data);
         /// </summary>
-        internal delegate mpg123_pars *mpg123_new_pars(int *error);
+        internal delegate int mpv_set_option_string(MpvHandle* ctx, string name, string data);
 
         /// <summary>
-        /// MPG123_EXPORT void mpg123_delete_pars(mpg123_pars* mp);
+        /// MPV_EXPORT int mpv_set_property(mpv_handle *ctx, const char *name, mpv_format format, void *data);
         /// </summary>
-        internal delegate void mpg123_delete_pars(mpg123_pars* mp);
+        internal delegate int mpv_set_property(MpvHandle* ctx, string name, MpvValueFormat format, nint data);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_fmt_none(mpg123_pars *mp);
+        /// MPV_EXPORT int mpv_set_property_async(mpv_handle *ctx, uint64_t reply_userdata, const char *name, mpv_format format, void *data);
         /// </summary>
-        internal delegate int mpg123_fmt_none(mpg123_pars *mp);
+        internal delegate int mpv_set_property_async(MpvHandle* ctx, ulong reply_userdata, string name, MpvValueFormat format, nint data);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_fmt_all(mpg123_pars *mp);
+        /// MPV_EXPORT int mpv_set_property_string(mpv_handle *ctx, const char *name, const char *data);
         /// </summary>
-        internal delegate int mpg123_fmt_all(mpg123_pars *mp);
+        internal delegate int mpv_set_property_string(MpvHandle* ctx, string name, string data);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_fmt(mpg123_pars *mp
-        /// ,   long rate, int channels, int encodings);
+        /// MPV_EXPORT int mpv_del_property(mpv_handle *ctx, const char *name);
         /// </summary>
-        internal delegate int mpg123_fmt(mpg123_pars* mp, long rate, int channels, int encodings);
+        internal delegate int mpv_del_property(MpvHandle* ctx, string name);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_fmt2(mpg123_pars *mp
-        /// ,   long rate, int channels, int encodings);
+        /// MPV_EXPORT int mpv_get_property(mpv_handle *ctx, const char *name, mpv_format format, void *data);
         /// </summary>
-        internal delegate int mpg123_fmt2(mpg123_pars* mp, long rate, int channels, int encodings);
+        internal delegate int mpv_get_property(MpvHandle* ctx, string name, MpvValueFormat format, out nint data);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_fmt_support(mpg123_pars *mp, long rate, int encoding);
+        /// MPV_EXPORT int mpv_get_property_async(mpv_handle *ctx, uint64_t reply_userdata, const char *name, mpv_format format, void *data);
         /// </summary>
-        internal delegate int mpg123_fmt_support(mpg123_pars *mp, long rate, int encoding);
+        internal delegate int mpv_get_property_async(MpvHandle* ctx, ulong reply_userdata, string name, MpvValueFormat format, out nint data);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_par( mpg123_pars *mp
-        /// ,   enum mpg123_parms type, long value, double fvalue );
+        /// MPV_EXPORT char *mpv_get_property_string(mpv_handle *ctx, const char *name);
         /// </summary>
-        internal delegate int mpg123_par(mpg123_pars* mp, mpg123_parms type, long @value, double fvalue);
+        internal delegate nint mpv_get_property_string(MpvHandle* ctx, string name);
 
         /// <summary>
-        /// mpg123_par( mpg123_pars *mp
-        /// ,   enum mpg123_parms type, long value, double fvalue );
+        /// MPV_EXPORT char *mpv_get_property_osd_string(mpv_handle *ctx, const char *name);
         /// </summary>
-        internal delegate int mpg123_par2(mpg123_pars* mp, int type, long @value, double fvalue);
+        internal delegate nint mpv_get_property_osd_string(MpvHandle* ctx, string name);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_getpar( mpg123_pars *mp
-        /// ,   enum mpg123_parms type, long *value, double *fvalue );
+        /// MPV_EXPORT int mpv_observe_property(mpv_handle *ctx, uint64_t reply_userdata, const char *name, mpv_format format);
         /// </summary>
-        internal delegate int mpg123_getpar(mpg123_pars* mp, mpg123_parms type, long* @value, double* fvalue);
+        internal delegate int mpv_observe_property(MpvHandle* ctx, ulong reply_userdata, string name, MpvValueFormat format);
 
         /// <summary>
-        /// MPG123_EXPORT int mpg123_getpar2( mpg123_pars *mp
-        /// ,   int type, long *value, double *fvalue );
+        /// MPV_EXPORT int mpv_unobserve_property(mpv_handle *mpv, uint64_t registered_reply_userdata);
         /// </summary>
-        internal delegate int mpg123_getpar2(mpg123_pars* mp, int type, long* @value, double* fvalue);
+        internal delegate int mpv_unobserve_property(MpvHandle* mpv, ulong registered_reply_userdata);
     }
 }
