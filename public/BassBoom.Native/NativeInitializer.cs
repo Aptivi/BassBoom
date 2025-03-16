@@ -73,10 +73,6 @@ namespace BassBoom.Native
         /// <param name="libPath">Absolute path to the libmpv library</param>
         internal static void InitializeLibrary(string libPath)
         {
-            // Check to see if we have this path
-            if (!File.Exists(libPath))
-                throw new BasoliaNativeLibraryException($"libmpv library path {libPath} doesn't exist.");
-
             // Set the library path
             string oldLibPath = libmpvLibPath;
             libmpvLibPath = libPath;
