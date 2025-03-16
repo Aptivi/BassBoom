@@ -86,7 +86,7 @@ invoke-doc-build:
 
 invoke-build-offline:
 	chmod +x ./tools/build.sh
-	HOME=`pwd`"/debian/homedir" ./tools/build.sh Release -p:ApplicationFlags=PACKAGEMANAGERBUILD -p:ContinuousIntegrationBuild=true || (echo Retrying with heap limit 0x$(DOTNET_HEAP_LIMIT)... && DOTNET_GCHeapHardLimit=$(DOTNET_HEAP_LIMIT) HOME=`pwd`"/debian/homedir" ./tools/build.sh Release -p:ApplicationFlags=PACKAGEMANAGERBUILD -p:ContinuousIntegrationBuild=true)
+	HOME=`pwd`"/debian/homedir" ./tools/build.sh Release -p:ApplicationFlags=PACKAGEMANAGERBUILD -p:SystemWide=true -p:ContinuousIntegrationBuild=true || (echo Retrying with heap limit 0x$(DOTNET_HEAP_LIMIT)... && DOTNET_GCHeapHardLimit=$(DOTNET_HEAP_LIMIT) HOME=`pwd`"/debian/homedir" ./tools/build.sh Release -p:ApplicationFlags=PACKAGEMANAGERBUILD -p:SystemWide=true -p:ContinuousIntegrationBuild=true)
 
 invoke-init-offline:
 	chmod +x ./vnd/initializeoffline.sh

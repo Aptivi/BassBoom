@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <!-- This is the only way to reliably copy all the runtimes -->
-    <None Include="runtimes\**\*.*" Pack="True" PackagePath="runtimes">
+    <None Include="runtimes\**\*.*" Pack="True" PackagePath="runtimes" Condition="'$(SystemWide)' != 'true'">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     
