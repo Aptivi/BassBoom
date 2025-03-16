@@ -16,7 +16,7 @@ echo There was an error trying to pack binary (%errorlevel%).
 goto :finished
 
 :complete
-move %temp%\%version%-cli.zip %ROOTDIR%\tools\
-move %temp%\%version%-cli-48.zip %ROOTDIR%\tools\
+move %temp%\%version%-cli.zip %ROOTDIR%\vnd\
+move %temp%\%version%-cli-48.zip %ROOTDIR%\vnd\
 
 :finished
