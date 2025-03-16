@@ -18,14 +18,9 @@
 //
 
 using BassBoom.Basolia.Exceptions;
-using BassBoom.Basolia.Helpers;
-using BassBoom.Native;
-using BassBoom.Native.Interop.Init;
-using BassBoom.Native.Interop.Output;
-using System;
+using BassBoom.Native.Interop.Enumerations;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Runtime.InteropServices;
 
 namespace BassBoom.Basolia.Devices
 {
@@ -44,7 +39,7 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             Dictionary<string, string> drivers = [];
 
             // TODO: Unstub this function
@@ -63,7 +58,7 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             Dictionary<string, string> devices = [];
 
             // TODO: Unstub this function
@@ -80,7 +75,7 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // TODO: Unstub this function
             return ("", "");
@@ -96,7 +91,7 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             return (basolia.activeDriver, basolia.activeDevice);
         }
 
@@ -110,10 +105,10 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             var driverList = GetDrivers(basolia);
             if (!driverList.ContainsKey(driver))
-                throw new BasoliaException($"Driver {driver} doesn't exist", mpg123_errors.MPG123_ERR);
+                throw new BasoliaException($"Driver {driver} doesn't exist", MpvError.MPV_ERROR_INVALID_PARAMETER);
             basolia.activeDriver = driver;
         }
 
@@ -128,13 +123,13 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             basolia.activeDevice = "";
             var deviceList = GetDevices(basolia, driver, ref basolia.activeDevice);
             if (string.IsNullOrEmpty(device))
                 return;
             if (!deviceList.ContainsKey(device))
-                throw new BasoliaException($"Device {device} doesn't exist", mpg123_errors.MPG123_ERR);
+                throw new BasoliaException($"Device {device} doesn't exist", MpvError.MPV_ERROR_INVALID_PARAMETER);
             basolia.activeDevice = device;
         }
 
@@ -146,7 +141,7 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             basolia.activeDriver = null;
             basolia.activeDevice = null;
         }

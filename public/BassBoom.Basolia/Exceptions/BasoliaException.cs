@@ -18,7 +18,7 @@
 //
 
 using BassBoom.Native;
-using BassBoom.Native.Interop.Analysis;
+using BassBoom.Native.Interop.Enumerations;
 using BassBoom.Native.Interop.Init;
 using System;
 using System.Runtime.InteropServices;
@@ -31,33 +31,33 @@ namespace BassBoom.Basolia.Exceptions
     public class BasoliaException : Exception
     {
         /// <summary>
-        /// Creates a new instance of Basolia error with the specific MPG123 error.
+        /// Creates a new instance of Basolia error with the specific libmpv error.
         /// </summary>
-        /// <param name="error">An MPG123 error value to use.</param>
-        internal BasoliaException(mpg123_errors error) :
+        /// <param name="error">A libmpv error value to use.</param>
+        internal BasoliaException(MpvError error) :
             base($"General Basolia error\n" +
-                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeInitializer.GetDelegate<NativeError.mpg123_plain_strerror>(NativeInitializer.libManagerMpv, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
+                 $"libmpv returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeInitializer.GetDelegate<NativeError.mpv_error_string>(NativeInitializer.libManagerMpv, nameof(NativeError.mpv_error_string)).Invoke((int)error))}]")
         { }
 
         /// <summary>
-        /// Creates a new instance of Basolia error with the specific MPG123 error.
+        /// Creates a new instance of Basolia error with the specific libmpv error.
         /// </summary>
         /// <param name="message">Custom message to use while creating this exception</param>
-        /// <param name="error">An MPG123 error value to use.</param>
-        internal BasoliaException(string message, mpg123_errors error) :
+        /// <param name="error">A libmpv error value to use.</param>
+        internal BasoliaException(string message, MpvError error) :
             base($"{message}\n" +
-                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeInitializer.GetDelegate<NativeError.mpg123_plain_strerror>(NativeInitializer.libManagerMpv, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
+                 $"libmpv returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeInitializer.GetDelegate<NativeError.mpv_error_string>(NativeInitializer.libManagerMpv, nameof(NativeError.mpv_error_string)).Invoke((int)error))}]")
         { }
 
         /// <summary>
-        /// Creates a new instance of Basolia error with the specific MPG123 error.
+        /// Creates a new instance of Basolia error with the specific libmpv error.
         /// </summary>
         /// <param name="message">Custom message to use while creating this exception</param>
         /// <param name="innerException">Inner exception</param>
-        /// <param name="error">An MPG123 error value to use.</param>
-        internal BasoliaException(string message, Exception innerException, mpg123_errors error) :
+        /// <param name="error">A libmpv error value to use.</param>
+        internal BasoliaException(string message, Exception innerException, MpvError error) :
             base($"{message}\n" +
-                 $"MPG123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeInitializer.GetDelegate<NativeError.mpg123_plain_strerror>(NativeInitializer.libManagerMpv, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]", innerException)
+                 $"libmpv returned the following error: [{error} - {Marshal.PtrToStringAnsi(NativeInitializer.GetDelegate<NativeError.mpv_error_string>(NativeInitializer.libManagerMpv, nameof(NativeError.mpv_error_string)).Invoke((int)error))}]", innerException)
         { }
     }
 }

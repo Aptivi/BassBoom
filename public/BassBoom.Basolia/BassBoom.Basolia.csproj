@@ -8,7 +8,7 @@
     <PackageId>BassBoom.Basolia</PackageId>
     <Title>BassBoom.Basolia</Title>
     <PackageDescription>BassBoom! Managed playback library</PackageDescription>
-    <PackageTags>bassboom;basolia;native;runtime;csharp;library;music;player;mpeg;mp3;mp2;mpg;mpg123</PackageTags>
+    <PackageTags>bassboom;basolia;native;runtime;csharp;library;music;player;mpeg;mp3;mp2;mpg;libmpv</PackageTags>
     <PackageProjectUrl>https://github.com/Aptivi/BassBoom</PackageProjectUrl>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <PackageIcon>OfficialAppIcon-BassBoom-512.png</PackageIcon>

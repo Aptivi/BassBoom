@@ -26,7 +26,6 @@ using BassBoom.Basolia.Playback;
 using BassBoom.Basolia.Playback.Playlists;
 using BassBoom.Basolia.Playback.Playlists.Enumerations;
 using BassBoom.Cli.Tools;
-using SpecProbe.Software.Platform;
 using System;
 using System.IO;
 using System.Linq;

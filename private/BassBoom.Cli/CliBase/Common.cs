@@ -34,7 +34,6 @@ using Terminaux.Base.Buffered;
 using Terminaux.Inputs.Styles;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
-using Terminaux.Writer.MiscWriters;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -164,12 +163,8 @@ namespace BassBoom.Cli.CliBase
                     string name = FormatTools.GetEncodingName(encoding);
                     string desc = FormatTools.GetEncodingDescription(encoding);
                     int size = FormatTools.GetEncodingSize(encoding);
-                    int sampleSize = FormatTools.GetSampleSize(encoding);
-                    int zeroSample = FormatTools.GetZeroSample(encoding, sampleSize, 0);
 
                     encodingsBuilder.AppendLine($"  - {name} [{encoding}, {size} bytes]: {desc}");
-                    encodingsBuilder.AppendLine($"    - PCM sample size: {sampleSize}");
-                    encodingsBuilder.AppendLine($"    - Zero sample (offset 0): {zeroSample}");
                 }
 
                 // Get all rates and add them to a separate builder

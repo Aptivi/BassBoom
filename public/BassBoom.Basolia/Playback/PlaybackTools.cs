@@ -19,15 +19,11 @@
 
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
-using BassBoom.Native.Interop.Init;
-using BassBoom.Native.Interop.Output;
-using BassBoom.Native.Interop.Play;
 using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
-using BassBoom.Native.Interop.Analysis;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -35,6 +31,7 @@ using BassBoom.Basolia.Enumerations;
 using BassBoom.Native;
 using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.Devices;
+using BassBoom.Native.Interop.Enumerations;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -50,7 +47,7 @@ namespace BassBoom.Basolia.Playback
         public static bool IsPlaying(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             return basolia.state == PlaybackState.Playing;
         }
 
@@ -61,7 +58,7 @@ namespace BassBoom.Basolia.Playback
         public static PlaybackState GetState(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             return basolia.state;
         }
 
@@ -72,7 +69,7 @@ namespace BassBoom.Basolia.Playback
         public static string GetRadioIcy(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             return basolia.radioIcy;
         }
 
@@ -83,7 +80,7 @@ namespace BassBoom.Basolia.Playback
         public static string GetRadioNowPlaying(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             string icy = GetRadioIcy(basolia);
             if (icy.Length == 0 || !FileTools.IsRadioStation(basolia))
                 return "";
@@ -101,11 +98,11 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't play a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException("Can't play a file that's not open", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // We're now entering the dangerous zone
             unsafe
@@ -146,12 +143,12 @@ namespace BassBoom.Basolia.Playback
                     basolia.bufferPlaying = false;
 
                     // Check to see if we need more (radio)
-                    if (FileTools.IsRadioStation(basolia) && err == (int)mpg123_errors.MPG123_NEED_MORE)
+                    if (FileTools.IsRadioStation(basolia) && err == (int)MpvError.MPV_ERROR_NOTHING_TO_PLAY)
                     {
-                        err = (int)mpg123_errors.MPG123_OK;
+                        err = (int)MpvError.MPV_ERROR_SUCCESS;
                         FeedRadio(basolia);
                     }
-                } while (err == (int)mpg123_errors.MPG123_OK && IsPlaying(basolia));
+                } while (err == (int)MpvError.MPV_ERROR_SUCCESS && IsPlaying(basolia));
                 if (IsPlaying(basolia) || basolia.state == PlaybackState.Stopping)
                     basolia.state = PlaybackState.Stopped;
             }
@@ -172,11 +169,11 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't pause a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException("Can't pause a file that's not open", MpvError.MPV_ERROR_INVALID_PARAMETER);
             basolia.state = PlaybackState.Paused;
         }
 
@@ -189,11 +186,11 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't stop a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException("Can't stop a file that's not open", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Stop the music and seek to the beginning
             basolia.state = basolia.state == PlaybackState.Playing ? PlaybackState.Stopping : PlaybackState.Stopped;
@@ -213,7 +210,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Check the volume
             double maxVolume = volBoost ? 3 : 1;
@@ -235,7 +232,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             double baseLinearAddr = 0;
             double actualLinearAddr = 0;
@@ -257,16 +254,14 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Try to set the equalizer value
             unsafe
             {
                 var handle = basolia._libmpvHandle;
-                var @delegate = NativeInitializer.GetDelegate<NativeVolume.mpg123_eq>(NativeInitializer.libManagerMpv, nameof(NativeVolume.mpg123_eq));
-                int status = @delegate.Invoke(handle, (mpg123_channels)channels, bandIdx, value);
-                if (status != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException($"Can't set equalizer band {bandIdx + 1}/32 to {value} under {channels}", (mpg123_errors)status);
+
+                // TODO: Unstub this function
             }
         }
 
@@ -283,16 +278,14 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Try to set the equalizer value
             unsafe
             {
                 var handle = basolia._libmpvHandle;
-                var @delegate = NativeInitializer.GetDelegate<NativeVolume.mpg123_eq_bands>(NativeInitializer.libManagerMpv, nameof(NativeVolume.mpg123_eq_bands));
-                int status = @delegate.Invoke(handle, (int)channels, bandIdxStart, bandIdxEnd, value);
-                if (status != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException($"Can't set equalizer bands {bandIdxStart + 1}/32 -> {bandIdxEnd + 1}/32 to {value} under {channels}", (mpg123_errors)status);
+
+                // TODO: Unstub this function
             }
         }
 
@@ -307,15 +300,15 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Try to set the equalizer value
             unsafe
             {
                 var handle = basolia._libmpvHandle;
-                var @delegate = NativeInitializer.GetDelegate<NativeVolume.mpg123_geteq>(NativeInitializer.libManagerMpv, nameof(NativeVolume.mpg123_geteq));
-                double eq = @delegate.Invoke(handle, (mpg123_channels)channels, bandIdx);
-                return eq;
+
+                // TODO: Unstub this function
+                return 1;
             }
         }
 
@@ -328,16 +321,14 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Try to set the equalizer value
             unsafe
             {
                 var handle = basolia._libmpvHandle;
-                var @delegate = NativeInitializer.GetDelegate<NativeVolume.mpg123_reset_eq>(NativeInitializer.libManagerMpv, nameof(NativeVolume.mpg123_reset_eq));
-                int status = @delegate.Invoke(handle);
-                if (status != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't reset equalizer bands to their initial values!", (mpg123_errors)status);
+
+                // TODO: Unstub this function
             }
         }
 
@@ -352,7 +343,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Try to set the equalizer value
             unsafe
@@ -360,10 +351,8 @@ namespace BassBoom.Basolia.Playback
                 long stateInt = 0;
                 double stateDouble = 0;
                 var handle = basolia._libmpvHandle;
-                var @delegate = NativeInitializer.GetDelegate<NativeStatus.mpg123_getstate>(NativeInitializer.libManagerMpv, nameof(NativeStatus.mpg123_getstate));
-                int status = @delegate.Invoke(handle, (mpg123_state)state, ref stateInt, ref stateDouble);
-                if (status != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException($"Can't get native state of {state}!", (mpg123_errors)status);
+
+                // TODO: Unstub this function
                 return (stateInt, stateDouble);
             }
         }
@@ -377,7 +366,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             if (basolia.isOutputOpen)
                 return;
 
@@ -396,7 +385,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Sanity checks
             bool supported = FormatTools.IsFormatSupported(basolia, rate, encoding, out _);
@@ -417,7 +406,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             if (!basolia.isOutputOpen)
                 return;
 
@@ -436,7 +425,7 @@ namespace BassBoom.Basolia.Playback
             if (currentRadio.Stream is null)
                 return;
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             unsafe
             {
@@ -466,7 +455,7 @@ namespace BassBoom.Basolia.Playback
                     basolia.radioIcy = icy;
                 Debug.WriteLine($"{basolia.radioIcy}");
 
-                // Copy the data to MPG123
+                // Copy the data to libmpv
                 CopyBuffer(basolia, buffer);
             }
         }
@@ -481,13 +470,13 @@ namespace BassBoom.Basolia.Playback
             if (currentStream.Stream is null)
                 return;
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Now, get the MP3 frame
             byte[] buffer = new byte[currentStream.Stream.Length];
             await currentStream.Stream.ReadAsync(buffer, 0, (int)currentStream.Stream.Length);
 
-            // Copy the data to MPG123
+            // Copy the data to libmpv
             CopyBuffer(basolia, buffer);
         }
 
@@ -496,18 +485,16 @@ namespace BassBoom.Basolia.Playback
             if (buffer is null)
                 return;
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             unsafe
             {
                 var handle = basolia._libmpvHandle;
 
-                // Copy the data to MPG123
+                // Copy the data to libmpv
                 IntPtr data = Marshal.AllocHGlobal(buffer.Length);
                 Marshal.Copy(buffer, 0, data, buffer.Length);
-                var @delegate = NativeInitializer.GetDelegate<NativeInput.mpg123_feed>(NativeInitializer.libManagerMpv, nameof(NativeInput.mpg123_feed));
-                int feedResult = @delegate.Invoke(handle, data, buffer.Length);
-                if (feedResult != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't feed.", mpg123_errors.MPG123_ERR);
+
+                // TODO: Unstub this function
             }
         }
 
@@ -516,7 +503,7 @@ namespace BassBoom.Basolia.Playback
             if (buffer is null)
                 return 0;
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // TODO: Unstub this function
             return 0;

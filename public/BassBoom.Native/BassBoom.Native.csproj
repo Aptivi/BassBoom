@@ -7,7 +7,7 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageId>BassBoom.Native</PackageId>
     <Title>BassBoom.Native</Title>
-    <PackageDescription>BassBoom! Native libraries suppport for Basolia (MPG123)</PackageDescription>
+    <PackageDescription>BassBoom! Native libraries suppport for Basolia (LibMPV)</PackageDescription>
     <PackageTags>bassboom;basolia;native;runtime;csharp;library</PackageTags>
     <PackageProjectUrl>https://github.com/Aptivi/BassBoom</PackageProjectUrl>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>

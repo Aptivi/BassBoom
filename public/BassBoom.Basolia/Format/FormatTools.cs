@@ -17,18 +17,14 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Native.Interop.Play;
-using BassBoom.Native.Interop.Init;
 using System;
-using BassBoom.Native.Interop.Output;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using BassBoom.Native.Interop.Analysis;
 using SpecProbe.Software.Platform;
 using BassBoom.Native;
 using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.Helpers;
 using System.Linq;
+using BassBoom.Native.Interop.Enumerations;
 
 namespace BassBoom.Basolia.Format
 {
@@ -44,9 +40,9 @@ namespace BassBoom.Basolia.Format
         public static (long rate, int channels, int encoding) GetFormatInfo(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
-            long fileRate;
-            int fileChannel, fileEncoding;
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
+            long fileRate = 0;
+            int fileChannel = 0, fileEncoding = 0;
 
             // We're now entering the dangerous zone
             unsafe
@@ -54,10 +50,8 @@ namespace BassBoom.Basolia.Format
                 var handle = basolia._libmpvHandle;
 
                 // Get the rate, the number of channels, and encoding
-                var @delegate = NativeInitializer.GetDelegate<NativeOutput.mpg123_getformat>(NativeInitializer.libManagerMpv, nameof(NativeOutput.mpg123_getformat));
-                int length = @delegate.Invoke(handle, out fileRate, out fileChannel, out fileEncoding);
-                if (length != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't determine the format of the file", mpg123_errors.MPG123_ERR);
+
+                // TODO: Unstub this function
             }
 
             // We're now entering the safe zone
@@ -70,15 +64,14 @@ namespace BassBoom.Basolia.Format
         public static int[] GetRates()
         {
             InitBasolia.CheckInited();
-            int[] rates;
+            int[] rates = [];
 
             // We're now entering the dangerous zone
             unsafe
             {
                 // Get the rates
-                var @delegate = NativeInitializer.GetDelegate<NativeOutput.mpg123_rates>(NativeInitializer.libManagerMpv, nameof(NativeOutput.mpg123_rates));
-                @delegate.Invoke(out IntPtr ratesPtr, out int count);
-                rates = ArrayVariantLength.GetIntegersKnownLength(ratesPtr, count, PlatformHelper.IsOnWindows() ? sizeof(int) : sizeof(long));
+
+                // TODO: Unstub this function
             }
 
             // We're now entering the safe zone
@@ -97,9 +90,8 @@ namespace BassBoom.Basolia.Format
             unsafe
             {
                 // Get the encodings
-                var @delegate = NativeInitializer.GetDelegate<NativeOutput.mpg123_encodings>(NativeInitializer.libManagerMpv, nameof(NativeOutput.mpg123_encodings));
-                @delegate.Invoke(out IntPtr encodingsPtr, out int count);
-                encodings = ArrayVariantLength.GetIntegersKnownLength(encodingsPtr, count, sizeof(int));
+
+                // TODO: Unstub this function
             }
 
             // We're now entering the safe zone
@@ -119,7 +111,7 @@ namespace BassBoom.Basolia.Format
             // Check the encoding
             int[] encodings = GetEncodings();
             if (!encodings.Contains(encoding))
-                throw new BasoliaException($"Encoding {encoding} not found.", mpg123_errors.MPG123_BAD_TYPES);
+                throw new BasoliaException($"Encoding {encoding} not found.", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // TODO: Unstub this function
             return encodingName;
@@ -138,7 +130,7 @@ namespace BassBoom.Basolia.Format
             // Check the encoding
             int[] encodings = GetEncodings();
             if (!encodings.Contains(encoding))
-                throw new BasoliaException($"Encoding {encoding} not found.", mpg123_errors.MPG123_BAD_TYPES);
+                throw new BasoliaException($"Encoding {encoding} not found.", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // TODO: Unstub this function
             return encodingDescription;
@@ -152,7 +144,7 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
             var formats = new List<FormatInfo>();
 
             // TODO: Unstub this function
@@ -170,7 +162,7 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // We're now entering the dangerous zone
             unsafe
@@ -178,12 +170,12 @@ namespace BassBoom.Basolia.Format
                 var handle = basolia._libmpvHandle;
 
                 // Check for support
-                var @delegate = NativeInitializer.GetDelegate<NativeOutput.mpg123_format_support>(NativeInitializer.libManagerMpv, nameof(NativeOutput.mpg123_format_support));
-                int channelCountInt = @delegate.Invoke(handle, rate, encoding);
-                channelCount = channelCountInt == 0 ? ChannelCount.Unknown : (ChannelCount)channelCountInt;
+
+                // TODO: Unstub this function
             }
 
             // We're now entering the safe zone
+            channelCount = ChannelCount.Unknown;
             return channelCount != ChannelCount.Unknown;
         }
 
@@ -200,8 +192,8 @@ namespace BassBoom.Basolia.Format
             unsafe
             {
                 // Check for support
-                var @delegate = NativeInitializer.GetDelegate<NativeOutput.mpg123_encsize>(NativeInitializer.libManagerMpv, nameof(NativeOutput.mpg123_encsize));
-                size = @delegate.Invoke(encoding);
+
+                // TODO: Unstub this function
             }
 
             // We're now entering the safe zone
@@ -216,7 +208,7 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // We're now entering the dangerous zone
             unsafe
@@ -224,10 +216,8 @@ namespace BassBoom.Basolia.Format
                 var handle = basolia._libmpvHandle;
 
                 // Check for support
-                var @delegate = NativeInitializer.GetDelegate<NativeOutput.mpg123_format_none>(NativeInitializer.libManagerMpv, nameof(NativeOutput.mpg123_format_none));
-                int resetStatus = @delegate.Invoke(handle);
-                if (resetStatus != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException($"Can't reset output encoding", (mpg123_errors)resetStatus);
+
+                // TODO: Unstub this function
             }
         }
 
@@ -239,7 +229,7 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // We're now entering the dangerous zone
             unsafe
@@ -247,10 +237,8 @@ namespace BassBoom.Basolia.Format
                 var handle = basolia._libmpvHandle;
 
                 // Check for support
-                var @delegate = NativeInitializer.GetDelegate<NativeOutput.mpg123_format_all>(NativeInitializer.libManagerMpv, nameof(NativeOutput.mpg123_format_all));
-                int resetStatus = @delegate.Invoke(handle);
-                if (resetStatus != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException($"Can't set output format", (mpg123_errors)resetStatus);
+
+                // TODO: Unstub this function
             }
         }
 
@@ -265,7 +253,7 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // We're now entering the dangerous zone
             unsafe
@@ -273,56 +261,9 @@ namespace BassBoom.Basolia.Format
                 var handle = basolia._libmpvHandle;
 
                 // Check for support
-                var delegate2 = NativeInitializer.GetDelegate<NativeOutput.mpg123_format>(NativeInitializer.libManagerMpv, nameof(NativeOutput.mpg123_format));
-                int formatStatus = delegate2.Invoke(handle, rate, (int)channels, encoding);
-                if (formatStatus != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException($"Can't set output encoding to {rate}, {channels}, {encoding}", (mpg123_errors)formatStatus);
+
+                // TODO: Unstub this function
             }
         }
-
-        #region Library-independent functions
-        /// <summary>
-        /// Gets a PCM sample size for a given encoding (library doesn't need to be initialized)
-        /// </summary>
-        /// <param name="encoding">Encoding</param>
-        /// <returns>Sample size in bytes</returns>
-        public static int GetSampleSize(int encoding)
-        {
-            int sampleSize = 0;
-            var enumEncoding = (mpg123_enc_enum)encoding;
-            if (enumEncoding.HasFlag(mpg123_enc_enum.MPG123_ENC_8))
-                sampleSize = 1;
-            else if (enumEncoding.HasFlag(mpg123_enc_enum.MPG123_ENC_16))
-                sampleSize = 2;
-            else if (enumEncoding.HasFlag(mpg123_enc_enum.MPG123_ENC_24))
-                sampleSize = 3;
-            else if (enumEncoding.HasFlag(mpg123_enc_enum.MPG123_ENC_32) ||
-                enumEncoding == mpg123_enc_enum.MPG123_ENC_FLOAT_32)
-                sampleSize = 4;
-            else if (enumEncoding == mpg123_enc_enum.MPG123_ENC_FLOAT_64)
-                sampleSize = 8;
-            return sampleSize;
-        }
-
-        /// <summary>
-        /// Gets a zero sample representation
-        /// </summary>
-        /// <param name="encoding">Encoding</param>
-        /// <param name="sampleSize">Sample size in bytes. See <see cref="GetSampleSize(int)"/></param>
-        /// <param name="lsbOffset">LSB offset in bytes</param>
-        /// <returns>Zero sample size in bytes</returns>
-        public static int GetZeroSample(int encoding, int sampleSize, int lsbOffset)
-        {
-            var enumEncoding = (mpg123_enc_enum)encoding;
-            if (enumEncoding == mpg123_enc_enum.MPG123_ENC_ULAW_8)
-                return lsbOffset == 0 ? 0xff : 0x00;
-            else if (enumEncoding == mpg123_enc_enum.MPG123_ENC_ALAW_8)
-                return lsbOffset == 0 ? 0xd5 : 0x00;
-            else if ((enumEncoding & (mpg123_enc_enum.MPG123_ENC_SIGNED | mpg123_enc_enum.MPG123_ENC_FLOAT)) > 0 ||
-                sampleSize != (lsbOffset + 1))
-                return 0x00;
-            return 0x80;
-        }
-        #endregion
     }
 }

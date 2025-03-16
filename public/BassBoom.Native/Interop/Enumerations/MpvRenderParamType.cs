@@ -29,7 +29,7 @@ namespace BassBoom.Native.Interop.Enumerations
         /// </summary>
         MPV_RENDER_PARAM_INVALID = 0,
         /// <summary>
-        /// Defines the render API to use (string)
+        /// Defines the render API to use (string ("opengl", "sw"))
         /// </summary>
         MPV_RENDER_PARAM_API_TYPE = 1,
         /// <summary>
@@ -89,6 +89,10 @@ namespace BassBoom.Native.Interop.Enumerations
         /// </summary>
         MPV_RENDER_PARAM_DRM_DRAW_SURFACE_SIZE = 15,
         /// <summary>
+        /// OpenGL DRM draw surface size (mpv_opengl_drm_draw_surface_size*)
+        /// </summary>
+        MPV_RENDER_PARAM_DRM_OSD_SIZE = 15,
+        /// <summary>
         /// OpenGL DRM display (mpv_opengl_drm_params_v2*)
         /// </summary>
         MPV_RENDER_PARAM_DRM_DISPLAY_V2 = 16,
@@ -96,69 +100,17 @@ namespace BassBoom.Native.Interop.Enumerations
         /// Target surface size for rendering using the software renderer (int[2])
         /// </summary>
         MPV_RENDER_PARAM_SW_SIZE = 17,
-        /**
-         * MPV_RENDER_API_TYPE_SW only: rendering target surface pixel format,
-         * mandatory.
-         * Valid for MPV_RENDER_API_TYPE_SW & mpv_render_context_render().
-         * Type: char* (e.g.: char *f = "rgb0"; param.data = f;)
-         *
-         * Valid values are:
-         *  "rgb0", "bgr0", "0bgr", "0rgb"
-         *      4 bytes per pixel RGB, 1 byte (8 bit) per component, component bytes
-         *      with increasing address from left to right (e.g. "rgb0" has r at
-         *      address 0), the "0" component contains uninitialized garbage (often
-         *      the value 0, but not necessarily; the bad naming is inherited from
-         *      FFmpeg)
-         *      Pixel alignment size: 4 bytes
-         *  "rgb24"
-         *      3 bytes per pixel RGB. This is strongly discouraged because it is
-         *      very slow.
-         *      Pixel alignment size: 1 bytes
-         *  other
-         *      The API may accept other pixel formats, using mpv internal format
-         *      names, as long as it's internally marked as RGB, has exactly 1
-         *      plane, and is supported as conversion output. It is not a good idea
-         *      to rely on any of these. Their semantics and handling could change.
-         */
+        /// <summary>
+        /// Target surface pixel format for rendering using the software renderer (string ("rgb0", "bgr0", "0bgr", "0rgb", "rgb24", or any other format))
+        /// </summary>
         MPV_RENDER_PARAM_SW_FORMAT = 18,
-        /**
-         * MPV_RENDER_API_TYPE_SW only: rendering target surface bytes per line,
-         * mandatory.
-         * Valid for MPV_RENDER_API_TYPE_SW & mpv_render_context_render().
-         * Type: size_t*
-         *
-         * This is the number of bytes between a pixel (x, y) and (x, y + 1) on the
-         * target surface. It must be a multiple of the pixel size, and have space
-         * for the surface width as specified by MPV_RENDER_PARAM_SW_SIZE.
-         *
-         * Both stride and pointer value should be a multiple of 64 to facilitate
-         * fast SIMD operation. Lower alignment might trigger slower code paths,
-         * and in the worst case, will copy the entire target frame. If mpv is built
-         * with zimg (and zimg is not disabled), the performance impact might be
-         * less.
-         * In either cases, the pointer and stride must be aligned at least to the
-         * pixel alignment size. Otherwise, crashes and undefined behavior is
-         * possible on platforms which do not support unaligned accesses (either
-         * through normal memory access or aligned SIMD memory access instructions).
-         */
+        /// <summary>
+        /// Target surface bytes per line for rendering using the software renderer (int)
+        /// </summary>
         MPV_RENDER_PARAM_SW_STRIDE = 19,
-        /*
-         * MPV_RENDER_API_TYPE_SW only: rendering target surface pixel data pointer,
-         * mandatory.
-         * Valid for MPV_RENDER_API_TYPE_SW & mpv_render_context_render().
-         * Type: void*
-         *
-         * This points to the first pixel at the left/top corner (0, 0). In
-         * particular, each line y starts at (pointer + stride * y). Upon rendering,
-         * all data between pointer and (pointer + stride * h) is overwritten.
-         * Whether the padding between (w, y) and (0, y + 1) is overwritten is left
-         * unspecified (it should not be, but unfortunately some scaler backends
-         * will do it anyway). It is assumed that even the padding after the last
-         * line (starting at bytepos(w, h) until (pointer + stride * h)) is
-         * writable.
-         *
-         * See MPV_RENDER_PARAM_SW_STRIDE for alignment requirements.
-         */
+        /// <summary>
+        /// Target surface pixel data pointer for rendering using the software renderer (void* passed as <see cref="nint"/> in C#)
+        /// </summary>
         MPV_RENDER_PARAM_SW_POINTER = 20,
     }
 }

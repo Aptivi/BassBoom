@@ -17,34 +17,28 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Native.Interop.Init;
-using System;
-
-namespace BassBoom.Native.Interop.Analysis
+namespace BassBoom.Native.Interop.Enumerations
 {
     /// <summary>
-    /// Decoder group from mpg123
+    /// MPV render frame info flag
     /// </summary>
-    internal static unsafe class NativeDecoder
+    public enum MpvRenderFrameInfoFlag
     {
         /// <summary>
-        /// MPG123_EXPORT const char **mpg123_decoders(void);
+        /// Flag that checks to see if there is a next frame or not.
         /// </summary>
-        internal delegate IntPtr mpg123_decoders();
-
+        MPV_RENDER_FRAME_INFO_PRESENT = 1 << 0,
         /// <summary>
-        /// MPG123_EXPORT const char **mpg123_supported_decoders(void);
+        /// Flag that checks to see if there is a redraw request for the current frame or not.
         /// </summary>
-        internal delegate IntPtr mpg123_supported_decoders();
-
+        MPV_RENDER_FRAME_INFO_REDRAW = 1 << 1,
         /// <summary>
-        /// MPG123_EXPORT int mpg123_decoder(mpv_handle *mh, const char* decoder_name);
+        /// Flag that checks to see if there is a reproduction request for the previous frame or not, and that implies that <see cref="MPV_RENDER_FRAME_INFO_PRESENT"/> is set.
         /// </summary>
-        internal delegate int mpg123_decoder(MpvHandle* mh, string decoder_name);
-
+        MPV_RENDER_FRAME_INFO_REPEAT = 1 << 2,
         /// <summary>
-        /// MPG123_EXPORT const char* mpg123_current_decoder(mpv_handle *mh);
+        /// Flag that checks to see if the player timing code expects that the user thread blocks on vertical sync, and that implies that <see cref="MPV_RENDER_FRAME_INFO_PRESENT"/> is set.
         /// </summary>
-        internal delegate IntPtr mpg123_current_decoder(MpvHandle* mh);
+        MPV_RENDER_FRAME_INFO_BLOCK_VSYNC = 1 << 3,
     }
 }

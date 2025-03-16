@@ -19,7 +19,6 @@
 
 using BassBoom.Native.Exceptions;
 using BassBoom.Native.Interop.Init;
-using BassBoom.Native.Interop.Output;
 using System;
 using System.Diagnostics;
 using System.IO;

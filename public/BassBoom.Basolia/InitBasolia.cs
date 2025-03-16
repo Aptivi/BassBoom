@@ -19,8 +19,7 @@
 
 using BassBoom.Basolia.Exceptions;
 using BassBoom.Native;
-using BassBoom.Native.Interop.Init;
-using BassBoom.Native.Interop.Output;
+using BassBoom.Native.Interop.Enumerations;
 using System;
 using System.Reflection;
 
@@ -47,7 +46,7 @@ namespace BassBoom.Basolia
             get
             {
                 if (!BasoliaInitialized)
-                    throw new BasoliaException("Can't get version until the library is initialized", mpg123_errors.MPG123_NOT_INITIALIZED);
+                    throw new BasoliaException("Can't get version until the library is initialized", MpvError.MPV_ERROR_UNINITIALIZED);
                 return NativeInitializer.NativeLibVersion;
             }
         }
@@ -68,8 +67,8 @@ namespace BassBoom.Basolia
                 NativeInitializer.InitializeLibrary();
             else
             {
-                string mpg = NativeInitializer.GetLibPath(root, "libmpv-2");
-                NativeInitializer.InitializeLibrary(mpg);
+                string mpv = NativeInitializer.GetLibPath(root, "libmpv-2");
+                NativeInitializer.InitializeLibrary(mpv);
             }
             _basoliaInited = true;
         }

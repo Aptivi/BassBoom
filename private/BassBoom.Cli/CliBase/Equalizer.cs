@@ -24,13 +24,10 @@ using Terminaux.Base.Buffered;
 using Terminaux.Colors;
 using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
-using Terminaux.Writer.FancyWriters;
 using Terminaux.Inputs;
 using System.Collections.Generic;
-using Terminaux.Inputs.Styles.Selection;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
-using Terminaux.Writer.MiscWriters;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 using Terminaux.Writer.CyclicWriters;
 

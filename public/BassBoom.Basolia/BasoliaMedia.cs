@@ -17,12 +17,13 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Playback;
 using BassBoom.Native;
 using BassBoom.Native.Exceptions;
+using BassBoom.Native.Interop.Enumerations;
 using BassBoom.Native.Interop.Init;
-using BassBoom.Native.Interop.Output;
 using System;
 using System.Diagnostics;
 
@@ -62,11 +63,16 @@ namespace BassBoom.Basolia
                 var @delegate = NativeInitializer.GetDelegate<NativeInit.mpv_create>(NativeInitializer.libManagerMpv, nameof(NativeInit.mpv_create));
                 var handle = @delegate.Invoke();
                 Debug.WriteLine($"Verifying libmpv version: {NativeInitializer.NativeLibVersion}");
+
+                var initDelegate = NativeInitializer.GetDelegate<NativeInit.mpv_initialize>(NativeInitializer.libManagerMpv, nameof(NativeInit.mpv_initialize));
+                MpvError initResult = (MpvError)initDelegate.Invoke(handle);
+                if (initResult < MpvError.MPV_ERROR_SUCCESS)
+                    throw new BasoliaException("Can't initialize MPV core", initResult);
                 _libmpvHandle = handle;
             }
             catch (Exception ex)
             {
-                throw new BasoliaNativeLibraryException($"libmpv library path {NativeInitializer.libmpvLibPath} doesn't contain a valid libmpv library. mpv_create() was called. {ex.Message}");
+                throw new BasoliaNativeLibraryException($"libmpv library path {NativeInitializer.libmpvLibPath} doesn't contain a valid libmpv library. mpv_create() and mpv_initialize() were called. {ex.Message}");
             }
         }
     }

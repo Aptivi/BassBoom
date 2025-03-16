@@ -19,14 +19,11 @@
 
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
-using BassBoom.Native.Interop.Init;
-using BassBoom.Native.Interop.Play;
-using BassBoom.Native.Interop.Output;
 using System;
-using System.Threading;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Native;
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Native.Interop.Enumerations;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -44,14 +41,14 @@ namespace BassBoom.Basolia.Playback
         /// <returns>Current duration in samples</returns>
         public static int GetCurrentDuration(BasoliaMedia? basolia)
         {
-            int length;
+            int length = 0;
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't play a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException("Can't play a file that's not open", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // We're now entering the dangerous zone
             unsafe
@@ -59,10 +56,7 @@ namespace BassBoom.Basolia.Playback
                 var handle = basolia._libmpvHandle;
 
                 // Get the length
-                var @delegate = NativeInitializer.GetDelegate<NativePositioning.mpg123_tell>(NativeInitializer.libManagerMpv, nameof(NativePositioning.mpg123_tell));
-                length = @delegate.Invoke(handle);
-                if (length == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't determine the current duration of the file", mpg123_errors.MPG123_ERR);
+                // TODO: Unstub this function
             }
 
             // We're now entering the safe zone
@@ -77,7 +71,7 @@ namespace BassBoom.Basolia.Playback
         public static TimeSpan GetCurrentDurationSpan(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // First, get the format information
             var formatInfo = FormatTools.GetFormatInfo(basolia);
@@ -99,11 +93,11 @@ namespace BassBoom.Basolia.Playback
             {
                 InitBasolia.CheckInited();
                 if (basolia is null)
-                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                    throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened(basolia))
-                    throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                    throw new BasoliaException("Can't seek a file that's not open", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
                 // TODO: Unstub this function
             }
@@ -120,11 +114,11 @@ namespace BassBoom.Basolia.Playback
             {
                 InitBasolia.CheckInited();
                 if (basolia is null)
-                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                    throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened(basolia))
-                    throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                    throw new BasoliaException("Can't seek a file that's not open", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
                 // TODO: Unstub this function
             }
@@ -142,13 +136,13 @@ namespace BassBoom.Basolia.Playback
             {
                 InitBasolia.CheckInited();
                 if (basolia is null)
-                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                    throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened(basolia))
-                    throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                    throw new BasoliaException("Can't seek a file that's not open", MpvError.MPV_ERROR_INVALID_PARAMETER);
                 if (lyricLine is null)
-                    throw new BasoliaException("Lyric line is not provided to seek to", mpg123_errors.MPG123_BAD_FILE);
+                    throw new BasoliaException("Lyric line is not provided to seek to", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
                 // Get the length, convert it to frames, and seek
                 var length = lyricLine.LineSpan.TotalSeconds;
@@ -168,11 +162,11 @@ namespace BassBoom.Basolia.Playback
             {
                 InitBasolia.CheckInited();
                 if (basolia is null)
-                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                    throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened(basolia))
-                    throw new BasoliaException("Can't drop.", mpg123_errors.MPG123_BAD_FILE);
+                    throw new BasoliaException("Can't drop.", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
                 // TODO: Unstub this function
             }

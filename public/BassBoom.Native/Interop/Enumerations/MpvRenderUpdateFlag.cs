@@ -17,28 +17,16 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Native.Interop.Init;
-
-namespace BassBoom.Native.Interop.Event
+namespace BassBoom.Native.Interop.Enumerations
 {
     /// <summary>
-    /// Hook group from libmpv
+    /// MPV render update flag
     /// </summary>
-    internal static unsafe class NativeHook
+    public enum MpvRenderUpdateFlag
     {
         /// <summary>
-        /// MPV_EXPORT int mpv_hook_add(mpv_handle *ctx, uint64_t reply_userdata, const char *name, int priority);
+        /// A new video frame must be rendered.
         /// </summary>
-        internal delegate int mpv_hook_add(MpvHandle* ctx, ulong reply_userdata, string name, int priority);
-
-        /// <summary>
-        /// MPV_EXPORT int mpv_hook_continue(mpv_handle *ctx, uint64_t id);
-        /// </summary>
-        internal delegate int mpv_hook_continue(MpvHandle* ctx, ulong id);
-
-        /// <summary>
-        /// MPV_EXPORT int mpv_get_wakeup_pipe(mpv_handle *ctx);
-        /// </summary>
-        internal delegate int mpv_get_wakeup_pipe(MpvHandle* ctx);
+        MPV_RENDER_UPDATE_FRAME = 1 << 0,
     }
 }

@@ -22,7 +22,7 @@ using System;
 namespace BassBoom.Basolia.Exceptions
 {
     /// <summary>
-    /// Basolia miscellaneous exception (ones that don't have to do with MPG123 or OUT123)
+    /// Basolia miscellaneous exception (ones that don't have to do with libmpv or OUT123)
     /// </summary>
     public class BasoliaMiscException : Exception
     {
