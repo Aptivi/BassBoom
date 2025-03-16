@@ -27,8 +27,8 @@ jobs:
         
       - name: Download original source
         run: |
-          wget --output-document=../bassboom-2_1.0.2.0-0.2.7.0.orig.tar.xz https://launchpad.net/~eofla/+archive/ubuntu/bassboom/+sourcefiles/bassboom-2/1.0.2.0-0.2.7.0/bassboom-2_1.0.2.0-0.2.7.0.orig.tar.xz
-          tar xf ../bassboom-2_1.0.2.0-0.2.7.0.orig.tar.xz .
+          wget --output-document=../bassboom-2_1.0.2.0-0.2.7.1.orig.tar.xz https://launchpad.net/~eofla/+archive/ubuntu/bassboom/+sourcefiles/bassboom-2/1.0.2.0-0.2.7.1/bassboom-2_1.0.2.0-0.2.7.1.orig.tar.xz
+          tar xf ../bassboom-2_1.0.2.0-0.2.7.1.orig.tar.xz .
           mv .github ..
 
       - name: Build source package
