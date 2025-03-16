@@ -18,7 +18,6 @@
 //
 
 using BassBoom.Basolia.File;
-using BassBoom.Basolia.Format;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -27,11 +26,9 @@ using System.Runtime.InteropServices;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using BassBoom.Basolia.Enumerations;
-using BassBoom.Native;
 using BassBoom.Basolia.Exceptions;
-using BassBoom.Basolia.Devices;
 using BassBoom.Native.Interop.Enumerations;
+using BassBoom.Basolia.Helpers;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -107,48 +104,21 @@ namespace BassBoom.Basolia.Playback
             // We're now entering the dangerous zone
             unsafe
             {
-                // Reset the format. Orders here matter.
-                var (rate, channels, encoding) = FormatTools.GetFormatInfo(basolia);
-                FormatTools.NoFormat(basolia);
-
-                // Set the format
-                FormatTools.UseFormat(basolia, rate, (ChannelCount)channels, encoding);
-                Debug.WriteLine($"Format {rate}, {channels}, {encoding}");
-
-                // Try to open output to device
-                OpenOutput(basolia);
-
-                // Start the output
-                StartOutput(basolia, rate, (ChannelCount)channels, encoding);
-
                 // Now, buffer the entire music file and create an empty array based on its size
                 var bufferSize = AudioInfoTools.GetBufferSize(basolia);
                 Debug.WriteLine($"Buffer size is {bufferSize}");
-                int err;
+                MpvPropertyHandler.SetStringProperty(basolia, "pause", "no");
+                string pausing;
                 basolia.state = PlaybackState.Playing;
                 do
                 {
-                    int num = 0;
-                    int audioBytes = 0;
-                    byte[]? audio = null;
-
                     // First, let Basolia "hold on" until hold is released
                     while (basolia.holding)
                         Thread.Sleep(1);
 
-                    // Now, play the MPEG buffer to the device
-                    basolia.bufferPlaying = true;
-                    err = DecodeTools.DecodeFrame(basolia, ref num, ref audio, ref audioBytes);
-                    PlayBuffer(basolia, audio);
-                    basolia.bufferPlaying = false;
-
-                    // Check to see if we need more (radio)
-                    if (FileTools.IsRadioStation(basolia) && err == (int)MpvError.MPV_ERROR_NOTHING_TO_PLAY)
-                    {
-                        err = (int)MpvError.MPV_ERROR_SUCCESS;
-                        FeedRadio(basolia);
-                    }
-                } while (err == (int)MpvError.MPV_ERROR_SUCCESS && IsPlaying(basolia));
+                    // Now, check for pause state
+                    pausing = MpvPropertyHandler.GetStringProperty(basolia, "pause");
+                } while (pausing != "yes" && IsPlaying(basolia));
                 if (IsPlaying(basolia) || basolia.state == PlaybackState.Stopping)
                     basolia.state = PlaybackState.Stopped;
             }
@@ -175,6 +145,7 @@ namespace BassBoom.Basolia.Playback
             if (!FileTools.IsOpened(basolia))
                 throw new BasoliaException("Can't pause a file that's not open", MpvError.MPV_ERROR_INVALID_PARAMETER);
             basolia.state = PlaybackState.Paused;
+            MpvPropertyHandler.SetStringProperty(basolia, "pause", "yes");
         }
 
         /// <summary>
@@ -194,6 +165,7 @@ namespace BassBoom.Basolia.Playback
 
             // Stop the music and seek to the beginning
             basolia.state = basolia.state == PlaybackState.Playing ? PlaybackState.Stopping : PlaybackState.Stopped;
+            MpvPropertyHandler.SetStringProperty(basolia, "pause", "yes");
             SpinWait.SpinUntil(() => basolia.state == PlaybackState.Stopped);
             if (!FileTools.IsRadioStation(basolia))
                 PlaybackPositioningTools.SeekToTheBeginning(basolia);
@@ -240,177 +212,6 @@ namespace BassBoom.Basolia.Playback
 
             // TODO: Unstub this function
             return (baseLinearAddr, actualLinearAddr, decibelsRvaAddr);
-        }
-
-        /// <summary>
-        /// Sets the equalizer band to any value
-        /// </summary>
-        /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <param name="channels">Mono, stereo, or both</param>
-        /// <param name="bandIdx">Band index from 0 to 31</param>
-        /// <param name="value">Value of the equalizer</param>
-        /// <exception cref="BasoliaException"></exception>
-        public static void SetEqualizer(BasoliaMedia? basolia, PlaybackChannels channels, int bandIdx, double value)
-        {
-            InitBasolia.CheckInited();
-            if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
-
-            // Try to set the equalizer value
-            unsafe
-            {
-                var handle = basolia._libmpvHandle;
-
-                // TODO: Unstub this function
-            }
-        }
-
-        /// <summary>
-        /// Sets the equalizer bands to any value
-        /// </summary>
-        /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <param name="channels">Mono, stereo, or both</param>
-        /// <param name="bandIdxStart">Band index from 0 to 31 (first band to start from)</param>
-        /// <param name="bandIdxEnd">Band index from 0 to 31 (second band to end to)</param>
-        /// <param name="value">Value of the equalizer</param>
-        /// <exception cref="BasoliaException"></exception>
-        public static void SetEqualizerRange(BasoliaMedia? basolia, PlaybackChannels channels, int bandIdxStart, int bandIdxEnd, double value)
-        {
-            InitBasolia.CheckInited();
-            if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
-
-            // Try to set the equalizer value
-            unsafe
-            {
-                var handle = basolia._libmpvHandle;
-
-                // TODO: Unstub this function
-            }
-        }
-
-        /// <summary>
-        /// Gets the equalizer band value
-        /// </summary>
-        /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <param name="channels">Mono, stereo, or both</param>
-        /// <param name="bandIdx">Band index from 0 to 31</param>
-        /// <exception cref="BasoliaException"></exception>
-        public static double GetEqualizer(BasoliaMedia? basolia, PlaybackChannels channels, int bandIdx)
-        {
-            InitBasolia.CheckInited();
-            if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
-
-            // Try to set the equalizer value
-            unsafe
-            {
-                var handle = basolia._libmpvHandle;
-
-                // TODO: Unstub this function
-                return 1;
-            }
-        }
-
-        /// <summary>
-        /// Resets the equalizer band to its natural value
-        /// </summary>
-        /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <exception cref="BasoliaException"></exception>
-        public static void ResetEqualizer(BasoliaMedia? basolia)
-        {
-            InitBasolia.CheckInited();
-            if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
-
-            // Try to set the equalizer value
-            unsafe
-            {
-                var handle = basolia._libmpvHandle;
-
-                // TODO: Unstub this function
-            }
-        }
-
-        /// <summary>
-        /// Gets the native state
-        /// </summary>
-        /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <param name="state">A native state to get</param>
-        /// <returns>A number that represents the value of this state</returns>
-        /// <exception cref="BasoliaException"></exception>
-        public static (long, double) GetNativeState(BasoliaMedia? basolia, PlaybackStateType state)
-        {
-            InitBasolia.CheckInited();
-            if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
-
-            // Try to set the equalizer value
-            unsafe
-            {
-                long stateInt = 0;
-                double stateDouble = 0;
-                var handle = basolia._libmpvHandle;
-
-                // TODO: Unstub this function
-                return (stateInt, stateDouble);
-            }
-        }
-
-        /// <summary>
-        /// Opens the output to the device. You can set your preferred driver and device using <see cref="DeviceTools.SetActiveDriver(BasoliaMedia?, string)"/> and <see cref="DeviceTools.SetActiveDevice(BasoliaMedia?, string, string)"/>.
-        /// </summary>
-        /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <exception cref="BasoliaException"></exception>
-        public static void OpenOutput(BasoliaMedia? basolia)
-        {
-            InitBasolia.CheckInited();
-            if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
-            if (basolia.isOutputOpen)
-                return;
-
-            // TODO: Unstub this function
-        }
-
-        /// <summary>
-        /// Opens the output to the device. You can set your preferred driver and device using <see cref="DeviceTools.SetActiveDriver(BasoliaMedia?, string)"/> and <see cref="DeviceTools.SetActiveDevice(BasoliaMedia?, string, string)"/>.
-        /// </summary>
-        /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <param name="rate">Rate to open. It must be supported and must match what you've set in <see cref="FormatTools.UseFormat(BasoliaMedia?, long, ChannelCount, int)"/></param>
-        /// <param name="channels">Channels to open. They must be supported and must match what you've set in <see cref="FormatTools.UseFormat(BasoliaMedia?, long, ChannelCount, int)"/></param>
-        /// <param name="encoding">Encoding to open. It must be supported and must match what you've set in <see cref="FormatTools.UseFormat(BasoliaMedia?, long, ChannelCount, int)"/></param>
-        /// <exception cref="BasoliaException"></exception>
-        public static void StartOutput(BasoliaMedia? basolia, long rate, ChannelCount channels, int encoding)
-        {
-            InitBasolia.CheckInited();
-            if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
-
-            // Sanity checks
-            bool supported = FormatTools.IsFormatSupported(basolia, rate, encoding, out _);
-            if (!basolia.isOutputOpen)
-                throw new BasoliaMiscException("You need to open the output");
-            if (!supported)
-                throw new BasoliaMiscException($"Selected rate [{rate} hz] and encoding [{encoding}] is not supported");
-
-            // TODO: Unstub this function
-        }
-
-        /// <summary>
-        /// Closes the output to the device.
-        /// </summary>
-        /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <exception cref="BasoliaException"></exception>
-        public static void CloseOutput(BasoliaMedia? basolia)
-        {
-            InitBasolia.CheckInited();
-            if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
-            if (!basolia.isOutputOpen)
-                return;
-
-            // TODO: Unstub this function
         }
 
         internal static void FeedRadio(BasoliaMedia? basolia)

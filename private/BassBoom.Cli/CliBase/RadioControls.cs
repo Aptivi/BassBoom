@@ -17,9 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Basolia.Enumerations;
 using BassBoom.Basolia.File;
-using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Playback;
 using BassBoom.Basolia.Playback.Playlists;
 using BassBoom.Basolia.Playback.Playlists.Enumerations;
@@ -45,9 +43,7 @@ namespace BassBoom.Cli.CliBase
                 return;
 
             // There could be a chance that the music has fully stopped without any user interaction, but since we're on
-            // a radio station, we should seek nothing; just drop.
-            if (PlaybackTools.GetState(BassBoomCli.basolia) == PlaybackState.Stopped)
-                PlaybackPositioningTools.Drop(BassBoomCli.basolia);
+            // a radio station, we should seek nothing.
             Common.advance = true;
             Radio.playerThread.Start();
             SpinWait.SpinUntil(() => PlaybackTools.IsPlaying(BassBoomCli.basolia) || Common.failedToPlay);
@@ -111,7 +107,6 @@ namespace BassBoom.Cli.CliBase
             ScreenTools.CurrentScreen?.RequireRefresh();
             if (File.Exists(path) && (extension == ".m3u" || extension == ".m3u8"))
             {
-                int currentPos = Player.position;
                 var playlist = PlaylistParser.ParsePlaylist(path);
                 if (playlist.Tracks.Length > 0)
                 {
@@ -141,11 +136,9 @@ namespace BassBoom.Cli.CliBase
             if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
                 InfoBoxNonModalColor.WriteInfoBox($"Opening {musicPath}...", false);
-                var formatInfo = FormatTools.GetFormatInfo(BassBoomCli.basolia);
-                var frameInfo = AudioInfoTools.GetFrameInfo(BassBoomCli.basolia);
 
                 // Try to open the lyrics
-                var instance = new CachedSongInfo(musicPath, null, null, -1, formatInfo, frameInfo, null, FileTools.CurrentFile(BassBoomCli.basolia)?.StationName ?? "", true);
+                var instance = new CachedSongInfo(musicPath, -1, null, FileTools.CurrentFile(BassBoomCli.basolia)?.StationName ?? "", true, null);
                 Common.cachedInfos.Add(instance);
             }
         }
@@ -200,32 +193,6 @@ namespace BassBoom.Cli.CliBase
                 Radio station URL: {{Common.CurrentCachedInfo.MusicPath}}
                 Radio station name: {{Common.CurrentCachedInfo.StationName}}
                 Radio station current song: {{PlaybackTools.GetRadioNowPlaying(BassBoomCli.basolia)}}
-                
-                Layer info
-                ==========
-
-                Version: {{Common.CurrentCachedInfo.FrameInfo.Version}}
-                Layer: {{Common.CurrentCachedInfo.FrameInfo.Layer}}
-                Rate: {{Common.CurrentCachedInfo.FrameInfo.Rate}}
-                Mode: {{Common.CurrentCachedInfo.FrameInfo.Mode}}
-                Mode Ext: {{Common.CurrentCachedInfo.FrameInfo.ModeExt}}
-                Frame Size: {{Common.CurrentCachedInfo.FrameInfo.FrameSize}}
-                Flags: {{Common.CurrentCachedInfo.FrameInfo.Flags}}
-                Emphasis: {{Common.CurrentCachedInfo.FrameInfo.Emphasis}}
-                Bitrate: {{Common.CurrentCachedInfo.FrameInfo.BitRate}}
-                ABR Rate: {{Common.CurrentCachedInfo.FrameInfo.AbrRate}}
-                VBR: {{Common.CurrentCachedInfo.FrameInfo.Vbr}}
-                
-                Native State
-                ============
-                
-                Accurate rendering: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Accurate)}}
-                Buffer fill: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.BufferFill)}}
-                Decoding delay: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.DecodeDelay)}}
-                Encoding delay: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodeDelay)}}
-                Encoding padding: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodePadding)}}
-                Frankenstein stream: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Frankenstein)}}
-                Fresh decoder: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.FreshDecoder)}}
                 """
             );
         }

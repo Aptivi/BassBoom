@@ -100,7 +100,7 @@ namespace BassBoom.Native.Interop.Init
         /// <summary>
         /// MPV_EXPORT int mpv_command(mpv_handle *ctx, const char **args);
         /// </summary>
-        internal delegate int mpv_command(MpvHandle* ctx, string args);
+        internal delegate int mpv_command(MpvHandle* ctx, nint args);
 
         /// <summary>
         /// MPV_EXPORT int mpv_command_node(mpv_handle *ctx, mpv_node *args, mpv_node *result);
@@ -110,7 +110,7 @@ namespace BassBoom.Native.Interop.Init
         /// <summary>
         /// MPV_EXPORT int mpv_command_async(mpv_handle *ctx, uint64_t reply_userdata, const char **args);
         /// </summary>
-        internal delegate int mpv_command_async(MpvHandle* ctx, ulong reply_userdata, string args);
+        internal delegate int mpv_command_async(MpvHandle* ctx, ulong reply_userdata, nint args);
 
         /// <summary>
         /// MPV_EXPORT int mpv_command_node_async(mpv_handle *ctx, uint64_t reply_userdata, mpv_node *args);
@@ -120,7 +120,7 @@ namespace BassBoom.Native.Interop.Init
         /// <summary>
         /// MPV_EXPORT int mpv_command_ret(mpv_handle *ctx, const char **args, mpv_node *result);
         /// </summary>
-        internal delegate int mpv_command_ret(MpvHandle* ctx, string args, out nint result);
+        internal delegate int mpv_command_ret(MpvHandle* ctx, nint args, out nint result);
 
         /// <summary>
         /// MPV_EXPORT int mpv_command_string(mpv_handle *ctx, const char *args);

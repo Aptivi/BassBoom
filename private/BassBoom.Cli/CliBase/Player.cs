@@ -44,7 +44,7 @@ namespace BassBoom.Cli.CliBase
     internal static class Player
     {
         internal static Thread? playerThread;
-        internal static int position = 0;
+        internal static long position = 0;
         internal static readonly List<string> passedMusicPaths = [];
         internal static readonly Keybinding[] showBindings =
         [
@@ -82,11 +82,6 @@ namespace BassBoom.Cli.CliBase
             new("Disco Mode!", ConsoleKey.L),
             new("Enable volume boost", ConsoleKey.V),
             new("Save to playlist", ConsoleKey.F1),
-            new("Play test sound (to test device and driver)", ConsoleKey.F2),
-            new("Open the equalizer", ConsoleKey.E),
-            new("Device and driver information", ConsoleKey.D),
-            new("Set device and driver", ConsoleKey.D, ConsoleModifiers.Control),
-            new("Reset device and driver", ConsoleKey.D, ConsoleModifiers.Shift),
             new("System information", ConsoleKey.Z),
         ];
 
@@ -286,11 +281,6 @@ namespace BassBoom.Cli.CliBase
                     else
                         Common.CurrentCachedInfo.RepeatCheckpoint = PlaybackPositioningTools.GetCurrentDurationSpan(BassBoomCli.basolia);
                     break;
-                case ConsoleKey.F2:
-                    PlayerControls.PlayTest();
-                    Common.redraw = true;
-                    playerScreen.RequireRefresh();
-                    break;
                 default:
                     Common.HandleKeypressCommon(keystroke, playerScreen, false);
                     break;
@@ -303,13 +293,13 @@ namespace BassBoom.Cli.CliBase
             {
                 case ConsoleKey.RightArrow:
                     if (keystroke.Modifiers == ConsoleModifiers.Control)
-                        PlayerControls.seekRate += 0.05d;
+                        PlayerControls.seekRate += 50;
                     else
                         PlayerControls.SeekForward();
                     break;
                 case ConsoleKey.LeftArrow:
                     if (keystroke.Modifiers == ConsoleModifiers.Control)
-                        PlayerControls.seekRate -= 0.05d;
+                        PlayerControls.seekRate -= 50;
                     else
                         PlayerControls.SeekBackward();
                     break;
@@ -408,7 +398,7 @@ namespace BassBoom.Cli.CliBase
                     if (Common.paused)
                     {
                         Common.paused = false;
-                        PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, position);
+                        PlaybackPositioningTools.SeekTo(BassBoomCli.basolia, position);
                     }
                     PlaybackTools.Play(BassBoomCli.basolia);
                 }
@@ -487,7 +477,7 @@ namespace BassBoom.Cli.CliBase
             for (int i = 0; i < Common.cachedInfos.Count; i++)
             {
                 // Populate the first pane
-                var (musicName, musicArtist, _) = PlayerControls.GetMusicNameArtistGenre(i);
+                var (musicName, musicArtist) = PlayerControls.GetMusicNameArtist(i);
                 string duration = Common.cachedInfos[i].DurationSpan;
                 string songPreview = $"[{duration}] {musicArtist} - {musicName}";
                 choices.Add(new($"{i + 1}", songPreview));

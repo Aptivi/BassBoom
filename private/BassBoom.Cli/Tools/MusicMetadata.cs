@@ -17,28 +17,31 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-namespace BassBoom.Basolia.Enumerations
+namespace BassBoom.Cli.Tools
 {
     /// <summary>
-    /// Frame mode
+    /// Music metadata
     /// </summary>
-    public enum FrameMode
+    internal class MusicMetadata
     {
         /// <summary>
-        /// Stereo sound
+        /// Title of the music (output from the media-title property)
         /// </summary>
-        Stereo,
+        public string Title { get; private set; }
         /// <summary>
-        /// Joint stereo sound
+        /// Artist of the music (output from one of the metadata property sub-keys)
         /// </summary>
-        Joint,
+        public string Artist { get; private set; }
+
         /// <summary>
-        /// Dual sound
+        /// A cached song information
         /// </summary>
-        Dual,
-        /// <summary>
-        /// Mono sound
-        /// </summary>
-        Mono
+        /// <param name="title">Title of the music (output from the media-title property)</param>
+        /// <param name="artist">Artist of the music (output from one of the metadata property sub-keys)</param>
+        public MusicMetadata(string title, string artist)
+        {
+            Title = title;
+            Artist = artist;
+        }
     }
 }

@@ -75,9 +75,6 @@ namespace BassBoom.Cli
                     Radio.RadioLoop();
                 else
                     Player.PlayerLoop();
-
-                // Close the output if necessary
-                PlaybackTools.CloseOutput(basolia);
             }
             catch (Exception ex)
             {

@@ -38,8 +38,6 @@ namespace BassBoom.Basolia
         internal bool holding = false;
         internal string radioIcy = "";
         internal PlaybackState state = PlaybackState.Stopped;
-        internal string? activeDriver;
-        internal string? activeDevice;
         internal bool isOpened = false;
         internal bool isRadioStation = false;
         internal bool isOutputOpen = false;

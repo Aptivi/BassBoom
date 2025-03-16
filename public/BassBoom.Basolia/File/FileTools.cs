@@ -18,10 +18,12 @@
 //
 
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Helpers;
 using BassBoom.Basolia.Playback;
 using BassBoom.Basolia.Radio;
 using BassBoom.Native;
 using BassBoom.Native.Interop.Enumerations;
+using BassBoom.Native.Interop.Init;
 using SpecProbe.Software.Platform;
 using System.IO;
 using System.Linq;
@@ -109,15 +111,9 @@ namespace BassBoom.Basolia.File
             if (!System.IO.File.Exists(path))
                 throw new BasoliaException("Music file doesn't exist", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
-            // We're now entering the dangerous zone
-            unsafe
-            {
-                // Open the file
-                var handle = basolia._libmpvHandle;
-
-                // TODO: Unstub this function
-                basolia.isOpened = true;
-            }
+            // Open the file
+            MpvCommandHandler.RunCommand(basolia, "loadfile", path, "append");
+            basolia.isOpened = true;
             basolia.currentFile = new(false, path, null, null, "");
         }
 
@@ -169,8 +165,7 @@ namespace BassBoom.Basolia.File
             {
                 // Open the radio station
                 var handle = basolia._libmpvHandle;
-
-                // TODO: Unstub this function
+                MpvCommandHandler.RunCommand(basolia, "loadfile", path, "append");
                 basolia.isOpened = true;
                 basolia.isRadioStation = true;
             }
@@ -178,48 +173,6 @@ namespace BassBoom.Basolia.File
 
             // If necessary, feed.
             PlaybackTools.FeedRadio(basolia);
-        }
-
-        /// <summary>
-        /// Opens a stream
-        /// </summary>
-        /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <param name="audioStream">MPEG audio stream</param>
-        public static void OpenFrom(BasoliaMedia? basolia, Stream? audioStream) =>
-            Task.Run(() => OpenFromAsync(basolia, audioStream)).Wait();
-
-        /// <summary>
-        /// Opens a stream
-        /// </summary>
-        /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <param name="audioStream">MPEG audio stream</param>
-        public static async Task OpenFromAsync(BasoliaMedia? basolia, Stream? audioStream)
-        {
-            InitBasolia.CheckInited();
-            if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
-
-            // Check to see if the file is open
-            if (IsOpened(basolia))
-                throw new BasoliaException("Can't open this URL while the current file or a radio station is still open", MpvError.MPV_ERROR_INVALID_PARAMETER);
-
-            // Check to see if we provided a stream
-            if (audioStream is null)
-                throw new BasoliaException("Audio stream is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
-
-            // We're now entering the dangerous zone
-            unsafe
-            {
-                // Open the stream
-                var handle = basolia._libmpvHandle;
-
-                // TODO: Unstub this function
-                basolia.isOpened = true;
-            }
-            basolia.currentFile = new(false, "", audioStream, null, "");
-
-            // If necessary, feed.
-            await PlaybackTools.FeedStream(basolia);
         }
 
         /// <summary>
@@ -245,9 +198,7 @@ namespace BassBoom.Basolia.File
             unsafe
             {
                 // Close the file
-                var handle = basolia._libmpvHandle;
-
-                // TODO: Unstub this function
+                MpvCommandHandler.RunCommand(basolia, "playlist-remove", "current");
                 basolia.isOpened = false;
                 basolia.isRadioStation = false;
                 basolia.currentFile?.Stream?.Close();
