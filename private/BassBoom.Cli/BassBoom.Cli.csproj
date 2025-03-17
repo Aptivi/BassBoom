@@ -15,7 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Remove="Microsoft.SourceLink.GitHub" />
+    <Assets Include="..\..\assets\*.cmd" />
   </ItemGroup>
+  <Target Name="UpdateCmdLaunchers" BeforeTargets="Compile">
+    <Copy SourceFiles="@(Assets)" DestinationFolder="$(OutDir)" />
+  </Target>
 
 </Project>
