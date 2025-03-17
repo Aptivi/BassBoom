@@ -45,6 +45,29 @@ namespace BassBoom.Cli.CliBase
     internal static class Radio
     {
         internal static Thread? playerThread;
+        internal static readonly Keybinding[] allBindings =
+        [
+            new("Play/Pause", ConsoleKey.Spacebar),
+            new("Stop", ConsoleKey.Escape),
+            new("Exit", ConsoleKey.Q),
+            new("Increase volume", ConsoleKey.UpArrow),
+            new("Decrease volume", ConsoleKey.DownArrow),
+            new("Radio station information", ConsoleKey.I),
+            new("Radio station extended information", ConsoleKey.I, ConsoleModifiers.Control),
+            new("Add a radio station", ConsoleKey.A),
+            new("Add a radio station group from playlist", ConsoleKey.A, ConsoleModifiers.Shift),
+            new("Previous radio station", ConsoleKey.B),
+            new("Next radio station", ConsoleKey.N),
+            new("Remove current radio station", ConsoleKey.R),
+            new("Remove all radio stations", ConsoleKey.R, ConsoleModifiers.Control),
+            new("Save to playlist", ConsoleKey.F1),
+            new("Disco Mode!", ConsoleKey.L),
+            new("Open the equalizer", ConsoleKey.E),
+            new("Device and driver information", ConsoleKey.D),
+            new("Set device and driver", ConsoleKey.D, ConsoleModifiers.Control),
+            new("Reset device and driver", ConsoleKey.D, ConsoleModifiers.Shift),
+            new("System information", ConsoleKey.Z),
+        ];
 
         public static void RadioLoop()
         {
@@ -97,7 +120,6 @@ namespace BassBoom.Cli.CliBase
                     InteriorHeight = stationsPerPage,
                     FrameColor = disco,
                     TitleColor = disco,
-                    BackgroundColor = disco,
                 };
                 buffer.Append(
                     listBoxFrame.Render() +
@@ -283,40 +305,19 @@ namespace BassBoom.Cli.CliBase
             ConsoleWrapper.CursorVisible = false;
 
             // First, print the keystrokes
-            var keystrokes = new AlignedText()
+            var keybindings = new Keybindings()
             {
-                Text =
-                    "[SPACE] Play/Pause" +
-                    " - [ESC] Stop" +
-                    " - [Q] Exit" +
-                    " - [H] Help",
-                Top = ConsoleWrapper.WindowHeight - 2,
-                Settings = new()
-                {
-                    Alignment = TextAlignment.Middle,
-                }
+                KeybindingList = Player.showBindings,
+                Left = 0,
+                Top = ConsoleWrapper.WindowHeight - 1,
+                Width = ConsoleWrapper.WindowWidth - 1,
             };
-            drawn.Append(keystrokes.Render());
-
-            // Print the separator
-            var separator = new AlignedText()
-            {
-                Text = new('═', ConsoleWrapper.WindowWidth),
-                Top = ConsoleWrapper.WindowHeight - 4,
-                Settings = new()
-                {
-                    Alignment = TextAlignment.Middle,
-                }
-            };
-            drawn.Append(separator.Render());
-
-            // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(keybindings.Render());
 
             // In case we have no stations in the playlist...
             if (Common.cachedInfos.Count == 0)
             {
-                int height = (ConsoleWrapper.WindowHeight - 6) / 2;
+                int height = (ConsoleWrapper.WindowHeight - 2) / 2;
                 var message = new AlignedText()
                 {
                     Top = height,
@@ -342,15 +343,14 @@ namespace BassBoom.Cli.CliBase
             // Now, print the list of stations.
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
-            int endPos = ConsoleWrapper.WindowHeight - 10;
+            int endPos = ConsoleWrapper.WindowHeight - 1;
             int stationsPerPage = endPos - startPos;
             int max = Common.cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
             for (int i = 0; i < Common.cachedInfos.Count; i++)
             {
                 // Populate the first pane
                 string stationName = Common.cachedInfos[i].StationName;
-                string duration = Common.cachedInfos[i].DurationSpan;
-                string stationPreview = $"[{duration}] {stationName}";
+                string stationPreview = $"{stationName}";
                 choices.Add(new($"{i + 1}", stationPreview));
             }
 

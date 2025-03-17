@@ -48,6 +48,46 @@ namespace BassBoom.Cli.CliBase
         internal static Thread? playerThread;
         internal static int position = 0;
         internal static readonly List<string> passedMusicPaths = [];
+        internal static readonly Keybinding[] showBindings =
+        [
+            new("Play/Pause", ConsoleKey.Spacebar),
+            new("Stop", ConsoleKey.Escape),
+            new("Exit", ConsoleKey.Q),
+            new("Help", ConsoleKey.H),
+        ];
+        internal static readonly Keybinding[] allBindings =
+        [
+            new("Play/Pause", ConsoleKey.Spacebar),
+            new("Stop", ConsoleKey.Escape),
+            new("Exit", ConsoleKey.Q),
+            new("Increase volume", ConsoleKey.UpArrow),
+            new("Decrease volume", ConsoleKey.DownArrow),
+            new("Seek backwards", ConsoleKey.LeftArrow),
+            new("Seek forwards", ConsoleKey.RightArrow),
+            new("Decrease seek duration", ConsoleKey.LeftArrow, ConsoleModifiers.Control),
+            new("Increase seek duration", ConsoleKey.RightArrow, ConsoleModifiers.Control),
+            new("Song information", ConsoleKey.I),
+            new("Add a music file", ConsoleKey.A),
+            new("Add a music group from playlist", ConsoleKey.A, ConsoleModifiers.Shift),
+            new("Add a music directory to the list (when idle)", ConsoleKey.S),
+            new("Previous song", ConsoleKey.B),
+            new("Next song", ConsoleKey.N),
+            new("Remove current song", ConsoleKey.R),
+            new("Remove all songs", ConsoleKey.R, ConsoleModifiers.Control),
+            new("Selectively seek (when playing)", ConsoleKey.S),
+            new("Seek to previous lyric (when playing)", ConsoleKey.F),
+            new("Seek to next lyric (when playing)", ConsoleKey.G),
+            new("Seek to current lyric (when playing)", ConsoleKey.J),
+            new("Seek to which lyric (when playing)", ConsoleKey.K),
+            new("Set repeat checkpoint", ConsoleKey.C),
+            new("Seek to repeat checkpoint", ConsoleKey.C, ConsoleModifiers.Shift),
+            new("Disco Mode!", ConsoleKey.L),
+            new("Open the equalizer", ConsoleKey.E),
+            new("Device and driver information", ConsoleKey.D),
+            new("Set device and driver", ConsoleKey.D, ConsoleModifiers.Control),
+            new("Reset device and driver", ConsoleKey.D, ConsoleModifiers.Shift),
+            new("System information", ConsoleKey.Z),
+        ];
 
         public static void PlayerLoop()
         {
@@ -76,7 +116,7 @@ namespace BassBoom.Cli.CliBase
 
                 // Get the positions and the amount of songs per page
                 int startPos = 4;
-                int endPos = ConsoleWrapper.WindowHeight - 5;
+                int endPos = ConsoleWrapper.WindowHeight - 3;
                 int songsPerPage = endPos - startPos;
 
                 // Get the position
@@ -102,19 +142,18 @@ namespace BassBoom.Cli.CliBase
                     InteriorHeight = songsPerPage,
                     FrameColor = disco,
                     TitleColor = disco,
-                    BackgroundColor = disco,
                 };
                 var durationBar = new SimpleProgress((int)(100 * (position / (double)Common.CurrentCachedInfo.Duration)), 100)
                 {
-                    LeftMargin = 1,
-                    RightMargin = 1,
+                    LeftMargin = 2,
+                    RightMargin = 2,
                     ShowPercentage = false,
                     ProgressForegroundColor = TransformationTools.GetDarkBackground(disco),
                     ProgressActiveForegroundColor = disco,
                 };
                 buffer.Append(
                     listBoxFrame.Render() +
-                    ContainerTools.RenderRenderable(listBoxFrame, new(2, ConsoleWrapper.WindowHeight - 5))
+                    ContainerTools.RenderRenderable(durationBar, new(2, ConsoleWrapper.WindowHeight - 3))
                 );
 
                 // Render the indicator
@@ -370,35 +409,14 @@ namespace BassBoom.Cli.CliBase
             ConsoleWrapper.CursorVisible = false;
 
             // First, print the keystrokes
-            var keystrokes = new AlignedText()
+            var keybindings = new Keybindings()
             {
-                Text =
-                    "[SPACE] Play/Pause" +
-                    " - [ESC] Stop" +
-                    " - [Q] Exit" +
-                    " - [H] Help",
-                Top = ConsoleWrapper.WindowHeight - 2,
-                Settings = new()
-                {
-                    Alignment = TextAlignment.Middle,
-                }
+                KeybindingList = showBindings,
+                Left = 0,
+                Top = ConsoleWrapper.WindowHeight - 1,
+                Width = ConsoleWrapper.WindowWidth - 1,
             };
-            drawn.Append(keystrokes.Render());
-
-            // Print the separator
-            var separator = new AlignedText()
-            {
-                Text = new('═', ConsoleWrapper.WindowWidth),
-                Top = ConsoleWrapper.WindowHeight - 4,
-                Settings = new()
-                {
-                    Alignment = TextAlignment.Middle,
-                }
-            };
-            drawn.Append(separator.Render());
-
-            // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(keybindings.Render());
 
             // In case we have no songs in the playlist...
             if (Common.cachedInfos.Count == 0)
@@ -414,7 +432,7 @@ namespace BassBoom.Cli.CliBase
                 }
                 else
                 {
-                    int height = (ConsoleWrapper.WindowHeight - 6) / 2;
+                    int height = (ConsoleWrapper.WindowHeight - 2) / 2;
                     var message = new AlignedText()
                     {
                         Top = height,
@@ -438,10 +456,10 @@ namespace BassBoom.Cli.CliBase
                 name = PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath);
             }
 
-            // Now, print the list of songs.
+            // Now, populate the input choice information instances that represent songs
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
-            int endPos = ConsoleWrapper.WindowHeight - 10;
+            int endPos = ConsoleWrapper.WindowHeight - 3;
             int songsPerPage = endPos - startPos;
             int max = Common.cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
             for (int i = 0; i < Common.cachedInfos.Count; i++)

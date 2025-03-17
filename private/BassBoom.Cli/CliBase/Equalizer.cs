@@ -41,6 +41,15 @@ namespace BassBoom.Cli.CliBase
     {
         internal static bool exiting = false;
         internal static int currentBandIdx = 0;
+        internal static readonly Keybinding[] showBindings =
+        [
+            new("Decrease", ConsoleKey.LeftArrow),
+            new("Increase", ConsoleKey.RightArrow),
+            new("Previous band", ConsoleKey.UpArrow),
+            new("Next band", ConsoleKey.DownArrow),
+            new("Reset", ConsoleKey.R),
+            new("Exit", ConsoleKey.Q),
+        ];
 
         internal static void OpenEqualizer(Screen screen)
         {
@@ -124,38 +133,16 @@ namespace BassBoom.Cli.CliBase
             // Prepare things
             var drawn = new StringBuilder();
             ConsoleWrapper.CursorVisible = false;
-            ColorTools.LoadBack();
 
             // First, print the keystrokes
-            var keystrokes = new AlignedText()
+            var keybindings = new Keybindings()
             {
-                Text =
-                    "[<-|->] Change" +
-                    " - [UP|DOWN] Select Band" +
-                    " - [R] Reset" +
-                    " - [Q] Exit",
-                Top = ConsoleWrapper.WindowHeight - 2,
-                Settings = new()
-                {
-                    Alignment = TextAlignment.Middle,
-                }
+                KeybindingList = showBindings,
+                Left = 0,
+                Top = ConsoleWrapper.WindowHeight - 1,
+                Width = ConsoleWrapper.WindowWidth - 1,
             };
-            drawn.Append(keystrokes.Render());
-
-            // Print the separator
-            var separator = new AlignedText()
-            {
-                Text = new('═', ConsoleWrapper.WindowWidth),
-                Top = ConsoleWrapper.WindowHeight - 4,
-                Settings = new()
-                {
-                    Alignment = TextAlignment.Middle,
-                }
-            };
-            drawn.Append(separator.Render());
-
-            // Write powered by...
-            drawn.Append(TextWriterWhereColor.RenderWhere($"╣ Powered by BassBoom and MPG123 v{BassBoomCli.mpgVer} ╠", 2, ConsoleWrapper.WindowHeight - 4));
+            drawn.Append(keybindings.Render());
 
             // Write current song
             string name = "Not playing. Music player is idle.";
@@ -196,7 +183,7 @@ namespace BassBoom.Cli.CliBase
             {
                 Left = 3,
                 Top = 2,
-                CurrentSelection = Common.currentPos - 1,
+                CurrentSelection = currentBandIdx,
                 Height = bandsPerPage,
                 Width = ConsoleWrapper.WindowWidth - 6,
                 Settings = new()
