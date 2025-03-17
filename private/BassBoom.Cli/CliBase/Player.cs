@@ -120,7 +120,7 @@ namespace BassBoom.Cli.CliBase
 
                 // Get the positions and the amount of songs per page
                 int startPos = 4;
-                int endPos = ConsoleWrapper.WindowHeight - 5;
+                int endPos = ConsoleWrapper.WindowHeight - 3;
                 int songsPerPage = endPos - startPos;
 
                 // Get the position
@@ -146,19 +146,18 @@ namespace BassBoom.Cli.CliBase
                     InteriorHeight = songsPerPage,
                     FrameColor = disco,
                     TitleColor = disco,
-                    BackgroundColor = disco,
                 };
                 var durationBar = new SimpleProgress((int)(100 * (position / (double)Common.CurrentCachedInfo.Duration)), 100)
                 {
-                    LeftMargin = 1,
-                    RightMargin = 1,
+                    LeftMargin = 2,
+                    RightMargin = 2,
                     ShowPercentage = false,
                     ProgressForegroundColor = TransformationTools.GetDarkBackground(disco),
                     ProgressActiveForegroundColor = disco,
                 };
                 buffer.Append(
                     listBoxFrame.Render() +
-                    ContainerTools.RenderRenderable(listBoxFrame, new(2, ConsoleWrapper.WindowHeight - 5))
+                    ContainerTools.RenderRenderable(durationBar, new(2, ConsoleWrapper.WindowHeight - 3))
                 );
 
                 // Render the indicator
@@ -443,7 +442,7 @@ namespace BassBoom.Cli.CliBase
             // First, print the keystrokes
             var keybindings = new Keybindings()
             {
-                KeybindingList = Player.showBindings,
+                KeybindingList = showBindings,
                 Left = 0,
                 Top = ConsoleWrapper.WindowHeight - 1,
                 Width = ConsoleWrapper.WindowWidth - 1,
@@ -488,10 +487,10 @@ namespace BassBoom.Cli.CliBase
                 name = PlayerControls.RenderSongName(Common.CurrentCachedInfo.MusicPath);
             }
 
-            // Now, print the list of songs.
+            // Now, populate the input choice information instances that represent songs
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
-            int endPos = ConsoleWrapper.WindowHeight - 5;
+            int endPos = ConsoleWrapper.WindowHeight - 3;
             int songsPerPage = endPos - startPos;
             int max = Common.cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
             for (int i = 0; i < Common.cachedInfos.Count; i++)

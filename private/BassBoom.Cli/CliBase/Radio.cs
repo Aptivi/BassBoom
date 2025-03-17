@@ -124,7 +124,6 @@ namespace BassBoom.Cli.CliBase
                     InteriorHeight = stationsPerPage,
                     FrameColor = disco,
                     TitleColor = disco,
-                    BackgroundColor = disco,
                 };
                 buffer.Append(
                     listBoxFrame.Render() +

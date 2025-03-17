@@ -136,7 +136,7 @@ namespace BassBoom.Cli.CliBase
             // First, print the keystrokes
             var keybindings = new Keybindings()
             {
-                KeybindingList = Player.showBindings,
+                KeybindingList = showBindings,
                 Left = 0,
                 Top = ConsoleWrapper.WindowHeight - 1,
                 Width = ConsoleWrapper.WindowWidth - 1,
@@ -182,7 +182,7 @@ namespace BassBoom.Cli.CliBase
             {
                 Left = 3,
                 Top = 2,
-                CurrentSelection = Common.currentPos - 1,
+                CurrentSelection = currentBandIdx,
                 Height = bandsPerPage,
                 Width = ConsoleWrapper.WindowWidth - 6,
                 Settings = new()
