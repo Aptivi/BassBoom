@@ -21,9 +21,4 @@
     <Copy SourceFiles="@(Assets)" DestinationFolder="$(OutDir)" />
   </Target>
 
-  <ItemGroup>
-    <None Remove="../../assets/sample.mp3" />
-    <EmbeddedResource Include="../../assets/sample.mp3" />
-  </ItemGroup>
-
 </Project>
