@@ -1,14 +1,10 @@
-This version is a release that provides you with wider packaging choices, including the installer and the Launchpad PPA!
+This version is a release that fixes the appearance of the player.
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[+]` Added Docker packaging
-- `[+]` Added Debian packaging
-- `[+]` Added Arch Linux packaging (will be available later)
-- `[+]` Added Windows Installer packaging
-- `[*]` General improvementd
+- `[*]` General improvements
 
 Review the commit history if you want to get a deep insight about the changes.
 

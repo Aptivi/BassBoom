@@ -38,8 +38,8 @@ jobs:
         run: |
           mv debian ..
           mv .github ..
-          tar cfv ../bassboom-1_1.0.1.0-0.1.12.1.orig.tar .
-          xz ../bassboom-1_1.0.1.0-0.1.12.1.orig.tar
+          tar cfv ../bassboom-1_1.0.1.0-0.1.13.0.orig.tar .
+          xz ../bassboom-1_1.0.1.0-0.1.13.0.orig.tar
           mv ../debian .
 
       - name: Build package
