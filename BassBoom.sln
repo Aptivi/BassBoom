@@ -18,6 +18,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{EDC78D
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Private", "Private", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Public", "Public", "{225C8632-2158-4D84-83B5-7960F2C7FD4A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{EED39E50-464F-491A-BA3C-B6EAD76959CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +49,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4C784632-A456-44B5-B532-711291C2DCD5} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{E72C2A3C-70EC-48E7-91CD-4F76F7722AAB} = {225C8632-2158-4D84-83B5-7960F2C7FD4A}
+		{738C2D2F-E4DC-4FDB-8766-BC41DE5DDFF2} = {225C8632-2158-4D84-83B5-7960F2C7FD4A}
+		{7EBD3EB6-554E-46E1-B72E-8CF9F7E34F8B} = {EED39E50-464F-491A-BA3C-B6EAD76959CC}
+		{EED39E50-464F-491A-BA3C-B6EAD76959CC} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {91352AF3-A9CB-4699-B632-9978AF4F3BC2}
