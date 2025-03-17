@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname}"
-	HOME=`pwd`/nuget DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet restore AptiviApp.sln
+	HOME=`pwd`/nuget DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet restore BassBoom.sln
 	mkdir -p deps
 	cp nuget/.nuget/packages/*/*/*.nupkg deps/
 	rm -rf nuget
