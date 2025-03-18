@@ -62,5 +62,6 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-*.sh text=auto eol=lf
+*.sh text eol=lf
+PKGBUILD* text eol=lf
 *.cmd text=auto eol=crlf
