@@ -4,7 +4,7 @@ DOTNET_HEAP_LIMIT_INT = $(shell sysctl -n hw.memsize 2>/dev/null || grep MemAvai
 DOTNET_HEAP_LIMIT = $(shell printf '%X\n' $(DOTNET_HEAP_LIMIT_INT))
 
 MODAPI = 3
-ROOT_DIR := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
+ROOT_DIR := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 OUTPUTS  := \
 	-name "bin" -or \
 	-name "obj"
@@ -46,7 +46,7 @@ rel-ci:
 doc: invoke-doc-build
 
 clean:
-	find $(ROOT_DIR) -type d \( $(OUTPUTS) \) -print -exec rm -rf {} +
+	find "$(ROOT_DIR)" -type d \( $(OUTPUTS) \) -print -exec rm -rf "{}" +
 
 all-offline:
 	$(MAKE) invoke-build-offline
