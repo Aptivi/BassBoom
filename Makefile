@@ -7,8 +7,11 @@ MODAPI = 1
 ROOT_DIR := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 OUTPUTS  := \
 	-name "bin" -or \
-	-name "obj"
+	-name "obj" -or \
+	-name "bassboom-$(MODAPI)" -or \
+	-name "tmp"
 
+OUTPUT = "$(ROOT_DIR)/private/BassBoom.Cli/bin/$(ENVIRONMENT)/net8.0"
 BINARIES = "$(ROOT_DIR)/assets/bassboom"
 MANUALS = "$(ROOT_DIR)/assets/bassboom.1"
 DESKTOPS = "$(ROOT_DIR)/assets/bassboom.desktop"
@@ -58,8 +61,8 @@ install:
 	mkdir -m 755 -p $(FDESTDIR)/bin $(FDESTDIR)/lib/bassboom-$(MODAPI) $(FDESTDIR)/share/applications $(FDESTDIR)/share/man/man1/
 	install -m 755 -t $(FDESTDIR)/bin/ $(BINARIES)
 	install -m 644 -t $(FDESTDIR)/share/man/man1/ $(MANUALS)
-	find "$(ROOT_DIR)/private/BassBoom.Cli/bin/$(ENVIRONMENT)/net8.0" -mindepth 1 -type d -exec sh -c 'mkdir -p -m 755 "$(FDESTDIR)/lib/bassboom-$(MODAPI)/$$(realpath --relative-to "$(ROOT_DIR)/private/BassBoom.Cli/bin/$(ENVIRONMENT)/net8.0" "$$0")"' {} \;
-	find "$(ROOT_DIR)/private/BassBoom.Cli/bin/$(ENVIRONMENT)/net8.0" -mindepth 1 -type f -exec sh -c 'install -m 644 -t "$(FDESTDIR)/lib/bassboom-$(MODAPI)/$$(dirname $$(realpath --relative-to "$(ROOT_DIR)/private/BassBoom.Cli/bin/$(ENVIRONMENT)/net8.0" "$$0"))" "$$0"' {} \;
+	find "$(OUTPUT)" -mindepth 1 -type d -exec sh -c 'mkdir -p -m 755 "$(FDESTDIR)/lib/bassboom-$(MODAPI)/$$(realpath --relative-to "$(OUTPUT)" "$$0")"' {} \;
+	find "$(OUTPUT)" -mindepth 1 -type f -exec sh -c 'install -m 644 -t "$(FDESTDIR)/lib/bassboom-$(MODAPI)/$$(dirname $$(realpath --relative-to "$(OUTPUT)" "$$0"))" "$$0"' {} \;
 	install -m 755 -t $(FDESTDIR)/share/applications/ $(DESKTOPS)
 	install -m 755 -t $(FDESTDIR)/lib/bassboom-$(MODAPI)/ $(BRANDINGS)
 	mv $(FDESTDIR)/bin/bassboom $(FDESTDIR)/bin/bassboom-$(MODAPI)
