@@ -20,10 +20,10 @@ checkerror $? "  - Failed to restore NuGet packages"
 
 # Download libmpv for Windows
 echo "- Downloading libmpv for Windows..."
-echo "  - curl -L --output $ROOTDIR/vnd/mpv-dev-x86_64-20250225-git-5459b0f.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-02-25-5459b0f/mpv-dev-x86_64-20250225-git-5459b0f.7z"
-curl -L --output $ROOTDIR/vnd/mpv-dev-x86_64-20250225-git-5459b0f.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-02-25-5459b0f/mpv-dev-x86_64-20250225-git-5459b0f.7z
-echo "  - curl -L --output $ROOTDIR/vnd/mpv-dev-aarch64-20250225-git-5459b0f.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-02-25-5459b0f/mpv-dev-aarch64-20250225-git-5459b0f.7z"
-curl -L --output $ROOTDIR/vnd/mpv-dev-aarch64-20250225-git-5459b0f.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-02-25-5459b0f/mpv-dev-aarch64-20250225-git-5459b0f.7z
+echo "  - curl -L --output $ROOTDIR/vnd/mpv-dev-x86_64-20250328-git-5ba7ee5.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-03-28-5ba7ee5/mpv-dev-x86_64-20250328-git-5ba7ee5.7z"
+curl -L --output $ROOTDIR/vnd/mpv-dev-x86_64-20250328-git-5ba7ee5.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-03-28-5ba7ee5/mpv-dev-x86_64-20250328-git-5ba7ee5.7z
+echo "  - curl -L --output $ROOTDIR/vnd/mpv-dev-aarch64-20250328-git-5ba7ee5.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-03-28-5ba7ee5/mpv-dev-aarch64-20250328-git-5ba7ee5.7z"
+curl -L --output $ROOTDIR/vnd/mpv-dev-aarch64-20250328-git-5ba7ee5.7z https://github.com/zhongfly/mpv-winbuild/releases/download/2025-03-28-5ba7ee5/mpv-dev-aarch64-20250328-git-5ba7ee5.7z
 
 # Copy dependencies to deps
 echo "- Copying dependencies to deps..."
