@@ -47,8 +47,11 @@ jobs:
           EOF
 
       - name: Install required packages
-        run: sudo NEEDRESTART_SUSPEND=1 apt install locales-all libunwind8-dev libcurl4-openssl-dev libmpv2 devscripts debhelper-compat dput build-essential
-        
+        run: |
+          sudo rm /etc/apt/sources.list.d/microsoft-prod.list
+          sudo NEEDRESTART_SUSPEND=1 apt install devscripts debhelper-compat dput build-essential
+          sudo NEEDRESTART_SUSPEND=1 mk-build-deps -i
+    
       - name: Initialize offline package
         run: |
           make init-offline

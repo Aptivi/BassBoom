@@ -45,8 +45,11 @@ jobs:
           EOF
 
       - name: Install required packages
-        run: sudo NEEDRESTART_SUSPEND=1 apt install locales-all libunwind8-dev libcurl4-openssl-dev libmpv2 devscripts debhelper-compat dput build-essential
-        
+        run: |
+          sudo rm /etc/apt/sources.list.d/microsoft-prod.list
+          sudo NEEDRESTART_SUSPEND=1 apt install devscripts debhelper-compat dput build-essential
+          sudo NEEDRESTART_SUSPEND=1 mk-build-deps -i
+    
       - name: Download original source
         run: |
           wget --output-document=../bassboom-3_2.0.3.0-1.0.0.0.orig.tar.xz https://launchpad.net/~eofla/+archive/ubuntu/bassboom/+sourcefiles/bassboom-3/2.0.3.0-1.0.0.0/bassboom-3_2.0.3.0-1.0.0.0.orig.tar.xz
