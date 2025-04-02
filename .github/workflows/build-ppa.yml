@@ -17,11 +17,7 @@ jobs:
           submodules: 'true'
 
       - name: Install required packages
-        run: |
-          sudo rm /etc/apt/sources.list.d/microsoft-prod.list
-          sudo apt autoremove dotnet*
-          sudo apt update
-          sudo NEEDRESTART_SUSPEND=1 apt install curl locales-all libunwind8-dev libcurl4-openssl-dev dotnet-sdk-8.0 libmpv2 devscripts debhelper-compat dput build-essential
+        run: sudo NEEDRESTART_SUSPEND=1 apt install locales-all libunwind8-dev libcurl4-openssl-dev libmpv2 devscripts debhelper-compat dput build-essential
         
       - name: Initialize offline package
         run: |
