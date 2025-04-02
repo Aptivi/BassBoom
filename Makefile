@@ -54,7 +54,7 @@ clean:
 	find "$(ROOT_DIR)" -type d \( $(OUTPUTS) \) -print -exec rm -rf "{}" +
 
 all-offline:
-	$(MAKE) invoke-build-offline BUILDARGS="-p:ContinuousIntegrationBuild=true $(BUILDARGS)"
+	$(MAKE) invoke-build-offline BUILDARGS="-p:ContinuousIntegrationBuild=true -p:SystemWide=true $(BUILDARGS)"
 
 init-offline:
 	$(MAKE) invoke-init-offline
