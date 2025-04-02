@@ -25,6 +25,10 @@ else
 FDESTDIR := $(DESTDIR)/usr
 endif
 
+ifndef ENVIRONMENT
+ENVIRONMENT := Release
+endif
+
 .PHONY: all install lite
 
 # General use
