@@ -22,9 +22,8 @@ jobs:
       with:
         submodules: 'true'
         ref: ${{ github.ref }}
-    - name: Download the list
-      run: |
-        bash -v vnd/update-links.sh
+    - name: Check the links
+      run: bash vnd/update-links.sh
     - name: Add difference and push
       uses: EndBug/add-and-commit@v9
       with:
