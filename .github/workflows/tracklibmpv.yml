@@ -1,0 +1,35 @@
+name: "Tracking the libmpv library"
+
+on:
+  push:
+    branches: [ "x/exp/libmpv" ]
+  pull_request:
+    branches: [ "x/exp/libmpv" ]
+  schedule:
+    - cron: '06 12 * * *'
+
+jobs:
+  track:
+    name: Track
+    runs-on: 'ubuntu-latest'
+    strategy:
+      fail-fast: false
+
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: 'true'
+        ref: ${{ github.ref }}
+    - name: Download the list
+      run: |
+        bash -v vnd/update-links.sh
+    - name: Add difference and push
+      uses: EndBug/add-and-commit@v9
+      with:
+        message: int - Updated libmpv links
+        committer_name: Library Watch
+        committer_email: actions@github.com
+        add: 'vnd/*'
+        push: true
