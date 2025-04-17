@@ -9,7 +9,8 @@ OUTPUTS  := \
 	-name "bin" -or \
 	-name "obj" -or \
 	-name "bassboom-$(MODAPI)" -or \
-	-name "tmp"
+	-name "tmp" -or \
+	-name "docs"
 
 OUTPUT = "$(ROOT_DIR)/private/BassBoom.Cli/bin/$(ENVIRONMENT)/net8.0"
 BINARIES = "$(ROOT_DIR)/assets/bassboom"
