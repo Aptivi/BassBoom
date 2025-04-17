@@ -19,9 +19,9 @@ sedpath=$(which sed)
 checkerror $? "sed is not found"
 
 # Below variables to replace when script is complete
-OLDREV="2025-04-17-df1e71a"
-OLDFILENAMESTD="mpv-dev-x86_64-20250417-git-df1e71a.7z"
-OLDFILENAMEARM="mpv-dev-aarch64-20250417-git-df1e71a.7z"
+OLDREV="2025-04-17-0dc24a2"
+OLDFILENAMESTD="mpv-dev-x86_64-20250417-git-0dc24a2.7z"
+OLDFILENAMEARM="mpv-dev-aarch64-20250417-git-0dc24a2.7z"
 
 # Get the new links
 echo "Checking for updates..."
