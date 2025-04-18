@@ -3,17 +3,17 @@
 set ROOTDIR=%~dp0\..
 
 REM Download libmpv for Windows and build
-if not exist %TEMP%\mpv-dev-x86_64-20250417-git-0dc24a2.7z powershell -Command "Invoke-WebRequest https://github.com/zhongfly/mpv-winbuild/releases/download/2025-04-17-0dc24a2/mpv-dev-x86_64-20250417-git-0dc24a2.7z -OutFile %TEMP%\mpv-dev-x86_64-20250417-git-0dc24a2.7z"
-if not exist %TEMP%\mpv-dev-aarch64-20250417-git-0dc24a2.7z powershell -Command "Invoke-WebRequest https://github.com/zhongfly/mpv-winbuild/releases/download/2025-04-17-0dc24a2/mpv-dev-aarch64-20250417-git-0dc24a2.7z -OutFile %TEMP%\mpv-dev-aarch64-20250417-git-0dc24a2.7z"
+if not exist %TEMP%\mpv-dev-x86_64-20250418-git-3600c71.7z powershell -Command "Invoke-WebRequest https://github.com/zhongfly/mpv-winbuild/releases/download/2025-04-18-3600c71/mpv-dev-x86_64-20250418-git-3600c71.7z -OutFile %TEMP%\mpv-dev-x86_64-20250418-git-3600c71.7z"
+if not exist %TEMP%\mpv-dev-aarch64-20250418-git-3600c71.7z powershell -Command "Invoke-WebRequest https://github.com/zhongfly/mpv-winbuild/releases/download/2025-04-18-3600c71/mpv-dev-aarch64-20250418-git-3600c71.7z -OutFile %TEMP%\mpv-dev-aarch64-20250418-git-3600c71.7z"
 
 pushd %ROOTDIR%\tools\
-"%ProgramFiles%\7-Zip\7z.exe" x %TEMP%\mpv-dev-x86_64-20250417-git-0dc24a2.7z libmpv-2.dll
+"%ProgramFiles%\7-Zip\7z.exe" x %TEMP%\mpv-dev-x86_64-20250418-git-3600c71.7z libmpv-2.dll
 popd
 mkdir %ROOTDIR%\public\BassBoom.Native\runtimes\win-x64\native\
 move %ROOTDIR%\tools\libmpv-2.dll %ROOTDIR%\public\BassBoom.Native\runtimes\win-x64\native\
 
 pushd %ROOTDIR%\tools\
-"%ProgramFiles%\7-Zip\7z.exe" x %TEMP%\mpv-dev-aarch64-20250417-git-0dc24a2.7z libmpv-2.dll
+"%ProgramFiles%\7-Zip\7z.exe" x %TEMP%\mpv-dev-aarch64-20250418-git-3600c71.7z libmpv-2.dll
 popd
 mkdir %ROOTDIR%\public\BassBoom.Native\runtimes\win-arm64\native\
 move %ROOTDIR%\tools\libmpv-2.dll %ROOTDIR%\public\BassBoom.Native\runtimes\win-arm64\native\
