@@ -1,11 +1,5 @@
 MODAPI = 3
 ROOT_DIR := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
-OUTPUTS  := \
-	-name "bin" -or \
-	-name "obj" -or \
-	-name "bassboom-$(MODAPI)" -or \
-	-name "tmp" -or \
-	-name "docs"
 
 OUTPUT = "$(ROOT_DIR)/private/BassBoom.Cli/bin/$(ENVIRONMENT)/net8.0"
 BINARIES = "$(ROOT_DIR)/assets/bassboom"
@@ -47,7 +41,7 @@ rel-ci:
 doc: invoke-doc-build
 
 clean:
-	find "$(ROOT_DIR)" -type d \( $(OUTPUTS) \) -print -exec rm -rf "{}" +
+	bash tools/clean.sh
 
 all-offline:
 	$(MAKE) invoke-build-offline BUILDARGS="-p:ContinuousIntegrationBuild=true -p:SystemWide=true $(BUILDARGS)"
