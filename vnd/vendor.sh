@@ -144,3 +144,14 @@ pushall() {
     find $ROOTDIR -type f -path "*/bin/$releaseconf/*.nupkg" -exec sh -c "echo {} ; dotnet nuget push {} --api-key $NUGET_APIKEY --source \"$nugetsource\"" \;
     checkvendorerror $?
 }
+
+clean() {
+    OUTPUTS=(
+        '-name "bin" -or'
+        '-name "obj" -or'
+        '-name "bassboom-2" -or'
+        '-name "tmp" -or'
+        '-name "docs"'
+    )
+    find "$ROOTDIR" -type d \( ${OUTPUTS[@]} \) -print -exec rm -rf "{}" +
+}
