@@ -16,6 +16,8 @@
     
 *A cross-platform music app and library*
 
+*WARNING: BassBoom v0.1.x will no longer be supported starting May 30th, 2025. Consider upgrading to v0.2.x for continued support!*
+
 <br>
 <br>
 
