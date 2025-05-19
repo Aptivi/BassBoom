@@ -34,10 +34,10 @@ namespace BassBoom.Basolia.Playback
         internal static object PositionLock = new();
 
         /// <summary>
-        /// Gets the current duration of the file (milliseconds)
+        /// Gets the current duration of the file (seconds)
         /// </summary>
         /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <returns>Current duration in milliseconds</returns>
+        /// <returns>Current duration in seconds</returns>
         public static long GetCurrentDuration(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
@@ -70,8 +70,8 @@ namespace BassBoom.Basolia.Playback
                 throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // First, get the format information
-            long durationMs = GetCurrentDuration(basolia);
-            return TimeSpan.FromSeconds(durationMs);
+            long duration = GetCurrentDuration(basolia);
+            return TimeSpan.FromSeconds(duration);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace BassBoom.Basolia.Playback
                 if (!FileTools.IsOpened(basolia))
                     throw new BasoliaException("Can't seek a file that's not open", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
-                // Seek to 0 ms
+                // Seek to 0 sec
                 SeekTo(basolia, 0);
             }
         }
@@ -99,8 +99,8 @@ namespace BassBoom.Basolia.Playback
         /// Seeks to a specific frame
         /// </summary>
         /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <param name="milliseconds">Duration in milliseconds in absolute form</param>
-        public static void SeekTo(BasoliaMedia? basolia, long milliseconds)
+        /// <param name="seconds">Duration in seconds in absolute form</param>
+        public static void SeekTo(BasoliaMedia? basolia, long seconds)
         {
             lock (PositionLock)
             {
@@ -113,7 +113,7 @@ namespace BassBoom.Basolia.Playback
                     throw new BasoliaException("Can't seek a file that's not open", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
                 // Seek the file
-                MpvCommandHandler.RunCommand(basolia, "seek", (milliseconds / 1000).ToString(), "absolute");
+                MpvCommandHandler.RunCommand(basolia, "seek", seconds.ToString(), "absolute");
             }
         }
 
@@ -138,7 +138,7 @@ namespace BassBoom.Basolia.Playback
                     throw new BasoliaException("Lyric line is not provided to seek to", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
                 // Get the length and seek
-                long length = (long)lyricLine.LineSpan.TotalMilliseconds;
+                long length = (long)lyricLine.LineSpan.TotalSeconds;
                 SeekTo(basolia, length);
             }
         }

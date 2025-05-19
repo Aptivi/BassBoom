@@ -22,6 +22,7 @@ using BassBoom.Native;
 using BassBoom.Native.Interop.Analysis;
 using BassBoom.Native.Interop.Enumerations;
 using BassBoom.Native.Interop.Init;
+using System;
 using System.Runtime.InteropServices;
 
 namespace BassBoom.Basolia.Helpers
@@ -50,7 +51,7 @@ namespace BassBoom.Basolia.Helpers
                 // Set the string property
                 var handle = basolia._libmpvHandle;
                 var propertyValuePointer = NativeArrayBuilder.GetUtf8BytesPointer(propertyValue);
-                MpvError propertyResult = (MpvError)NativeInitializer.GetDelegate<NativeParameters.mpv_set_property>(NativeInitializer.libManagerMpv, nameof(NativeParameters.mpv_set_property)).Invoke(handle, propertyName, MpvValueFormat.MPV_FORMAT_STRING, propertyValuePointer);
+                MpvError propertyResult = (MpvError)NativeInitializer.GetDelegate<NativeParameters.mpv_set_property>(NativeInitializer.libManagerMpv, nameof(NativeParameters.mpv_set_property)).Invoke(handle, propertyName, MpvValueFormat.MPV_FORMAT_STRING, ref propertyValue);
                 if (propertyResult < MpvError.MPV_ERROR_SUCCESS)
                     throw new BasoliaException($"Failed to set string property {propertyName} to {propertyValue}", propertyResult);
             }
@@ -74,12 +75,13 @@ namespace BassBoom.Basolia.Helpers
             {
                 // Get the string property
                 var handle = basolia._libmpvHandle;
-                MpvError propertyResult = (MpvError)NativeInitializer.GetDelegate<NativeParameters.mpv_get_property>(NativeInitializer.libManagerMpv, nameof(NativeParameters.mpv_get_property)).Invoke(handle, propertyName, MpvValueFormat.MPV_FORMAT_STRING, out nint valueData);
+                var buffer = IntPtr.Zero;
+                MpvError propertyResult = (MpvError)NativeInitializer.GetDelegate<NativeParameters.mpv_get_property>(NativeInitializer.libManagerMpv, nameof(NativeParameters.mpv_get_property)).Invoke(handle, propertyName, MpvValueFormat.MPV_FORMAT_STRING, out buffer);
                 if (propertyResult < MpvError.MPV_ERROR_SUCCESS)
                     throw new BasoliaException($"Failed to get string property {propertyName}", propertyResult);
 
                 // Convert the integer pointer to the string
-                value = Marshal.PtrToStringAnsi(valueData);
+                value = Marshal.PtrToStringAnsi(buffer);
             }
 
             // Return the property value
@@ -104,12 +106,9 @@ namespace BassBoom.Basolia.Helpers
             {
                 // Get the string property
                 var handle = basolia._libmpvHandle;
-                MpvError propertyResult = (MpvError)NativeInitializer.GetDelegate<NativeParameters.mpv_get_property>(NativeInitializer.libManagerMpv, nameof(NativeParameters.mpv_get_property)).Invoke(handle, propertyName, MpvValueFormat.MPV_FORMAT_INT64, out nint valueData);
+                MpvError propertyResult = (MpvError)NativeInitializer.GetDelegate<NativeParameters.mpv_get_property_int>(NativeInitializer.libManagerMpv, nameof(NativeParameters.mpv_get_property)).Invoke(handle, propertyName, MpvValueFormat.MPV_FORMAT_INT64, out value);
                 if (propertyResult < MpvError.MPV_ERROR_SUCCESS)
                     throw new BasoliaException($"Failed to get string property {propertyName}", propertyResult);
-
-                // Convert the integer pointer to the string
-                value = Marshal.ReadInt64(valueData);
             }
 
             // Return the property value

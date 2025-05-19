@@ -32,10 +32,10 @@ namespace BassBoom.Basolia.Playback
     public static class AudioInfoTools
     {
         /// <summary>
-        /// Gets the duration of the file in milliseconds
+        /// Gets the duration of the file in seconds
         /// </summary>
         /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <returns>Duration in milliseconds.</returns>
+        /// <returns>Duration in seconds.</returns>
         public static long GetDuration(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
@@ -77,8 +77,8 @@ namespace BassBoom.Basolia.Playback
                 throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Get the duration and return the time span
-            long durationMilliseconds = GetDuration(basolia);
-            return TimeSpan.FromMilliseconds(durationMilliseconds);
+            long durationSeconds = GetDuration(basolia);
+            return TimeSpan.FromSeconds(durationSeconds);
         }
 
         /// <summary>

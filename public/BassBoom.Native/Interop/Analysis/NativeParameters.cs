@@ -19,6 +19,7 @@
 
 using BassBoom.Native.Interop.Enumerations;
 using BassBoom.Native.Interop.Init;
+using System.Runtime.InteropServices;
 
 namespace BassBoom.Native.Interop.Analysis
 {
@@ -30,7 +31,7 @@ namespace BassBoom.Native.Interop.Analysis
         /// <summary>
         /// MPV_EXPORT int mpv_set_option(mpv_handle *ctx, const char *name, mpv_format format, void *data);
         /// </summary>
-        internal delegate int mpv_set_option(MpvHandle* ctx, string name, MpvValueFormat format, nint data);
+        internal delegate int mpv_set_option(MpvHandle* ctx, string name, MpvValueFormat format, ref string data);
 
         /// <summary>
         /// MPV_EXPORT int mpv_set_option_string(mpv_handle *ctx, const char *name, const char *data);
@@ -40,12 +41,12 @@ namespace BassBoom.Native.Interop.Analysis
         /// <summary>
         /// MPV_EXPORT int mpv_set_property(mpv_handle *ctx, const char *name, mpv_format format, void *data);
         /// </summary>
-        internal delegate int mpv_set_property(MpvHandle* ctx, string name, MpvValueFormat format, nint data);
+        internal delegate int mpv_set_property(MpvHandle* ctx, string name, MpvValueFormat format, ref string data);
 
         /// <summary>
         /// MPV_EXPORT int mpv_set_property_async(mpv_handle *ctx, uint64_t reply_userdata, const char *name, mpv_format format, void *data);
         /// </summary>
-        internal delegate int mpv_set_property_async(MpvHandle* ctx, ulong reply_userdata, string name, MpvValueFormat format, nint data);
+        internal delegate int mpv_set_property_async(MpvHandle* ctx, ulong reply_userdata, string name, MpvValueFormat format, ref string data);
 
         /// <summary>
         /// MPV_EXPORT int mpv_set_property_string(mpv_handle *ctx, const char *name, const char *data);
@@ -66,6 +67,16 @@ namespace BassBoom.Native.Interop.Analysis
         /// MPV_EXPORT int mpv_get_property_async(mpv_handle *ctx, uint64_t reply_userdata, const char *name, mpv_format format, void *data);
         /// </summary>
         internal delegate int mpv_get_property_async(MpvHandle* ctx, ulong reply_userdata, string name, MpvValueFormat format, out nint data);
+
+        /// <summary>
+        /// MPV_EXPORT int mpv_get_property(mpv_handle *ctx, const char *name, mpv_format format, void *data);
+        /// </summary>
+        internal delegate int mpv_get_property_int(MpvHandle* ctx, string name, MpvValueFormat format, out long data);
+
+        /// <summary>
+        /// MPV_EXPORT int mpv_get_property_async(mpv_handle *ctx, uint64_t reply_userdata, const char *name, mpv_format format, void *data);
+        /// </summary>
+        internal delegate int mpv_get_property_int_async(MpvHandle* ctx, ulong reply_userdata, string name, MpvValueFormat format, out long data);
 
         /// <summary>
         /// MPV_EXPORT char *mpv_get_property_string(mpv_handle *ctx, const char *name);

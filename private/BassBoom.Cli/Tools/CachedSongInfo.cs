@@ -44,7 +44,7 @@ namespace BassBoom.Cli.Tools
         /// Music duration in a string representation of the time span
         /// </summary>
         public string DurationSpan =>
-            TimeSpan.FromMilliseconds(Duration).ToString();
+            TimeSpan.FromSeconds(Duration).ToString();
         /// <summary>
         /// An instance of the music lyrics (if any)
         /// </summary>

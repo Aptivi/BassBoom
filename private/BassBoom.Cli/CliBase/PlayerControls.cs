@@ -37,7 +37,7 @@ namespace BassBoom.Cli.CliBase
 {
     internal static class PlayerControls
     {
-        internal static long seekRate = 3000;
+        internal static long seekRate = 3;
 
         internal static void SeekForward()
         {

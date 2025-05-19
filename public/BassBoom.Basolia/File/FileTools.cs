@@ -112,7 +112,8 @@ namespace BassBoom.Basolia.File
                 throw new BasoliaException("Music file doesn't exist", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Open the file
-            MpvCommandHandler.RunCommand(basolia, "loadfile", path, "append");
+            MpvCommandHandler.RunCommand(basolia, "loadfile", path);
+            MpvPropertyHandler.SetStringProperty(basolia, "pause", "yes");
             basolia.isOpened = true;
             basolia.currentFile = new(false, path, null, null, "");
         }
