@@ -175,43 +175,51 @@ namespace BassBoom.Basolia.Playback
         /// Sets the volume of this application
         /// </summary>
         /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <param name="volume">Volume from 0.0 to 1.0 (volume booster off) or 3.0 (volume booster on), inclusive</param>
-        /// <param name="volBoost">Whether to allow volumes larger than 1.0 up to 3.0</param>
+        /// <param name="volume">Volume from 0 to 100, inclusive</param>
         /// <exception cref="BasoliaException"></exception>
-        public static void SetVolume(BasoliaMedia? basolia, double volume, bool volBoost = false)
+        public static void SetVolume(BasoliaMedia? basolia, double volume)
         {
             InitBasolia.CheckInited();
             if (basolia is null)
                 throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
             // Check the volume
-            double maxVolume = volBoost ? 3 : 1;
             if (volume < 0)
                 volume = 0;
-            if (volume > maxVolume)
-                volume = maxVolume;
+            if (volume > 100)
+                volume = 100;
 
-            // TODO: Unstub this function
+            try
+            {
+                MpvPropertyHandler.SetDoubleProperty(basolia, "ao-volume", volume);
+            }
+            catch
+            {
+                // TODO: Add debug later
+            }
         }
 
         /// <summary>
         /// Gets the volume information
         /// </summary>
         /// <param name="basolia">Basolia instance that contains a valid handle</param>
-        /// <returns>A base linear volume from 0.0 to 1.0, an actual linear volume from 0.0 to 1.0, and the RVA volume in decibels (dB)</returns>
+        /// <returns>A base linear volume from 0 to 100</returns>
         /// <exception cref="BasoliaException"></exception>
-        public static (double baseLinear, double actualLinear, double decibelsRva) GetVolume(BasoliaMedia? basolia)
+        public static double GetVolume(BasoliaMedia? basolia)
         {
             InitBasolia.CheckInited();
             if (basolia is null)
                 throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
 
-            double baseLinearAddr = 0;
-            double actualLinearAddr = 0;
-            double decibelsRvaAddr = 0;
-
-            // TODO: Unstub this function
-            return (baseLinearAddr, actualLinearAddr, decibelsRvaAddr);
+            try
+            {
+                double baseLinearAddr = MpvPropertyHandler.GetDoubleProperty(basolia, "ao-volume");
+                return baseLinearAddr;
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         internal static void FeedRadio(BasoliaMedia? basolia)

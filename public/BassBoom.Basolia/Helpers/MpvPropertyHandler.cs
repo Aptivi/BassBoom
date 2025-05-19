@@ -56,6 +56,54 @@ namespace BassBoom.Basolia.Helpers
                     throw new BasoliaException($"Failed to set string property {propertyName} to {propertyValue}", propertyResult);
             }
         }
+        
+        /// <summary>
+        /// Sets an MPV integer property
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="propertyName">Property name to set</param>
+        /// <param name="propertyValue">Property value to set</param>
+        /// <exception cref="BasoliaException"></exception>
+        public static void SetIntegerProperty(BasoliaMedia? basolia, string propertyName, long propertyValue)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                // Set the string property
+                var handle = basolia._libmpvHandle;
+                MpvError propertyResult = (MpvError)NativeInitializer.GetDelegate<NativeParameters.mpv_set_property_int>(NativeInitializer.libManagerMpv, nameof(NativeParameters.mpv_set_property)).Invoke(handle, propertyName, MpvValueFormat.MPV_FORMAT_INT64, ref propertyValue);
+                if (propertyResult < MpvError.MPV_ERROR_SUCCESS)
+                    throw new BasoliaException($"Failed to set string property {propertyName} to {propertyValue}", propertyResult);
+            }
+        }
+        
+        /// <summary>
+        /// Sets an MPV double property
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="propertyName">Property name to set</param>
+        /// <param name="propertyValue">Property value to set</param>
+        /// <exception cref="BasoliaException"></exception>
+        public static void SetDoubleProperty(BasoliaMedia? basolia, string propertyName, double propertyValue)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
+
+            // We're now entering the dangerous zone
+            unsafe
+            {
+                // Set the string property
+                var handle = basolia._libmpvHandle;
+                MpvError propertyResult = (MpvError)NativeInitializer.GetDelegate<NativeParameters.mpv_set_property_double>(NativeInitializer.libManagerMpv, nameof(NativeParameters.mpv_set_property)).Invoke(handle, propertyName, MpvValueFormat.MPV_FORMAT_DOUBLE, ref propertyValue);
+                if (propertyResult < MpvError.MPV_ERROR_SUCCESS)
+                    throw new BasoliaException($"Failed to set string property {propertyName} to {propertyValue}", propertyResult);
+            }
+        }
 
         /// <summary>
         /// Gets an MPV string property
@@ -107,6 +155,33 @@ namespace BassBoom.Basolia.Helpers
                 // Get the string property
                 var handle = basolia._libmpvHandle;
                 MpvError propertyResult = (MpvError)NativeInitializer.GetDelegate<NativeParameters.mpv_get_property_int>(NativeInitializer.libManagerMpv, nameof(NativeParameters.mpv_get_property)).Invoke(handle, propertyName, MpvValueFormat.MPV_FORMAT_INT64, out value);
+                if (propertyResult < MpvError.MPV_ERROR_SUCCESS)
+                    throw new BasoliaException($"Failed to get string property {propertyName}", propertyResult);
+            }
+
+            // Return the property value
+            return value;
+        }
+
+        /// <summary>
+        /// Gets an MPV double number property
+        /// </summary>
+        /// <param name="basolia">Basolia instance that contains a valid handle</param>
+        /// <param name="propertyName">Property name to set</param>
+        /// <exception cref="BasoliaException"></exception>
+        public static double GetDoubleProperty(BasoliaMedia? basolia, string propertyName)
+        {
+            InitBasolia.CheckInited();
+            if (basolia is null)
+                throw new BasoliaException("Basolia instance is not provided", MpvError.MPV_ERROR_INVALID_PARAMETER);
+
+            // We're now entering the dangerous zone
+            double value = 0;
+            unsafe
+            {
+                // Get the string property
+                var handle = basolia._libmpvHandle;
+                MpvError propertyResult = (MpvError)NativeInitializer.GetDelegate<NativeParameters.mpv_get_property_double>(NativeInitializer.libManagerMpv, nameof(NativeParameters.mpv_get_property)).Invoke(handle, propertyName, MpvValueFormat.MPV_FORMAT_INT64, out value);
                 if (propertyResult < MpvError.MPV_ERROR_SUCCESS)
                     throw new BasoliaException($"Failed to get string property {propertyName}", propertyResult);
             }

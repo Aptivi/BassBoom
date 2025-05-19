@@ -80,15 +80,12 @@ namespace BassBoom.Cli.CliBase
             new("Set repeat checkpoint", ConsoleKey.C),
             new("Seek to repeat checkpoint", ConsoleKey.C, ConsoleModifiers.Shift),
             new("Disco Mode!", ConsoleKey.L),
-            new("Enable volume boost", ConsoleKey.V),
             new("Save to playlist", ConsoleKey.F1),
             new("System information", ConsoleKey.Z),
         ];
 
         public static void PlayerLoop()
         {
-            Common.volume = PlaybackTools.GetVolume(BassBoomCli.basolia).baseLinear;
-
             // Populate the screen
             Screen playerScreen = new();
             ScreenTools.SetCurrent(playerScreen);
@@ -153,10 +150,9 @@ namespace BassBoom.Cli.CliBase
                 );
 
                 // Render the indicator
-                string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
                 string indicator =
                     $"┤ Seek: {PlayerControls.seekRate:0.00} | " +
-                    $"{boostIndicator}Volume: {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
+                    $"Volume: {Common.volume:0}%{disco.VTSequenceForeground} ├";
 
                 // Render the lyric
                 string lyric = Common.CurrentCachedInfo.LyricInstance is not null ? Common.CurrentCachedInfo.LyricInstance.GetLastLineCurrent(BassBoomCli.basolia) : "";

@@ -37,7 +37,7 @@ namespace BassBoom.Cli.CliBase
 {
     internal static class Common
     {
-        internal static double volume = 1.0;
+        internal static double volume = 100;
         internal static bool enableDisco = false;
         internal static int currentPos = 1;
         internal static bool exiting = false;
@@ -47,7 +47,6 @@ namespace BassBoom.Cli.CliBase
         internal static bool failedToPlay = false;
         internal static bool isRadioMode = false;
         internal static bool redraw = true;
-        internal static bool volBoost = false;
         internal static readonly List<CachedSongInfo> cachedInfos = [];
 
         internal static CachedSongInfo? CurrentCachedInfo =>
@@ -55,19 +54,18 @@ namespace BassBoom.Cli.CliBase
 
         internal static void RaiseVolume()
         {
-            double maxVolume = volBoost ? 3 : 1;
-            volume += 0.05;
-            if (volume > maxVolume)
-                volume = maxVolume;
-            PlaybackTools.SetVolume(BassBoomCli.basolia, volume, volBoost);
+            volume += 5;
+            if (volume > 100)
+                volume = 100;
+            PlaybackTools.SetVolume(BassBoomCli.basolia, volume);
         }
 
         internal static void LowerVolume()
         {
-            volume -= 0.05;
+            volume -= 5;
             if (volume < 0)
                 volume = 0;
-            PlaybackTools.SetVolume(BassBoomCli.basolia, volume, volBoost);
+            PlaybackTools.SetVolume(BassBoomCli.basolia, volume);
         }
 
         internal static void Exit()
@@ -149,11 +147,6 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.L:
                     enableDisco = !enableDisco;
-                    break;
-                case ConsoleKey.V:
-                    volBoost = !volBoost;
-                    if (!volBoost && volume > 1.0)
-                        RaiseVolume();
                     break;
                 case ConsoleKey.F1:
                     string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the playlist file that you would like to save");

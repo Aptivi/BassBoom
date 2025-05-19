@@ -58,14 +58,12 @@ namespace BassBoom.Cli.CliBase
             new("Remove current radio station", ConsoleKey.R),
             new("Remove all radio stations", ConsoleKey.R, ConsoleModifiers.Control),
             new("Disco Mode!", ConsoleKey.L),
-            new("Enable volume boost", ConsoleKey.V),
             new("Save to playlist", ConsoleKey.F1),
             new("System information", ConsoleKey.Z),
         ];
 
         public static void RadioLoop()
         {
-            Common.volume = PlaybackTools.GetVolume(BassBoomCli.basolia).baseLinear;
             Common.isRadioMode = true;
 
             // Populate the screen
@@ -93,13 +91,10 @@ namespace BassBoom.Cli.CliBase
                 int endPos = ConsoleWrapper.WindowHeight - 1;
                 int stationsPerPage = endPos - startPos;
 
-                // Get the boost indicator
-                var buffer = new StringBuilder();
-                string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
-
                 // Disco effect!
+                var buffer = new StringBuilder();
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
-                string indicator = $"┤ {boostIndicator}Volume: {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
+                string indicator = $"┤ Volume: {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
                 if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                 {
                     hue++;
