@@ -1,6 +1,6 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
 pkgname=bassboom-1-git
-pkgver=v0.1.12.r0.1dc618a
+pkgver=v0.1.13.r29.cec2bdb
 pkgrel=1
 pkgdesc="Cross-platform music player written in C#"
 arch=('x86_64' 'aarch64')
