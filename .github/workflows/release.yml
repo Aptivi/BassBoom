@@ -32,8 +32,8 @@ jobs:
           cmd.exe /c "tools\docgen-pack.cmd"
           dotnet build -p:Configuration=Release -p:Platform=x64 public/BassBoom.Installers/BassBoom.Installer.sln
           dotnet build -p:Configuration=Release -p:Platform=ARM64 public/BassBoom.Installers/BassBoom.Installer.sln
-          Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/x64/Release/BassBoom.InstallerBundle.exe vnd/bassboom-win-x64-installer.exe
-          Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/ARM64/Release/BassBoom.InstallerBundle.exe vnd/bassboom-win-arm64-installer.exe
+          Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/x64/Release/BassBoom.InstallerBundle.exe tools/bassboom-win-x64-installer.exe
+          Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/ARM64/Release/BassBoom.InstallerBundle.exe tools/bassboom-win-arm64-installer.exe
       - name: Release Preparation
         id: release-asset
         shell: bash
@@ -41,21 +41,21 @@ jobs:
           echo "SUBJECT=$(cat CHANGES.TITLE)" >> "$GITHUB_OUTPUT"
           echo 'BODY<<EOF' >> "$GITHUB_OUTPUT"
           cat CHANGES >> "$GITHUB_OUTPUT"
-          powershell 'Get-FileHash -Algorithm sha256 vnd/*.zip | % {"- " + $_.Hash + "  " + (Resolve-Path -Path $_.Path -Relative)}' >> "$GITHUB_OUTPUT"
-          powershell 'Get-FileHash -Algorithm sha256 vnd/*.exe | % {"- " + $_.Hash + "  " + (Resolve-Path -Path $_.Path -Relative)}' >> "$GITHUB_OUTPUT"
+          powershell 'Get-FileHash -Algorithm sha256 tools/*.zip | % {"- " + $_.Hash + "  " + (Resolve-Path -Path $_.Path -Relative)}' >> "$GITHUB_OUTPUT"
+          powershell 'Get-FileHash -Algorithm sha256 tools/*.exe | % {"- " + $_.Hash + "  " + (Resolve-Path -Path $_.Path -Relative)}' >> "$GITHUB_OUTPUT"
           echo 'EOF' >> "$GITHUB_OUTPUT"
       - name: Binary Attestation
         uses: actions/attest-build-provenance@v1
         with:
-          subject-path: 'vnd/*.zip'
+          subject-path: 'tools/*.zip'
       - name: Release Making
         uses: softprops/action-gh-release@v2
         with:
           body: ${{ steps.release-asset.outputs.BODY }}
           name: ${{ steps.release-asset.outputs.SUBJECT }}
           files: |
-            vnd/*.zip
-            vnd/*.exe
+            tools/*.zip
+            tools/*.exe
       - name: Package Publication
         run: cmd.exe /C "tools\push.cmd ${{ secrets.NUGET_APIKEY }}"
       - name: Notify build
