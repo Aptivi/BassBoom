@@ -3,5 +3,5 @@
 set ROOTDIR=%~dp0\..
 
 REM Download libmpv for Windows and build
-if not exist "%TEMP%\mpv-dev-x86_64-20250602-git-730062b.7z" powershell -Command "Invoke-WebRequest https://github.com/zhongfly/mpv-winbuild/releases/download/2025-06-02-730062b/mpv-dev-x86_64-20250602-git-730062b.7z -OutFile ""%TEMP%\mpv-dev-x86_64-20250602-git-730062b.7z"""
-if not exist "%TEMP%\mpv-dev-aarch64-20250602-git-730062b.7z" powershell -Command "Invoke-WebRequest https://github.com/zhongfly/mpv-winbuild/releases/download/2025-06-02-730062b/mpv-dev-aarch64-20250602-git-730062b.7z -OutFile ""%TEMP%\mpv-dev-aarch64-20250602-git-730062b.7z"""
+if not exist "%TEMP%\mpv-dev-x86_64-20250603-git-6b178e4.7z" powershell -Command "Invoke-WebRequest https://github.com/zhongfly/mpv-winbuild/releases/download/2025-06-03-6b178e4/mpv-dev-x86_64-20250603-git-6b178e4.7z -OutFile ""%TEMP%\mpv-dev-x86_64-20250603-git-6b178e4.7z"""
+if not exist "%TEMP%\mpv-dev-aarch64-20250603-git-6b178e4.7z" powershell -Command "Invoke-WebRequest https://github.com/zhongfly/mpv-winbuild/releases/download/2025-06-03-6b178e4/mpv-dev-aarch64-20250603-git-6b178e4.7z -OutFile ""%TEMP%\mpv-dev-aarch64-20250603-git-6b178e4.7z"""
