@@ -27,7 +27,7 @@ REM This script replaces old version with new version.
 echo Replacing...
 
 REM Change the below files
-set "releaseFiles=%ROOTDIR%\PKGBUILD-REL %ROOTDIR%\.github\workflows\build-ppa-package-with-lintian.yml %ROOTDIR%\.github\workflows\build-ppa-package.yml %ROOTDIR%\.github\workflows\pushamend.yml %ROOTDIR%\.github\workflows\pushppa.yml %ROOTDIR%\public\BassBoom.Installers\BassBoom.Installer\Package.wxs %ROOTDIR%\public\BassBoom.Installers\BassBoom.InstallerBundle\Package.wxs %ROOTDIR%\Directory.Build.props %ROOTDIR%\CHANGES.TITLE"
+set "releaseFiles=%ROOTDIR%\PKGBUILD-REL %ROOTDIR%\.github\workflows\build-ppa-package-with-lintian.yml %ROOTDIR%\.github\workflows\build-ppa-package.yml %ROOTDIR%\.github\workflows\pushamend.yml %ROOTDIR%\.github\workflows\pushppa.yml %ROOTDIR%\public\BassBoom.Installers\BassBoom.Installer\Package.wxs %ROOTDIR%\public\BassBoom.Installers\BassBoom.InstallerBundle\Bundle.wxs %ROOTDIR%\Directory.Build.props %ROOTDIR%\CHANGES.TITLE"
 for %%f in (%releaseFiles%) do (
     echo Processing %%f...
     powershell %ROOTDIR%\vnd\eng\incrementor.ps1 "%%f" "%oldVer%" "%newVer%" "%oldApiVer%" "%newApiVer%"
