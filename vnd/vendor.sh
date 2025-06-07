@@ -228,10 +228,13 @@ increment() {
         "$ROOTDIR/Directory.Build.props"
         "$ROOTDIR/CHANGES.TITLE"
     )
+    IFS='.' read -ra APIVERSPLITOLD <<< "$OLDAPIVER"
+    IFS='.' read -ra APIVERSPLITNEW <<< "$NEWAPIVER"
     for FILE in "${FILES[@]}"; do
         printf "Processing $FILE...\n"
         sed -b -i "s/$OLDVER/$NEWVER/g" "$FILE"
         sed -b -i "s/$OLDAPIVER/$NEWAPIVER/g" "$FILE"
+        sed -b -i "s/bassboom-${APIVERSPLITOLD[2]}/bassboom-${APIVERSPLITNEW[2]}/g" "$FILE"
         result=$?
         if [ $result -ne 0 ]; then
             checkvendorerror $result
@@ -239,12 +242,19 @@ increment() {
         fi
     done
 
+    # Modify the Package.wxs file
+    IFS='.' read -ra VERSPLITOLD <<< "$OLDVER"
+    IFS='.' read -ra VERSPLITNEW <<< "$NEWVER"
+    OLDMAJOR="${VERSPLITOLD[0]}.${VERSPLITOLD[1]}.x"
+    NEWMAJOR="${VERSPLITNEW[0]}.${VERSPLITNEW[1]}.x"
+    sed -b -i "s/Name=\"BassBoom $OLDMAJOR\"/Name=\"BassBoom $NEWMAJOR\"/g" "$ROOTDIR/public/BassBoom.Installers/BassBoom.Installer/Package.wxs"
+
     # Add a Debian changelog entry
     printf "Changing Debian changelogs info...\n"
     DEBIAN_CHANGES_FILE="$ROOTDIR/debian/changelog"
     DEBIAN_CHANGES_DATE=$(date "+%a, %d %b %Y %H:%M:%S %z")
     DEBIAN_CHANGES_ENTRY=$(cat <<EOF
-bassboom-3 ($NEWAPIVER-$NEWVER-1) noble; urgency=medium
+bassboom-${APIVERSPLITNEW[2]} ($NEWAPIVER-$NEWVER-1) noble; urgency=medium
 
   * Please populate changelogs here
 
