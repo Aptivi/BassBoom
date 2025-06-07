@@ -193,16 +193,26 @@ increment() {
         "$ROOTDIR/Directory.Build.props"
         "$ROOTDIR/CHANGES.TITLE"
     )
+    IFS='.' read -ra APIVERSPLITOLD <<< "$OLDAPIVER"
+    IFS='.' read -ra APIVERSPLITNEW <<< "$NEWAPIVER"
     for FILE in "${FILES[@]}"; do
         printf "Processing $FILE...\n"
         sed -b -i "s/$OLDVER/$NEWVER/g" "$FILE"
         sed -b -i "s/$OLDAPIVER/$NEWAPIVER/g" "$FILE"
+        sed -b -i "s/bassboom-${APIVERSPLITOLD[2]}/bassboom-${APIVERSPLITNEW[2]}/g" "$FILE"
         result=$?
         if [ $result -ne 0 ]; then
             checkvendorerror $result
             return $result
         fi
     done
+
+    # Modify the Package.wxs file
+    IFS='.' read -ra VERSPLITOLD <<< "$OLDVER"
+    IFS='.' read -ra VERSPLITNEW <<< "$NEWVER"
+    OLDMAJOR="${VERSPLITOLD[0]}.${VERSPLITOLD[1]}.x"
+    NEWMAJOR="${VERSPLITNEW[0]}.${VERSPLITNEW[1]}.x"
+    sed -b -i "s/Name=\"BassBoom $OLDMAJOR\"/Name=\"BassBoom $NEWMAJOR\"/g" "$ROOTDIR/public/BassBoom.Installers/BassBoom.Installer/Package.wxs"
 
     # Add a Debian changelog entry
     printf "Changing Debian changelogs info...\n"
