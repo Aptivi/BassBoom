@@ -249,6 +249,13 @@ increment() {
     NEWMAJOR="${VERSPLITNEW[0]}.${VERSPLITNEW[1]}.x"
     sed -b -i "s/Name=\"BassBoom $OLDMAJOR\"/Name=\"BassBoom $NEWMAJOR\"/g" "$ROOTDIR/public/BassBoom.Installers/BassBoom.Installer/Package.wxs"
 
+    # Modify the PKGBUILD VCS files
+    OLDMAJORSPEC="${VERSPLITOLD[0]}.${VERSPLITOLD[1]}.${VERSPLITOLD[2]}"
+    NEWMAJORSPEC="${VERSPLITNEW[0]}.${VERSPLITNEW[1]}.${VERSPLITNEW[2]}"
+    sed -b -i "s/pkgname=bassboom-${APIVERSPLITOLD[2]}/pkgname=bassboom-${APIVERSPLITNEW[2]}/g" "$ROOTDIR"/PKGBUILD-VCS*
+    sed -b -i "s/pkgver=v$OLDMAJORSPEC/pkgver=v$NEWMAJORSPEC/g" "$ROOTDIR"/PKGBUILD-VCS*
+    sed -b -i "s/branch=x\/oob\/v$OLDMAJOR/branch=x\/oob\/v$NEWMAJOR/g" "$ROOTDIR"/PKGBUILD-VCS*
+
     # Add a Debian changelog entry
     printf "Changing Debian changelogs info...\n"
     DEBIAN_CHANGES_FILE="$ROOTDIR/debian/changelog"
