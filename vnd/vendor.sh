@@ -219,7 +219,7 @@ increment() {
     DEBIAN_CHANGES_FILE="$ROOTDIR/debian/changelog"
     DEBIAN_CHANGES_DATE=$(date "+%a, %d %b %Y %H:%M:%S %z")
     DEBIAN_CHANGES_ENTRY=$(cat <<EOF
-bassboom-2 ($NEWAPIVER-$NEWVER-1) noble; urgency=medium
+bassboom-${APIVERSPLITNEW[2]} ($NEWAPIVER-$NEWVER-1) noble; urgency=medium
 
   * Please populate changelogs here
 
