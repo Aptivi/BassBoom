@@ -35,6 +35,7 @@ using System.Threading;
 using Terminaux.Base.Buffered;
 using Terminaux.Inputs.Styles;
 using Terminaux.Inputs.Styles.Infobox;
+using Textify.General;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -236,7 +237,7 @@ namespace BassBoom.Cli.CliBase
                 PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, currentPos);
             }
             else
-                InfoBoxModalColor.WriteInfoBoxModal($"File \"{path}\" doesn't exist.");
+                InfoBoxModalColor.WriteInfoBoxModal("File '{0}' doesn't exist.".FormatString(path));
         }
 
         internal static void PromptForAddSongs()
@@ -301,7 +302,7 @@ namespace BassBoom.Cli.CliBase
             if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
                 ScreenTools.CurrentScreen?.RequireRefresh();
-                InfoBoxNonModalColor.WriteInfoBox($"Opening {musicPath}...", false);
+                InfoBoxNonModalColor.WriteInfoBox("Opening {0}...".FormatString(musicPath), false);
                 var total = AudioInfoTools.GetDuration(BassBoomCli.basolia, true);
                 var formatInfo = FormatTools.GetFormatInfo(BassBoomCli.basolia);
                 var frameInfo = AudioInfoTools.GetFrameInfo(BassBoomCli.basolia);
@@ -320,7 +321,7 @@ namespace BassBoom.Cli.CliBase
             var (musicName, musicArtist, _) = GetMusicNameArtistGenre(musicPath);
 
             // Print the music name
-            return $"Now playing: {musicArtist} - {musicName}";
+            return "Now playing:" + $" {musicArtist} - {musicName}";
         }
 
         internal static (string musicName, string musicArtist, string musicGenre) GetMusicNameArtistGenre(string musicPath)
@@ -370,7 +371,7 @@ namespace BassBoom.Cli.CliBase
             string lyricsPath = Path.GetDirectoryName(musicPath) + "/" + Path.GetFileNameWithoutExtension(musicPath) + ".lrc";
             try
             {
-                InfoBoxNonModalColor.WriteInfoBox($"Trying to open lyrics file {lyricsPath}...", false);
+                InfoBoxNonModalColor.WriteInfoBox("Trying to open lyrics file {0}...".FormatString(lyricsPath), false);
                 if (File.Exists(lyricsPath))
                     return LyricReader.GetLyrics(lyricsPath);
                 else
@@ -378,7 +379,7 @@ namespace BassBoom.Cli.CliBase
             }
             catch (Exception ex)
             {
-                InfoBoxModalColor.WriteInfoBoxModal($"Can't open lyrics file {lyricsPath}... {ex.Message}");
+                InfoBoxModalColor.WriteInfoBoxModal("Can't open lyrics file {0}:".FormatString(lyricsPath) + $" {ex.Message}");
             }
             return null;
         }
@@ -421,7 +422,7 @@ namespace BassBoom.Cli.CliBase
                 return;
 
             // Prompt the user to set the current position to the specified time
-            string time = InfoBoxInputColor.WriteInfoBoxInput("Write the target position in this format: HH:MM:SS");
+            string time = InfoBoxInputColor.WriteInfoBoxInput("Write the target position in this format:" + " HH:MM:SS");
             if (TimeSpan.TryParse(time, out TimeSpan duration))
             {
                 Player.position = (int)(Common.CurrentCachedInfo.FormatInfo.rate * duration.TotalSeconds);
@@ -447,7 +448,7 @@ namespace BassBoom.Cli.CliBase
             PlayForget.PlayStream(stream);
 
             // Ask the user if everything is OK.
-            int answer = InfoBoxButtonsColor.WriteInfoBoxButtons("Sound test", [new InputChoiceInfo("Yes", "Yes"), new InputChoiceInfo("No", "No")], "Is everything OK in this current configuration?");
+            int answer = InfoBoxButtonsColor.WriteInfoBoxButtons("Sound test", [new InputChoiceInfo("yes", "Yes"), new InputChoiceInfo("no", "No")], "Is everything OK in this current configuration?");
             if (answer == 0)
                 InfoBoxModalColor.WriteInfoBoxModal("Congratulations! You've set up everything properly!");
             else if (answer == 1)
@@ -466,49 +467,39 @@ namespace BassBoom.Cli.CliBase
             foreach (var text in idv2?.Extras ?? [])
                 textsBuilder.AppendLine($"E - {text.Item1}: {text.Item2}");
             InfoBoxModalColor.WriteInfoBoxModal(
-                $$"""
-                Song info
-                =========
+                "Song info" + "\n\n" +
+                "Artist:" + $" {(!string.IsNullOrEmpty(idv2?.Artist) ? idv2?.Artist : !string.IsNullOrEmpty(idv1?.Artist) ? idv1?.Artist : "Unknown")}" + "\n" +
+                "Title:" + $" {(!string.IsNullOrEmpty(idv2?.Title) ? idv2?.Title : !string.IsNullOrEmpty(idv1?.Title) ? idv1?.Title : "")}" + "\n" +
+                "Album:" + $" {(!string.IsNullOrEmpty(idv2?.Album) ? idv2?.Album : !string.IsNullOrEmpty(idv1?.Album) ? idv1?.Album : "")}" + "\n" +
+                "Genre:" + $" {(!string.IsNullOrEmpty(idv2?.Genre) ? idv2?.Genre : !string.IsNullOrEmpty(idv1?.Genre.ToString()) ? idv1?.Genre.ToString() : "")}" + "\n" +
+                "Comment:" + $" {(!string.IsNullOrEmpty(idv2?.Comment) ? idv2?.Comment : !string.IsNullOrEmpty(idv1?.Comment) ? idv1?.Comment : "")}" + "\n" +
+                "Duration:" + $" {Common.CurrentCachedInfo.DurationSpan}" + "\n" +
+                "Lyrics:" + $" {(Common.CurrentCachedInfo.LyricInstance is not null ? "{0} lines".FormatString(Common.CurrentCachedInfo.LyricInstance.Lines.Count) : "No lyrics")}" + "\n\n" +
 
-                Artist: {{(!string.IsNullOrEmpty(idv2?.Artist) ? idv2?.Artist : !string.IsNullOrEmpty(idv1?.Artist) ? idv1?.Artist : "Unknown")}}
-                Title: {{(!string.IsNullOrEmpty(idv2?.Title) ? idv2?.Title : !string.IsNullOrEmpty(idv1?.Title) ? idv1?.Title : "")}}
-                Album: {{(!string.IsNullOrEmpty(idv2?.Album) ? idv2?.Album : !string.IsNullOrEmpty(idv1?.Album) ? idv1?.Album : "")}}
-                Genre: {{(!string.IsNullOrEmpty(idv2?.Genre) ? idv2?.Genre : !string.IsNullOrEmpty(idv1?.Genre.ToString()) ? idv1?.Genre.ToString() : "")}}
-                Comment: {{(!string.IsNullOrEmpty(idv2?.Comment) ? idv2?.Comment : !string.IsNullOrEmpty(idv1?.Comment) ? idv1?.Comment : "")}}
-                Duration: {{Common.CurrentCachedInfo.DurationSpan}}
-                Lyrics: {{(Common.CurrentCachedInfo.LyricInstance is not null ? $"{Common.CurrentCachedInfo.LyricInstance.Lines.Count} lines" : "No lyrics")}}
-                
-                Layer info
-                ==========
+                "Layer info" + "\n\n" +
+                "Version:" + $" {Common.CurrentCachedInfo.FrameInfo.Version}" + "\n" +
+                "Layer:" + $" {Common.CurrentCachedInfo.FrameInfo.Layer}" + "\n" +
+                "Rate:" + $" {Common.CurrentCachedInfo.FrameInfo.Rate}" + "\n" +
+                "Mode:" + $" {Common.CurrentCachedInfo.FrameInfo.Mode}" + "\n" +
+                "Mode Ext:" + $" {Common.CurrentCachedInfo.FrameInfo.ModeExt}" + "\n" +
+                "Frame Size:" + $" {Common.CurrentCachedInfo.FrameInfo.FrameSize}" + "\n" +
+                "Flags:" + $" {Common.CurrentCachedInfo.FrameInfo.Flags}" + "\n" +
+                "Emphasis:" + $" {Common.CurrentCachedInfo.FrameInfo.Emphasis}" + "\n" +
+                "Bitrate:" + $" {Common.CurrentCachedInfo.FrameInfo.BitRate}" + "\n" +
+                "ABR Rate:" + $" {Common.CurrentCachedInfo.FrameInfo.AbrRate}" + "\n" +
+                "VBR:" + $" {Common.CurrentCachedInfo.FrameInfo.Vbr}" + "\n\n" +
 
-                Version: {{Common.CurrentCachedInfo.FrameInfo.Version}}
-                Layer: {{Common.CurrentCachedInfo.FrameInfo.Layer}}
-                Rate: {{Common.CurrentCachedInfo.FrameInfo.Rate}}
-                Mode: {{Common.CurrentCachedInfo.FrameInfo.Mode}}
-                Mode Ext: {{Common.CurrentCachedInfo.FrameInfo.ModeExt}}
-                Frame Size: {{Common.CurrentCachedInfo.FrameInfo.FrameSize}}
-                Flags: {{Common.CurrentCachedInfo.FrameInfo.Flags}}
-                Emphasis: {{Common.CurrentCachedInfo.FrameInfo.Emphasis}}
-                Bitrate: {{Common.CurrentCachedInfo.FrameInfo.BitRate}}
-                ABR Rate: {{Common.CurrentCachedInfo.FrameInfo.AbrRate}}
-                VBR: {{Common.CurrentCachedInfo.FrameInfo.Vbr}}
-                
-                Native State
-                ============
+                "Native State" + "\n\n" +
+                "Accurate rendering:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Accurate)}" + "\n" +
+                "Buffer fill:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.BufferFill)}" + "\n" +
+                "Decoding delay:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.DecodeDelay)}" + "\n" +
+                "Encoding delay:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodeDelay)}" + "\n" +
+                "Encoding padding:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodePadding)}" + "\n" +
+                "Frankenstein stream:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Frankenstein)}" + "\n" +
+                "Fresh decoder:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.FreshDecoder)}" + "\n\n" +
 
-                Accurate rendering: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Accurate)}}
-                Buffer fill: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.BufferFill)}}
-                Decoding delay: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.DecodeDelay)}}
-                Encoding delay: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodeDelay)}}
-                Encoding padding: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodePadding)}}
-                Frankenstein stream: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Frankenstein)}}
-                Fresh decoder: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.FreshDecoder)}}
-
-                Texts and Extras
-                ================
-
-                {{textsBuilder}}
-                """
+                "Texts and Extras" + "\n\n" +
+                textsBuilder.ToString()
             );
         }
     }

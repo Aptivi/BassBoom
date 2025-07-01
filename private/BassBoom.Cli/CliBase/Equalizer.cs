@@ -71,15 +71,15 @@ namespace BassBoom.Cli.CliBase
                 }
                 catch (BasoliaException bex)
                 {
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia when trying to process the equalizer operation.\n\n" + bex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia when trying to process the equalizer operation." + "\n\n" + bex.Message);
                 }
                 catch (BasoliaOutException bex)
                 {
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia output when trying to process the equalizer operation.\n\n" + bex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia output when trying to process the equalizer operation." + "\n\n" + bex.Message);
                 }
                 catch (Exception ex)
                 {
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an unknown error when trying to process the equalizer operation.\n\n" + ex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal("There's an unknown error when trying to process the equalizer operation." + "\n\n" + ex.Message);
                 }
             }
 
@@ -165,7 +165,7 @@ namespace BassBoom.Cli.CliBase
                     "Unknown band type";
 
                 // Now, render it
-                string bandData = $"[{val:0.00}] Band #{i + 1} - {eqType}";
+                string bandData = $"[{val:0.00}] " + "Band" + $" #{i + 1} - {eqType}";
                 choices.Add(new($"{i + 1}", bandData));
             }
 

@@ -168,7 +168,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_getformat>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_getformat));
                 int getStatus = @delegate.Invoke(outHandle, null, null, null, out frameSize);
                 if (getStatus != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException($"Can't get the output.", (out123_error)getStatus);
+                    throw new BasoliaOutException("Can't get the output.", (out123_error)getStatus);
                 Debug.WriteLine($"Got frame size {frameSize}");
             }
             return frameSize;
@@ -199,7 +199,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_framelength>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_framelength));
                 getStatus = @delegate.Invoke(handle);
                 if (getStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException($"Can't get the frame length.", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException("Can't get the frame length.", mpg123_errors.MPG123_ERR);
                 Debug.WriteLine($"Got frame length {getStatus}");
             }
             return getStatus;
@@ -230,7 +230,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_spf>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_spf));
                 getStatus = @delegate.Invoke(handle);
                 if (getStatus < 0)
-                    throw new BasoliaException($"Can't get the samples per frame.", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException("Can't get the samples per frame.", mpg123_errors.MPG123_ERR);
                 Debug.WriteLine($"Got frame spf {getStatus}");
             }
             return getStatus;
@@ -261,7 +261,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_tpf>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_tpf));
                 getStatus = @delegate.Invoke(handle);
                 if (getStatus < 0)
-                    throw new BasoliaException($"Can't get the seconds per frame.", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException("Can't get the seconds per frame.", mpg123_errors.MPG123_ERR);
                 Debug.WriteLine($"Got frame tpf {getStatus}");
             }
             return getStatus;
@@ -312,7 +312,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_safe_buffer>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_safe_buffer));
                 bufferSize = @delegate.Invoke();
                 if (bufferSize < 0)
-                    throw new BasoliaException($"Can't get the generic buffer size.", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException("Can't get the generic buffer size.", mpg123_errors.MPG123_ERR);
                 Debug.WriteLine($"Got buffsize {bufferSize}");
             }
             return bufferSize;

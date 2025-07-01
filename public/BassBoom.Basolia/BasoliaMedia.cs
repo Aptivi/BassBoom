@@ -25,6 +25,7 @@ using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
 using System;
 using System.Diagnostics;
+using Textify.General;
 
 namespace BassBoom.Basolia
 {
@@ -67,7 +68,7 @@ namespace BassBoom.Basolia
             }
             catch (Exception ex)
             {
-                throw new BasoliaNativeLibraryException($"mpg123 library path {MpgNative.mpg123LibPath} doesn't contain a valid mpg123 library. mpg123_new() was called. {ex.Message}");
+                throw new BasoliaNativeLibraryException("mpg123 library path {0} doesn't contain a valid mpg123 library.".FormatString(MpgNative.mpg123LibPath) + $" {ex.Message}");
             }
 
             // Do the same for the out123 library!
@@ -80,7 +81,7 @@ namespace BassBoom.Basolia
             }
             catch (Exception ex)
             {
-                throw new BasoliaNativeLibraryException($"out123 library path {MpgNative.out123LibPath} doesn't contain a valid out123 library. out123_new() was called. {ex.Message}");
+                throw new BasoliaNativeLibraryException("out123 library path {0} doesn't contain a valid out123 library.".FormatString(MpgNative.out123LibPath) + $" {ex.Message}");
             }
         }
     }

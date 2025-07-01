@@ -27,6 +27,7 @@ using System.Threading;
 using BassBoom.Basolia.Lyrics;
 using BassBoom.Native;
 using BassBoom.Basolia.Exceptions;
+using Textify.General;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -51,7 +52,7 @@ namespace BassBoom.Basolia.Playback
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't play a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -157,7 +158,7 @@ namespace BassBoom.Basolia.Playback
                     int status = @delegate.Invoke(handle, frame, 0);
                     basolia.holding = false;
                     if (status == (int)mpg123_errors.MPG123_ERR)
-                        throw new BasoliaException($"Can't seek to frame #{frame} of the file", (mpg123_errors)status);
+                        throw new BasoliaException("Can't seek to frame #{0} of the file".FormatString(frame), (mpg123_errors)status);
                 }
             }
         }

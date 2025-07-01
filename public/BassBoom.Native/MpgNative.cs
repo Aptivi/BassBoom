@@ -108,11 +108,11 @@ namespace BassBoom.Native
             string resultOutPath = GetLibPath(root, "out123");
             string resultWinPath = GetLibPath(root, "libwinpthread-1");
             if (!File.Exists(resultMpgPath))
-                throw new BasoliaNativeLibraryException($"mpg123 library path {resultMpgPath} doesn't exist.");
+                throw new BasoliaNativeLibraryException(string.Format("mpg123 library path {0} doesn't exist.", resultMpgPath));
             if (!File.Exists(resultOutPath))
-                throw new BasoliaNativeLibraryException($"out123 library path {resultOutPath} doesn't exist.");
+                throw new BasoliaNativeLibraryException(string.Format("out123 library path {0} doesn't exist.", resultOutPath));
             if (!File.Exists(resultWinPath) && PlatformHelper.IsOnWindows())
-                throw new BasoliaNativeLibraryException($"libwinpthread library path {resultWinPath} doesn't exist.");
+                throw new BasoliaNativeLibraryException(string.Format("libwinpthread library path {0} doesn't exist.", resultWinPath));
 
             // Set the library path
             string oldLibPath = mpg123LibPath;
@@ -151,7 +151,7 @@ namespace BassBoom.Native
                 mpg123LibPath = oldLibPath;
                 out123LibPath = oldLibPathOut;
                 pthreadLibPath = oldLibPathWin;
-                throw new BasoliaNativeLibraryException($"Failed to load libraries. [{mpg123LibPath}]\n\n{ex.Message}");
+                throw new BasoliaNativeLibraryException("Failed to load libraries." + $" [{mpg123LibPath}]\n\n{ex.Message}");
             }
         }
 
@@ -177,9 +177,9 @@ namespace BassBoom.Native
             where TDelegate : Delegate
         {
             if (libraryManager is null)
-                throw new BasoliaNativeLibraryException($"Can't get delegate for {function} without initializing the library first");
+                throw new BasoliaNativeLibraryException(string.Format("Can't get delegate for {0} without initializing the library first", function));
             return libraryManager.GetNativeMethodDelegate<TDelegate>(function) ??
-                throw new BasoliaNativeLibraryException($"Can't get delegate for {function}");
+                throw new BasoliaNativeLibraryException(string.Format("Can't get delegate for {0}", function));
         }
     }
 }

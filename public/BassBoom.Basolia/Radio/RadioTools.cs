@@ -60,7 +60,7 @@ namespace BassBoom.Basolia.Radio
             var reply = await client.GetAsync(radioUrl, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             client.DefaultRequestHeaders.Remove("Icy-MetaData");
             if (!reply.IsSuccessStatusCode)
-                throw new BasoliaMiscException($"This radio station doesn't exist. Error code: {(int)reply.StatusCode} ({reply.StatusCode}).");
+                throw new BasoliaMiscException("This radio station doesn't exist. Error code:" + $" {(int)reply.StatusCode} ({reply.StatusCode}).");
 
             // Check for radio statio and get the MIME type
             if (!reply.Headers.Any((kvp) => kvp.Key.StartsWith("icy-")))

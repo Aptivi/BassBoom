@@ -24,6 +24,7 @@ using HtmlAgilityPack;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using BassBoom.Basolia.Exceptions;
+using Textify.General;
 
 namespace BassBoom.Basolia.Radio
 {
@@ -165,7 +166,7 @@ namespace BassBoom.Basolia.Radio
             }
             catch (Exception ex)
             {
-                throw new BasoliaMiscException($"Failed to parse radio server {ServerHost}. More information can be found in the inner exception.", ex);
+                throw new BasoliaMiscException("Failed to parse radio server {0}. More information can be found in the inner exception.".FormatString(ServerHost), ex);
             }
         }
 
@@ -186,7 +187,7 @@ namespace BassBoom.Basolia.Radio
             }
             catch (Exception ex)
             {
-                throw new BasoliaMiscException($"Failed to parse radio server {ServerHost}. More information can be found in the inner exception.", ex);
+                throw new BasoliaMiscException("Failed to parse radio server {0}. More information can be found in the inner exception.".FormatString(ServerHost), ex);
             }
         }
 

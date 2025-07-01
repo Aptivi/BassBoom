@@ -45,10 +45,10 @@ namespace BassBoom.Basolia.Playback.Playlists
         {
             // Check for existence and extension
             if (!FileIo.Exists(playlistFile))
-                throw new BasoliaMiscException($"Playlist file {playlistFile} doesn't exist");
+                throw new BasoliaMiscException("Playlist file {0} doesn't exist".FormatString(playlistFile));
             string extension = Path.GetExtension(playlistFile);
             if (Path.HasExtension(playlistFile) && extension != PlaylistConstants.m3u && extension != PlaylistConstants.m3u8)
-                throw new BasoliaMiscException($"Invalid playlist file extension {extension}");
+                throw new BasoliaMiscException("Invalid playlist file extension {0}".FormatString(extension));
 
             // Now, try to get the representation and pass it to ParsePlaylistFrom().
             string representation = FileIo.ReadAllText(playlistFile);
@@ -90,7 +90,7 @@ namespace BassBoom.Basolia.Playback.Playlists
                     if (header == PlaylistConstants.extendedHeader)
                         extended = true;
                     else
-                        throw new BasoliaMiscException($"This [{header}] is not an extended header");
+                        throw new BasoliaMiscException("This is not an extended header:" + $" {header}");
                     continue;
                 }
 
@@ -118,7 +118,7 @@ namespace BassBoom.Basolia.Playback.Playlists
                     if (FileIo.Exists(absolutePath) && FileTools.SupportedExtensions.Contains(extension))
                         proposedTracks.Add((trackInfoString, null, absolutePath));
                     else
-                        throw new BasoliaMiscException($"Music file {absolutePath} not found or not an MPEG file");
+                        throw new BasoliaMiscException("Music file {0} not found or not an MPEG file".FormatString(absolutePath));
                 }
                 trackInfoString = "";
             }
@@ -148,7 +148,7 @@ namespace BassBoom.Basolia.Playback.Playlists
 
                     // Check the validity and parse them
                     if (!int.TryParse(lengthStr, out length))
-                        throw new BasoliaMiscException($"Track info didn't provide the number of seconds [{lengthStr}] correctly.");
+                        throw new BasoliaMiscException("Track info didn't provide the number of seconds [{0}] correctly.".FormatString(lengthStr));
                     title = titleStr.Length == 1 ? "" : titleStr.Substring(1);
                 }
 

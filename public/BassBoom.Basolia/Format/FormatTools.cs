@@ -29,6 +29,7 @@ using BassBoom.Native;
 using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.Helpers;
 using System.Linq;
+using Textify.General;
 
 namespace BassBoom.Basolia.Format
 {
@@ -119,7 +120,7 @@ namespace BassBoom.Basolia.Format
             // Check the encoding
             int[] encodings = GetEncodings();
             if (!encodings.Contains(encoding))
-                throw new BasoliaException($"Encoding {encoding} not found.", mpg123_errors.MPG123_BAD_TYPES);
+                throw new BasoliaException("Encoding {0} not found.".FormatString(encoding), mpg123_errors.MPG123_BAD_TYPES);
 
             // We're now entering the dangerous zone
             unsafe
@@ -147,7 +148,7 @@ namespace BassBoom.Basolia.Format
             // Check the encoding
             int[] encodings = GetEncodings();
             if (!encodings.Contains(encoding))
-                throw new BasoliaException($"Encoding {encoding} not found.", mpg123_errors.MPG123_BAD_TYPES);
+                throw new BasoliaException("Encoding {0} not found.".FormatString(encoding), mpg123_errors.MPG123_BAD_TYPES);
 
             // We're now entering the dangerous zone
             unsafe
@@ -289,7 +290,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_format_none>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_format_none));
                 int resetStatus = @delegate.Invoke(handle);
                 if (resetStatus != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException($"Can't reset output encoding", (mpg123_errors)resetStatus);
+                    throw new BasoliaException("Can't reset output encoding", (mpg123_errors)resetStatus);
             }
         }
 
@@ -312,7 +313,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_format_all>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_format_all));
                 int resetStatus = @delegate.Invoke(handle);
                 if (resetStatus != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException($"Can't set output format", (mpg123_errors)resetStatus);
+                    throw new BasoliaException("Can't set output format", (mpg123_errors)resetStatus);
             }
         }
 
@@ -338,7 +339,7 @@ namespace BassBoom.Basolia.Format
                 var delegate2 = MpgNative.GetDelegate<NativeOutput.mpg123_format>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_format));
                 int formatStatus = delegate2.Invoke(handle, rate, (int)channels, encoding);
                 if (formatStatus != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException($"Can't set output encoding to {rate}, {channels}, {encoding}", (mpg123_errors)formatStatus);
+                    throw new BasoliaException("Can't set output encoding to:" + $" {rate}, {channels}, {encoding}", (mpg123_errors)formatStatus);
             }
         }
 

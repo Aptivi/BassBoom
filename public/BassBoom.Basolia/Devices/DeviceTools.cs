@@ -26,6 +26,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
+using Textify.General;
 
 namespace BassBoom.Basolia.Devices
 {
@@ -175,7 +176,7 @@ namespace BassBoom.Basolia.Devices
                 throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
             var driverList = GetDrivers(basolia);
             if (!driverList.ContainsKey(driver))
-                throw new BasoliaException($"Driver {driver} doesn't exist", mpg123_errors.MPG123_ERR);
+                throw new BasoliaException("Driver {0} doesn't exist".FormatString(driver), mpg123_errors.MPG123_ERR);
             basolia.activeDriver = driver;
         }
 
@@ -196,7 +197,7 @@ namespace BassBoom.Basolia.Devices
             if (string.IsNullOrEmpty(device))
                 return;
             if (!deviceList.ContainsKey(device))
-                throw new BasoliaException($"Device {device} doesn't exist", mpg123_errors.MPG123_ERR);
+                throw new BasoliaException("Device {0} doesn't exist".FormatString(device), mpg123_errors.MPG123_ERR);
             basolia.activeDevice = device;
         }
 

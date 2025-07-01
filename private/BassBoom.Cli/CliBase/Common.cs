@@ -35,6 +35,7 @@ using Terminaux.Inputs.Styles;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 using Terminaux.Writer.MiscWriters;
+using Textify.General;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -99,14 +100,10 @@ namespace BassBoom.Cli.CliBase
             {
                 var (driver, device) = DeviceTools.GetCurrent(BassBoomCli.basolia);
                 var cached = DeviceTools.GetCurrentCached(BassBoomCli.basolia);
-                currentBuilder.AppendLine(
-                    $$"""
-                    Device: {{device}}
-                    Driver: {{driver}}
-                    Device (cached): {{cached.device}}
-                    Driver (cached): {{cached.driver}}
-                    """
-                );
+                currentBuilder.AppendLine("Device:" + $" {device}");
+                currentBuilder.AppendLine("Driver:" + $" {driver}");
+                currentBuilder.AppendLine("Device (cached):" + $" {cached.device}");
+                currentBuilder.AppendLine("Driver (cached):" + $" {cached.driver}");
             }
             else
                 currentBuilder.AppendLine("Can't query current devices while not playing.");
@@ -127,17 +124,10 @@ namespace BassBoom.Cli.CliBase
                 }
             }
             InfoBoxModalColor.WriteInfoBoxModal(
-                $$"""
-                Device and Driver
-                =================
-
-                {{currentBuilder}}
-
-                Available devices and drivers
-                =============================
-
-                {{builder}}
-                """
+                "Device and Driver" + "\n\n" +
+                currentBuilder.ToString() + "\n\n" +
+                "Available devices and drivers" + "\n\n" +
+                builder.ToString()
             );
         }
 
@@ -146,14 +136,7 @@ namespace BassBoom.Cli.CliBase
             var devSpecs = new StringBuilder();
             if (devMode)
             {
-                devSpecs.AppendLine(
-                    """
-
-
-                    Extra specs (for developers)
-                    ============================
-
-                    """);
+                devSpecs.AppendLine("\n\n" + "Extra specs (for developers)" + "\n");
 
                 // Get all encodings and add them to a separate builder
                 var encodingsBuilder = new StringBuilder();
@@ -167,9 +150,9 @@ namespace BassBoom.Cli.CliBase
                     int sampleSize = FormatTools.GetSampleSize(encoding);
                     int zeroSample = FormatTools.GetZeroSample(encoding, sampleSize, 0);
 
-                    encodingsBuilder.AppendLine($"  - {name} [{encoding}, {size} bytes]: {desc}");
-                    encodingsBuilder.AppendLine($"    - PCM sample size: {sampleSize}");
-                    encodingsBuilder.AppendLine($"    - Zero sample (offset 0): {zeroSample}");
+                    encodingsBuilder.AppendLine($"  - {name} [{encoding}, {size} B]: {desc}");
+                    encodingsBuilder.AppendLine("    - " + "PCM sample size:" + $" {sampleSize}");
+                    encodingsBuilder.AppendLine("    - " + "Zero sample (offset 0):" + $" {zeroSample}");
                 }
 
                 // Get all rates and add them to a separate builder
@@ -187,59 +170,43 @@ namespace BassBoom.Cli.CliBase
                     int samplesFrame = AudioInfoTools.GetSamplesPerFrame(BassBoomCli.basolia);
                     double secondsFrame = AudioInfoTools.GetSecondsPerFrame(BassBoomCli.basolia);
                     playingBuilder.Append(
-                        $"""
-
-                        Duration in samples: {durationSamples}
-                        Frame length: {frameLength}
-                        Samples/frame: {samplesFrame}
-                        Seconds/frame: {secondsFrame}
-                        """);
+                        "\n" +
+                        "Duration in samples:" + $"{durationSamples}" + "\n" +
+                        "Frame length:" + $"{frameLength}" + "\n" +
+                        "Samples/frame:" + $"{samplesFrame}" + "\n" +
+                        "Seconds/frame:" + $"{secondsFrame}");
                 }
 
                 // Now, grab the necessary values and add them, too.
                 devSpecs.Append(
-                    $"""
-                    Decoders
-                    --------
-                    
-                    Supported decoders:
-                      - {string.Join("\n  - ", DecodeTools.GetDecoders(true))}
-                    
-                    All decoders:
-                      - {string.Join("\n  - ", DecodeTools.GetDecoders(false))}
-                    
-                    Encodings and Rates
-                    -------------------
-                    
-                    Encodings:
-                    {encodingsBuilder}
-                    Rates:
-                    {ratesBuilder}
-                    Buffer info
-                    -----------
+                    "Decoders" + "\n\n" +
+                    "Supported decoders:" + "\n" +
+                    $"  - {string.Join("\n  - ", DecodeTools.GetDecoders(true))}" + "\n\n" +
+                    "All decoders:" + "\n" +
+                    $"  - {string.Join("\n  - ", DecodeTools.GetDecoders(false))}" + "\n\n" +
 
-                    Generic buffer size: {AudioInfoTools.GetGenericBufferSize()}{playingBuilder}
-                    """);
+                    "Encodings and Rates" + "\n\n" +
+                    "Encodings:" + "\n" +
+                    encodingsBuilder.ToString() + "\n" +
+                    "Rates:" + "\n" +
+                    ratesBuilder.ToString() + "\n" +
+
+                    "Buffer info" + "\n\n" +
+                    "Generic buffer size:" + $"{AudioInfoTools.GetGenericBufferSize()}{playingBuilder}");
             }
 
             InfoBoxModalColor.WriteInfoBoxModal(
-                $$"""
-                BassBoom specifications
-                =======================
+                "BassBoom specifications" + "\n\n" +
+                "Basolia version:" + $" {InitBasolia.BasoliaVersion}" + "\n" +
+                "MPG123 version:" + $" {InitBasolia.MpgLibVersion}" + "\n" +
+                "OUT123 version:" + $" {InitBasolia.OutLibVersion}" + "\n\n" +
 
-                Basolia version: {{InitBasolia.BasoliaVersion}}
-                MPG123 version: {{InitBasolia.MpgLibVersion}}
-                OUT123 version: {{InitBasolia.OutLibVersion}}
-
-                System specifications
-                =====================
-
-                System: {{(PlatformHelper.IsOnWindows() ? "Windows" : PlatformHelper.IsOnMacOS() ? "macOS" : "Unix/Linux")}}
-                System Architecture: {{RuntimeInformation.OSArchitecture}}
-                Process Architecture: {{RuntimeInformation.ProcessArchitecture}}
-                System description: {{RuntimeInformation.OSDescription}}
-                .NET description: {{RuntimeInformation.FrameworkDescription}}{{devSpecs}}
-                """
+                "System specifications" + "\n\n" +
+                "System:" + $" {(PlatformHelper.IsOnWindows() ? "Windows" : PlatformHelper.IsOnMacOS() ? "macOS" : "Unix/Linux")}" + "\n" +
+                "System Architecture:" + $" {RuntimeInformation.OSArchitecture}" + "\n" +
+                "Process Architecture:" + $" {RuntimeInformation.ProcessArchitecture}" + "\n" +
+                "System description:" + $" {RuntimeInformation.OSDescription}" + "\n" +
+                ".NET description:" + $" {RuntimeInformation.FrameworkDescription}{devSpecs}"
             );
         }
 
@@ -304,7 +271,7 @@ namespace BassBoom.Cli.CliBase
                         var driver = drivers[driverIdx];
                         string active = "";
                         var devices = DeviceTools.GetDevices(BassBoomCli.basolia, driver.ChoiceName, ref active).Select((kvp) => new InputChoiceInfo(kvp.Key, kvp.Value)).ToArray();
-                        int deviceIdx = InfoBoxSelectionColor.WriteInfoBoxSelection(devices, $"Select a device. Current driver is {active}. ESC to quit.");
+                        int deviceIdx = InfoBoxSelectionColor.WriteInfoBoxSelection(devices, "Select a device. Current driver is {0}. ESC to quit.".FormatString(active));
                         playerScreen.RequireRefresh();
                         if (deviceIdx < 0)
                             return;

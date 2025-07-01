@@ -28,6 +28,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Textify.General;
 
 namespace BassBoom.Basolia.File
 {
@@ -158,14 +159,14 @@ namespace BassBoom.Basolia.File
             var reply = await RadioTools.client.GetAsync(path, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             RadioTools.client.DefaultRequestHeaders.Remove("Icy-MetaData");
             if (!reply.IsSuccessStatusCode)
-                throw new BasoliaException($"This radio station doesn't exist. Error code: {(int)reply.StatusCode} ({reply.StatusCode}).", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException("This radio station doesn't exist. Error code:" + $" {(int)reply.StatusCode} ({reply.StatusCode}).", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if there are any ICY headers
             if (!reply.Headers.Any((kvp) => kvp.Key.StartsWith("icy-")))
                 throw new BasoliaException("This doesn't look like a radio station. Are you sure?", mpg123_errors.MPG123_BAD_FILE);
             var contentType = reply.Content.Headers.ContentType;
             if (contentType.MediaType != "audio/mpeg")
-                throw new BasoliaException($"This doesn't look like an MP3 radio station. You have a(n) {contentType.MediaType} type. Are you sure?", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException("This doesn't look like an MP3 radio station. You have a(n) {0} type. Are you sure?".FormatString(contentType.MediaType), mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone
             unsafe

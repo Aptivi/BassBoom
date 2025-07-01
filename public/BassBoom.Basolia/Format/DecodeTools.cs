@@ -26,6 +26,7 @@ using BassBoom.Native.Interop.Play;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Textify.General;
 
 namespace BassBoom.Basolia.Format
 {
@@ -136,15 +137,15 @@ namespace BassBoom.Basolia.Format
             {
                 string[] decoders = GetDecoders(false);
                 if (!decoders.Contains(decoderName))
-                    throw new BasoliaException($"Decoder {decoderName} not found", mpg123_errors.MPG123_BAD_DECODER);
+                    throw new BasoliaException("Decoder {0} not found".FormatString(decoderName), mpg123_errors.MPG123_BAD_DECODER);
                 string[] supportedDecoders = GetDecoders(true);
                 if (!supportedDecoders.Contains(decoderName))
-                    throw new BasoliaException($"Decoder {decoderName} not supported by your device", mpg123_errors.MPG123_BAD_DECODER);
+                    throw new BasoliaException("Decoder {0} not supported by your device".FormatString(decoderName), mpg123_errors.MPG123_BAD_DECODER);
                 var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeDecoder.mpg123_decoder>(MpgNative.libManagerMpg, nameof(NativeDecoder.mpg123_decoder));
                 int status = @delegate.Invoke(handle, decoderName);
                 if (status != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException($"Can't set decoder to {decoderName}", (mpg123_errors)status);
+                    throw new BasoliaException("Can't set decoder to {0}".FormatString(decoderName), (mpg123_errors)status);
             }
         }
     }

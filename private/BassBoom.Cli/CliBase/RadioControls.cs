@@ -31,6 +31,7 @@ using System.Text;
 using System.Threading;
 using Terminaux.Base.Buffered;
 using Terminaux.Inputs.Styles.Infobox;
+using Textify.General;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -140,7 +141,7 @@ namespace BassBoom.Cli.CliBase
             Common.Switch(musicPath);
             if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
-                InfoBoxNonModalColor.WriteInfoBox($"Opening {musicPath}...", false);
+                InfoBoxNonModalColor.WriteInfoBox("Opening {0}...".FormatString(musicPath), false);
                 var formatInfo = FormatTools.GetFormatInfo(BassBoomCli.basolia);
                 var frameInfo = AudioInfoTools.GetFrameInfo(BassBoomCli.basolia);
 
@@ -156,7 +157,7 @@ namespace BassBoom.Cli.CliBase
             string icy = PlaybackTools.GetRadioNowPlaying(BassBoomCli.basolia);
 
             // Print the music name
-            return $"Now playing: {icy}";
+            return "Now playing:" + $" {icy}";
         }
 
         internal static void RemoveCurrentStation()
@@ -193,40 +194,32 @@ namespace BassBoom.Cli.CliBase
             if (Common.CurrentCachedInfo is null)
                 return;
             InfoBoxModalColor.WriteInfoBoxModal(
-                $$"""
-                Station info
-                ============
+                "Station info" + "\n\n" +
+                "Radio station URL:" + $" {Common.CurrentCachedInfo.MusicPath}" + "\n" +
+                "Radio station name:" + $" {Common.CurrentCachedInfo.StationName}" + "\n" +
+                "Radio station current song:" + $" {PlaybackTools.GetRadioNowPlaying(BassBoomCli.basolia)}" + "\n\n" +
 
-                Radio station URL: {{Common.CurrentCachedInfo.MusicPath}}
-                Radio station name: {{Common.CurrentCachedInfo.StationName}}
-                Radio station current song: {{PlaybackTools.GetRadioNowPlaying(BassBoomCli.basolia)}}
-                
-                Layer info
-                ==========
+                "Layer info" + "\n\n" +
+                "Version:" + $" {Common.CurrentCachedInfo.FrameInfo.Version}" + "\n" +
+                "Layer:" + $" {Common.CurrentCachedInfo.FrameInfo.Layer}" + "\n" +
+                "Rate:" + $" {Common.CurrentCachedInfo.FrameInfo.Rate}" + "\n" +
+                "Mode:" + $" {Common.CurrentCachedInfo.FrameInfo.Mode}" + "\n" +
+                "Mode Ext:" + $" {Common.CurrentCachedInfo.FrameInfo.ModeExt}" + "\n" +
+                "Frame Size:" + $" {Common.CurrentCachedInfo.FrameInfo.FrameSize}" + "\n" +
+                "Flags:" + $" {Common.CurrentCachedInfo.FrameInfo.Flags}" + "\n" +
+                "Emphasis:" + $" {Common.CurrentCachedInfo.FrameInfo.Emphasis}" + "\n" +
+                "Bitrate:" + $" {Common.CurrentCachedInfo.FrameInfo.BitRate}" + "\n" +
+                "ABR Rate:" + $" {Common.CurrentCachedInfo.FrameInfo.AbrRate}" + "\n" +
+                "VBR:" + $" {Common.CurrentCachedInfo.FrameInfo.Vbr}" + "\n\n" +
 
-                Version: {{Common.CurrentCachedInfo.FrameInfo.Version}}
-                Layer: {{Common.CurrentCachedInfo.FrameInfo.Layer}}
-                Rate: {{Common.CurrentCachedInfo.FrameInfo.Rate}}
-                Mode: {{Common.CurrentCachedInfo.FrameInfo.Mode}}
-                Mode Ext: {{Common.CurrentCachedInfo.FrameInfo.ModeExt}}
-                Frame Size: {{Common.CurrentCachedInfo.FrameInfo.FrameSize}}
-                Flags: {{Common.CurrentCachedInfo.FrameInfo.Flags}}
-                Emphasis: {{Common.CurrentCachedInfo.FrameInfo.Emphasis}}
-                Bitrate: {{Common.CurrentCachedInfo.FrameInfo.BitRate}}
-                ABR Rate: {{Common.CurrentCachedInfo.FrameInfo.AbrRate}}
-                VBR: {{Common.CurrentCachedInfo.FrameInfo.Vbr}}
-                
-                Native State
-                ============
-                
-                Accurate rendering: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Accurate)}}
-                Buffer fill: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.BufferFill)}}
-                Decoding delay: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.DecodeDelay)}}
-                Encoding delay: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodeDelay)}}
-                Encoding padding: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodePadding)}}
-                Frankenstein stream: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Frankenstein)}}
-                Fresh decoder: {{PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.FreshDecoder)}}
-                """
+                "Native State" + "\n\n" +
+                "Accurate rendering:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Accurate)}" + "\n" +
+                "Buffer fill:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.BufferFill)}" + "\n" +
+                "Decoding delay:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.DecodeDelay)}" + "\n" +
+                "Encoding delay:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodeDelay)}" + "\n" +
+                "Encoding padding:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodePadding)}" + "\n" +
+                "Frankenstein stream:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Frankenstein)}" + "\n" +
+                "Fresh decoder:" + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.FreshDecoder)}"
             );
         }
 
@@ -240,37 +233,30 @@ namespace BassBoom.Cli.CliBase
             {
                 foreach (var stream in station.Streams)
                 {
-                    streamBuilder.AppendLine($"Name: {stream.StreamTitle}");
-                    streamBuilder.AppendLine($"Home page: {stream.StreamHomepage}");
-                    streamBuilder.AppendLine($"Genre: {stream.StreamGenre}");
-                    streamBuilder.AppendLine($"Now playing: {stream.SongTitle}");
-                    streamBuilder.AppendLine($"Stream path: {stream.StreamPath}");
-                    streamBuilder.AppendLine($"Listeners: {stream.CurrentListeners} with {stream.PeakListeners} at peak");
-                    streamBuilder.AppendLine($"Bit rate: {stream.BitRate} kbps");
-                    streamBuilder.AppendLine($"Media type: {stream.MimeInfo}");
-                    streamBuilder.AppendLine("===============================");
+                    streamBuilder.AppendLine("Name:" + $" {stream.StreamTitle}");
+                    streamBuilder.AppendLine("    " + "Home page:" + $" {stream.StreamHomepage}");
+                    streamBuilder.AppendLine("    " + "Genre:" + $" {stream.StreamGenre}");
+                    streamBuilder.AppendLine("    " + "Now playing:" + $" {stream.SongTitle}");
+                    streamBuilder.AppendLine("    " + "Stream path:" + $" {stream.StreamPath}");
+                    streamBuilder.AppendLine("    " + "Listeners: {0} with {1} at peak".FormatString(stream.CurrentListeners, stream.PeakListeners));
+                    streamBuilder.AppendLine("    " + "Bit rate:" + $" {stream.BitRate} kbps");
+                    streamBuilder.AppendLine("    " + "Media type:" + $" {stream.MimeInfo}");
+                    streamBuilder.AppendLine();
                 }
                 InfoBoxModalColor.WriteInfoBoxModal(
-                    $$"""
-                    Radio server info
-                    =================
+                    "Radio server info" + "\n\n" +
+                    "Radio station URL:" + $" {station.ServerHostFull}" + "\n" +
+                    "Radio station uses HTTPS:" + $" {station.ServerHttps}" + "\n" +
+                    "Radio station server type:" + $" {station.ServerType}" + "\n" +
+                    "Radio station streams: {0} with {1} active".FormatString(station.TotalStreams, station.ActiveStreams) + "\n" +
+                    "Radio station listeners: {0} with {1} at peak".FormatString(station.CurrentListeners, station.PeakListeners) + "\n\n" +
 
-                    Radio station URL: {{station.ServerHostFull}}
-                    Radio station uses HTTPS: {{station.ServerHttps}}
-                    Radio station server type: {{station.ServerType}}
-                    Radio station streams: {{station.TotalStreams}} with {{station.ActiveStreams}} active
-                    Radio station listeners: {{station.CurrentListeners}} with {{station.PeakListeners}} at peak
-                
-                    Stream info
-                    ===========
-
-                    ===============================
-                    {{streamBuilder}}
-                    """
+                    "Stream info" + "\n\n" +
+                    streamBuilder.ToString()
                 );
             }
             else
-                InfoBoxModalColor.WriteInfoBoxModal($"Unable to get extended radio station info for {Common.CurrentCachedInfo.MusicPath}");
+                InfoBoxModalColor.WriteInfoBoxModal("Unable to get extended radio station info for {0}".FormatString(Common.CurrentCachedInfo.MusicPath));
         }
     }
 }

@@ -83,7 +83,7 @@ namespace BassBoom.Cli
             }
             catch (Exception ex)
             {
-                TextWriterColor.Write("Fatal error in the BassBoom CLI.\n\n" + ex.ToString());
+                TextWriterColor.Write("Fatal error in the BassBoom CLI." + "\n\n" + ex.ToString());
                 return ex.HResult;
             }
             return 0;

@@ -106,7 +106,7 @@ namespace BassBoom.Cli.CliBase
 
                 // Disco effect!
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
-                string indicator = $"┤ {boostIndicator}Volume: {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
+                string indicator = $"┤ {boostIndicator}" + "Volume:" + $" {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
                 if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                 {
                     hue++;
@@ -159,21 +159,21 @@ namespace BassBoom.Cli.CliBase
                 {
                     if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                         PlaybackTools.Stop(BassBoomCli.basolia);
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia when trying to process the music file.\n\n" + bex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia when trying to process the music file." + "\n\n" + bex.Message);
                     radioScreen.RequireRefresh();
                 }
                 catch (BasoliaOutException bex)
                 {
                     if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                         PlaybackTools.Stop(BassBoomCli.basolia);
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia output when trying to process the music file.\n\n" + bex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia output when trying to process the music file." + "\n\n" + bex.Message);
                     radioScreen.RequireRefresh();
                 }
                 catch (Exception ex)
                 {
                     if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                         PlaybackTools.Stop(BassBoomCli.basolia);
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an unknown error when trying to process the music file.\n\n" + ex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal("There's an unknown error when trying to process the music file." + "\n\n" + ex.Message);
                     radioScreen.RequireRefresh();
                 }
             }
@@ -310,7 +310,7 @@ namespace BassBoom.Cli.CliBase
             }
             catch (Exception ex)
             {
-                InfoBoxModalColor.WriteInfoBoxModal($"Playback failure: {ex.Message}");
+                InfoBoxModalColor.WriteInfoBoxModal("Playback failure:" + $" {ex.Message}");
                 Common.failedToPlay = true;
             }
         }

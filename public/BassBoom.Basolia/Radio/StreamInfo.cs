@@ -21,6 +21,7 @@ using System;
 using System.Diagnostics;
 using BassBoom.Basolia.Exceptions;
 using Newtonsoft.Json.Linq;
+using Textify.General;
 
 namespace BassBoom.Basolia.Radio
 {
@@ -229,7 +230,7 @@ namespace BassBoom.Basolia.Radio
             }
             catch (Exception ex)
             {
-                throw new BasoliaMiscException($"Failed to parse stream ID {streamId}. More information can be found in the inner exception.", ex);
+                throw new BasoliaMiscException("Failed to parse stream ID {0}. More information can be found in the inner exception.".FormatString(streamId), ex);
             }
         }
     }

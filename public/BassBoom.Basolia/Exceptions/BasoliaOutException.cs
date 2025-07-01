@@ -34,8 +34,8 @@ namespace BassBoom.Basolia.Exceptions
         /// </summary>
         /// <param name="error">An OUT123 error value to use.</param>
         internal BasoliaOutException(out123_error error) :
-            base($"General Basolia output system error\n" +
-                 $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeOutputLib.out123_plain_strerror>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_plain_strerror)).Invoke((int)error))}]")
+            base("General Basolia output system error" + "\n" +
+                 "OUT123 returned the following error:" + $" [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeOutputLib.out123_plain_strerror>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_plain_strerror)).Invoke((int)error))}]")
         { }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace BassBoom.Basolia.Exceptions
         /// <param name="error">An OUT123 error value to use.</param>
         internal BasoliaOutException(string message, out123_error error) :
             base($"{message}\n" +
-                 $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeOutputLib.out123_plain_strerror>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_plain_strerror)).Invoke((int)error))}]")
+                 "OUT123 returned the following error:" + $" [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeOutputLib.out123_plain_strerror>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_plain_strerror)).Invoke((int)error))}]")
         { }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace BassBoom.Basolia.Exceptions
         /// <param name="error">An OUT123 error value to use.</param>
         internal BasoliaOutException(string message, Exception innerException, out123_error error) :
             base($"{message}\n" +
-                 $"OUT123 returned the following error: [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeOutputLib.out123_plain_strerror>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_plain_strerror)).Invoke((int)error))}]", innerException)
+                 "OUT123 returned the following error:" + $" [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeOutputLib.out123_plain_strerror>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_plain_strerror)).Invoke((int)error))}]", innerException)
         { }
     }
 }
