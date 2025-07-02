@@ -1,0 +1,378 @@
+{
+  "lang": "ind-T",
+  "name": "Hindi",
+  "cultures": [
+    "hi",
+    "hi-IN"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA",
+      "text": "बासोलिया इंस्टेंस प्रदान नहीं किया गया है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID",
+      "text": "mpg123 लाइब्रेरी पथ {0} में वैध mpg123 लाइब्रेरी नहीं है।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID",
+      "text": "out123 लाइब्रेरी पथ {0} में वैध out123 लाइब्रेरी नहीं है।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB",
+      "text": "लाइब्रेरी आरंभ होने तक संस्करण प्राप्त नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT",
+      "text": "Basolia ने अभी तक MPG123 लाइब्रेरी आरंभ नहीं की है!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY",
+      "text": "ड्राइवरों से पूछताछ नहीं की जा सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY",
+      "text": "डिवाइस से पूछताछ नहीं की जा सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND",
+      "text": "ड्राइवर {0} मौजूद नहीं है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND",
+      "text": "डिवाइस {0} मौजूद नहीं है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR",
+      "text": "सामान्य बासोलिया त्रुटि"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR",
+      "text": "MPG123 ने निम्न त्रुटि लौटाई:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR",
+      "text": "सामान्य बासोलिया आउटपुट सिस्टम त्रुटि"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR",
+      "text": "OUT123 ने निम्न त्रुटि लौटाई:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN",
+      "text": "वर्तमान फ़ाइल या रेडियो स्टेशन अभी भी खुला होने पर यह फ़ाइल नहीं खोली जा सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH",
+      "text": "संगीत फ़ाइल के लिए पथ प्रदान करें"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "संगीत फ़ाइल मौजूद नहीं है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED",
+      "text": "फ़ाइल नहीं खोली जा सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN",
+      "text": "वर्तमान फ़ाइल या रेडियो स्टेशन अभी भी खुला होने पर यह URL नहीं खोली जा सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL",
+      "text": "संगीत फ़ाइल या रेडियो स्टेशन के लिए पथ प्रदान करें"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION",
+      "text": "यह रेडियो स्टेशन मौजूद नहीं है। त्रुटि कोड:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION",
+      "text": "यह रेडियो स्टेशन जैसा नहीं दिखता। क्या आप निश्चित हैं?"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION",
+      "text": "यह MP3 रेडियो स्टेशन जैसा नहीं दिखता। आपके पास {0} प्रकार है। क्या आप निश्चित हैं?"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED",
+      "text": "रेडियो स्टेशन नहीं खोला जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM",
+      "text": "ऑडियो स्ट्रीम प्रदान नहीं की गई है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED",
+      "text": "स्ट्रीम नहीं खोली जा सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED",
+      "text": "फ़ाइल या रेडियो स्टेशन को बंद नहीं किया जा सकता जो पहले से बंद है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED",
+      "text": "फ़ाइल बंद नहीं की जा सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY",
+      "text": "फ़ाइल को क्वेरी नहीं किया जा सकता जो खुली नहीं है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK",
+      "text": "प्लेबैक के दौरान अवधि प्राप्त करने का प्रयास करने से प्लेबैक दूषित हो जाता है! प्लेबैक के दौरान इस फ़ंक्शन को कॉल न करें।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED",
+      "text": "लंबाई की जानकारी के लिए फ़ाइल को स्कैन नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED",
+      "text": "फ़ाइल की लंबाई निर्धारित नहीं की जा सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED",
+      "text": "आउटपुट नहीं मिल सकता।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED",
+      "text": "फ़्रेम की लंबाई नहीं मिल सकती।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED",
+      "text": "प्रति फ़्रेम सैंपल नहीं मिल सकते।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED",
+      "text": "प्रति फ़्रेम सेकंड नहीं मिल सकते।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED",
+      "text": "सामान्य बफ़र आकार नहीं मिल सकता।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK",
+      "text": "प्लेबैक के दौरान ID3 मेटाडेटा प्राप्त करने का प्रयास करने से प्लेबैक दूषित हो जाता है! प्लेबैक के दौरान इस फ़ंक्शन को कॉल न करें।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED",
+      "text": "फ़्रेम जानकारी के लिए फ़ाइल को स्कैन नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED",
+      "text": "मेटाडेटा जानकारी नहीं मिल सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK",
+      "text": "प्लेबैक के दौरान ICY मेटाडेटा प्राप्त करने का प्रयास करने से प्लेबैक दूषित हो जाता है! प्लेबैक के दौरान इस फ़ंक्शन को कॉल न करें."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK",
+      "text": "प्लेबैक के दौरान फ़्रेम जानकारी प्राप्त करने का प्रयास करने से प्लेबैक दूषित हो जाता है! प्लेबैक के दौरान इस फ़ंक्शन को कॉल न करें."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED",
+      "text": "फ़्रेम जानकारी नहीं मिल सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE",
+      "text": "फ़ाइल के फ़्रेम को डिकोड नहीं किया जा सकता जो खुला नहीं है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED",
+      "text": "फ़्रेम को डिकोड नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND",
+      "text": "डिकोडर {0} नहीं मिला"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED",
+      "text": "डिकोडर {0} आपके डिवाइस द्वारा समर्थित नहीं है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED",
+      "text": "डिकोडर को {0} पर सेट नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED",
+      "text": "फ़ाइल का फ़ॉर्मेट निर्धारित नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND",
+      "text": "एन्कोडिंग {0} नहीं मिली."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED",
+      "text": "फ़ॉर्मेट जानकारी नहीं मिल सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED",
+      "text": "आउटपुट एन्कोडिंग को रीसेट नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED",
+      "text": "आउटपुट फ़ॉर्मेट सेट नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED",
+      "text": "आउटपुट एन्कोडिंग को इस पर सेट नहीं किया जा सकता:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED",
+      "text": "रूट लाइब्रेरी पथ प्रदान करें."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND",
+      "text": "गीत मौजूद नहीं है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND",
+      "text": "प्लेलिस्ट फ़ाइल {0} मौजूद नहीं है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID",
+      "text": "अमान्य प्लेलिस्ट फ़ाइल एक्सटेंशन {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY",
+      "text": "प्लेलिस्ट प्रतिनिधित्व प्रदान नहीं किया गया है."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER",
+      "text": "यह एक विस्तारित हेडर नहीं है:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS",
+      "text": "EXTINF के लिए ठीक दो तर्कों की आवश्यकता होती है, और कोई तर्क सूचक नहीं है।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "म्यूजिक फ़ाइल {0} नहीं मिली या MPEG फ़ाइल नहीं है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS",
+      "text": "ट्रैक जानकारी को ठीक दो तर्क प्रदान करने होंगे: सेकंड में ट्रैक की लंबाई (-1 अगर यह लाइवस्ट्रीम है) और कच्चा ट्रैक शीर्षक।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS",
+      "text": "ट्रैक जानकारी सेकंड की संख्या [{0}] सही ढंग से प्रदान नहीं करती है।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED",
+      "text": "फ़ाइल की वर्तमान अवधि निर्धारित नहीं की जा सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK",
+      "text": "ऐसी फ़ाइल नहीं खोजी जा सकती जो खुली नहीं है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED",
+      "text": "फ़ाइल की शुरुआत तक नहीं खोजी जा सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED",
+      "text": "फ़ाइल के फ़्रेम #{0} तक नहीं खोजी जा सकती"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
+      "text": "खोजने के लिए गीत पंक्ति प्रदान नहीं की गई है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
+      "text": "छोड़ नहीं सकते।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY",
+      "text": "जो फ़ाइल खुली नहीं है उसे चलाया नहीं जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE",
+      "text": "जो फ़ाइल खुली नहीं है उसे रोका नहीं जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP",
+      "text": "जो फ़ाइल खुली नहीं है उसे रोका नहीं जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED",
+      "text": "वॉल्यूम को {0} पर सेट नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED",
+      "text": "वॉल्यूम (बेस, रियली, और डेसिबल) नहीं मिल सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED",
+      "text": "इक्वलाइज़र बैंड {0}/32 को {1} से {2} के अंतर्गत सेट नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED",
+      "text": "इक्वलाइज़र बैंड {0}/32 -> {1}/32 को {2} से {3} के अंतर्गत सेट नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED",
+      "text": "इक्वलाइज़र बैंड को उनके आरंभिक मानों पर रीसेट नहीं किया जा सकता!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED",
+      "text": "{0} की मूल स्थिति नहीं मिल सकती!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED",
+      "text": "ड्राइवर {1} पर डिवाइस {0} पर आउटपुट नहीं खोला जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT",
+      "text": "आपको आउटपुट खोलने की आवश्यकता है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED",
+      "text": "चयनित दर [{0} हर्ट्ज] और एन्कोडिंग [{1}] समर्थित नहीं है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED",
+      "text": "आउटपुट शुरू नहीं किया जा सकता."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED",
+      "text": "फ़ीड नहीं किया जा सकता."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED",
+      "text": "रेडियो सर्वर {0} को पार्स करने में विफल. अधिक जानकारी आंतरिक अपवाद में पाई जा सकती है."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST",
+      "text": "स्ट्रीम टोकन शून्य है."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES",
+      "text": "कोई स्रोत नहीं हैं."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH",
+      "text": "रेडियो स्टेशन के लिए पथ प्रदान करें"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED",
+      "text": "रेडियो स्टेशन सर्वर प्रकार निर्धारित नहीं किया जा सकता।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2",
+      "text": "Shoutcast v2.x स्ट्रीम टोकन शून्य है"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2",
+      "text": "कोई Shoutcast v2.x स्ट्रीम नहीं है।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST",
+      "text": "कोई Icecast स्ट्रीम नहीं है।"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED",
+      "text": "स्ट्रीम ID {0} को पार्स करने में विफल। अधिक जानकारी आंतरिक अपवाद में पाई जा सकती है।"
+    }
+  ]
+}

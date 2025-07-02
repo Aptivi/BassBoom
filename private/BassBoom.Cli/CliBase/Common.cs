@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -22,6 +22,7 @@ using BassBoom.Basolia.Devices;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Format;
 using BassBoom.Basolia.Playback;
+using BassBoom.Cli.Languages;
 using BassBoom.Cli.Tools;
 using SpecProbe.Software.Platform;
 using System;
@@ -100,13 +101,13 @@ namespace BassBoom.Cli.CliBase
             {
                 var (driver, device) = DeviceTools.GetCurrent(BassBoomCli.basolia);
                 var cached = DeviceTools.GetCurrentCached(BassBoomCli.basolia);
-                currentBuilder.AppendLine("Device:" + $" {device}");
-                currentBuilder.AppendLine("Driver:" + $" {driver}");
-                currentBuilder.AppendLine("Device (cached):" + $" {cached.device}");
-                currentBuilder.AppendLine("Driver (cached):" + $" {cached.driver}");
+                currentBuilder.AppendLine(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_DEVICE") + $" {device}");
+                currentBuilder.AppendLine(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_DRIVER") + $" {driver}");
+                currentBuilder.AppendLine(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_DEVICECACHED") + $" {cached.device}");
+                currentBuilder.AppendLine(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_DRIVERCACHED") + $" {cached.driver}");
             }
             else
-                currentBuilder.AppendLine("Can't query current devices while not playing.");
+                currentBuilder.AppendLine(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_DEVICESQUERYNOTPLAYING"));
             var drivers = DeviceTools.GetDrivers(BassBoomCli.basolia);
             string activeDevice = "";
             foreach (var driver in drivers)
@@ -124,9 +125,9 @@ namespace BassBoom.Cli.CliBase
                 }
             }
             InfoBoxModalColor.WriteInfoBoxModal(
-                "Device and Driver" + "\n\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_DEVICEANDDRIVER") + "\n\n" +
                 currentBuilder.ToString() + "\n\n" +
-                "Available devices and drivers" + "\n\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_AVAILABLEDEVICESANDDRIVERS") + "\n\n" +
                 builder.ToString()
             );
         }
@@ -136,7 +137,7 @@ namespace BassBoom.Cli.CliBase
             var devSpecs = new StringBuilder();
             if (devMode)
             {
-                devSpecs.AppendLine("\n\n" + "Extra specs (for developers)" + "\n");
+                devSpecs.AppendLine("\n\n" + LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_EXTRASPECS") + "\n");
 
                 // Get all encodings and add them to a separate builder
                 var encodingsBuilder = new StringBuilder();
@@ -151,8 +152,8 @@ namespace BassBoom.Cli.CliBase
                     int zeroSample = FormatTools.GetZeroSample(encoding, sampleSize, 0);
 
                     encodingsBuilder.AppendLine($"  - {name} [{encoding}, {size} B]: {desc}");
-                    encodingsBuilder.AppendLine("    - " + "PCM sample size:" + $" {sampleSize}");
-                    encodingsBuilder.AppendLine("    - " + "Zero sample (offset 0):" + $" {zeroSample}");
+                    encodingsBuilder.AppendLine("    - " + LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_PCMSAMPLESIZE") + $" {sampleSize}");
+                    encodingsBuilder.AppendLine("    - " + LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_ZEROSAMPLE") + $" {zeroSample}");
                 }
 
                 // Get all rates and add them to a separate builder
@@ -171,56 +172,56 @@ namespace BassBoom.Cli.CliBase
                     double secondsFrame = AudioInfoTools.GetSecondsPerFrame(BassBoomCli.basolia);
                     playingBuilder.Append(
                         "\n" +
-                        "Duration in samples:" + $"{durationSamples}" + "\n" +
-                        "Frame length:" + $"{frameLength}" + "\n" +
-                        "Samples/frame:" + $"{samplesFrame}" + "\n" +
-                        "Seconds/frame:" + $"{secondsFrame}");
+                        LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_DURATIONSAMPLES") + $"{durationSamples}" + "\n" +
+                        LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_FRAMELEN") + $"{frameLength}" + "\n" +
+                        LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_SPF") + $"{samplesFrame}" + "\n" +
+                        LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_TPF") + $"{secondsFrame}");
                 }
 
                 // Now, grab the necessary values and add them, too.
                 devSpecs.Append(
-                    "Decoders" + "\n\n" +
-                    "Supported decoders:" + "\n" +
+                    LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_DECODERS") + "\n\n" +
+                    LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_SUPPORTEDDECODERS") + "\n" +
                     $"  - {string.Join("\n  - ", DecodeTools.GetDecoders(true))}" + "\n\n" +
-                    "All decoders:" + "\n" +
+                    LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_ALLDECODERS") + "\n" +
                     $"  - {string.Join("\n  - ", DecodeTools.GetDecoders(false))}" + "\n\n" +
 
-                    "Encodings and Rates" + "\n\n" +
-                    "Encodings:" + "\n" +
+                    LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_ENCODINGSANDRATES") + "\n\n" +
+                    LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_ENCODINGS") + "\n" +
                     encodingsBuilder.ToString() + "\n" +
-                    "Rates:" + "\n" +
+                    LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_RATES") + "\n" +
                     ratesBuilder.ToString() + "\n" +
 
-                    "Buffer info" + "\n\n" +
-                    "Generic buffer size:" + $"{AudioInfoTools.GetGenericBufferSize()}{playingBuilder}");
+                    LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_BUFFERINFO") + "\n\n" +
+                    LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_GENERICBUFFERSIZE") + $"{AudioInfoTools.GetGenericBufferSize()}{playingBuilder}");
             }
 
             InfoBoxModalColor.WriteInfoBoxModal(
-                "BassBoom specifications" + "\n\n" +
-                "Basolia version:" + $" {InitBasolia.BasoliaVersion}" + "\n" +
-                "MPG123 version:" + $" {InitBasolia.MpgLibVersion}" + "\n" +
-                "OUT123 version:" + $" {InitBasolia.OutLibVersion}" + "\n\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_BASSBOOMSPECS") + "\n\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_BASSBOOMSPECS_BASOLIAVER") + $" {InitBasolia.BasoliaVersion}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_BASSBOOMSPECS_MPG123VER") + $" {InitBasolia.MpgLibVersion}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_BASSBOOMSPECS_OUT123VER") + $" {InitBasolia.OutLibVersion}" + "\n\n" +
 
-                "System specifications" + "\n\n" +
-                "System:" + $" {(PlatformHelper.IsOnWindows() ? "Windows" : PlatformHelper.IsOnMacOS() ? "macOS" : "Unix/Linux")}" + "\n" +
-                "System Architecture:" + $" {RuntimeInformation.OSArchitecture}" + "\n" +
-                "Process Architecture:" + $" {RuntimeInformation.ProcessArchitecture}" + "\n" +
-                "System description:" + $" {RuntimeInformation.OSDescription}" + "\n" +
-                ".NET description:" + $" {RuntimeInformation.FrameworkDescription}{devSpecs}"
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_SYSTEMSPECS") + "\n\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEM") + $" {(PlatformHelper.IsOnWindows() ? "Windows" : PlatformHelper.IsOnMacOS() ? "macOS" : "Unix/Linux")}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMARCH") + $" {RuntimeInformation.OSArchitecture}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_SYSTEMSPECS_PROCESSARCH") + $" {RuntimeInformation.ProcessArchitecture}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMDESC") + $" {RuntimeInformation.OSDescription}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_SYSTEMSPECS_DOTNETDESC") + $" {RuntimeInformation.FrameworkDescription}{devSpecs}"
             );
         }
 
         internal static void ShowHelp()
         {
-            InfoBoxModalColor.WriteInfoBoxModal("Available keystrokes",
-                KeybindingTools.RenderKeybindingHelpText(Player.allBindings)
+            InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES"),
+                KeybindingTools.RenderKeybindingHelpText(Player.AllBindings)
             );
         }
 
         internal static void ShowHelpRadio()
         {
-            InfoBoxModalColor.WriteInfoBoxModal("Available keystrokes",
-                KeybindingTools.RenderKeybindingHelpText(Radio.allBindings)
+            InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES"),
+                KeybindingTools.RenderKeybindingHelpText(Radio.AllBindings)
             );
         }
 
@@ -264,14 +265,14 @@ namespace BassBoom.Cli.CliBase
                     if (keystroke.Modifiers == ConsoleModifiers.Control)
                     {
                         var drivers = DeviceTools.GetDrivers(BassBoomCli.basolia).Select((kvp) => new InputChoiceInfo(kvp.Key, kvp.Value)).ToArray();
-                        int driverIdx = InfoBoxSelectionColor.WriteInfoBoxSelection(drivers, "Select a driver. ESC to quit.");
+                        int driverIdx = InfoBoxSelectionColor.WriteInfoBoxSelection(drivers, LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_SELECTDRIVER"));
                         playerScreen.RequireRefresh();
                         if (driverIdx < 0)
                             return;
                         var driver = drivers[driverIdx];
                         string active = "";
                         var devices = DeviceTools.GetDevices(BassBoomCli.basolia, driver.ChoiceName, ref active).Select((kvp) => new InputChoiceInfo(kvp.Key, kvp.Value)).ToArray();
-                        int deviceIdx = InfoBoxSelectionColor.WriteInfoBoxSelection(devices, "Select a device. Current driver is {0}. ESC to quit.".FormatString(active));
+                        int deviceIdx = InfoBoxSelectionColor.WriteInfoBoxSelection(devices, LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_SELECTDEVICE").FormatString(active));
                         playerScreen.RequireRefresh();
                         if (deviceIdx < 0)
                             return;
@@ -287,7 +288,7 @@ namespace BassBoom.Cli.CliBase
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.F1:
-                    string path = InfoBoxInputColor.WriteInfoBoxInput("Enter a path to the playlist file that you would like to save");
+                    string path = InfoBoxInputColor.WriteInfoBoxInput(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_PATHTOPLAYLIST"));
                     playerScreen.RequireRefresh();
                     if (string.IsNullOrEmpty(path))
                     {

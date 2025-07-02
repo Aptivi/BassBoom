@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -19,6 +19,7 @@
 
 using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.Helpers;
+using BassBoom.Basolia.Languages;
 using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
@@ -45,7 +46,7 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             Dictionary<string, string> drivers = [];
 
             // We're now entering the dangerous zone
@@ -59,7 +60,7 @@ namespace BassBoom.Basolia.Devices
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_drivers>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_drivers));
                 int driversStatus = @delegate.Invoke(handle, ref names, ref descr);
                 if (driversStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't query the drivers", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY"), mpg123_errors.MPG123_ERR);
                 driverCount = driversStatus;
                 driverNames = ArrayVariantLength.GetStringsKnownLength(names, driverCount);
                 driverDescs = ArrayVariantLength.GetStringsKnownLength(descr, driverCount);
@@ -89,7 +90,7 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             Dictionary<string, string> devices = [];
 
             // We're now entering the dangerous zone
@@ -103,7 +104,7 @@ namespace BassBoom.Basolia.Devices
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_devices>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_devices));
                 int devicesStatus = @delegate.Invoke(handle, driver, out names, out descr, ref active);
                 if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY"), mpg123_errors.MPG123_ERR);
                 activeDevice = Marshal.PtrToStringAnsi(active);
                 deviceCount = devicesStatus;
                 deviceNames = ArrayVariantLength.GetStringsKnownLength(names, deviceCount);
@@ -130,7 +131,7 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -142,7 +143,7 @@ namespace BassBoom.Basolia.Devices
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_driver_info>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_driver_info));
                 int devicesStatus = @delegate.Invoke(handle, ref driverPtr, ref devicePtr);
                 if (devicesStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't query the devices", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY"), mpg123_errors.MPG123_ERR);
                 string driver = Marshal.PtrToStringAnsi(driverPtr);
                 string device = Marshal.PtrToStringAnsi(devicePtr);
                 return (driver, device);
@@ -159,7 +160,7 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             return (basolia.activeDriver, basolia.activeDevice);
         }
 
@@ -173,10 +174,10 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             var driverList = GetDrivers(basolia);
             if (!driverList.ContainsKey(driver))
-                throw new BasoliaException("Driver {0} doesn't exist".FormatString(driver), mpg123_errors.MPG123_ERR);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND").FormatString(driver), mpg123_errors.MPG123_ERR);
             basolia.activeDriver = driver;
         }
 
@@ -191,13 +192,13 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             basolia.activeDevice = "";
             var deviceList = GetDevices(basolia, driver, ref basolia.activeDevice);
             if (string.IsNullOrEmpty(device))
                 return;
             if (!deviceList.ContainsKey(device))
-                throw new BasoliaException("Device {0} doesn't exist".FormatString(device), mpg123_errors.MPG123_ERR);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND").FormatString(device), mpg123_errors.MPG123_ERR);
             basolia.activeDevice = device;
         }
 
@@ -209,7 +210,7 @@ namespace BassBoom.Basolia.Devices
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             basolia.activeDriver = null;
             basolia.activeDevice = null;
         }

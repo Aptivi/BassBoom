@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia.Languages;
 using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using System;
@@ -34,8 +35,8 @@ namespace BassBoom.Basolia.Exceptions
         /// </summary>
         /// <param name="error">An MPG123 error value to use.</param>
         internal BasoliaException(mpg123_errors error) :
-            base("General Basolia error" + "\n" +
-                 "MPG123 returned the following error:" + $" [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeError.mpg123_plain_strerror>(MpgNative.libManagerMpg, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
+            base(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR") + "\n" +
+                 LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR") + $" [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeError.mpg123_plain_strerror>(MpgNative.libManagerMpg, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
         { }
 
         /// <summary>
@@ -45,7 +46,7 @@ namespace BassBoom.Basolia.Exceptions
         /// <param name="error">An MPG123 error value to use.</param>
         internal BasoliaException(string message, mpg123_errors error) :
             base($"{message}\n" +
-                 "MPG123 returned the following error:" + $" [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeError.mpg123_plain_strerror>(MpgNative.libManagerMpg, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
+                 LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR") + $" [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeError.mpg123_plain_strerror>(MpgNative.libManagerMpg, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]")
         { }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace BassBoom.Basolia.Exceptions
         /// <param name="error">An MPG123 error value to use.</param>
         internal BasoliaException(string message, Exception innerException, mpg123_errors error) :
             base($"{message}\n" +
-                 "MPG123 returned the following error:" + $" [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeError.mpg123_plain_strerror>(MpgNative.libManagerMpg, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]", innerException)
+                 LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR") + $" [{error} - {Marshal.PtrToStringAnsi(MpgNative.GetDelegate<NativeError.mpg123_plain_strerror>(MpgNative.libManagerMpg, nameof(NativeError.mpg123_plain_strerror)).Invoke((int)error))}]", innerException)
         { }
     }
 }

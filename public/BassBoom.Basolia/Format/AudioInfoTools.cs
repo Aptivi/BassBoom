@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -32,6 +32,7 @@ using SpecProbe.Software.Platform;
 using BassBoom.Basolia.Enumerations;
 using BassBoom.Native;
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Languages;
 
 namespace BassBoom.Basolia.Format
 {
@@ -51,15 +52,15 @@ namespace BassBoom.Basolia.Format
             int length;
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY"), mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
             if (PlaybackTools.IsPlaying(basolia))
-                throw new BasoliaException("Trying to get the duration during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK"), mpg123_errors.MPG123_ERR_READER);
 
             // Always zero for radio stations
             if (FileTools.IsRadioStation(basolia))
@@ -77,7 +78,7 @@ namespace BassBoom.Basolia.Format
                         var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                         int scanStatus = delegate2.Invoke(handle);
                         if (scanStatus == (int)mpg123_errors.MPG123_ERR)
-                            throw new BasoliaException("Can't scan file for length information", mpg123_errors.MPG123_ERR);
+                            throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED"), mpg123_errors.MPG123_ERR);
                     }
                 }
 
@@ -85,7 +86,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_length>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_length));
                 length = @delegate.Invoke(handle);
                 if (length == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't determine the length of the file", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED"), mpg123_errors.MPG123_ERR);
             }
 
             // We're now entering the safe zone
@@ -101,7 +102,7 @@ namespace BassBoom.Basolia.Format
         public static TimeSpan GetDurationSpan(BasoliaMedia? basolia, bool scan)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // First, get the format information
             var formatInfo = FormatTools.GetFormatInfo(basolia);
@@ -122,7 +123,7 @@ namespace BassBoom.Basolia.Format
         public static TimeSpan GetDurationSpanFromSamples(BasoliaMedia? basolia, int samples)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // First, get the format information
             var (rate, _, _) = FormatTools.GetFormatInfo(basolia);
@@ -154,11 +155,11 @@ namespace BassBoom.Basolia.Format
             int frameSize;
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY"), mpg123_errors.MPG123_BAD_FILE);
 
             unsafe
             {
@@ -168,7 +169,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_getformat>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_getformat));
                 int getStatus = @delegate.Invoke(outHandle, null, null, null, out frameSize);
                 if (getStatus != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException("Can't get the output.", (out123_error)getStatus);
+                    throw new BasoliaOutException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED"), (out123_error)getStatus);
                 Debug.WriteLine($"Got frame size {frameSize}");
             }
             return frameSize;
@@ -185,11 +186,11 @@ namespace BassBoom.Basolia.Format
             int getStatus;
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY"), mpg123_errors.MPG123_BAD_FILE);
 
             unsafe
             {
@@ -199,7 +200,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_framelength>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_framelength));
                 getStatus = @delegate.Invoke(handle);
                 if (getStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't get the frame length.", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED"), mpg123_errors.MPG123_ERR);
                 Debug.WriteLine($"Got frame length {getStatus}");
             }
             return getStatus;
@@ -216,11 +217,11 @@ namespace BassBoom.Basolia.Format
             int getStatus;
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY"), mpg123_errors.MPG123_BAD_FILE);
 
             unsafe
             {
@@ -230,7 +231,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_spf>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_spf));
                 getStatus = @delegate.Invoke(handle);
                 if (getStatus < 0)
-                    throw new BasoliaException("Can't get the samples per frame.", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED"), mpg123_errors.MPG123_ERR);
                 Debug.WriteLine($"Got frame spf {getStatus}");
             }
             return getStatus;
@@ -247,11 +248,11 @@ namespace BassBoom.Basolia.Format
             double getStatus;
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY"), mpg123_errors.MPG123_BAD_FILE);
 
             unsafe
             {
@@ -261,7 +262,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_tpf>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_tpf));
                 getStatus = @delegate.Invoke(handle);
                 if (getStatus < 0)
-                    throw new BasoliaException("Can't get the seconds per frame.", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED"), mpg123_errors.MPG123_ERR);
                 Debug.WriteLine($"Got frame tpf {getStatus}");
             }
             return getStatus;
@@ -278,11 +279,11 @@ namespace BassBoom.Basolia.Format
             int bufferSize;
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY"), mpg123_errors.MPG123_BAD_FILE);
 
             unsafe
             {
@@ -312,7 +313,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_safe_buffer>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_safe_buffer));
                 bufferSize = @delegate.Invoke();
                 if (bufferSize < 0)
-                    throw new BasoliaException("Can't get the generic buffer size.", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED"), mpg123_errors.MPG123_ERR);
                 Debug.WriteLine($"Got buffsize {bufferSize}");
             }
             return bufferSize;
@@ -329,15 +330,15 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY"), mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
             if (PlaybackTools.IsPlaying(basolia))
-                throw new BasoliaException("Trying to get the ID3 metadata during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK"), mpg123_errors.MPG123_ERR_READER);
 
             IntPtr v1 = IntPtr.Zero;
             IntPtr v2 = IntPtr.Zero;
@@ -351,14 +352,14 @@ namespace BassBoom.Basolia.Format
                     var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                     int scanStatus = delegate2.Invoke(handle);
                     if (scanStatus == (int)mpg123_errors.MPG123_ERR)
-                        throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
+                        throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED"), mpg123_errors.MPG123_ERR);
                 }
 
                 // Now, get the metadata info.
                 var @delegate = MpgNative.GetDelegate<NativeMetadata.mpg123_id3>(MpgNative.libManagerMpg, nameof(NativeMetadata.mpg123_id3));
                 int getStatus = @delegate.Invoke(handle, ref v1, ref v2);
                 if (getStatus != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't get metadata information", (mpg123_errors)getStatus);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED"), (mpg123_errors)getStatus);
             }
 
             // Check the pointers before trying to get metadata
@@ -488,15 +489,15 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY"), mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
             if (PlaybackTools.IsPlaying(basolia))
-                throw new BasoliaException("Trying to get the ICY metadata during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK"), mpg123_errors.MPG123_ERR_READER);
 
             string icy = "";
             unsafe
@@ -509,14 +510,14 @@ namespace BassBoom.Basolia.Format
                     var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                     int scanStatus = delegate2.Invoke(handle);
                     if (scanStatus == (int)mpg123_errors.MPG123_ERR)
-                        throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
+                        throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED"), mpg123_errors.MPG123_ERR);
                 }
 
                 // Now, get the metadata info.
                 var @delegate = MpgNative.GetDelegate<NativeMetadata.mpg123_icy>(MpgNative.libManagerMpg, nameof(NativeMetadata.mpg123_icy));
                 int getStatus = @delegate.Invoke(handle, ref icy);
                 if (getStatus != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't get metadata information", (mpg123_errors)getStatus);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED"), (mpg123_errors)getStatus);
             }
             return icy;
         }
@@ -531,15 +532,15 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY"), mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we're playing
             if (PlaybackTools.IsPlaying(basolia))
-                throw new BasoliaException("Trying to get the frame information during playback causes playback corruption! Don't call this function during playback.", mpg123_errors.MPG123_ERR_READER);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK"), mpg123_errors.MPG123_ERR_READER);
             
             // Some variables
             FrameVersion version;
@@ -568,14 +569,14 @@ namespace BassBoom.Basolia.Format
                         var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                         int scanStatus = delegate2.Invoke(handle);
                         if (scanStatus == (int)mpg123_errors.MPG123_ERR)
-                            throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
+                            throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED"), mpg123_errors.MPG123_ERR);
                     }
 
                     // Now, get the frame info.
                     var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_info_win>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_info));
                     int getStatus = @delegate.Invoke(handle, ref frameInfo);
                     if (getStatus != (int)mpg123_errors.MPG123_OK)
-                        throw new BasoliaException("Can't get frame information", (mpg123_errors)getStatus);
+                        throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED"), (mpg123_errors)getStatus);
                 }
 
                 // Move every info to the class
@@ -604,14 +605,14 @@ namespace BassBoom.Basolia.Format
                         var delegate2 = MpgNative.GetDelegate<NativeStatus.mpg123_scan>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_scan));
                         int scanStatus = delegate2.Invoke(handle);
                         if (scanStatus == (int)mpg123_errors.MPG123_ERR)
-                            throw new BasoliaException("Can't scan file for frame information", mpg123_errors.MPG123_ERR);
+                            throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED"), mpg123_errors.MPG123_ERR);
                     }
 
                     // Now, get the frame info.
                     var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_info>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_info));
                     int getStatus = @delegate.Invoke(handle, ref frameInfo);
                     if (getStatus != (int)mpg123_errors.MPG123_OK)
-                        throw new BasoliaException("Can't get frame information", (mpg123_errors)getStatus);
+                        throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED"), (mpg123_errors)getStatus);
                 }
 
                 // Move every info to the class

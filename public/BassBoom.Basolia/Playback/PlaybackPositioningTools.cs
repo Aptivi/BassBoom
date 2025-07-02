@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -28,6 +28,7 @@ using BassBoom.Basolia.Lyrics;
 using BassBoom.Native;
 using BassBoom.Basolia.Exceptions;
 using Textify.General;
+using BassBoom.Basolia.Languages;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -48,11 +49,11 @@ namespace BassBoom.Basolia.Playback
             int length;
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't query a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY"), mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -63,7 +64,7 @@ namespace BassBoom.Basolia.Playback
                 var @delegate = MpgNative.GetDelegate<NativePositioning.mpg123_tell>(MpgNative.libManagerMpg, nameof(NativePositioning.mpg123_tell));
                 length = @delegate.Invoke(handle);
                 if (length == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't determine the current duration of the file", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED"), mpg123_errors.MPG123_ERR);
             }
 
             // We're now entering the safe zone
@@ -78,7 +79,7 @@ namespace BassBoom.Basolia.Playback
         public static TimeSpan GetCurrentDurationSpan(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // First, get the format information
             var formatInfo = FormatTools.GetFormatInfo(basolia);
@@ -100,11 +101,11 @@ namespace BassBoom.Basolia.Playback
             {
                 InitBasolia.CheckInited();
                 if (basolia is null)
-                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened(basolia))
-                    throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK"), mpg123_errors.MPG123_BAD_FILE);
 
                 // We're now entering the dangerous zone
                 unsafe
@@ -121,7 +122,7 @@ namespace BassBoom.Basolia.Playback
                     int status = @delegate.Invoke(handle, 0, 0);
                     basolia.holding = false;
                     if (status == (int)mpg123_errors.MPG123_ERR)
-                        throw new BasoliaException("Can't seek to the beginning of the file", mpg123_errors.MPG123_LSEEK_FAILED);
+                        throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED"), mpg123_errors.MPG123_LSEEK_FAILED);
                 }
             }
         }
@@ -137,11 +138,11 @@ namespace BassBoom.Basolia.Playback
             {
                 InitBasolia.CheckInited();
                 if (basolia is null)
-                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened(basolia))
-                    throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK"), mpg123_errors.MPG123_BAD_FILE);
 
                 // We're now entering the dangerous zone
                 unsafe
@@ -158,7 +159,7 @@ namespace BassBoom.Basolia.Playback
                     int status = @delegate.Invoke(handle, frame, 0);
                     basolia.holding = false;
                     if (status == (int)mpg123_errors.MPG123_ERR)
-                        throw new BasoliaException("Can't seek to frame #{0} of the file".FormatString(frame), (mpg123_errors)status);
+                        throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED").FormatString(frame), (mpg123_errors)status);
                 }
             }
         }
@@ -175,13 +176,13 @@ namespace BassBoom.Basolia.Playback
             {
                 InitBasolia.CheckInited();
                 if (basolia is null)
-                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened(basolia))
-                    throw new BasoliaException("Can't seek a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK"), mpg123_errors.MPG123_BAD_FILE);
                 if (lyricLine is null)
-                    throw new BasoliaException("Lyric line is not provided to seek to", mpg123_errors.MPG123_BAD_FILE);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED"), mpg123_errors.MPG123_BAD_FILE);
 
                 // Get the length, convert it to frames, and seek
                 var length = lyricLine.LineSpan.TotalSeconds;
@@ -201,11 +202,11 @@ namespace BassBoom.Basolia.Playback
             {
                 InitBasolia.CheckInited();
                 if (basolia is null)
-                    throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
                 // Check to see if the file is open
                 if (!FileTools.IsOpened(basolia))
-                    throw new BasoliaException("Can't drop.", mpg123_errors.MPG123_BAD_FILE);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED"), mpg123_errors.MPG123_BAD_FILE);
 
                 // We're now entering the dangerous zone
                 unsafe

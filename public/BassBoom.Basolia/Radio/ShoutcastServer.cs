@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using BassBoom.Basolia.Exceptions;
 using Textify.General;
+using BassBoom.Basolia.Languages;
 
 namespace BassBoom.Basolia.Radio
 {
@@ -166,7 +167,7 @@ namespace BassBoom.Basolia.Radio
             }
             catch (Exception ex)
             {
-                throw new BasoliaMiscException("Failed to parse radio server {0}. More information can be found in the inner exception.".FormatString(ServerHost), ex);
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED").FormatString(ServerHost), ex);
             }
         }
 
@@ -187,7 +188,7 @@ namespace BassBoom.Basolia.Radio
             }
             catch (Exception ex)
             {
-                throw new BasoliaMiscException("Failed to parse radio server {0}. More information can be found in the inner exception.".FormatString(ServerHost), ex);
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED").FormatString(ServerHost), ex);
             }
         }
 
@@ -235,7 +236,7 @@ namespace BassBoom.Basolia.Radio
             // Use all the keys in the first object except the "streams" and "version", where we'd later use the former in StreamInfo to install
             // all the streams into the new class instance.
             if (streamToken is null)
-                throw new BasoliaMiscException("Shoutcast v2.x stream token is null");
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2"));
             totalStreams = (int?)streamToken["totalstreams"] ?? 0;
             activeStreams = (int?)streamToken["activestreams"] ?? 0;
             currentListeners = (int?)streamToken["currentlisteners"] ?? 0;

@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -18,6 +18,7 @@
 //
 
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Languages;
 using SpecProbe.Software.Platform;
 using System;
 using System.Linq;
@@ -50,7 +51,7 @@ namespace BassBoom.Basolia.Radio
         {
             // Check to see if we provided a path
             if (string.IsNullOrEmpty(radioUrl))
-                throw new BasoliaMiscException("Provide a path to a radio station");
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH"));
             var uri = new Uri(radioUrl);
 
             // Check to see if the radio station exists
@@ -60,11 +61,11 @@ namespace BassBoom.Basolia.Radio
             var reply = await client.GetAsync(radioUrl, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             client.DefaultRequestHeaders.Remove("Icy-MetaData");
             if (!reply.IsSuccessStatusCode)
-                throw new BasoliaMiscException("This radio station doesn't exist. Error code:" + $" {(int)reply.StatusCode} ({reply.StatusCode}).");
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION") + $" {(int)reply.StatusCode} ({reply.StatusCode}).");
 
             // Check for radio statio and get the MIME type
             if (!reply.Headers.Any((kvp) => kvp.Key.StartsWith("icy-")))
-                throw new BasoliaMiscException("This doesn't look like a radio station. Are you sure?");
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION"));
             var contentType = reply.Content.Headers.ContentType;
             string streamType = contentType.MediaType;
 
@@ -75,7 +76,7 @@ namespace BassBoom.Basolia.Radio
             else if (reply.Headers.Contains("icy-notice2") && reply.Headers.GetValues("icy-notice2").First().ToLower().Contains("shoutcast"))
                 type = RadioServerType.Shoutcast;
             else
-                throw new BasoliaMiscException("Can't determine radio station server type.");
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED"));
 
             // Return the appropriate parsed server stats instance
             IRadioServer? stats = type switch

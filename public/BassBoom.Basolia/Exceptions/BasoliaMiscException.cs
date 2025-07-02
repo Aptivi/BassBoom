@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia.Languages;
 using System;
 
 namespace BassBoom.Basolia.Exceptions
@@ -30,7 +31,7 @@ namespace BassBoom.Basolia.Exceptions
         /// Creates a new instance of Basolia error.
         /// </summary>
         internal BasoliaMiscException() :
-            base("General Basolia error")
+            base(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR"))
         { }
 
         /// <summary>

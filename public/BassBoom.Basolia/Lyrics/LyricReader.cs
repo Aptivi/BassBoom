@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Basolia.Languages;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,7 +38,7 @@ namespace BassBoom.Basolia.Lyrics
         {
             // Check to see if the lyrics path exists
             if (!FileIO.Exists(path))
-                throw new FileNotFoundException("Lyric doesn't exist", path);
+                throw new FileNotFoundException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND"), path);
 
             // Get the lines and parse them
             var lyricFileLines = FileIO.ReadAllLines(path);

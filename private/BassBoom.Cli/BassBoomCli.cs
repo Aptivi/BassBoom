@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -29,6 +29,7 @@ using Terminaux.Colors;
 using Terminaux.Colors.Data;
 using Terminaux.Base;
 using BassBoom.Basolia.Playback;
+using BassBoom.Cli.Languages;
 
 namespace BassBoom.Cli
 {
@@ -57,7 +58,7 @@ namespace BassBoom.Cli
                     // Check for existence.
                     if (string.IsNullOrEmpty(musicPath) || (!isRadio && !File.Exists(musicPath)))
                     {
-                        TextWriterColor.Write("Music file {0} doesn't exist.", musicPath);
+                        TextWriterColor.Write(LanguageTools.GetLocalized("BASSBOOM_APP_NOTFOUND"), musicPath);
                         return 1;
                     }
                     if (!isRadio)
@@ -83,7 +84,7 @@ namespace BassBoom.Cli
             }
             catch (Exception ex)
             {
-                TextWriterColor.Write("Fatal error in the BassBoom CLI." + "\n\n" + ex.ToString());
+                TextWriterColor.Write(LanguageTools.GetLocalized("BASSBOOM_APP_FATALERROR") + "\n\n" + ex.ToString());
                 return ex.HResult;
             }
             return 0;

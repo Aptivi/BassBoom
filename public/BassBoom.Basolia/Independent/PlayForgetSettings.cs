@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -18,6 +18,7 @@
 //
 
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Languages;
 
 namespace BassBoom.Basolia.Independent
 {
@@ -82,7 +83,7 @@ namespace BassBoom.Basolia.Independent
             this.volume = volume;
             this.volBoost = volBoost;
             this.rootLibPath = rootLibPath ??
-                throw new BasoliaMiscException("Provide a root library path.");
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED"));
         }
     }
 }

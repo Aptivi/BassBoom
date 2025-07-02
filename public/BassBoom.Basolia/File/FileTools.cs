@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -18,6 +18,7 @@
 //
 
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Languages;
 using BassBoom.Basolia.Playback;
 using BassBoom.Basolia.Radio;
 using BassBoom.Native;
@@ -60,7 +61,7 @@ namespace BassBoom.Basolia.File
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             return basolia.isOpened;
         }
 
@@ -72,7 +73,7 @@ namespace BassBoom.Basolia.File
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             return basolia.isRadioStation;
         }
 
@@ -84,7 +85,7 @@ namespace BassBoom.Basolia.File
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             return basolia.currentFile;
         }
 
@@ -97,19 +98,19 @@ namespace BassBoom.Basolia.File
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (IsOpened(basolia))
-                throw new BasoliaException("Can't open this file while the current file or a radio station is still open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN"), mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we provided a path
             if (string.IsNullOrEmpty(path))
-                throw new BasoliaException("Provide a path to a music file", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH"), mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if the file exists
             if (!System.IO.File.Exists(path))
-                throw new BasoliaException("Music file doesn't exist", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND"), mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -119,7 +120,7 @@ namespace BassBoom.Basolia.File
                 var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_open>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_open));
                 int openStatus = @delegate.Invoke(handle, path);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't open file", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED"), mpg123_errors.MPG123_ERR);
                 basolia.isOpened = true;
             }
             basolia.currentFile = new(false, path, null, null, "");
@@ -142,15 +143,15 @@ namespace BassBoom.Basolia.File
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (IsOpened(basolia))
-                throw new BasoliaException("Can't open this URL while the current file or a radio station is still open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN"), mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we provided a path
             if (string.IsNullOrEmpty(path))
-                throw new BasoliaException("Provide a path to a music file or a radio station", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL"), mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if the radio station exists
             if (PlatformHelper.IsDotNetFx())
@@ -159,14 +160,14 @@ namespace BassBoom.Basolia.File
             var reply = await RadioTools.client.GetAsync(path, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             RadioTools.client.DefaultRequestHeaders.Remove("Icy-MetaData");
             if (!reply.IsSuccessStatusCode)
-                throw new BasoliaException("This radio station doesn't exist. Error code:" + $" {(int)reply.StatusCode} ({reply.StatusCode}).", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION") + $" {(int)reply.StatusCode} ({reply.StatusCode}).", mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if there are any ICY headers
             if (!reply.Headers.Any((kvp) => kvp.Key.StartsWith("icy-")))
-                throw new BasoliaException("This doesn't look like a radio station. Are you sure?", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION"), mpg123_errors.MPG123_BAD_FILE);
             var contentType = reply.Content.Headers.ContentType;
             if (contentType.MediaType != "audio/mpeg")
-                throw new BasoliaException("This doesn't look like an MP3 radio station. You have a(n) {0} type. Are you sure?".FormatString(contentType.MediaType), mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION").FormatString(contentType.MediaType), mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -176,7 +177,7 @@ namespace BassBoom.Basolia.File
                 var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_open_feed>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_open_feed));
                 int openStatus = @delegate.Invoke(handle);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't open radio station", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED"), mpg123_errors.MPG123_ERR);
                 basolia.isOpened = true;
                 basolia.isRadioStation = true;
             }
@@ -203,15 +204,15 @@ namespace BassBoom.Basolia.File
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (IsOpened(basolia))
-                throw new BasoliaException("Can't open this URL while the current file or a radio station is still open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN"), mpg123_errors.MPG123_BAD_FILE);
 
             // Check to see if we provided a stream
             if (audioStream is null)
-                throw new BasoliaException("Audio stream is not provided", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM"), mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -221,7 +222,7 @@ namespace BassBoom.Basolia.File
                 var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_open_feed>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_open_feed));
                 int openStatus = @delegate.Invoke(handle);
                 if (openStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't open stream", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED"), mpg123_errors.MPG123_ERR);
                 basolia.isOpened = true;
             }
             basolia.currentFile = new(false, "", audioStream, null, "");
@@ -238,11 +239,11 @@ namespace BassBoom.Basolia.File
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!IsOpened(basolia))
-                throw new BasoliaException("Can't close a file or a radio station that's already closed", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED"), mpg123_errors.MPG123_BAD_FILE);
 
             // First, stop the playing song
             var state = PlaybackTools.GetState(basolia);
@@ -257,7 +258,7 @@ namespace BassBoom.Basolia.File
                 var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_close>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_close));
                 int closeStatus = @delegate.Invoke(handle);
                 if (closeStatus == (int)mpg123_errors.MPG123_ERR)
-                    throw new BasoliaException("Can't close file", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED"), mpg123_errors.MPG123_ERR);
                 basolia.isOpened = false;
                 basolia.isRadioStation = false;
                 basolia.currentFile?.Stream?.Close();

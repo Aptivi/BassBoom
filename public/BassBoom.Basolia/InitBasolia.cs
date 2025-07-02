@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -18,6 +18,7 @@
 //
 
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Languages;
 using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
@@ -47,7 +48,7 @@ namespace BassBoom.Basolia
             get
             {
                 if (!BasoliaInitialized)
-                    throw new BasoliaException("Can't get version until the library is initialized", mpg123_errors.MPG123_NOT_INITIALIZED);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB"), mpg123_errors.MPG123_NOT_INITIALIZED);
                 return MpgNative.MpgLibVersion;
             }
         }
@@ -60,7 +61,7 @@ namespace BassBoom.Basolia
             get
             {
                 if (!BasoliaInitialized)
-                    throw new BasoliaOutException("Can't get version until the library is initialized", out123_error.OUT123_ERR);
+                    throw new BasoliaOutException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB"), out123_error.OUT123_ERR);
                 return MpgNative.OutLibVersion;
             }
         }
@@ -91,7 +92,7 @@ namespace BassBoom.Basolia
         public static void CheckInited()
         {
             if (!BasoliaInitialized)
-                throw new InvalidOperationException("Basolia didn't initialize the MPG123 library yet!");
+                throw new InvalidOperationException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT"));
         }
     }
 }

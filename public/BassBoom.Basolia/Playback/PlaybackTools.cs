@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -36,6 +36,7 @@ using BassBoom.Native;
 using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.Devices;
 using Textify.General;
+using BassBoom.Basolia.Languages;
 
 namespace BassBoom.Basolia.Playback
 {
@@ -51,7 +52,7 @@ namespace BassBoom.Basolia.Playback
         public static bool IsPlaying(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             return basolia.state == PlaybackState.Playing;
         }
 
@@ -62,7 +63,7 @@ namespace BassBoom.Basolia.Playback
         public static PlaybackState GetState(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             return basolia.state;
         }
 
@@ -73,7 +74,7 @@ namespace BassBoom.Basolia.Playback
         public static string GetRadioIcy(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             return basolia.radioIcy;
         }
 
@@ -84,7 +85,7 @@ namespace BassBoom.Basolia.Playback
         public static string GetRadioNowPlaying(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             string icy = GetRadioIcy(basolia);
             if (icy.Length == 0 || !FileTools.IsRadioStation(basolia))
                 return "";
@@ -102,11 +103,11 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't play a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY"), mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -173,11 +174,11 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't pause a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE"), mpg123_errors.MPG123_BAD_FILE);
             basolia.state = PlaybackState.Paused;
         }
 
@@ -190,11 +191,11 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't stop a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP"), mpg123_errors.MPG123_BAD_FILE);
 
             // Stop the music and seek to the beginning
             basolia.state = basolia.state == PlaybackState.Playing ? PlaybackState.Stopping : PlaybackState.Stopped;
@@ -214,7 +215,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check the volume
             double maxVolume = volBoost ? 3 : 1;
@@ -230,7 +231,7 @@ namespace BassBoom.Basolia.Playback
                 var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_volume>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_volume));
                 int status = @delegate.Invoke(handle, volume);
                 if (status != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException("Can't set volume to {0}".FormatString(volume), (out123_error)status);
+                    throw new BasoliaOutException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED").FormatString(volume), (out123_error)status);
             }
         }
 
@@ -244,7 +245,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             double baseLinearAddr = 0;
             double actualLinearAddr = 0;
@@ -257,7 +258,7 @@ namespace BassBoom.Basolia.Playback
                 var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_getvolume>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_getvolume));
                 int status = @delegate.Invoke(handle, ref baseLinearAddr, ref actualLinearAddr, ref decibelsRvaAddr);
                 if (status != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException("Can't get volume (base, really, and decibels)", (out123_error)status);
+                    throw new BasoliaOutException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED"), (out123_error)status);
             }
 
             // Get the volume information
@@ -276,7 +277,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
@@ -285,7 +286,7 @@ namespace BassBoom.Basolia.Playback
                 var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_eq>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_eq));
                 int status = @delegate.Invoke(handle, (mpg123_channels)channels, bandIdx, value);
                 if (status != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't set equalizer band {0}/32 to {1} under {2}".FormatString(bandIdx + 1, value, channels), (mpg123_errors)status);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED").FormatString(bandIdx + 1, value, channels), (mpg123_errors)status);
             }
         }
 
@@ -302,7 +303,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
@@ -311,7 +312,7 @@ namespace BassBoom.Basolia.Playback
                 var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_eq_bands>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_eq_bands));
                 int status = @delegate.Invoke(handle, (int)channels, bandIdxStart, bandIdxEnd, value);
                 if (status != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't set equalizer bands {0}/32 -> {1}/32 to {2} under {3}".FormatString(bandIdxStart + 1, bandIdxEnd + 1, value, channels), (mpg123_errors)status);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED").FormatString(bandIdxStart + 1, bandIdxEnd + 1, value, channels), (mpg123_errors)status);
             }
         }
 
@@ -326,7 +327,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
@@ -347,7 +348,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
@@ -356,7 +357,7 @@ namespace BassBoom.Basolia.Playback
                 var @delegate = MpgNative.GetDelegate<NativeVolume.mpg123_reset_eq>(MpgNative.libManagerMpg, nameof(NativeVolume.mpg123_reset_eq));
                 int status = @delegate.Invoke(handle);
                 if (status != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't reset equalizer bands to their initial values!", (mpg123_errors)status);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED"), (mpg123_errors)status);
             }
         }
 
@@ -371,7 +372,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
@@ -382,7 +383,7 @@ namespace BassBoom.Basolia.Playback
                 var @delegate = MpgNative.GetDelegate<NativeStatus.mpg123_getstate>(MpgNative.libManagerMpg, nameof(NativeStatus.mpg123_getstate));
                 int status = @delegate.Invoke(handle, (mpg123_state)state, ref stateInt, ref stateDouble);
                 if (status != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't get native state of {0}!".FormatString(state.ToString()), (mpg123_errors)status);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED").FormatString(state.ToString()), (mpg123_errors)status);
                 return (stateInt, stateDouble);
             }
         }
@@ -396,7 +397,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             if (basolia.isOutputOpen)
                 return;
 
@@ -407,7 +408,7 @@ namespace BassBoom.Basolia.Playback
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_open>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_open));
                 int openStatus = @delegate.Invoke(outHandle, basolia.activeDriver, basolia.activeDevice);
                 if (openStatus != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException("Can't open output to device {0} on driver {1}".FormatString(basolia.activeDevice, basolia.activeDriver), (out123_error)openStatus);
+                    throw new BasoliaOutException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED").FormatString(basolia.activeDevice, basolia.activeDriver), (out123_error)openStatus);
                 basolia.isOutputOpen = true;
             }
         }
@@ -424,14 +425,14 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Sanity checks
             bool supported = FormatTools.IsFormatSupported(basolia, rate, encoding, out _);
             if (!basolia.isOutputOpen)
-                throw new BasoliaOutException("You need to open the output", out123_error.OUT123_NOT_LIVE);
+                throw new BasoliaOutException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT"), out123_error.OUT123_NOT_LIVE);
             if (!supported)
-                throw new BasoliaOutException("Selected rate [{0} hz] and encoding [{1}] is not supported".FormatString(rate, encoding), out123_error.OUT123_NOT_SUPPORTED);
+                throw new BasoliaOutException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED").FormatString(rate, encoding), out123_error.OUT123_NOT_SUPPORTED);
 
             // Try to open output to device
             unsafe
@@ -440,7 +441,7 @@ namespace BassBoom.Basolia.Playback
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_start>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_start));
                 int startStatus = @delegate.Invoke(outHandle, rate, (int)channels, encoding);
                 if (startStatus != (int)out123_error.OUT123_OK)
-                    throw new BasoliaOutException("Can't start the output.", (out123_error)startStatus);
+                    throw new BasoliaOutException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED"), (out123_error)startStatus);
             }
         }
 
@@ -453,7 +454,7 @@ namespace BassBoom.Basolia.Playback
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             if (!basolia.isOutputOpen)
                 return;
 
@@ -481,7 +482,7 @@ namespace BassBoom.Basolia.Playback
             if (currentRadio.Stream is null)
                 return;
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             unsafe
             {
@@ -526,7 +527,7 @@ namespace BassBoom.Basolia.Playback
             if (currentStream.Stream is null)
                 return;
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Now, get the MP3 frame
             byte[] buffer = new byte[currentStream.Stream.Length];
@@ -541,7 +542,7 @@ namespace BassBoom.Basolia.Playback
             if (buffer is null)
                 return;
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             unsafe
             {
                 var handle = basolia._mpg123Handle;
@@ -552,7 +553,7 @@ namespace BassBoom.Basolia.Playback
                 var @delegate = MpgNative.GetDelegate<NativeInput.mpg123_feed>(MpgNative.libManagerMpg, nameof(NativeInput.mpg123_feed));
                 int feedResult = @delegate.Invoke(handle, data, buffer.Length);
                 if (feedResult != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't feed.", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED"), mpg123_errors.MPG123_ERR);
             }
         }
 
@@ -561,7 +562,7 @@ namespace BassBoom.Basolia.Playback
             if (buffer is null)
                 return 0;
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             unsafe
             {
                 var outHandle = basolia._out123Handle;

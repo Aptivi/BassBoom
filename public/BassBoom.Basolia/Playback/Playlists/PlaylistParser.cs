@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -19,6 +19,7 @@
 
 using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.File;
+using BassBoom.Basolia.Languages;
 using BassBoom.Basolia.Playback.Playlists.Enumerations;
 using BassBoom.Basolia.Playback.Playlists.Instances;
 using BassBoom.Basolia.Radio;
@@ -45,10 +46,10 @@ namespace BassBoom.Basolia.Playback.Playlists
         {
             // Check for existence and extension
             if (!FileIo.Exists(playlistFile))
-                throw new BasoliaMiscException("Playlist file {0} doesn't exist".FormatString(playlistFile));
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND").FormatString(playlistFile));
             string extension = Path.GetExtension(playlistFile);
             if (Path.HasExtension(playlistFile) && extension != PlaylistConstants.m3u && extension != PlaylistConstants.m3u8)
-                throw new BasoliaMiscException("Invalid playlist file extension {0}".FormatString(extension));
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID").FormatString(extension));
 
             // Now, try to get the representation and pass it to ParsePlaylistFrom().
             string representation = FileIo.ReadAllText(playlistFile);
@@ -67,10 +68,10 @@ namespace BassBoom.Basolia.Playback.Playlists
             // Sanity checks
             fileParent ??= "";
             if (string.IsNullOrEmpty(playlist))
-                throw new BasoliaMiscException("Playlist representation is not provided.");
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY"));
             string[] lines = playlist.SplitNewLines();
             if (lines.Length == 0)
-                throw new BasoliaMiscException("Playlist representation is not provided.");
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY"));
 
             // Read this playlist line by line
             bool extended = false;
@@ -90,7 +91,7 @@ namespace BassBoom.Basolia.Playback.Playlists
                     if (header == PlaylistConstants.extendedHeader)
                         extended = true;
                     else
-                        throw new BasoliaMiscException("This is not an extended header:" + $" {header}");
+                        throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER") + $" {header}");
                     continue;
                 }
 
@@ -102,7 +103,7 @@ namespace BassBoom.Basolia.Playback.Playlists
                     if (declaration.StartsWith(PlaylistConstants.extendedInfo))
                     {
                         if (!declaration.Contains(':'))
-                            throw new BasoliaMiscException("EXTINF requires exactly two arguments, and there is no argument indicator.");
+                            throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS"));
                         trackInfoString = declaration.Substring(declaration.IndexOf(':') + 1);
                     }
                     continue;
@@ -118,7 +119,7 @@ namespace BassBoom.Basolia.Playback.Playlists
                     if (FileIo.Exists(absolutePath) && FileTools.SupportedExtensions.Contains(extension))
                         proposedTracks.Add((trackInfoString, null, absolutePath));
                     else
-                        throw new BasoliaMiscException("Music file {0} not found or not an MPEG file".FormatString(absolutePath));
+                        throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND").FormatString(absolutePath));
                 }
                 trackInfoString = "";
             }
@@ -142,13 +143,13 @@ namespace BassBoom.Basolia.Playback.Playlists
                 if (!string.IsNullOrWhiteSpace(trackInfo))
                 {
                     if (!trackInfo.Contains(','))
-                        throw new BasoliaMiscException("Track info must provide exactly two arguments: track length in seconds (-1 if it's a livestream) and the raw track title.");
+                        throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS"));
                     string lengthStr = trackInfo.Substring(0, trackInfo.IndexOf(','));
                     string titleStr = trackInfo.Substring(trackInfo.IndexOf(','));
 
                     // Check the validity and parse them
                     if (!int.TryParse(lengthStr, out length))
-                        throw new BasoliaMiscException("Track info didn't provide the number of seconds [{0}] correctly.".FormatString(lengthStr));
+                        throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS").FormatString(lengthStr));
                     title = titleStr.Length == 1 ? "" : titleStr.Substring(1);
                 }
 

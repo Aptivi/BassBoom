@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -20,6 +20,7 @@
 using System;
 using System.Diagnostics;
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Languages;
 using Newtonsoft.Json.Linq;
 using Textify.General;
 
@@ -184,7 +185,7 @@ namespace BassBoom.Basolia.Radio
                     {
                         // Shoutcast version v2.x, so use the JToken.
                         if (stream is null)
-                            throw new BasoliaMiscException("There is no Shoutcast v2.x stream.");
+                            throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2"));
                         streamId = (int?)stream["id"] ?? 0;
                         currentListeners = (int?)stream["currentlisteners"] ?? 0;
                         peakListeners = (int?)stream["peaklisteners"] ?? 0;
@@ -213,7 +214,7 @@ namespace BassBoom.Basolia.Radio
                 else if (server is IcecastServer icecastServer)
                 {
                     if (stream is null)
-                        throw new BasoliaMiscException("There is no Icecast stream.");
+                        throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST"));
 
                     // Icecast server, so use the JToken.
                     currentListeners = (int?)stream["listeners"] ?? 0;
@@ -230,7 +231,7 @@ namespace BassBoom.Basolia.Radio
             }
             catch (Exception ex)
             {
-                throw new BasoliaMiscException("Failed to parse stream ID {0}. More information can be found in the inner exception.".FormatString(streamId), ex);
+                throw new BasoliaMiscException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED").FormatString(streamId), ex);
             }
         }
     }

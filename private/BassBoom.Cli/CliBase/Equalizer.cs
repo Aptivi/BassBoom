@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -32,6 +32,7 @@ using Terminaux.Inputs.Styles;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 using Terminaux.Writer.MiscWriters;
 using Terminaux.Writer.CyclicWriters;
+using BassBoom.Cli.Languages;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -39,14 +40,15 @@ namespace BassBoom.Cli.CliBase
     {
         internal static bool exiting = false;
         internal static int currentBandIdx = 0;
-        internal static readonly Keybinding[] showBindings =
+
+        internal static Keybinding[] ShowBindings =>
         [
-            new("Decrease", ConsoleKey.LeftArrow),
-            new("Increase", ConsoleKey.RightArrow),
-            new("Previous band", ConsoleKey.UpArrow),
-            new("Next band", ConsoleKey.DownArrow),
-            new("Reset", ConsoleKey.R),
-            new("Exit", ConsoleKey.Q),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_KEYBINDING_DECREASE"), ConsoleKey.LeftArrow),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_KEYBINDING_INCREASE"), ConsoleKey.RightArrow),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_KEYBINDING_PREVBAND"), ConsoleKey.UpArrow),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_KEYBINDING_NEXTBAND"), ConsoleKey.DownArrow),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_KEYBINDING_RESET"), ConsoleKey.R),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_QUIT"), ConsoleKey.Q),
         ];
 
         internal static void OpenEqualizer(Screen screen)
@@ -71,15 +73,15 @@ namespace BassBoom.Cli.CliBase
                 }
                 catch (BasoliaException bex)
                 {
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia when trying to process the equalizer operation." + "\n\n" + bex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_BASOLIAERROR") + "\n\n" + bex.Message);
                 }
                 catch (BasoliaOutException bex)
                 {
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia output when trying to process the equalizer operation." + "\n\n" + bex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_BASOLIAOUTERROR") + "\n\n" + bex.Message);
                 }
                 catch (Exception ex)
                 {
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an unknown error when trying to process the equalizer operation." + "\n\n" + ex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_ERROR") + "\n\n" + ex.Message);
                 }
             }
 
@@ -136,7 +138,7 @@ namespace BassBoom.Cli.CliBase
             // First, print the keystrokes
             var keybindings = new Keybindings()
             {
-                KeybindingList = showBindings,
+                KeybindingList = ShowBindings,
                 Left = 0,
                 Top = ConsoleWrapper.WindowHeight - 1,
                 Width = ConsoleWrapper.WindowWidth - 1,
@@ -144,7 +146,7 @@ namespace BassBoom.Cli.CliBase
             drawn.Append(keybindings.Render());
 
             // Write current song
-            string name = "Not playing. Music player is idle.";
+            string name = LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_NOTPLAYING");
             if (Common.cachedInfos.Count > 0)
                 name = Common.isRadioMode ? RadioControls.RenderStationName() : PlayerControls.RenderSongName(Common.CurrentCachedInfo?.MusicPath ?? "");
 
@@ -158,14 +160,14 @@ namespace BassBoom.Cli.CliBase
                 // Get the equalizer value for this band
                 double val = EqualizerControls.GetEqualizer(i);
                 string eqType =
-                    i == 0 ? "Bass" :
-                    i == 1 ? "Upper Mid" :
-                    i == 2 ? "Treble" :
-                    i > 2 ? "Device-specific band" :
-                    "Unknown band type";
+                    i == 0 ? LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_BASS") :
+                    i == 1 ? LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_UPPERMID") :
+                    i == 2 ? LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_TREBLE") :
+                    i > 2 ? LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_DEVICEBAND") :
+                    LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_UNKNOWNBAND");
 
                 // Now, render it
-                string bandData = $"[{val:0.00}] " + "Band" + $" #{i + 1} - {eqType}";
+                string bandData = $"[{val:0.00}] " + LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_BAND") + $" #{i + 1} - {eqType}";
                 choices.Add(new($"{i + 1}", bandData));
             }
 

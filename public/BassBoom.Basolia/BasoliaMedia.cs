@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -18,6 +18,7 @@
 //
 
 using BassBoom.Basolia.File;
+using BassBoom.Basolia.Languages;
 using BassBoom.Basolia.Playback;
 using BassBoom.Native;
 using BassBoom.Native.Exceptions;
@@ -68,7 +69,7 @@ namespace BassBoom.Basolia
             }
             catch (Exception ex)
             {
-                throw new BasoliaNativeLibraryException("mpg123 library path {0} doesn't contain a valid mpg123 library.".FormatString(MpgNative.mpg123LibPath) + $" {ex.Message}");
+                throw new BasoliaNativeLibraryException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID").FormatString(MpgNative.mpg123LibPath) + $" {ex.Message}");
             }
 
             // Do the same for the out123 library!
@@ -81,7 +82,7 @@ namespace BassBoom.Basolia
             }
             catch (Exception ex)
             {
-                throw new BasoliaNativeLibraryException("out123 library path {0} doesn't contain a valid out123 library.".FormatString(MpgNative.out123LibPath) + $" {ex.Message}");
+                throw new BasoliaNativeLibraryException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID").FormatString(MpgNative.out123LibPath) + $" {ex.Message}");
             }
         }
     }

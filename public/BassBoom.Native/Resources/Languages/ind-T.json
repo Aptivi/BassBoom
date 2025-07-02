@@ -1,0 +1,50 @@
+{
+  "lang": "ind-T",
+  "name": "Hindi",
+  "cultures": [
+    "hi",
+    "hi-IN"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_GENERALERROR",
+      "text": "मूल लाइब्रेरी त्रुटि"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH",
+      "text": "लाइब्रेरी पथ {0} है"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
+      "text": "mpg123 लाइब्रेरी पथ {0} मौजूद नहीं है।"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
+      "text": "out123 लाइब्रेरी पथ {0} मौजूद नहीं है।"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
+      "text": "libwinpthread लाइब्रेरी पथ {0} मौजूद नहीं है।"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",
+      "text": "32-बिट प्लेटफ़ॉर्म अब समर्थित नहीं हैं।"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MODDIRSETFAILED",
+      "text": "पर्यावरण चर MPG123_MODDIR सेट नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBSLOADFAILED",
+      "text": "लाइब्रेरी लोड करने में विफल।"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOINIT",
+      "text": "पहले लाइब्रेरी को आरंभ किए बिना {0} के लिए प्रतिनिधि प्राप्त नहीं किया जा सकता"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOTFOUND",
+      "text": "{0} के लिए प्रतिनिधि प्राप्त नहीं किया जा सकता"
+    }
+  ]
+}

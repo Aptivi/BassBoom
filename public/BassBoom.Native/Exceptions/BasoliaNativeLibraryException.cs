@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -17,6 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using BassBoom.Native.Languages;
 using System;
 
 namespace BassBoom.Native.Exceptions
@@ -24,18 +25,18 @@ namespace BassBoom.Native.Exceptions
     internal class BasoliaNativeLibraryException : Exception
     {
         internal BasoliaNativeLibraryException() :
-            base("Native library error" + "\n" +
-                 string.Format("Library path is {0}", MpgNative.mpg123LibPath))
+            base(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTIONS_GENERALERROR") + "\n" +
+                 string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH"), MpgNative.mpg123LibPath))
         { }
 
         internal BasoliaNativeLibraryException(string message) :
             base($"{message}\n" +
-                 string.Format("Library path is {0}", MpgNative.mpg123LibPath))
+                 string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH"), MpgNative.mpg123LibPath))
         { }
 
         internal BasoliaNativeLibraryException(string message, Exception innerException) :
             base($"{message}\n" +
-                 string.Format("Library path is {0}", MpgNative.mpg123LibPath), innerException)
+                 string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH"), MpgNative.mpg123LibPath), innerException)
         { }
     }
 }

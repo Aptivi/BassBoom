@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -39,35 +39,37 @@ using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 using Terminaux.Writer.MiscWriters;
 using Terminaux.Base.Extensions;
 using Terminaux.Writer.CyclicWriters;
+using BassBoom.Cli.Languages;
 
 namespace BassBoom.Cli.CliBase
 {
     internal static class Radio
     {
         internal static Thread? playerThread;
-        internal static readonly Keybinding[] allBindings =
+
+        internal static Keybinding[] AllBindings =>
         [
-            new("Play/Pause", ConsoleKey.Spacebar),
-            new("Stop", ConsoleKey.Escape),
-            new("Exit", ConsoleKey.Q),
-            new("Increase volume", ConsoleKey.UpArrow),
-            new("Decrease volume", ConsoleKey.DownArrow),
-            new("Radio station information", ConsoleKey.I),
-            new("Radio station extended information", ConsoleKey.I, ConsoleModifiers.Control),
-            new("Add a radio station", ConsoleKey.A),
-            new("Add a radio station group from playlist", ConsoleKey.A, ConsoleModifiers.Shift),
-            new("Previous radio station", ConsoleKey.B),
-            new("Next radio station", ConsoleKey.N),
-            new("Remove current radio station", ConsoleKey.R),
-            new("Remove all radio stations", ConsoleKey.R, ConsoleModifiers.Control),
-            new("Disco Mode!", ConsoleKey.L),
-            new("Enable volume boost", ConsoleKey.V),
-            new("Save to playlist", ConsoleKey.F1),
-            new("Open the equalizer", ConsoleKey.E),
-            new("Device and driver information", ConsoleKey.D),
-            new("Set device and driver", ConsoleKey.D, ConsoleModifiers.Control),
-            new("Reset device and driver", ConsoleKey.D, ConsoleModifiers.Shift),
-            new("System information", ConsoleKey.Z),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_KEYBINDING_PLAYPAUSE"), ConsoleKey.Spacebar),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_KEYBINDING_STOP"), ConsoleKey.Escape),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_QUIT"), ConsoleKey.Q),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEUP"), ConsoleKey.UpArrow),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEDOWN"), ConsoleKey.DownArrow),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFO"), ConsoleKey.I),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFOEXT"), ConsoleKey.I, ConsoleModifiers.Control),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATION"), ConsoleKey.A),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATIONGROUP"), ConsoleKey.A, ConsoleModifiers.Shift),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_RADIO_KEYBINDING_PREVSTATION"), ConsoleKey.B),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_RADIO_KEYBINDING_NEXTSTATION"), ConsoleKey.N),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_RADIO_KEYBINDING_REMOVECURRSTATION"), ConsoleKey.R),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_RADIO_KEYBINDING_REMOVEALLSTATIONS"), ConsoleKey.R, ConsoleModifiers.Control),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_DISCO"), ConsoleKey.L),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_VOLBOOST"), ConsoleKey.V),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_SAVETOPLAYLIST"), ConsoleKey.F1),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_EQUALIZER"), ConsoleKey.E),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERINFO"), ConsoleKey.D),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERSET"), ConsoleKey.D, ConsoleModifiers.Control),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERRESET"), ConsoleKey.D, ConsoleModifiers.Shift),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_SYSINFO"), ConsoleKey.Z),
         ];
 
         public static void RadioLoop()
@@ -106,7 +108,7 @@ namespace BassBoom.Cli.CliBase
 
                 // Disco effect!
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
-                string indicator = $"┤ {boostIndicator}" + "Volume:" + $" {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
+                string indicator = $"┤ {boostIndicator}" + LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_VOLINDICATOR") + $" {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
                 if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                 {
                     hue++;
@@ -159,21 +161,21 @@ namespace BassBoom.Cli.CliBase
                 {
                     if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                         PlaybackTools.Stop(BassBoomCli.basolia);
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia when trying to process the music file." + "\n\n" + bex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_BASOLIAERROR") + "\n\n" + bex.Message);
                     radioScreen.RequireRefresh();
                 }
                 catch (BasoliaOutException bex)
                 {
                     if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                         PlaybackTools.Stop(BassBoomCli.basolia);
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an error with Basolia output when trying to process the music file." + "\n\n" + bex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_BASOLIAOUTERROR") + "\n\n" + bex.Message);
                     radioScreen.RequireRefresh();
                 }
                 catch (Exception ex)
                 {
                     if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                         PlaybackTools.Stop(BassBoomCli.basolia);
-                    InfoBoxModalColor.WriteInfoBoxModal("There's an unknown error when trying to process the music file." + "\n\n" + ex.Message);
+                    InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_ERROR") + "\n\n" + ex.Message);
                     radioScreen.RequireRefresh();
                 }
             }
@@ -310,7 +312,7 @@ namespace BassBoom.Cli.CliBase
             }
             catch (Exception ex)
             {
-                InfoBoxModalColor.WriteInfoBoxModal("Playback failure:" + $" {ex.Message}");
+                InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_PLAYBACKFAILED") + $" {ex.Message}");
                 Common.failedToPlay = true;
             }
         }
@@ -328,7 +330,7 @@ namespace BassBoom.Cli.CliBase
             // First, print the keystrokes
             var keybindings = new Keybindings()
             {
-                KeybindingList = Player.showBindings,
+                KeybindingList = Player.ShowBindings,
                 Left = 0,
                 Top = ConsoleWrapper.WindowHeight - 1,
                 Width = ConsoleWrapper.WindowWidth - 1,
@@ -342,7 +344,7 @@ namespace BassBoom.Cli.CliBase
                 var message = new AlignedText()
                 {
                     Top = height,
-                    Text = "Press 'A' to insert a radio station to the playlist.",
+                    Text = LanguageTools.GetLocalized("BASSBOOM_APP_RADIO_TIP"),
                     Settings = new()
                     {
                         Alignment = TextAlignment.Middle

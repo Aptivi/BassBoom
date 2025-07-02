@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -20,6 +20,7 @@
 using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.File;
 using BassBoom.Basolia.Helpers;
+using BassBoom.Basolia.Languages;
 using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Play;
@@ -47,11 +48,11 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Check to see if the file is open
             if (!FileTools.IsOpened(basolia))
-                throw new BasoliaException("Can't decode the frame of a file that's not open", mpg123_errors.MPG123_BAD_FILE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE"), mpg123_errors.MPG123_BAD_FILE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -73,7 +74,7 @@ namespace BassBoom.Basolia.Format
                     decodeStatus != (int)mpg123_errors.MPG123_NEW_FORMAT &&
                     decodeStatus != (int)mpg123_errors.MPG123_NEED_MORE &&
                     decodeStatus != (int)mpg123_errors.MPG123_DONE)
-                    throw new BasoliaException("Can't decode frame", (mpg123_errors)decodeStatus);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED"), (mpg123_errors)decodeStatus);
 
                 return decodeStatus;
             }
@@ -108,7 +109,7 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
@@ -130,22 +131,22 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // Try to set the equalizer value
             unsafe
             {
                 string[] decoders = GetDecoders(false);
                 if (!decoders.Contains(decoderName))
-                    throw new BasoliaException("Decoder {0} not found".FormatString(decoderName), mpg123_errors.MPG123_BAD_DECODER);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND").FormatString(decoderName), mpg123_errors.MPG123_BAD_DECODER);
                 string[] supportedDecoders = GetDecoders(true);
                 if (!supportedDecoders.Contains(decoderName))
-                    throw new BasoliaException("Decoder {0} not supported by your device".FormatString(decoderName), mpg123_errors.MPG123_BAD_DECODER);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED").FormatString(decoderName), mpg123_errors.MPG123_BAD_DECODER);
                 var handle = basolia._mpg123Handle;
                 var @delegate = MpgNative.GetDelegate<NativeDecoder.mpg123_decoder>(MpgNative.libManagerMpg, nameof(NativeDecoder.mpg123_decoder));
                 int status = @delegate.Invoke(handle, decoderName);
                 if (status != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't set decoder to {0}".FormatString(decoderName), (mpg123_errors)status);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED").FormatString(decoderName), (mpg123_errors)status);
             }
         }
     }

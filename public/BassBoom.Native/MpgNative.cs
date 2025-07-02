@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -27,6 +27,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using SpecProbe.Software.Platform;
 using SpecProbe.Loader;
+using BassBoom.Native.Languages;
 
 namespace BassBoom.Native
 {
@@ -108,11 +109,11 @@ namespace BassBoom.Native
             string resultOutPath = GetLibPath(root, "out123");
             string resultWinPath = GetLibPath(root, "libwinpthread-1");
             if (!File.Exists(resultMpgPath))
-                throw new BasoliaNativeLibraryException(string.Format("mpg123 library path {0} doesn't exist.", resultMpgPath));
+                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND"), resultMpgPath));
             if (!File.Exists(resultOutPath))
-                throw new BasoliaNativeLibraryException(string.Format("out123 library path {0} doesn't exist.", resultOutPath));
+                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND"), resultOutPath));
             if (!File.Exists(resultWinPath) && PlatformHelper.IsOnWindows())
-                throw new BasoliaNativeLibraryException(string.Format("libwinpthread library path {0} doesn't exist.", resultWinPath));
+                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND"), resultWinPath));
 
             // Set the library path
             string oldLibPath = mpg123LibPath;
@@ -127,7 +128,7 @@ namespace BassBoom.Native
                 // Start the libraries up
                 var architecture = PlatformHelper.GetArchitecture();
                 if (architecture == Architecture.X86 || architecture == Architecture.Arm)
-                    throw new BasoliaNativeLibraryException("32-bit platforms are no longer supported.");
+                    throw new BasoliaNativeLibraryException(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED"));
                 libManagerMpg = new LibraryManager(new LibraryFile(mpg123LibPath));
                 libManagerOut = new LibraryManager(
                     architecture == Architecture.X64 && PlatformHelper.IsOnWindows() ?
@@ -144,14 +145,14 @@ namespace BassBoom.Native
                 else
                     result = NativeInit.setenv("MPG123_MODDIR", libPluginsPath, 1);
                 if (result != 0)
-                    throw new BasoliaNativeLibraryException("Can't set environment variable MPG123_MODDIR");
+                    throw new BasoliaNativeLibraryException(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_MODDIRSETFAILED"));
             }
             catch (Exception ex)
             {
                 mpg123LibPath = oldLibPath;
                 out123LibPath = oldLibPathOut;
                 pthreadLibPath = oldLibPathWin;
-                throw new BasoliaNativeLibraryException("Failed to load libraries." + $" [{mpg123LibPath}]\n\n{ex.Message}");
+                throw new BasoliaNativeLibraryException(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBSLOADFAILED") + $" [{mpg123LibPath}]\n\n{ex.Message}");
             }
         }
 
@@ -177,9 +178,9 @@ namespace BassBoom.Native
             where TDelegate : Delegate
         {
             if (libraryManager is null)
-                throw new BasoliaNativeLibraryException(string.Format("Can't get delegate for {0} without initializing the library first", function));
+                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOINIT"), function));
             return libraryManager.GetNativeMethodDelegate<TDelegate>(function) ??
-                throw new BasoliaNativeLibraryException(string.Format("Can't get delegate for {0}", function));
+                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOTFOUND"), function));
         }
     }
 }

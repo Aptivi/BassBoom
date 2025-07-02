@@ -1,4 +1,4 @@
-﻿//
+//
 // BassBoom  Copyright (C) 2023-2025  Aptivi
 //
 // This file is part of BassBoom
@@ -30,6 +30,7 @@ using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.Helpers;
 using System.Linq;
 using Textify.General;
+using BassBoom.Basolia.Languages;
 
 namespace BassBoom.Basolia.Format
 {
@@ -45,7 +46,7 @@ namespace BassBoom.Basolia.Format
         public static (long rate, int channels, int encoding) GetFormatInfo(BasoliaMedia? basolia)
         {
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             long fileRate;
             int fileChannel, fileEncoding;
 
@@ -58,7 +59,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_getformat>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_getformat));
                 int length = @delegate.Invoke(handle, out fileRate, out fileChannel, out fileEncoding);
                 if (length != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't determine the format of the file", mpg123_errors.MPG123_ERR);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED"), mpg123_errors.MPG123_ERR);
             }
 
             // We're now entering the safe zone
@@ -120,7 +121,7 @@ namespace BassBoom.Basolia.Format
             // Check the encoding
             int[] encodings = GetEncodings();
             if (!encodings.Contains(encoding))
-                throw new BasoliaException("Encoding {0} not found.".FormatString(encoding), mpg123_errors.MPG123_BAD_TYPES);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND").FormatString(encoding), mpg123_errors.MPG123_BAD_TYPES);
 
             // We're now entering the dangerous zone
             unsafe
@@ -148,7 +149,7 @@ namespace BassBoom.Basolia.Format
             // Check the encoding
             int[] encodings = GetEncodings();
             if (!encodings.Contains(encoding))
-                throw new BasoliaException("Encoding {0} not found.".FormatString(encoding), mpg123_errors.MPG123_BAD_TYPES);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND").FormatString(encoding), mpg123_errors.MPG123_BAD_TYPES);
 
             // We're now entering the dangerous zone
             unsafe
@@ -171,7 +172,7 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             var formats = new List<FormatInfo>();
 
             // We're now entering the dangerous zone
@@ -185,7 +186,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeOutputLib.out123_formats>(MpgNative.libManagerOut, nameof(NativeOutputLib.out123_formats));
                 getStatus = @delegate.Invoke(outHandle, IntPtr.Zero, 0, 0, 0, ref fmtlist);
                 if (getStatus == (int)out123_error.OUT123_ERR)
-                    throw new BasoliaOutException("Can't get format information", (out123_error)getStatus);
+                    throw new BasoliaOutException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED"), (out123_error)getStatus);
             }
 
             // Now, iterate through the list of supported formats
@@ -233,7 +234,7 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -279,7 +280,7 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -290,7 +291,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_format_none>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_format_none));
                 int resetStatus = @delegate.Invoke(handle);
                 if (resetStatus != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't reset output encoding", (mpg123_errors)resetStatus);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED"), (mpg123_errors)resetStatus);
             }
         }
 
@@ -302,7 +303,7 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -313,7 +314,7 @@ namespace BassBoom.Basolia.Format
                 var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_format_all>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_format_all));
                 int resetStatus = @delegate.Invoke(handle);
                 if (resetStatus != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't set output format", (mpg123_errors)resetStatus);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED"), (mpg123_errors)resetStatus);
             }
         }
 
@@ -328,7 +329,7 @@ namespace BassBoom.Basolia.Format
         {
             InitBasolia.CheckInited();
             if (basolia is null)
-                throw new BasoliaException("Basolia instance is not provided", mpg123_errors.MPG123_BAD_HANDLE);
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
 
             // We're now entering the dangerous zone
             unsafe
@@ -339,7 +340,7 @@ namespace BassBoom.Basolia.Format
                 var delegate2 = MpgNative.GetDelegate<NativeOutput.mpg123_format>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_format));
                 int formatStatus = delegate2.Invoke(handle, rate, (int)channels, encoding);
                 if (formatStatus != (int)mpg123_errors.MPG123_OK)
-                    throw new BasoliaException("Can't set output encoding to:" + $" {rate}, {channels}, {encoding}", (mpg123_errors)formatStatus);
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED") + $" {rate}, {channels}, {encoding}", (mpg123_errors)formatStatus);
             }
         }
 
