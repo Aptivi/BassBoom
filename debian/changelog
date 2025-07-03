@@ -1,3 +1,9 @@
+bassboom-2 (1.0.2.0-0.2.10.0-1) noble; urgency=medium
+
+  * Added localized strings
+
+ -- Aptivi CEO <ceo@aptivi.anonaddy.com>  Thu, 03 Jul 2025 12:55:15 +0300
+
 bassboom-2 (1.0.2.0-0.2.9.0-1) noble; urgency=medium
 
   * General improvements

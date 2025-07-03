@@ -234,7 +234,7 @@ bassboom-${APIVERSPLITNEW[2]} ($NEWAPIVER-$NEWVER-1) noble; urgency=medium
 EOF
     )
     DEBIAN_CHANGES_CONTENT=$(printf "$DEBIAN_CHANGES_ENTRY\n\n$(cat "$DEBIAN_CHANGES_FILE")")
-    printf "$DEBIAN_CHANGES_CONTENT\n" > $DEBIAN_CHANGES_FILE
+    printf "$DEBIAN_CHANGES_CONTENT\n" > "$DEBIAN_CHANGES_FILE"
 }
 
 clean() {
