@@ -223,6 +223,7 @@ increment() {
         "$ROOTDIR/.github/workflows/build-ppa-package.yml"
         "$ROOTDIR/.github/workflows/pushamend.yml"
         "$ROOTDIR/.github/workflows/pushppa.yml"
+        "$ROOTDIR/.gitlab/workflows/release.yml"
         "$ROOTDIR/public/BassBoom.Installers/BassBoom.Installer/Package.wxs"
         "$ROOTDIR/public/BassBoom.Installers/BassBoom.InstallerBundle/Bundle.wxs"
         "$ROOTDIR/Directory.Build.props"
