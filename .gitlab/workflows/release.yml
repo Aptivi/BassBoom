@@ -13,6 +13,7 @@ prepare_job:
     - 'apt -y install make zip glab'
     - 'dotnet tool install --global docfx'
     - 'make rel-ci'
+    - './tools/pack.sh'
     - 'make doc'
     - './tools/docgen-pack.sh'
     - 'export SUBJECT="$(cat CHANGES.TITLE)"'
