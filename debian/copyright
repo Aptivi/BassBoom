@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: BassBoom
-Source: https://github.com/Aptivi/Application/blob/master/LICENSE
+Source: https://gitlab.com/aptivi/main/BassBoom/blob/master/LICENSE
 
 Files: *
 Copyright: 2023-2025 Aptivi <eoflaoevicecity@gmail.com>

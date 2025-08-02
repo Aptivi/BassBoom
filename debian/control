@@ -5,8 +5,8 @@ Maintainer: Aptivi CEO <ceo@aptivi.anonaddy.com>
 Build-Depends: debhelper-compat (= 12), dotnet-sdk-8.0 (>= 8.0.100), 7zip (>= 21.07), libmpv2 (>= 0.37.0)
 Standards-Version: 4.4.0
 Homepage: https://aptivi.gitbook.io/bassboom-manual
-Vcs-Browser: https://github.com/Aptivi/BassBoom
-Vcs-Git: https://github.com/Aptivi/BassBoom.git
+Vcs-Browser: https://gitlab.com/aptivi/main/BassBoom
+Vcs-Git: https://gitlab.com/aptivi/main/BassBoom.git
 
 Package: bassboom-3
 Architecture: amd64 arm64
