@@ -1,0 +1,721 @@
+{
+  "lang": "cnt",
+  "name": "Chinese (Traditional)",
+  "cultures": [
+    "zh",
+    "zh-Hant",
+    "zh-Hant-HK",
+    "zh-Hant-MO",
+    "zh-Hant-TW"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICE",
+      "text": "Zhuāngzhì:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DRIVER",
+      "text": "Qūdòng chéngshì:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICECACHED",
+      "text": "Shèbèi (yǐ kuài qǔ):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DRIVERCACHED",
+      "text": "Qūdòng chéngshì (yǐ kuài qǔ):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICESQUERYNOTPLAYING",
+      "text": "Fēi bòfàng shí wúfǎ cháxún mùqián shèbèi."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICEANDDRIVER",
+      "text": "Shèbèi hé qūdòng chéngshì"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_AVAILABLEDEVICESANDDRIVERS",
+      "text": "kěyòng shèbèi hé qūdòng chéngshì"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_EXTRASPECS",
+      "text": "éwài guīgé (miànxiàng kāifā zhě)"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_PCMSAMPLESIZE",
+      "text": "PCM yàngběn dàxiǎo:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ZEROSAMPLE",
+      "text": "Líng yàngběn (piān yí liàng 0):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DURATIONSAMPLES",
+      "text": "Yàngběn shí cháng (yǐ yàngběn wèi dānwèi):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_FRAMELEN",
+      "text": "Zhèngchángdù:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SPF",
+      "text": "Yàngběn/zhèng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_TPF",
+      "text": "Miǎo/zhèng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DECODERS",
+      "text": "Jiěmǎ qì"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SUPPORTEDDECODERS",
+      "text": "zhīyuán de jiěmǎ qì:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ALLDECODERS",
+      "text": "Suǒyǒu jiěmǎ qì:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ENCODINGSANDRATES",
+      "text": "Biānmǎ hé sùlǜ"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ENCODINGS",
+      "text": "biānmǎ:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_RATES",
+      "text": "Sùlǜ:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BUFFERINFO",
+      "text": "Huǎnchōng qū zīxùn"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_GENERICBUFFERSIZE",
+      "text": "tōngyòng huǎnchōng qū dàxiǎo:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS",
+      "text": "BassBoom guīgé"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_BASOLIAVER",
+      "text": "Basolia bǎnběn:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_MPG123VER",
+      "text": "MPG123 bǎnběn:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_OUT123VER",
+      "text": "OUT123 bǎnběn:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS",
+      "text": "Xìtǒng guīgé"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEM",
+      "text": "xìtǒng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMARCH",
+      "text": "Xìtǒng jiàgòu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_PROCESSARCH",
+      "text": "Jìnchéng jiàgòu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMDESC",
+      "text": "Xìtǒng miáoshù:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_DOTNETDESC",
+      "text": ".NET miáoshù:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES",
+      "text": "Kěyòng ànjiàn"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SELECTDRIVER",
+      "text": "xuǎnzé qūdòng chéngshì. Àn ESC jiàn tuìchū."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SELECTDEVICE",
+      "text": "Xuǎnzé shèbèi. Mùqián qūdòng chéngshì wèi {0}. Àn ESC jiàn tuìchū."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_PATHTOPLAYLIST",
+      "text": "Shūrù yào chúcún de bòfàng qīngdān dǎng'àn de lùjìng"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEUP",
+      "text": "zēngjiā yīnliàng"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEDOWN",
+      "text": "jiǎnshǎo yīnliàng"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_HELP",
+      "text": "bāngzhù"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_EQUALIZER",
+      "text": "kāiqǐ jūnhéng qì"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_SYSINFO",
+      "text": "xìtǒng zīxùn"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DISCO",
+      "text": "dí sī kě móshì!"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLBOOST",
+      "text": "Qǐyòng yīnliàng zēngqiáng"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERINFO",
+      "text": "shèbèi hé qūdòng chéngshì xùnxí"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERSET",
+      "text": "shèdìng shèbèi hé qūdòng chéngshì"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERRESET",
+      "text": "chóng zhì shèbèi hé qūdòng chéngshì"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_SAVETOPLAYLIST",
+      "text": "chúcún dào bòfàng lièbiǎo"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_QUIT",
+      "text": "tuìchū"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DECREASE",
+      "text": "jiǎnshǎo yīnliàng"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_INCREASE",
+      "text": "zēngjiā yīnliàng"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_PREVBAND",
+      "text": "shàng yīgè pínduàn"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_NEXTBAND",
+      "text": "xià yīgè pínduàn"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_RESET",
+      "text": "chóng zhì"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASOLIAERROR",
+      "text": "Basolia zài chángshì chǔlǐ jūnhéng qì cāozuò shí fāshēng cuòwù."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASOLIAOUTERROR",
+      "text": "Basolia zài chángshì chǔlǐ jūnhéng qì cāozuò shí shūchū chūxiàn cuòwù."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_ERROR",
+      "text": "Chángshì chǔlǐ jūnhéng qì cāozuò shí chūxiàn wèizhī cuòwù."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_NOTPLAYING",
+      "text": "Wèi bòfàng. Yīnyuè bòfàng qì chǔyú kòngxián zhuàngtài."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASS",
+      "text": "Dīyīn"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_UPPERMID",
+      "text": "zhōng gāoyīn"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_TREBLE",
+      "text": "gāoyīn"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_DEVICEBAND",
+      "text": "shèbèi tèdìng pínduàn"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_UNKNOWNBAND",
+      "text": "wèizhī pínduàn lèixíng"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BAND",
+      "text": "pínduàn"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PLAYPAUSE",
+      "text": "bòfàng/zàntíng"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_STOP",
+      "text": "tíngzhǐ"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_BACKWARDS",
+      "text": "hòutuì"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_FORWARDS",
+      "text": "qiánjìn"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_DECREASESEEKDURATION",
+      "text": "jiǎnshǎo sōuxún shí cháng"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_INCREASESEEKDURATION",
+      "text": "zēngjiā sōuxún shí cháng"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SONGINFO",
+      "text": "gēqǔ xùnxí"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDFILE",
+      "text": "xīn zēng yīnyuè wénjiàn"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDGROUP",
+      "text": "cóng bòfàng qīngdān xīn zēng yīnyuè zǔ"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDDIR",
+      "text": "jiāng yīnyuè mùlù xīn zēng zhì qīngdān (kòngxián shí)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PREVSONG",
+      "text": "shàng yī shǒu gēqǔ"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_NEXTSONG",
+      "text": "xià yī shǒu gēqǔ"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_REMOVECURRSONG",
+      "text": "yí chú dāngqián gēqǔ"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_REMOVEALLSONGS",
+      "text": "yí chú suǒyǒu gēqǔ"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKSELECTIVE",
+      "text": "xuǎnzé xìng sōuxún (bòfàng shí)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOPREVLYRIC",
+      "text": "sōuxún shàng yījù gēcí (bòfàng shí)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTONEXTLYRIC",
+      "text": "sōuxún dào xià yījù gēcí (bòfàng shí)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOCURRLYRIC",
+      "text": "sōuxún dào dāngqián gēcí (bòfàng shí)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOWHICHLYRIC",
+      "text": "sōuxún dào nǎ yījù gēcí (bòfàng shí)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SETREPEATCHECKPOINT",
+      "text": "shèdìng chóngfù jiǎnchá diǎn"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOREPEATCHECKPOINT",
+      "text": "sōuxún dào chóngfù jiǎnchá diǎn"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PLAYTESTSOUND",
+      "text": "bòfàng cèshì shēngyīn (yòng yú cèshì shèbèi hé qūdòng chéngshì)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_SEEKINDICATOR",
+      "text": "sōuxún:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_VOLINDICATOR",
+      "text": "Yīnliàng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_BASOLIAERROR",
+      "text": "Basolia chángshì chǔlǐ yīnyuè dǎng'àn shí fāshēng cuòwù."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_BASOLIAOUTERROR",
+      "text": "Basolia chángshì chǔlǐ yīnyuè dǎng'àn shí shūchū chūxiàn cuòwù."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_ERROR",
+      "text": "Chángshì chǔlǐ yīnyuè dǎng'àn shí chūxiàn wèizhī cuòwù."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_PLAYBACKFAILED",
+      "text": "Bòfàng shībài:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TIP",
+      "text": "Àn xià “A” jiàn jiāng dān shǒu gēqǔ chārù bòfàng lièbiǎo, àn “S” jiàn chārù zhěnggè yīnyuè kù."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_SELECTLYRICSEEK",
+      "text": "Xuǎnzé yào zhǎo de gēcí"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICFILEPROMPT",
+      "text": "shūrù yīnyuè dǎng'àn lùjìng"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICFILENOTFOUND",
+      "text": "wénjiàn “{0}” bù cúnzài."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICPLAYLISTPROMPT",
+      "text": "Shūrù yīnyuè bòfàng qīngdān lùjìng"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICPLAYLISTNOTFOUND",
+      "text": "wèi zhǎodào yīnyuè bòfàng qīngdān."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICLIBRARYPROMPT",
+      "text": "Shūrù yīnyuè kù mùlù lùjìng"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICLIBRARYNOTFOUND",
+      "text": "wèi zhǎodào yīnyuè kù mùlù."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICFILE",
+      "text": "Zhèngzài kāiqǐ {0}..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_NOWPLAYING",
+      "text": "Zhèngzài bòfàng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_UNKNOWNARTIST",
+      "text": "Wèizhī yìshùjiā"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_UNKNOWNGENRE",
+      "text": "wèizhī liúpài"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILE",
+      "text": "chángshì kāiqǐ gēcí dǎng'àn {0}..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILEFAILED",
+      "text": "Wúfǎ kāiqǐ gēcí dǎng'àn {0}:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TARGETPOSPROMPT",
+      "text": "Qǐng àn yǐxià géshì xiě rù mùbiāo wèizhì:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDPLAYING",
+      "text": "Zhèngzài bòfàng cèshì shēngyīn..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_EXCEPTION_TESTSOUNDMISSING",
+      "text": "Quēshǎo cèshì shēngyīn shùjù."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_TITLE",
+      "text": "Shēngyīn cèshì"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_DESC",
+      "text": "mùqián pèizhì shìfǒu yīqiè zhèng cháng?"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_YES",
+      "text": "Shì"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_NO",
+      "text": "fǒu"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_SUCCESS",
+      "text": "gōngxǐ! Nín yǐ zhèngquè shèdìng suǒyǒu shèdìng!"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_FAILURE",
+      "text": "Qǐng jiǎnchá nín de shèbèi bìng chóng shì."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_UNKNOWN",
+      "text": "Wèizhī"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO",
+      "text": "gēqǔ xùnxí"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_ARTIST",
+      "text": "yìshùjiā:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_TITLE",
+      "text": "Biāotí:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_ALBUM",
+      "text": "Zhuānjí:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_GENRE",
+      "text": "Liúpài:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_COMMENT",
+      "text": "Zhù:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_DURATION",
+      "text": "Shí cháng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS",
+      "text": "Gēcí:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_LINES",
+      "text": "{0} Xíng"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_NOLYRICS",
+      "text": "wú gēcí"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO",
+      "text": "túcéng zīxùn"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VERSION",
+      "text": "bǎnběn:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_LAYER",
+      "text": "Túcéng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_RATE",
+      "text": "Sùlǜ:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODE",
+      "text": "Móshì:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODEEXT",
+      "text": "Móshì kuòzhǎn:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FRAMESIZE",
+      "text": "Zhèng dàxiǎo:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FLAGS",
+      "text": "Biāojì:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_EMPHASIS",
+      "text": "Qiángdiào:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_BITRATE",
+      "text": "Bǐtè lǜ:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_ABR",
+      "text": "ABR sùlǜ:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VBR",
+      "text": "VBR:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE",
+      "text": "Yuánshēng zhuàngtài"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ACCURATERENDERING",
+      "text": "jīngquè xuànrǎn:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_BUFFERFILL",
+      "text": "Huǎnchōng qū tián mǎn:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_DECODINGDELAY",
+      "text": "Jiěmǎ yánchí:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGDELAY",
+      "text": "Biānmǎ yánchí:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGPADDING",
+      "text": "Biānmǎ tiánchōng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRANKENSTEIN",
+      "text": "Frankenstein liú:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRESHDECODER",
+      "text": "Zuìxīn jiěmǎ qì:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_TEXTSANDEXTRAS",
+      "text": "Wénzì hé fùjiā xùnxí"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFO",
+      "text": "diàntái zīxùn"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFOEXT",
+      "text": "diàntái kuòchōng xùnxí"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATION",
+      "text": "tiānjiā diàntái"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATIONGROUP",
+      "text": "cóng bòfàng qīngdān zhōng xīn zēng diàntái zǔ"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_PREVSTATION",
+      "text": "shàng yīgè diàntái"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_NEXTSTATION",
+      "text": "xià yīgè diàntái"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_REMOVECURRSTATION",
+      "text": "yí chú mùqián diàntái"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_REMOVEALLSTATIONS",
+      "text": "yí chú suǒyǒu diàntái"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_TIP",
+      "text": "àn xià “A” jiàn jiāng diàntái chārù bòfàng qīngdān."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONPROMPT",
+      "text": "Shūrù diàntái lùjìng. Diàntái URL bìxū tígōng MPEG géshì de diàntái. AAC géshì de diàntái shàngwèi zhīyuán."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONGROUPPROMPT",
+      "text": "Shūrù diàntái bòfàng qīngdān de lùjìng. Diàntái URL bìxū tígōng MPEG géshì de diàntái. Mùqián bù zhīyuán AAC géshì de diàntái."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONGROUPNOTFOUND",
+      "text": "Wèi zhǎodào diàntái bòfàng qīngdān."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO",
+      "text": "Diàntái zīxùn"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_URL",
+      "text": "diàntái URL:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_NAME",
+      "text": "Diàntái míngchēng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_CURRSONG",
+      "text": "Diàntái dāngqián gēqǔ:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO",
+      "text": "Diàntái sìfú qì zīxùn"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_HTTPS",
+      "text": "diàntái shǐyòng HTTPS:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_TYPE",
+      "text": "Diàntái sìfú qì lèixíng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_STREAMS",
+      "text": "Diàntái chuàn liú:{0} Gè, huóyuè yònghù {1} gè"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_LISTENERS",
+      "text": "diàntái tīngzhòng:{0} Gè, fēngzhí tīngzhòng {1} gè"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO",
+      "text": "chuàn liú méitǐ xùnxí"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_NAME",
+      "text": "míngchēng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_HOMEPAGE",
+      "text": "Shǒuyè:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_STREAMPATH",
+      "text": "Chuàn liú méitǐ lùjìng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_LISTENERS",
+      "text": "Tīngzhòng:{0} Gè, fēngzhí tīngzhòng {1} gè"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_BITRATE",
+      "text": "bǐtè lǜ:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_MEDIATYPE",
+      "text": "Méitǐ lèixíng:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_UNABLETOOBTAIN",
+      "text": "Wúfǎ qǔdé {0} de xiángxì diàntái xìnxī"
+    },
+    {
+      "loc": "BASSBOOM_APP_NOTFOUND",
+      "text": "yīnyuè dǎng'àn {0} bù cúnzài."
+    },
+    {
+      "loc": "BASSBOOM_APP_FATALERROR",
+      "text": "BassBoom CLI chūxiàn zhìmìng cuòwù."
+    }
+  ]
+}

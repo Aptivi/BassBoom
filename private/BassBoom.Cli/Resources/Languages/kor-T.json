@@ -1,0 +1,719 @@
+{
+  "lang": "kor-T",
+  "name": "Korean",
+  "cultures": [
+    "ko",
+    "ko-KP",
+    "ko-KR"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICE",
+      "text": "장치:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DRIVER",
+      "text": "드라이버:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICECACHED",
+      "text": "장치(캐시됨):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DRIVERCACHED",
+      "text": "드라이버(캐시됨):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICESQUERYNOTPLAYING",
+      "text": "재생 중이 아닐 때는 현재 장치를 쿼리할 수 없습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICEANDDRIVER",
+      "text": "장치 및 드라이버"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_AVAILABLEDEVICESANDDRIVERS",
+      "text": "사용 가능한 장치 및 드라이버"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_EXTRASPECS",
+      "text": "추가 사양(개발자용)"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_PCMSAMPLESIZE",
+      "text": "PCM 샘플 크기:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ZEROSAMPLE",
+      "text": "제로 샘플(오프셋 0):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DURATIONSAMPLES",
+      "text": "샘플 지속 시간:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_FRAMELEN",
+      "text": "프레임 길이:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SPF",
+      "text": "프레임당 샘플:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_TPF",
+      "text": "프레임당 초:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DECODERS",
+      "text": "디코더"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SUPPORTEDDECODERS",
+      "text": "지원되는 디코더:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ALLDECODERS",
+      "text": "모든 디코더:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ENCODINGSANDRATES",
+      "text": "인코딩 및 속도"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ENCODINGS",
+      "text": "인코딩:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_RATES",
+      "text": "속도:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BUFFERINFO",
+      "text": "버퍼 정보"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_GENERICBUFFERSIZE",
+      "text": "일반 버퍼 크기:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS",
+      "text": "BassBoom 사양"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_BASOLIAVER",
+      "text": "Basolia 버전:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_MPG123VER",
+      "text": "MPG123 버전:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_OUT123VER",
+      "text": "OUT123 버전:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS",
+      "text": "시스템 사양"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEM",
+      "text": "시스템:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMARCH",
+      "text": "시스템 아키텍처:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_PROCESSARCH",
+      "text": "프로세스 아키텍처:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMDESC",
+      "text": "시스템 설명:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_DOTNETDESC",
+      "text": ".NET 설명:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES",
+      "text": "사용 가능한 키 입력"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SELECTDRIVER",
+      "text": "드라이버를 선택하세요. 종료하려면 ESC 키를 누르세요."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SELECTDEVICE",
+      "text": "장치를 선택하세요. 현재 드라이버는 {0}입니다. 종료하려면 ESC 키를 누르세요."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_PATHTOPLAYLIST",
+      "text": "저장하려는 재생 목록 파일의 경로를 입력하세요."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEUP",
+      "text": "볼륨 높이기"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEDOWN",
+      "text": "볼륨 낮추기"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_HELP",
+      "text": "도움말"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_EQUALIZER",
+      "text": "이퀄라이저 열기"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_SYSINFO",
+      "text": "시스템 정보"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DISCO",
+      "text": "디스코 모드!"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLBOOST",
+      "text": "볼륨 부스트 활성화"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERINFO",
+      "text": "장치 및 드라이버 정보"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERSET",
+      "text": "장치 및 드라이버 설정"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERRESET",
+      "text": "장치 및 드라이버 재설정"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_SAVETOPLAYLIST",
+      "text": "재생 목록에 저장"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_QUIT",
+      "text": "종료"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DECREASE",
+      "text": "낮추기"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_INCREASE",
+      "text": "높이기"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_PREVBAND",
+      "text": "이전 대역"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_NEXTBAND",
+      "text": "다음 대역"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_RESET",
+      "text": "재설정"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASOLIAERROR",
+      "text": "이퀄라이저 작업을 처리하는 동안 Basolia에 오류가 발생했습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASOLIAOUTERROR",
+      "text": "이퀄라이저 작업을 처리하는 동안 Basolia 출력에 오류가 발생했습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_ERROR",
+      "text": "이퀄라이저 작업을 처리하는 동안 알 수 없는 오류가 발생했습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_NOTPLAYING",
+      "text": "재생되지 않습니다. 음악 플레이어가 유휴 상태입니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASS",
+      "text": "저음"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_UPPERMID",
+      "text": "고음 중음"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_TREBLE",
+      "text": "고음"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_DEVICEBAND",
+      "text": "장치별 대역"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_UNKNOWNBAND",
+      "text": "알 수 없는 대역 유형"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BAND",
+      "text": "대역"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PLAYPAUSE",
+      "text": "재생/일시 정지"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_STOP",
+      "text": "정지"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_BACKWARDS",
+      "text": "뒤로 탐색"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_FORWARDS",
+      "text": "앞으로 탐색"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_DECREASESEEKDURATION",
+      "text": "탐색 시간 감소"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_INCREASESEEKDURATION",
+      "text": "탐색 시간 증가"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SONGINFO",
+      "text": "곡 정보"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDFILE",
+      "text": "음악 파일 추가"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDGROUP",
+      "text": "재생 목록에서 음악 그룹 추가"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDDIR",
+      "text": "목록에 음악 디렉터리 추가(대기 상태일 때)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PREVSONG",
+      "text": "이전 곡"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_NEXTSONG",
+      "text": "다음 곡"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_REMOVECURRSONG",
+      "text": "현재 곡 제거"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_REMOVEALLSONGS",
+      "text": "모든 곡 제거"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKSELECTIVE",
+      "text": "선택적으로 탐색(재생 중)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOPREVLYRIC",
+      "text": "이전 가사 탐색(재생 중)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTONEXTLYRIC",
+      "text": "다음 가사 탐색(재생 중)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOCURRLYRIC",
+      "text": "현재 가사 탐색(재생 중)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOWHICHLYRIC",
+      "text": "어떤 가사로 탐색할지(재생 중)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SETREPEATCHECKPOINT",
+      "text": "반복 체크포인트 설정"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOREPEATCHECKPOINT",
+      "text": "반복 체크포인트 탐색"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PLAYTESTSOUND",
+      "text": "테스트 사운드 재생(장치 및 드라이버 테스트용)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_SEEKINDICATOR",
+      "text": "탐색:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_VOLINDICATOR",
+      "text": "볼륨:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_BASOLIAERROR",
+      "text": "음악 파일을 처리하는 중 Basolia에 오류가 있습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_BASOLIAOUTERROR",
+      "text": "음악 파일을 처리하는 중 Basolia 출력에 오류가 있습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_ERROR",
+      "text": "음악 파일을 처리하는 중 알 수 없는 오류가 있습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_PLAYBACKFAILED",
+      "text": "재생 실패:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TIP",
+      "text": "'A'를 눌러 재생 목록에 한 곡을 삽입하거나 'S'를 눌러 전체 음악 라이브러리를 삽입하세요."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_SELECTLYRICSEEK",
+      "text": "찾을 가사를 선택하세요."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICFILEPROMPT",
+      "text": "음악 파일 경로를 입력하세요."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICFILENOTFOUND",
+      "text": "파일 '{0}'이(가) 없습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICPLAYLISTPROMPT",
+      "text": "음악 재생 목록 경로를 입력하세요."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICPLAYLISTNOTFOUND",
+      "text": "음악 재생 목록을 찾을 수 없습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICLIBRARYPROMPT",
+      "text": "음악 라이브러리 디렉터리 경로를 입력하세요."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICLIBRARYNOTFOUND",
+      "text": "음악 라이브러리 디렉터리를 찾을 수 없습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICFILE",
+      "text": "{0}을(를) 여는 중..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_NOWPLAYING",
+      "text": "현재 재생 중인 곡:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_UNKNOWNARTIST",
+      "text": "알 수 없는 아티스트"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_UNKNOWNGENRE",
+      "text": "알 수 없는 장르"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILE",
+      "text": "가사 파일 {0}을(를) 열려고 합니다..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILEFAILED",
+      "text": "가사 파일 {0}을(를) 열 수 없습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TARGETPOSPROMPT",
+      "text": "대상 위치를 다음 형식으로 작성하세요."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDPLAYING",
+      "text": "테스트 사운드 재생 중..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_EXCEPTION_TESTSOUNDMISSING",
+      "text": "테스트 사운드 데이터가 없습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_TITLE",
+      "text": "사운드 테스트"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_DESC",
+      "text": "현재 구성에서 모든 것이 정상입니까?"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_YES",
+      "text": "예"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_NO",
+      "text": "아니요"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_SUCCESS",
+      "text": "축하합니다! 모든 설정이 올바르게 완료되었습니다!"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_FAILURE",
+      "text": "기기를 확인하고 다시 시도하세요."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_UNKNOWN",
+      "text": "알 수 없음"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO",
+      "text": "노래 정보"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_ARTIST",
+      "text": "아티스트:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_TITLE",
+      "text": "제목:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_ALBUM",
+      "text": "앨범:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_GENRE",
+      "text": "장르:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_COMMENT",
+      "text": "코멘트:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_DURATION",
+      "text": "재생 시간:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS",
+      "text": "가사:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_LINES",
+      "text": "{0}줄"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_NOLYRICS",
+      "text": "가사 없음"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO",
+      "text": "레이어 정보"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VERSION",
+      "text": "버전:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_LAYER",
+      "text": "레이어:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_RATE",
+      "text": "레이트:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODE",
+      "text": "모드:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODEEXT",
+      "text": "모드 확장:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FRAMESIZE",
+      "text": "프레임 크기:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FLAGS",
+      "text": "플래그:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_EMPHASIS",
+      "text": "강조:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_BITRATE",
+      "text": "비트 전송률:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_ABR",
+      "text": "ABR 속도:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VBR",
+      "text": "VBR:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE",
+      "text": "네이티브 상태"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ACCURATERENDERING",
+      "text": "정확한 렌더링:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_BUFFERFILL",
+      "text": "버퍼 채우기:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_DECODINGDELAY",
+      "text": "디코딩 지연:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGDELAY",
+      "text": "인코딩 지연:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGPADDING",
+      "text": "인코딩 패딩:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRANKENSTEIN",
+      "text": "프랑켄슈타인 스트림:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRESHDECODER",
+      "text": "새로운 디코더:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_TEXTSANDEXTRAS",
+      "text": "텍스트 및 추가 기능"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFO",
+      "text": "라디오 방송국 정보"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFOEXT",
+      "text": "라디오 방송국 확장 정보"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATION",
+      "text": "라디오 방송국 추가"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATIONGROUP",
+      "text": "재생 목록에서 라디오 방송국 그룹 추가"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_PREVSTATION",
+      "text": "이전 라디오 방송국"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_NEXTSTATION",
+      "text": "다음 라디오 방송국"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_REMOVECURRSTATION",
+      "text": "현재 라디오 방송국 제거"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_REMOVEALLSTATIONS",
+      "text": "모든 라디오 방송국 제거"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_TIP",
+      "text": "재생 목록에 라디오 방송국을 삽입하려면 'A'를 누르세요."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONPROMPT",
+      "text": "라디오 방송국 경로를 입력하세요. 방송국 URL은 MPEG 라디오 방송국을 제공해야 합니다. AAC 방송국은 아직 지원되지 않습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONGROUPPROMPT",
+      "text": "라디오 방송국 재생 목록 경로를 입력하세요. 방송국 URL은 MPEG 라디오 방송국을 제공해야 합니다. AAC는 아직 지원되지 않습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONGROUPNOTFOUND",
+      "text": "라디오 방송국 재생 목록을 찾을 수 없습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO",
+      "text": "방송국 정보"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_URL",
+      "text": "라디오 방송국 URL:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_NAME",
+      "text": "라디오 방송국 이름:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_CURRSONG",
+      "text": "라디오 방송국에서 현재 재생 중인 노래:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO",
+      "text": "라디오 서버 정보"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_HTTPS",
+      "text": "라디오 방송국에서 HTTPS를 사용합니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_TYPE",
+      "text": "라디오 방송국 서버 유형:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_STREAMS",
+      "text": "라디오 방송국 스트림: {0}(활성 상태, {1})"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_LISTENERS",
+      "text": "라디오 방송국 청취자: {0}(최대 사용 시간, {1})"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO",
+      "text": "스트림 정보"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_NAME",
+      "text": "이름:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_HOMEPAGE",
+      "text": "홈페이지:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_STREAMPATH",
+      "text": "스트림 경로:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_LISTENERS",
+      "text": "청취자: {0}(최대 사용 시간, {1})"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_BITRATE",
+      "text": "비트 전송률:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_MEDIATYPE",
+      "text": "미디어 유형:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_UNABLETOOBTAIN",
+      "text": "{0}에 대한 확장 라디오 방송국 정보를 가져올 수 없습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_NOTFOUND",
+      "text": "음악 파일 {0}이(가) 없습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_FATALERROR",
+      "text": "BassBoom CLI에서 치명적인 오류가 발생했습니다."
+    }
+  ]
+}

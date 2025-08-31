@@ -1,0 +1,744 @@
+{
+  "lang": "arb",
+  "name": "Arabic",
+  "cultures": [
+    "ar",
+    "ar-001",
+    "ar-AE",
+    "ar-BH",
+    "ar-DJ",
+    "ar-DZ",
+    "ar-EG",
+    "ar-ER",
+    "ar-IL",
+    "ar-IQ",
+    "ar-JO",
+    "ar-KM",
+    "ar-KW",
+    "ar-LB",
+    "ar-LY",
+    "ar-MA",
+    "ar-MR",
+    "ar-OM",
+    "ar-PS",
+    "ar-QA",
+    "ar-SA",
+    "ar-SD",
+    "ar-SO",
+    "ar-SS",
+    "ar-SY",
+    "ar-TD",
+    "ar-TN",
+    "ar-YE"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICE",
+      "text": "aljihazi:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DRIVER",
+      "text": "barnamaj altashghili:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICECACHED",
+      "text": "aljihaz (mukhzan mwqtan):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DRIVERCACHED",
+      "text": "barnamaj altashghil (mukhzan mwqtan):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICESQUERYNOTPLAYING",
+      "text": "la yumkn aliastielam ean al'ajhizat alhaliat 'athna' eadam altashghili."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICEANDDRIVER",
+      "text": "aljihaz wabarnamaj altashghil"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_AVAILABLEDEVICESANDDRIVERS",
+      "text": "al'ajhizat wabaramij altashghil almutaha"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_EXTRASPECS",
+      "text": "muasafat 'iidafia (lilmutawirina)"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_PCMSAMPLESIZE",
+      "text": "hajm eayinat PCM:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ZEROSAMPLE",
+      "text": "eayinat sifria ('iizahat 0):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DURATIONSAMPLES",
+      "text": "almudat bialeaynati:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_FRAMELEN",
+      "text": "tul al'iitar:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SPF",
+      "text": "aleaynatu/al'iitar:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_TPF",
+      "text": "althawani/al'iitar:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DECODERS",
+      "text": "wahadat faka altashfir"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SUPPORTEDDECODERS",
+      "text": "wahadat faka altashfir almadeumatu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ALLDECODERS",
+      "text": "jamie wahadat faka altashfiri:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ENCODINGSANDRATES",
+      "text": "altarmizat walmueadalat"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ENCODINGS",
+      "text": "altarmizati:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_RATES",
+      "text": "almueadalati:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BUFFERINFO",
+      "text": "maelumat almakhzan almuaqat"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_GENERICBUFFERSIZE",
+      "text": "hajm almakhzan almuaqat aleami:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS",
+      "text": "muasafat BassBoom"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_BASOLIAVER",
+      "text": "'iisdar Basolia:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_MPG123VER",
+      "text": "'iisdar MPG123:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_OUT123VER",
+      "text": "'iisdar OUT123:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS",
+      "text": "muasafat alnizam"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEM",
+      "text": "alnizamu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMARCH",
+      "text": "bunyat alnizami:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_PROCESSARCH",
+      "text": "binyat aleamaliati:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMDESC",
+      "text": "wasaf alnizami:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_DOTNETDESC",
+      "text": "wasf .NET:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES",
+      "text": "daghatat almafatih almutaha"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SELECTDRIVER",
+      "text": "hadad barnamaj tashghili. ESC lilkhuruwji."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SELECTDEVICE",
+      "text": "hadid jhazan. barnamaj altashghil alhalii hu {0}. ESC lilkhuruwji. 'adkhal masar milafi qayimat altashghil aladhi targhab fi hifzihi."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_PATHTOPLAYLIST",
+      "text": "rafe mustawaa alsawt"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEUP",
+      "text": "khafd mustawaa alsawt"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEDOWN",
+      "text": "musaeida"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_HELP",
+      "text": "fath mueadl alsawt"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_EQUALIZER",
+      "text": "maelumat alnizam"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_SYSINFO",
+      "text": "wade aldiysku!"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DISCO",
+      "text": "tafeil rafe mustawaa alsawt"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLBOOST",
+      "text": "maelumat aljihaz wabarnamaj altashghil"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERINFO",
+      "text": "taeyin aljihaz wabarnamaj altashghil"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERSET",
+      "text": "'iieadat taeyin aljihaz wabarnamaj altashghil"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERRESET",
+      "text": "hifz fi qayimat altashghil"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_SAVETOPLAYLIST",
+      "text": "khuruj"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_QUIT",
+      "text": "khafd"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DECREASE",
+      "text": "ziada"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_INCREASE",
+      "text": "alnitaq alsaabiq"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_PREVBAND",
+      "text": "alnitaq altaali"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_NEXTBAND",
+      "text": "'iieadat taeyin"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_RESET",
+      "text": "hunak khata fi Basolia eind muhawalat muealajat eamaliat mueadl alsawti."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASOLIAERROR",
+      "text": "hunak khata fi mukhrjat Basolia eind muhawalat muealajat eamaliat mueadl alsawti."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASOLIAOUTERROR",
+      "text": "hunak khata ghayr maeruf eind muhawalat muealajat eamaliat mueadl alsawti."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_ERROR",
+      "text": "la yuemali. mushghl almusiqaa khamil."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_NOTPLAYING",
+      "text": "jahir"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASS",
+      "text": "mutawasit ​​ealawiun"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_UPPERMID",
+      "text": "eali"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_TREBLE",
+      "text": "eali"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_DEVICEBAND",
+      "text": "nitaq sawtiun khasun bialjihaz"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_UNKNOWNBAND",
+      "text": "nawe nitaq sawtiin ghayr maeruf"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BAND",
+      "text": "alnitaq"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PLAYPAUSE",
+      "text": "tashghili/'iiqaf muaqat"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_STOP",
+      "text": "'iiqaf"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_BACKWARDS",
+      "text": "albahth lilkhalf"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_FORWARDS",
+      "text": "albahth lil'amam"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_DECREASESEEKDURATION",
+      "text": "taqlil mudat albahth"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_INCREASESEEKDURATION",
+      "text": "ziadat mudat albahth"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SONGINFO",
+      "text": "maelumat al'ughnia"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDFILE",
+      "text": "'iidafat milafi musiqaa"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDGROUP",
+      "text": "'iidafat majmueat musiqiat min qayimat altashghil"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDDIR",
+      "text": "'iidafat mujalad musiqaa 'iilaa alqayima (eind alkhumuli)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PREVSONG",
+      "text": "al'ughniat alsaabiqa"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_NEXTSONG",
+      "text": "al'ughniat altaalia"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_REMOVECURRSONG",
+      "text": "hadhf al'ughniat alhalia"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_REMOVEALLSONGS",
+      "text": "hadhaf jamie al'aghani"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKSELECTIVE",
+      "text": "albahth aliantiqayiyu ('athna' altashghili)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOPREVLYRIC",
+      "text": "albahth ean kalimat al'ughniat alsaabiqa ('athna' altashghili)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTONEXTLYRIC",
+      "text": "albahth ean kalimat al'ughniat altaalia ('athna' altashghili)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOCURRLYRIC",
+      "text": "albahth ean kalimat al'ughniat alhalia ('athna' altashghili)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOWHICHLYRIC",
+      "text": "albahth ean 'ayi kalimat 'ughnia ('athna' altashghili)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SETREPEATCHECKPOINT",
+      "text": "taeyin nuqtat taftish altakrar"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOREPEATCHECKPOINT",
+      "text": "albahth ean nuqtat taftish altakrar"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PLAYTESTSOUND",
+      "text": "tashghil sawt akhtibar (liakhtibar aljihaz wabarnamaj altashghili)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_SEEKINDICATOR",
+      "text": "albahtha:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_VOLINDICATOR",
+      "text": "mustawaa alsawti:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_BASOLIAERROR",
+      "text": "hunak khata fi Basolia eind muhawalat muealajat milafi almusiqaa."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_BASOLIAOUTERROR",
+      "text": "hunak khata fi 'iikhraj Basolia eind muhawalat muealajat milafi almusiqaa."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_ERROR",
+      "text": "hadath khata ghayr maeruf eind muhawalat muealajat milafi almusiqaa."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_PLAYBACKFAILED",
+      "text": "fashil altashghilu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TIP",
+      "text": "adghat ealaa 'A' li'iidraj 'ughniat wahidat fi qayimat altashghili, 'aw 'S' li'iidraj maktabat almusiqaa kamilatan."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_SELECTLYRICSEEK",
+      "text": "hadad kalimat al'aghani lilbahth eanha."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICFILEPROMPT",
+      "text": "'adkhal masar milafi almusiqaa."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICFILENOTFOUND",
+      "text": "almilafu '{0}' ghayr mawjudi."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICPLAYLISTPROMPT",
+      "text": "'adkhal masar qayimat tashghil almusiqaa."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICPLAYLISTNOTFOUND",
+      "text": "lam yatima aleuthur ealaa qayimat tashghil almusiqaa."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICLIBRARYPROMPT",
+      "text": "'adkhal masar dalil maktabat almusiqaa."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICLIBRARYNOTFOUND",
+      "text": "lam yatima aleuthur ealaa dalil maktabat almusiqaa."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICFILE",
+      "text": "jar alfath {0}..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_NOWPLAYING",
+      "text": "jari altashghil:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_UNKNOWNARTIST",
+      "text": "fanaan ghayr maeruf"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_UNKNOWNGENRE",
+      "text": "nawe ghayr maeruf"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILE",
+      "text": "jar muhawalat fath milafi kalimat al'aghani {0}..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILEFAILED",
+      "text": "la yumkin fath milafi kalimat al'aghani {0}:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TARGETPOSPROMPT",
+      "text": "aiktub mawdie alhadaf bihadha altansiqi:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDPLAYING",
+      "text": "jar tashghil sawt aliakhtibari..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_EXCEPTION_TESTSOUNDMISSING",
+      "text": "bayanat sawt aliaikhtibar mafqudatun."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_TITLE",
+      "text": "akhtibar alsawt"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_DESC",
+      "text": "hal kulu shay' ealaa ma yuram fi hadha al'iiedad alhalii?"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_YES",
+      "text": "naeam"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_NO",
+      "text": "la"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_SUCCESS",
+      "text": "tahanina! laqad 'aedidt kula shay' bishakl sahihin!"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_FAILURE",
+      "text": "tahaqaq min jihazik wahawil maratan 'ukhraa."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_UNKNOWN",
+      "text": "ghayr maeruf"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO",
+      "text": "maelumat al'ughnia"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_ARTIST",
+      "text": "alfanaani:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_TITLE",
+      "text": "aleunwani:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_ALBUM",
+      "text": "al'albumu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_GENRE",
+      "text": "alnawea:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_COMMENT",
+      "text": "altaeliqi:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_DURATION",
+      "text": "almudatu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS",
+      "text": "alkalimatu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_LINES",
+      "text": "{0} stran"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_NOLYRICS",
+      "text": "bidun kalimat"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO",
+      "text": "maelumat altabaqa"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VERSION",
+      "text": "al'iisdar:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_LAYER",
+      "text": "altabaqatu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_RATE",
+      "text": "almueadalu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODE",
+      "text": "alwadae:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODEEXT",
+      "text": "aimtidad alwade:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FRAMESIZE",
+      "text": "hajm al'iitari:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FLAGS",
+      "text": "al'aelami:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_EMPHASIS",
+      "text": "altashdidu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_BITRATE",
+      "text": "mueadal albat:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_ABR",
+      "text": "mueadal ABR:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VBR",
+      "text": "VBR:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE",
+      "text": "alhalat al'aslia"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ACCURATERENDERING",
+      "text": "diqat alearda:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_BUFFERFILL",
+      "text": "mal' almakhzan almuaqata:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_DECODINGDELAY",
+      "text": "takhir faki altashfiri:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGDELAY",
+      "text": "takhir altashfir:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGPADDING",
+      "text": "hashw altashfiri:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRANKENSTEIN",
+      "text": "bathu frankishtayin:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRESHDECODER",
+      "text": "fak altashfir aljadid:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_TEXTSANDEXTRAS",
+      "text": "alnusus wal'iidafat"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFO",
+      "text": "maelumat mahatat alraadyu"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFOEXT",
+      "text": "maelumat muasaeat ean mahatat alraadyu"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATION",
+      "text": "'iidafat mahatat radyu"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATIONGROUP",
+      "text": "'iidafat majmueat mahataat radiu min qayimat altashghil"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_PREVSTATION",
+      "text": "mahatat alraadiu alsaabiqa"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_NEXTSTATION",
+      "text": "mahatat alraadyu altaalia"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_REMOVECURRSTATION",
+      "text": "'iizalat mahatat alraadyu alhalia"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_REMOVEALLSTATIONS",
+      "text": "'iizalat jamie mahataat alraadyu"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_TIP",
+      "text": "aidghat ealaa \"A\" li'iidraj mahatat radiu fi qayimat altashghili."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONPROMPT",
+      "text": "'udkhal msaran limahatat alraadyu. yajib 'an yuafir rabit URL lilmahatat mahatat radyu MPEG. 'amaa AAC, fala yadeamuha halyan."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONGROUPPROMPT",
+      "text": "'udkhil msaran liqayimat tashghil mahataat alraadyu. yajib 'an tuafir eanawin URL lilmahataat mahatat radyu MPEG. 'amaa AAC, fala yadeamuha halyan."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONGROUPNOTFOUND",
+      "text": "lam yatima aleuthur ealaa qayimat tashghil mahatat alraadyu."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO",
+      "text": "maelumat almahata"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_URL",
+      "text": "eunwan URL limahatat alraadyu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_NAME",
+      "text": "asm mahatat alraadyu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_CURRSONG",
+      "text": "al'ughniat alhaliat limahatat alraadyu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO",
+      "text": "maelumat khadim alraadyu"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_HTTPS",
+      "text": "mahatat alraadyu tustakhdam HTTPS:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_TYPE",
+      "text": "nawe khadim mahatat alraadyu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_STREAMS",
+      "text": "bathu mahatat alraadyu: {0} mae {1} nashit"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_LISTENERS",
+      "text": "mustamieu mahatat alraadyu: {0} mae {1} fi dhurwat albathi"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO",
+      "text": "maelumat albathi"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_NAME",
+      "text": "aliasmi:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_HOMEPAGE",
+      "text": "alsafhat alrayiysiatu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_STREAMPATH",
+      "text": "masar albath:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_LISTENERS",
+      "text": "almustamieuna: {0} mae {1} fi dhurwat albathi"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_BITRATE",
+      "text": "mueadal albat:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_MEDIATYPE",
+      "text": "nawe alwasayiti:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_UNABLETOOBTAIN",
+      "text": "taeadhar alhusul ealaa maelumat muasaeat ean mahatat alraadyu {0}"
+    },
+    {
+      "loc": "BASSBOOM_APP_NOTFOUND",
+      "text": "milafu almusiqaa {0} ghayr mawjudi."
+    },
+    {
+      "loc": "BASSBOOM_APP_FATALERROR",
+      "text": "khata fadih fi wajihat satr 'awamir BassBoom."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "lang": "nor",
+  "name": "Norwegian",
+  "cultures": [
+    "nb",
+    "nb-NO",
+    "nb-SJ",
+    "nn",
+    "nn-NO",
+    "no"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_GENERALERROR",
+      "text": "Feil i opprinnelig bibliotek"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH",
+      "text": "Bibliotekbanen er {0}"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
+      "text": "mpg123-bibliotekbanen {0} finnes ikke."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
+      "text": "out123-bibliotekbanen {0} finnes ikke."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
+      "text": "libwinpthread-bibliotekbanen {0} finnes ikke."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",
+      "text": "32-biters plattformer støttes ikke lenger."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MODDIRSETFAILED",
+      "text": "Kan ikke angi miljøvariabelen MPG123_MODDIR"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBSLOADFAILED",
+      "text": "Klarte ikke å laste inn biblioteker."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOINIT",
+      "text": "Kan ikke hente representant for {0} uten å initialisere biblioteket først."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOTFOUND",
+      "text": "Kan ikke hente representant for {0}."
+    }
+  ]
+}

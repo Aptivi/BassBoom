@@ -1,0 +1,50 @@
+{
+  "lang": "ukr",
+  "name": "Ukrainian",
+  "cultures": [
+    "uk",
+    "uk-UA"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_GENERALERROR",
+      "text": "Помилка рідної бібліотеки"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH",
+      "text": "Шлях до бібліотеки: {0}"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
+      "text": "Шлях до бібліотеки mpg123: {0} не існує."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
+      "text": "Шлях до бібліотеки out123: {0} не існує."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
+      "text": "Шлях до бібліотеки libwinpthread: {0} не існує."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",
+      "text": "32-розрядні платформи більше не підтримуються."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MODDIRSETFAILED",
+      "text": "Не вдається встановити змінну середовища MPG123_MODDIR"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBSLOADFAILED",
+      "text": "Не вдалося завантажити бібліотеки."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOINIT",
+      "text": "Не вдається отримати делегат для {0} без попередньої ініціалізації бібліотеки."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOTFOUND",
+      "text": "Не вдається отримати делегат для {0}."
+    }
+  ]
+}

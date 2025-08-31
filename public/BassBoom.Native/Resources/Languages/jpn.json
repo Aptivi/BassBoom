@@ -1,0 +1,50 @@
+{
+  "lang": "jpn",
+  "name": "Japanese",
+  "cultures": [
+    "ja",
+    "ja-JP"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_GENERALERROR",
+      "text": "ネイティブライブラリエラー"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH",
+      "text": "ライブラリパスは {0} です"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
+      "text": "mpg123 ライブラリパス {0} は存在しません。"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
+      "text": "out123 ライブラリパス {0} は存在しません。"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
+      "text": "libwinpthread ライブラリパス {0} は存在しません。"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",
+      "text": "32 ビットプラットフォームはサポートされていません。"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MODDIRSETFAILED",
+      "text": "環境変数 MPG123_MODDIR を設定できません"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBSLOADFAILED",
+      "text": "ライブラリのロードに失敗しました。"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOINIT",
+      "text": "ライブラリを初期化しないと {0} のデリゲートを取得できません"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOTFOUND",
+      "text": "{0} のデリゲートを取得できません"
+    }
+  ]
+}

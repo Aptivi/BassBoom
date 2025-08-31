@@ -1,0 +1,386 @@
+{
+  "lang": "chi",
+  "name": "Chinese (Simplified)",
+  "cultures": [
+    "zh",
+    "zh-CN",
+    "zh-HK",
+    "zh-MO",
+    "zh-SG",
+    "zh-Hans",
+    "zh-Hans-CN",
+    "zh-Hans-HK",
+    "zh-Hans-MO",
+    "zh-Hans-SG"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA",
+      "text": "Wèi tígōng Basolia shílì"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID",
+      "text": "mpg123 kù lùjìng {0} bù bāohán yǒuxiào de mpg123 kù."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID",
+      "text": "Out123 kù lùjìng {0} bù bāohán yǒuxiào de out123 kù."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB",
+      "text": "Kù chūshǐhuà qián wúfǎ huòqǔ bǎnběn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT",
+      "text": "Basolia shàngwèi chūshǐhuà MPG123 kù!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY",
+      "text": "Wúfǎ cháxún qūdòng chéngxù"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY",
+      "text": "wúfǎ cháxún shèbèi"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND",
+      "text": "qūdòng chéngxù {0} bù cúnzài"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND",
+      "text": "shèbèi {0} bù cúnzài"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR",
+      "text": "Basolia chángguī cuòwù"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR",
+      "text": "MPG123 fǎnhuí yǐxià cuòwù:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR",
+      "text": "Basolia chángguī shūchū xìtǒng cuòwù"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR",
+      "text": "OUT123 fǎnhuí yǐxià cuòwù:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN",
+      "text": "Dāngqiáng wénjiàn huò diàntái réng chǔyú dǎkāi zhuàngtài shí, wúfǎ dǎkāi cǐ wénjiàn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH",
+      "text": "qǐng tígōng yīnyuè wénjiàn de lùjìng"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "yīnyuè wénjiàn bù cúnzài"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED",
+      "text": "wúfǎ dǎkāi wénjiàn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN",
+      "text": "dāngqiáng wénjiàn huò diàntái réng chǔyú dǎkāi zhuàngtài shí, wúfǎ dǎkāi cǐ URL"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL",
+      "text": "qǐng tígōng yīnyuè wénjiàn huò diàntái de lùjìng"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION",
+      "text": "cǐ diàntái bù cúnzài. Cuòwù dàimǎ:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION",
+      "text": "Zhè kàn qǐlái bu xiàng shì yīgè diàntái. Nín quèdìng ma?"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION",
+      "text": "Zhè kàn qǐlái bu xiàng shì yīgè MP3 diàntái. Nín yǒu yīgè {0} lèixíng. Nín quèdìng ma?"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED",
+      "text": "Wúfǎ dǎkāi diàntái"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM",
+      "text": "wèi tígōng yīnpín liú"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED",
+      "text": "wúfǎ dǎkāi yīnpín liú"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED",
+      "text": "wúfǎ guānbì yǐ guānbì de wénjiàn huò diàntái"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED",
+      "text": "wúfǎ guānbì wénjiàn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY",
+      "text": "wúfǎ cháxún wèi dǎkāi de wénjiàn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK",
+      "text": "zài bòfàng guòchéng zhōng chángshì huòqǔ shícháng huì dǎozhì bòfàng zhōngduàn! Qǐng wù zài bòfàng guòchéng zhōng tiáo yòng cǐ hánshù."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED",
+      "text": "Wúfǎ sǎomiáo wénjiàn yǐ huòqǔ chángdù xìnxī"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED",
+      "text": "wúfǎ quèdìng wénjiàn de chángdù"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED",
+      "text": "wúfǎ huòqǔ shūchū."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED",
+      "text": "Wúfǎ huòqǔ zhēn chángdù."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED",
+      "text": "Wúfǎ huòqǔ měi zhēn de yàngběn shù."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED",
+      "text": "Wúfǎ huòqǔ měi zhēn de miǎo shù."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED",
+      "text": "Wúfǎ huòqǔ tōngyòng huǎnchōng qū dàxiǎo."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK",
+      "text": "Zài bòfàng guòchéng zhōng chángshì huòqǔ ID3 yuán shùjù huì dǎozhì bòfàng zhōngduàn! Qǐng wù zài bòfàng guòchéng zhōng tiáo yòng cǐ hánshù."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED",
+      "text": "Wúfǎ sǎomiáo wénjiàn yǐ huòqǔ zhēn xìnxī"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED",
+      "text": "wúfǎ huòqǔ yuán shùjù xìnxī"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK",
+      "text": "zài bòfàng guòchéng zhōng chángshì huòqǔ ICY yuán shùjù huì dǎozhì bòfàng bēngkuì! Qǐng wù zài bòfàng guòchéng zhōng tiáo yòng cǐ hánshù."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK",
+      "text": "Zài bòfàng guòchéng zhōng chángshì huòqǔ zhēn xìnxī huì dǎozhì bòfàng bēngkuì! Qǐng wù zài bòfàng guòchéng zhōng tiáo yòng cǐ hánshù."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED",
+      "text": "Wúfǎ huòqǔ zhēn xìnxī"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE",
+      "text": "wúfǎ jiěmǎ wèi dǎkāi wénjiàn de zhēn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED",
+      "text": "wúfǎ jiěmǎ zhēn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND",
+      "text": "wèi zhǎodào jiěmǎ qì {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED",
+      "text": "nín de shèbèi bù zhīchí jiěmǎ qì {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED",
+      "text": "wúfǎ jiāng jiěmǎ qì shèzhì wèi {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED",
+      "text": "wúfǎ quèdìng wénjiàn géshì"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND",
+      "text": "wèi zhǎodào biānmǎ {0}."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED",
+      "text": "Wúfǎ huòqǔ géshì xìnxī"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED",
+      "text": "wúfǎ chóng zhì shūchū biānmǎ"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED",
+      "text": "wúfǎ shèzhì shūchū géshì"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED",
+      "text": "wúfǎ jiāng shūchū biānmǎ shèzhì wèi:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED",
+      "text": "Qǐng tígōng gēn kù lùjìng."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND",
+      "text": "Gēcí bù cúnzài"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND",
+      "text": "bòfàng lièbiǎo wénjiàn {0} bù cúnzài"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID",
+      "text": "bòfàng lièbiǎo wénjiàn kuòzhǎn míng {0} wúxiào"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY",
+      "text": "wèi tígōng bòfàng lièbiǎo biǎoshì."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER",
+      "text": "Zhè bùshì kuòzhǎn biāo tóu:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS",
+      "text": "EXTINF xūyào liǎng gè cānshù, dàn méiyǒu cānshù zhǐshì fú."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "Wèi zhǎodào yīnyuè wénjiàn {0} huò gāi wénjiàn bùshì MPEG wénjiàn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS",
+      "text": "qǔmù xìnxī bìxū tígōng liǎng gè cānshù: Qǔmù chángdù (yǐ miǎo wèi dānwèi)(rúguǒ shì zhíbò, zé wèi -1) hé yuánshǐ qǔmù biāotí."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS",
+      "text": "Qǔmù xìnxī wèi zhèngquè tígōng miǎo shù [{0}]."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED",
+      "text": "Wúfǎ quèdìng wénjiàn dí dàng qián shícháng"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK",
+      "text": "wúfǎ dìngwèi wèi dǎkāi de wénjiàn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED",
+      "text": "wúfǎ dìngwèi dào wénjiàn de kāitóu"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED",
+      "text": "wúfǎ dìngwèi dào wénjiàn de dì {0} zhēn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
+      "text": "wèi tígōng yào dìngwèi de gēcí xíng"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
+      "text": "wúfǎ shānchú."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY",
+      "text": "Wúfǎ bòfàng wèi dǎkāi de wénjiàn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE",
+      "text": "wúfǎ zàntíng wèi dǎkāi de wénjiàn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP",
+      "text": "wúfǎ tíngzhǐ wèi dǎkāi de wénjiàn"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED",
+      "text": "wúfǎ jiāng yīn liáng shèzhì wèi {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED",
+      "text": "wúfǎ huòqǔ yīnliàng (jī pín, shíjì yīnliàng hé fēnbèi)"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED",
+      "text": "wúfǎ zài {2} xià jiāng jūnhéng qì pínduàn {0}/32 shèzhì wèi {1}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED",
+      "text": "wúfǎ zài {3} xià jiāng jūnhéng qì pínduàn {0}/32 -> {1}/32 shèzhì wèi {2}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED",
+      "text": "wúfǎ jiāng jūnhéng qì pínduàn chóng zhì wèi chūshǐ zhí!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED",
+      "text": "Wúfǎ huòqǔ {0} de yuánshēng zhuàngtài!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED",
+      "text": "Wúfǎ zài qūdòng chéngxù {1} shàng dǎkāi dào shèbèi {0} de shūchū"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT",
+      "text": "nín xūyào dǎkāi shūchū"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED",
+      "text": "suǒ xuǎn de sùlǜ [{0} Hz] hé biānmǎ [{1}] bù shòu zhīchí"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED",
+      "text": "wúfǎ qǐdòng shūchū."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED",
+      "text": "Wúfǎ tígōng yīnpín."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED",
+      "text": "Wúfǎ jiěxī diàntái fúwùqì {0}. Gèng duō xìnxī qǐng cānyuè nèibù yìcháng."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST",
+      "text": "Liú lìng pái wèi kōng."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES",
+      "text": "Méiyǒu láiyuán."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH",
+      "text": "Tígōng diàntái de lùjìng"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED",
+      "text": "wúfǎ quèdìng diàntái fúwùqì lèixíng."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2",
+      "text": "Shoutcast v2.X liú lìng pái wèi kōng"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2",
+      "text": "méiyǒu Shoutcast v2.X liú."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST",
+      "text": "Méiyǒu Icecast liú."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED",
+      "text": "Wúfǎ jiěxī liú ID {0}. Gèng duō xìnxī qǐng cānyuè nèibù yìcháng."
+    }
+  ]
+}

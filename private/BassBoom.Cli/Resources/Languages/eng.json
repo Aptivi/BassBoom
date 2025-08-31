@@ -1,0 +1,824 @@
+{
+  "lang": "eng",
+  "name": "English",
+  "cultures": [
+    "en",
+    "en-001",
+    "en-029",
+    "en-150",
+    "en-AE",
+    "en-AG",
+    "en-AI",
+    "en-AS",
+    "en-AT",
+    "en-AU",
+    "en-BB",
+    "en-BE",
+    "en-BI",
+    "en-BM",
+    "en-BS",
+    "en-BW",
+    "en-BZ",
+    "en-CA",
+    "en-CC",
+    "en-CH",
+    "en-CK",
+    "en-CM",
+    "en-CX",
+    "en-CY",
+    "en-DE",
+    "en-DK",
+    "en-DM",
+    "en-ER",
+    "en-FI",
+    "en-FJ",
+    "en-FK",
+    "en-FM",
+    "en-GD",
+    "en-GG",
+    "en-GH",
+    "en-GI",
+    "en-GM",
+    "en-GU",
+    "en-GY",
+    "en-HK",
+    "en-ID",
+    "en-IE",
+    "en-IL",
+    "en-IM",
+    "en-IN",
+    "en-IO",
+    "en-JE",
+    "en-JM",
+    "en-KE",
+    "en-KI",
+    "en-KN",
+    "en-KY",
+    "en-LC",
+    "en-LR",
+    "en-LS",
+    "en-MG",
+    "en-MH",
+    "en-MO",
+    "en-MP",
+    "en-MS",
+    "en-MT",
+    "en-MU",
+    "en-MV",
+    "en-MW",
+    "en-MY",
+    "en-NA",
+    "en-NF",
+    "en-NG",
+    "en-NL",
+    "en-NR",
+    "en-NU",
+    "en-NZ",
+    "en-PG",
+    "en-PH",
+    "en-PK",
+    "en-PN",
+    "en-PR",
+    "en-PW",
+    "en-RW",
+    "en-SB",
+    "en-SC",
+    "en-SD",
+    "en-SE",
+    "en-SG",
+    "en-SH",
+    "en-SI",
+    "en-SL",
+    "en-SS",
+    "en-SX",
+    "en-SZ",
+    "en-TC",
+    "en-TK",
+    "en-TO",
+    "en-TT",
+    "en-TV",
+    "en-TZ",
+    "en-UG",
+    "en-UM",
+    "en-US",
+    "en-US-POSIX",
+    "en-VC",
+    "en-VG",
+    "en-VI",
+    "en-VU",
+    "en-WS",
+    "en-ZA",
+    "en-ZM",
+    "en-ZW"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICE",
+      "text": "Device:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DRIVER",
+      "text": "Driver:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICECACHED",
+      "text": "Device (cached):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DRIVERCACHED",
+      "text": "Driver (cached):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICESQUERYNOTPLAYING",
+      "text": "Can't query current devices while not playing."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICEANDDRIVER",
+      "text": "Device and Driver"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_AVAILABLEDEVICESANDDRIVERS",
+      "text": "Available devices and drivers"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_EXTRASPECS",
+      "text": "Extra specs (for developers)"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_PCMSAMPLESIZE",
+      "text": "PCM sample size:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ZEROSAMPLE",
+      "text": "Zero sample (offset 0):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DURATIONSAMPLES",
+      "text": "Duration in samples:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_FRAMELEN",
+      "text": "Frame length:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SPF",
+      "text": "Samples/frame:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_TPF",
+      "text": "Seconds/frame:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DECODERS",
+      "text": "Decoders"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SUPPORTEDDECODERS",
+      "text": "Supported decoders:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ALLDECODERS",
+      "text": "All decoders:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ENCODINGSANDRATES",
+      "text": "Encodings and Rates"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ENCODINGS",
+      "text": "Encodings:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_RATES",
+      "text": "Rates:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BUFFERINFO",
+      "text": "Buffer info"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_GENERICBUFFERSIZE",
+      "text": "Generic buffer size:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS",
+      "text": "BassBoom specifications"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_BASOLIAVER",
+      "text": "Basolia version:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_MPG123VER",
+      "text": "MPG123 version:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_OUT123VER",
+      "text": "OUT123 version:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS",
+      "text": "System specifications"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEM",
+      "text": "System:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMARCH",
+      "text": "System Architecture:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_PROCESSARCH",
+      "text": "Process Architecture:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMDESC",
+      "text": "System description:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_DOTNETDESC",
+      "text": ".NET description:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES",
+      "text": "Available keystrokes"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SELECTDRIVER",
+      "text": "Select a driver. ESC to quit."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SELECTDEVICE",
+      "text": "Select a device. Current driver is {0}. ESC to quit."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_PATHTOPLAYLIST",
+      "text": "Enter a path to the playlist file that you would like to save"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEUP",
+      "text": "Increase volume"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEDOWN",
+      "text": "Decrease volume"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_HELP",
+      "text": "Help"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_EQUALIZER",
+      "text": "Open the equalizer"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_SYSINFO",
+      "text": "System information"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DISCO",
+      "text": "Disco Mode!"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLBOOST",
+      "text": "Enable volume boost"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERINFO",
+      "text": "Device and driver information"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERSET",
+      "text": "Set device and driver"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERRESET",
+      "text": "Reset device and driver"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_SAVETOPLAYLIST",
+      "text": "Save to playlist"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_QUIT",
+      "text": "Exit"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DECREASE",
+      "text": "Decrease"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_INCREASE",
+      "text": "Increase"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_PREVBAND",
+      "text": "Previous band"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_NEXTBAND",
+      "text": "Next band"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_RESET",
+      "text": "Reset"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASOLIAERROR",
+      "text": "There's an error with Basolia when trying to process the equalizer operation."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASOLIAOUTERROR",
+      "text": "There's an error with Basolia output when trying to process the equalizer operation."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_ERROR",
+      "text": "There's an unknown error when trying to process the equalizer operation."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_NOTPLAYING",
+      "text": "Not playing. Music player is idle."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASS",
+      "text": "Bass"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_UPPERMID",
+      "text": "Upper Mid"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_TREBLE",
+      "text": "Treble"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_DEVICEBAND",
+      "text": "Device-specific band"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_UNKNOWNBAND",
+      "text": "Unknown band type"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BAND",
+      "text": "Band"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PLAYPAUSE",
+      "text": "Play/Pause"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_STOP",
+      "text": "Stop"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_BACKWARDS",
+      "text": "Seek backwards"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_FORWARDS",
+      "text": "Seek forwards"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_DECREASESEEKDURATION",
+      "text": "Decrease seek duration"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_INCREASESEEKDURATION",
+      "text": "Increase seek duration"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SONGINFO",
+      "text": "Song information"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDFILE",
+      "text": "Add a music file"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDGROUP",
+      "text": "Add a music group from playlist"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDDIR",
+      "text": "Add a music directory to the list (when idle)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PREVSONG",
+      "text": "Previous song"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_NEXTSONG",
+      "text": "Next song"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_REMOVECURRSONG",
+      "text": "Remove current song"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_REMOVEALLSONGS",
+      "text": "Remove all songs"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKSELECTIVE",
+      "text": "Selectively seek (when playing)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOPREVLYRIC",
+      "text": "Seek to previous lyric (when playing)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTONEXTLYRIC",
+      "text": "Seek to next lyric (when playing)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOCURRLYRIC",
+      "text": "Seek to current lyric (when playing)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOWHICHLYRIC",
+      "text": "Seek to which lyric (when playing)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SETREPEATCHECKPOINT",
+      "text": "Set repeat checkpoint"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOREPEATCHECKPOINT",
+      "text": "Seek to repeat checkpoint"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PLAYTESTSOUND",
+      "text": "Play test sound (to test device and driver)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_SEEKINDICATOR",
+      "text": "Seek:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_VOLINDICATOR",
+      "text": "Volume:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_BASOLIAERROR",
+      "text": "There's an error with Basolia when trying to process the music file."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_BASOLIAOUTERROR",
+      "text": "There's an error with Basolia output when trying to process the music file."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_ERROR",
+      "text": "There's an unknown error when trying to process the music file."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_PLAYBACKFAILED",
+      "text": "Playback failure:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TIP",
+      "text": "Press 'A' to insert a single song to the playlist, or 'S' to insert the whole music library."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_SELECTLYRICSEEK",
+      "text": "Select a lyric to seek to"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICFILEPROMPT",
+      "text": "Enter a path to the music file"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICFILENOTFOUND",
+      "text": "File '{0}' doesn't exist."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICPLAYLISTPROMPT",
+      "text": "Enter a path to the music playlist"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICPLAYLISTNOTFOUND",
+      "text": "Music playlist is not found."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICLIBRARYPROMPT",
+      "text": "Enter a path to the music library directory"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICLIBRARYNOTFOUND",
+      "text": "Music library directory is not found."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICFILE",
+      "text": "Opening {0}..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_NOWPLAYING",
+      "text": "Now playing:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_UNKNOWNARTIST",
+      "text": "Unknown Artist"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_UNKNOWNGENRE",
+      "text": "Unknown Genre"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILE",
+      "text": "Trying to open lyrics file {0}..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILEFAILED",
+      "text": "Can't open lyrics file {0}:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TARGETPOSPROMPT",
+      "text": "Write the target position in this format:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDPLAYING",
+      "text": "Playing test sound..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_EXCEPTION_TESTSOUNDMISSING",
+      "text": "Missing test sound data."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_TITLE",
+      "text": "Sound test"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_DESC",
+      "text": "Is everything OK in this current configuration?"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_YES",
+      "text": "Yes"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_NO",
+      "text": "No"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_SUCCESS",
+      "text": "Congratulations! You've set up everything properly!"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_FAILURE",
+      "text": "Check your device and try again."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_UNKNOWN",
+      "text": "Unknown"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO",
+      "text": "Song info"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_ARTIST",
+      "text": "Artist:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_TITLE",
+      "text": "Title:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_ALBUM",
+      "text": "Album:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_GENRE",
+      "text": "Genre:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_COMMENT",
+      "text": "Comment:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_DURATION",
+      "text": "Duration:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS",
+      "text": "Lyrics:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_LINES",
+      "text": "{0} lines"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_NOLYRICS",
+      "text": "No lyrics"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO",
+      "text": "Layer info"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VERSION",
+      "text": "Version:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_LAYER",
+      "text": "Layer:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_RATE",
+      "text": "Rate:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODE",
+      "text": "Mode:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODEEXT",
+      "text": "Mode Ext:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FRAMESIZE",
+      "text": "Frame Size:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FLAGS",
+      "text": "Flags:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_EMPHASIS",
+      "text": "Emphasis:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_BITRATE",
+      "text": "Bitrate:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_ABR",
+      "text": "ABR Rate:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VBR",
+      "text": "VBR:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE",
+      "text": "Native State"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ACCURATERENDERING",
+      "text": "Accurate rendering:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_BUFFERFILL",
+      "text": "Buffer fill:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_DECODINGDELAY",
+      "text": "Decoding delay:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGDELAY",
+      "text": "Encoding delay:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGPADDING",
+      "text": "Encoding padding:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRANKENSTEIN",
+      "text": "Frankenstein stream:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRESHDECODER",
+      "text": "Fresh decoder:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_TEXTSANDEXTRAS",
+      "text": "Texts and Extras"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFO",
+      "text": "Radio station information"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFOEXT",
+      "text": "Radio station extended information"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATION",
+      "text": "Add a radio station"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATIONGROUP",
+      "text": "Add a radio station group from playlist"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_PREVSTATION",
+      "text": "Previous radio station"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_NEXTSTATION",
+      "text": "Next radio station"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_REMOVECURRSTATION",
+      "text": "Remove current radio station"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_REMOVEALLSTATIONS",
+      "text": "Remove all radio stations"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_TIP",
+      "text": "Press 'A' to insert a radio station to the playlist."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONPROMPT",
+      "text": "Enter a path to the radio station. The URL to the station must provide an MPEG radio station. AAC ones are not supported yet."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONGROUPPROMPT",
+      "text": "Enter a path to the playlist of radio stations. The URLs to the stations must provide an MPEG radio station. AAC ones are not supported yet."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONGROUPNOTFOUND",
+      "text": "Radio station playlist is not found."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO",
+      "text": "Station info"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_URL",
+      "text": "Radio station URL:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_NAME",
+      "text": "Radio station name:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_CURRSONG",
+      "text": "Radio station current song:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO",
+      "text": "Radio server info"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_HTTPS",
+      "text": "Radio station uses HTTPS:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_TYPE",
+      "text": "Radio station server type:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_STREAMS",
+      "text": "Radio station streams: {0} with {1} active"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_LISTENERS",
+      "text": "Radio station listeners: {0} with {1} at peak"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO",
+      "text": "Stream info"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_NAME",
+      "text": "Name:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_HOMEPAGE",
+      "text": "Home page:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_STREAMPATH",
+      "text": "Stream path:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_LISTENERS",
+      "text": "Listeners: {0} with {1} at peak"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_BITRATE",
+      "text": "Bit rate:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_MEDIATYPE",
+      "text": "Media type:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_UNABLETOOBTAIN",
+      "text": "Unable to get extended radio station info for {0}"
+    },
+    {
+      "loc": "BASSBOOM_APP_NOTFOUND",
+      "text": "Music file {0} doesn't exist."
+    },
+    {
+      "loc": "BASSBOOM_APP_FATALERROR",
+      "text": "Fatal error in the BassBoom CLI."
+    }
+  ]
+}

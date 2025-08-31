@@ -1,0 +1,404 @@
+{
+  "lang": "arb-T",
+  "name": "Arabic",
+  "cultures": [
+    "ar",
+    "ar-001",
+    "ar-AE",
+    "ar-BH",
+    "ar-DJ",
+    "ar-DZ",
+    "ar-EG",
+    "ar-ER",
+    "ar-IL",
+    "ar-IQ",
+    "ar-JO",
+    "ar-KM",
+    "ar-KW",
+    "ar-LB",
+    "ar-LY",
+    "ar-MA",
+    "ar-MR",
+    "ar-OM",
+    "ar-PS",
+    "ar-QA",
+    "ar-SA",
+    "ar-SD",
+    "ar-SO",
+    "ar-SS",
+    "ar-SY",
+    "ar-TD",
+    "ar-TN",
+    "ar-YE"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA",
+      "text": "لم يتم توفير مثيل Basolia."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID",
+      "text": "مسار مكتبة mpg123 {0} لا يحتوي على مكتبة mpg123 صالحة."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID",
+      "text": "مسار مكتبة out123 {0} لا يحتوي على مكتبة out123 صالحة."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB",
+      "text": "لا يمكن الحصول على الإصدار حتى تتم تهيئة المكتبة."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT",
+      "text": "لم تُهيئ Basolia مكتبة MPG123 بعد!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY",
+      "text": "لا يمكن الاستعلام عن برامج التشغيل."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY",
+      "text": "لا يمكن الاستعلام عن الأجهزة."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND",
+      "text": "برنامج التشغيل {0} غير موجود."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND",
+      "text": "الجهاز {0} غير موجود."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR",
+      "text": "خطأ عام في Basolia."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR",
+      "text": "أرجع MPG123 الخطأ التالي:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR",
+      "text": "خطأ عام في نظام إخراج Basolia."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR",
+      "text": "أرجع OUT123 الخطأ التالي:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN",
+      "text": "لا يمكن فتح هذا الملف بينما الملف الحالي أو محطة الراديو لا تزال مفتوحة."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH",
+      "text": "توفير مسار لملف موسيقى."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "ملف الموسيقى غير موجود."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED",
+      "text": "لا يمكن فتح الملف."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN",
+      "text": "لا يمكن فتح هذا الرابط بينما الملف الحالي أو محطة الراديو لا تزال مفتوحة."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL",
+      "text": "توفير مسار لملف موسيقى أو محطة راديو."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION",
+      "text": "محطة الراديو هذه غير موجودة. رمز الخطأ:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION",
+      "text": "هذا لا يبدو كمحطة راديو. هل أنت متأكد؟"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION",
+      "text": "هذا لا يبدو كمحطة راديو MP3. لديك نوع {0}. هل أنت متأكد؟"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED",
+      "text": "لا يمكن فتح محطة الراديو"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM",
+      "text": "لا يتوفر بث صوتي"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED",
+      "text": "لا يمكن فتح البث"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED",
+      "text": "لا يمكن إغلاق ملف أو محطة راديو مغلقة مسبقًا"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED",
+      "text": "لا يمكن إغلاق الملف"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY",
+      "text": "لا يمكن الاستعلام عن ملف غير مفتوح"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK",
+      "text": "محاولة الحصول على المدة أثناء التشغيل تُسبب تلفًا في التشغيل! لا تستدعي هذه الدالة أثناء التشغيل."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED",
+      "text": "لا يمكن مسح الملف بحثًا عن معلومات الطول"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED",
+      "text": "لا يمكن تحديد طول الملف"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED",
+      "text": "لا يمكن الحصول على الناتج."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED",
+      "text": "لا يمكن الحصول على طول الإطار."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED",
+      "text": "لا يمكن الحصول على العينات لكل إطار."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED",
+      "text": "لا يمكن الحصول على الثواني لكل إطار."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED",
+      "text": "لا يمكن الحصول على حجم المخزن المؤقت العام."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK",
+      "text": "محاولة الحصول على بيانات تعريف ID3 أثناء التشغيل تُسبب تلفًا في التشغيل! لا تستدعي هذه الدالة أثناء التشغيل"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED",
+      "text": ". لا يمكن مسح الملف بحثًا عن معلومات الإطار"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED",
+      "text": "لا يمكن الحصول على معلومات البيانات الوصفية"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK",
+      "text": "محاولة الحصول على بيانات ICY الوصفية أثناء التشغيل تُسبب تلفًا في التشغيل! لا تستدعي هذه الوظيفة أثناء التشغيل."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK",
+      "text": "محاولة الحصول على معلومات الإطار أثناء التشغيل تُسبب تلفًا في التشغيل! لا تستدعي هذه الوظيفة أثناء التشغيل."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED",
+      "text": "لا يمكن الحصول على معلومات الإطار"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE",
+      "text": "لا يمكن فك تشفير إطار ملف غير مفتوح"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED",
+      "text": "لا يمكن فك تشفير الإطار"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND",
+      "text": "لم يتم العثور على وحدة فك التشفير {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED",
+      "text": "وحدة فك التشفير {0} غير مدعومة من جهازك"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED",
+      "text": "لا يمكن ضبط وحدة فك التشفير على {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED",
+      "text": "لا يمكن تحديد تنسيق الملف"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND",
+      "text": "الترميز {0} غير موجود."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED",
+      "text": "لا يمكن الحصول على معلومات التنسيق"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED",
+      "text": "لا يمكن إعادة تعيين ترميز الإخراج"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED",
+      "text": "لا يمكن ضبط تنسيق الإخراج"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED",
+      "text": "لا يمكن ضبط ترميز الإخراج على:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED",
+      "text": "توفير مسار مكتبة الجذر."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND",
+      "text": "كلمات الأغاني غير موجودة"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND",
+      "text": "ملف قائمة التشغيل {0} غير موجود"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID",
+      "text": "امتداد ملف قائمة التشغيل غير صالح {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY",
+      "text": "لم يتم توفير تمثيل قائمة التشغيل."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER",
+      "text": "هذا ليس عنوانًا ممتدًا:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS",
+      "text": "يتطلب EXTINF وسيطتين فقط، ولا يوجد مؤشر وسيطة."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "لم يتم العثور على ملف الموسيقى {0} أو أنه ليس ملف MPEG."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS",
+      "text": "يجب أن توفر معلومات المسار وسيطتين فقط: طول المسار بالثواني (-1 إذا كان بثًا مباشرًا) وعنوان المسار الخام."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS",
+      "text": "لم توفر معلومات المسار عدد الثواني [{0}] بشكل صحيح."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED",
+      "text": "لا يمكن تحديد المدة الحالية للملف."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK",
+      "text": "لا يمكن البحث عن ملف غير مفتوح."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED",
+      "text": "لا يمكن البحث عن بداية الملف."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED",
+      "text": "لا يمكن البحث عن الإطار #{0} من الملف."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
+      "text": "لا يتم توفير سطر كلمات الأغاني للبحث عنه."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
+      "text": "لا يمكن الإسقاط."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY",
+      "text": "لا يمكن تشغيل ملف غير مفتوح"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE",
+      "text": "لا يمكن إيقاف ملف غير مفتوح مؤقتًا"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP",
+      "text": "لا يمكن إيقاف ملف غير مفتوح"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED",
+      "text": "لا يمكن ضبط مستوى الصوت على {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED",
+      "text": "لا يمكن الحصول على مستوى الصوت (الأساسي، في الواقع، والديسيبل)"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED",
+      "text": "لا يمكن ضبط نطاق المعادل {0}/32 على {1} تحت {2}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED",
+      "text": "لا يمكن ضبط نطاقات المعادل {0}/32 -> {1}/32 على {2} تحت {3}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED",
+      "text": "لا يمكن إعادة ضبط نطاقات المعادل إلى قيمها الأولية!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED",
+      "text": "لا يمكن الحصول على الحالة الأصلية لـ {0}!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED",
+      "text": "لا يمكن فتح الإخراج للجهاز {0} على برنامج التشغيل {1}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT",
+      "text": "يجب فتح الإخراج."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED",
+      "text": "المعدل المحدد [{0} هرتز] والترميز [{1}] غير مدعومين."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED",
+      "text": "لا يمكن بدء الإخراج."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED",
+      "text": "لا يمكن التغذية."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED",
+      "text": "فشل تحليل خادم الراديو {0}. يمكن العثور على مزيد من المعلومات في الاستثناء الداخلي."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST",
+      "text": "رمز البث فارغ."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES",
+      "text": "لا توجد مصادر."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH",
+      "text": "توفير مسار لمحطة راديو"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED",
+      "text": "تعذر تحديد نوع خادم محطة الراديو."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2",
+      "text": "رمز بث Shoutcast v2.x فارغ."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2",
+      "text": "لا يوجد بث Shoutcast v2.x."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST",
+      "text": "لا يوجد بث Icecast."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED",
+      "text": "فشل تحليل معرف البث {0}. للمزيد من المعلومات، يُرجى مراجعة الاستثناء الداخلي."
+    }
+  ]
+}

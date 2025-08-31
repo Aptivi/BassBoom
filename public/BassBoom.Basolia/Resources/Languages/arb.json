@@ -1,0 +1,404 @@
+{
+  "lang": "arb",
+  "name": "Arabic",
+  "cultures": [
+    "ar",
+    "ar-001",
+    "ar-AE",
+    "ar-BH",
+    "ar-DJ",
+    "ar-DZ",
+    "ar-EG",
+    "ar-ER",
+    "ar-IL",
+    "ar-IQ",
+    "ar-JO",
+    "ar-KM",
+    "ar-KW",
+    "ar-LB",
+    "ar-LY",
+    "ar-MA",
+    "ar-MR",
+    "ar-OM",
+    "ar-PS",
+    "ar-QA",
+    "ar-SA",
+    "ar-SD",
+    "ar-SO",
+    "ar-SS",
+    "ar-SY",
+    "ar-TD",
+    "ar-TN",
+    "ar-YE"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA",
+      "text": "lam yatima tawfir mathil Basolia."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID",
+      "text": "masar maktabat mpg123 {0} la yahtawi ealaa maktabat mpg123 salihat."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID",
+      "text": "masar maktabat out123 {0} la yahtawi ealaa maktabat out123 salihat."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB",
+      "text": "la yumkin alhusul ealaa al'iisdar hataa tatima tahyiat almaktabati."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT",
+      "text": "lam tuhyy Basolia maktabatan MPG123 biedu!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY",
+      "text": "la yumkin aliastielam ean baramij altashghili."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY",
+      "text": "la yumkin aliastielam ean al'ajhizati."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND",
+      "text": "barnamaj altashghil {0} ghayr mawjudi."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND",
+      "text": "aljihaz {0} ghayr mawjudi."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR",
+      "text": "khata eam fi Basolia."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR",
+      "text": "'arjie MPG123 alkhata altaali:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR",
+      "text": "khata eam fi nizam 'iikhraj Basolia."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR",
+      "text": "'arjie OUT123 alkhata altaali:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN",
+      "text": "la yumkin fath hadha almilafi baynama almilafu alhaliu 'aw mahatat alraadiw la tazal maftuhatan."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH",
+      "text": "tawfir masar limilafi musiqaa."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "milafu almusiqaa ghayr mawjudi."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED",
+      "text": "la yumkin fath almilafa."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN",
+      "text": "la yumkin fath hadha alraabit baynama almilafu alhaliu 'aw mahatat alraadiw la tazal maftuhatan."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL",
+      "text": "tawfir masar limilafi musiqaa 'aw mahatat radiu."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION",
+      "text": "mahatat alraadyu hadhih ghayr mawjudatin. ramz alkhata'a:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION",
+      "text": "hadha la yabdu kamahatat radyu. hal 'ant muta'akidun?"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION",
+      "text": "hadha la yabdu kamahatat radyu MP3. ladayk nawe {0}. hal 'ant muta'akidun?"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED",
+      "text": "la yumkin fath mahatat alraadyu"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM",
+      "text": "la yatawafar bathu sawtiin"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED",
+      "text": "la yumkin fath albathi"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED",
+      "text": "la yumkin 'iighlaq milafi 'aw mahatat radiu mughlaqat msbqan"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED",
+      "text": "la yumkin 'iighlaq almilafi"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY",
+      "text": "la yumkin aliastielam ean milafin ghayr maftuh"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK",
+      "text": "muhawalat alhusul ealaa almudat 'athna' altashghil tusbb tlfan fi altashghili! la tastadei hadhih aldaalat 'athna' altashghili."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED",
+      "text": "la yumkin mash almilafi bhthan ean maelumat altuwl"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED",
+      "text": "la yumkin tahdid tul almilafi"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED",
+      "text": "la yumkin alhusul ealaa alnaatiji."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED",
+      "text": "la yumkin alhusul ealaa tul al'iitari."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED",
+      "text": "la yumkin alhusul ealaa aleayinat likuli 'iitari."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED",
+      "text": "la yumkin alhusul ealaa althawani likuli 'iitari."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED",
+      "text": "la yumkin alhusul ealaa hajm almakhzan almuaqat aleami."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK",
+      "text": "muhawalat alhusul ealaa bayanat taerif ID3 'athna' altashghil tusbb tlfan fi altashghili! la tastadei hadhih aldaalat 'athna' altashghili."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED",
+      "text": "la yumkin mash almilafi bhthan ean maelumat al'iitar"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED",
+      "text": "la yumkin alhusul ealaa maelumat albayanat alwasfia"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK",
+      "text": "muhawalat alhusul ealaa bayanat ICY alwasfiat 'athna' altashghil tusbb tlfan fi altashghili! la tastadei hadhih alwazifat 'athna' altashghili."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK",
+      "text": "muhawalat alhusul ealaa maelumat al'iitar 'athna' altashghil tusbb tlfan fi altashghili! la tastadei hadhih alwazifat 'athna' altashghili."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED",
+      "text": "la yumkin alhusul ealaa maelumat al'iitar"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE",
+      "text": "la yumkin faka tashfir 'iitar milafin ghayr maftuh"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED",
+      "text": "la yumkin fak tashfir al'iitar"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND",
+      "text": "lam yatima aleuthur ealaa wahdat faki altashfir {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED",
+      "text": "wahdat faki altashfir {0} ghayr madeumat min jihazik"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED",
+      "text": "la yumkin dabt wahdat faki altashfir ealaa {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED",
+      "text": "la yumkin tahdid tansiq almilafi"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND",
+      "text": "altarmiz {0} ghayr mawjudi."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED",
+      "text": "la yumkin alhusul ealaa maelumat altansiq"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED",
+      "text": "la yumkin 'iieadat taeyin tarmiz al'iikhraj"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED",
+      "text": "la yumkin dabt tansiq al'iikhraj"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED",
+      "text": "la yumkin dabt tarmiz al'iikhraj ealaa:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED",
+      "text": "tawfir masar maktabat aljadhra."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND",
+      "text": "kalimat al'aghani ghayr mawjuda"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND",
+      "text": "milafu qayimat altashghil {0} ghayr mawjud"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID",
+      "text": "amtidad milafi qayimat altashghil ghayr salih {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY",
+      "text": "lam yatima tawfir tamthil qayimat altashghili."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER",
+      "text": "hadha lays enwanan mmtdan:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS",
+      "text": "yatatalab EXTINF wasitatayn faqat, wala yujad muashir wasitatun."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "lam yatima aleuthur ealaa milafi almusiqaa {0} 'aw 'anah lays milafa MPEG."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS",
+      "text": "yajib 'an tuafir maelumat almasar wasitatayn faqat: tul almasar bialthawani (-1 'iidha kan bthan mbashran) waeunwan almasar alkhami."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS",
+      "text": "lam tuafir maelumat almasar eadad althawani [{0}] bishakl sahihin."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED",
+      "text": "la yumkin tahdid almudat alhaliat lilmilafa."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK",
+      "text": "la yumkin albahth ean milafin ghayr maftuhin."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED",
+      "text": "la yumkin albahth ean bidayat almilafa."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED",
+      "text": "la yumkin albahth ean al'iitar #{0} min almilafa."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
+      "text": "la yatimu tawfir satr kalimat al'aghani lilbahth eanhu."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
+      "text": "la yumkin al'iisqatu."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY",
+      "text": "la yumkin tashghil milafin ghayr maftuh"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE",
+      "text": "la yumkin 'iiqaf milafin ghayr maftuh mwqtan"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP",
+      "text": "la yumkin 'iiqaf milafin ghayr maftuh"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED",
+      "text": "la yumkin dabt mustawaa alsawt ealaa {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED",
+      "text": "la yumkin alhusul ealaa mustawaa alsawt (al'asasi, fi alwaqie, waldiysibil)"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED",
+      "text": "la yumkin dabt nitaq almaeadil {0}/32 ealaa {1} taht {2}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED",
+      "text": "la yumkin dabt nitaqat almaeadil {0}/32 -> {1}/32 ealaa {2} taht {3}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED",
+      "text": "la yumkin 'iieadat dabt nitaqat almueadil 'iilaa qiamiha al'awaliati!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED",
+      "text": "la yumkin alhusul ealaa alhalat al'asliat li {0}!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED",
+      "text": "la yumkin fath al'iikhraj liljihaz {0} ealaa barnamaj altashghil {1}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT",
+      "text": "yajib fath al'iikhraji."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED",
+      "text": "almueadal almuhadad [{0} hirtiz] waltarmiz [{1}] ghayr madeumina."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED",
+      "text": "la yumkin bad' al'iikhraji."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED",
+      "text": "la yumkin altaghdhiatu."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED",
+      "text": "fashal tahlil khadim alraadyu {0}. yumkin aleuthur ealaa mazid min almaelumat fi aliastithna' aldaakhili."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST",
+      "text": "ramz albathi farghi."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES",
+      "text": "la tujad masadiru."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH",
+      "text": "tawfir masar limahatat radyu"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED",
+      "text": "taeadhar tahdid nawe khadim mahatat alraadyu."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2",
+      "text": "ramz bathin Shoutcast v2.x farghi."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2",
+      "text": "la yujad bathu Shoutcast v2.x."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST",
+      "text": "la yujad bathu Icecast."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED",
+      "text": "fashal tahlil maerif albathi {0}. lilmazid min almaelumati, yurja murajaeat aliastithna' aldaakhili."
+    }
+  ]
+}

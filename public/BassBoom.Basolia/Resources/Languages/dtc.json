@@ -1,0 +1,384 @@
+{
+  "lang": "dtc",
+  "name": "Dutch",
+  "cultures": [
+    "nl",
+    "nl-AW",
+    "nl-BE",
+    "nl-BQ",
+    "nl-CW",
+    "nl-NL",
+    "nl-SR",
+    "nl-SX"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA",
+      "text": "Basolia-instantie is niet opgegeven"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID",
+      "text": "Het pad {0} van de mpg123-bibliotheek bevat geen geldige mpg123-bibliotheek."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID",
+      "text": "Het pad {0} van de out123-bibliotheek bevat geen geldige out123-bibliotheek."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB",
+      "text": "De versie kan pas worden opgehaald nadat de bibliotheek is geïnitialiseerd."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT",
+      "text": "Basolia heeft de MPG123-bibliotheek nog niet geïnitialiseerd!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY",
+      "text": "De drivers kunnen niet worden opgevraagd."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY",
+      "text": "De apparaten kunnen niet worden opgevraagd."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND",
+      "text": "Stuurprogramma {0} bestaat niet."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND",
+      "text": "Apparaat {0} bestaat niet."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR",
+      "text": "Algemene fout van Basolia"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR",
+      "text": "MPG123 heeft de volgende fout geretourneerd:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR",
+      "text": "Algemene fout van het Basolia-uitvoersysteem."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR",
+      "text": "OUT123 heeft de volgende fout geretourneerd:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN",
+      "text": "Kan dit bestand niet openen zolang het huidige bestand of een radiostation nog geopend is."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH",
+      "text": "Geef een pad op naar een muziekbestand."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "Muziekbestand bestaat niet."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED",
+      "text": "Kan bestand niet openen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN",
+      "text": "Kan deze URL niet openen zolang het huidige bestand of een radiostation nog geopend is."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL",
+      "text": "Geef een pad op naar een muziekbestand of een radiostation."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION",
+      "text": "Dit radiostation bestaat niet. Foutcode:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION",
+      "text": "Dit lijkt niet op een radiostation. Weet u het zeker?"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION",
+      "text": "Dit lijkt niet op een MP3-radiostation. U hebt een {0}-type. Weet u het zeker?"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED",
+      "text": "Kan radiostation niet openen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM",
+      "text": "Audiostream wordt niet aangeboden"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED",
+      "text": "Kan stream niet openen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED",
+      "text": "Kan een bestand of radiostation dat al gesloten is niet sluiten"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED",
+      "text": "Kan bestand niet sluiten"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY",
+      "text": "Kan een bestand dat niet geopend is niet opvragen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK",
+      "text": "Proberen de duur op te halen tijdens het afspelen veroorzaakt afspeelfouten! Roep deze functie niet aan tijdens het afspelen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED",
+      "text": "Kan bestand niet scannen op lengte-informatie"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED",
+      "text": "Kan de lengte van het bestand niet bepalen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED",
+      "text": "Kan de uitvoer niet ophalen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED",
+      "text": "Kan de framelengte niet ophalen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED",
+      "text": "Kan de samples per frame niet ophalen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED",
+      "text": "Kan het aantal seconden per frame niet ophalen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED",
+      "text": "Kan de algemene buffergrootte niet ophalen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK",
+      "text": "Proberen de ID3-metadata op te halen tijdens het afspelen veroorzaakt afspeelfouten! Roep deze functie niet aan tijdens het afspelen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED",
+      "text": "Kan bestand niet scannen op frame-informatie"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED",
+      "text": "Kan geen metadata ophalen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK",
+      "text": "Proberen de ICY-metadata op te halen tijdens het afspelen, leidt tot afspeelfouten! Roep deze functie niet aan tijdens het afspelen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK",
+      "text": "Proberen de frame-informatie op te halen tijdens het afspelen, leidt tot afspeelfouten! Roep deze functie niet aan tijdens het afspelen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED",
+      "text": "Kan geen frame-informatie ophalen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE",
+      "text": "Kan het frame van een niet-geopend bestand niet decoderen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED",
+      "text": "Kan frame niet decoderen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND",
+      "text": "Decoder {0} niet gevonden"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED",
+      "text": "Decoder {0} wordt niet ondersteund door uw apparaat"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED",
+      "text": "Kan decoder niet instellen op {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED",
+      "text": "Kan het formaat van het bestand niet bepalen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND",
+      "text": "Codering {0} niet gevonden."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED",
+      "text": "Kan formaatinformatie niet ophalen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED",
+      "text": "Kan uitvoercodering niet resetten"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED",
+      "text": "Kan uitvoerformaat niet instellen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED",
+      "text": "Kan uitvoercodering niet instellen op:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED",
+      "text": "Geef een pad naar de hoofdbibliotheek op."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND",
+      "text": "Songtekst bestaat niet"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND",
+      "text": "Afspeellijstbestand {0} bestaat niet"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID",
+      "text": "Ongeldige extensie voor afspeellijstbestand {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY",
+      "text": "Afspeellijstweergave is niet beschikbaar."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER",
+      "text": "Dit is geen uitgebreide header:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS",
+      "text": "EXTINF vereist precies twee argumenten en er is geen argumentindicator."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "Muziekbestand {0} niet gevonden of geen MPEG-bestand"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS",
+      "text": "Trackinfo moet precies twee argumenten bevatten: de lengte van het nummer in seconden (-1 als het een livestream is) en de onbewerkte titel van het nummer."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS",
+      "text": "Trackinfo gaf het aantal seconden [{0}] niet correct weer."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED",
+      "text": "Kan de huidige duur van het bestand niet bepalen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK",
+      "text": "Kan niet zoeken naar een bestand dat niet geopend is"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED",
+      "text": "Kan niet zoeken naar het begin van het bestand"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED",
+      "text": "Kan niet zoeken naar frame #{0} van het bestand"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
+      "text": "Songtekstregel is niet opgegeven om te zoeken naar"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
+      "text": "Kan niet verwijderen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY",
+      "text": "Kan een bestand dat niet geopend is niet afspelen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE",
+      "text": "Kan een bestand dat niet geopend is niet pauzeren"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP",
+      "text": "Kan een bestand dat niet geopend is niet stoppen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED",
+      "text": "Kan het volume niet instellen op {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED",
+      "text": "Kan het volume niet ophalen (basis, eigenlijk, en decibel)"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED",
+      "text": "Kan equalizerband {0}/32 niet instellen op {1} onder {2}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED",
+      "text": "Kan equalizerbanden {0}/32 -> {1}/32 niet instellen op {2} onder {3}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED",
+      "text": "Kan equalizerbanden niet resetten naar hun beginwaarden!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED",
+      "text": "Kan de native status van {0} niet ophalen!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED",
+      "text": "Kan de uitvoer naar apparaat {0} op driver {1} niet openen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT",
+      "text": "U moet de uitvoer openen"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED",
+      "text": "Geselecteerde frequentie [{0} Hz] en codering [{1}] worden niet ondersteund"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED",
+      "text": "Kan de uitvoer niet starten."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED",
+      "text": "Kan niet voeden."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED",
+      "text": "Kan radioserver {0} niet parseren. Meer informatie is te vinden in de interne uitzondering."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST",
+      "text": "Streamtoken is null."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES",
+      "text": "Er zijn geen bronnen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH",
+      "text": "Geef een pad naar een radiostation op."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED",
+      "text": "Kan het servertype van het radiostation niet bepalen."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2",
+      "text": "Shoutcast v2.x-streamtoken is null."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2",
+      "text": "Er is geen Shoutcast v2.x-stream."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST",
+      "text": "Er is geen Icecast-stream."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED",
+      "text": "Het parseren van stream-ID {0} is mislukt. Meer informatie is te vinden in de interne uitzondering."
+    }
+  ]
+}

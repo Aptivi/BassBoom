@@ -1,0 +1,719 @@
+{
+  "lang": "rmn",
+  "name": "Romanian",
+  "cultures": [
+    "ro",
+    "ro-MD",
+    "ro-RO"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICE",
+      "text": "Dispozitiv:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DRIVER",
+      "text": "Driver:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICECACHED",
+      "text": "Dispozitiv (memorat în cache):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DRIVERCACHED",
+      "text": "Driver (memorat în cache):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICESQUERYNOTPLAYING",
+      "text": "Nu se pot interoga dispozitivele curente în timp ce nu se redă."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DEVICEANDDRIVER",
+      "text": "Dispozitiv și driver"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_AVAILABLEDEVICESANDDRIVERS",
+      "text": "Dispozitive și drivere disponibile"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_EXTRASPECS",
+      "text": "Specificații suplimentare (pentru dezvoltatori)"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_PCMSAMPLESIZE",
+      "text": "Dimensiunea eșantionului PCM:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ZEROSAMPLE",
+      "text": "Eșantion zero (offset 0):"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DURATIONSAMPLES",
+      "text": "Durată în eșantioane:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_FRAMELEN",
+      "text": "Lungimea cadrului:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SPF",
+      "text": "Eșantioane/cadru:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_TPF",
+      "text": "Secunde/cadru:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_DECODERS",
+      "text": "Decodoare"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SUPPORTEDDECODERS",
+      "text": "Decodoare acceptate:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ALLDECODERS",
+      "text": "Toate decodoarele:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ENCODINGSANDRATES",
+      "text": "Codificări și rate"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_ENCODINGS",
+      "text": "Codificări:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_RATES",
+      "text": "Rate:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BUFFERINFO",
+      "text": "Informații despre buffer"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_GENERICBUFFERSIZE",
+      "text": "Dimensiunea generică a bufferului:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS",
+      "text": "Specificații BassBoom"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_BASOLIAVER",
+      "text": "Versiunea Basolia:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_MPG123VER",
+      "text": "Versiunea MPG123:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_BASSBOOMSPECS_OUT123VER",
+      "text": "Versiunea OUT123:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS",
+      "text": "Specificații sistem"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEM",
+      "text": "Sistem:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMARCH",
+      "text": "Arhitectura sistemului:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_PROCESSARCH",
+      "text": "Arhitectura procesului:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMDESC",
+      "text": "Descriere sistem:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SYSTEMSPECS_DOTNETDESC",
+      "text": "Descriere .NET:"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES",
+      "text": "Combinații de taste disponibile"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SELECTDRIVER",
+      "text": "Selectați un driver. ESC pentru a ieși."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_SELECTDEVICE",
+      "text": "Selectați un dispozitiv. Driverul curent este {0}. ESC pentru a ieși."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_PATHTOPLAYLIST",
+      "text": "Introduceți o cale către fișierul listei de redare pe care doriți să îl salvați"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEUP",
+      "text": "Măriți volumul"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEDOWN",
+      "text": "Reduceți volumul"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_HELP",
+      "text": "Ajutor"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_EQUALIZER",
+      "text": "Deschideți egalizatorul"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_SYSINFO",
+      "text": "Informații despre sistem"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DISCO",
+      "text": "Mod Disco!"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VOLBOOST",
+      "text": "Activați amplificarea volumului"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERINFO",
+      "text": "Informații despre dispozitiv și driver"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERSET",
+      "text": "Setați dispozitivul și driverul"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERRESET",
+      "text": "Resetați dispozitivul și driverul"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_SAVETOPLAYLIST",
+      "text": "Salvați în lista de redare"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_QUIT",
+      "text": "Ieșire"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DECREASE",
+      "text": "Reduceți"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_INCREASE",
+      "text": "Măriți"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_PREVBAND",
+      "text": "Banda anterioară"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_NEXTBAND",
+      "text": "Banda următoare"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_RESET",
+      "text": "Resetare"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASOLIAERROR",
+      "text": "Există o eroare cu Basolia la încercarea de procesare a operațiunii egalizatorului."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASOLIAOUTERROR",
+      "text": "Există o eroare cu ieșirea Basolia la încercarea de procesare a operațiunii egalizatorului."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_ERROR",
+      "text": "Există o eroare necunoscută la încercarea de procesare a operațiunii egalizatorului."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_NOTPLAYING",
+      "text": "Nu se redă. Playerul muzical este inactiv."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BASS",
+      "text": "Bas"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_UPPERMID",
+      "text": "Medii superioare"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_TREBLE",
+      "text": "Înalte"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_DEVICEBAND",
+      "text": "Bandă specifică dispozitivului"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_UNKNOWNBAND",
+      "text": "Tip de bandă necunoscut"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_BAND",
+      "text": "Bandă"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PLAYPAUSE",
+      "text": "Redare/Pauză"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_STOP",
+      "text": "Stop"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_BACKWARDS",
+      "text": "Căutare înapoi"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_FORWARDS",
+      "text": "Căutare înainte"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_DECREASESEEKDURATION",
+      "text": "Micșorează durata căutării"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_INCREASESEEKDURATION",
+      "text": "Mărește durata căutării"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SONGINFO",
+      "text": "Informații despre melodie"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDFILE",
+      "text": "Adăugați un fișier muzical"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDGROUP",
+      "text": "Adăugați un grup muzical din lista de redare"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_ADDDIR",
+      "text": "Adăugați un director muzical la listă (când este inactiv)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PREVSONG",
+      "text": "Melodia anterioară"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_NEXTSONG",
+      "text": "Melodia următoare"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_REMOVECURRSONG",
+      "text": "Eliminați melodia curentă"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_REMOVEALLSONGS",
+      "text": "Eliminați toate melodiile"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKSELECTIVE",
+      "text": "Căutare selectivă (la redare)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOPREVLYRIC",
+      "text": "Căutare la versul anterior (la redare)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTONEXTLYRIC",
+      "text": "Căutare la versul următor (la redare)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOCURRLYRIC",
+      "text": "Căutare la versul curent (la redare)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOWHICHLYRIC",
+      "text": "Căutare la care vers (la redare)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SETREPEATCHECKPOINT",
+      "text": "Setați punctul de control al repetării"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOREPEATCHECKPOINT",
+      "text": "Căutare la punctul de control al repetării"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_KEYBINDING_PLAYTESTSOUND",
+      "text": "Redați sunet de test (pentru a testa dispozitivul și driverul)"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_SEEKINDICATOR",
+      "text": "Căutare:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_VOLINDICATOR",
+      "text": "Volum:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_BASOLIAERROR",
+      "text": "Există o eroare cu Basolia la încercarea de procesare a fișierului muzical."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_BASOLIAOUTERROR",
+      "text": "Există o eroare cu ieșirea Basolia la încercarea de procesare a fișierului muzical."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_ERROR",
+      "text": "Există o eroare necunoscută la încercarea de procesare a fișierului muzical."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_PLAYBACKFAILED",
+      "text": "Eroare la redare:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TIP",
+      "text": "Apăsați „A” pentru a insera o singură melodie în lista de redare sau „S” pentru a insera întreaga bibliotecă muzicală."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_SELECTLYRICSEEK",
+      "text": "Selectați versurile pe care doriți să le căutați"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICFILEPROMPT",
+      "text": "Introduceți o cale către fișierul muzical"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICFILENOTFOUND",
+      "text": "Fișierul „{0}” nu există."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICPLAYLISTPROMPT",
+      "text": "Introduceți o cale către lista de redare muzicală"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICPLAYLISTNOTFOUND",
+      "text": "Lista de redare muzicală nu a fost găsită."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICLIBRARYPROMPT",
+      "text": "Introduceți o cale către directorul bibliotecii muzicale"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_MUSICLIBRARYNOTFOUND",
+      "text": "Directorul bibliotecii muzicale nu a fost găsit."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICFILE",
+      "text": "Se deschide {0}..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_NOWPLAYING",
+      "text": "Se redă acum:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_UNKNOWNARTIST",
+      "text": "Artist necunoscut"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_UNKNOWNGENRE",
+      "text": "Gen necunoscut"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILE",
+      "text": "Se încearcă deschiderea fișierului cu versuri {0}..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILEFAILED",
+      "text": "Nu se poate deschide fișierul cu versuri {0}:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TARGETPOSPROMPT",
+      "text": "Scrieți poziția țintă în acest format:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDPLAYING",
+      "text": "Se redă sunetul de test..."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_EXCEPTION_TESTSOUNDMISSING",
+      "text": "Lipsesc date despre sunetul de test."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_TITLE",
+      "text": "Test de sunet"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_DESC",
+      "text": "Este totul în regulă în această configurație actuală?"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_YES",
+      "text": "Da"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_NO",
+      "text": "Nu"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_SUCCESS",
+      "text": "Felicitări! Ați configurat totul corect!"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_FAILURE",
+      "text": "Verificați dispozitivul și încercați din nou."
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_UNKNOWN",
+      "text": "Necunoscut"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO",
+      "text": "Informații despre melodie"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_ARTIST",
+      "text": "Artist:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_TITLE",
+      "text": "Titlu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_ALBUM",
+      "text": "Album:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_GENRE",
+      "text": "Gen:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_COMMENT",
+      "text": "Comentariu:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_DURATION",
+      "text": "Durată:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS",
+      "text": "Versuri:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_LINES",
+      "text": "{0} linii"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_NOLYRICS",
+      "text": "Fără versuri"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO",
+      "text": "Informații despre strat"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VERSION",
+      "text": "Versiune:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_LAYER",
+      "text": "Strat:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_RATE",
+      "text": "Rată:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODE",
+      "text": "Mod:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODEEXT",
+      "text": "Mod Ext:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FRAMESIZE",
+      "text": "Dimensiune cadru:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FLAGS",
+      "text": "Stabilizatori:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_EMPHASIS",
+      "text": "Emfazie:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_BITRATE",
+      "text": "Rată de biți:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_ABR",
+      "text": "Rată ABR:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VBR",
+      "text": "VBR:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE",
+      "text": "Stare nativă"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ACCURATERENDERING",
+      "text": "Redare precisă:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_BUFFERFILL",
+      "text": "Umplere buffer:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_DECODINGDELAY",
+      "text": "Întârziere decodare:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGDELAY",
+      "text": "Întârziere decodare:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGPADDING",
+      "text": "Umplutură decodare:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRANKENSTEIN",
+      "text": "Flux Frankenstein:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRESHDECODER",
+      "text": "Decodor nou:"
+    },
+    {
+      "loc": "BASSBOOM_APP_PLAYER_INFO_TEXTSANDEXTRAS",
+      "text": "Texte și extra"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFO",
+      "text": "Informații despre postul de radio"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFOEXT",
+      "text": "Informații extinse despre postul de radio"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATION",
+      "text": "Adăugați un post de radio"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATIONGROUP",
+      "text": "Adăugați un grup de posturi de radio din lista de redare"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_PREVSTATION",
+      "text": "Postul de radio anterior"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_NEXTSTATION",
+      "text": "Postul de radio următor"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_REMOVECURRSTATION",
+      "text": "Eliminați postul de radio curent"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_KEYBINDING_REMOVEALLSTATIONS",
+      "text": "Eliminați toate posturile de radio"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_TIP",
+      "text": "Apăsați „A” pentru a insera un post de radio în lista de redare."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONPROMPT",
+      "text": "Introduceți o cale către postul de radio. Adresa URL a postului trebuie să furnizeze un post de radio MPEG. Posturile AAC nu sunt încă acceptate."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONGROUPPROMPT",
+      "text": "Introduceți o cale către lista de redare a posturilor de radio. Adresele URL către posturi trebuie să ofere o stație de radio MPEG. Cele AAC nu sunt încă acceptate."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_STATIONGROUPNOTFOUND",
+      "text": "Lista de redare a posturilor de radio nu a fost găsită."
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO",
+      "text": "Informații despre post"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_URL",
+      "text": "URL-ul postului de radio:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_NAME",
+      "text": "Nume post de radio:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFO_STATIONINFO_CURRSONG",
+      "text": "Melodia curentă a postului de radio:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO",
+      "text": "Informații despre serverul radio"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_HTTPS",
+      "text": "Postul de radio utilizează HTTPS:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_TYPE",
+      "text": "Tipul serverului postului de radio:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_STREAMS",
+      "text": "Streamuri de post de radio: {0} cu {1} activ"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_LISTENERS",
+      "text": "Ascultători de post de radio: {0} cu {1} la vârf"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO",
+      "text": "Informații despre stream"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_NAME",
+      "text": "Nume:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_HOMEPAGE",
+      "text": "Pagina principală:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_STREAMPATH",
+      "text": "Calea streamului:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_LISTENERS",
+      "text": "Ascultători: {0} cu {1} la vârf"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_BITRATE",
+      "text": "Rată de biți:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_MEDIATYPE",
+      "text": "Tip media:"
+    },
+    {
+      "loc": "BASSBOOM_APP_RADIO_INFOEXT_UNABLETOOBTAIN",
+      "text": "Nu se pot obține informații extinse despre postul de radio pentru {0}"
+    },
+    {
+      "loc": "BASSBOOM_APP_NOTFOUND",
+      "text": "Fișierul muzical {0} nu există."
+    },
+    {
+      "loc": "BASSBOOM_APP_FATALERROR",
+      "text": "Eroare fatală în BassBoom CLI."
+    }
+  ]
+}

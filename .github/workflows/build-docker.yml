@@ -1,0 +1,36 @@
+name: Build Project (Docker)
+
+on:
+  push:
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x", "x/exp/libmpv" ]
+  pull_request:
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x", "x/exp/libmpv" ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.ref }}
+    - name: Prepare Docker (auth)
+      uses: docker/login-action@master
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@master
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@master
+      with:
+        images: eofla/bassboom
+    - name: Build Docker image
+      uses: docker/build-push-action@master
+      with:
+        push: false
+        provenance: mode=max
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        

@@ -1,0 +1,50 @@
+{
+  "lang": "vtn",
+  "name": "Vietnamese",
+  "cultures": [
+    "vi",
+    "vi-VN"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_GENERALERROR",
+      "text": "Lỗi thư viện gốc"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH",
+      "text": "Đường dẫn thư viện là {0}"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
+      "text": "Đường dẫn thư viện mpg123 {0} không tồn tại."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
+      "text": "Đường dẫn thư viện out123 {0} không tồn tại."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
+      "text": "Đường dẫn thư viện libwinpthread {0} không tồn tại."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",
+      "text": "Các nền tảng 32 bit không còn được hỗ trợ."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MODDIRSETFAILED",
+      "text": "Không thể đặt biến môi trường MPG123_MODDIR"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBSLOADFAILED",
+      "text": "Không tải được thư viện."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOINIT",
+      "text": "Không thể lấy đại biểu cho {0} nếu không khởi tạo thư viện trước"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOTFOUND",
+      "text": "Không thể lấy đại biểu cho {0}"
+    }
+  ]
+}

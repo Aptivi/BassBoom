@@ -1,0 +1,50 @@
+{
+  "lang": "ind",
+  "name": "Hindi",
+  "cultures": [
+    "hi-Latn",
+    "hi-Latn-IN"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_GENERALERROR",
+      "text": "mool laibreree truti"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH",
+      "text": "laibreree path {0} hai"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
+      "text": "mpg123 laibreree path {0} maujood nahin hai."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
+      "text": "out123 laibreree path {0} maujood nahin hai."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
+      "text": "libwinpthraiad laibreree path {0} maujood nahin hai."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",
+      "text": "32-bit pletaform ab samarthit nahin hain."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MODDIRSETFAILED",
+      "text": "paryaavaran char mpg123_moddir set nahin kiya ja sakata"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBSLOADFAILED",
+      "text": "laibreree lod karane mein viphal."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOINIT",
+      "text": "pahale laibreree ko aarambh kie bina {0} ke lie pratinidhi praapt nahin kiya ja sakata"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOTFOUND",
+      "text": "{0} ke lie pratinidhi praapt nahin kiya ja sakata"
+    }
+  ]
+}

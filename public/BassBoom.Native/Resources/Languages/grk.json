@@ -1,0 +1,51 @@
+{
+  "lang": "grk",
+  "name": "Greek",
+  "cultures": [
+    "el",
+    "el-CY",
+    "el-GR"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_GENERALERROR",
+      "text": "Σφάλμα εγγενούς βιβλιοθήκης"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH",
+      "text": "Η διαδρομή βιβλιοθήκης είναι {0}"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
+      "text": "Η διαδρομή βιβλιοθήκης mpg123 {0} δεν υπάρχει."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
+      "text": "Η διαδρομή βιβλιοθήκης out123 {0} δεν υπάρχει."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
+      "text": "Η διαδρομή βιβλιοθήκης libwinpthread {0} δεν υπάρχει."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",
+      "text": "Οι πλατφόρμες 32-bit δεν υποστηρίζονται πλέον."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MODDIRSETFAILED",
+      "text": "Δεν είναι δυνατός ο ορισμός της μεταβλητής περιβάλλοντος MPG123_MODDIR"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBSLOADFAILED",
+      "text": "Αποτυχία φόρτωσης βιβλιοθηκών."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOINIT",
+      "text": "Δεν είναι δυνατή η λήψη του αντιπροσώπου για το {0} χωρίς την αρχικοποίηση της βιβλιοθήκης πρώτα"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOTFOUND",
+      "text": "Δεν είναι δυνατή η λήψη του αντιπροσώπου για το {0}"
+    }
+  ]
+}

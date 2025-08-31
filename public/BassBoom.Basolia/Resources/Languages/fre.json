@@ -1,0 +1,424 @@
+{
+  "lang": "fre",
+  "name": "French",
+  "cultures": [
+    "fr",
+    "fr-029",
+    "fr-BE",
+    "fr-BF",
+    "fr-BI",
+    "fr-BJ",
+    "fr-BL",
+    "fr-CA",
+    "fr-CD",
+    "fr-CF",
+    "fr-CG",
+    "fr-CH",
+    "fr-CI",
+    "fr-CM",
+    "fr-DJ",
+    "fr-DZ",
+    "fr-FR",
+    "fr-GA",
+    "fr-GF",
+    "fr-GN",
+    "fr-GP",
+    "fr-GQ",
+    "fr-HT",
+    "fr-KM",
+    "fr-LU",
+    "fr-MA",
+    "fr-MC",
+    "fr-MF",
+    "fr-MG",
+    "fr-ML",
+    "fr-MQ",
+    "fr-MR",
+    "fr-MU",
+    "fr-NC",
+    "fr-NE",
+    "fr-PF",
+    "fr-PM",
+    "fr-RE",
+    "fr-RW",
+    "fr-SC",
+    "fr-SN",
+    "fr-SY",
+    "fr-TD",
+    "fr-TG",
+    "fr-TN",
+    "fr-VU",
+    "fr-WF",
+    "fr-YT"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA",
+      "text": "Instance Basolia non fournie"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID",
+      "text": "Le chemin de la bibliothèque mpg123 {0} ne contient pas de bibliothèque mpg123 valide."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID",
+      "text": "Le chemin de la bibliothèque out123 {0} ne contient pas de bibliothèque out123 valide."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB",
+      "text": "Impossible d'obtenir la version tant que la bibliothèque n'est pas initialisée"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT",
+      "text": "Basolia n'a pas encore initialisé la bibliothèque MPG123 !"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY",
+      "text": "Impossible d'interroger les pilotes"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY",
+      "text": "Impossible d'interroger les périphériques"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND",
+      "text": "Le pilote {0} n'existe pas"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND",
+      "text": "Le périphérique {0} n'existe pas"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR",
+      "text": "Erreur Basolia générale"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR",
+      "text": "MPG123 a renvoyé l'erreur suivante :"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR",
+      "text": "Erreur système de sortie Basolia générale"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR",
+      "text": "OUT123 a renvoyé l'erreur suivante :"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN",
+      "text": "Impossible d'ouvrir ce fichier tant que le fichier actuel ou une station de radio est encore ouvert"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH",
+      "text": "Fournir un chemin vers un fichier musical"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "Le fichier musical n'existe pas"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED",
+      "text": "Impossible d'ouvrir le fichier"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN",
+      "text": "Impossible d'ouvrir cette URL tant que le fichier actuel ou une station de radio est encore ouvert"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL",
+      "text": "Fournir un chemin vers un fichier musical ou une station de radio"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION",
+      "text": "Cette station de radio n'existe pas. Code d'erreur :"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION",
+      "text": "Cela ne ressemble pas à une station de radio. Êtes-vous sûr ?"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION",
+      "text": "Cela ne ressemble pas à une station de radio MP3. Vous avez un type {0}. Êtes-vous sûr ?"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED",
+      "text": "Impossible d'ouvrir la station de radio"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM",
+      "text": "Flux audio non fourni"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED",
+      "text": "Impossible d'ouvrir le flux"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED",
+      "text": "Impossible de fermer un fichier ou une station de radio déjà fermée"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED",
+      "text": "Impossible de fermer le fichier"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY",
+      "text": "Impossible d'interroger un fichier non ouvert"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK",
+      "text": "Tenter d'obtenir la durée pendant la lecture entraîne une corruption de la lecture ! N'appelez pas cette fonction pendant la lecture."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED",
+      "text": "Impossible d'analyser le fichier pour obtenir des informations sur la longueur"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED",
+      "text": "Impossible de déterminer la longueur du fichier"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED",
+      "text": "Impossible d'obtenir la sortie."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED",
+      "text": "Impossible d'obtenir la longueur de l'image."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED",
+      "text": "Impossible d'obtenir le nombre d'échantillons par image."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED",
+      "text": "Impossible d'obtenir le nombre de secondes par image."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED",
+      "text": "Impossible d'obtenir la taille de la mémoire tampon générique."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK",
+      "text": "Tenter d'obtenir les métadonnées ID3 pendant la lecture entraîne une corruption de la lecture ! N'appelez pas cette fonction pendant la lecture."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED",
+      "text": "Impossible d'analyser le fichier pour les informations d'image"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED",
+      "text": "Impossible d'obtenir les métadonnées"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK",
+      "text": "Tenter d'obtenir les métadonnées ICY pendant la lecture peut altérer la lecture ! N'appelez pas cette fonction pendant la lecture."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK",
+      "text": "Tenter d'obtenir les informations d'image pendant la lecture peut altérer la lecture ! N'appelez pas cette fonction pendant la lecture."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED",
+      "text": "Impossible d'obtenir les informations d'image"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE",
+      "text": "Impossible de décoder l'image d'un fichier qui n'est pas ouvert"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED",
+      "text": "Impossible de décoder l'image"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND",
+      "text": "Décodeur {0} introuvable"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED",
+      "text": "Décodeur {0} non pris en charge par votre appareil"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED",
+      "text": "Impossible de définir le décodeur sur {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED",
+      "text": "Impossible de déterminer le format du fichier"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND",
+      "text": "Encodage {0} introuvable."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED",
+      "text": "Impossible d'obtenir les informations de format"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED",
+      "text": "Impossible de réinitialiser l'encodage de sortie"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED",
+      "text": "Impossible de définir le format de sortie"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED",
+      "text": "Impossible de définir l'encodage de sortie sur :"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED",
+      "text": "Fournir un chemin d'accès à la bibliothèque racine."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND",
+      "text": "Paroles inexistantes"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND",
+      "text": "Fichier de playlist {0} inexistant"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID",
+      "text": "Extension de fichier de playlist non valide {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY",
+      "text": "Représentation de la playlist non fournie."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER",
+      "text": "Ceci n'est pas un en-tête étendu :"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS",
+      "text": "EXTINF nécessite exactement deux arguments, et il n'y a pas d'indicateur d'argument."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "Fichier musical {0} introuvable ou n'est pas un fichier MPEG."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS",
+      "text": "Les informations sur la piste doivent fournir exactement deux arguments : la durée de la piste en secondes (-1 s'il s'agit d'une diffusion en direct) et le titre brut de la piste."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS",
+      "text": "Les informations sur la piste n'ont pas fourni correctement le nombre de secondes [{0}]."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED",
+      "text": "Impossible de déterminer la durée actuelle du fichier."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK",
+      "text": "Impossible de rechercher un fichier qui n'est pas ouvert."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED",
+      "text": "Impossible de rechercher le début du fichier."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED",
+      "text": "Impossible de rechercher l'image n° {0} du fichier."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
+      "text": "La ligne de paroles n'est pas fournie pour la recherche."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
+      "text": "Impossible de supprimer."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY",
+      "text": "Impossible de lire un fichier fermé"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE",
+      "text": "Impossible de mettre en pause un fichier fermé"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP",
+      "text": "Impossible d'arrêter un fichier fermé"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED",
+      "text": "Impossible de régler le volume à {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED",
+      "text": "Impossible d'obtenir le volume (basique, réel et décibels)"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED",
+      "text": "Impossible de régler la bande d'égalisation {0}/32 à {1} sous {2}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED",
+      "text": "Impossible de régler les bandes d'égalisation {0}/32 -> {1}/32 à {2} sous {3}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED",
+      "text": "Impossible de réinitialiser les bandes d'égalisation à leurs valeurs initiales !"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED",
+      "text": "Impossible d'obtenir l'état natif de {0} !"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED",
+      "text": "Impossible d'ouvrir la sortie vers le périphérique {0} sur le pilote {1}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT",
+      "text": "Vous devez ouvrir la sortie."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED",
+      "text": "Le débit sélectionné [{0} Hz] et l'encodage [{1}] ne sont pas pris en charge."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED",
+      "text": "Impossible de démarrer la sortie."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED",
+      "text": "Impossible d'alimenter."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED",
+      "text": "Échec de l'analyse du serveur radio {0}. Plus d'informations sont disponibles dans l'exception interne."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST",
+      "text": "Le jeton de flux est nul."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES",
+      "text": "Aucune source n'est disponible."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH",
+      "text": "Fournir un chemin vers une station de radio"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED",
+      "text": "Impossible de déterminer le type de serveur de la station de radio."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2",
+      "text": "Le jeton de flux Shoutcast v2.x est nul."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2",
+      "text": "Il n'existe aucun flux Shoutcast v2.x."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST",
+      "text": "Il n'existe aucun flux Icecast."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED",
+      "text": "Échec de l'analyse de l'ID de flux {0}. Plus d'informations sont disponibles dans l'exception interne."
+    }
+  ]
+}

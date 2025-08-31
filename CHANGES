@@ -1,16 +1,16 @@
-(Errata release) We've updated MPG123 to version 1.32.9 as there was a security vulnerability that was fixed.
+We've updated this project to accommodate the localization needs!
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[*]` Fixed [CVE-2024-10573](https://nvd.nist.gov/vuln/detail/CVE-2024-10573)
+- `[+]` Added localized strings
 
 Review the commit history if you want to get a deep insight about the changes.
 
 ### Feedback?
 
-If you have issues with this version, report to us by [making a new issue ticket](https://github.com/Aptivi/BassBoom/issues/new).
+If you have issues with this version, report to us by [making a new issue ticket](https://gitlab.com/aptivi/main/BassBoom/-/issues/new).
 
 ### Sum hashes
 

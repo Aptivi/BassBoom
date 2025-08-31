@@ -1,0 +1,379 @@
+{
+  "lang": "grk",
+  "name": "Greek",
+  "cultures": [
+    "el",
+    "el-CY",
+    "el-GR"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA",
+      "text": "Δεν παρέχεται η παρουσία Basolia"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID",
+      "text": "Η διαδρομή βιβλιοθήκης mpg123 {0} δεν περιέχει μια έγκυρη βιβλιοθήκη mpg123."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID",
+      "text": "Η διαδρομή βιβλιοθήκης out123 {0} δεν περιέχει μια έγκυρη βιβλιοθήκη out123."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB",
+      "text": "Δεν είναι δυνατή η λήψη της έκδοσης μέχρι να αρχικοποιηθεί η βιβλιοθήκη"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT",
+      "text": "Το Basolia δεν αρχικοποίησε ακόμη τη βιβλιοθήκη MPG123!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY",
+      "text": "Δεν είναι δυνατή η αναζήτηση των προγραμμάτων οδήγησης"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY",
+      "text": "Δεν είναι δυνατή η αναζήτηση των συσκευών"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND",
+      "text": "Το πρόγραμμα οδήγησης {0} δεν υπάρχει"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND",
+      "text": "Η συσκευή {0} δεν υπάρχει"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR",
+      "text": "Γενικό σφάλμα Basolia"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR",
+      "text": "Το MPG123 επέστρεψε το ακόλουθο σφάλμα:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR",
+      "text": "Γενικό σφάλμα συστήματος εξόδου Basolia"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR",
+      "text": "Το OUT123 επέστρεψε το ακόλουθο σφάλμα:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN",
+      "text": "Δεν είναι δυνατό το άνοιγμα αυτού του αρχείου ενώ το τρέχον αρχείο ή ένας ραδιοφωνικός σταθμός είναι ακόμα ανοιχτό"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH",
+      "text": "Παροχή διαδρομής προς ένα αρχείο μουσικής"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "Το αρχείο μουσικής δεν υπάρχει"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED",
+      "text": "Δεν είναι δυνατό το άνοιγμα αρχείου"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN",
+      "text": "Δεν είναι δυνατό το άνοιγμα αυτής της διεύθυνσης URL ενώ το τρέχον αρχείο ή ένας ραδιοφωνικός σταθμός είναι ακόμα ανοιχτό"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL",
+      "text": "Παροχή διαδρομής προς ένα αρχείο μουσικής ή έναν ραδιοφωνικό σταθμό"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION",
+      "text": "Αυτός ο ραδιοφωνικός σταθμός δεν υπάρχει. Κωδικός σφάλματος:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION",
+      "text": "Αυτό δεν μοιάζει με ραδιοφωνικό σταθμό. Είστε σίγουροι;"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION",
+      "text": "Αυτό δεν μοιάζει με ραδιοφωνικό σταθμό MP3. Έχετε έναν τύπο {0}. Είστε σίγουροι;"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED",
+      "text": "Δεν είναι δυνατό το άνοιγμα του ραδιοφωνικού σταθμού"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM",
+      "text": "Δεν παρέχεται ροή ήχου"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED",
+      "text": "Δεν είναι δυνατό το άνοιγμα της ροής"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED",
+      "text": "Δεν είναι δυνατό το κλείσιμο ενός αρχείου ή ενός ραδιοφωνικού σταθμού που είναι ήδη κλειστός"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED",
+      "text": "Δεν είναι δυνατό το κλείσιμο του αρχείου"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY",
+      "text": "Δεν είναι δυνατό το ερώτημα ενός αρχείου που δεν είναι ανοιχτό"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK",
+      "text": "Η προσπάθεια λήψης της διάρκειας κατά την αναπαραγωγή προκαλεί καταστροφή της αναπαραγωγής! Μην καλείτε αυτήν τη συνάρτηση κατά την αναπαραγωγή."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED",
+      "text": "Δεν είναι δυνατή η σάρωση του αρχείου για πληροφορίες μήκους"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED",
+      "text": "Δεν είναι δυνατός ο προσδιορισμός της διάρκειας του αρχείου"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED",
+      "text": "Δεν είναι δυνατή η λήψη της εξόδου."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED",
+      "text": "Δεν είναι δυνατή η λήψη του μήκους του καρέ."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED",
+      "text": "Δεν είναι δυνατή η λήψη των δειγμάτων ανά καρέ."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED",
+      "text": "Δεν είναι δυνατή η λήψη των δευτερολέπτων ανά καρέ."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED",
+      "text": "Δεν είναι δυνατή η λήψη του γενικού μεγέθους buffer."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK",
+      "text": "Η προσπάθεια λήψης των μεταδεδομένων ID3 κατά την αναπαραγωγή προκαλεί καταστροφή της αναπαραγωγής! Μην καλείτε αυτήν τη συνάρτηση κατά την αναπαραγωγή."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED",
+      "text": "Δεν είναι δυνατή η σάρωση του αρχείου για πληροφορίες καρέ"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED",
+      "text": "Δεν είναι δυνατή η λήψη πληροφοριών μεταδεδομένων"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK",
+      "text": "Η προσπάθεια λήψης των μεταδεδομένων ICY κατά την αναπαραγωγή προκαλεί καταστροφή αναπαραγωγής! Μην καλείτε αυτήν τη συνάρτηση κατά την αναπαραγωγή."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK",
+      "text": "Η προσπάθεια λήψης των πληροφοριών καρέ κατά την αναπαραγωγή προκαλεί καταστροφή αναπαραγωγής! Μην καλείτε αυτήν τη συνάρτηση κατά την αναπαραγωγή."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED",
+      "text": "Δεν είναι δυνατή η λήψη πληροφοριών καρέ"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE",
+      "text": "Δεν είναι δυνατή η αποκωδικοποίηση του καρέ ενός αρχείου που δεν είναι ανοιχτό"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED",
+      "text": "Δεν είναι δυνατή η αποκωδικοποίηση καρέ"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND",
+      "text": "Δεν βρέθηκε ο αποκωδικοποιητής {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED",
+      "text": "Ο αποκωδικοποιητής {0} δεν υποστηρίζεται από τη συσκευή σας"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED",
+      "text": "Δεν είναι δυνατός ο ορισμός του αποκωδικοποιητή σε {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED",
+      "text": "Δεν είναι δυνατός ο προσδιορισμός της μορφής του αρχείου"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND",
+      "text": "Δεν βρέθηκε η κωδικοποίηση {0}."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED",
+      "text": "Δεν είναι δυνατή η λήψη πληροφοριών μορφής"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED",
+      "text": "Δεν είναι δυνατή η επαναφορά της κωδικοποίησης εξόδου"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED",
+      "text": "Δεν είναι δυνατός ο ορισμός της μορφής εξόδου"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED",
+      "text": "Δεν είναι δυνατός ο ορισμός της κωδικοποίησης εξόδου σε:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED",
+      "text": "Παροχή διαδρομής ριζικής βιβλιοθήκης."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND",
+      "text": "Ο στίχος δεν υπάρχει"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND",
+      "text": "Το αρχείο λίστας αναπαραγωγής {0} δεν υπάρχει"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID",
+      "text": "Μη έγκυρη επέκταση αρχείου λίστας αναπαραγωγής {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY",
+      "text": "Δεν παρέχεται αναπαράσταση λίστας αναπαραγωγής."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER",
+      "text": "Αυτή δεν είναι εκτεταμένη κεφαλίδα:"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS",
+      "text": "Το EXTINF απαιτεί ακριβώς δύο ορίσματα και δεν υπάρχει ένδειξη ορίσματος."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND",
+      "text": "Το αρχείο μουσικής {0} δεν βρέθηκε ή δεν είναι αρχείο MPEG"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS",
+      "text": "Οι πληροφορίες κομματιού πρέπει να παρέχουν ακριβώς δύο ορίσματα: τη διάρκεια του κομματιού σε δευτερόλεπτα (-1 εάν πρόκειται για ζωντανή μετάδοση) και τον ακατέργαστο τίτλο του κομματιού."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS",
+      "text": "Οι πληροφορίες κομματιού δεν παρείχαν σωστά τον αριθμό των δευτερολέπτων [{0}]."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED",
+      "text": "Δεν είναι δυνατός ο προσδιορισμός της τρέχουσας διάρκειας του αρχείου"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK",
+      "text": "Δεν είναι δυνατή η αναζήτηση ενός αρχείου που δεν είναι ανοιχτό"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED",
+      "text": "Δεν είναι δυνατή η αναζήτηση στην αρχή του αρχείου"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED",
+      "text": "Δεν είναι δυνατή η αναζήτηση στο καρέ #{0} του αρχείου"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
+      "text": "Δεν παρέχεται γραμμή στίχου για αναζήτηση"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
+      "text": "Δεν είναι δυνατή η απόθεση."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY",
+      "text": "Δεν είναι δυνατή η αναπαραγωγή ενός αρχείου που δεν είναι ανοιχτό"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE",
+      "text": "Δεν είναι δυνατή η παύση ενός αρχείου που δεν είναι ανοιχτό"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP",
+      "text": "Δεν είναι δυνατή η διακοπή ενός αρχείου που δεν είναι ανοιχτό"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED",
+      "text": "Δεν είναι δυνατή η ρύθμιση της έντασης σε {0}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED",
+      "text": "Δεν είναι δυνατή η λήψη έντασης (βάση, πραγματικά, και ντεσιμπέλ)"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED",
+      "text": "Δεν είναι δυνατή η ρύθμιση της ζώνης ισοστάθμισης {0}/32 σε {1} στο {2}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED",
+      "text": "Δεν είναι δυνατή η ρύθμιση των ζωνών ισοστάθμισης {0}/32 -> {1}/32 σε {2} στο {3}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED",
+      "text": "Δεν είναι δυνατή η επαναφορά των ζωνών ισοστάθμισης στις αρχικές τους τιμές!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED",
+      "text": "Δεν είναι δυνατή η λήψη της εγγενούς κατάστασης του {0}!"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED",
+      "text": "Δεν είναι δυνατό το άνοιγμα της εξόδου στη συσκευή {0} στο πρόγραμμα οδήγησης {1}"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT",
+      "text": "Πρέπει να ανοίξετε την έξοδο"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED",
+      "text": "Ο επιλεγμένος ρυθμός [{0} hz] και η κωδικοποίηση [{1}] δεν υποστηρίζονται"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED",
+      "text": "Δεν είναι δυνατή η εκκίνηση της εξόδου."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED",
+      "text": "Δεν είναι δυνατή η τροφοδοσία."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED",
+      "text": "Αποτυχία ανάλυσης του διακομιστή ραδιοφώνου {0}. Περισσότερες πληροφορίες μπορείτε να βρείτε στην εσωτερική εξαίρεση."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST",
+      "text": "Το διακριτικό ροής είναι μηδενικό."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES",
+      "text": "Δεν υπάρχουν πηγές."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH",
+      "text": "Δώστε μια διαδρομή προς έναν ραδιοφωνικό σταθμό"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED",
+      "text": "Δεν είναι δυνατός ο προσδιορισμός του τύπου διακομιστή ραδιοφωνικού σταθμού."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2",
+      "text": "Το διακριτικό ροής Shoutcast v2.x είναι μηδενικό"
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2",
+      "text": "Δεν υπάρχει ροή Shoutcast v2.x."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST",
+      "text": "Δεν υπάρχει ροή Icecast."
+    },
+    {
+      "loc": "BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED",
+      "text": "Αποτυχία ανάλυσης του αναγνωριστικού ροής {0}. Περισσότερες πληροφορίες μπορείτε να βρείτε στην εσωτερική εξαίρεση."
+    }
+  ]
+}

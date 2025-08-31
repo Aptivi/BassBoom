@@ -1,0 +1,51 @@
+{
+  "lang": "kor",
+  "name": "Korean",
+  "cultures": [
+    "ko",
+    "ko-KP",
+    "ko-KR"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_GENERALERROR",
+      "text": "neitibeu laibeuleoli olyu"
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH",
+      "text": "laibeuleoli gyeongloneun {0}ibnida."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
+      "text": "mpg123 laibeuleoli gyeonglo {0}i(ga) jonjaehaji anhseubnida."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
+      "text": "out123 laibeuleoli gyeonglo {0}i(ga) jonjaehaji anhseubnida."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
+      "text": "libwinpthread laibeuleoli gyeonglo {0}i(ga) jonjaehaji anhseubnida."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",
+      "text": "32biteu peullaespom-eun deo isang jiwondoeji anhseubnida."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_MODDIRSETFAILED",
+      "text": "hwangyeong byeonsu MPG123_MODDIReul(leul) seoljeonghal su eobs-seubnida."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBSLOADFAILED",
+      "text": "laibeuleolileul lodeuhaji moshaessseubnida."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOINIT",
+      "text": "laibeuleolileul meonjeo chogihwahaji anh-eumyeon {0}e daehan daelijaleul gajyeool su eobs-seubnida."
+    },
+    {
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOTFOUND",
+      "text": "{0}e daehan daelijaleul gajyeool su eobs-seubnida."
+    }
+  ]
+}

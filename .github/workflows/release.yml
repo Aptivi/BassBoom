@@ -8,7 +8,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       id-token: write
       contents: write
@@ -25,17 +25,24 @@ jobs:
       - name: Setup DocFX
         run: dotnet tool install --global docfx
       - name: Release Asset Preparation
-        id: release-asset
         run: |
-          chmod +x tools/*.sh
-          make
-          cd tools ; ./pack.sh ; cd ..
-          make doc
-          cd tools ; ./docgen-pack.sh ; cd ..
+          cmd.exe /c "tools\build.cmd Release -p:ContinuousIntegrationBuild=true"
+          cmd.exe /c "tools\pack.cmd"
+          cmd.exe /c "tools\docgen.cmd"
+          cmd.exe /c "tools\docgen-pack.cmd"
+          dotnet build -p:Configuration=Release -p:Platform=x64 public/BassBoom.Installers/BassBoom.Installer.sln
+          dotnet build -p:Configuration=Release -p:Platform=ARM64 public/BassBoom.Installers/BassBoom.Installer.sln
+          Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/x64/Release/BassBoom.InstallerBundle.exe tools/bassboom-win-x64-installer.exe
+          Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/ARM64/Release/BassBoom.InstallerBundle.exe tools/bassboom-win-arm64-installer.exe
+      - name: Release Preparation
+        id: release-asset
+        shell: bash
+        run: |
           echo "SUBJECT=$(cat CHANGES.TITLE)" >> "$GITHUB_OUTPUT"
           echo 'BODY<<EOF' >> "$GITHUB_OUTPUT"
           cat CHANGES >> "$GITHUB_OUTPUT"
-          sha256sum tools/*.zip | sed -e 's/^/- /g' >> "$GITHUB_OUTPUT"
+          powershell 'Get-FileHash -Algorithm sha256 tools/*.zip | % {"- " + $_.Hash + "  " + (Resolve-Path -Path $_.Path -Relative)}' >> "$GITHUB_OUTPUT"
+          powershell 'Get-FileHash -Algorithm sha256 tools/*.exe | % {"- " + $_.Hash + "  " + (Resolve-Path -Path $_.Path -Relative)}' >> "$GITHUB_OUTPUT"
           echo 'EOF' >> "$GITHUB_OUTPUT"
       - name: Binary Attestation
         uses: actions/attest-build-provenance@v1
@@ -48,12 +55,11 @@ jobs:
           name: ${{ steps.release-asset.outputs.SUBJECT }}
           files: |
             tools/*.zip
+            tools/*.exe
+      - name: Package Publication
+        run: cmd.exe /C "tools\push.cmd ${{ secrets.NUGET_APIKEY }}"
       - name: Notify build
         uses: tsickert/discord-webhook@v6.0.0
         with:
           webhook-url: ${{ secrets.WEBHOOK_URL }}
           content: "<:bassboom:1268904972297441404> ${{ steps.release-asset.outputs.SUBJECT }} <:bassboom:1268904972297441404>\n\n${{ steps.release-asset.outputs.BODY }}"
-      - name: Package Publication
-        run: |
-          chmod +x tools/*.sh
-          cd tools ; NUGET_APIKEY=${{ secrets.NUGET_APIKEY }} ./push.sh ; cd ..

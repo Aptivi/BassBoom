@@ -1,0 +1,34 @@
+name: Build Project (for Launchpad PPA)
+
+on:
+  push:
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x", "x/exp/libmpv" ]
+  pull_request:
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x", "x/exp/libmpv" ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Install required packages
+        run: |
+          sudo rm /etc/apt/sources.list.d/microsoft-prod.list
+          sudo NEEDRESTART_SUSPEND=1 apt update
+          sudo NEEDRESTART_SUSPEND=1 apt install devscripts debhelper-compat dput build-essential equivs
+          sudo NEEDRESTART_SUSPEND=1 mk-build-deps -i
+          
+      - name: Initialize offline package
+        run: |
+          sudo ip netns add no-net
+          make init-offline
+          make clean
+        
+      - name: Try to build
+        run: |
+          sudo ip netns exec no-net make all-offline

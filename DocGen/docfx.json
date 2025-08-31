@@ -3,7 +3,7 @@
         {
             "src": [
                 {
-                    "files": [ "BassBoom.Basolia/**.csproj" ],
+                    "files": [ "public/**/*.csproj" ],
                     "src": ".."
                 }
             ],
@@ -39,7 +39,7 @@
         },
         "globalMetadataFiles": [],
         "fileMetadataFiles": [],
-        "template": [ "default" ],
+        "template": [ "default", "theme" ],
         "postProcessors": [],
         "markdownEngineName": "markdig",
         "noLangKeyword": false,

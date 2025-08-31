@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "BassBoom.Cli": {
+      "commandName": "Project"
+    },
+    "BassBoom.Cli - Radio": {
+      "commandName": "Project",
+      "commandLineArgs": "-r"
+    },
+    "BassBoom.Cli - Test locales": {
+      "commandName": "Project",
+      "commandLineArgs": "-s"
+    }
+  }
+}

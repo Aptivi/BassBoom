@@ -2,33 +2,35 @@ name: Build Project (Debug)
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x", "x/exp/libmpv" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x", "x/exp/libmpv" ]
     
 jobs:
   build:
     strategy:
       matrix:
         runs-on: [ubuntu-latest, windows-latest, macos-latest]
+      fail-fast: false
     runs-on: ${{ matrix.runs-on }}
 
     steps:
       - uses: actions/checkout@v4
         with:
+          submodules: 'true'
           ref: ${{ github.ref }}
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
+      - name: Setup Mono (Unix)
+        if: matrix.runs-on == 'ubuntu-latest'
+        run: sudo apt install mono-complete
       - name: Solution Compilation (Windows)
         if: matrix.runs-on == 'windows-latest'
-        run: cd tools ; ./build.cmd Debug ; cd ..
+        run: ./tools/build.cmd Debug -p:ContinuousIntegrationBuild=true
       - name: Solution Compilation (Unix)
         if: matrix.runs-on != 'windows-latest'
-        run: make dbg
+        run: make dbg-ci
       - name: Testing
         run: dotnet test --no-build --configuration Debug
-        

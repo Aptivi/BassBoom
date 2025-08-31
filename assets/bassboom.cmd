@@ -1,6 +1,6 @@
 @echo off
 
-REM    BassBoom  Copyright (C) 2022-2024  Aptivi
+REM    BassBoom  Copyright (C) 2025  Aptivi
 REM
 REM    This file is part of BassBoom
 REM
@@ -17,8 +17,10 @@ REM
 REM    You should have received a copy of the GNU General Public License
 REM    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-REM This script runs BassBoom. This is a shortcut for running BassBoom
-REM so that you don't have to write the full name of the executable.
+REM This script runs BassBoom. This is a shortcut for running BassBoom so that
+REM you don't have to write the full name of the executable.
 
+REM Please note that we don't support updating in this script, because we use
+REM package managers to manage updates.
 set ROOTPATH=%~dp0
 dotnet "%ROOTPATH%BassBoom.Cli.dll" %*
