@@ -9,12 +9,12 @@
     <Title>BassBoom.Basolia</Title>
     <PackageDescription>BassBoom! Managed playback library</PackageDescription>
     <PackageTags>bassboom;basolia;native;runtime;csharp;library;music;player;mpeg;mp3;mp2;mpg;mpg123</PackageTags>
-    <PackageProjectUrl>https://gitlab.com/aptivi/main/BassBoom</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Aptivi/BassBoom</PackageProjectUrl>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <PackageIcon>OfficialAppIcon-BassBoom-512.png</PackageIcon>
     <IncludeSymbols>True</IncludeSymbols>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://gitlab.com/aptivi/main/BassBoom.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Aptivi/BassBoom.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     
     <!-- For cross platform and .NET 8.0+ support -->
