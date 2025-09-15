@@ -2728,6 +2728,108 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.InitBasolia.OutLibVersion
   nameWithType: InitBasolia.OutLibVersion
+- uid: BassBoom.Basolia.Localized
+  name: BassBoom.Basolia.Localized
+  href: api/BassBoom.Basolia.Localized.html
+  commentId: N:BassBoom.Basolia.Localized
+  fullName: BassBoom.Basolia.Localized
+  nameWithType: BassBoom.Basolia.Localized
+- uid: BassBoom.Basolia.Localized.LocalStrings
+  name: LocalStrings
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html
+  commentId: T:BassBoom.Basolia.Localized.LocalStrings
+  fullName: BassBoom.Basolia.Localized.LocalStrings
+  nameWithType: LocalStrings
+- uid: BassBoom.Basolia.Localized.LocalStrings.CheckCulture(System.String,System.String)
+  name: CheckCulture(string, string)
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_CheckCulture_System_String_System_String_
+  commentId: M:BassBoom.Basolia.Localized.LocalStrings.CheckCulture(System.String,System.String)
+  name.vb: CheckCulture(String, String)
+  fullName: BassBoom.Basolia.Localized.LocalStrings.CheckCulture(string, string)
+  fullName.vb: BassBoom.Basolia.Localized.LocalStrings.CheckCulture(String, String)
+  nameWithType: LocalStrings.CheckCulture(string, string)
+  nameWithType.vb: LocalStrings.CheckCulture(String, String)
+- uid: BassBoom.Basolia.Localized.LocalStrings.CheckCulture*
+  name: CheckCulture
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_CheckCulture_
+  commentId: Overload:BassBoom.Basolia.Localized.LocalStrings.CheckCulture
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Localized.LocalStrings.CheckCulture
+  nameWithType: LocalStrings.CheckCulture
+- uid: BassBoom.Basolia.Localized.LocalStrings.Exists(System.String,System.String)
+  name: Exists(string, string)
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_Exists_System_String_System_String_
+  commentId: M:BassBoom.Basolia.Localized.LocalStrings.Exists(System.String,System.String)
+  name.vb: Exists(String, String)
+  fullName: BassBoom.Basolia.Localized.LocalStrings.Exists(string, string)
+  fullName.vb: BassBoom.Basolia.Localized.LocalStrings.Exists(String, String)
+  nameWithType: LocalStrings.Exists(string, string)
+  nameWithType.vb: LocalStrings.Exists(String, String)
+- uid: BassBoom.Basolia.Localized.LocalStrings.Exists*
+  name: Exists
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_Exists_
+  commentId: Overload:BassBoom.Basolia.Localized.LocalStrings.Exists
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Localized.LocalStrings.Exists
+  nameWithType: LocalStrings.Exists
+- uid: BassBoom.Basolia.Localized.LocalStrings.Languages
+  name: Languages
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_Languages
+  commentId: P:BassBoom.Basolia.Localized.LocalStrings.Languages
+  fullName: BassBoom.Basolia.Localized.LocalStrings.Languages
+  nameWithType: LocalStrings.Languages
+- uid: BassBoom.Basolia.Localized.LocalStrings.Languages*
+  name: Languages
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_Languages_
+  commentId: Overload:BassBoom.Basolia.Localized.LocalStrings.Languages
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Localized.LocalStrings.Languages
+  nameWithType: LocalStrings.Languages
+- uid: BassBoom.Basolia.Localized.LocalStrings.ListLanguagesCulture(System.String)
+  name: ListLanguagesCulture(string)
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_ListLanguagesCulture_System_String_
+  commentId: M:BassBoom.Basolia.Localized.LocalStrings.ListLanguagesCulture(System.String)
+  name.vb: ListLanguagesCulture(String)
+  fullName: BassBoom.Basolia.Localized.LocalStrings.ListLanguagesCulture(string)
+  fullName.vb: BassBoom.Basolia.Localized.LocalStrings.ListLanguagesCulture(String)
+  nameWithType: LocalStrings.ListLanguagesCulture(string)
+  nameWithType.vb: LocalStrings.ListLanguagesCulture(String)
+- uid: BassBoom.Basolia.Localized.LocalStrings.ListLanguagesCulture*
+  name: ListLanguagesCulture
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_ListLanguagesCulture_
+  commentId: Overload:BassBoom.Basolia.Localized.LocalStrings.ListLanguagesCulture
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Localized.LocalStrings.ListLanguagesCulture
+  nameWithType: LocalStrings.ListLanguagesCulture
+- uid: BassBoom.Basolia.Localized.LocalStrings.Localizations
+  name: Localizations
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_Localizations
+  commentId: P:BassBoom.Basolia.Localized.LocalStrings.Localizations
+  fullName: BassBoom.Basolia.Localized.LocalStrings.Localizations
+  nameWithType: LocalStrings.Localizations
+- uid: BassBoom.Basolia.Localized.LocalStrings.Localizations*
+  name: Localizations
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_Localizations_
+  commentId: Overload:BassBoom.Basolia.Localized.LocalStrings.Localizations
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Localized.LocalStrings.Localizations
+  nameWithType: LocalStrings.Localizations
+- uid: BassBoom.Basolia.Localized.LocalStrings.Translate(System.String,System.String)
+  name: Translate(string, string)
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_Translate_System_String_System_String_
+  commentId: M:BassBoom.Basolia.Localized.LocalStrings.Translate(System.String,System.String)
+  name.vb: Translate(String, String)
+  fullName: BassBoom.Basolia.Localized.LocalStrings.Translate(string, string)
+  fullName.vb: BassBoom.Basolia.Localized.LocalStrings.Translate(String, String)
+  nameWithType: LocalStrings.Translate(string, string)
+  nameWithType.vb: LocalStrings.Translate(String, String)
+- uid: BassBoom.Basolia.Localized.LocalStrings.Translate*
+  name: Translate
+  href: api/BassBoom.Basolia.Localized.LocalStrings.html#BassBoom_Basolia_Localized_LocalStrings_Translate_
+  commentId: Overload:BassBoom.Basolia.Localized.LocalStrings.Translate
+  isSpec: "True"
+  fullName: BassBoom.Basolia.Localized.LocalStrings.Translate
+  nameWithType: LocalStrings.Translate
 - uid: BassBoom.Basolia.Lyrics
   name: BassBoom.Basolia.Lyrics
   href: api/BassBoom.Basolia.Lyrics.html
@@ -4596,3 +4698,105 @@ references:
   isSpec: "True"
   fullName: BassBoom.Basolia.Radio.StreamInfo.UniqueListeners
   nameWithType: StreamInfo.UniqueListeners
+- uid: BassBoom.Native.Localized
+  name: BassBoom.Native.Localized
+  href: api/BassBoom.Native.Localized.html
+  commentId: N:BassBoom.Native.Localized
+  fullName: BassBoom.Native.Localized
+  nameWithType: BassBoom.Native.Localized
+- uid: BassBoom.Native.Localized.LocalStrings
+  name: LocalStrings
+  href: api/BassBoom.Native.Localized.LocalStrings.html
+  commentId: T:BassBoom.Native.Localized.LocalStrings
+  fullName: BassBoom.Native.Localized.LocalStrings
+  nameWithType: LocalStrings
+- uid: BassBoom.Native.Localized.LocalStrings.CheckCulture(System.String,System.String)
+  name: CheckCulture(string, string)
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_CheckCulture_System_String_System_String_
+  commentId: M:BassBoom.Native.Localized.LocalStrings.CheckCulture(System.String,System.String)
+  name.vb: CheckCulture(String, String)
+  fullName: BassBoom.Native.Localized.LocalStrings.CheckCulture(string, string)
+  fullName.vb: BassBoom.Native.Localized.LocalStrings.CheckCulture(String, String)
+  nameWithType: LocalStrings.CheckCulture(string, string)
+  nameWithType.vb: LocalStrings.CheckCulture(String, String)
+- uid: BassBoom.Native.Localized.LocalStrings.CheckCulture*
+  name: CheckCulture
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_CheckCulture_
+  commentId: Overload:BassBoom.Native.Localized.LocalStrings.CheckCulture
+  isSpec: "True"
+  fullName: BassBoom.Native.Localized.LocalStrings.CheckCulture
+  nameWithType: LocalStrings.CheckCulture
+- uid: BassBoom.Native.Localized.LocalStrings.Exists(System.String,System.String)
+  name: Exists(string, string)
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_Exists_System_String_System_String_
+  commentId: M:BassBoom.Native.Localized.LocalStrings.Exists(System.String,System.String)
+  name.vb: Exists(String, String)
+  fullName: BassBoom.Native.Localized.LocalStrings.Exists(string, string)
+  fullName.vb: BassBoom.Native.Localized.LocalStrings.Exists(String, String)
+  nameWithType: LocalStrings.Exists(string, string)
+  nameWithType.vb: LocalStrings.Exists(String, String)
+- uid: BassBoom.Native.Localized.LocalStrings.Exists*
+  name: Exists
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_Exists_
+  commentId: Overload:BassBoom.Native.Localized.LocalStrings.Exists
+  isSpec: "True"
+  fullName: BassBoom.Native.Localized.LocalStrings.Exists
+  nameWithType: LocalStrings.Exists
+- uid: BassBoom.Native.Localized.LocalStrings.Languages
+  name: Languages
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_Languages
+  commentId: P:BassBoom.Native.Localized.LocalStrings.Languages
+  fullName: BassBoom.Native.Localized.LocalStrings.Languages
+  nameWithType: LocalStrings.Languages
+- uid: BassBoom.Native.Localized.LocalStrings.Languages*
+  name: Languages
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_Languages_
+  commentId: Overload:BassBoom.Native.Localized.LocalStrings.Languages
+  isSpec: "True"
+  fullName: BassBoom.Native.Localized.LocalStrings.Languages
+  nameWithType: LocalStrings.Languages
+- uid: BassBoom.Native.Localized.LocalStrings.ListLanguagesCulture(System.String)
+  name: ListLanguagesCulture(string)
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_ListLanguagesCulture_System_String_
+  commentId: M:BassBoom.Native.Localized.LocalStrings.ListLanguagesCulture(System.String)
+  name.vb: ListLanguagesCulture(String)
+  fullName: BassBoom.Native.Localized.LocalStrings.ListLanguagesCulture(string)
+  fullName.vb: BassBoom.Native.Localized.LocalStrings.ListLanguagesCulture(String)
+  nameWithType: LocalStrings.ListLanguagesCulture(string)
+  nameWithType.vb: LocalStrings.ListLanguagesCulture(String)
+- uid: BassBoom.Native.Localized.LocalStrings.ListLanguagesCulture*
+  name: ListLanguagesCulture
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_ListLanguagesCulture_
+  commentId: Overload:BassBoom.Native.Localized.LocalStrings.ListLanguagesCulture
+  isSpec: "True"
+  fullName: BassBoom.Native.Localized.LocalStrings.ListLanguagesCulture
+  nameWithType: LocalStrings.ListLanguagesCulture
+- uid: BassBoom.Native.Localized.LocalStrings.Localizations
+  name: Localizations
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_Localizations
+  commentId: P:BassBoom.Native.Localized.LocalStrings.Localizations
+  fullName: BassBoom.Native.Localized.LocalStrings.Localizations
+  nameWithType: LocalStrings.Localizations
+- uid: BassBoom.Native.Localized.LocalStrings.Localizations*
+  name: Localizations
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_Localizations_
+  commentId: Overload:BassBoom.Native.Localized.LocalStrings.Localizations
+  isSpec: "True"
+  fullName: BassBoom.Native.Localized.LocalStrings.Localizations
+  nameWithType: LocalStrings.Localizations
+- uid: BassBoom.Native.Localized.LocalStrings.Translate(System.String,System.String)
+  name: Translate(string, string)
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_Translate_System_String_System_String_
+  commentId: M:BassBoom.Native.Localized.LocalStrings.Translate(System.String,System.String)
+  name.vb: Translate(String, String)
+  fullName: BassBoom.Native.Localized.LocalStrings.Translate(string, string)
+  fullName.vb: BassBoom.Native.Localized.LocalStrings.Translate(String, String)
+  nameWithType: LocalStrings.Translate(string, string)
+  nameWithType.vb: LocalStrings.Translate(String, String)
+- uid: BassBoom.Native.Localized.LocalStrings.Translate*
+  name: Translate
+  href: api/BassBoom.Native.Localized.LocalStrings.html#BassBoom_Native_Localized_LocalStrings_Translate_
+  commentId: Overload:BassBoom.Native.Localized.LocalStrings.Translate
+  isSpec: "True"
+  fullName: BassBoom.Native.Localized.LocalStrings.Translate
+  nameWithType: LocalStrings.Translate
