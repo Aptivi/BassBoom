@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+        <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="metadata">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" use="required" type="xsd:string" />
+                <xsd:attribute name="type" type="xsd:string" />
+                <xsd:attribute name="mimetype" type="xsd:string" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="assembly">
+            <xsd:complexType>
+                <xsd:attribute name="alias" type="xsd:string" />
+                <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="data">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="resheader">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+    <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA" xml:space="preserve">
+    <value>Екземпляр Basolia не надано</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID" xml:space="preserve">
+    <value>Шлях до бібліотеки mpg123 {0} не містить дійсної бібліотеки mpg123.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID" xml:space="preserve">
+    <value>Шлях до бібліотеки out123 {0} не містить дійсної бібліотеки out123.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB" xml:space="preserve">
+    <value>Неможливо отримати версію, доки бібліотека не буде ініціалізована</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT" xml:space="preserve">
+    <value>Basolia ще не ініціалізувала бібліотеку MPG123!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY" xml:space="preserve">
+    <value>Неможливо запитати драйвери</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY" xml:space="preserve">
+    <value>Неможливо запитати пристрої</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND" xml:space="preserve">
+    <value>Драйвер {0} не існує</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND" xml:space="preserve">
+    <value>Пристрій {0} не існує</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR" xml:space="preserve">
+    <value>Загальна помилка Basolia</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR" xml:space="preserve">
+    <value>MPG123 повернув таку помилку:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR" xml:space="preserve">
+    <value>Загальна помилка системи виводу Basolia</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR" xml:space="preserve">
+    <value>OUT123 повернув таку помилку:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN" xml:space="preserve">
+    <value>Неможливо відкрити цей файл, поки поточний файл або радіостанція все ще відкриті</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH" xml:space="preserve">
+    <value>Вкажіть шлях до музичного файлу</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>Музичний файл не існує</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED" xml:space="preserve">
+    <value>Неможливо відкрити файл</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN" xml:space="preserve">
+    <value>Неможливо відкрити цю URL-адресу, поки поточний файл або радіостанція все ще відкриті</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL" xml:space="preserve">
+    <value>Вкажіть шлях до музичного файлу або радіостанції</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION" xml:space="preserve">
+    <value>Ця радіостанція не існує. Код помилки:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION" xml:space="preserve">
+    <value>Це не схоже на радіостанцію. Ви впевнені?</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION" xml:space="preserve">
+    <value>Це не схоже на радіостанцію MP3. У вас тип (n) {0}. Ви впевнені?</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED" xml:space="preserve">
+    <value>Не вдається відкрити радіостанцію</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM" xml:space="preserve">
+    <value>Аудіопотік не надано</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED" xml:space="preserve">
+    <value>Не вдається відкрити потік</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED" xml:space="preserve">
+    <value>Не вдається закрити файл або радіостанцію, яка вже закрита</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED" xml:space="preserve">
+    <value>Не вдається закрити файл</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY" xml:space="preserve">
+    <value>Не вдається запитати файл, який не відкритий</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK" xml:space="preserve">
+    <value>Спроба отримати тривалість під час відтворення призводить до пошкодження відтворення! Не викликайте цю функцію під час відтворення.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED" xml:space="preserve">
+    <value>Не вдається сканувати файл на наявність інформації про довжину</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED" xml:space="preserve">
+    <value>Не вдається визначити довжину файлу</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED" xml:space="preserve">
+    <value>Не вдається отримати вихід.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED" xml:space="preserve">
+    <value>Не вдається отримати довжину кадру.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED" xml:space="preserve">
+    <value>Не вдається отримати кількість семплів на кадр.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED" xml:space="preserve">
+    <value>Не вдається отримати кількість секунд на кадр.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED" xml:space="preserve">
+    <value>Не вдається отримати загальний розмір буфера.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK" xml:space="preserve">
+    <value>Спроба отримати метадані ID3 під час відтворення призводить до пошкодження відтворення! Не викликайте цю функцію під час відтворення.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED" xml:space="preserve">
+    <value>Не вдається просканувати файл на наявність інформації про кадр</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED" xml:space="preserve">
+    <value>Не вдається отримати інформацію про метадані</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK" xml:space="preserve">
+    <value>Спроба отримати метадані ICY під час відтворення призводить до пошкодження відтворення! Не викликайте цю функцію під час відтворення.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK" xml:space="preserve">
+    <value>Спроба отримати інформацію про кадр під час відтворення призводить до пошкодження відтворення! Не викликайте цю функцію під час відтворення.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED" xml:space="preserve">
+    <value>Не вдається отримати інформацію про кадр</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE" xml:space="preserve">
+    <value>Не вдається декодувати кадр файлу, який не відкритий</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED" xml:space="preserve">
+    <value>Не вдається декодувати кадр</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND" xml:space="preserve">
+    <value>Декодер {0} не знайдено</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED" xml:space="preserve">
+    <value>Декодер {0} не підтримується вашим пристроєм</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED" xml:space="preserve">
+    <value>Не вдається встановити декодер на {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED" xml:space="preserve">
+    <value>Не вдається визначити формат файлу</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND" xml:space="preserve">
+    <value>Кодування {0} не знайдено.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED" xml:space="preserve">
+    <value>Не вдається отримати інформацію про формат</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED" xml:space="preserve">
+    <value>Не вдається скинути вихідне кодування</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED" xml:space="preserve">
+    <value>Не вдається встановити вихідний формат</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED" xml:space="preserve">
+    <value>Не вдається встановити вихідне кодування на:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED" xml:space="preserve">
+    <value>Вказати шлях до кореневої бібліотеки.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND" xml:space="preserve">
+    <value>Текст пісні не існує</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND" xml:space="preserve">
+    <value>Файл списку відтворення {0} не існує</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID" xml:space="preserve">
+    <value>Недійсне розширення файлу списку відтворення {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY" xml:space="preserve">
+    <value>Представлення списку відтворення не надано.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER" xml:space="preserve">
+    <value>Це не розширений заголовок:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS" xml:space="preserve">
+    <value>EXTINF вимагає рівно два аргументи, і немає індикатора аргументів.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>Музичний файл {0} не знайдено або не є файлом MPEG.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS" xml:space="preserve">
+    <value>Інформація про трек повинна містити рівно два аргументи: тривалість треку в секундах (-1, якщо це пряма трансляція) та необроблену назву треку.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS" xml:space="preserve">
+    <value>Інформація про трек неправильно вказала кількість секунд [{0}].</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED" xml:space="preserve">
+    <value>Неможливо визначити поточну тривалість файлу.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK" xml:space="preserve">
+    <value>Неможливо виконати пошук у файлі, який не відкритий.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED" xml:space="preserve">
+    <value>Неможливо виконати пошук на початок файлу.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED" xml:space="preserve">
+    <value>Неможливо виконати пошук до кадру №{0} файлу.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED" xml:space="preserve">
+    <value>Не надано рядок тексту пісні для пошуку.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED" xml:space="preserve">
+    <value>Неможливо перетягнути.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY" xml:space="preserve">
+    <value>Неможливо відтворити файл, який не відкритий</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE" xml:space="preserve">
+    <value>Неможливо призупинити файл, який не відкритий</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP" xml:space="preserve">
+    <value>Неможливо зупинити файл, який не відкритий</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED" xml:space="preserve">
+    <value>Неможливо встановити гучність на {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED" xml:space="preserve">
+    <value>Неможливо отримати гучність (базову, насправді, та децибели)</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED" xml:space="preserve">
+    <value>Неможливо встановити діапазон еквалайзера {0}/32 на {1} для {2}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED" xml:space="preserve">
+    <value>Неможливо встановити діапазони еквалайзера {0}/32 -&gt; {1}/32 на {2} для {3}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED" xml:space="preserve">
+    <value>Неможливо скинути діапазони еквалайзера до їх початкових значень!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED" xml:space="preserve">
+    <value>Неможливо отримати власний стан {0}!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED" xml:space="preserve">
+    <value>Неможливо відкрити вихід на пристрій {0} на драйвері {1}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT" xml:space="preserve">
+    <value>Вам потрібно відкрити вихід</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED" xml:space="preserve">
+    <value>Вибрана частота [{0} Гц] та кодування [{1}] не підтримуються</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED" xml:space="preserve">
+    <value>Неможливо розпочати вихід.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED" xml:space="preserve">
+    <value>Неможливо налаштувати канал.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED" xml:space="preserve">
+    <value>Не вдалося проаналізувати радіосервер {0}. Більше інформації можна знайти у внутрішньому винятку.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST" xml:space="preserve">
+    <value>Маркер потоку має значення null.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES" xml:space="preserve">
+    <value>Джерел немає.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH" xml:space="preserve">
+    <value>Вкажіть шлях до радіостанції</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED" xml:space="preserve">
+    <value>Неможливо визначити тип сервера радіостанції.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2" xml:space="preserve">
+    <value>Маркер потоку Shoutcast v2.x має значення null</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2" xml:space="preserve">
+    <value>Потоку Shoutcast v2.x немає.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST" xml:space="preserve">
+    <value>Потоку Icecast немає.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED" xml:space="preserve">
+    <value>Не вдалося проаналізувати ідентифікатор потоку {0}. Більше інформації можна знайти у внутрішньому винятку.</value>
+  </data>
+
+</root>

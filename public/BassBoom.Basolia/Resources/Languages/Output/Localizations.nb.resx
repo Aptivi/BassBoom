@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+        <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="metadata">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" use="required" type="xsd:string" />
+                <xsd:attribute name="type" type="xsd:string" />
+                <xsd:attribute name="mimetype" type="xsd:string" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="assembly">
+            <xsd:complexType>
+                <xsd:attribute name="alias" type="xsd:string" />
+                <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="data">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="resheader">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+    <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA" xml:space="preserve">
+    <value>Basolia-forekomst er ikke oppgitt</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID" xml:space="preserve">
+    <value>mpg123-biblioteksti {0} inneholder ikke et gyldig mpg123-bibliotek.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID" xml:space="preserve">
+    <value>out123-biblioteksti {0} inneholder ikke et gyldig out123-bibliotek.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB" xml:space="preserve">
+    <value>Kan ikke hente versjon før biblioteket er initialisert</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT" xml:space="preserve">
+    <value>Basolia initialiserte ikke MPG123-biblioteket ennå!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY" xml:space="preserve">
+    <value>Kan ikke spørre driverne</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY" xml:space="preserve">
+    <value>Kan ikke spørre enhetene</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND" xml:space="preserve">
+    <value>Driver {0} finnes ikke</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND" xml:space="preserve">
+    <value>Enhet {0} finnes ikke</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR" xml:space="preserve">
+    <value>Generell Basolia-feil</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR" xml:space="preserve">
+    <value>MPG123 returnerte følgende feil:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR" xml:space="preserve">
+    <value>Generell Basolia-utdatasystemfeil</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR" xml:space="preserve">
+    <value>OUT123 returnerte følgende feil:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN" xml:space="preserve">
+    <value>Kan ikke åpne denne filen mens gjeldende fil eller en radiostasjon fortsatt er åpen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH" xml:space="preserve">
+    <value>Oppgi en sti til en musikkfil</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>Musikkfilen finnes ikke</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED" xml:space="preserve">
+    <value>Kan ikke åpne filen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN" xml:space="preserve">
+    <value>Kan ikke åpne denne URL-en mens gjeldende fil eller en radiostasjon fortsatt er åpen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL" xml:space="preserve">
+    <value>Oppgi en sti til en musikkfil eller en radiostasjon</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION" xml:space="preserve">
+    <value>Denne radiostasjonen finnes ikke. Feilkode:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION" xml:space="preserve">
+    <value>Dette ser ikke ut som en radiostasjon. Er du sikker?</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION" xml:space="preserve">
+    <value>Dette ser ikke ut som en MP3-radiostasjon. Du har en {0}-type. Er du sikker?</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED" xml:space="preserve">
+    <value>Kan ikke åpne radiostasjonen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM" xml:space="preserve">
+    <value>Lydstrøm er ikke oppgitt</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED" xml:space="preserve">
+    <value>Kan ikke åpne strøm</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED" xml:space="preserve">
+    <value>Kan ikke lukke en fil eller en radiostasjon som allerede er lukket</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED" xml:space="preserve">
+    <value>Kan ikke lukke filen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY" xml:space="preserve">
+    <value>Kan ikke spørre en fil som ikke er åpen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK" xml:space="preserve">
+    <value>Forsøk på å hente varigheten under avspilling forårsaker avspillingsfeil! Ikke kall denne funksjonen under avspilling.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED" xml:space="preserve">
+    <value>Kan ikke skanne filen for lengdeinformasjon</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED" xml:space="preserve">
+    <value>Kan ikke bestemme lengden på filen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED" xml:space="preserve">
+    <value>Kan ikke hente utdataene.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED" xml:space="preserve">
+    <value>Kan ikke hente bildelengden.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED" xml:space="preserve">
+    <value>Kan ikke hente samplene per bilde.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED" xml:space="preserve">
+    <value>Kan ikke hente sekundene per bilde.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED" xml:space="preserve">
+    <value>Kan ikke hente den generiske bufferstørrelsen.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK" xml:space="preserve">
+    <value>Forsøk på å hente ID3-metadataene under avspilling forårsaker avspillingsfeil! Ikke kall denne funksjonen under avspilling.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED" xml:space="preserve">
+    <value>Kan ikke skanne filen etter rammeinformasjon</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED" xml:space="preserve">
+    <value>Kan ikke hente metadatainformasjon</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK" xml:space="preserve">
+    <value>Forsøk på å hente ICY-metadataene under avspilling forårsaker avspillingsfeil! Ikke kall denne funksjonen under avspilling.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK" xml:space="preserve">
+    <value>Forsøk på å hente rammeinformasjonen under avspilling forårsaker avspillingsfeil! Ikke kall denne funksjonen under avspilling.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED" xml:space="preserve">
+    <value>Kan ikke hente rammeinformasjon</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE" xml:space="preserve">
+    <value>Kan ikke dekode rammen til en fil som ikke er åpen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED" xml:space="preserve">
+    <value>Kan ikke dekode rammen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND" xml:space="preserve">
+    <value>Dekoder {0} ble ikke funnet</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED" xml:space="preserve">
+    <value>Dekoder {0} støttes ikke av enheten din</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED" xml:space="preserve">
+    <value>Kan ikke sette dekoderen til {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED" xml:space="preserve">
+    <value>Kan ikke bestemme formatet til filen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND" xml:space="preserve">
+    <value>Koding {0} ble ikke funnet.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED" xml:space="preserve">
+    <value>Kan ikke hente formatinformasjon</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED" xml:space="preserve">
+    <value>Kan ikke tilbakestille utdatakoding</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED" xml:space="preserve">
+    <value>Kan ikke angi utdataformat</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED" xml:space="preserve">
+    <value>Kan ikke angi utdatakoding til:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED" xml:space="preserve">
+    <value>Oppgi en rotbiblioteksti.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND" xml:space="preserve">
+    <value>Sangteksten finnes ikke</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND" xml:space="preserve">
+    <value>Spillelistefilen {0} finnes ikke</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID" xml:space="preserve">
+    <value>Ugyldig spillelistefiltype {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY" xml:space="preserve">
+    <value>Spillelisterepresentasjon er ikke oppgitt.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER" xml:space="preserve">
+    <value>Dette er ikke en utvidet header:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS" xml:space="preserve">
+    <value>EXTINF krever nøyaktig to argumenter, og det er ingen argumentindikator.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>Musikkfilen {0} ble ikke funnet, eller den er ikke en MPEG-fil.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS" xml:space="preserve">
+    <value>Sporinformasjonen må oppgi nøyaktig to argumenter: sporlengde i sekunder (-1 hvis det er en direktestrømming) og den rå sportittelen.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS" xml:space="preserve">
+    <value>Sporinformasjonen oppga ikke antall sekunder [{0}] riktig.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED" xml:space="preserve">
+    <value>Kan ikke bestemme filens gjeldende varighet.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK" xml:space="preserve">
+    <value>Kan ikke søke etter en fil som ikke er åpen.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED" xml:space="preserve">
+    <value>Kan ikke søke til begynnelsen av filen.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED" xml:space="preserve">
+    <value>Kan ikke søke etter ramme nr. {0} i filen.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED" xml:space="preserve">
+    <value>Det er ikke oppgitt noen tekstlinje for å søke etter.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED" xml:space="preserve">
+    <value>Kan ikke slippe.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY" xml:space="preserve">
+    <value>Kan ikke spille av en fil som ikke er åpen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE" xml:space="preserve">
+    <value>Kan ikke sette en fil på pause som ikke er åpen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP" xml:space="preserve">
+    <value>Kan ikke stoppe en fil som ikke er åpen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED" xml:space="preserve">
+    <value>Kan ikke sette volumet til {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED" xml:space="preserve">
+    <value>Kan ikke hente volum (base, egentlig og desibel)</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED" xml:space="preserve">
+    <value>Kan ikke sette equalizerbånd {0}/32 til {1} ​​under {2}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED" xml:space="preserve">
+    <value>Kan ikke sette equalizerbånd {0}/32 -&gt; {1}/32 til {2} under {3}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED" xml:space="preserve">
+    <value>Kan ikke tilbakestille equalizerbånd til startverdiene!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED" xml:space="preserve">
+    <value>Kan ikke hente den opprinnelige tilstanden til {0}!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED" xml:space="preserve">
+    <value>Kan ikke åpne utdata til enhet {0} på driver {1}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT" xml:space="preserve">
+    <value>Du må åpne utdataene</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED" xml:space="preserve">
+    <value>Valgt hastighet [{0} hz] og koding [{1}] støttes ikke</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED" xml:space="preserve">
+    <value>Kan ikke starte utdataene.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED" xml:space="preserve">
+    <value>Kan ikke mate.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED" xml:space="preserve">
+    <value>Kan ikke analysere radioserveren {0}. Mer informasjon finner du i det indre unntaket.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST" xml:space="preserve">
+    <value>Strømtokenet er null.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES" xml:space="preserve">
+    <value>Det finnes ingen kilder.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH" xml:space="preserve">
+    <value>Oppgi en sti til en radiostasjon</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED" xml:space="preserve">
+    <value>Kan ikke bestemme servertypen for radiostasjonen.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2" xml:space="preserve">
+    <value>Shoutcast v2.x-strømtokenet er null</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2" xml:space="preserve">
+    <value>Det finnes ingen Shoutcast v2.x-strøm.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST" xml:space="preserve">
+    <value>Det finnes ingen Icecast-strøm.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED" xml:space="preserve">
+    <value>Klarte ikke å analysere strømme-ID {0}. Mer informasjon finner du i det indre unntaket.</value>
+  </data>
+
+</root>

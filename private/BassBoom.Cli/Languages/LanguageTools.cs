@@ -17,20 +17,17 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using LocaleStation.Tools;
-using BassBoom.Cli.Localized;
+using MainLangTools = BassBoom.Native.Languages.LanguageTools;
 
 namespace BassBoom.Cli.Languages
 {
     internal static class LanguageTools
     {
-        private const string localType = "BassBoom.Cli";
-
         internal static string GetLocalized(string id)
         {
-            if (!LanguageCommon.IsCustomActionDefined(localType))
-                LanguageCommon.AddCustomAction(localType, new(() => LocalStrings.Languages, () => LocalStrings.Localizations, LocalStrings.Translate, LocalStrings.CheckCulture, LocalStrings.ListLanguagesCulture, LocalStrings.Exists));
-            return LanguageCommon.Translate(id);
+            if (!MainLangTools.resourceManagers.ContainsKey("BassBoom.Cli"))
+                MainLangTools.resourceManagers.Add("BassBoom.Cli", new("BassBoom.Cli.Resources.Languages.Output.Localizations", typeof(LanguageTools).Assembly));
+            return MainLangTools.GetLocalized(id);
         }
     }
 }
