@@ -4,15 +4,10 @@
     <TargetFrameworks>net8.0;net48</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <ApplicationIcon>../../assets/OfficialAppIcon-BassBoom.ico</ApplicationIcon>
-    
-    <!-- For cross platform and .NET 8.0+ support -->
-    <AptLocDisableInvalidCultureWarnings>true</AptLocDisableInvalidCultureWarnings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LocaleStation" Version="1.3.2" />
-    <PackageReference Include="LocaleStation.Tools" Version="1.3.2" />
-    <PackageReference Include="Terminaux" Version="6.1.22" />
+    <PackageReference Include="Terminaux" Version="6.1.23" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,10 +24,6 @@
   <ItemGroup>
     <None Remove="../../assets/sample.mp3" />
     <EmbeddedResource Include="../../assets/sample.mp3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="Resources\Languages\*.json" AptLocIsLanguagePath="true" />
   </ItemGroup>
 
 </Project>
