@@ -1,7 +1,7 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
      xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui"
      xmlns:netfx="http://wixtoolset.org/schemas/v4/wxs/netfx">
-    <Package Name="BassBoom 0.2.x" Manufacturer="Aptivi" Version="0.2.11.1" UpgradeCode="b44c5027-1ced-41bb-b18f-a2f0af758fc1" Scope="perMachine">
+    <Package Name="BassBoom 0.2.x" Manufacturer="Aptivi" Version="0.2.12" UpgradeCode="b44c5027-1ced-41bb-b18f-a2f0af758fc1" Scope="perMachine">
         <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
         <Feature Id="Main">
