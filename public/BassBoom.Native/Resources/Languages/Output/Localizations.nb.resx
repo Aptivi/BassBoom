@@ -123,14 +123,8 @@
   <data name="BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH" xml:space="preserve">
     <value>Bibliotekbanen er {0}</value>
   </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND" xml:space="preserve">
-    <value>mpg123-bibliotekbanen {0} finnes ikke.</value>
-  </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND" xml:space="preserve">
-    <value>out123-bibliotekbanen {0} finnes ikke.</value>
-  </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND" xml:space="preserve">
-    <value>libwinpthread-bibliotekbanen {0} finnes ikke.</value>
+  <data name="BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND" xml:space="preserve">
+    <value>Bibliotekbanen {0} finnes ikke.</value>
   </data>
   <data name="BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED" xml:space="preserve">
     <value>32-biters plattformer støttes ikke lenger.</value>

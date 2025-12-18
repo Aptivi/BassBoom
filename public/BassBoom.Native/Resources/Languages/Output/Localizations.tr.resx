@@ -123,14 +123,8 @@
   <data name="BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH" xml:space="preserve">
     <value>Kütüphane yolu {0}</value>
   </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND" xml:space="preserve">
-    <value>mpg123 kütüphane yolu {0} mevcut değil.</value>
-  </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND" xml:space="preserve">
-    <value>out123 kütüphane yolu {0} mevcut değil.</value>
-  </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND" xml:space="preserve">
-    <value>libwinpthread kütüphane yolu {0} mevcut değil.</value>
+  <data name="BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND" xml:space="preserve">
+    <value>kütüphane yolu {0} mevcut değil.</value>
   </data>
   <data name="BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED" xml:space="preserve">
     <value>32 bit platformlar artık desteklenmiyor.</value>

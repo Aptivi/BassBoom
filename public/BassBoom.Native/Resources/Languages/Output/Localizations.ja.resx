@@ -123,14 +123,8 @@
   <data name="BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH" xml:space="preserve">
     <value>ライブラリパスは {0} です</value>
   </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND" xml:space="preserve">
-    <value>mpg123 ライブラリパス {0} は存在しません。</value>
-  </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND" xml:space="preserve">
-    <value>out123 ライブラリパス {0} は存在しません。</value>
-  </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND" xml:space="preserve">
-    <value>libwinpthread ライブラリパス {0} は存在しません。</value>
+  <data name="BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND" xml:space="preserve">
+    <value>ライブラリパス {0} は存在しません。</value>
   </data>
   <data name="BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED" xml:space="preserve">
     <value>32 ビットプラットフォームはサポートされていません。</value>

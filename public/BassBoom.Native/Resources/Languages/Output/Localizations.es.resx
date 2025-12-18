@@ -123,14 +123,8 @@
   <data name="BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH" xml:space="preserve">
     <value>La ruta de la biblioteca es {0}</value>
   </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND" xml:space="preserve">
-    <value>La ruta de la biblioteca mpg123 {0} no existe.</value>
-  </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND" xml:space="preserve">
-    <value>La ruta de la biblioteca out123 {0} no existe.</value>
-  </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND" xml:space="preserve">
-    <value>La ruta de la biblioteca libwinpthread {0} no existe.</value>
+  <data name="BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND" xml:space="preserve">
+    <value>La ruta de la biblioteca {0} no existe.</value>
   </data>
   <data name="BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED" xml:space="preserve">
     <value>Las plataformas de 32 bits ya no son compatibles.</value>

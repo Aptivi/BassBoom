@@ -40,6 +40,8 @@ namespace BassBoom.Native
         internal static string mpg123LibPath = GetLibPath("mpg123");
         internal static string out123LibPath = GetLibPath("out123");
         internal static string pthreadLibPath = GetLibPath("libwinpthread-1");
+        internal static string libcppLibPath = GetLibPath("libc++");
+        internal static string libunwindLibPath = GetLibPath("libunwind");
 
         internal static LibraryManager? libManagerMpg;
         internal static LibraryManager? libManagerOut;
@@ -108,20 +110,30 @@ namespace BassBoom.Native
             string resultMpgPath = GetLibPath(root, "mpg123");
             string resultOutPath = GetLibPath(root, "out123");
             string resultWinPath = GetLibPath(root, "libwinpthread-1");
+            string resultWinCppPath = GetLibPath(root, "libc++");
+            string resultWinUnwindPath = GetLibPath(root, "libunwind");
             if (!File.Exists(resultMpgPath))
-                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND"), resultMpgPath));
+                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND"), resultMpgPath));
             if (!File.Exists(resultOutPath))
-                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND"), resultOutPath));
+                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND"), resultOutPath));
             if (!File.Exists(resultWinPath) && PlatformHelper.IsOnWindows())
-                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND"), resultWinPath));
+                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND"), resultWinPath));
+            if (!File.Exists(resultWinCppPath) && PlatformHelper.IsOnWindows())
+                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND"), resultWinPath));
+            if (!File.Exists(resultWinUnwindPath) && PlatformHelper.IsOnWindows())
+                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND"), resultWinPath));
 
             // Set the library path
             string oldLibPath = mpg123LibPath;
             string oldLibPathOut = out123LibPath;
             string oldLibPathWin = pthreadLibPath;
+            string oldLibPathWinCpp = libcppLibPath;
+            string oldLibPathWinUnwind = libunwindLibPath;
             mpg123LibPath = resultMpgPath;
             out123LibPath = resultOutPath;
             pthreadLibPath = resultWinPath;
+            libcppLibPath = resultWinCppPath;
+            libunwindLibPath = resultWinUnwindPath;
 
             try
             {
@@ -133,6 +145,8 @@ namespace BassBoom.Native
                 libManagerOut = new LibraryManager(
                     architecture == Architecture.X64 && PlatformHelper.IsOnWindows() ?
                     [new LibraryFile(pthreadLibPath), new LibraryFile(out123LibPath)] :
+                    architecture == Architecture.Arm64 && PlatformHelper.IsOnWindows() ?
+                    [new LibraryFile(libunwindLibPath), new LibraryFile(libcppLibPath), new LibraryFile(out123LibPath)] :
                     [new LibraryFile(out123LibPath)]);
                 libManagerMpg.LoadNativeLibrary();
                 libManagerOut.LoadNativeLibrary();
@@ -152,6 +166,8 @@ namespace BassBoom.Native
                 mpg123LibPath = oldLibPath;
                 out123LibPath = oldLibPathOut;
                 pthreadLibPath = oldLibPathWin;
+                libcppLibPath = oldLibPathWinCpp;
+                libunwindLibPath = oldLibPathWinUnwind;
                 throw new BasoliaNativeLibraryException(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBSLOADFAILED") + $" [{mpg123LibPath}]\n\n{ex.Message}");
             }
         }

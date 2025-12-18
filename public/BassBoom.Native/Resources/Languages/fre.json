@@ -61,16 +61,8 @@
       "text": "Chemin d'accès à la bibliothèque : {0}"
     },
     {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
-      "text": "Le chemin d'accès à la bibliothèque mpg123 {0} n'existe pas."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
-      "text": "Le chemin d'accès à la bibliothèque out123 {0} n'existe pas."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
-      "text": "Le chemin d'accès à la bibliothèque libwinpthread {0} n'existe pas."
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND",
+      "text": "Le chemin d'accès à la bibliothèque {0} n'existe pas."
     },
     {
       "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",

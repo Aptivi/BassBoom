@@ -123,14 +123,8 @@
   <data name="BASSBOOM_NATIVE_EXCEPTIONS_LIBPATH" xml:space="preserve">
     <value>Η διαδρομή βιβλιοθήκης είναι {0}</value>
   </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND" xml:space="preserve">
-    <value>Η διαδρομή βιβλιοθήκης mpg123 {0} δεν υπάρχει.</value>
-  </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND" xml:space="preserve">
-    <value>Η διαδρομή βιβλιοθήκης out123 {0} δεν υπάρχει.</value>
-  </data>
-  <data name="BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND" xml:space="preserve">
-    <value>Η διαδρομή βιβλιοθήκης libwinpthread {0} δεν υπάρχει.</value>
+  <data name="BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND" xml:space="preserve">
+    <value>Η διαδρομή βιβλιοθήκης {0} δεν υπάρχει.</value>
   </data>
   <data name="BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED" xml:space="preserve">
     <value>Οι πλατφόρμες 32-bit δεν υποστηρίζονται πλέον.</value>
