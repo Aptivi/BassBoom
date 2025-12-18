@@ -123,7 +123,7 @@ namespace BassBoom.Cli.CliBase
                     break;
                 case ConsoleKey.Q:
                     exiting = true;
-                    Common.redraw = true;
+                    ScreenTools.CurrentScreen?.RequireRefresh();
                     break;
             }
         }

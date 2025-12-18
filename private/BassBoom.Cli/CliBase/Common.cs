@@ -50,7 +50,6 @@ namespace BassBoom.Cli.CliBase
         internal static bool paused = false;
         internal static bool failedToPlay = false;
         internal static bool isRadioMode = false;
-        internal static bool redraw = true;
         internal static bool volBoost = false;
         internal static readonly List<CachedSongInfo> cachedInfos = [];
 
@@ -239,17 +238,14 @@ namespace BassBoom.Cli.CliBase
                         ShowHelpRadio();
                     else
                         ShowHelp();
-                    redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.E:
                     Equalizer.OpenEqualizer(playerScreen);
-                    redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.Z:
                     ShowSpecs(keystroke.Modifiers == ConsoleModifiers.Shift);
-                    redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.L:
@@ -283,7 +279,6 @@ namespace BassBoom.Cli.CliBase
                         DeviceTools.Reset(BassBoomCli.basolia);
                     else
                         ShowDeviceDriver();
-                    redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.F1:
@@ -291,7 +286,6 @@ namespace BassBoom.Cli.CliBase
                     playerScreen.RequireRefresh();
                     if (string.IsNullOrEmpty(path))
                     {
-                        redraw = true;
                         playerScreen.RequireRefresh();
                         break;
                     }
@@ -304,7 +298,6 @@ namespace BassBoom.Cli.CliBase
                     // Get a list of paths and write the file
                     string[] paths = cachedInfos.Select((csi) => csi.MusicPath).ToArray();
                     File.WriteAllLines(path, paths);
-                    redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.Q:
