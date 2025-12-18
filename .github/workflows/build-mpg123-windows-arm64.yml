@@ -38,7 +38,9 @@ jobs:
         shell: msys2 {0}
         run: |
           export lt_cv_deplibs_check_method=pass_all
-          cd mpg123-1.33.3 ; ./configure --prefix=/clangarm64 --disable-components --enable-libmpg123 --enable-libout123 --enable-libout123-modules ; make ; make install DESTDIR=$PWD/outlib
+          cd mpg123-1.33.3 ; ./configure --prefix=/clangarm64 --disable-components --enable-libmpg123 --enable-libout123 --enable-libout123-modules --with-default-audio=win32 CFLAGS="-O2 -D__USE_MINGW_ANSI_STDIO=0" ; make ; make install DESTDIR=$PWD/outlib
+          cp /clangarm64/bin/libunwind.dll outlib/ || true
+          cp /clangarm64/bin/libc++.dll outlib/ || true
       - name: Artifacts
         uses: actions/upload-artifact@v4
         with:
