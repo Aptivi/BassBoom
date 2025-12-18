@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+        <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="metadata">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" use="required" type="xsd:string" />
+                <xsd:attribute name="type" type="xsd:string" />
+                <xsd:attribute name="mimetype" type="xsd:string" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="assembly">
+            <xsd:complexType>
+                <xsd:attribute name="alias" type="xsd:string" />
+                <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="data">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="resheader">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+    <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="BASSBOOM_APP_COMMON_DEVICE" xml:space="preserve">
+    <value>デバイス:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DRIVER" xml:space="preserve">
+    <value>ドライバー:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICECACHED" xml:space="preserve">
+    <value>デバイス (キャッシュ済み):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DRIVERCACHED" xml:space="preserve">
+    <value>ドライバー (キャッシュ済み):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICESQUERYNOTPLAYING" xml:space="preserve">
+    <value>再生中でない間は、現在のデバイスを照会できません。</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICEANDDRIVER" xml:space="preserve">
+    <value>デバイスとドライバー</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_AVAILABLEDEVICESANDDRIVERS" xml:space="preserve">
+    <value>利用可能なデバイスとドライバー</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_EXTRASPECS" xml:space="preserve">
+    <value>追加仕様 (開発者向け)</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_PCMSAMPLESIZE" xml:space="preserve">
+    <value>PCM サンプルサイズ:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ZEROSAMPLE" xml:space="preserve">
+    <value>ゼロサンプル (オフセット 0):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DURATIONSAMPLES" xml:space="preserve">
+    <value>サンプル単位の継続時間:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_FRAMELEN" xml:space="preserve">
+    <value>フレーム長:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SPF" xml:space="preserve">
+    <value>サンプル数/フレーム:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_TPF" xml:space="preserve">
+    <value>秒数/フレーム:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DECODERS" xml:space="preserve">
+    <value>デコーダー</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SUPPORTEDDECODERS" xml:space="preserve">
+    <value>サポートされているデコーダー:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ALLDECODERS" xml:space="preserve">
+    <value>すべてのデコーダー:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ENCODINGSANDRATES" xml:space="preserve">
+    <value>エンコーディングとレート</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ENCODINGS" xml:space="preserve">
+    <value>エンコーディング:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_RATES" xml:space="preserve">
+    <value>レート:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BUFFERINFO" xml:space="preserve">
+    <value>バッファ情報</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_GENERICBUFFERSIZE" xml:space="preserve">
+    <value>汎用バッファサイズ:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS" xml:space="preserve">
+    <value>BassBoom 仕様</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_BASOLIAVER" xml:space="preserve">
+    <value>Basolia バージョン:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_MPG123VER" xml:space="preserve">
+    <value>MPG123 バージョン:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_OUT123VER" xml:space="preserve">
+    <value>OUT123 バージョン:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS" xml:space="preserve">
+    <value>システム仕様</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEM" xml:space="preserve">
+    <value>システム:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMARCH" xml:space="preserve">
+    <value>システムアーキテクチャ:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_PROCESSARCH" xml:space="preserve">
+    <value>プロセスアーキテクチャ:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMDESC" xml:space="preserve">
+    <value>システムの説明:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_DOTNETDESC" xml:space="preserve">
+    <value>.NET の説明:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES" xml:space="preserve">
+    <value>利用可能なキー操作</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SELECTDRIVER" xml:space="preserve">
+    <value>ドライバーを選択してください。終了するには Esc キーを押します。</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SELECTDEVICE" xml:space="preserve">
+    <value>デバイスを選択してください。現在のドライバーは {0} です。終了するには Esc キーを押します。</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_PATHTOPLAYLIST" xml:space="preserve">
+    <value>保存したいプレイリストファイルへのパスを入力してください</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEUP" xml:space="preserve">
+    <value>音量を上げる</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEDOWN" xml:space="preserve">
+    <value>音量を下げる</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_HELP" xml:space="preserve">
+    <value>ヘルプ</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_EQUALIZER" xml:space="preserve">
+    <value>イコライザーを開く</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_SYSINFO" xml:space="preserve">
+    <value>システム情報</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DISCO" xml:space="preserve">
+    <value>ディスコモード！</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLBOOST" xml:space="preserve">
+    <value>音量ブーストを有効にする</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERINFO" xml:space="preserve">
+    <value>デバイスとドライバーの情報</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERSET" xml:space="preserve">
+    <value>デバイスとドライバーを設定する</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERRESET" xml:space="preserve">
+    <value>デバイスとドライバーをリセットする</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_SAVETOPLAYLIST" xml:space="preserve">
+    <value>プレイリストに保存する</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_QUIT" xml:space="preserve">
+    <value>終了</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DECREASE" xml:space="preserve">
+    <value>音量を下げる</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_INCREASE" xml:space="preserve">
+    <value>音量を上げる</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_PREVBAND" xml:space="preserve">
+    <value>前のバンド</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_NEXTBAND" xml:space="preserve">
+    <value>次のバンド</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_RESET" xml:space="preserve">
+    <value>リセット</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASOLIAERROR" xml:space="preserve">
+    <value>イコライザー操作の処理中にBasoliaでエラーが発生しました。</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>イコライザー操作の処理中にBasolia出力でエラーが発生しました。</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_ERROR" xml:space="preserve">
+    <value>イコライザー操作の処理中に不明なエラーが発生しました。</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_NOTPLAYING" xml:space="preserve">
+    <value>再生されていません。音楽プレーヤーはアイドル状態です。</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASS" xml:space="preserve">
+    <value>低音</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_UPPERMID" xml:space="preserve">
+    <value>中高音</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_TREBLE" xml:space="preserve">
+    <value>高音</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_DEVICEBAND" xml:space="preserve">
+    <value>デバイス固有のバンド</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_UNKNOWNBAND" xml:space="preserve">
+    <value>不明なバンドタイプ</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BAND" xml:space="preserve">
+    <value>バンド</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PLAYPAUSE" xml:space="preserve">
+    <value>再生/一時停止</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_STOP" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_BACKWARDS" xml:space="preserve">
+    <value>巻き戻し</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_FORWARDS" xml:space="preserve">
+    <value>早送り</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_DECREASESEEKDURATION" xml:space="preserve">
+    <value>シーク時間短縮</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_INCREASESEEKDURATION" xml:space="preserve">
+    <value>シーク時間延長</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SONGINFO" xml:space="preserve">
+    <value>曲情報</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDFILE" xml:space="preserve">
+    <value>音楽ファイルの追加</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDGROUP" xml:space="preserve">
+    <value>プレイリストから音楽グループの追加</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDDIR" xml:space="preserve">
+    <value>リストへの音楽ディレクトリの追加（アイドル時）</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PREVSONG" xml:space="preserve">
+    <value>前の曲</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_NEXTSONG" xml:space="preserve">
+    <value>次の曲</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_REMOVECURRSONG" xml:space="preserve">
+    <value>現在の曲の削除</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_REMOVEALLSONGS" xml:space="preserve">
+    <value>すべての曲の削除</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKSELECTIVE" xml:space="preserve">
+    <value>選択シーク（再生時）</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOPREVLYRIC" xml:space="preserve">
+    <value>前の歌詞へのシーク（再生時）</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTONEXTLYRIC" xml:space="preserve">
+    <value>次の歌詞へのシーク（再生時）</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOCURRLYRIC" xml:space="preserve">
+    <value>現在の歌詞へのシーク（再生時）</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOWHICHLYRIC" xml:space="preserve">
+    <value>どの歌詞へのシーク（再生時）</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SETREPEATCHECKPOINT" xml:space="preserve">
+    <value>リピートチェックポイントの設定</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOREPEATCHECKPOINT" xml:space="preserve">
+    <value>リピートチェックポイントへのシーク</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PLAYTESTSOUND" xml:space="preserve">
+    <value>テストサウンドの再生（デバイスとドライバーのテスト）</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_SEEKINDICATOR" xml:space="preserve">
+    <value>シーク：</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_VOLINDICATOR" xml:space="preserve">
+    <value>音量：</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_BASOLIAERROR" xml:space="preserve">
+    <value>音楽ファイルの処理中にBasoliaでエラーが発生しました。</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>音楽ファイルの処理中にBasoliaの出力でエラーが発生しました。</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_ERROR" xml:space="preserve">
+    <value>音楽ファイルの処理中に不明なエラーが発生しました。</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_PLAYBACKFAILED" xml:space="preserve">
+    <value>再生失敗:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TIP" xml:space="preserve">
+    <value>「A」を押すとプレイリストに1曲挿入され、「S」を押すと音楽ライブラリ全体が挿入されます。</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_SELECTLYRICSEEK" xml:space="preserve">
+    <value>シークする歌詞を選択してください</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICFILEPROMPT" xml:space="preserve">
+    <value>音楽ファイルへのパスを入力してください</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>ファイル「{0}」が存在しません。</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICPLAYLISTPROMPT" xml:space="preserve">
+    <value>音楽プレイリストへのパスを入力してください</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICPLAYLISTNOTFOUND" xml:space="preserve">
+    <value>音楽プレイリストが見つかりません</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICLIBRARYPROMPT" xml:space="preserve">
+    <value>音楽ライブラリディレクトリへのパスを入力してください</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICLIBRARYNOTFOUND" xml:space="preserve">
+    <value>音楽ライブラリディレクトリが見つかりません</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICFILE" xml:space="preserve">
+    <value>{0} を開いています…</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_NOWPLAYING" xml:space="preserve">
+    <value>再生中:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_UNKNOWNARTIST" xml:space="preserve">
+    <value>不明なアーティスト</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_UNKNOWNGENRE" xml:space="preserve">
+    <value>不明なジャンル</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILE" xml:space="preserve">
+    <value>歌詞ファイル {0} を開こうとしています…</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILEFAILED" xml:space="preserve">
+    <value>歌詞ファイル {0} を開けません:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TARGETPOSPROMPT" xml:space="preserve">
+    <value>ターゲット位置を次の形式で入力してください:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDPLAYING" xml:space="preserve">
+    <value>テストサウンドを再生しています…</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_EXCEPTION_TESTSOUNDMISSING" xml:space="preserve">
+    <value>テストサウンドデータがありません。</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_TITLE" xml:space="preserve">
+    <value>サウンドテスト</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_DESC" xml:space="preserve">
+    <value>現在の設定で問題ありませんか?</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_YES" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_NO" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_SUCCESS" xml:space="preserve">
+    <value>おめでとうございます！すべて正しく設定されました！</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_FAILURE" xml:space="preserve">
+    <value>デバイスを確認してもう一度お試しください。</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_UNKNOWN" xml:space="preserve">
+    <value>不明</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO" xml:space="preserve">
+    <value>曲情報</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_ARTIST" xml:space="preserve">
+    <value>アーティスト:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_TITLE" xml:space="preserve">
+    <value>タイトル:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_ALBUM" xml:space="preserve">
+    <value>アルバム:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_GENRE" xml:space="preserve">
+    <value>ジャンル:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_COMMENT" xml:space="preserve">
+    <value>コメント:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_DURATION" xml:space="preserve">
+    <value>再生時間:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS" xml:space="preserve">
+    <value>歌詞:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_LINES" xml:space="preserve">
+    <value>{0} 行</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_NOLYRICS" xml:space="preserve">
+    <value>歌詞なし</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO" xml:space="preserve">
+    <value>レイヤー情報</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VERSION" xml:space="preserve">
+    <value>バージョン:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_LAYER" xml:space="preserve">
+    <value>レイヤー:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_RATE" xml:space="preserve">
+    <value>レート:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODE" xml:space="preserve">
+    <value>モード:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODEEXT" xml:space="preserve">
+    <value>モード拡張:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FRAMESIZE" xml:space="preserve">
+    <value>フレームサイズ:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FLAGS" xml:space="preserve">
+    <value>フラグ:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_EMPHASIS" xml:space="preserve">
+    <value>強調:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_BITRATE" xml:space="preserve">
+    <value>ビットレート:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_ABR" xml:space="preserve">
+    <value>ABR レート:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VBR" xml:space="preserve">
+    <value>VBR:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE" xml:space="preserve">
+    <value>ネイティブ状態</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ACCURATERENDERING" xml:space="preserve">
+    <value>正確なレンダリング:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_BUFFERFILL" xml:space="preserve">
+    <value>バッファフィル:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_DECODINGDELAY" xml:space="preserve">
+    <value>デコード遅延:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGDELAY" xml:space="preserve">
+    <value>エンコード遅延:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGPADDING" xml:space="preserve">
+    <value>エンコードパディング:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRANKENSTEIN" xml:space="preserve">
+    <value>フランケンシュタインストリーム:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRESHDECODER" xml:space="preserve">
+    <value>フレッシュデコーダー:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_TEXTSANDEXTRAS" xml:space="preserve">
+    <value>テキストと追加情報</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFO" xml:space="preserve">
+    <value>ラジオ局情報</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFOEXT" xml:space="preserve">
+    <value>ラジオ局拡張情報</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATION" xml:space="preserve">
+    <value>ラジオ局を追加</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATIONGROUP" xml:space="preserve">
+    <value>プレイリストからラジオ局グループを追加</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_PREVSTATION" xml:space="preserve">
+    <value>前のラジオ局</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_NEXTSTATION" xml:space="preserve">
+    <value>次のラジオ局</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_REMOVECURRSTATION" xml:space="preserve">
+    <value>現在のラジオ局を削除</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_REMOVEALLSTATIONS" xml:space="preserve">
+    <value>すべてのラジオ局を削除</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_TIP" xml:space="preserve">
+    <value>プレイリストにラジオ局を追加するには、「A」を押してください。</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONPROMPT" xml:space="preserve">
+    <value>ラジオ局へのパスを入力してください。ステーションの URL には、MPEG ラジオ局を指定する必要があります。 AAC ラジオステーションはまだサポートされていません。</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONGROUPPROMPT" xml:space="preserve">
+    <value>ラジオステーションのプレイリストへのパスを入力してください。ステーションの URL は MPEG ラジオステーションを指定する必要があります。AAC ラジオステーションはまだサポートされていません。</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONGROUPNOTFOUND" xml:space="preserve">
+    <value>ラジオステーションのプレイリストが見つかりません。</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO" xml:space="preserve">
+    <value>ステーション情報</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_URL" xml:space="preserve">
+    <value>ラジオステーションの URL:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_NAME" xml:space="preserve">
+    <value>ラジオステーション名:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_CURRSONG" xml:space="preserve">
+    <value>ラジオステーションの現在の曲:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO" xml:space="preserve">
+    <value>ラジオサーバー情報</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_HTTPS" xml:space="preserve">
+    <value>ラジオステーションは HTTPS を使用しています:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_TYPE" xml:space="preserve">
+    <value>ラジオステーションのサーバータイプ:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_STREAMS" xml:space="preserve">
+    <value>ラジオステーションのストリーム数: {0} (アクティブ: {1})</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_LISTENERS" xml:space="preserve">
+    <value>ラジオステーションのリスナー数: {0} (ピーク時: {1})</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO" xml:space="preserve">
+    <value>ストリーム情報</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_NAME" xml:space="preserve">
+    <value>名前:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_HOMEPAGE" xml:space="preserve">
+    <value>ホームページ:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_STREAMPATH" xml:space="preserve">
+    <value>ストリームパス:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_LISTENERS" xml:space="preserve">
+    <value>リスナー数: {0} (ピーク時: {1})</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_BITRATE" xml:space="preserve">
+    <value>ビットレート:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_MEDIATYPE" xml:space="preserve">
+    <value>メディアタイプ:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_UNABLETOOBTAIN" xml:space="preserve">
+    <value>{0} のラジオステーションの拡張情報を取得できません</value>
+  </data>
+  <data name="BASSBOOM_APP_NOTFOUND" xml:space="preserve">
+    <value>音楽ファイル {0} が存在しません。</value>
+  </data>
+  <data name="BASSBOOM_APP_FATALERROR" xml:space="preserve">
+    <value>BassBoom CLI で致命的なエラーが発生しました。</value>
+  </data>
+
+</root>

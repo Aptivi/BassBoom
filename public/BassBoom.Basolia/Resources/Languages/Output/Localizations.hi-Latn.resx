@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+        <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="metadata">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" use="required" type="xsd:string" />
+                <xsd:attribute name="type" type="xsd:string" />
+                <xsd:attribute name="mimetype" type="xsd:string" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="assembly">
+            <xsd:complexType>
+                <xsd:attribute name="alias" type="xsd:string" />
+                <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="data">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="resheader">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+    <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA" xml:space="preserve">
+    <value>baasoliya instens pradaan nahin kiya gaya hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID" xml:space="preserve">
+    <value>mpg123 laibreree path {0} mein vaidh mpg123 laibreree nahin hai.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID" xml:space="preserve">
+    <value>out123 laibreree path {0} mein vaidh out123 laibreree nahin hai.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB" xml:space="preserve">
+    <value>laibreree aarambh hone tak sanskaran praapt nahin kiya ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT" xml:space="preserve">
+    <value>basoli ne abhee tak mpg123 laibreree aarambh nahin kee hai!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY" xml:space="preserve">
+    <value>draivaron se poochhataachh nahin kee ja sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY" xml:space="preserve">
+    <value>divais se poochhataachh nahin kee ja sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND" xml:space="preserve">
+    <value>draivar {0} maujood nahin hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND" xml:space="preserve">
+    <value>divais {0} maujood nahin hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR" xml:space="preserve">
+    <value>saamaany baasoliya truti</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR" xml:space="preserve">
+    <value>mpg123 ne nimn truti lautaee:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR" xml:space="preserve">
+    <value>saamaany baasoliya aautaput sistam truti</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR" xml:space="preserve">
+    <value>out123 ne nimn truti lautaee:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN" xml:space="preserve">
+    <value>vartamaan fail ya rediyo steshan abhee bhee khula hone par yah fail nahin kholee ja sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH" xml:space="preserve">
+    <value>sangeet fail ke lie path pradaan karen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>sangeet fail maujood nahin hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED" xml:space="preserve">
+    <value>fail nahin kholee ja sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN" xml:space="preserve">
+    <value>vartamaan fail ya rediyo steshan abhee bhee khula hone par yah url nahin kholee ja sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL" xml:space="preserve">
+    <value>sangeet fail ya rediyo steshan ke lie path pradaan karen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION" xml:space="preserve">
+    <value>yah rediyo steshan maujood nahin hai. truti kod:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION" xml:space="preserve">
+    <value>yah rediyo steshan jaisa nahin dikhata. kya aap nishchit hain?</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION" xml:space="preserve">
+    <value>yah mp3 rediyo steshan jaisa nahin dikhata. aapake paas {0} prakaar hai. kya aap nishchit hain?</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED" xml:space="preserve">
+    <value>rediyo steshan nahin khola ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM" xml:space="preserve">
+    <value>odiyo streem pradaan nahin kee gaee hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED" xml:space="preserve">
+    <value>streem nahin kholee ja sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED" xml:space="preserve">
+    <value>fail ya rediyo steshan ko band nahin kiya ja sakata jo pahale se band hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED" xml:space="preserve">
+    <value>fail band nahin kee ja sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY" xml:space="preserve">
+    <value>fail ko kveree nahin kiya ja sakata jo khulee nahin hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK" xml:space="preserve">
+    <value>plebaik ke dauraan avadhi praapt karane ka prayaas karane se plebaik dooshit ho jaata hai! plebaik ke dauraan is fankshan ko kol na karen.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED" xml:space="preserve">
+    <value>lambaee kee jaanakaaree ke lie fail ko skain nahin kiya ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED" xml:space="preserve">
+    <value>fail kee lambaee nirdhaarit nahin kee ja sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED" xml:space="preserve">
+    <value>aautaput nahin mil sakata.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED" xml:space="preserve">
+    <value>frem kee lambaee nahin mil sakatee.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED" xml:space="preserve">
+    <value>prati frem saimpal nahin mil sakate.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED" xml:space="preserve">
+    <value>prati frem sekand nahin mil sakate.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED" xml:space="preserve">
+    <value>saamaany bafar aakaar nahin mil sakata.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK" xml:space="preserve">
+    <value>plebaik ke dauraan id3 metaadeta praapt karane ka prayaas karane se plebaik dooshit ho jaata hai! plebaik ke dauraan is fankshan ko kol na karen.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED" xml:space="preserve">
+    <value>frem jaanakaaree ke lie fail ko skain nahin kiya ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED" xml:space="preserve">
+    <value>metaadeta jaanakaaree nahin mil sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK" xml:space="preserve">
+    <value>plebaik ke dauraan ichy metaadeta praapt karane ka prayaas karane se plebaik dooshit ho jaata hai! plebaik ke dauraan is fankshan ko kol na karen.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK" xml:space="preserve">
+    <value>plebaik ke dauraan frem jaanakaaree praapt karane ka prayaas karane se plebaik dooshit ho jaata hai! plebaik ke dauraan is fankshan ko kol na karen.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED" xml:space="preserve">
+    <value>frem jaanakaaree nahin mil sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE" xml:space="preserve">
+    <value>fail ke frem ko dikod nahin kiya ja sakata jo khula nahin hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED" xml:space="preserve">
+    <value>frem ko dikod nahin kiya ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND" xml:space="preserve">
+    <value>dikodar {0} nahin mila</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED" xml:space="preserve">
+    <value>dikodar {0} aapake divais dvaara samarthit nahin hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED" xml:space="preserve">
+    <value>dikodar ko {0} par set nahin kiya ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED" xml:space="preserve">
+    <value>fail ka formet nirdhaarit nahin kiya ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND" xml:space="preserve">
+    <value>enkoding {0} nahin milee.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED" xml:space="preserve">
+    <value>formet jaanakaaree nahin mil sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED" xml:space="preserve">
+    <value>aautaput enkoding ko reeset nahin kiya ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED" xml:space="preserve">
+    <value>aautaput formet set nahin kiya ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED" xml:space="preserve">
+    <value>aautaput enkoding ko is par set nahin kiya ja sakata:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED" xml:space="preserve">
+    <value>root laibreree path pradaan karen.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND" xml:space="preserve">
+    <value>geet maujood nahin hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND" xml:space="preserve">
+    <value>plelist fail {0} maujood nahin hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID" xml:space="preserve">
+    <value>amaany plelist fail eksatenshan {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY" xml:space="preserve">
+    <value>plelist pratinidhitv pradaan nahin kiya gaya hai.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER" xml:space="preserve">
+    <value>yah ek vistaarit hedar nahin hai:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS" xml:space="preserve">
+    <value>aixtinf ke lie theek do tarkon kee aavashyakata hotee hai, aur koee tark soochak nahin hai.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>myoojik fail {0} nahin milee ya mpaig fail nahin hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS" xml:space="preserve">
+    <value>traik jaanakaaree ko theek do tark pradaan karane honge: sekand mein traik kee lambaee (-1 agar yah laivastreem hai) aur kachcha traik sheershak.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS" xml:space="preserve">
+    <value>traik jaanakaaree sekand kee sankhya [{0}] sahee dhang se pradaan nahin karatee hai.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED" xml:space="preserve">
+    <value>fail kee vartamaan avadhi nirdhaarit nahin kee ja sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK" xml:space="preserve">
+    <value>aisee fail nahin khojee ja sakatee jo khulee nahin hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED" xml:space="preserve">
+    <value>fail kee shuruaat tak nahin khojee ja sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED" xml:space="preserve">
+    <value>fail ke frem #{0} tak nahin khojee ja sakatee</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED" xml:space="preserve">
+    <value>khojane ke lie geet pankti pradaan nahin kee gaee hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED" xml:space="preserve">
+    <value>chhod nahin sakate.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY" xml:space="preserve">
+    <value>jo fail khulee nahin hai use chalaaya nahin ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE" xml:space="preserve">
+    <value>jo fail khulee nahin hai use roka nahin ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP" xml:space="preserve">
+    <value>jo fail khulee nahin hai use roka nahin ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED" xml:space="preserve">
+    <value>volyoom ko {0} par set nahin kiya ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED" xml:space="preserve">
+    <value>volyoom (bes, riyalee, aur desibal) nahin mil sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED" xml:space="preserve">
+    <value>ikvalaizar baind {0}/32 ko {1} se {2} ke antargat set nahin kiya ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED" xml:space="preserve">
+    <value>ikvalaizar baind {0}/32 -&gt; {1}/32 ko {2} se {3} ke antargat set nahin kiya ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED" xml:space="preserve">
+    <value>ikvalaizar baind ko unake aarambhik maanon par reeset nahin kiya ja sakata!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED" xml:space="preserve">
+    <value>{0} kee mool sthiti nahin mil sakatee!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED" xml:space="preserve">
+    <value>draivar {1} par divais {0} par aautaput nahin khola ja sakata</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT" xml:space="preserve">
+    <value>aapako aautaput kholane kee aavashyakata hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED" xml:space="preserve">
+    <value>chayanit dar [{0} hartj] aur enkoding [{1}] samarthit nahin hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED" xml:space="preserve">
+    <value>aautaput shuroo nahin kiya ja sakata.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED" xml:space="preserve">
+    <value>feed nahin kiya ja sakata.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED" xml:space="preserve">
+    <value>rediyo sarvar {0} ko paars karane mein viphal. adhik jaanakaaree aantarik apavaad mein paee ja sakatee hai.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST" xml:space="preserve">
+    <value>streem tokan shoony hai.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES" xml:space="preserve">
+    <value>koee srot nahin hain.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH" xml:space="preserve">
+    <value>rediyo steshan ke lie path pradaan karen</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED" xml:space="preserve">
+    <value>rediyo steshan sarvar prakaar nirdhaarit nahin kiya ja sakata.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2" xml:space="preserve">
+    <value>shoutchast v2.x streem tokan shoony hai</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2" xml:space="preserve">
+    <value>koee shoutchast v2.x streem nahin hai.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST" xml:space="preserve">
+    <value>koee ichaichast streem nahin hai.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED" xml:space="preserve">
+    <value>streem id {0} ko paars karane mein viphal. adhik jaanakaaree aantarik apavaad mein paee ja sakatee hai.</value>
+  </data>
+
+</root>

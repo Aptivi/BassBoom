@@ -15,16 +15,8 @@
       "text": "laibreree path {0} hai"
     },
     {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
-      "text": "mpg123 laibreree path {0} maujood nahin hai."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
-      "text": "out123 laibreree path {0} maujood nahin hai."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
-      "text": "libwinpthraiad laibreree path {0} maujood nahin hai."
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND",
+      "text": "laibreree path {0} maujood nahin hai."
     },
     {
       "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",

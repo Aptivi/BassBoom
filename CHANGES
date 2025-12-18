@@ -1,16 +1,19 @@
-We've updated this project to accommodate the localization needs!
+We've updated this project for general improvements!
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[+]` Added localized strings
+- `[*]` Updated mpg123 to 1.33.3
+- `[*]` Updated Terminaux to 8.0
+- `[*]` Updated .NET to 10.0
+- `[*]` General improvements and bug fixes
 
 Review the commit history if you want to get a deep insight about the changes.
 
 ### Feedback?
 
-If you have issues with this version, report to us by [making a new issue ticket](https://gitlab.com/aptivi/main/BassBoom/-/issues/new).
+If you have issues with this version, report to us by [making a new issue ticket](https://github.com/Aptivi/BassBoom/issues/new).
 
 ### Sum hashes
 

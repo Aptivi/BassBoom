@@ -36,7 +36,7 @@
 
 <!----------------------------------------------------------------------------->
 
-[Releases]: https://gitlab.com/aptivi/main/BassBoom/-/releases
+[Releases]: https://github.com/Aptivi/BassBoom/releases
 [NuGet]: https://www.nuget.org/packages/BassBoom.Basolia/
 
 [Libraries]: https://aptivi.gitbook.io/bassboom-manual/project-dependencies

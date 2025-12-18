@@ -19,16 +19,8 @@
       "text": "Bibliotekbanen er {0}"
     },
     {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
-      "text": "mpg123-bibliotekbanen {0} finnes ikke."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
-      "text": "out123-bibliotekbanen {0} finnes ikke."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
-      "text": "libwinpthread-bibliotekbanen {0} finnes ikke."
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND",
+      "text": "Bibliotekbanen {0} finnes ikke."
     },
     {
       "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",

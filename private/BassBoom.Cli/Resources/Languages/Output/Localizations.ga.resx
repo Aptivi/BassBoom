@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+        <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="metadata">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" use="required" type="xsd:string" />
+                <xsd:attribute name="type" type="xsd:string" />
+                <xsd:attribute name="mimetype" type="xsd:string" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="assembly">
+            <xsd:complexType>
+                <xsd:attribute name="alias" type="xsd:string" />
+                <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="data">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="resheader">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+    <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="BASSBOOM_APP_COMMON_DEVICE" xml:space="preserve">
+    <value>Gléas:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DRIVER" xml:space="preserve">
+    <value>Tiománaí:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICECACHED" xml:space="preserve">
+    <value>Gléas (taisceáilte):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DRIVERCACHED" xml:space="preserve">
+    <value>Tiománaí (taisceáilte):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICESQUERYNOTPLAYING" xml:space="preserve">
+    <value>Ní féidir fiosrúcháin a dhéanamh ar ghléasanna reatha agus gan a bheith ag seinm.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICEANDDRIVER" xml:space="preserve">
+    <value>Gléas agus Tiománaí</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_AVAILABLEDEVICESANDDRIVERS" xml:space="preserve">
+    <value>Gléasanna agus tiománaithe atá ar fáil</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_EXTRASPECS" xml:space="preserve">
+    <value>Sonraíochtaí breise (do fhorbróirí)</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_PCMSAMPLESIZE" xml:space="preserve">
+    <value>Méid samplach PCM:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ZEROSAMPLE" xml:space="preserve">
+    <value>Sampla nialasach (fritháireamh 0):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DURATIONSAMPLES" xml:space="preserve">
+    <value>Fad sna samplaí:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_FRAMELEN" xml:space="preserve">
+    <value>Fad fráma:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SPF" xml:space="preserve">
+    <value>Samplaí/fráma:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_TPF" xml:space="preserve">
+    <value>Soicindí/fráma:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DECODERS" xml:space="preserve">
+    <value>Díchódóirí</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SUPPORTEDDECODERS" xml:space="preserve">
+    <value>Díchódóirí tacaithe:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ALLDECODERS" xml:space="preserve">
+    <value>Gach díchódóir:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ENCODINGSANDRATES" xml:space="preserve">
+    <value>Ionchóduithe agus Rátaí</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ENCODINGS" xml:space="preserve">
+    <value>Ionchóduithe:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_RATES" xml:space="preserve">
+    <value>Rátaí:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BUFFERINFO" xml:space="preserve">
+    <value>Eolas maoláin</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_GENERICBUFFERSIZE" xml:space="preserve">
+    <value>Méid maoláin ghinearálta:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS" xml:space="preserve">
+    <value>Sonraíochtaí BassBoom</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_BASOLIAVER" xml:space="preserve">
+    <value>Leagan Basolia:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_MPG123VER" xml:space="preserve">
+    <value>Leagan MPG123:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_OUT123VER" xml:space="preserve">
+    <value>Leagan OUT123:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS" xml:space="preserve">
+    <value>Sonraíochtaí córais</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEM" xml:space="preserve">
+    <value>Córas:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMARCH" xml:space="preserve">
+    <value>Ailtireacht an Chórais:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_PROCESSARCH" xml:space="preserve">
+    <value>Ailtireacht an Phróisis:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMDESC" xml:space="preserve">
+    <value>Cur síos ar an gcóras:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_DOTNETDESC" xml:space="preserve">
+    <value>Cur síos ar .NET:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES" xml:space="preserve">
+    <value>Eochairbhuillí atá ar fáil</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SELECTDRIVER" xml:space="preserve">
+    <value>Roghnaigh tiománaí. ESC le scor.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SELECTDEVICE" xml:space="preserve">
+    <value>Roghnaigh gléas. Is é {0} an tiománaí reatha. ESC le scor.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_PATHTOPLAYLIST" xml:space="preserve">
+    <value>Cuir isteach cosán chuig an gcomhad seinmliosta ar mhaith leat a shábháil</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEUP" xml:space="preserve">
+    <value>Méadaigh an toirt</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEDOWN" xml:space="preserve">
+    <value>Laghdaigh an toirt</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_HELP" xml:space="preserve">
+    <value>Cabhair</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_EQUALIZER" xml:space="preserve">
+    <value>Oscail an cothromóir</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_SYSINFO" xml:space="preserve">
+    <value>Faisnéis faoin gcóras</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DISCO" xml:space="preserve">
+    <value>Mód Dioscó!</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLBOOST" xml:space="preserve">
+    <value>Cumasaigh borradh toirte</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERINFO" xml:space="preserve">
+    <value>Faisnéis faoin ngléas agus faoin tiománaí</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERSET" xml:space="preserve">
+    <value>Socraigh an gléas agus an tiománaí</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERRESET" xml:space="preserve">
+    <value>Athshocraigh an gléas agus an tiománaí</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_SAVETOPLAYLIST" xml:space="preserve">
+    <value>Sábháil chuig an seinmliosta</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_QUIT" xml:space="preserve">
+    <value>Imeacht</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DECREASE" xml:space="preserve">
+    <value>Laghdaigh</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_INCREASE" xml:space="preserve">
+    <value>Méadaigh</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_PREVBAND" xml:space="preserve">
+    <value>An banda roimhe seo</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_NEXTBAND" xml:space="preserve">
+    <value>An chéad bhanda eile</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_RESET" xml:space="preserve">
+    <value>Athshocraigh</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASOLIAERROR" xml:space="preserve">
+    <value>Tá earráid ann le Basolia agus iarracht á déanamh an oibríocht chothromóra a phróiseáil.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>Tá earráid ann le haschur Basolia agus iarracht á déanamh an oibríocht chothromóra a phróiseáil.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_ERROR" xml:space="preserve">
+    <value>Tá earráid anaithnid ann agus iarracht á déanamh an oibríocht chothromóra a phróiseáil.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_NOTPLAYING" xml:space="preserve">
+    <value>Gan seinm. Tá an seinnteoir ceoil díomhaoin.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASS" xml:space="preserve">
+    <value>Dord</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_UPPERMID" xml:space="preserve">
+    <value>Lár Uachtarach</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_TREBLE" xml:space="preserve">
+    <value>Treble</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_DEVICEBAND" xml:space="preserve">
+    <value>Banda atá sainiúil don ghléas</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_UNKNOWNBAND" xml:space="preserve">
+    <value>Cineál banda anaithnid</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BAND" xml:space="preserve">
+    <value>Banda</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PLAYPAUSE" xml:space="preserve">
+    <value>Seinn/Sos</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_STOP" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_BACKWARDS" xml:space="preserve">
+    <value>Cuardaigh siar</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_FORWARDS" xml:space="preserve">
+    <value>Cuardaigh ar aghaidh</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_DECREASESEEKDURATION" xml:space="preserve">
+    <value>Laghdaigh fad an chuardaigh</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_INCREASESEEKDURATION" xml:space="preserve">
+    <value>Méadaigh fad an chuardaigh</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SONGINFO" xml:space="preserve">
+    <value>Faisnéis faoin amhrán</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDFILE" xml:space="preserve">
+    <value>Cuir comhad ceoil leis</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDGROUP" xml:space="preserve">
+    <value>Cuir grúpa ceoil ón seinmliosta</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDDIR" xml:space="preserve">
+    <value>Cuir eolaire ceoil leis an liosta (nuair atá sé díomhaoin)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PREVSONG" xml:space="preserve">
+    <value>Amhrán roimhe seo</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_NEXTSONG" xml:space="preserve">
+    <value>An chéad amhrán eile</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_REMOVECURRSONG" xml:space="preserve">
+    <value>Bain amhrán reatha</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_REMOVEALLSONGS" xml:space="preserve">
+    <value>Bain gach amhrán</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKSELECTIVE" xml:space="preserve">
+    <value>Cuardaigh go roghnach (agus é ag seinm)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOPREVLYRIC" xml:space="preserve">
+    <value>Cuardaigh go dtí an liric roimhe seo (agus é ag seinm)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTONEXTLYRIC" xml:space="preserve">
+    <value>Cuardaigh go dtí an chéad liric eile (agus é ag seinm)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOCURRLYRIC" xml:space="preserve">
+    <value>Cuardaigh go dtí an liric reatha (agus é ag seinm)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOWHICHLYRIC" xml:space="preserve">
+    <value>Cuardaigh cén liric (agus é ag seinm)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SETREPEATCHECKPOINT" xml:space="preserve">
+    <value>Socraigh seicphointe athrá</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOREPEATCHECKPOINT" xml:space="preserve">
+    <value>Cuardaigh go seicphointe athrá</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PLAYTESTSOUND" xml:space="preserve">
+    <value>Seinn fuaim tástála (chun an gléas agus an tiománaí a thástáil)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_SEEKINDICATOR" xml:space="preserve">
+    <value>Cuardaigh:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_VOLINDICATOR" xml:space="preserve">
+    <value>Imleabhar:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_BASOLIAERROR" xml:space="preserve">
+    <value>Tá earráid ann le Basolia agus iarracht á déanamh an comhad ceoil a phróiseáil.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>Tá earráid ann le haschur Basolia agus iarracht á déanamh an comhad ceoil a phróiseáil.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_ERROR" xml:space="preserve">
+    <value>Tá earráid anaithnid ann agus iarracht á déanamh an comhad ceoil a phróiseáil.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_PLAYBACKFAILED" xml:space="preserve">
+    <value>Teip athsheinm:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TIP" xml:space="preserve">
+    <value>Brúigh &apos;A&apos; chun amhrán amháin a chur isteach sa seinmliosta, nó &apos;S&apos; chun an leabharlann ceoil iomlán a chur isteach.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_SELECTLYRICSEEK" xml:space="preserve">
+    <value>Roghnaigh liricí le cuardach</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICFILEPROMPT" xml:space="preserve">
+    <value>Cuir isteach cosán chuig an gcomhad ceoil</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>Níl an comhad &apos;{0}&apos; ann.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICPLAYLISTPROMPT" xml:space="preserve">
+    <value>Cuir isteach cosán chuig an seinmliosta ceoil</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICPLAYLISTNOTFOUND" xml:space="preserve">
+    <value>Ní bhfuarthas seinmliosta ceoil.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICLIBRARYPROMPT" xml:space="preserve">
+    <value>Cuir isteach cosán chuig eolaire na leabharlainne ceoil</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICLIBRARYNOTFOUND" xml:space="preserve">
+    <value>Ní bhfuarthas eolaire na leabharlainne ceoil.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICFILE" xml:space="preserve">
+    <value>Ag oscailt {0}...</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_NOWPLAYING" xml:space="preserve">
+    <value>Ag seinm anois:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_UNKNOWNARTIST" xml:space="preserve">
+    <value>Ealaíontóir Anaithnid</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_UNKNOWNGENRE" xml:space="preserve">
+    <value>Seánra Anaithnid</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILE" xml:space="preserve">
+    <value>Ag iarraidh comhad liricí {0} a oscailt...</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILEFAILED" xml:space="preserve">
+    <value>Ní féidir comhad liricí {0} a oscailt:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TARGETPOSPROMPT" xml:space="preserve">
+    <value>Scríobh an suíomh sprice sa fhormáid seo:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDPLAYING" xml:space="preserve">
+    <value>Ag seinm fuaim tástála...</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_EXCEPTION_TESTSOUNDMISSING" xml:space="preserve">
+    <value>Sonraí fuaime tástála ar iarraidh.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_TITLE" xml:space="preserve">
+    <value>Tástáil fuaime</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_DESC" xml:space="preserve">
+    <value>An bhfuil gach rud ceart go leor sa chumraíocht reatha seo?</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_YES" xml:space="preserve">
+    <value>Tá</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_NO" xml:space="preserve">
+    <value>Níl</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_SUCCESS" xml:space="preserve">
+    <value>Comhghairdeas! Tá gach rud socraithe i gceart agat!</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_FAILURE" xml:space="preserve">
+    <value>Seiceáil do ghléas agus déan iarracht arís.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_UNKNOWN" xml:space="preserve">
+    <value>Anaithnid</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO" xml:space="preserve">
+    <value>Eolas faoin amhrán</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_ARTIST" xml:space="preserve">
+    <value>Ealaíontóir:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_TITLE" xml:space="preserve">
+    <value>Teideal:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_ALBUM" xml:space="preserve">
+    <value>Albam:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_GENRE" xml:space="preserve">
+    <value>Seánra:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_COMMENT" xml:space="preserve">
+    <value>Trácht:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_DURATION" xml:space="preserve">
+    <value>Fad:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS" xml:space="preserve">
+    <value>Liricí:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_LINES" xml:space="preserve">
+    <value>{0} líne</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_NOLYRICS" xml:space="preserve">
+    <value>Gan liricí</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO" xml:space="preserve">
+    <value>Eolas faoin tsraith</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VERSION" xml:space="preserve">
+    <value>Leagan:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_LAYER" xml:space="preserve">
+    <value>Sraith:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_RATE" xml:space="preserve">
+    <value>Ráta:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODE" xml:space="preserve">
+    <value>Mód:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODEEXT" xml:space="preserve">
+    <value>Síneadh an Mhód:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FRAMESIZE" xml:space="preserve">
+    <value>Méid an Fhráma:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FLAGS" xml:space="preserve">
+    <value>Bratacha:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_EMPHASIS" xml:space="preserve">
+    <value>Béim:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_BITRATE" xml:space="preserve">
+    <value>Ráta Giotáin:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_ABR" xml:space="preserve">
+    <value>Ráta ABR:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VBR" xml:space="preserve">
+    <value>VBR:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE" xml:space="preserve">
+    <value>Stádas Dúchasach</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ACCURATERENDERING" xml:space="preserve">
+    <value>Rindreáil chruinn:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_BUFFERFILL" xml:space="preserve">
+    <value>Líonadh maoláin:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_DECODINGDELAY" xml:space="preserve">
+    <value>Moill díchódaithe:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGDELAY" xml:space="preserve">
+    <value>Moill ionchódaithe:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGPADDING" xml:space="preserve">
+    <value>Líonadh ionchódaithe:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRANKENSTEIN" xml:space="preserve">
+    <value>Sruth Frankenstein:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRESHDECODER" xml:space="preserve">
+    <value>Díchódóir úr:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_TEXTSANDEXTRAS" xml:space="preserve">
+    <value>Téacsanna agus Breiseáin</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFO" xml:space="preserve">
+    <value>Eolas faoi stáisiún raidió</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFOEXT" xml:space="preserve">
+    <value>Eolas sínte faoi stáisiún raidió</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATION" xml:space="preserve">
+    <value>Cuir stáisiún raidió leis</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATIONGROUP" xml:space="preserve">
+    <value>Cuir grúpa stáisiún raidió ón seinmliosta</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_PREVSTATION" xml:space="preserve">
+    <value>Stáisiún raidió roimhe seo</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_NEXTSTATION" xml:space="preserve">
+    <value>An chéad stáisiún raidió eile</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_REMOVECURRSTATION" xml:space="preserve">
+    <value>Bain an stáisiún raidió reatha</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_REMOVEALLSTATIONS" xml:space="preserve">
+    <value>Bain gach stáisiún raidió</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_TIP" xml:space="preserve">
+    <value>Brúigh &apos;A&apos; chun stáisiún raidió a chur leis an seinmliosta.</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONPROMPT" xml:space="preserve">
+    <value>Cuir isteach cosán chuig an stáisiún raidió. Ní mór don URL chuig an stáisiún stáisiún raidió MPEG a sholáthar. Ní thacaítear le cinn AAC go fóill.</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONGROUPPROMPT" xml:space="preserve">
+    <value>Cuir isteach cosán chuig seinmliosta na stáisiún raidió. Caithfidh URLanna na stáisiún stáisiún raidió MPEG a sholáthar. Ní thacaítear le cinn AAC go fóill.</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONGROUPNOTFOUND" xml:space="preserve">
+    <value>Ní bhfuarthas seinmliosta stáisiúin raidió.</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO" xml:space="preserve">
+    <value>Eolas stáisiúin</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_URL" xml:space="preserve">
+    <value>URL stáisiúin raidió:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_NAME" xml:space="preserve">
+    <value>Ainm an stáisiúin raidió:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_CURRSONG" xml:space="preserve">
+    <value>Amhrán reatha an stáisiúin raidió:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO" xml:space="preserve">
+    <value>Eolas freastalaí raidió</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_HTTPS" xml:space="preserve">
+    <value>Úsáideann an stáisiún raidió HTTPS:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_TYPE" xml:space="preserve">
+    <value>Cineál freastalaí stáisiúin raidió:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_STREAMS" xml:space="preserve">
+    <value>Sruthanna stáisiúin raidió: {0} le {1} gníomhach</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_LISTENERS" xml:space="preserve">
+    <value>Éisteoirí stáisiúin raidió: {0} le {1} ag buaic</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO" xml:space="preserve">
+    <value>Eolas srutha</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_NAME" xml:space="preserve">
+    <value>Ainm:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_HOMEPAGE" xml:space="preserve">
+    <value>Leathanach baile:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_STREAMPATH" xml:space="preserve">
+    <value>Cosán srutha:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_LISTENERS" xml:space="preserve">
+    <value>Éisteoirí: {0} le {1} ag buaic</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_BITRATE" xml:space="preserve">
+    <value>Ráta giotán:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_MEDIATYPE" xml:space="preserve">
+    <value>Cineál meán:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_UNABLETOOBTAIN" xml:space="preserve">
+    <value>Ní féidir eolas sínte stáisiúin raidió a fháil do {0}</value>
+  </data>
+  <data name="BASSBOOM_APP_NOTFOUND" xml:space="preserve">
+    <value>Níl an comhad ceoil {0} ann.</value>
+  </data>
+  <data name="BASSBOOM_APP_FATALERROR" xml:space="preserve">
+    <value>Earráid mharfach i CLI BassBoom.</value>
+  </data>
+
+</root>

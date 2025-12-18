@@ -15,16 +15,8 @@
       "text": "लाइब्रेरी पथ {0} है"
     },
     {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
-      "text": "mpg123 लाइब्रेरी पथ {0} मौजूद नहीं है।"
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
-      "text": "out123 लाइब्रेरी पथ {0} मौजूद नहीं है।"
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
-      "text": "libwinpthread लाइब्रेरी पथ {0} मौजूद नहीं है।"
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND",
+      "text": "लाइब्रेरी पथ {0} मौजूद नहीं है।"
     },
     {
       "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",

@@ -1,6 +1,8 @@
 $rootDir = $args[0]
 $oldVersion = $args[1]
 $newVersion = $args[2]
+$oldApiVersion = $args[3]
+$newApiVersion = $args[4]
 
 # Modify the Package.wxs file
 $oldVersionSplit = $oldVersion.Split(".")
@@ -14,6 +16,8 @@ $packageWxsContent = [System.IO.File]::ReadAllText($packageWxsFile).Replace($old
 [System.IO.File]::WriteAllText($packageWxsFile, $packageWxsContent)
 
 # Modify the PKGBUILD VCS files
+$oldApiVersionSplit = $oldApiVersion.Split(".")
+$newApiVersionSplit = $newApiVersion.Split(".")
 $oldVerNoPatchSpec = "$($oldVersionSplit[0]).$($oldVersionSplit[1]).$($oldVersionSplit[2])"
 $newVerNoPatchSpec = "$($newVersionSplit[0]).$($newVersionSplit[1]).$($newVersionSplit[2])"
 $pkgBuildVcsFile = "$rootDir\PKGBUILD-VCS"

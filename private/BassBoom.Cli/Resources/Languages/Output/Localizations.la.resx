@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+        <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="metadata">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" use="required" type="xsd:string" />
+                <xsd:attribute name="type" type="xsd:string" />
+                <xsd:attribute name="mimetype" type="xsd:string" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="assembly">
+            <xsd:complexType>
+                <xsd:attribute name="alias" type="xsd:string" />
+                <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="data">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="resheader">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+    <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="BASSBOOM_APP_COMMON_DEVICE" xml:space="preserve">
+    <value>Instrumentum:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DRIVER" xml:space="preserve">
+    <value>Auriga:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICECACHED" xml:space="preserve">
+    <value>Instrumentum (in cella recondita):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DRIVERCACHED" xml:space="preserve">
+    <value>Auriga (in cella recondita):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICESQUERYNOTPLAYING" xml:space="preserve">
+    <value>Instrumenta currentia interrogare non potest dum non luditur.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICEANDDRIVER" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_AVAILABLEDEVICESANDDRIVERS" xml:space="preserve">
+    <value>Instrumentum et Auriga</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_EXTRASPECS" xml:space="preserve">
+    <value>Instrumenta et aurigae praesto</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_PCMSAMPLESIZE" xml:space="preserve">
+    <value>Specificationes additae (pro fabricatoribus)</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ZEROSAMPLE" xml:space="preserve">
+    <value>Magnitudo exempli PCM:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DURATIONSAMPLES" xml:space="preserve">
+    <value>Exempli nullius (offset 0):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_FRAMELEN" xml:space="preserve">
+    <value>Duratio in exemplis:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SPF" xml:space="preserve">
+    <value>Longitudo imaginis:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_TPF" xml:space="preserve">
+    <value>Exempla/imago:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DECODERS" xml:space="preserve">
+    <value>Secunda/imago:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SUPPORTEDDECODERS" xml:space="preserve">
+    <value>Decodificatores</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ALLDECODERS" xml:space="preserve">
+    <value>Decodificatores sustentati:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ENCODINGSANDRATES" xml:space="preserve">
+    <value>Omnes decodificatores:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ENCODINGS" xml:space="preserve">
+    <value>Codificationes et Frequentiae</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_RATES" xml:space="preserve">
+    <value>Codificationes:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BUFFERINFO" xml:space="preserve">
+    <value>Frequentiae:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_GENERICBUFFERSIZE" xml:space="preserve">
+    <value>Informationes de memoria intermedia</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS" xml:space="preserve">
+    <value>Magnitudo memoriae intermediae generica:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_BASOLIAVER" xml:space="preserve">
+    <value>Specificationes BassBoom</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_MPG123VER" xml:space="preserve">
+    <value>Versio Basolia:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_OUT123VER" xml:space="preserve">
+    <value>Versio MPG123:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS" xml:space="preserve">
+    <value>Versio OUT123:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEM" xml:space="preserve">
+    <value>Specificationes systematis</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMARCH" xml:space="preserve">
+    <value>Systema:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_PROCESSARCH" xml:space="preserve">
+    <value>Architectura Systematis:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMDESC" xml:space="preserve">
+    <value>Architectura Processus:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_DOTNETDESC" xml:space="preserve">
+    <value>Descriptio systematis:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES" xml:space="preserve">
+    <value>Descriptio .NET:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SELECTDRIVER" xml:space="preserve">
+    <value>Ictus clavium praesto</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SELECTDEVICE" xml:space="preserve">
+    <value>Aurigam elige. ESC ad exeundum.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_PATHTOPLAYLIST" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEUP" xml:space="preserve">
+    <value>Instrumentum elige. Auriga praesens est {0}. ESC ad exeundum.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEDOWN" xml:space="preserve">
+    <value>Semitam ad fasciculum indicis musici quem servare vis inscribe.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_HELP" xml:space="preserve">
+    <value>Volumen auge.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_EQUALIZER" xml:space="preserve">
+    <value>Volumen minue.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_SYSINFO" xml:space="preserve">
+    <value>Auxilium.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DISCO" xml:space="preserve">
+    <value>Aequalisatorem aperi.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLBOOST" xml:space="preserve">
+    <value>Informationes systematis.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERINFO" xml:space="preserve">
+    <value>Modus discothecae!</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERSET" xml:space="preserve">
+    <value>Augmentum voluminis activa.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERRESET" xml:space="preserve">
+    <value>Informationes de instrumento et gubernatore.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_SAVETOPLAYLIST" xml:space="preserve">
+    <value>Instrumentum et gubernatorem constitue.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_QUIT" xml:space="preserve">
+    <value>Instrumentum et gubernatorem resetta.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DECREASE" xml:space="preserve">
+    <value>In indice musico serva.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_INCREASE" xml:space="preserve">
+    <value>Exi.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_PREVBAND" xml:space="preserve">
+    <value>Minue.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_NEXTBAND" xml:space="preserve">
+    <value>Auge.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_RESET" xml:space="preserve">
+    <value>Grex musicus prior.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASOLIAERROR" xml:space="preserve">
+    <value>Grex musicus proximus.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>Resetta.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_ERROR" xml:space="preserve">
+    <value>Error cum Basolia est cum operationem aequalisatoris perficere conatur.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_NOTPLAYING" xml:space="preserve">
+    <value>Error cum output Basolia est cum operationem aequalisatoris perficere conatur.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASS" xml:space="preserve">
+    <value>Error ignotus est cum operationem aequalisatoris perficere conatur.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_UPPERMID" xml:space="preserve">
+    <value>Non luditur. Lusor musicae otiosus est.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_TREBLE" xml:space="preserve">
+    <value>Graves</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_DEVICEBAND" xml:space="preserve">
+    <value>Medi Superiores</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_UNKNOWNBAND" xml:space="preserve">
+    <value>Acuti</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BAND" xml:space="preserve">
+    <value>Gamma sonorum specifica machinae</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PLAYPAUSE" xml:space="preserve">
+    <value>Genus manus ignotum</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_STOP" xml:space="preserve">
+    <value>Gamma</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_BACKWARDS" xml:space="preserve">
+    <value>Ludere/Pausare</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_FORWARDS" xml:space="preserve">
+    <value>Sistere</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_DECREASESEEKDURATION" xml:space="preserve">
+    <value>Retrogredi quaerere</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_INCREASESEEKDURATION" xml:space="preserve">
+    <value>Progredi quaerere</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SONGINFO" xml:space="preserve">
+    <value>Durationem quaerendi minuere</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDFILE" xml:space="preserve">
+    <value>Durationem quaerendi augere</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDGROUP" xml:space="preserve">
+    <value>Informationes carminis</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDDIR" xml:space="preserve">
+    <value>Fasciculum musicum addere</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PREVSONG" xml:space="preserve">
+    <value>Gregem musicum ex indice carminum addere</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_NEXTSONG" xml:space="preserve">
+    <value>Directorium musicum ad indicem addere (cum otiosum est)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_REMOVECURRSONG" xml:space="preserve">
+    <value>Carmen prius</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_REMOVEALLSONGS" xml:space="preserve">
+    <value>Carmen proximum</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKSELECTIVE" xml:space="preserve">
+    <value>Carmen praesens removere</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOPREVLYRIC" xml:space="preserve">
+    <value>Omnia carmina removere</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTONEXTLYRIC" xml:space="preserve">
+    <value>Selective quaerere (cum luditur)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOCURRLYRIC" xml:space="preserve">
+    <value>Ad verba priora quaerere (cum luditur)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOWHICHLYRIC" xml:space="preserve">
+    <value>Ad verba sequentia quaerere (cum luditur)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SETREPEATCHECKPOINT" xml:space="preserve">
+    <value>Ad verba praesens quaerere (cum luditur)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOREPEATCHECKPOINT" xml:space="preserve">
+    <value>Ad quae verba (cum luditur)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PLAYTESTSOUND" xml:space="preserve">
+    <value>Punctum repetitionis constituere</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_SEEKINDICATOR" xml:space="preserve">
+    <value>Punctum repetitionis quaerere</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_VOLINDICATOR" xml:space="preserve">
+    <value>Sonum probationis ludere (ad machinam et rectorem probandum)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_BASOLIAERROR" xml:space="preserve">
+    <value>Quaerere:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>Volumen:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_ERROR" xml:space="preserve">
+    <value>Error est cum Basolia cum fasciculum musicum tractare conatur.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_PLAYBACKFAILED" xml:space="preserve">
+    <value>Error est cum exitu Basoliae cum fasciculum musicum tractare conatur.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TIP" xml:space="preserve">
+    <value>Error ignotus est cum fasciculum musicum tractare conatur.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_SELECTLYRICSEEK" xml:space="preserve">
+    <value>Defectus reproductionis:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICFILEPROMPT" xml:space="preserve">
+    <value>Preme &apos;A&apos; ut unum carmen in indicem inseras, vel &apos;S&apos; ut totam bibliothecam musicam inseras.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>Elige verba carminum quae quaeras.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICPLAYLISTPROMPT" xml:space="preserve">
+    <value>Inscribe semitam ad fasciculum musicum.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICPLAYLISTNOTFOUND" xml:space="preserve">
+    <value>Fasciculus &apos;{0}&apos; non existit.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICLIBRARYPROMPT" xml:space="preserve">
+    <value>Inscribe semitam ad indicem musicum.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICLIBRARYNOTFOUND" xml:space="preserve">
+    <value>Index musicus non invenitur.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICFILE" xml:space="preserve">
+    <value>Inscribe semitam ad directorium bibliothecae musicae.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_NOWPLAYING" xml:space="preserve">
+    <value>Directorium bibliothecae musicae non invenitur.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_UNKNOWNARTIST" xml:space="preserve">
+    <value>Aperitur {0}...</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_UNKNOWNGENRE" xml:space="preserve">
+    <value>Nunc luditur:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILE" xml:space="preserve">
+    <value>Artifex ignotus.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILEFAILED" xml:space="preserve">
+    <value>Genus ignotum.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TARGETPOSPROMPT" xml:space="preserve">
+    <value>Conatur aperire fasciculum verborum carminum {0}...</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDPLAYING" xml:space="preserve">
+    <value>Non potest aperire fasciculum verborum carminum {0}:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_EXCEPTION_TESTSOUNDMISSING" xml:space="preserve">
+    <value>Scribe locum destinatum hoc formato:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_TITLE" xml:space="preserve">
+    <value>Sonus probationis luditur...</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_DESC" xml:space="preserve">
+    <value>Desunt data soni probationis.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_YES" xml:space="preserve">
+    <value>Probatio soni.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_NO" xml:space="preserve">
+    <value>Estne omnia bene in hac configuratione praesenti?</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_SUCCESS" xml:space="preserve">
+    <value>Ita</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_FAILURE" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_UNKNOWN" xml:space="preserve">
+    <value>Gratulationes! Omnia recte constituisti!</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO" xml:space="preserve">
+    <value>Instrumentum tuum inspice et iterum conare. Ignotus</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_ARTIST" xml:space="preserve">
+    <value>Informationes carminis</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_TITLE" xml:space="preserve">
+    <value>Artifex:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_ALBUM" xml:space="preserve">
+    <value>Titulus:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_GENRE" xml:space="preserve">
+    <value>Album:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_COMMENT" xml:space="preserve">
+    <value>Genus:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_DURATION" xml:space="preserve">
+    <value>Commentarium:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS" xml:space="preserve">
+    <value>Duratio:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_LINES" xml:space="preserve">
+    <value>Verba carminis:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_NOLYRICS" xml:space="preserve">
+    <value>{0} lineae</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO" xml:space="preserve">
+    <value>Nulla verba carminis</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VERSION" xml:space="preserve">
+    <value>Informationes strati</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_LAYER" xml:space="preserve">
+    <value>Versio:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_RATE" xml:space="preserve">
+    <value>Stratum:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODE" xml:space="preserve">
+    <value>Celeritas:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODEEXT" xml:space="preserve">
+    <value>Modus:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FRAMESIZE" xml:space="preserve">
+    <value>Modus Ext:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FLAGS" xml:space="preserve">
+    <value>Magnitudo imaginum:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_EMPHASIS" xml:space="preserve">
+    <value>Vexilla:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_BITRATE" xml:space="preserve">
+    <value>Emphasis:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_ABR" xml:space="preserve">
+    <value>Celeritas bit:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VBR" xml:space="preserve">
+    <value>Celeritas ABR:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE" xml:space="preserve">
+    <value>VBR:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ACCURATERENDERING" xml:space="preserve">
+    <value>Status nativus</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_BUFFERFILL" xml:space="preserve">
+    <value>Redditio accurata:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_DECODINGDELAY" xml:space="preserve">
+    <value>Impletio buffer:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGDELAY" xml:space="preserve">
+    <value>Mora decodificationis:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGPADDING" xml:space="preserve">
+    <value>Mora codificationis:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRANKENSTEIN" xml:space="preserve">
+    <value>Integritas codificationis:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRESHDECODER" xml:space="preserve">
+    <value>Fluxus Frankenstein:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_TEXTSANDEXTRAS" xml:space="preserve">
+    <value>Decodificator recens:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFO" xml:space="preserve">
+    <value>Textus et additamenta</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFOEXT" xml:space="preserve">
+    <value>Informationes stationis radiophonicae</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATION" xml:space="preserve">
+    <value>Informationes extensae stationis radiophonicae</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATIONGROUP" xml:space="preserve">
+    <value>Adde stationem radiophonicam</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_PREVSTATION" xml:space="preserve">
+    <value>Adde gregem stationum radiophonicarum ex indice musico</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_NEXTSTATION" xml:space="preserve">
+    <value>Statio radiophonica prior</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_REMOVECURRSTATION" xml:space="preserve">
+    <value>Statio radiophonica proxima</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_REMOVEALLSTATIONS" xml:space="preserve">
+    <value>Remove stationem radiophonicam praesentem</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_TIP" xml:space="preserve">
+    <value>Remove omnes stationes radiophonicas</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONPROMPT" xml:space="preserve">
+    <value>Preme &apos;A&apos; ut stationem radiophonicam in indicem musicum inseras.</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONGROUPPROMPT" xml:space="preserve">
+    <value>Inscribe viam ad stationem radiophonicam. URL ad stationem stationem radiophonicam MPEG praebere debet. AAC nondum sustinentur. Semitam ad indicem stationum radiophonicarum inscribe. URL stationum radiophonicarum MPEG praebere debent. AAC nondum sustinentur.</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONGROUPNOTFOUND" xml:space="preserve">
+    <value>Index stationum radiophonicarum non inventus est.</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO" xml:space="preserve">
+    <value>Informationes stationis</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_URL" xml:space="preserve">
+    <value>URL stationis radiophonicae:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_NAME" xml:space="preserve">
+    <value>Nomen stationis radiophonicae:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_CURRSONG" xml:space="preserve">
+    <value>Carmen praesens stationis radiophonicae:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO" xml:space="preserve">
+    <value>Informationes servitoris radiophonici</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_HTTPS" xml:space="preserve">
+    <value>Statio radiophonica HTTPS utitur:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_TYPE" xml:space="preserve">
+    <value>Genus servitoris stationis radiophonicae:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_STREAMS" xml:space="preserve">
+    <value>Fluxus stationis radiophonicae: {0} cum {1} activo</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_LISTENERS" xml:space="preserve">
+    <value>Auditores stationis radiophonicae: {0} cum {1} in culmine</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO" xml:space="preserve">
+    <value>Informationes fluminis</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_NAME" xml:space="preserve">
+    <value>Nomen:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_HOMEPAGE" xml:space="preserve">
+    <value>Pagina domestica:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_STREAMPATH" xml:space="preserve">
+    <value>Semita fluminis:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_LISTENERS" xml:space="preserve">
+    <value>Auditores: {0} cum {1} in culmine</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_BITRATE" xml:space="preserve">
+    <value>Ratio binariorum:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_MEDIATYPE" xml:space="preserve">
+    <value>Genus medii:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_UNABLETOOBTAIN" xml:space="preserve">
+    <value>Informationes stationis radiophonicae extensae pro {0} obtinere non potest</value>
+  </data>
+  <data name="BASSBOOM_APP_NOTFOUND" xml:space="preserve">
+    <value>Fasciculus musicus {0} non existit.</value>
+  </data>
+  <data name="BASSBOOM_APP_FATALERROR" xml:space="preserve">
+    <value>Error fatalis in BassBoom CLI.</value>
+  </data>
+
+</root>

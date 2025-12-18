@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+        <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="metadata">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" use="required" type="xsd:string" />
+                <xsd:attribute name="type" type="xsd:string" />
+                <xsd:attribute name="mimetype" type="xsd:string" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="assembly">
+            <xsd:complexType>
+                <xsd:attribute name="alias" type="xsd:string" />
+                <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="data">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="resheader">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+    <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="BASSBOOM_APP_COMMON_DEVICE" xml:space="preserve">
+    <value>Dispositivo:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DRIVER" xml:space="preserve">
+    <value>Driver:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICECACHED" xml:space="preserve">
+    <value>Dispositivo (em cache):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DRIVERCACHED" xml:space="preserve">
+    <value>Driver (em cache):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICESQUERYNOTPLAYING" xml:space="preserve">
+    <value>Não é possível consultar os dispositivos atuais enquanto não estiver reproduzindo.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DEVICEANDDRIVER" xml:space="preserve">
+    <value>Dispositivo e Driver</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_AVAILABLEDEVICESANDDRIVERS" xml:space="preserve">
+    <value>Dispositivos e drivers disponíveis</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_EXTRASPECS" xml:space="preserve">
+    <value>Especificações extras (para desenvolvedores)</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_PCMSAMPLESIZE" xml:space="preserve">
+    <value>Tamanho da amostra PCM:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ZEROSAMPLE" xml:space="preserve">
+    <value>Amostra zero (deslocamento 0):</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DURATIONSAMPLES" xml:space="preserve">
+    <value>Duração em amostras:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_FRAMELEN" xml:space="preserve">
+    <value>Comprimento do quadro:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SPF" xml:space="preserve">
+    <value>Amostras/quadro:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_TPF" xml:space="preserve">
+    <value>Segundos/quadro:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_DECODERS" xml:space="preserve">
+    <value>Decodificadores</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SUPPORTEDDECODERS" xml:space="preserve">
+    <value>Decodificadores suportados:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ALLDECODERS" xml:space="preserve">
+    <value>Todos os decodificadores:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ENCODINGSANDRATES" xml:space="preserve">
+    <value>Codificações e Taxas</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_ENCODINGS" xml:space="preserve">
+    <value>Codificações:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_RATES" xml:space="preserve">
+    <value>Taxas:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BUFFERINFO" xml:space="preserve">
+    <value>Informações do buffer</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_GENERICBUFFERSIZE" xml:space="preserve">
+    <value>Tamanho genérico do buffer:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS" xml:space="preserve">
+    <value>Especificações do BassBoom</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_BASOLIAVER" xml:space="preserve">
+    <value>Versão do Basolia:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_MPG123VER" xml:space="preserve">
+    <value>Versão do MPG123:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_BASSBOOMSPECS_OUT123VER" xml:space="preserve">
+    <value>Versão do OUT123:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS" xml:space="preserve">
+    <value>Especificações do sistema</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEM" xml:space="preserve">
+    <value>Sistema:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMARCH" xml:space="preserve">
+    <value>Arquitetura do sistema:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_PROCESSARCH" xml:space="preserve">
+    <value>Arquitetura do processo:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_SYSTEMDESC" xml:space="preserve">
+    <value>Descrição do sistema:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SYSTEMSPECS_DOTNETDESC" xml:space="preserve">
+    <value>Descrição do .NET:</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES" xml:space="preserve">
+    <value>Teclas disponíveis</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SELECTDRIVER" xml:space="preserve">
+    <value>Selecione um driver. ESC para sair.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_SELECTDEVICE" xml:space="preserve">
+    <value>Selecione um dispositivo. O driver atual é {0}. ESC para sair.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_PATHTOPLAYLIST" xml:space="preserve">
+    <value>Insira um caminho para o arquivo da lista de reprodução que deseja salvar</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEUP" xml:space="preserve">
+    <value>Aumentar volume</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLUMEDOWN" xml:space="preserve">
+    <value>Diminuir volume</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_HELP" xml:space="preserve">
+    <value>Ajuda</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_EQUALIZER" xml:space="preserve">
+    <value>Abrir o equalizador</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_SYSINFO" xml:space="preserve">
+    <value>Informações do sistema</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DISCO" xml:space="preserve">
+    <value>Modo Disco!</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VOLBOOST" xml:space="preserve">
+    <value>Ativar aumento de volume</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERINFO" xml:space="preserve">
+    <value>Informações do dispositivo e driver</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERSET" xml:space="preserve">
+    <value>Definir dispositivo e driver</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_DEVICEDRIVERRESET" xml:space="preserve">
+    <value>Redefinir dispositivo e driver</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_SAVETOPLAYLIST" xml:space="preserve">
+    <value>Salvar na lista de reprodução</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_QUIT" xml:space="preserve">
+    <value>Sair</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DECREASE" xml:space="preserve">
+    <value>Diminuir</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_INCREASE" xml:space="preserve">
+    <value>Aumentar</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_PREVBAND" xml:space="preserve">
+    <value>Banda anterior</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_NEXTBAND" xml:space="preserve">
+    <value>Próxima banda</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_RESET" xml:space="preserve">
+    <value>Redefinir</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASOLIAERROR" xml:space="preserve">
+    <value>Há um erro com o Basolia ao tentar processar a operação do equalizador.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>Há um erro com a saída do Basolia ao tentar processar a operação do equalizador.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_ERROR" xml:space="preserve">
+    <value>Há um erro desconhecido ao tentar processar a operação do equalizador.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_NOTPLAYING" xml:space="preserve">
+    <value>Não está tocando. O reprodutor de música está ocioso.</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BASS" xml:space="preserve">
+    <value>Graves</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_UPPERMID" xml:space="preserve">
+    <value>Médios-agudos</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_TREBLE" xml:space="preserve">
+    <value>Agudos</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_DEVICEBAND" xml:space="preserve">
+    <value>Banda específica do dispositivo</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_UNKNOWNBAND" xml:space="preserve">
+    <value>Tipo de banda desconhecido</value>
+  </data>
+  <data name="BASSBOOM_APP_EQUALIZER_BAND" xml:space="preserve">
+    <value>Banda</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PLAYPAUSE" xml:space="preserve">
+    <value>Reproduzir/Pausar</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_STOP" xml:space="preserve">
+    <value>Parar</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_BACKWARDS" xml:space="preserve">
+    <value>Buscar para trás</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_FORWARDS" xml:space="preserve">
+    <value>Buscar para frente</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_DECREASESEEKDURATION" xml:space="preserve">
+    <value>Diminuir a duração da busca</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_INCREASESEEKDURATION" xml:space="preserve">
+    <value>Aumentar a duração da busca</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SONGINFO" xml:space="preserve">
+    <value>Informações da música</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDFILE" xml:space="preserve">
+    <value>Adicionar um arquivo de música</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDGROUP" xml:space="preserve">
+    <value>Adicionar um grupo de músicas da playlist</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_ADDDIR" xml:space="preserve">
+    <value>Adicionar um diretório de músicas à lista (quando ocioso)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PREVSONG" xml:space="preserve">
+    <value>Música anterior</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_NEXTSONG" xml:space="preserve">
+    <value>Próxima música</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_REMOVECURRSONG" xml:space="preserve">
+    <value>Remover a música atual</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_REMOVEALLSONGS" xml:space="preserve">
+    <value>Remover todas as músicas</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKSELECTIVE" xml:space="preserve">
+    <value>Buscar seletivamente (ao reproduzir)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOPREVLYRIC" xml:space="preserve">
+    <value>Buscar para a letra anterior (ao reproduzir)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTONEXTLYRIC" xml:space="preserve">
+    <value>Buscar para a próxima letra (ao reproduzir)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOCURRLYRIC" xml:space="preserve">
+    <value>Buscar para a letra atual (ao reproduzir)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOWHICHLYRIC" xml:space="preserve">
+    <value>Buscar para qual letra (ao reproduzir)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SETREPEATCHECKPOINT" xml:space="preserve">
+    <value>Definir ponto de verificação de repetição</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_SEEKTOREPEATCHECKPOINT" xml:space="preserve">
+    <value>Buscar para repetir o ponto de verificação</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_KEYBINDING_PLAYTESTSOUND" xml:space="preserve">
+    <value>Reproduzir som de teste (para testar o dispositivo e o driver)</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_SEEKINDICATOR" xml:space="preserve">
+    <value>Buscar:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_VOLINDICATOR" xml:space="preserve">
+    <value>Volume:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_BASOLIAERROR" xml:space="preserve">
+    <value>Há um erro com o Basolia ao tentar processar o arquivo de música.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>Há um erro com a saída do Basolia ao tentar processar o arquivo de música.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_ERROR" xml:space="preserve">
+    <value>Há um erro desconhecido ao tentar processar o arquivo de música.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_PLAYBACKFAILED" xml:space="preserve">
+    <value>Falha na reprodução:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TIP" xml:space="preserve">
+    <value>Pressione &apos;A&apos; para inserir uma única música na playlist ou &apos;S&apos; para inserir toda a biblioteca musical.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_SELECTLYRICSEEK" xml:space="preserve">
+    <value>Selecione uma letra para buscar</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICFILEPROMPT" xml:space="preserve">
+    <value>Digite um caminho para o arquivo de música</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>O arquivo &apos;{0}&apos; não existe.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICPLAYLISTPROMPT" xml:space="preserve">
+    <value>Digite um caminho para a playlist de músicas</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICPLAYLISTNOTFOUND" xml:space="preserve">
+    <value>A playlist de músicas não foi encontrada.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICLIBRARYPROMPT" xml:space="preserve">
+    <value>Digite um caminho para o diretório da biblioteca musical</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_MUSICLIBRARYNOTFOUND" xml:space="preserve">
+    <value>O diretório da biblioteca musical não foi encontrado.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICFILE" xml:space="preserve">
+    <value>Abrindo {0}...</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_NOWPLAYING" xml:space="preserve">
+    <value>Reproduzindo agora:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_UNKNOWNARTIST" xml:space="preserve">
+    <value>Artista desconhecido</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_UNKNOWNGENRE" xml:space="preserve">
+    <value>Gênero desconhecido</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILE" xml:space="preserve">
+    <value>Tentando abrir o arquivo de letras {0}...</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_OPENINGMUSICLYRICFILEFAILED" xml:space="preserve">
+    <value>Não é possível abrir o arquivo de letras {0}:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TARGETPOSPROMPT" xml:space="preserve">
+    <value>Escreva a posição de destino neste formato:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDPLAYING" xml:space="preserve">
+    <value>Reproduzindo som de teste...</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_EXCEPTION_TESTSOUNDMISSING" xml:space="preserve">
+    <value>Dados de som de teste ausentes.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_TITLE" xml:space="preserve">
+    <value>Teste de som</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_DESC" xml:space="preserve">
+    <value>Está tudo OK nesta configuração atual?</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_YES" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_NO" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_SUCCESS" xml:space="preserve">
+    <value>Parabéns! Você configurou tudo corretamente!</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_FAILURE" xml:space="preserve">
+    <value>Verifique seu dispositivo e tente novamente.</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_UNKNOWN" xml:space="preserve">
+    <value>Desconhecido</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO" xml:space="preserve">
+    <value>Informações da música</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_ARTIST" xml:space="preserve">
+    <value>Artista:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_TITLE" xml:space="preserve">
+    <value>Título:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_ALBUM" xml:space="preserve">
+    <value>Álbum:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_GENRE" xml:space="preserve">
+    <value>Gênero:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_COMMENT" xml:space="preserve">
+    <value>Comentário:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_DURATION" xml:space="preserve">
+    <value>Duração:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS" xml:space="preserve">
+    <value>Letra:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_LINES" xml:space="preserve">
+    <value>{0} linhas</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_SONGINFO_LYRICS_NOLYRICS" xml:space="preserve">
+    <value>Sem letra</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO" xml:space="preserve">
+    <value>Informações da camada</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VERSION" xml:space="preserve">
+    <value>Versão:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_LAYER" xml:space="preserve">
+    <value>Camada:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_RATE" xml:space="preserve">
+    <value>Taxa:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODE" xml:space="preserve">
+    <value>Modo:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_MODEEXT" xml:space="preserve">
+    <value>Extensão do modo:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FRAMESIZE" xml:space="preserve">
+    <value>Tamanho do quadro:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_FLAGS" xml:space="preserve">
+    <value>Sinalizadores:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_EMPHASIS" xml:space="preserve">
+    <value>Ênfase:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_BITRATE" xml:space="preserve">
+    <value>Taxa de bits:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_ABR" xml:space="preserve">
+    <value>Taxa ABR:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VBR" xml:space="preserve">
+    <value>VBR:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE" xml:space="preserve">
+    <value>Estado nativo</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ACCURATERENDERING" xml:space="preserve">
+    <value>Renderização precisa:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_BUFFERFILL" xml:space="preserve">
+    <value>Preenchimento do buffer:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_DECODINGDELAY" xml:space="preserve">
+    <value>Atraso na decodificação:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGDELAY" xml:space="preserve">
+    <value>Atraso na codificação:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGPADDING" xml:space="preserve">
+    <value>Preenchimento da codificação:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRANKENSTEIN" xml:space="preserve">
+    <value>Fluxo Frankenstein:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRESHDECODER" xml:space="preserve">
+    <value>Decodificador atualizado:</value>
+  </data>
+  <data name="BASSBOOM_APP_PLAYER_INFO_TEXTSANDEXTRAS" xml:space="preserve">
+    <value>Textos e extras</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFO" xml:space="preserve">
+    <value>Informações da estação de rádio</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_STATIONINFOEXT" xml:space="preserve">
+    <value>Informações estendidas da estação de rádio</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATION" xml:space="preserve">
+    <value>Adicionar uma estação de rádio</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_ADDSTATIONGROUP" xml:space="preserve">
+    <value>Adicionar um grupo de estações de rádio da lista de reprodução</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_PREVSTATION" xml:space="preserve">
+    <value>Estação de rádio anterior</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_NEXTSTATION" xml:space="preserve">
+    <value>Próxima estação de rádio</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_REMOVECURRSTATION" xml:space="preserve">
+    <value>Remover a estação de rádio atual</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_KEYBINDING_REMOVEALLSTATIONS" xml:space="preserve">
+    <value>Remover todas as estações de rádio</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_TIP" xml:space="preserve">
+    <value>Pressione &apos;A&apos; para inserir uma estação de rádio na lista de reprodução.</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONPROMPT" xml:space="preserve">
+    <value>Insira um caminho para a estação de rádio. O URL da estação deve fornecer uma estação de rádio MPEG. Os formatos AAC ainda não são suportados.</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONGROUPPROMPT" xml:space="preserve">
+    <value>Insira um caminho para a lista de reprodução de estações de rádio. Os URLs das estações devem fornecer uma estação de rádio MPEG. Os formatos AAC ainda não são suportados.</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_STATIONGROUPNOTFOUND" xml:space="preserve">
+    <value>A lista de reprodução da estação de rádio não foi encontrada.</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO" xml:space="preserve">
+    <value>Informações da estação</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_URL" xml:space="preserve">
+    <value>URL da estação de rádio:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_NAME" xml:space="preserve">
+    <value>Nome da estação de rádio:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFO_STATIONINFO_CURRSONG" xml:space="preserve">
+    <value>Música atual da estação de rádio:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO" xml:space="preserve">
+    <value>Informações do servidor de rádio</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_HTTPS" xml:space="preserve">
+    <value>A estação de rádio usa HTTPS:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_TYPE" xml:space="preserve">
+    <value>Tipo de servidor da estação de rádio:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_STREAMS" xml:space="preserve">
+    <value>Transmissões da estação de rádio: {0} com {1} ativo</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_SERVERINFO_LISTENERS" xml:space="preserve">
+    <value>Ouvintes da estação de rádio: {0} com {1} no pico</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO" xml:space="preserve">
+    <value>Informações da transmissão</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_NAME" xml:space="preserve">
+    <value>Nome:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_HOMEPAGE" xml:space="preserve">
+    <value>Página inicial:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_STREAMPATH" xml:space="preserve">
+    <value>Caminho da transmissão:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_LISTENERS" xml:space="preserve">
+    <value>Ouvintes: {0} com {1} no pico</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_BITRATE" xml:space="preserve">
+    <value>Taxa de bits:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_STREAMINFO_MEDIATYPE" xml:space="preserve">
+    <value>Tipo de mídia:</value>
+  </data>
+  <data name="BASSBOOM_APP_RADIO_INFOEXT_UNABLETOOBTAIN" xml:space="preserve">
+    <value>Não foi possível obter informações detalhadas da estação de rádio para {0}</value>
+  </data>
+  <data name="BASSBOOM_APP_NOTFOUND" xml:space="preserve">
+    <value>O arquivo de música {0} não existe.</value>
+  </data>
+  <data name="BASSBOOM_APP_FATALERROR" xml:space="preserve">
+    <value>Erro fatal na CLI do BassBoom.</value>
+  </data>
+
+</root>

@@ -16,16 +16,8 @@
       "text": "Kütüphane yolu {0}"
     },
     {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
-      "text": "mpg123 kütüphane yolu {0} mevcut değil."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
-      "text": "out123 kütüphane yolu {0} mevcut değil."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
-      "text": "libwinpthread kütüphane yolu {0} mevcut değil."
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND",
+      "text": "kütüphane yolu {0} mevcut değil."
     },
     {
       "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",

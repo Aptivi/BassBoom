@@ -17,20 +17,35 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using LocaleStation.Tools;
-using BassBoom.Native.Localized;
+using ResourceLab.Management;
 
 namespace BassBoom.Native.Languages
 {
     internal static class LanguageTools
     {
-        private const string localType = "BassBoom.Native";
+        private const string LocalName = "BassBoom.Native";
 
         internal static string GetLocalized(string id)
         {
-            if (!LanguageCommon.IsCustomActionDefined(localType))
-                LanguageCommon.AddCustomAction(localType, new(() => LocalStrings.Languages, () => LocalStrings.Localizations, LocalStrings.Translate, LocalStrings.CheckCulture, LocalStrings.ListLanguagesCulture, LocalStrings.Exists));
-            return LanguageCommon.Translate(id);
+            // Add local resource
+            if (!ResourcesManager.ResourceManagerExists(LocalName))
+                ResourcesManager.AddResourceManager(LocalName, new($"{LocalName}.Resources.Languages.Output.Localizations", typeof(LanguageTools).Assembly));
+
+            // Loop through all resource managers
+            foreach (var resourceManager in ResourcesManager.ResourceManagers.Values)
+            {
+                try
+                {
+                    string resourceLocalization = resourceManager.GetString(id);
+                    if (!string.IsNullOrEmpty(resourceLocalization))
+                        return resourceLocalization;
+                }
+                catch
+                {
+                    return id;
+                }
+            }
+            return id;
         }
     }
 }

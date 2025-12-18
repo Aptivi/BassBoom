@@ -14,16 +14,8 @@
       "text": "O caminho da biblioteca é {0}"
     },
     {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
-      "text": "O caminho da biblioteca mpg123 {0} não existe."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
-      "text": "O caminho da biblioteca out123 {0} não existe."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
-      "text": "O caminho da biblioteca libwinpthread {0} não existe."
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND",
+      "text": "O caminho da biblioteca {0} não existe."
     },
     {
       "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",

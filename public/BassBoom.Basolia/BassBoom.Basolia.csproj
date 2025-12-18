@@ -9,16 +9,13 @@
     <Title>BassBoom.Basolia</Title>
     <PackageDescription>BassBoom! Managed playback library</PackageDescription>
     <PackageTags>bassboom;basolia;native;runtime;csharp;library;music;player;mpeg;mp3;mp2;mpg;mpg123</PackageTags>
-    <PackageProjectUrl>https://gitlab.com/aptivi/main/BassBoom</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Aptivi/BassBoom</PackageProjectUrl>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <PackageIcon>OfficialAppIcon-BassBoom-512.png</PackageIcon>
     <IncludeSymbols>True</IncludeSymbols>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://gitlab.com/aptivi/main/BassBoom.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Aptivi/BassBoom.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    
-    <!-- For cross platform and .NET 8.0+ support -->
-    <AptLocDisableInvalidCultureWarnings>true</AptLocDisableInvalidCultureWarnings>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,16 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.12.1" />
-    <PackageReference Include="LocaleStation" Version="1.3.2" />
-    <PackageReference Include="LocaleStation.Tools" Version="1.3.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
-    <PackageReference Include="Textify.Offline" Version="2.13.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="Resources\Languages\*.json" AptLocIsLanguagePath="true" />
+    <PackageReference Include="Textify.Offline" Version="2.13.5" />
   </ItemGroup>
 
 </Project>

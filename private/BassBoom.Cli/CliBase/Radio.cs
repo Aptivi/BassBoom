@@ -17,29 +17,28 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Basolia.File;
-using BassBoom.Basolia.Playback;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.File;
+using BassBoom.Basolia.Playback;
+using BassBoom.Cli.Languages;
 using Terminaux.Base;
 using Terminaux.Base.Buffered;
+using Terminaux.Base.Extensions;
 using Terminaux.Colors;
 using Terminaux.Colors.Data;
+using Terminaux.Inputs;
+using Terminaux.Inputs.Styles;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
-using Terminaux.Writer.FancyWriters;
-using Terminaux.Inputs.Styles.Selection;
-using Terminaux.Inputs;
-using BassBoom.Basolia.Exceptions;
-using Terminaux.Inputs.Styles;
+using Terminaux.Writer.CyclicWriters.Graphical;
+using Terminaux.Writer.CyclicWriters.Renderer;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
-using Terminaux.Writer.MiscWriters;
-using Terminaux.Base.Extensions;
-using Terminaux.Writer.CyclicWriters;
-using BassBoom.Cli.Languages;
+using Terminaux.Writer.CyclicWriters.Simple;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -122,8 +121,8 @@ namespace BassBoom.Cli.CliBase
                     Text = name,
                     Left = 2,
                     Top = 1,
-                    InteriorWidth = ConsoleWrapper.WindowWidth - 6,
-                    InteriorHeight = stationsPerPage,
+                    Width = ConsoleWrapper.WindowWidth - 6,
+                    Height = stationsPerPage,
                     FrameColor = disco,
                     TitleColor = disco,
                 };
@@ -198,22 +197,21 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.Spacebar:
                     playerThread = new(HandlePlay);
                     RadioControls.Play();
-                    Common.redraw = true;
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.B:
                     RadioControls.PreviousStation();
-                    Common.redraw = true;
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.N:
                     RadioControls.NextStation();
-                    Common.redraw = true;
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.I:
                     if (keystroke.Modifiers == ConsoleModifiers.Control)
                         RadioControls.ShowExtendedStationInfo();
                     else
                         RadioControls.ShowStationInfo();
-                    Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.A:
@@ -221,7 +219,6 @@ namespace BassBoom.Cli.CliBase
                         RadioControls.PromptForAddStations();
                     else
                         RadioControls.PromptForAddStation();
-                    Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.R:
@@ -230,7 +227,7 @@ namespace BassBoom.Cli.CliBase
                         RadioControls.RemoveAllStations();
                     else
                         RadioControls.RemoveCurrentStation();
-                    Common.redraw = true;
+                    playerScreen.RequireRefresh();
                     break;
                 default:
                     Common.HandleKeypressCommon(keystroke, playerScreen, true);
@@ -247,18 +244,18 @@ namespace BassBoom.Cli.CliBase
                     RadioControls.PreviousStation();
                     playerThread = new(HandlePlay);
                     RadioControls.Play();
-                    Common.redraw = true;
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.N:
                     RadioControls.Stop(false);
                     RadioControls.NextStation();
                     playerThread = new(HandlePlay);
                     RadioControls.Play();
-                    Common.redraw = true;
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.Spacebar:
                     RadioControls.Pause();
-                    Common.redraw = true;
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.R:
                     RadioControls.Stop(false);
@@ -266,7 +263,7 @@ namespace BassBoom.Cli.CliBase
                         RadioControls.RemoveAllStations();
                     else
                         RadioControls.RemoveCurrentStation();
-                    Common.redraw = true;
+                    playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.Escape:
                     RadioControls.Stop();
@@ -276,7 +273,6 @@ namespace BassBoom.Cli.CliBase
                         RadioControls.ShowExtendedStationInfo();
                     else
                         RadioControls.ShowStationInfo();
-                    Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.D:
@@ -284,7 +280,6 @@ namespace BassBoom.Cli.CliBase
                     Common.HandleKeypressCommon(keystroke, playerScreen, true);
                     playerThread = new(HandlePlay);
                     RadioControls.Play();
-                    Common.redraw = true;
                     playerScreen.RequireRefresh();
                     break;
                 default:
@@ -319,9 +314,8 @@ namespace BassBoom.Cli.CliBase
 
         private static string HandleDraw()
         {
-            if (!Common.redraw)
+            if (!ScreenTools.CurrentScreen?.RefreshWasDone ?? false)
                 return "";
-            Common.redraw = false;
 
             // Prepare things
             var drawn = new StringBuilder();
@@ -331,11 +325,9 @@ namespace BassBoom.Cli.CliBase
             var keybindings = new Keybindings()
             {
                 KeybindingList = Player.ShowBindings,
-                Left = 0,
-                Top = ConsoleWrapper.WindowHeight - 1,
                 Width = ConsoleWrapper.WindowWidth - 1,
             };
-            drawn.Append(keybindings.Render());
+            drawn.Append(RendererTools.RenderRenderable(keybindings, new(0, ConsoleWrapper.WindowHeight - 1)));
 
             // In case we have no stations in the playlist...
             if (Common.cachedInfos.Count == 0)
@@ -383,8 +375,8 @@ namespace BassBoom.Cli.CliBase
                 Text = name,
                 Left = 2,
                 Top = 1,
-                InteriorWidth = ConsoleWrapper.WindowWidth - 6,
-                InteriorHeight = stationsPerPage
+                Width = ConsoleWrapper.WindowWidth - 6,
+                Height = stationsPerPage
             };
             var playlistSelections = new Selection([.. choices])
             {

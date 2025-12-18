@@ -23,7 +23,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '10.0.x'
       - name: Release Asset Preparation
         run: |
           cmd.exe /c "tools\build.cmd Debug -p:ContinuousIntegrationBuild=true"
@@ -42,7 +42,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: bb-build-dotnet
-          path: "private/BassBoom.Cli/bin/Debug/net8.0"
+          path: "private/BassBoom.Cli/bin/Debug/net10.0"
       - uses: actions/upload-artifact@v4
         with:
           name: bb-build-dotnetfx

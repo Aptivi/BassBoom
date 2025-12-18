@@ -16,16 +16,8 @@
       "text": "라이브러리 경로는 {0}입니다."
     },
     {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_MPG123LIBPATHNOTFOUND",
-      "text": "mpg123 라이브러리 경로 {0}이(가) 존재하지 않습니다."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_OUT123LIBPATHNOTFOUND",
-      "text": "out123 라이브러리 경로 {0}이(가) 존재하지 않습니다."
-    },
-    {
-      "loc": "BASSBOOM_NATIVE_EXCEPTION_WINPTHREADLIBPATHNOTFOUND",
-      "text": "libwinpthread 라이브러리 경로 {0}이(가) 존재하지 않습니다."
+      "loc": "BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND",
+      "text": "라이브러리 경로 {0}이(가) 존재하지 않습니다."
     },
     {
       "loc": "BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED",

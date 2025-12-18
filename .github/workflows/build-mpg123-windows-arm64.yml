@@ -1,0 +1,48 @@
+name: Build MPG123 library (Windows - ARM64)
+
+on:
+  push:
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x" ]
+  pull_request:
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x" ]
+    
+jobs:
+  build:
+    runs-on: windows-11-arm
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+          ref: ${{ github.ref }}
+      - name: Setting up environment
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: CLANGARM64
+          update: true
+          install: |
+            base-devel
+            mingw-w64-clang-aarch64-clang
+            mingw-w64-clang-aarch64-make
+            autoconf
+            automake
+            libtool
+            tar
+            bzip2
+      - name: Setting up MPG123 library
+        shell: msys2 {0}
+        run: |
+          curl -L -o mpg123.tar.bz2 https://www.mpg123.de/download/mpg123-1.33.3.tar.bz2
+          tar xvf mpg123.tar.bz2
+      - name: MPG123 compilation
+        shell: msys2 {0}
+        run: |
+          export lt_cv_deplibs_check_method=pass_all
+          cd mpg123-1.33.3 ; ./configure --prefix=/clangarm64 --disable-components --enable-libmpg123 --enable-libout123 --enable-libout123-modules --with-default-audio=win32 CFLAGS="-O2 -D__USE_MINGW_ANSI_STDIO=0" ; make ; make install DESTDIR=$PWD/outlib
+          cp /clangarm64/bin/libunwind.dll outlib/ || true
+          cp /clangarm64/bin/libc++.dll outlib/ || true
+      - name: Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: "MPG123 library"
+          path: mpg123-1.33.3/outlib

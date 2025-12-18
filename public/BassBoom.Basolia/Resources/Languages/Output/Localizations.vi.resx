@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+        <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="metadata">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" use="required" type="xsd:string" />
+                <xsd:attribute name="type" type="xsd:string" />
+                <xsd:attribute name="mimetype" type="xsd:string" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="assembly">
+            <xsd:complexType>
+                <xsd:attribute name="alias" type="xsd:string" />
+                <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="data">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="resheader">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+    <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA" xml:space="preserve">
+    <value>Phiên bản Basolia không được cung cấp</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID" xml:space="preserve">
+    <value>đường dẫn thư viện mpg123 {0} không chứa thư viện mpg123 hợp lệ.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID" xml:space="preserve">
+    <value>đường dẫn thư viện out123 {0} không chứa thư viện out123 hợp lệ.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB" xml:space="preserve">
+    <value>Không thể lấy phiên bản cho đến khi thư viện được khởi tạo</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT" xml:space="preserve">
+    <value>Basolia vẫn chưa khởi tạo thư viện MPG123!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY" xml:space="preserve">
+    <value>Không thể truy vấn trình điều khiển</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY" xml:space="preserve">
+    <value>Không thể truy vấn thiết bị</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND" xml:space="preserve">
+    <value>Trình điều khiển {0} không tồn tại</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND" xml:space="preserve">
+    <value>Thiết bị {0} không tồn tại</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR" xml:space="preserve">
+    <value>Lỗi chung của Basolia</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR" xml:space="preserve">
+    <value>MPG123 trả về lỗi sau:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR" xml:space="preserve">
+    <value>Lỗi hệ thống đầu ra chung của Basolia</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR" xml:space="preserve">
+    <value>OUT123 trả về lỗi sau:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN" xml:space="preserve">
+    <value>Không thể mở tệp này trong khi tệp hiện tại hoặc đài phát thanh vẫn mở</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH" xml:space="preserve">
+    <value>Cung cấp đường dẫn đến tệp nhạc</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>Tệp nhạc không tồn tại</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED" xml:space="preserve">
+    <value>Không thể mở tệp</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN" xml:space="preserve">
+    <value>Không thể mở URL này trong khi tệp hiện tại hoặc đài phát thanh vẫn mở</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL" xml:space="preserve">
+    <value>Cung cấp đường dẫn đến tệp nhạc hoặc đài phát thanh</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION" xml:space="preserve">
+    <value>Đài phát thanh này không tồn tại. Mã lỗi:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION" xml:space="preserve">
+    <value>Trông không giống đài phát thanh. Bạn có chắc không?</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION" xml:space="preserve">
+    <value>Trông không giống đài phát thanh MP3. Bạn có loại (n) {0}. Bạn có chắc không?</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED" xml:space="preserve">
+    <value>Không thể mở đài phát thanh</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM" xml:space="preserve">
+    <value>Không cung cấp luồng âm thanh</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED" xml:space="preserve">
+    <value>Không thể mở luồng</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED" xml:space="preserve">
+    <value>Không thể đóng tệp hoặc đài phát thanh đã đóng</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED" xml:space="preserve">
+    <value>Không thể đóng tệp</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY" xml:space="preserve">
+    <value>Không thể truy vấn tệp không mở</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK" xml:space="preserve">
+    <value>Cố gắng lấy thời lượng trong khi phát lại sẽ khiến phát lại bị hỏng! Không gọi hàm này trong khi phát lại.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED" xml:space="preserve">
+    <value>Không thể quét tệp để biết thông tin về độ dài</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED" xml:space="preserve">
+    <value>Không xác định được độ dài của tệp</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED" xml:space="preserve">
+    <value>Không lấy được đầu ra.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED" xml:space="preserve">
+    <value>Không lấy được độ dài khung.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED" xml:space="preserve">
+    <value>Không lấy được mẫu cho mỗi khung.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED" xml:space="preserve">
+    <value>Không lấy được giây cho mỗi khung.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED" xml:space="preserve">
+    <value>Không lấy được kích thước bộ đệm chung.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK" xml:space="preserve">
+    <value>Cố gắng lấy siêu dữ liệu ID3 trong khi phát lại sẽ khiến phát lại bị hỏng! Không gọi hàm này trong khi phát lại.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED" xml:space="preserve">
+    <value>Không thể quét tệp để tìm thông tin khung</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED" xml:space="preserve">
+    <value>Không thể lấy thông tin siêu dữ liệu</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK" xml:space="preserve">
+    <value>Cố gắng lấy siêu dữ liệu ICY trong khi phát lại khiến phát lại bị hỏng! Không gọi hàm này trong khi phát lại.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK" xml:space="preserve">
+    <value>Cố gắng lấy thông tin khung trong khi phát lại khiến phát lại bị hỏng! Không gọi hàm này trong khi phát lại.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED" xml:space="preserve">
+    <value>Không thể lấy thông tin khung</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE" xml:space="preserve">
+    <value>Không thể giải mã khung của tệp không mở</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED" xml:space="preserve">
+    <value>Không thể giải mã khung</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND" xml:space="preserve">
+    <value>Không tìm thấy bộ giải mã {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED" xml:space="preserve">
+    <value>Bộ giải mã {0} không được thiết bị của bạn hỗ trợ</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED" xml:space="preserve">
+    <value>Không thể đặt bộ giải mã thành {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED" xml:space="preserve">
+    <value>Không thể xác định định dạng của tệp</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND" xml:space="preserve">
+    <value>Không tìm thấy mã hóa {0}.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED" xml:space="preserve">
+    <value>Không thể lấy thông tin định dạng</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED" xml:space="preserve">
+    <value>Không thể đặt lại mã hóa đầu ra</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED" xml:space="preserve">
+    <value>Không thể đặt định dạng đầu ra</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED" xml:space="preserve">
+    <value>Không thể đặt mã hóa đầu ra thành:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED" xml:space="preserve">
+    <value>Cung cấp đường dẫn thư viện gốc.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND" xml:space="preserve">
+    <value>Lời bài hát không tồn tại</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND" xml:space="preserve">
+    <value>Tệp danh sách phát {0} không tồn tại</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID" xml:space="preserve">
+    <value>Phần mở rộng tệp danh sách phát không hợp lệ {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY" xml:space="preserve">
+    <value>Không cung cấp biểu diễn danh sách phát.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER" xml:space="preserve">
+    <value>Đây không phải là tiêu đề mở rộng:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS" xml:space="preserve">
+    <value>EXTINF yêu cầu chính xác hai đối số và không có chỉ báo đối số.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>Không tìm thấy tệp nhạc {0} hoặc không phải là tệp MPEG</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS" xml:space="preserve">
+    <value>Thông tin bản nhạc phải cung cấp chính xác hai đối số: độ dài bản nhạc tính bằng giây (-1 nếu là phát trực tiếp) và tiêu đề bản nhạc thô.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS" xml:space="preserve">
+    <value>Thông tin bản nhạc không cung cấp đúng số giây [{0}].</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED" xml:space="preserve">
+    <value>Không xác định được thời lượng hiện tại của tệp</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK" xml:space="preserve">
+    <value>Không tìm được tệp không mở</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED" xml:space="preserve">
+    <value>Không tìm được đến đầu tệp</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED" xml:space="preserve">
+    <value>Không tìm được khung hình #{0} của tệp</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED" xml:space="preserve">
+    <value>Không cung cấp dòng lời bài hát để tìm</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED" xml:space="preserve">
+    <value>Không bỏ được.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY" xml:space="preserve">
+    <value>Không thể phát tệp không mở</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE" xml:space="preserve">
+    <value>Không thể tạm dừng tệp không mở</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP" xml:space="preserve">
+    <value>Không thể dừng tệp không mở</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED" xml:space="preserve">
+    <value>Không thể đặt âm lượng thành {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED" xml:space="preserve">
+    <value>Không thể lấy âm lượng (cơ sở, thực sự, và decibel)</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED" xml:space="preserve">
+    <value>Không thể đặt băng tần cân bằng {0}/32 thành {1} trong {2}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED" xml:space="preserve">
+    <value>Không thể đặt băng tần cân bằng {0}/32 -&gt; {1}/32 thành {2} trong {3}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED" xml:space="preserve">
+    <value>Không thể đặt lại băng tần cân bằng về giá trị ban đầu của chúng!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED" xml:space="preserve">
+    <value>Không thể lấy trạng thái gốc của {0}!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED" xml:space="preserve">
+    <value>Không thể mở đầu ra cho thiết bị {0} trên trình điều khiển {1}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT" xml:space="preserve">
+    <value>Bạn cần mở đầu ra</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED" xml:space="preserve">
+    <value>Tốc độ đã chọn [{0} hz] và mã hóa [{1}] không được hỗ trợ</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED" xml:space="preserve">
+    <value>Không thể bắt đầu đầu ra.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED" xml:space="preserve">
+    <value>Không thể cấp dữ liệu.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED" xml:space="preserve">
+    <value>Không phân tích được máy chủ vô tuyến {0}. Có thể tìm thêm thông tin trong ngoại lệ bên trong.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST" xml:space="preserve">
+    <value>Mã thông báo luồng là null.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES" xml:space="preserve">
+    <value>Không có nguồn nào.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH" xml:space="preserve">
+    <value>Cung cấp đường dẫn đến đài phát thanh</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED" xml:space="preserve">
+    <value>Không thể xác định loại máy chủ đài phát thanh.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2" xml:space="preserve">
+    <value>Mã thông báo luồng Shoutcast v2.x là null</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2" xml:space="preserve">
+    <value>Không có luồng Shoutcast v2.x nào.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST" xml:space="preserve">
+    <value>Không có luồng Icecast nào.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED" xml:space="preserve">
+    <value>Không phân tích được ID luồng {0}. Có thể tìm thêm thông tin trong ngoại lệ bên trong.</value>
+  </data>
+
+</root>

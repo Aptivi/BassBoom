@@ -1,0 +1,33 @@
+name: Build MPG123 library (Linux - AMD64)
+
+on:
+  push:
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x" ]
+  pull_request:
+    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x" ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+          ref: ${{ github.ref }}
+      - name: Setting up environment
+        run: |
+          sudo apt update
+          sudo apt install libasound2-dev libaudio-dev libjack-dev libltdl-dev libopenal-dev libpulse-dev pkgconf portaudio19-dev
+      - name: Setting up MPG123 library
+        run: |
+          curl -o mpg123.tar.bz2 https://www.mpg123.de/download/mpg123-1.33.3.tar.bz2
+          tar xvf mpg123.tar.bz2
+      - name: MPG123 compilation
+        run: |
+          cd mpg123-1.33.3 ; ./configure --disable-components --enable-libmpg123 --enable-libout123 --enable-libout123-modules ; make ; make install DESTDIR=$PWD/outlib
+      - name: Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: "MPG123 library"
+          path: mpg123-1.33.3/outlib

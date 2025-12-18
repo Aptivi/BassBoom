@@ -27,14 +27,14 @@ REM This script replaces old version with new version.
 echo Replacing...
 
 REM Change the below files
-set "releaseFiles="%ROOTDIR%\PKGBUILD-REL" "%ROOTDIR%\.github\workflows\build-ppa-package-with-lintian.yml" "%ROOTDIR%\.github\workflows\build-ppa-package.yml" "%ROOTDIR%\.github\workflows\pushamend.yml" "%ROOTDIR%\.github\workflows\pushppa.yml" "%ROOTDIR%\.gitlab\workflows\release.yml" "%ROOTDIR%\public\BassBoom.Installers\BassBoom.Installer\Package.wxs" "%ROOTDIR%\public\BassBoom.Installers\BassBoom.InstallerBundle\Bundle.wxs" "%ROOTDIR%\Directory.Build.props" "%ROOTDIR%\CHANGES.TITLE""
+set "releaseFiles="%ROOTDIR%\PKGBUILD-REL" "%ROOTDIR%\.github\workflows\build-ppa-package-with-lintian.yml" "%ROOTDIR%\.github\workflows\build-ppa-package.yml" "%ROOTDIR%\.github\workflows\pushamend.yml" "%ROOTDIR%\.github\workflows\pushppa.yml" "%ROOTDIR%\public\BassBoom.Installers\BassBoom.Installer\Package.wxs" "%ROOTDIR%\public\BassBoom.Installers\BassBoom.InstallerBundle\Bundle.wxs" "%ROOTDIR%\Directory.Build.props" "%ROOTDIR%\CHANGES.TITLE""
 for %%f in (%releaseFiles%) do (
     echo Processing %%f...
     powershell -Command "& '%ROOTDIR%\vnd\eng\incrementor.ps1' '%%f' '%oldVer%' '%newVer%' '%oldApiVer%' '%newApiVer%'"
 )
 
 REM Run the version changer
-powershell -Command "& '%ROOTDIR%\vnd\eng\bb-version-change.ps1' '%ROOTDIR%' '%oldApiVer%' '%newApiVer%'"
+powershell -Command "& '%ROOTDIR%\vnd\eng\bb-version-change.ps1' '%ROOTDIR%' '%oldVer%' '%newVer%' '%oldApiVer%' '%newApiVer%'"
 
 REM Add Debian changelogs info
 echo Changing Debian changelogs info

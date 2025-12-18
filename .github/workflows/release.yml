@@ -21,7 +21,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '10.0.x'
       - name: Setup DocFX
         run: dotnet tool install --global docfx
       - name: Release Asset Preparation
@@ -58,8 +58,3 @@ jobs:
             tools/*.exe
       - name: Package Publication
         run: cmd.exe /C "tools\push.cmd ${{ secrets.NUGET_APIKEY }}"
-      - name: Notify build
-        uses: tsickert/discord-webhook@v6.0.0
-        with:
-          webhook-url: ${{ secrets.WEBHOOK_URL }}
-          content: "<:bassboom:1268904972297441404> ${{ steps.release-asset.outputs.SUBJECT }} <:bassboom:1268904972297441404>\n\n${{ steps.release-asset.outputs.BODY }}"

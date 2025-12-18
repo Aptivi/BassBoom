@@ -30,7 +30,8 @@ using Terminaux.Colors.Data;
 using Terminaux.Base;
 using BassBoom.Basolia.Playback;
 using BassBoom.Cli.Languages;
-using LocaleStation.Tools;
+using System.Globalization;
+using Terminaux.Base.Buffered;
 
 namespace BassBoom.Cli
 {
@@ -70,7 +71,7 @@ namespace BassBoom.Cli
                 // TODO: In the next release of BB and MB, move the Cli code to common code for Nitrocid to use as an addon.
                 bool testLocale = switches.Contains("-s");
                 if (testLocale)
-                    LanguageCommon.Language = "spa";
+                    CultureInfo.CurrentUICulture = new CultureInfo("spa");
 
                 // Initialize Basolia
                 basolia = new();
@@ -80,7 +81,7 @@ namespace BassBoom.Cli
                 outVer = InitBasolia.OutLibVersion;
 
                 // Now, open an interactive TUI
-                ConsoleResizeHandler.StartResizeListener((_, _, _, _) => Common.redraw = true);
+                ConsoleResizeHandler.StartResizeListener((_, _, _, _) => ScreenTools.CurrentScreen?.RequireRefresh());
                 if (isRadio)
                     Radio.RadioLoop();
                 else

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+        <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="metadata">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" use="required" type="xsd:string" />
+                <xsd:attribute name="type" type="xsd:string" />
+                <xsd:attribute name="mimetype" type="xsd:string" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="assembly">
+            <xsd:complexType>
+                <xsd:attribute name="alias" type="xsd:string" />
+                <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="data">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="resheader">
+            <xsd:complexType>
+                <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+    <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA" xml:space="preserve">
+    <value>لم يتم توفير مثيل Basolia.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_MPG123LIBINVALID" xml:space="preserve">
+    <value>مسار مكتبة mpg123 {0} لا يحتوي على مكتبة mpg123 صالحة.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_OUT123LIBINVALID" xml:space="preserve">
+    <value>مسار مكتبة out123 {0} لا يحتوي على مكتبة out123 صالحة.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_VERSIONNEEDSLIB" xml:space="preserve">
+    <value>لا يمكن الحصول على الإصدار حتى تتم تهيئة المكتبة.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTION_NEEDSINIT" xml:space="preserve">
+    <value>لم تُهيئ Basolia مكتبة MPG123 بعد!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY" xml:space="preserve">
+    <value>لا يمكن الاستعلام عن برامج التشغيل.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY" xml:space="preserve">
+    <value>لا يمكن الاستعلام عن الأجهزة.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERNOTFOUND" xml:space="preserve">
+    <value>برنامج التشغيل {0} غير موجود.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICENOTFOUND" xml:space="preserve">
+    <value>الجهاز {0} غير موجود.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALERROR" xml:space="preserve">
+    <value>خطأ عام في Basolia.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_MPG123ERROR" xml:space="preserve">
+    <value>أرجع MPG123 الخطأ التالي:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_GENERALOUTERROR" xml:space="preserve">
+    <value>خطأ عام في نظام إخراج Basolia.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_EXCEPTIONS_EXCEPTION_OUT123ERROR" xml:space="preserve">
+    <value>أرجع OUT123 الخطأ التالي:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_FILEALREADYOPEN" xml:space="preserve">
+    <value>لا يمكن فتح هذا الملف بينما الملف الحالي أو محطة الراديو لا تزال مفتوحة.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICFILEPATH" xml:space="preserve">
+    <value>توفير مسار لملف موسيقى.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>ملف الموسيقى غير موجود.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED" xml:space="preserve">
+    <value>لا يمكن فتح الملف.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_URLALREADYOPEN" xml:space="preserve">
+    <value>لا يمكن فتح هذا الرابط بينما الملف الحالي أو محطة الراديو لا تزال مفتوحة.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSMUSICURL" xml:space="preserve">
+    <value>توفير مسار لملف موسيقى أو محطة راديو.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NORADIOSTATION" xml:space="preserve">
+    <value>محطة الراديو هذه غير موجودة. رمز الخطأ:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTARADIOSTATION" xml:space="preserve">
+    <value>هذا لا يبدو كمحطة راديو. هل أنت متأكد؟</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NOTMPEGRADIOSTATION" xml:space="preserve">
+    <value>هذا لا يبدو كمحطة راديو MP3. لديك نوع {0}. هل أنت متأكد؟</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED" xml:space="preserve">
+    <value>لا يمكن فتح محطة الراديو</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_NEEDSAUDIOSTREAM" xml:space="preserve">
+    <value>لا يتوفر بث صوتي</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICSTREAMOPENFAILED" xml:space="preserve">
+    <value>لا يمكن فتح البث</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_ALREADYCLOSED" xml:space="preserve">
+    <value>لا يمكن إغلاق ملف أو محطة راديو مغلقة مسبقًا</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FILE_EXCEPTION_CLOSEFAILED" xml:space="preserve">
+    <value>لا يمكن إغلاق الملف</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_QUERY" xml:space="preserve">
+    <value>لا يمكن الاستعلام عن ملف غير مفتوح</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONONPLAYBACK" xml:space="preserve">
+    <value>محاولة الحصول على المدة أثناء التشغيل تُسبب تلفًا في التشغيل! لا تستدعي هذه الدالة أثناء التشغيل.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DURATIONSCANFAILED" xml:space="preserve">
+    <value>لا يمكن مسح الملف بحثًا عن معلومات الطول</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILELENGTHFAILED" xml:space="preserve">
+    <value>لا يمكن تحديد طول الملف</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTGETFAILED" xml:space="preserve">
+    <value>لا يمكن الحصول على الناتج.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMELENGETFAILED" xml:space="preserve">
+    <value>لا يمكن الحصول على طول الإطار.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_SPFGETFAILED" xml:space="preserve">
+    <value>لا يمكن الحصول على العينات لكل إطار.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_TPFGETFAILED" xml:space="preserve">
+    <value>لا يمكن الحصول على الثواني لكل إطار.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_GENERICBUFFSIZEGETFAILED" xml:space="preserve">
+    <value>لا يمكن الحصول على حجم المخزن المؤقت العام.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ID3ONPLAYBACK" xml:space="preserve">
+    <value>محاولة الحصول على بيانات تعريف ID3 أثناء التشغيل تُسبب تلفًا في التشغيل! لا تستدعي هذه الدالة أثناء التشغيل</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMESCANFAILED" xml:space="preserve">
+    <value>. لا يمكن مسح الملف بحثًا عن معلومات الإطار</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_METADATAGETFAILED" xml:space="preserve">
+    <value>لا يمكن الحصول على معلومات البيانات الوصفية</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ICYONPLAYBACK" xml:space="preserve">
+    <value>محاولة الحصول على بيانات ICY الوصفية أثناء التشغيل تُسبب تلفًا في التشغيل! لا تستدعي هذه الوظيفة أثناء التشغيل.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOONPLAYBACK" xml:space="preserve">
+    <value>محاولة الحصول على معلومات الإطار أثناء التشغيل تُسبب تلفًا في التشغيل! لا تستدعي هذه الوظيفة أثناء التشغيل.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FRAMEINFOGETFAILED" xml:space="preserve">
+    <value>لا يمكن الحصول على معلومات الإطار</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILENOTOPEN_DECODE" xml:space="preserve">
+    <value>لا يمكن فك تشفير إطار ملف غير مفتوح</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODEFAILED" xml:space="preserve">
+    <value>لا يمكن فك تشفير الإطار</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERNOTFOUND" xml:space="preserve">
+    <value>لم يتم العثور على وحدة فك التشفير {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERUNSUPPORTED" xml:space="preserve">
+    <value>وحدة فك التشفير {0} غير مدعومة من جهازك</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_DECODERSETFAILED" xml:space="preserve">
+    <value>لا يمكن ضبط وحدة فك التشفير على {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FILEFORMATFAILED" xml:space="preserve">
+    <value>لا يمكن تحديد تنسيق الملف</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_ENCODINGNOTFOUND" xml:space="preserve">
+    <value>الترميز {0} غير موجود.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_FORMATINFOGETFAILED" xml:space="preserve">
+    <value>لا يمكن الحصول على معلومات التنسيق</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGGETFAILED" xml:space="preserve">
+    <value>لا يمكن إعادة تعيين ترميز الإخراج</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTFORMATSETFAILED" xml:space="preserve">
+    <value>لا يمكن ضبط تنسيق الإخراج</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_FORMAT_EXCEPTION_OUTPUTENCODINGSETFAILED" xml:space="preserve">
+    <value>لا يمكن ضبط ترميز الإخراج على:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_INDEPENDENT_EXCEPTION_ROOTLIBPATHNEEDED" xml:space="preserve">
+    <value>توفير مسار مكتبة الجذر.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_LYRICS_EXCEPTION_LYRICSNOTFOUND" xml:space="preserve">
+    <value>كلمات الأغاني غير موجودة</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILENOTFOUND" xml:space="preserve">
+    <value>ملف قائمة التشغيل {0} غير موجود</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEXTINVALID" xml:space="preserve">
+    <value>امتداد ملف قائمة التشغيل غير صالح {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_PLAYLISTFILEEMPTY" xml:space="preserve">
+    <value>لم يتم توفير تمثيل قائمة التشغيل.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_NOTEXTHEADER" xml:space="preserve">
+    <value>هذا ليس عنوانًا ممتدًا:</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_EXTINFNEEDSARGS" xml:space="preserve">
+    <value>يتطلب EXTINF وسيطتين فقط، ولا يوجد مؤشر وسيطة.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_MUSICFILENOTFOUND" xml:space="preserve">
+    <value>لم يتم العثور على ملف الموسيقى {0} أو أنه ليس ملف MPEG.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFONEEDSARGS" xml:space="preserve">
+    <value>يجب أن توفر معلومات المسار وسيطتين فقط: طول المسار بالثواني (-1 إذا كان بثًا مباشرًا) وعنوان المسار الخام.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_PLAYLISTS_EXCEPTION_TRACKINFOINVALIDSECS" xml:space="preserve">
+    <value>لم توفر معلومات المسار عدد الثواني [{0}] بشكل صحيح.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DURATIONFAILED" xml:space="preserve">
+    <value>لا يمكن تحديد المدة الحالية للملف.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_SEEK" xml:space="preserve">
+    <value>لا يمكن البحث عن ملف غير مفتوح.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOSTARTFAILED" xml:space="preserve">
+    <value>لا يمكن البحث عن بداية الملف.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED" xml:space="preserve">
+    <value>لا يمكن البحث عن الإطار #{0} من الملف.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED" xml:space="preserve">
+    <value>لا يتم توفير سطر كلمات الأغاني للبحث عنه.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED" xml:space="preserve">
+    <value>لا يمكن الإسقاط.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PLAY" xml:space="preserve">
+    <value>لا يمكن تشغيل ملف غير مفتوح</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE" xml:space="preserve">
+    <value>لا يمكن إيقاف ملف غير مفتوح مؤقتًا</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_STOP" xml:space="preserve">
+    <value>لا يمكن إيقاف ملف غير مفتوح</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETVOLUMEFAILED" xml:space="preserve">
+    <value>لا يمكن ضبط مستوى الصوت على {0}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETVOLUMEFAILED" xml:space="preserve">
+    <value>لا يمكن الحصول على مستوى الصوت (الأساسي، في الواقع، والديسيبل)</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQBANDFAILED" xml:space="preserve">
+    <value>لا يمكن ضبط نطاق المعادل {0}/32 على {1} تحت {2}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SETEQRANGEBANDFAILED" xml:space="preserve">
+    <value>لا يمكن ضبط نطاقات المعادل {0}/32 -&gt; {1}/32 على {2} تحت {3}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RESETEQBANDSFAILED" xml:space="preserve">
+    <value>لا يمكن إعادة ضبط نطاقات المعادل إلى قيمها الأولية!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_GETNATIVESTATEFAILED" xml:space="preserve">
+    <value>لا يمكن الحصول على الحالة الأصلية لـ {0}!</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_OPENOUTPUTFAILED" xml:space="preserve">
+    <value>لا يمكن فتح الإخراج للجهاز {0} على برنامج التشغيل {1}</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_NEEDSOUTPUT" xml:space="preserve">
+    <value>يجب فتح الإخراج.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_RATEENCODINGUNSUPPORTED" xml:space="preserve">
+    <value>المعدل المحدد [{0} هرتز] والترميز [{1}] غير مدعومين.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_STARTOUTPUTFAILED" xml:space="preserve">
+    <value>لا يمكن بدء الإخراج.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FEEDFAILED" xml:space="preserve">
+    <value>لا يمكن التغذية.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_PARSEFAILED" xml:space="preserve">
+    <value>فشل تحليل خادم الراديو {0}. يمكن العثور على مزيد من المعلومات في الاستثناء الداخلي.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_ICECAST" xml:space="preserve">
+    <value>رمز البث فارغ.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSOURCES" xml:space="preserve">
+    <value>لا توجد مصادر.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NEEDSRADIOSTATIONPATH" xml:space="preserve">
+    <value>توفير مسار لمحطة راديو</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_SERVERTYPEFAILED" xml:space="preserve">
+    <value>تعذر تحديد نوع خادم محطة الراديو.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMTOKENNULL_SHOUTCASTV2" xml:space="preserve">
+    <value>رمز بث Shoutcast v2.x فارغ.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_SHOUTCASTV2" xml:space="preserve">
+    <value>لا يوجد بث Shoutcast v2.x.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_NOSTREAM_ICECAST" xml:space="preserve">
+    <value>لا يوجد بث Icecast.</value>
+  </data>
+  <data name="BASSBOOM_BASOLIA_RADIO_EXCEPTION_STREAMIDFAILED" xml:space="preserve">
+    <value>فشل تحليل معرف البث {0}. للمزيد من المعلومات، يُرجى مراجعة الاستثناء الداخلي.</value>
+  </data>
+
+</root>

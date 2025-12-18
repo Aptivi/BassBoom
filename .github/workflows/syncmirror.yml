@@ -1,0 +1,22 @@
+name: 'Sync with GL mirror'
+on:
+  push:
+    branches:
+      - '**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: 'true'
+          fetch-depth: 0
+      - name: Add mirror auth info
+        run: git remote add alternate https://AptiviCEO:${{ secrets.GL_APIKEY }}@gitlab.com/aptivi/main/BassBoom.git
+      - name: Push to mirror
+        run: git push alternate
