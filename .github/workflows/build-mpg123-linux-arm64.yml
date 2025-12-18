@@ -17,9 +17,7 @@ jobs:
           ref: ${{ github.ref }}
       - name: Setting up environment
         run: |
-          sudo sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list
-          sudo apt update
-          sudo apt build-dep mpg123
+          sudo apt install libasound2-dev libaudio-dev libjack-dev libltdl-dev libopenal-dev libpulse-dev pkgconf portaudio19-dev
       - name: Setting up MPG123 library
         run: |
           curl -o mpg123.tar.bz2 https://www.mpg123.de/download/mpg123-1.33.3.tar.bz2
