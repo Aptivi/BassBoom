@@ -37,19 +37,20 @@ jobs:
       - name: MPG123 compilation
         shell: msys2 {0}
         run: |
+          export lt_cv_deplibs_check_method=pass_all
           cd mpg123-1.33.3 ; ./configure --prefix=/clangarm64 --disable-components --enable-libmpg123 --enable-libout123 --enable-libout123-modules ; make
       - name: MPG123 artifacts
         uses: actions/upload-artifact@v4
         with:
           name: "MPG123 library - libmpg123"
-          path: mpg123-1.33.3/src/libmpg123/.libs/libmpg123.0.dylib
+          path: mpg123-1.33.3/src/libmpg123/.libs/libmpg123.0.dll
       - name: MPG123 artifacts
         uses: actions/upload-artifact@v4
         with:
           name: "MPG123 library - libout123"
-          path: mpg123-1.33.3/src/libout123/.libs/libout123.0.dylib
+          path: mpg123-1.33.3/src/libout123/.libs/libout123.0.dll
       - name: MPG123 artifacts
         uses: actions/upload-artifact@v4
         with:
           name: "MPG123 library - libout123 output modules"
-          path: mpg123-1.33.3/src/libout123/modules/.libs/*.so
+          path: mpg123-1.33.3/src/libout123/modules/.libs/*.dll
