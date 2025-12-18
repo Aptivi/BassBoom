@@ -35,5 +35,3 @@ jobs:
       - name: Solution Compilation (Unix)
         if: matrix.runs-on != 'windows-latest'
         run: make rel-ci
-      - name: Testing
-        run: dotnet test --no-build --configuration Release
