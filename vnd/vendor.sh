@@ -114,7 +114,7 @@ packall() {
 
     # Pack binary
     echo Packing binary with configuration $releaseconf...
-    cd "$ROOTDIR/private/BassBoom.Cli/bin/$releaseconf/net8.0/" && "$zippath" -r /tmp/$version-cli.zip . && cd -
+    cd "$ROOTDIR/private/BassBoom.Cli/bin/$releaseconf/net10.0/" && "$zippath" -r /tmp/$version-cli.zip . && cd -
     checkvendorerror $?
     cd "$ROOTDIR/private/BassBoom.Cli/bin/$releaseconf/net48/" && "$zippath" -r /tmp/$version-cli-48.zip . && cd -
     checkvendorerror $?

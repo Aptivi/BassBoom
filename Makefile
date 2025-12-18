@@ -1,7 +1,7 @@
 MODAPI = 2
 ROOT_DIR := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
-OUTPUT = "$(ROOT_DIR)/private/BassBoom.Cli/bin/$(ENVIRONMENT)/net8.0"
+OUTPUT = "$(ROOT_DIR)/private/BassBoom.Cli/bin/$(ENVIRONMENT)/net10.0"
 BINARIES = "$(ROOT_DIR)/assets/bassboom"
 MANUALS = "$(ROOT_DIR)/assets/bassboom.1"
 DESKTOPS = "$(ROOT_DIR)/assets/bassboom.desktop"

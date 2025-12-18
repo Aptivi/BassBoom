@@ -42,7 +42,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: bb-build-dotnet
-          path: "private/BassBoom.Cli/bin/Debug/net8.0"
+          path: "private/BassBoom.Cli/bin/Debug/net10.0"
       - uses: actions/upload-artifact@v4
         with:
           name: bb-build-dotnetfx
