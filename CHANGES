@@ -1,10 +1,13 @@
-We've updated this project to make sure that Terminaux gets updated with ResourceLab!
+We've updated this project for general improvements!
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[*]` General improvements
+- `[*]` Updated mpg123 to 1.33.3
+- `[*]` Updated Terminaux to 8.0
+- `[*]` Updated .NET to 10.0
+- `[*]` General improvements and bug fixes
 
 Review the commit history if you want to get a deep insight about the changes.
 
