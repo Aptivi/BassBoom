@@ -1,4 +1,4 @@
-name: Build MPG123 library (macOS - AMD64)
+name: Build MPG123 library (Windows - ARM64)
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
     
 jobs:
   build:
-    runs-on: macos-15-intel
+    runs-on: windows-11-arm
 
     steps:
       - uses: actions/checkout@v4
@@ -16,15 +16,28 @@ jobs:
           submodules: 'true'
           ref: ${{ github.ref }}
       - name: Setting up environment
-        run: |
-          brew install automake
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: CLANGARM64
+          update: true
+          install: |
+            base-devel
+            mingw-w64-clang-aarch64-clang
+            mingw-w64-clang-aarch64-make
+            autoconf
+            automake
+            libtool
+            tar
+            bzip2
       - name: Setting up MPG123 library
+        shell: msys2 {0}
         run: |
-          curl -o mpg123.tar.bz2 https://www.mpg123.de/download/mpg123-1.33.3.tar.bz2
+          curl -L -o mpg123.tar.bz2 https://www.mpg123.de/download/mpg123-1.33.3.tar.bz2
           tar xvf mpg123.tar.bz2
       - name: MPG123 compilation
+        shell: msys2 {0}
         run: |
-          cd mpg123-1.33.3 ; ./configure ; make
+          cd mpg123-1.33.3 ; ./configure --prefix=/clangarm64 ; make
       - name: MPG123 artifacts
         uses: actions/upload-artifact@v4
         with:
