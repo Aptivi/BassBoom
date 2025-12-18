@@ -17,6 +17,7 @@ jobs:
           ref: ${{ github.ref }}
       - name: Setting up environment
         run: |
+          sudo sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list
           sudo apt build-dep mpg123
       - name: Setting up MPG123 library
         run: |
