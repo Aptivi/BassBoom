@@ -30,18 +30,16 @@ using Terminaux.Colors;
 using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
-using Terminaux.Writer.FancyWriters;
-using Terminaux.Inputs.Styles.Selection;
 using Terminaux.Inputs;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
-using Terminaux.Writer.MiscWriters;
 using Terminaux.Base.Extensions;
-using Terminaux.Writer.CyclicWriters;
 using Terminaux.Writer.CyclicWriters.Renderer;
 using Terminaux.Colors.Transformation;
 using BassBoom.Cli.Languages;
+using Terminaux.Writer.CyclicWriters.Graphical;
+using Terminaux.Writer.CyclicWriters.Simple;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -145,22 +143,21 @@ namespace BassBoom.Cli.CliBase
                     Text = name,
                     Left = 2,
                     Top = 1,
-                    InteriorWidth = ConsoleWrapper.WindowWidth - 6,
-                    InteriorHeight = songsPerPage,
+                    Width = ConsoleWrapper.WindowWidth - 6,
+                    Height = songsPerPage,
                     FrameColor = disco,
                     TitleColor = disco,
                 };
                 var durationBar = new SimpleProgress((int)(100 * (position / (double)Common.CurrentCachedInfo.Duration)), 100)
                 {
-                    LeftMargin = 2,
-                    RightMargin = 2,
+                    Width = ConsoleWrapper.WindowWidth - 4,
                     ShowPercentage = false,
                     ProgressForegroundColor = TransformationTools.GetDarkBackground(disco),
                     ProgressActiveForegroundColor = disco,
                 };
                 buffer.Append(
                     listBoxFrame.Render() +
-                    ContainerTools.RenderRenderable(durationBar, new(2, ConsoleWrapper.WindowHeight - 3))
+                    RendererTools.RenderRenderable(durationBar, new(2, ConsoleWrapper.WindowHeight - 3))
                 );
 
                 // Render the indicator
@@ -446,11 +443,9 @@ namespace BassBoom.Cli.CliBase
             var keybindings = new Keybindings()
             {
                 KeybindingList = ShowBindings,
-                Left = 0,
-                Top = ConsoleWrapper.WindowHeight - 1,
                 Width = ConsoleWrapper.WindowWidth - 1,
             };
-            drawn.Append(keybindings.Render());
+            drawn.Append(RendererTools.RenderRenderable(keybindings, new(0, ConsoleWrapper.WindowHeight - 1)));
 
             // In case we have no songs in the playlist...
             if (Common.cachedInfos.Count == 0)
@@ -511,8 +506,8 @@ namespace BassBoom.Cli.CliBase
                 Text = name,
                 Left = 2,
                 Top = 1,
-                InteriorWidth = ConsoleWrapper.WindowWidth - 6,
-                InteriorHeight = songsPerPage,
+                Width = ConsoleWrapper.WindowWidth - 6,
+                Height = songsPerPage,
             };
             var playlistSelections = new Selection([.. choices])
             {

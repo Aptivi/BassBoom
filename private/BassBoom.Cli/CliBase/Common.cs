@@ -35,7 +35,6 @@ using Terminaux.Base.Buffered;
 using Terminaux.Inputs.Styles;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
-using Terminaux.Writer.MiscWriters;
 using Textify.General;
 
 namespace BassBoom.Cli.CliBase

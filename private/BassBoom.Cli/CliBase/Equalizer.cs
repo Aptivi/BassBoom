@@ -23,16 +23,15 @@ using Terminaux.Base.Buffered;
 using Terminaux.Colors;
 using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
-using Terminaux.Writer.FancyWriters;
 using Terminaux.Inputs;
 using System.Collections.Generic;
-using Terminaux.Inputs.Styles.Selection;
 using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
-using Terminaux.Writer.MiscWriters;
-using Terminaux.Writer.CyclicWriters;
 using BassBoom.Cli.Languages;
+using Terminaux.Writer.CyclicWriters.Simple;
+using Terminaux.Writer.CyclicWriters.Graphical;
+using Terminaux.Writer.CyclicWriters.Renderer;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -139,11 +138,9 @@ namespace BassBoom.Cli.CliBase
             var keybindings = new Keybindings()
             {
                 KeybindingList = ShowBindings,
-                Left = 0,
-                Top = ConsoleWrapper.WindowHeight - 1,
                 Width = ConsoleWrapper.WindowWidth - 1,
             };
-            drawn.Append(keybindings.Render());
+            drawn.Append(RendererTools.RenderRenderable(keybindings, new(0, ConsoleWrapper.WindowHeight - 1)));
 
             // Write current song
             string name = LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_NOTPLAYING");
@@ -177,8 +174,8 @@ namespace BassBoom.Cli.CliBase
                 Text = name,
                 Left = 2,
                 Top = 1,
-                InteriorWidth = ConsoleWrapper.WindowWidth - 6,
-                InteriorHeight = bandsPerPage
+                Width = ConsoleWrapper.WindowWidth - 6,
+                Height = bandsPerPage
             };
             var bandSelections = new Selection([.. choices])
             {

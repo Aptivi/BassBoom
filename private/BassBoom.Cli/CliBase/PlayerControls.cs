@@ -27,7 +27,6 @@ using BassBoom.Basolia.Playback.Playlists;
 using BassBoom.Basolia.Playback.Playlists.Enumerations;
 using BassBoom.Cli.Languages;
 using BassBoom.Cli.Tools;
-using SpecProbe.Software.Platform;
 using System;
 using System.IO;
 using System.Linq;
@@ -449,7 +448,11 @@ namespace BassBoom.Cli.CliBase
             PlayForget.PlayStream(stream);
 
             // Ask the user if everything is OK.
-            int answer = InfoBoxButtonsColor.WriteInfoBoxButtons(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_TITLE"), [new InputChoiceInfo("yes", LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_YES")), new InputChoiceInfo("no", LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_NO"))], LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_DESC"));
+            int answer = InfoBoxButtonsColor.WriteInfoBoxButtons(
+                [
+                    new InputChoiceInfo("yes", LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_YES")),
+                    new InputChoiceInfo("no", LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_NO"))
+                ], LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_TITLE"), LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_DESC"));
             if (answer == 0)
                 InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TESTSOUNDREVIEW_SUCCESS"));
             else if (answer == 1)
