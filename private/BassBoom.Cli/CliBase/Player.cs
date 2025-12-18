@@ -121,7 +121,7 @@ namespace BassBoom.Cli.CliBase
 
                 // Get the positions and the amount of songs per page
                 int startPos = 4;
-                int endPos = ConsoleWrapper.WindowHeight - 3;
+                int endPos = ConsoleWrapper.WindowHeight - 4;
                 int songsPerPage = endPos - startPos;
 
                 // Get the position
@@ -163,23 +163,50 @@ namespace BassBoom.Cli.CliBase
                 // Render the indicator
                 string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
                 string indicator =
-                    "┤ " + LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_SEEKINDICATOR") + $" {PlayerControls.seekRate:0.00} | " +
-                    boostIndicator + LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_VOLINDICATOR") + $" {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
+                    LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_SEEKINDICATOR") + $" {PlayerControls.seekRate:0.00} | " +
+                    boostIndicator + LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_VOLINDICATOR") + $" {Common.volume * 100:0}%{disco.VTSequenceForeground}";
 
                 // Render the lyric
                 string lyric = Common.CurrentCachedInfo.LyricInstance is not null ? Common.CurrentCachedInfo.LyricInstance.GetLastLineCurrent(BassBoomCli.basolia) : "";
                 string finalLyric = string.IsNullOrWhiteSpace(lyric) ? "..." : lyric;
 
                 // Render the results
-                var lyricText = new AlignedText()
+                string indicatorTextStr = $"{posSpan} / {Common.CurrentCachedInfo.DurationSpan} | {indicator}";
+                string lyricTextStr = Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.IsPlaying(BassBoomCli.basolia) ? $"{finalLyric}" : "";
+                int indicatorWidth = ConsoleChar.EstimateCellWidth(indicatorTextStr);
+                int lyricTextWidth = ConsoleChar.EstimateCellWidth(lyricTextStr);
+                var eraser = new Eraser()
                 {
-                    Top = ConsoleWrapper.WindowHeight - 3,
+                    Left = 2,
+                    Top = ConsoleWrapper.WindowHeight - 4,
+                    Width = ConsoleWrapper.WindowWidth - 4,
+                    Height = 1,
+                };
+                var indicatorText = new BoundedText()
+                {
+                    Left = 2,
+                    Top = ConsoleWrapper.WindowHeight - 4,
                     ForegroundColor = disco,
-                    Text = Common.CurrentCachedInfo.LyricInstance is not null && PlaybackTools.IsPlaying(BassBoomCli.basolia) ? $"┤ {finalLyric} ├" : ""
+                    Width = ConsoleWrapper.WindowWidth - 7 - lyricTextWidth,
+                    Height = 1,
+                    Text = indicatorTextStr
+                };
+                var lyricText = new BoundedText()
+                {
+                    Left = 2,
+                    Top = ConsoleWrapper.WindowHeight - 4,
+                    ForegroundColor = disco,
+                    Width = ConsoleWrapper.WindowWidth - 4,
+                    Height = 1,
+                    Text = lyricTextStr,
+                    Settings = new()
+                    {
+                        Alignment = TextAlignment.Right,
+                    }
                 };
                 buffer.Append(
-                    TextWriterWhereColor.RenderWhereColor($"┤ {posSpan} / {Common.CurrentCachedInfo.DurationSpan} ├", 4, ConsoleWrapper.WindowHeight - 5, disco) +
-                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 5, disco) +
+                    eraser.Render() +
+                    indicatorText.Render() +
                     lyricText.Render()
                 );
                 return buffer.ToString();
@@ -488,7 +515,7 @@ namespace BassBoom.Cli.CliBase
             // Now, populate the input choice information instances that represent songs
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
-            int endPos = ConsoleWrapper.WindowHeight - 3;
+            int endPos = ConsoleWrapper.WindowHeight - 4;
             int songsPerPage = endPos - startPos;
             int max = Common.cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
             for (int i = 0; i < Common.cachedInfos.Count; i++)
