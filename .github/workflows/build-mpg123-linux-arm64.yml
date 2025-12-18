@@ -17,6 +17,7 @@ jobs:
           ref: ${{ github.ref }}
       - name: Setting up environment
         run: |
+          sudo apt update
           sudo apt install libasound2-dev libaudio-dev libjack-dev libltdl-dev libopenal-dev libpulse-dev pkgconf portaudio19-dev
       - name: Setting up MPG123 library
         run: |
