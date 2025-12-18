@@ -37,7 +37,7 @@ jobs:
       - name: MPG123 compilation
         shell: msys2 {0}
         run: |
-          cd mpg123-1.33.3 ; ./configure --prefix=/clangarm64 ; make
+          cd mpg123-1.33.3 ; ./configure --prefix=/clangarm64 --disable-components --enable-libmpg123 --enable-libout123 --enable-libout123-modules ; make
       - name: MPG123 artifacts
         uses: actions/upload-artifact@v4
         with:

@@ -17,7 +17,7 @@ jobs:
           ref: ${{ github.ref }}
       - name: Setting up environment
         run: |
-          apt build-dep mpg123
+          sudo apt build-dep mpg123
       - name: Setting up MPG123 library
         run: |
           curl -o mpg123.tar.bz2 https://www.mpg123.de/download/mpg123-1.33.3.tar.bz2
