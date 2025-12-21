@@ -1,10 +1,10 @@
-We've updated this project to fix a critical bug!
+We've updated this project to update libraries!
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[*]` Fixed critical bug regarding loading the libraries in Windows
+- `[*]` Updated SpecProbe
 
 Review the commit history if you want to get a deep insight about the changes.
 
