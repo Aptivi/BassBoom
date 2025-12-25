@@ -63,12 +63,12 @@ jobs:
         run: |
           mv debian ..
           mv .github ..
-          tar cfv ../bassboom-2_1.0.2.0-0.2.13.2.orig.tar .
-          xz ../bassboom-2_1.0.2.0-0.2.13.2.orig.tar
+          tar cfv ../bassboom-3_1.0.3.0-1.0.0.orig.tar .
+          xz ../bassboom-3_1.0.3.0-1.0.0.orig.tar
           mv ../debian .
 
       - name: Build source package
         run: debuild -S -sa
         
       - name: Push to Launchpad
-        run: dput apt-ppa ../bassboom-2_*_source.changes
+        run: dput apt-ppa ../bassboom-3_*_source.changes

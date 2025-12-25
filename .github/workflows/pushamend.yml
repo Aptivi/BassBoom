@@ -53,12 +53,12 @@ jobs:
           
       - name: Download original source
         run: |
-          wget --output-document=../bassboom-2_1.0.2.0-0.2.13.2.orig.tar.xz https://launchpad.net/~eofla/+archive/ubuntu/bassboom/+sourcefiles/bassboom-2/1.0.2.0-0.2.13.2/bassboom-2_1.0.2.0-0.2.13.2.orig.tar.xz
-          tar xf ../bassboom-2_1.0.2.0-0.2.13.2.orig.tar.xz .
+          wget --output-document=../bassboom-3_1.0.3.0-1.0.0.orig.tar.xz https://launchpad.net/~eofla/+archive/ubuntu/bassboom/+sourcefiles/bassboom-3/1.0.3.0-1.0.0/bassboom-3_1.0.3.0-1.0.0.orig.tar.xz
+          tar xf ../bassboom-3_1.0.3.0-1.0.0.orig.tar.xz .
           mv .github ..
 
       - name: Build source package
         run: debuild -S
         
       - name: Push to Launchpad
-        run: dput apt-ppa ../bassboom-2_*_source.changes
+        run: dput apt-ppa ../bassboom-3_*_source.changes

@@ -37,8 +37,8 @@ jobs:
         run: |
           mv debian ..
           mv .github ..
-          tar cfv ../bassboom-2_1.0.2.0-0.2.13.2.orig.tar .
-          xz ../bassboom-2_1.0.2.0-0.2.13.2.orig.tar
+          tar cfv ../bassboom-3_1.0.3.0-1.0.0.orig.tar .
+          xz ../bassboom-3_1.0.3.0-1.0.0.orig.tar
           mv ../debian .
 
       - name: Build package
@@ -54,4 +54,4 @@ jobs:
 
       - name: Try to install
         run: |
-          sudo apt install ./bassboom-2_*.deb
+          sudo apt install ./bassboom-3_*.deb

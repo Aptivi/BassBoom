@@ -1,5 +1,5 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
-pkgname=bassboom-2-git
+pkgname=bassboom-3-git
 pkgver=v0.2.8.r29.1cc0012
 pkgrel=1
 pkgdesc="Cross-platform music player written in C#"
@@ -16,7 +16,7 @@ optdepends=('jack2: Jack support for BassBoom'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
-source=("${pkgname}::git+https://github.com/Aptivi/BassBoom#branch=x/oob/v0.2.x")
+source=("${pkgname}::git+https://github.com/Aptivi/BassBoom#branch=x/oob/v1.0.x")
 sha256sums=('SKIP')
 
 pkgver() {
