@@ -47,7 +47,7 @@ namespace BassBoom.Cli
         {
             try
             {
-                ConsoleMisc.SetTitle($"BassBoom CLI - Basolia v{version?.ToString(3)} - Beta {version?.Minor}");
+                ConsoleMisc.SetTitle($"BassBoom CLI - Basolia v{version?.ToString()}");
 
                 // First, prompt for the music path if no arguments are provided.
                 string[] arguments = args.Where((arg) => !arg.StartsWith("-")).ToArray();
