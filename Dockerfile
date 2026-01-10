@@ -5,7 +5,7 @@ WORKDIR /BB
 COPY . ./
 
 # Attempt to build BassBoom
-RUN dotnet build "BassBoom.sln" -p:Configuration=Release
+RUN dotnet build "BassBoom.slnx" -p:Configuration=Release
 
 # Run the ASP.NET image
 FROM mcr.microsoft.com/dotnet/aspnet:10.0

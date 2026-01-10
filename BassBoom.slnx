@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Assets/">
+    <File Path="CHANGES" />
+    <File Path="CHANGES.TITLE" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Folder Name="/Private/">
+    <Project Path="private/BuildTargets/BuildTargets.csproj" />
+  </Folder>
+  <Folder Name="/Private/Demos/">
+    <Project Path="private/BassBoom.Cli/BassBoom.Cli.csproj" />
+  </Folder>
+  <Folder Name="/Public/">
+    <Project Path="public/BassBoom.Basolia/BassBoom.Basolia.csproj" />
+    <Project Path="public/BassBoom.Native/BassBoom.Native.csproj" />
+  </Folder>
+</Solution>

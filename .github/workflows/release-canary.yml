@@ -27,8 +27,8 @@ jobs:
       - name: Release Asset Preparation
         run: |
           cmd.exe /c "tools\build.cmd Debug -p:ContinuousIntegrationBuild=true"
-          dotnet build -p:Configuration=Debug -p:Platform=x64 public/BassBoom.Installers/BassBoom.Installer.sln
-          dotnet build -p:Configuration=Debug -p:Platform=ARM64 public/BassBoom.Installers/BassBoom.Installer.sln
+          dotnet build -p:Configuration=Debug -p:Platform=x64 public/BassBoom.Installers/BassBoom.Installer.slnx
+          dotnet build -p:Configuration=Debug -p:Platform=ARM64 public/BassBoom.Installers/BassBoom.Installer.slnx
           Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/x64/Debug/BassBoom.InstallerBundle.exe vnd/bassboom-win-x64-installer.exe
           Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/ARM64/Debug/BassBoom.InstallerBundle.exe vnd/bassboom-win-arm64-installer.exe
       - uses: actions/upload-artifact@v4

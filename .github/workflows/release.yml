@@ -30,8 +30,8 @@ jobs:
           cmd.exe /c "tools\pack.cmd"
           cmd.exe /c "tools\docgen.cmd"
           cmd.exe /c "tools\docgen-pack.cmd"
-          dotnet build -p:Configuration=Release -p:Platform=x64 public/BassBoom.Installers/BassBoom.Installer.sln
-          dotnet build -p:Configuration=Release -p:Platform=ARM64 public/BassBoom.Installers/BassBoom.Installer.sln
+          dotnet build -p:Configuration=Release -p:Platform=x64 public/BassBoom.Installers/BassBoom.Installer.slnx
+          dotnet build -p:Configuration=Release -p:Platform=ARM64 public/BassBoom.Installers/BassBoom.Installer.slnx
           Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/x64/Release/BassBoom.InstallerBundle.exe tools/bassboom-win-x64-installer.exe
           Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/ARM64/Release/BassBoom.InstallerBundle.exe tools/bassboom-win-arm64-installer.exe
       - name: Release Preparation
