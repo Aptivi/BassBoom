@@ -1,4 +1,4 @@
-Source: bassboom-2
+Source: bassboom-3
 Section: misc
 Priority: optional
 Maintainer: Aptivi CEO <ceo@aptivi.anonaddy.com>
@@ -8,7 +8,7 @@ Homepage: https://aptivi.gitbook.io/bassboom-manual
 Vcs-Browser: https://gitlab.com/aptivi/main/BassBoom
 Vcs-Git: https://gitlab.com/aptivi/main/BassBoom.git
 
-Package: bassboom-2
+Package: bassboom-3
 Architecture: amd64 arm64
 Depends: ${shlibs:Depends}, ${misc:Depends}, dotnet-runtime-10.0 (>= 10.0), tzdata (>= 2021a), libjack0 (>= 1:0.125.0-3), libportaudio2 (>= 19.6.0), libopenal1 (>= 1:1.19.1), libsdl2-2.0-0 (>= 2.0.9), libpulse0 (>= 12.2), libaudio2 (>= 1.9.4), libsndio7.0 (>= 1.8.1)
 Provides: bassboom
