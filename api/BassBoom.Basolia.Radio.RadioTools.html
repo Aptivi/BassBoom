@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
 
@@ -19,13 +19,17 @@
     
     <meta property="docfx:rel" content="../">
     
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Space Mono:wght@400;500;700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
-      <header>
+      <header class="apt-head translucency-rule-black">
 
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
+          <div class="container-header">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -47,14 +51,6 @@
             </div>
           </div>
         </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
-        </div>
       </header>
       <div class="container body-content">
 
@@ -63,7 +59,7 @@
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -86,11 +82,11 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><span class="xref">RadioTools</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="BassBoom.html">BassBoom</a>.<a class="xref" href="BassBoom.Basolia.html">Basolia</a>.<a class="xref" href="BassBoom.Basolia.Radio.html">Radio</a></h6>
-  <h6><strong>Assembly</strong>: BassBoom.Basolia.dll</h6>
+  <h6>Namespace: <a class="xref" href="BassBoom.html">BassBoom</a>.<a class="xref" href="BassBoom.Basolia.html">Basolia</a>.<a class="xref" href="BassBoom.Basolia.Radio.html">Radio</a></h6>
+  <h6>Assembly: BassBoom.Basolia.dll</h6>
   <h5 id="BassBoom_Basolia_Radio_RadioTools_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class RadioTools</code></pre>
@@ -102,7 +98,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Radio_RadioTools_GetRadioInfo_System_String_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Radio.RadioTools.GetRadioInfo(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Radio/RadioTools.cs/#L41">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Radio/RadioTools.cs/#L42">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Radio_RadioTools_GetRadioInfo_" data-uid="BassBoom.Basolia.Radio.RadioTools.GetRadioInfo*"></a>
   <h4 id="BassBoom_Basolia_Radio_RadioTools_GetRadioInfo_System_String_" data-uid="BassBoom.Basolia.Radio.RadioTools.GetRadioInfo(System.String)">GetRadioInfo(string)</h4>
@@ -114,7 +110,7 @@
     <pre><code class="lang-csharp hljs">public static IRadioServer? GetRadioInfo(string radioUrl)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -124,7 +120,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="xref">string</span></td>
         <td><span class="parametername">radioUrl</span></td>
         <td><p>Radio station URL</p>
 </td>
@@ -132,7 +128,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -152,7 +148,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Radio_RadioTools_GetRadioInfoAsync_System_String_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Radio.RadioTools.GetRadioInfoAsync(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Radio/RadioTools.cs/#L49">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Radio/RadioTools.cs/#L50">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Radio_RadioTools_GetRadioInfoAsync_" data-uid="BassBoom.Basolia.Radio.RadioTools.GetRadioInfoAsync*"></a>
   <h4 id="BassBoom_Basolia_Radio_RadioTools_GetRadioInfoAsync_System_String_" data-uid="BassBoom.Basolia.Radio.RadioTools.GetRadioInfoAsync(System.String)">GetRadioInfoAsync(string)</h4>
@@ -164,7 +160,7 @@
     <pre><code class="lang-csharp hljs">public static Task&lt;IRadioServer?&gt; GetRadioInfoAsync(string radioUrl)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -174,7 +170,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="xref">string</span></td>
         <td><span class="parametername">radioUrl</span></td>
         <td><p>Radio station URL</p>
 </td>
@@ -182,7 +178,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -191,7 +187,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="BassBoom.Basolia.Radio.IRadioServer.html">IRadioServer</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="BassBoom.Basolia.Radio.IRadioServer.html">IRadioServer</a>&gt;</td>
         <td><p>An instance of <a class="xref" href="BassBoom.Basolia.Radio.IRadioServer.html">IRadioServer</a>. <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if type can't be determined. <a class="xref" href="BassBoom.Basolia.Radio.ShoutcastServer.html">ShoutcastServer</a> if this radio station server uses Shoutcast, and <a class="xref" href="BassBoom.Basolia.Radio.IcecastServer.html">IcecastServer</a> if it uses Icecast.</p>
 </td>
       </tr>
@@ -202,7 +198,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Radio_RadioTools_IsRadio_System_String_System_String__.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Radio.RadioTools.IsRadio(System.String%2CSystem.String%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Radio/RadioTools.cs/#L101">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Radio/RadioTools.cs/#L102">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Radio_RadioTools_IsRadio_" data-uid="BassBoom.Basolia.Radio.RadioTools.IsRadio*"></a>
   <h4 id="BassBoom_Basolia_Radio_RadioTools_IsRadio_System_String_System_String__" data-uid="BassBoom.Basolia.Radio.RadioTools.IsRadio(System.String,System.String@)">IsRadio(string, out string)</h4>
@@ -214,7 +210,7 @@
     <pre><code class="lang-csharp hljs">public static bool IsRadio(string radioUrl, out string streamType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -224,13 +220,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="xref">string</span></td>
         <td><span class="parametername">radioUrl</span></td>
         <td><p>Radio station URL</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="xref">string</span></td>
         <td><span class="parametername">streamType</span></td>
         <td><p>Output stream type</p>
 </td>
@@ -238,7 +234,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -247,7 +243,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="xref">bool</span></td>
         <td><p>True if it is a radio station; false otherwise.</p>
 </td>
       </tr>
@@ -258,7 +254,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Radio_RadioTools_IsRadioAsync_System_String_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Radio.RadioTools.IsRadioAsync(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Radio/RadioTools.cs/#L113">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Radio/RadioTools.cs/#L114">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Radio_RadioTools_IsRadioAsync_" data-uid="BassBoom.Basolia.Radio.RadioTools.IsRadioAsync*"></a>
   <h4 id="BassBoom_Basolia_Radio_RadioTools_IsRadioAsync_System_String_" data-uid="BassBoom.Basolia.Radio.RadioTools.IsRadioAsync(System.String)">IsRadioAsync(string)</h4>
@@ -270,7 +266,7 @@
     <pre><code class="lang-csharp hljs">public static Task&lt;(string, bool)&gt; IsRadioAsync(string radioUrl)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -280,7 +276,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="xref">string</span></td>
         <td><span class="parametername">radioUrl</span></td>
         <td><p>Radio station URL</p>
 </td>
@@ -288,7 +284,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -297,7 +293,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>)&gt;</td>
+        <td><span class="xref">Task</span>&lt;(<span class="xref">string</span>, <span class="xref">bool</span>)&gt;</td>
         <td><p>True if it is a radio station; false otherwise.</p>
 </td>
       </tr>
@@ -315,7 +311,7 @@
                     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Radio_RadioTools.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Radio.RadioTools%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Radio/RadioTools.cs/#L32" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Radio/RadioTools.cs/#L33" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
@@ -327,19 +323,6 @@
           </div>
         </div>
       </div>
-
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      
-      <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
     </div>
 
     <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>

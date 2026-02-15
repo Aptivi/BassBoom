@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
 
@@ -19,13 +19,17 @@
     
     <meta property="docfx:rel" content="../">
     
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Space Mono:wght@400;500;700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
-      <header>
+      <header class="apt-head translucency-rule-black">
 
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
+          <div class="container-header">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -47,14 +51,6 @@
             </div>
           </div>
         </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
-        </div>
       </header>
       <div class="container body-content">
 
@@ -63,7 +59,7 @@
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -86,11 +82,11 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level0"><span class="xref">object</span></div>
     <div class="level1"><span class="xref">DeviceTools</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="BassBoom.html">BassBoom</a>.<a class="xref" href="BassBoom.Basolia.html">Basolia</a>.<a class="xref" href="BassBoom.Basolia.Devices.html">Devices</a></h6>
-  <h6><strong>Assembly</strong>: BassBoom.Basolia.dll</h6>
+  <h6>Namespace: <a class="xref" href="BassBoom.html">BassBoom</a>.<a class="xref" href="BassBoom.Basolia.html">Basolia</a>.<a class="xref" href="BassBoom.Basolia.Devices.html">Devices</a></h6>
+  <h6>Assembly: BassBoom.Basolia.dll</h6>
   <h5 id="BassBoom_Basolia_Devices_DeviceTools_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static class DeviceTools</code></pre>
@@ -102,7 +98,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Devices_DeviceTools_GetCurrent_BassBoom_Basolia_BasoliaMedia_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Devices.DeviceTools.GetCurrent(BassBoom.Basolia.BasoliaMedia)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Devices/DeviceTools.cs/#L128">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Devices/DeviceTools.cs/#L130">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Devices_DeviceTools_GetCurrent_" data-uid="BassBoom.Basolia.Devices.DeviceTools.GetCurrent*"></a>
   <h4 id="BassBoom_Basolia_Devices_DeviceTools_GetCurrent_BassBoom_Basolia_BasoliaMedia_" data-uid="BassBoom.Basolia.Devices.DeviceTools.GetCurrent(BassBoom.Basolia.BasoliaMedia)">GetCurrent(BasoliaMedia?)</h4>
@@ -114,7 +110,7 @@
     <pre><code class="lang-csharp hljs">public static (string driver, string device) GetCurrent(BasoliaMedia? basolia)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -132,7 +128,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -141,14 +137,14 @@
     </thead>
     <tbody>
       <tr>
-        <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.driver">driver</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.device">device</a>)</td>
+        <td>(<span class="xref">string</span> <span class="xref">driver</span>, <span class="xref">string</span> <span class="xref">device</span>)</td>
         <td><p>Current device and driver</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -167,7 +163,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Devices_DeviceTools_GetCurrentCached_BassBoom_Basolia_BasoliaMedia_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached(BassBoom.Basolia.BasoliaMedia)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Devices/DeviceTools.cs/#L157">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Devices/DeviceTools.cs/#L159">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Devices_DeviceTools_GetCurrentCached_" data-uid="BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached*"></a>
   <h4 id="BassBoom_Basolia_Devices_DeviceTools_GetCurrentCached_BassBoom_Basolia_BasoliaMedia_" data-uid="BassBoom.Basolia.Devices.DeviceTools.GetCurrentCached(BassBoom.Basolia.BasoliaMedia)">GetCurrentCached(BasoliaMedia?)</h4>
@@ -179,7 +175,7 @@
     <pre><code class="lang-csharp hljs">public static (string? driver, string? device) GetCurrentCached(BasoliaMedia? basolia)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -197,7 +193,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -206,14 +202,14 @@
     </thead>
     <tbody>
       <tr>
-        <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.driver">driver</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.device">device</a>)</td>
+        <td>(<span class="xref">string</span> <span class="xref">driver</span>, <span class="xref">string</span> <span class="xref">device</span>)</td>
         <td><p>Current cached device and driver</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -232,7 +228,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Devices_DeviceTools_GetDevices_BassBoom_Basolia_BasoliaMedia_System_String_System_String__.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Devices.DeviceTools.GetDevices(BassBoom.Basolia.BasoliaMedia%2CSystem.String%2CSystem.String%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Devices/DeviceTools.cs/#L87">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Devices/DeviceTools.cs/#L89">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Devices_DeviceTools_GetDevices_" data-uid="BassBoom.Basolia.Devices.DeviceTools.GetDevices*"></a>
   <h4 id="BassBoom_Basolia_Devices_DeviceTools_GetDevices_BassBoom_Basolia_BasoliaMedia_System_String_System_String__" data-uid="BassBoom.Basolia.Devices.DeviceTools.GetDevices(BassBoom.Basolia.BasoliaMedia,System.String,System.String@)">GetDevices(BasoliaMedia?, string, ref string)</h4>
@@ -244,7 +240,7 @@
     <pre><code class="lang-csharp hljs">public static ReadOnlyDictionary&lt;string, string&gt; GetDevices(BasoliaMedia? basolia, string driver, ref string activeDevice)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -260,13 +256,13 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="xref">string</span></td>
         <td><span class="parametername">driver</span></td>
         <td><p>A specific driver to use</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="xref">string</span></td>
         <td><span class="parametername">activeDevice</span></td>
         <td><p>An output for the active device name</p>
 </td>
@@ -274,7 +270,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -283,14 +279,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2">ReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><span class="xref">ReadOnlyDictionary</span>&lt;<span class="xref">string</span>, <span class="xref">string</span>&gt;</td>
         <td><p>A dictionary containing the device names and their descriptions</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -309,7 +305,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Devices_DeviceTools_GetDrivers_BassBoom_Basolia_BasoliaMedia_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Devices.DeviceTools.GetDrivers(BassBoom.Basolia.BasoliaMedia)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Devices/DeviceTools.cs/#L43">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Devices/DeviceTools.cs/#L45">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Devices_DeviceTools_GetDrivers_" data-uid="BassBoom.Basolia.Devices.DeviceTools.GetDrivers*"></a>
   <h4 id="BassBoom_Basolia_Devices_DeviceTools_GetDrivers_BassBoom_Basolia_BasoliaMedia_" data-uid="BassBoom.Basolia.Devices.DeviceTools.GetDrivers(BassBoom.Basolia.BasoliaMedia)">GetDrivers(BasoliaMedia?)</h4>
@@ -321,7 +317,7 @@
     <pre><code class="lang-csharp hljs">public static ReadOnlyDictionary&lt;string, string&gt; GetDrivers(BasoliaMedia? basolia)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -339,7 +335,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -348,14 +344,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2">ReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><span class="xref">ReadOnlyDictionary</span>&lt;<span class="xref">string</span>, <span class="xref">string</span>&gt;</td>
         <td><p>A dictionary containing the driver names and their descriptions</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -374,7 +370,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Devices_DeviceTools_Reset_BassBoom_Basolia_BasoliaMedia_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Devices.DeviceTools.Reset(BassBoom.Basolia.BasoliaMedia)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Devices/DeviceTools.cs/#L207">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Devices/DeviceTools.cs/#L209">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Devices_DeviceTools_Reset_" data-uid="BassBoom.Basolia.Devices.DeviceTools.Reset*"></a>
   <h4 id="BassBoom_Basolia_Devices_DeviceTools_Reset_BassBoom_Basolia_BasoliaMedia_" data-uid="BassBoom.Basolia.Devices.DeviceTools.Reset(BassBoom.Basolia.BasoliaMedia)">Reset(BasoliaMedia?)</h4>
@@ -386,7 +382,7 @@
     <pre><code class="lang-csharp hljs">public static void Reset(BasoliaMedia? basolia)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -408,7 +404,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Devices_DeviceTools_SetActiveDevice_BassBoom_Basolia_BasoliaMedia_System_String_System_String_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(BassBoom.Basolia.BasoliaMedia%2CSystem.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Devices/DeviceTools.cs/#L189">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Devices/DeviceTools.cs/#L191">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Devices_DeviceTools_SetActiveDevice_" data-uid="BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice*"></a>
   <h4 id="BassBoom_Basolia_Devices_DeviceTools_SetActiveDevice_BassBoom_Basolia_BasoliaMedia_System_String_System_String_" data-uid="BassBoom.Basolia.Devices.DeviceTools.SetActiveDevice(BassBoom.Basolia.BasoliaMedia,System.String,System.String)">SetActiveDevice(BasoliaMedia?, string, string)</h4>
@@ -420,7 +416,7 @@
     <pre><code class="lang-csharp hljs">public static void SetActiveDevice(BasoliaMedia? basolia, string driver, string device)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -436,13 +432,13 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="xref">string</span></td>
         <td><span class="parametername">driver</span></td>
         <td><p>Driver to use</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="xref">string</span></td>
         <td><span class="parametername">device</span></td>
         <td><p>Device to use</p>
 </td>
@@ -450,7 +446,7 @@
     </tbody>
   </table>
   <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -469,7 +465,7 @@
     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Devices_DeviceTools_SetActiveDriver_BassBoom_Basolia_BasoliaMedia_System_String_.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(BassBoom.Basolia.BasoliaMedia%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Devices/DeviceTools.cs/#L171">View Source</a>
+    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Devices/DeviceTools.cs/#L173">View Source</a>
   </span>
   <a id="BassBoom_Basolia_Devices_DeviceTools_SetActiveDriver_" data-uid="BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver*"></a>
   <h4 id="BassBoom_Basolia_Devices_DeviceTools_SetActiveDriver_BassBoom_Basolia_BasoliaMedia_System_String_" data-uid="BassBoom.Basolia.Devices.DeviceTools.SetActiveDriver(BassBoom.Basolia.BasoliaMedia,System.String)">SetActiveDriver(BasoliaMedia?, string)</h4>
@@ -481,7 +477,7 @@
     <pre><code class="lang-csharp hljs">public static void SetActiveDriver(BasoliaMedia? basolia, string driver)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -497,7 +493,7 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="xref">string</span></td>
         <td><span class="parametername">driver</span></td>
         <td><p>Driver to use</p>
 </td>
@@ -505,7 +501,7 @@
     </tbody>
   </table>
   <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Type</th>
@@ -531,7 +527,7 @@
                     <a href="https://github.com/Aptivi/BassBoom/new/main/apiSpec/new?filename=BassBoom_Basolia_Devices_DeviceTools.md&amp;value=---%0Auid%3A%20BassBoom.Basolia.Devices.DeviceTools%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Aptivi/BassBoom/blob/main/BassBoom.Basolia/Devices/DeviceTools.cs/#L35" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Aptivi/BassBoom/blob/main/public/BassBoom.Basolia/Devices/DeviceTools.cs/#L37" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
@@ -543,19 +539,6 @@
           </div>
         </div>
       </div>
-
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      
-      <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
     </div>
 
     <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>

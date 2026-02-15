@@ -21,7 +21,11 @@
           "relative_path": "api/BassBoom.Basolia.Albums.MusicFileLabeler.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Albums.MusicFileLabeler",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Albums.MusicFileLabeler.yml\" sourcestartlinenumber=\"1\">Music file labeling tools for albums</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -31,7 +35,11 @@
           "relative_path": "api/BassBoom.Basolia.Albums.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Albums",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -41,7 +49,11 @@
           "relative_path": "api/BassBoom.Basolia.BasoliaMedia.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.BasoliaMedia",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.BasoliaMedia.yml\" sourcestartlinenumber=\"1\">Basolia instance for media manipulation</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -51,7 +63,11 @@
           "relative_path": "api/BassBoom.Basolia.Devices.DeviceTools.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Devices.DeviceTools",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Devices.DeviceTools.yml\" sourcestartlinenumber=\"1\">Device and driver tools</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -61,7 +77,11 @@
           "relative_path": "api/BassBoom.Basolia.Devices.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Devices",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -71,7 +91,11 @@
           "relative_path": "api/BassBoom.Basolia.Enumerations.FrameFlags.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Enumerations.FrameFlags",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Enumerations.FrameFlags.yml\" sourcestartlinenumber=\"1\">Frame flags</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -81,7 +105,11 @@
           "relative_path": "api/BassBoom.Basolia.Enumerations.FrameMode.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Enumerations.FrameMode",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Enumerations.FrameMode.yml\" sourcestartlinenumber=\"1\">Frame mode</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -91,7 +119,11 @@
           "relative_path": "api/BassBoom.Basolia.Enumerations.FrameVbr.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Enumerations.FrameVbr",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Enumerations.FrameVbr.yml\" sourcestartlinenumber=\"1\">Frame variable bit rate</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -101,7 +133,11 @@
           "relative_path": "api/BassBoom.Basolia.Enumerations.FrameVersion.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Enumerations.FrameVersion",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Enumerations.FrameVersion.yml\" sourcestartlinenumber=\"1\">Frame version</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -111,7 +147,11 @@
           "relative_path": "api/BassBoom.Basolia.Enumerations.PlaybackChannels.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Enumerations.PlaybackChannels",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Enumerations.PlaybackChannels.yml\" sourcestartlinenumber=\"1\">Playback channels</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -121,7 +161,11 @@
           "relative_path": "api/BassBoom.Basolia.Enumerations.PlaybackStateType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Enumerations.PlaybackStateType",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Enumerations.PlaybackStateType.yml\" sourcestartlinenumber=\"1\">Playback state type for querying</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -131,7 +175,11 @@
           "relative_path": "api/BassBoom.Basolia.Enumerations.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Enumerations",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -141,7 +189,11 @@
           "relative_path": "api/BassBoom.Basolia.Exceptions.BasoliaException.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Exceptions.BasoliaException",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Exceptions.BasoliaException.yml\" sourcestartlinenumber=\"1\">Basolia exception</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -151,7 +203,11 @@
           "relative_path": "api/BassBoom.Basolia.Exceptions.BasoliaMiscException.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Exceptions.BasoliaMiscException",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Exceptions.BasoliaMiscException.yml\" sourcestartlinenumber=\"1\">Basolia miscellaneous exception (ones that don't have to do with MPG123 or OUT123)</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -161,7 +217,11 @@
           "relative_path": "api/BassBoom.Basolia.Exceptions.BasoliaOutException.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Exceptions.BasoliaOutException",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Exceptions.BasoliaOutException.yml\" sourcestartlinenumber=\"1\">Basolia output exception</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -171,7 +231,11 @@
           "relative_path": "api/BassBoom.Basolia.Exceptions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Exceptions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -181,7 +245,11 @@
           "relative_path": "api/BassBoom.Basolia.File.FileTools.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.File.FileTools",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.File.FileTools.yml\" sourcestartlinenumber=\"1\">File tools that are essential for the music player</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -191,7 +259,11 @@
           "relative_path": "api/BassBoom.Basolia.File.FileType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.File.FileType",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.File.FileType.yml\" sourcestartlinenumber=\"1\">File type class</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -201,7 +273,11 @@
           "relative_path": "api/BassBoom.Basolia.File.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.File",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -211,7 +287,11 @@
           "relative_path": "api/BassBoom.Basolia.Format.AudioInfoTools.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Format.AudioInfoTools",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Format.AudioInfoTools.yml\" sourcestartlinenumber=\"1\">Audio information tools</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -221,7 +301,11 @@
           "relative_path": "api/BassBoom.Basolia.Format.ChannelCount.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Format.ChannelCount",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Format.ChannelCount.yml\" sourcestartlinenumber=\"1\">Channel count</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -231,7 +315,11 @@
           "relative_path": "api/BassBoom.Basolia.Format.DecodeTools.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Format.DecodeTools",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Format.DecodeTools.yml\" sourcestartlinenumber=\"1\">Decoder tools</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -241,7 +329,11 @@
           "relative_path": "api/BassBoom.Basolia.Format.FormatInfo.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Format.FormatInfo",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Format.FormatInfo.yml\" sourcestartlinenumber=\"1\">Format information</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -251,7 +343,11 @@
           "relative_path": "api/BassBoom.Basolia.Format.FormatTools.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Format.FormatTools",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Format.FormatTools.yml\" sourcestartlinenumber=\"1\">Audio format tools</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -261,7 +357,11 @@
           "relative_path": "api/BassBoom.Basolia.Format.FrameInfo.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Format.FrameInfo",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Format.FrameInfo.yml\" sourcestartlinenumber=\"1\">Frame information</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -271,7 +371,11 @@
           "relative_path": "api/BassBoom.Basolia.Format.Id3V1Genre.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Format.Id3V1Genre",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Format.Id3V1Genre.yml\" sourcestartlinenumber=\"1\">Genre known by the ID3v1 specification</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -281,7 +385,11 @@
           "relative_path": "api/BassBoom.Basolia.Format.Id3V1Metadata.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Format.Id3V1Metadata",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Format.Id3V1Metadata.yml\" sourcestartlinenumber=\"1\">The managed world version of the ID3v1 metadata class instance</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -291,7 +399,11 @@
           "relative_path": "api/BassBoom.Basolia.Format.Id3V2Metadata.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Format.Id3V2Metadata",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Format.Id3V2Metadata.yml\" sourcestartlinenumber=\"1\">The managed world version of the ID3v2 metadata class instance</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -301,7 +413,11 @@
           "relative_path": "api/BassBoom.Basolia.Format.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Format",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -311,7 +427,11 @@
           "relative_path": "api/BassBoom.Basolia.Independent.PlayForget.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Independent.PlayForget",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Independent.PlayForget.yml\" sourcestartlinenumber=\"1\">Play and Forget class (to initialize playback and to forget)</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -321,7 +441,11 @@
           "relative_path": "api/BassBoom.Basolia.Independent.PlayForgetSettings.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Independent.PlayForgetSettings",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Independent.PlayForgetSettings.yml\" sourcestartlinenumber=\"1\">Settings for the Play and Forget technique</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -331,7 +455,11 @@
           "relative_path": "api/BassBoom.Basolia.Independent.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Independent",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -341,7 +469,11 @@
           "relative_path": "api/BassBoom.Basolia.InitBasolia.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.InitBasolia",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.InitBasolia.yml\" sourcestartlinenumber=\"1\">Initialization code</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -351,7 +483,11 @@
           "relative_path": "api/BassBoom.Basolia.Lyrics.Lyric.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Lyrics.Lyric",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Lyrics.Lyric.yml\" sourcestartlinenumber=\"1\">A song lyric class containing lyrical lines</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -361,7 +497,11 @@
           "relative_path": "api/BassBoom.Basolia.Lyrics.LyricLine.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Lyrics.LyricLine",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Lyrics.LyricLine.yml\" sourcestartlinenumber=\"1\">A line from the lyric with its properties</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -371,7 +511,11 @@
           "relative_path": "api/BassBoom.Basolia.Lyrics.LyricLineWord.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Lyrics.LyricLineWord",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Lyrics.LyricLineWord.yml\" sourcestartlinenumber=\"1\">A word from a lyric line with its properties</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -381,7 +525,11 @@
           "relative_path": "api/BassBoom.Basolia.Lyrics.LyricReader.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Lyrics.LyricReader",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Lyrics.LyricReader.yml\" sourcestartlinenumber=\"1\">Lyrics reader module</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -391,7 +539,11 @@
           "relative_path": "api/BassBoom.Basolia.Lyrics.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Lyrics",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -401,7 +553,11 @@
           "relative_path": "api/BassBoom.Basolia.Playback.PlaybackPositioningTools.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Playback.PlaybackPositioningTools",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Playback.PlaybackPositioningTools.yml\" sourcestartlinenumber=\"1\">Playback positioning tools</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -411,7 +567,11 @@
           "relative_path": "api/BassBoom.Basolia.Playback.PlaybackState.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Playback.PlaybackState",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Playback.PlaybackState.yml\" sourcestartlinenumber=\"1\">Playback state</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -421,7 +581,11 @@
           "relative_path": "api/BassBoom.Basolia.Playback.PlaybackTools.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Playback.PlaybackTools",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Playback.PlaybackTools.yml\" sourcestartlinenumber=\"1\">Playback tools</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -431,7 +595,11 @@
           "relative_path": "api/BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Playback.Playlists.Enumerations.SongType",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Playback.Playlists.Enumerations.SongType.yml\" sourcestartlinenumber=\"1\">Song type</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -441,7 +609,11 @@
           "relative_path": "api/BassBoom.Basolia.Playback.Playlists.Enumerations.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Playback.Playlists.Enumerations",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -451,7 +623,11 @@
           "relative_path": "api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Playback.Playlists.Instances.TrackInfo.yml\" sourcestartlinenumber=\"1\">Track information</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -461,7 +637,11 @@
           "relative_path": "api/BassBoom.Basolia.Playback.Playlists.Instances.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Playback.Playlists.Instances",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -471,7 +651,11 @@
           "relative_path": "api/BassBoom.Basolia.Playback.Playlists.Playlist.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Playback.Playlists.Playlist",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Playback.Playlists.Playlist.yml\" sourcestartlinenumber=\"1\">Playlist instance</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -481,7 +665,11 @@
           "relative_path": "api/BassBoom.Basolia.Playback.Playlists.PlaylistParser.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Playback.Playlists.PlaylistParser",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Playback.Playlists.PlaylistParser.yml\" sourcestartlinenumber=\"1\">Playlist parser that supports M3U and M3U8</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -491,7 +679,11 @@
           "relative_path": "api/BassBoom.Basolia.Playback.Playlists.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Playback.Playlists",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -501,7 +693,11 @@
           "relative_path": "api/BassBoom.Basolia.Playback.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Playback",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -511,7 +707,11 @@
           "relative_path": "api/BassBoom.Basolia.Radio.IRadioServer.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Radio.IRadioServer",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Radio.IRadioServer.yml\" sourcestartlinenumber=\"1\">Radio server interface</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -521,7 +721,11 @@
           "relative_path": "api/BassBoom.Basolia.Radio.IcecastServer.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Radio.IcecastServer",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Radio.IcecastServer.yml\" sourcestartlinenumber=\"1\">An Icecast server</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -531,7 +735,11 @@
           "relative_path": "api/BassBoom.Basolia.Radio.RadioServerType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Radio.RadioServerType",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Radio.RadioServerType.yml\" sourcestartlinenumber=\"1\">Enumeration for the radio server type</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -541,7 +749,11 @@
           "relative_path": "api/BassBoom.Basolia.Radio.RadioTools.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Radio.RadioTools",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Radio.RadioTools.yml\" sourcestartlinenumber=\"1\">Radio tools</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -551,7 +763,11 @@
           "relative_path": "api/BassBoom.Basolia.Radio.ShoutcastServer.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Radio.ShoutcastServer",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Radio.ShoutcastServer.yml\" sourcestartlinenumber=\"1\">A Shoutcast server</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -561,7 +777,11 @@
           "relative_path": "api/BassBoom.Basolia.Radio.ShoutcastVersion.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Radio.ShoutcastVersion",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Radio.ShoutcastVersion.yml\" sourcestartlinenumber=\"1\">Enumeration for the Shoutcast version</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -571,7 +791,11 @@
           "relative_path": "api/BassBoom.Basolia.Radio.StreamInfo.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Radio.StreamInfo",
+      "Summary": "<p sourcefile=\"api/BassBoom.Basolia.Radio.StreamInfo.yml\" sourcestartlinenumber=\"1\">Shoutcast stream information</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -581,7 +805,11 @@
           "relative_path": "api/BassBoom.Basolia.Radio.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia.Radio",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -591,27 +819,21 @@
           "relative_path": "api/BassBoom.Basolia.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BassBoom.Basolia",
+      "Summary": null
     },
     {
       "type": "Toc",
       "source_relative_path": "api/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "api/toc.json"
-        },
         ".html": {
           "relative_path": "api/toc.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "favicon.ico",
-      "output": {
-        "resource": {
-          "relative_path": "favicon.ico"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
         }
       },
       "version": ""
@@ -627,24 +849,14 @@
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "logo.svg",
-      "output": {
-        "resource": {
-          "relative_path": "logo.svg"
-        }
-      },
-      "version": ""
-    },
-    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "toc.json"
-        },
         ".html": {
           "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
       "version": ""
