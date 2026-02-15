@@ -161,10 +161,10 @@ namespace BassBoom.Cli.CliBase
                 );
 
                 // Render the indicator
-                string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
+                string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground() : "";
                 string indicator =
                     LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_SEEKINDICATOR") + $" {PlayerControls.seekRate:0.00} | " +
-                    boostIndicator + LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_VOLINDICATOR") + $" {Common.volume * 100:0}%{disco.VTSequenceForeground}";
+                    boostIndicator + LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_VOLINDICATOR") + $" {Common.volume * 100:0}%{disco.VTSequenceForeground()}";
 
                 // Render the lyric
                 string lyric = Common.CurrentCachedInfo.LyricInstance is not null ? Common.CurrentCachedInfo.LyricInstance.GetLastLineCurrent(BassBoomCli.basolia) : "";
@@ -264,7 +264,7 @@ namespace BassBoom.Cli.CliBase
 
             // Restore state
             ConsoleWrapper.CursorVisible = true;
-            ColorTools.LoadBack();
+            ConsoleColoring.LoadBack();
             playerScreen.RemoveBufferedParts();
             ScreenTools.UnsetCurrent(playerScreen);
         }

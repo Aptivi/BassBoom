@@ -103,11 +103,11 @@ namespace BassBoom.Cli.CliBase
 
                 // Get the boost indicator
                 var buffer = new StringBuilder();
-                string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground : "";
+                string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground() : "";
 
                 // Disco effect!
                 var disco = PlaybackTools.IsPlaying(BassBoomCli.basolia) && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
-                string indicator = $"┤ {boostIndicator}" + LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_VOLINDICATOR") + $" {Common.volume * 100:0}%{disco.VTSequenceForeground} ├";
+                string indicator = $"┤ {boostIndicator}" + LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_VOLINDICATOR") + $" {Common.volume * 100:0}%{disco.VTSequenceForeground()} ├";
                 if (PlaybackTools.IsPlaying(BassBoomCli.basolia))
                 {
                     hue++;
@@ -185,7 +185,7 @@ namespace BassBoom.Cli.CliBase
 
             // Restore state
             ConsoleWrapper.CursorVisible = true;
-            ColorTools.LoadBack();
+            ConsoleColoring.LoadBack();
             radioScreen.RemoveBufferedParts();
             ScreenTools.UnsetCurrent(radioScreen);
         }

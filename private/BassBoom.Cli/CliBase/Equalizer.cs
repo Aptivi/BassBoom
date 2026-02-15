@@ -32,6 +32,7 @@ using BassBoom.Cli.Languages;
 using Terminaux.Writer.CyclicWriters.Simple;
 using Terminaux.Writer.CyclicWriters.Graphical;
 using Terminaux.Writer.CyclicWriters.Renderer;
+using Terminaux.Base.Extensions;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -87,7 +88,7 @@ namespace BassBoom.Cli.CliBase
             // Restore state
             exiting = false;
             screen.RemoveBufferedParts();
-            ColorTools.LoadBack();
+            ConsoleColoring.LoadBack();
         }
 
         private static void HandleKeypress(ConsoleKeyInfo keystroke)
