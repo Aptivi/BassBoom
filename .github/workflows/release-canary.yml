@@ -27,6 +27,7 @@ jobs:
       - name: Release Asset Preparation
         run: |
           python tools/adt.py build -b "-p:Configuration=Debug -p:ContinuousIntegrationBuild=true"
+          mkdir artifacts
           dotnet build -p:Configuration=Debug -p:Platform=x64 public/BassBoom.Installers/BassBoom.Installer.slnx
           dotnet build -p:Configuration=Debug -p:Platform=ARM64 public/BassBoom.Installers/BassBoom.Installer.slnx
           Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/x64/Debug/BassBoom.InstallerBundle.exe artifacts/bassboom-win-x64-installer.exe
