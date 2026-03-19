@@ -31,4 +31,3 @@ jobs:
         with:
           name: "MPG123 library"
           path: mpg123-1.33.3/outlib
-          archive:
