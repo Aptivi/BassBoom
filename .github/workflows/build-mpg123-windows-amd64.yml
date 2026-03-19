@@ -41,7 +41,7 @@ jobs:
           cp /mingw64/bin/libgcc_s_seh-1.dll outlib/ || true
           cp /mingw64/bin/libwinpthread-1.dll outlib/ || true
       - name: Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: "MPG123 library"
           path: mpg123-1.33.3/outlib
