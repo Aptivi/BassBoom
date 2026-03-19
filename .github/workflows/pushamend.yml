@@ -50,10 +50,11 @@ jobs:
           sudo NEEDRESTART_SUSPEND=1 apt update
           sudo NEEDRESTART_SUSPEND=1 apt install devscripts debhelper-compat dput build-essential equivs
           sudo NEEDRESTART_SUSPEND=1 mk-build-deps -i
+          rm *build-deps*
           
       - name: Download original source
         run: |
-          wget --output-document=../bassboom-3_1.0.3.0-1.0.0.orig.tar.xz https://launchpad.net/~eofla/+archive/ubuntu/bassboom/+sourcefiles/bassboom-3/1.0.3.0-1.0.0/bassboom-3_1.0.3.0-1.0.0.orig.tar.xz
+          wget --output-document=../bassboom-3_1.0.3.0-1.0.0.orig.tar.xz https://launchpad.net/~eofla/+archive/ubuntu/bassboom/+sourcefiles/bassboom-3/1.0.3.0-1.0.0-1/bassboom-3_1.0.3.0-1.0.0.orig.tar.xz
           tar xf ../bassboom-3_1.0.3.0-1.0.0.orig.tar.xz .
           mv .github ..
 
