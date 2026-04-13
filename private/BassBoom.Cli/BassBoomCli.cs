@@ -25,13 +25,13 @@ using System.Reflection;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Base.Extensions;
 using System.Linq;
-using Terminaux.Colors;
-using Terminaux.Colors.Data;
 using Terminaux.Base;
 using BassBoom.Basolia.Playback;
 using BassBoom.Cli.Languages;
 using System.Globalization;
 using Terminaux.Base.Buffered;
+using Colorimetry;
+using Colorimetry.Data;
 
 namespace BassBoom.Cli
 {

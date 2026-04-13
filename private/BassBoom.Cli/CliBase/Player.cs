@@ -26,8 +26,6 @@ using System.Text;
 using System.Threading;
 using Terminaux.Base;
 using Terminaux.Base.Buffered;
-using Terminaux.Colors;
-using Terminaux.Colors.Data;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Inputs;
@@ -36,10 +34,12 @@ using Terminaux.Inputs.Styles;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 using Terminaux.Base.Extensions;
 using Terminaux.Writer.CyclicWriters.Renderer;
-using Terminaux.Colors.Transformation;
 using BassBoom.Cli.Languages;
 using Terminaux.Writer.CyclicWriters.Graphical;
 using Terminaux.Writer.CyclicWriters.Simple;
+using Colorimetry;
+using Colorimetry.Transformation;
+using Colorimetry.Data;
 
 namespace BassBoom.Cli.CliBase
 {
