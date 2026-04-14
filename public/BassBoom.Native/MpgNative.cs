@@ -183,10 +183,10 @@ namespace BassBoom.Native
                 runtimesPath += $"runtimes/win-{lowerArch}/native/{libName}.dll";
             else if (PlatformHelper.IsOnMacOS())
                 runtimesPath += $"runtimes/osx-{lowerArch}/native/lib{libName}.dylib";
-            else if (PlatformHelper.IsOnUnix())
-                runtimesPath += $"runtimes/linux-{lowerArch}/native/lib{libName}.so";
-            else
+            else if (PlatformHelper.IsOnFreeBSD())
                 runtimesPath += $"runtimes/freebsd-{lowerArch}/native/lib{libName}.so";
+            else
+                runtimesPath += $"runtimes/linux-{lowerArch}/native/lib{libName}.so";
             return runtimesPath;
         }
 
