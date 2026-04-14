@@ -67,12 +67,6 @@ namespace BassBoom.Cli
                         Player.passedMusicPaths.Add(musicPath);
                 }
 
-                // Determine whether to change the language to Spanish or not
-                // TODO: In the next release of BB and MB, move the Cli code to common code for Nitrocid to use as an addon.
-                bool testLocale = switches.Contains("-s");
-                if (testLocale)
-                    CultureInfo.CurrentUICulture = new CultureInfo("spa");
-
                 // Initialize Basolia
                 basolia = new();
 
