@@ -182,7 +182,7 @@ namespace BassBoom.Native.Interop.Init
         /// <summary>
         /// int setenv(const char *name, const char *value, int overwrite);
         /// </summary>
-        [DllImport(MpgNative.LibcName, CharSet = CharSet.Ansi)]
+        [DllImport("libc", CharSet = CharSet.Ansi)]
         internal static extern int setenv(string name, string value, int overwrite);
 
         [DllImport("UCRTBASE.DLL")]

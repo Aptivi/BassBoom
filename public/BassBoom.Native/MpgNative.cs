@@ -34,33 +34,20 @@ namespace BassBoom.Native
     /// <summary>
     /// mpg123 instance class to enable Basolia to perform sound operations
     /// </summary>
-    internal static unsafe class MpgNative
+    internal static class MpgNative
     {
         internal static string baseRoot = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
         internal static string mpg123LibPath = GetLibPath("mpg123");
         internal static string out123LibPath = GetLibPath("out123");
-        internal static string pthreadLibPath = GetLibPath("libwinpthread-1");
-        internal static string libcppLibPath = GetLibPath("libc++");
-        internal static string libunwindLibPath = GetLibPath("libunwind");
+        internal static string pthreadLibPath = GetLibPath("winpthread-1");
+        internal static string libcppLibPath = GetLibPath("c++");
+        internal static string libunwindLibPath = GetLibPath("unwind");
 
         internal static LibraryManager? libManagerMpg;
         internal static LibraryManager? libManagerOut;
 
-        internal const string LibcName = "libc";
         internal const string LibraryName = "mpg123";
         internal const string LibraryNameOut = "out123";
-
-        /// <summary>
-        /// Absolute path to the mpg123 library
-        /// </summary>
-        internal static string LibraryPath =>
-            mpg123LibPath;
-
-        /// <summary>
-        /// Absolute path to the out123 library
-        /// </summary>
-        internal static string LibraryPathOut =>
-            out123LibPath;
 
         /// <summary>
         /// MPG library version
@@ -106,48 +93,55 @@ namespace BassBoom.Native
         /// <param name="root">Absolute path to the root directory containing library files</param>
         internal static void InitializeLibrary(string root)
         {
-            // Check to see if we have this path
+            // Get the library paths
             var architecture = PlatformHelper.GetArchitecture();
-            string resultMpgPath = GetLibPath(root, "mpg123");
-            string resultOutPath = GetLibPath(root, "out123");
-            string resultWinPath = GetLibPath(root, "libwinpthread-1");
-            string resultWinCppPath = GetLibPath(root, "libc++");
-            string resultWinUnwindPath = GetLibPath(root, "libunwind");
-            if (!File.Exists(resultMpgPath))
-                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND"), resultMpgPath));
-            if (!File.Exists(resultOutPath))
-                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND"), resultOutPath));
-            if (!File.Exists(resultWinPath) && PlatformHelper.IsOnWindows() && architecture == Architecture.X64)
-                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND"), resultWinPath));
-            if (!File.Exists(resultWinCppPath) && PlatformHelper.IsOnWindows() && architecture == Architecture.Arm64)
-                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND"), resultWinCppPath));
-            if (!File.Exists(resultWinUnwindPath) && PlatformHelper.IsOnWindows() && architecture == Architecture.Arm64)
-                throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND"), resultWinUnwindPath));
+            mpg123LibPath = GetLibPath(root, "mpg123");
+            out123LibPath = GetLibPath(root, "out123");
+            pthreadLibPath = GetLibPath(root, "winpthread-1");
+            libcppLibPath = GetLibPath(root, "c++");
+            libunwindLibPath = GetLibPath(root, "unwind");
 
-            // Set the library path
-            string oldLibPath = mpg123LibPath;
-            string oldLibPathOut = out123LibPath;
-            string oldLibPathWin = pthreadLibPath;
-            string oldLibPathWinCpp = libcppLibPath;
-            string oldLibPathWinUnwind = libunwindLibPath;
-            mpg123LibPath = resultMpgPath;
-            out123LibPath = resultOutPath;
-            pthreadLibPath = resultWinPath;
-            libcppLibPath = resultWinCppPath;
-            libunwindLibPath = resultWinUnwindPath;
+            // Check the main libraries
+            if (!File.Exists(mpg123LibPath))
+                ThrowLibraryNotFoundException(mpg123LibPath);
+            if (!File.Exists(out123LibPath))
+                ThrowLibraryNotFoundException(out123LibPath);
+
+            // Check the dependencies
+            if (PlatformHelper.IsOnWindows())
+            {
+                if (architecture == Architecture.X64 && !File.Exists(pthreadLibPath))
+                    ThrowLibraryNotFoundException(pthreadLibPath);
+                else if (architecture == Architecture.Arm64)
+                {
+                    if (!File.Exists(libcppLibPath))
+                        ThrowLibraryNotFoundException(libcppLibPath);
+                    if (!File.Exists(libunwindLibPath))
+                        ThrowLibraryNotFoundException(libunwindLibPath);
+                }
+            }
+
+            // Figure out what libraries we need to start up
+            LibraryFile[] outLibraryDependencies = [];
+            if (PlatformHelper.IsOnWindows())
+            {
+                // Windows libraries need below dependencies
+                if (architecture == Architecture.X64)
+                    outLibraryDependencies = [new LibraryFile(pthreadLibPath)];
+                else if (architecture == Architecture.Arm64)
+                    outLibraryDependencies = [new LibraryFile(libunwindLibPath), new LibraryFile(libcppLibPath)];
+            }
 
             try
             {
-                // Start the libraries up
+                // We don't support x86 systems here
                 if (architecture == Architecture.X86 || architecture == Architecture.Arm)
                     throw new BasoliaNativeLibraryException(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_32BITUNSUPPORTED"));
+
+                // Start the libraries up
+                LibraryFile[] outLibraries = [.. outLibraryDependencies, new LibraryFile(out123LibPath)];
                 libManagerMpg = new LibraryManager(new LibraryFile(mpg123LibPath));
-                libManagerOut = new LibraryManager(
-                    architecture == Architecture.X64 && PlatformHelper.IsOnWindows() ?
-                    [new LibraryFile(pthreadLibPath), new LibraryFile(out123LibPath)] :
-                    architecture == Architecture.Arm64 && PlatformHelper.IsOnWindows() ?
-                    [new LibraryFile(libunwindLibPath), new LibraryFile(libcppLibPath), new LibraryFile(out123LibPath)] :
-                    [new LibraryFile(out123LibPath)]);
+                libManagerOut = new LibraryManager(outLibraries);
                 libManagerMpg.LoadNativeLibrary();
                 libManagerOut.LoadNativeLibrary();
 
@@ -163,30 +157,18 @@ namespace BassBoom.Native
             }
             catch (Exception ex)
             {
-                mpg123LibPath = oldLibPath;
-                out123LibPath = oldLibPathOut;
-                pthreadLibPath = oldLibPathWin;
-                libcppLibPath = oldLibPathWinCpp;
-                libunwindLibPath = oldLibPathWinUnwind;
                 throw new BasoliaNativeLibraryException(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBSLOADFAILED") + $" [{mpg123LibPath}]\n\n{ex.Message}");
             }
         }
 
         internal static string GetLibPath(string libName) =>
-            GetLibPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), libName);
+            GetLibPath(baseRoot, libName);
 
         internal static string GetLibPath(string root, string libName)
         {
-            string runtimesPath = root + "/";
-            string lowerArch = RuntimeInformation.OSArchitecture.ToString().ToLower();
-            if (PlatformHelper.IsOnWindows())
-                runtimesPath += $"runtimes/win-{lowerArch}/native/{libName}.dll";
-            else if (PlatformHelper.IsOnMacOS())
-                runtimesPath += $"runtimes/osx-{lowerArch}/native/lib{libName}.dylib";
-            else if (PlatformHelper.IsOnFreeBSD())
-                runtimesPath += $"runtimes/freebsd-{lowerArch}/native/lib{libName}.so";
-            else
-                runtimesPath += $"runtimes/linux-{lowerArch}/native/lib{libName}.so";
+            string genericRid = PlatformHelper.GetCurrentGenericRid();
+            string extension = PlatformHelper.IsOnWindows() ? ".dll" : PlatformHelper.IsOnMacOS() ? ".dylib" : ".so";
+            string runtimesPath = root + $"/runtimes/{genericRid}/native/lib{libName}{extension}";
             return runtimesPath;
         }
 
@@ -198,5 +180,8 @@ namespace BassBoom.Native
             return libraryManager.GetNativeMethodDelegate<TDelegate>(function) ??
                 throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_DELEGATEGETFAILED_NOTFOUND"), function));
         }
+
+        private static void ThrowLibraryNotFoundException(string libPath) =>
+            throw new BasoliaNativeLibraryException(string.Format(LanguageTools.GetLocalized("BASSBOOM_NATIVE_EXCEPTION_LIBPATHNOTFOUND"), libPath));
     }
 }
