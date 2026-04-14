@@ -4,3 +4,6 @@
 [submodule "DocGen/theme"]
 	path = DocGen/theme
 	url = https://github.com/Aptivi/docfx-apt.git
+[submodule "assets/libmpg123"]
+	path = assets/libmpg123
+	url = https://github.com/madebr/mpg123.git

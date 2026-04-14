@@ -22,12 +22,9 @@ jobs:
           release: "15.0"
           arch: "aarch64"
           run: |
-            pkg install -y curl
-            curl -o mpg123.tar.bz2 https://www.mpg123.de/download/mpg123-1.33.3.tar.bz2
-            tar xvf mpg123.tar.bz2
-            cd mpg123-1.33.3 ; ./configure --disable-components --enable-libmpg123 --enable-libout123 --enable-libout123-modules ; make ; make install DESTDIR=$PWD/outlib
+            cd assets/libmpg123 ; ./configure --disable-components --enable-libmpg123 --enable-libout123 --enable-libout123-modules ; make ; make install DESTDIR=$PWD/outlib
       - name: Artifacts
         uses: actions/upload-artifact@v7
         with:
           name: "MPG123 library"
-          path: mpg123-1.33.3/outlib
+          path: assets/libmpg123/outlib

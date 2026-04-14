@@ -28,7 +28,6 @@ using System.Linq;
 using Terminaux.Base;
 using BassBoom.Basolia.Playback;
 using BassBoom.Cli.Languages;
-using System.Globalization;
 using Terminaux.Base.Buffered;
 using Colorimetry;
 using Colorimetry.Data;
