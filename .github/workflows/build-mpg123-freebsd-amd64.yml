@@ -22,7 +22,7 @@ jobs:
           release: "15.0"
           arch: "x86_64"
           run: |
-            pkg install -y autoconf automake libtool
+            pkg install -y autoconf automake libtool pkgconf
             cd assets/libmpg123 ; autoreconf -iv ; ./configure --disable-components --enable-libmpg123 --enable-libout123 --enable-libout123-modules ; make ; make install DESTDIR=$PWD/outlib
       - name: Artifacts
         uses: actions/upload-artifact@v7
