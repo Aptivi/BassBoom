@@ -28,8 +28,6 @@ jobs:
             autoconf
             automake
             libtool
-            tar
-            bzip2
       - name: MPG123 compilation
         shell: msys2 {0}
         run: |
