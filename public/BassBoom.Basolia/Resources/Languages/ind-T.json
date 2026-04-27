@@ -275,10 +275,6 @@
       "text": "फ़ाइल के फ़्रेम #{0} तक नहीं खोजी जा सकती"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "खोजने के लिए गीत पंक्ति प्रदान नहीं की गई है"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "छोड़ नहीं सकते।"
     },

@@ -318,9 +318,6 @@
   <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED" xml:space="preserve">
     <value>Nu se poate căuta la cadrul #{0} al fișierului</value>
   </data>
-  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED" xml:space="preserve">
-    <value>Linia de versuri nu este furnizată pentru a căuta</value>
-  </data>
   <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED" xml:space="preserve">
     <value>Nu se poate elimina.</value>
   </data>

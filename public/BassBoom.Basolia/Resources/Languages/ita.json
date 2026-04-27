@@ -278,10 +278,6 @@
       "text": "Impossibile cercare al fotogramma n. {0} del file"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Riga del testo non fornita per la ricerca"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Impossibile eliminare."
     },

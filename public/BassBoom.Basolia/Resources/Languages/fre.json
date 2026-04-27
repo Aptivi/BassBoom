@@ -321,10 +321,6 @@
       "text": "Impossible de rechercher l'image n° {0} du fichier."
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "La ligne de paroles n'est pas fournie pour la recherche."
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Impossible de supprimer."
     },

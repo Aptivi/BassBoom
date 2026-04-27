@@ -275,10 +275,6 @@
       "text": "Ad quadrum #{0} fasciculi quaerere non potest"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Versus carminis ad quaerendum non praebetur"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Omittere non potest."
     },

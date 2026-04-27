@@ -276,10 +276,6 @@
       "text": "Dosyanın #{0} karesine aranamıyor"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Şarkı sözü satırı aranacak şekilde sağlanmadı"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Bırakılamıyor."
     },

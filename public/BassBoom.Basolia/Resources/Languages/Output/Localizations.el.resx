@@ -318,9 +318,6 @@
   <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED" xml:space="preserve">
     <value>Δεν είναι δυνατή η αναζήτηση στο καρέ #{0} του αρχείου</value>
   </data>
-  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED" xml:space="preserve">
-    <value>Δεν παρέχεται γραμμή στίχου για αναζήτηση</value>
-  </data>
   <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED" xml:space="preserve">
     <value>Δεν είναι δυνατή η απόθεση.</value>
   </data>

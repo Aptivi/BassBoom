@@ -318,9 +318,6 @@
   <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED" xml:space="preserve">
     <value>Impossibile cercare al fotogramma n. {0} del file</value>
   </data>
-  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED" xml:space="preserve">
-    <value>Riga del testo non fornita per la ricerca</value>
-  </data>
   <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED" xml:space="preserve">
     <value>Impossibile eliminare.</value>
   </data>

@@ -381,10 +381,6 @@
       "text": "Can't seek to frame #{0} of the file"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Lyric line is not provided to seek to"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Can't drop."
     },

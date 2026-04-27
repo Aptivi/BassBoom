@@ -300,10 +300,6 @@
       "text": "No se puede buscar el fotograma n.° {0} del archivo."
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "No se proporciona la línea de letra para buscar."
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "No se puede descartar."
     },

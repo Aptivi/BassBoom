@@ -17,21 +17,22 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Basolia.Enumerations;
-using BassBoom.Basolia.File;
-using BassBoom.Basolia.Format;
-using BassBoom.Basolia.Independent;
-using BassBoom.Basolia.Lyrics;
-using BassBoom.Basolia.Playback;
-using BassBoom.Basolia.Playback.Playlists;
-using BassBoom.Basolia.Playback.Playlists.Enumerations;
-using BassBoom.Cli.Languages;
-using BassBoom.Cli.Tools;
 using System;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Media;
+using BassBoom.Basolia.Media.Enumerations;
+using BassBoom.Basolia.Media.Independent;
+using BassBoom.Basolia.Media.Lyrics;
+using BassBoom.Basolia.Media.Playback;
+using BassBoom.Basolia.Media.Playback.Playlists;
+using BassBoom.Basolia.Media.Playback.Playlists.Enumerations;
+using BassBoom.Cli.Languages;
+using BassBoom.Cli.Tools;
+using BassBoom.Native.Interop.Init;
 using Terminaux.Base.Buffered;
 using Terminaux.Inputs.Styles;
 using Terminaux.Inputs.Styles.Infobox;
@@ -51,10 +52,12 @@ namespace BassBoom.Cli.CliBase
             if (Common.CurrentCachedInfo is null)
                 return;
 
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             Player.position += (int)(Common.CurrentCachedInfo.FormatInfo.rate * seekRate);
             if (Player.position > Common.CurrentCachedInfo.Duration)
                 Player.position = Common.CurrentCachedInfo.Duration;
-            PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, Player.position);
+            BassBoomCli.basolia.SeekToFrame(Player.position);
         }
 
         internal static void SeekBackward()
@@ -65,10 +68,12 @@ namespace BassBoom.Cli.CliBase
             if (Common.CurrentCachedInfo is null)
                 return;
 
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             Player.position -= (int)(Common.CurrentCachedInfo.FormatInfo.rate * seekRate);
             if (Player.position < 0)
                 Player.position = 0;
-            PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, Player.position);
+            BassBoomCli.basolia.SeekToFrame(Player.position);
         }
 
         internal static void SeekBeginning()
@@ -77,7 +82,9 @@ namespace BassBoom.Cli.CliBase
             if (Common.cachedInfos.Count == 0)
                 return;
 
-            PlaybackPositioningTools.SeekToTheBeginning(BassBoomCli.basolia);
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
+            BassBoomCli.basolia.SeekToTheBeginning();
             Player.position = 0;
         }
 
@@ -91,11 +98,13 @@ namespace BassBoom.Cli.CliBase
             if (Common.CurrentCachedInfo.LyricInstance is null)
                 return;
 
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesCurrent(BassBoomCli.basolia);
             if (lyrics.Length == 0)
                 return;
             var lyric = lyrics.Length == 1 ? lyrics[0] : lyrics[lyrics.Length - 2];
-            PlaybackPositioningTools.SeekLyric(BassBoomCli.basolia, lyric);
+            lyric.SeekLyric(BassBoomCli.basolia);
         }
 
         internal static void SeekCurrentLyric()
@@ -108,11 +117,13 @@ namespace BassBoom.Cli.CliBase
             if (Common.CurrentCachedInfo.LyricInstance is null)
                 return;
 
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesCurrent(BassBoomCli.basolia);
             if (lyrics.Length == 0)
                 return;
             var lyric = lyrics[lyrics.Length - 1];
-            PlaybackPositioningTools.SeekLyric(BassBoomCli.basolia, lyric);
+            lyric.SeekLyric(BassBoomCli.basolia);
         }
 
         internal static void SeekNextLyric()
@@ -125,6 +136,8 @@ namespace BassBoom.Cli.CliBase
             if (Common.CurrentCachedInfo.LyricInstance is null)
                 return;
 
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             var lyrics = Common.CurrentCachedInfo.LyricInstance.GetLinesUpcoming(BassBoomCli.basolia);
             if (lyrics.Length == 0)
             {
@@ -132,7 +145,7 @@ namespace BassBoom.Cli.CliBase
                 return;
             }
             var lyric = lyrics[0];
-            PlaybackPositioningTools.SeekLyric(BassBoomCli.basolia, lyric);
+            lyric.SeekLyric(BassBoomCli.basolia);
         }
 
         internal static void SeekWhichLyric()
@@ -145,13 +158,15 @@ namespace BassBoom.Cli.CliBase
             if (Common.CurrentCachedInfo.LyricInstance is null)
                 return;
 
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             var lyrics = Common.CurrentCachedInfo.LyricInstance.Lines;
             var choices = lyrics.Select((line) => new InputChoiceInfo($"{line.LineSpan}", line.Line)).ToArray();
             int index = InfoBoxSelectionColor.WriteInfoBoxSelection(choices, LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_SELECTLYRICSEEK"));
             if (index == -1)
                 return;
             var lyric = lyrics[index];
-            PlaybackPositioningTools.SeekLyric(BassBoomCli.basolia, lyric);
+            lyric.SeekLyric(BassBoomCli.basolia);
         }
 
         internal static void SeekTo(TimeSpan target)
@@ -162,10 +177,12 @@ namespace BassBoom.Cli.CliBase
             if (Common.CurrentCachedInfo is null)
                 return;
 
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             Player.position = (int)(target.TotalSeconds * Common.CurrentCachedInfo.FormatInfo.rate);
             if (Player.position > Common.CurrentCachedInfo.Duration)
                 Player.position = 0;
-            PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, Player.position);
+            BassBoomCli.basolia.SeekToFrame(Player.position);
         }
 
         internal static void Play()
@@ -176,29 +193,35 @@ namespace BassBoom.Cli.CliBase
             if (Player.playerThread is null)
                 return;
 
-            if (PlaybackTools.GetState(BassBoomCli.basolia) == PlaybackState.Stopped)
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
+            if (BassBoomCli.basolia.GetState() == PlaybackState.Stopped)
                 // There could be a chance that the music has fully stopped without any user interaction.
-                PlaybackPositioningTools.SeekToTheBeginning(BassBoomCli.basolia);
+                BassBoomCli.basolia.SeekToTheBeginning();
             Common.advance = true;
             Player.playerThread.Start();
-            SpinWait.SpinUntil(() => PlaybackTools.IsPlaying(BassBoomCli.basolia) || Common.failedToPlay);
+            SpinWait.SpinUntil(() => BassBoomCli.basolia.IsPlaying() || Common.failedToPlay);
             Common.failedToPlay = false;
         }
 
         internal static void Pause()
         {
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             Common.advance = false;
             Common.paused = true;
-            PlaybackTools.Pause(BassBoomCli.basolia);
+            BassBoomCli.basolia.Pause();
         }
 
         internal static void Stop(bool resetCurrentSong = true)
         {
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             Common.advance = false;
             Common.paused = false;
             if (resetCurrentSong)
                 Common.currentPos = 1;
-            PlaybackTools.Stop(BassBoomCli.basolia);
+            BassBoomCli.basolia.Stop();
         }
 
         internal static void NextSong()
@@ -229,12 +252,14 @@ namespace BassBoom.Cli.CliBase
             ScreenTools.CurrentScreen?.RequireRefresh();
             if (File.Exists(path))
             {
+                if (BassBoomCli.basolia is null)
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
                 int currentPos = Player.position;
                 Common.populate = true;
                 PopulateMusicFileInfo(path);
                 Common.populate = true;
                 PopulateMusicFileInfo(Common.CurrentCachedInfo?.MusicPath ?? "");
-                PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, currentPos);
+                BassBoomCli.basolia.SeekToFrame(currentPos);
             }
             else
                 InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_MUSICFILENOTFOUND").FormatString(path));
@@ -251,6 +276,8 @@ namespace BassBoom.Cli.CliBase
                 var playlist = PlaylistParser.ParsePlaylist(path);
                 if (playlist.Tracks.Length > 0)
                 {
+                    if (BassBoomCli.basolia is null)
+                        throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
                     foreach (var track in playlist.Tracks)
                     {
                         if (track.Type == SongType.File)
@@ -261,7 +288,7 @@ namespace BassBoom.Cli.CliBase
                     }
                     Common.populate = true;
                     PopulateMusicFileInfo(Common.CurrentCachedInfo?.MusicPath ?? "");
-                    PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, currentPos);
+                    BassBoomCli.basolia.SeekToFrame(currentPos);
                 }
             }
             else
@@ -275,9 +302,11 @@ namespace BassBoom.Cli.CliBase
             if (Directory.Exists(path))
             {
                 int currentPos = Player.position;
-                var cachedInfos = Directory.EnumerateFiles(path).Where((pathStr) => FileTools.SupportedExtensions.Contains(Path.GetExtension(pathStr))).ToArray();
+                var cachedInfos = Directory.EnumerateFiles(path).Where((pathStr) => BasoliaMedia.SupportedExtensions.Contains(Path.GetExtension(pathStr))).ToArray();
                 if (cachedInfos.Length > 0)
                 {
+                    if (BassBoomCli.basolia is null)
+                        throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
                     foreach (string musicFile in cachedInfos)
                     {
                         Common.populate = true;
@@ -285,7 +314,7 @@ namespace BassBoom.Cli.CliBase
                     }
                     Common.populate = true;
                     PopulateMusicFileInfo(Common.CurrentCachedInfo?.MusicPath ?? "");
-                    PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, currentPos);
+                    BassBoomCli.basolia.SeekToFrame(currentPos);
                 }
             }
             else
@@ -295,7 +324,9 @@ namespace BassBoom.Cli.CliBase
         internal static void PopulateMusicFileInfo(string musicPath)
         {
             // Try to open the file after loading the library
-            if (PlaybackTools.IsPlaying(BassBoomCli.basolia) || !Common.populate)
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
+            if (BassBoomCli.basolia.IsPlaying() || !Common.populate)
                 return;
             Common.populate = false;
             Common.Switch(musicPath);
@@ -303,10 +334,10 @@ namespace BassBoom.Cli.CliBase
             {
                 ScreenTools.CurrentScreen?.RequireRefresh();
                 InfoBoxNonModalColor.WriteInfoBox(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_OPENINGMUSICFILE").FormatString(musicPath), false);
-                var total = AudioInfoTools.GetDuration(BassBoomCli.basolia, true);
-                var formatInfo = FormatTools.GetFormatInfo(BassBoomCli.basolia);
-                var frameInfo = AudioInfoTools.GetFrameInfo(BassBoomCli.basolia);
-                AudioInfoTools.GetId3Metadata(BassBoomCli.basolia, out var managedV1, out var managedV2);
+                var total = BassBoomCli.basolia.GetDuration(true);
+                var formatInfo = BassBoomCli.basolia.GetFormatInfo();
+                var frameInfo = BassBoomCli.basolia.GetFrameInfo();
+                BassBoomCli.basolia.GetId3Metadata(out var managedV1, out var managedV2);
 
                 // Try to open the lyrics
                 var lyric = OpenLyrics(musicPath);
@@ -425,10 +456,12 @@ namespace BassBoom.Cli.CliBase
             string time = InfoBoxInputColor.WriteInfoBoxInput(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TARGETPOSPROMPT") + " HH:MM:SS");
             if (TimeSpan.TryParse(time, out TimeSpan duration))
             {
+                if (BassBoomCli.basolia is null)
+                    throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
                 Player.position = (int)(Common.CurrentCachedInfo.FormatInfo.rate * duration.TotalSeconds);
                 if (Player.position > Common.CurrentCachedInfo.Duration)
                     Player.position = Common.CurrentCachedInfo.Duration;
-                PlaybackPositioningTools.SeekToFrame(BassBoomCli.basolia, Player.position);
+                BassBoomCli.basolia.SeekToFrame(Player.position);
             }
         }
 
@@ -463,6 +496,8 @@ namespace BassBoom.Cli.CliBase
         {
             if (Common.CurrentCachedInfo is null)
                 return;
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             var textsBuilder = new StringBuilder();
             var idv2 = Common.CurrentCachedInfo.MetadataV2;
             var idv1 = Common.CurrentCachedInfo.MetadataV1;
@@ -494,13 +529,13 @@ namespace BassBoom.Cli.CliBase
                 LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_LAYERINFO_VBR") + $" {Common.CurrentCachedInfo.FrameInfo.Vbr}" + "\n\n" +
 
                 LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE") + "\n\n" +
-                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ACCURATERENDERING") + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Accurate)}" + "\n" +
-                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_BUFFERFILL") + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.BufferFill)}" + "\n" +
-                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_DECODINGDELAY") + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.DecodeDelay)}" + "\n" +
-                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGDELAY") + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodeDelay)}" + "\n" +
-                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGPADDING") + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.EncodePadding)}" + "\n" +
-                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRANKENSTEIN") + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.Frankenstein)}" + "\n" +
-                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRESHDECODER") + $" {PlaybackTools.GetNativeState(BassBoomCli.basolia, PlaybackStateType.FreshDecoder)}" + "\n\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ACCURATERENDERING") + $" {BassBoomCli.basolia.GetNativeState(PlaybackStateType.Accurate)}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_BUFFERFILL") + $" {BassBoomCli.basolia.GetNativeState(PlaybackStateType.BufferFill)}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_DECODINGDELAY") + $" {BassBoomCli.basolia.GetNativeState(PlaybackStateType.DecodeDelay)}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGDELAY") + $" {BassBoomCli.basolia.GetNativeState(PlaybackStateType.EncodeDelay)}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_ENCODINGPADDING") + $" {BassBoomCli.basolia.GetNativeState(PlaybackStateType.EncodePadding)}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRANKENSTEIN") + $" {BassBoomCli.basolia.GetNativeState(PlaybackStateType.Frankenstein)}" + "\n" +
+                LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_NATIVESTATE_FRESHDECODER") + $" {BassBoomCli.basolia.GetNativeState(PlaybackStateType.FreshDecoder)}" + "\n\n" +
 
                 LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_INFO_TEXTSANDEXTRAS") + "\n\n" +
                 textsBuilder.ToString()

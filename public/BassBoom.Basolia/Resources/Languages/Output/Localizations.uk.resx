@@ -318,9 +318,6 @@
   <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED" xml:space="preserve">
     <value>Неможливо виконати пошук до кадру №{0} файлу.</value>
   </data>
-  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED" xml:space="preserve">
-    <value>Не надано рядок тексту пісні для пошуку.</value>
-  </data>
   <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED" xml:space="preserve">
     <value>Неможливо перетягнути.</value>
   </data>

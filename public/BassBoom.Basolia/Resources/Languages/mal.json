@@ -278,10 +278,6 @@
       "text": "Tidak boleh berusaha untuk membingkai #{0} fail"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Baris lirik tidak disediakan untuk mencari"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "tidak boleh jatuh."
     },

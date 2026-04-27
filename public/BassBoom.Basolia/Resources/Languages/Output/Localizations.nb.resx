@@ -318,9 +318,6 @@
   <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOFRAMEFAILED" xml:space="preserve">
     <value>Kan ikke søke etter ramme nr. {0} i filen.</value>
   </data>
-  <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED" xml:space="preserve">
-    <value>Det er ikke oppgitt noen tekstlinje for å søke etter.</value>
-  </data>
   <data name="BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED" xml:space="preserve">
     <value>Kan ikke slippe.</value>
   </data>

@@ -275,10 +275,6 @@
       "text": "fail ke frem #{0} tak nahin khojee ja sakatee"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "khojane ke lie geet pankti pradaan nahin kee gaee hai"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "chhod nahin sakate."
     },

@@ -276,10 +276,6 @@
       "text": "Nu se poate căuta la cadrul #{0} al fișierului"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Linia de versuri nu este furnizată pentru a căuta"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Nu se poate elimina."
     },

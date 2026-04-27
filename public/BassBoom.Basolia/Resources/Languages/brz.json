@@ -274,10 +274,6 @@
       "text": "Não é possível buscar o quadro nº {0} do arquivo"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "A linha da letra não foi fornecida para buscar"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Não é possível descartar."
     },

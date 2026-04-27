@@ -17,8 +17,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Basolia.Enumerations;
-using BassBoom.Basolia.Playback;
+using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Media.Enumerations;
+using BassBoom.Cli.Languages;
+using BassBoom.Native.Interop.Init;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -31,18 +33,26 @@ namespace BassBoom.Cli.CliBase
         internal static double GetCachedEqualizer(int band) =>
             bands[band];
 
-        internal static double GetEqualizer(int band) =>
-            PlaybackTools.GetEqualizer(BassBoomCli.basolia, PlaybackChannels.Both, band);
+        internal static double GetEqualizer(int band)
+        {
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
+            return BassBoomCli.basolia.GetEqualizer(PlaybackChannels.Both, band);
+        }
 
         internal static void SetEqualizer(int band, double value)
         {
-            PlaybackTools.SetEqualizer(BassBoomCli.basolia, PlaybackChannels.Both, band, value);
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
+            BassBoomCli.basolia.SetEqualizer(PlaybackChannels.Both, band, value);
             UpdateEqualizers();
         }
 
         internal static void ResetEqualizers()
         {
-            PlaybackTools.ResetEqualizer(BassBoomCli.basolia);
+            if (BassBoomCli.basolia is null)
+                throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
+            BassBoomCli.basolia.ResetEqualizer();
             UpdateEqualizers();
         }
 

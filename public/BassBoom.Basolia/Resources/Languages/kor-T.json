@@ -276,10 +276,6 @@
       "text": "파일의 프레임 #{0}으로 검색할 수 없습니다."
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "검색할 가사 줄이 제공되지 않았습니다."
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "드롭할 수 없습니다."
     },

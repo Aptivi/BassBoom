@@ -279,10 +279,6 @@
       "text": "Kan ikke søke etter ramme nr. {0} i filen."
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Det er ikke oppgitt noen tekstlinje for å søke etter."
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Kan ikke slippe."
     },

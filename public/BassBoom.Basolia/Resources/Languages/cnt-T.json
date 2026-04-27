@@ -278,10 +278,6 @@
       "text": "無法定位到檔案的第 {0} 幀"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "未提供要定位的歌詞行"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "無法刪除。"
     },

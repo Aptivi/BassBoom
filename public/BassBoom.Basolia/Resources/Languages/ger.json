@@ -284,10 +284,6 @@
       "text": "Frame Nr. {0} der Datei kann nicht gesucht werden."
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Es ist keine Textzeile zum Suchen vorhanden."
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Kann nicht gelöscht werden."
     },

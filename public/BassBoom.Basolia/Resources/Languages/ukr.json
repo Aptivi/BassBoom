@@ -275,10 +275,6 @@
       "text": "Неможливо виконати пошук до кадру №{0} файлу."
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Не надано рядок тексту пісні для пошуку."
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Неможливо перетягнути."
     },

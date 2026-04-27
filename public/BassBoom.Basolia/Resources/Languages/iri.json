@@ -276,10 +276,6 @@
       "text": "Ní féidir fráma #{0} an chomhaid a lorg"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Ní féidir líne lirice a sholáthar le cuardach a dhéanamh air"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Ní féidir é a scaoileadh."
     },

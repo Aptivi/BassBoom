@@ -275,10 +275,6 @@
       "text": "ファイルのフレーム #{0} にシークできません。"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "シーク先の歌詞が指定されていません。"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "ドロップできません。"
     },

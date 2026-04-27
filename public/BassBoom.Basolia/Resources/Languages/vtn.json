@@ -275,10 +275,6 @@
       "text": "Không tìm được khung hình #{0} của tệp"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Không cung cấp dòng lời bài hát để tìm"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Không bỏ được."
     },

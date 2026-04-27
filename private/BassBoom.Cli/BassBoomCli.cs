@@ -26,11 +26,11 @@ using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Base.Extensions;
 using System.Linq;
 using Terminaux.Base;
-using BassBoom.Basolia.Playback;
 using BassBoom.Cli.Languages;
 using Terminaux.Base.Buffered;
 using Colorimetry;
 using Colorimetry.Data;
+using BassBoom.Basolia.Media;
 
 namespace BassBoom.Cli
 {
@@ -81,7 +81,7 @@ namespace BassBoom.Cli
                     Player.PlayerLoop();
 
                 // Close the output if necessary
-                PlaybackTools.CloseOutput(basolia);
+                basolia.CloseOutput();
             }
             catch (Exception ex)
             {

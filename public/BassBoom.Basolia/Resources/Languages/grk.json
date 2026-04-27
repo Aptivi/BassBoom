@@ -276,10 +276,6 @@
       "text": "Δεν είναι δυνατή η αναζήτηση στο καρέ #{0} του αρχείου"
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "Δεν παρέχεται γραμμή στίχου για αναζήτηση"
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "Δεν είναι δυνατή η απόθεση."
     },

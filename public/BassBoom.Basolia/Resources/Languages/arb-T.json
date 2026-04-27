@@ -301,10 +301,6 @@
       "text": "لا يمكن البحث عن الإطار #{0} من الملف."
     },
     {
-      "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_SEEKTOLYRICLINEFAILED",
-      "text": "لا يتم توفير سطر كلمات الأغاني للبحث عنه."
-    },
-    {
       "loc": "BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_DROPFAILED",
       "text": "لا يمكن الإسقاط."
     },

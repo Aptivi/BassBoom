@@ -17,8 +17,8 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Basolia.Format;
-using BassBoom.Basolia.Lyrics;
+using BassBoom.Basolia.Media.Format;
+using BassBoom.Basolia.Media.Lyrics;
 using System;
 
 namespace BassBoom.Cli.Tools
@@ -52,7 +52,7 @@ namespace BassBoom.Cli.Tools
         /// Music duration in a string representation of the time span
         /// </summary>
         public string DurationSpan =>
-            AudioInfoTools.GetDurationSpanFromSamples(Duration, FormatInfo.rate).ToString();
+            FormatTools.GetDurationSpanFromSamples(Duration, FormatInfo.rate).ToString();
         /// <summary>
         /// Format information (rate, channels, and encoding)
         /// </summary>
