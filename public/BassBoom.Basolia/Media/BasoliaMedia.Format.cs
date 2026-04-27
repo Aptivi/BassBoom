@@ -23,7 +23,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using BassBoom.Basolia.Exceptions;
-using BassBoom.Basolia.Helpers;
 using BassBoom.Basolia.Languages;
 using BassBoom.Basolia.Media.Enumerations;
 using BassBoom.Basolia.Media.Format;
@@ -33,6 +32,7 @@ using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.LowLevel;
 using BassBoom.Native.Interop.Output;
 using BassBoom.Native.Interop.Play;
+using Magico.Enumeration;
 using SpecProbe.Software.Platform;
 using Textify.General;
 
@@ -645,7 +645,7 @@ namespace BassBoom.Basolia.Media
                 var @delegate = MpgNative.GetDelegate<NativeDecoder.mpg123_supported_decoders>(MpgNative.libManagerMpg, nameof(NativeDecoder.mpg123_supported_decoders));
                 var delegate2 = MpgNative.GetDelegate<NativeDecoder.mpg123_decoders>(MpgNative.libManagerMpg, nameof(NativeDecoder.mpg123_decoders));
                 IntPtr decodersPtr = onlySupported ? @delegate.Invoke() : delegate2.Invoke();
-                string[] decoders = ArrayVariantLength.GetStringsUnknownLength(decodersPtr);
+                string[] decoders = NativeArrayTools.GetStringsUnknownLength(decodersPtr);
                 return decoders;
             }
         }
@@ -735,7 +735,7 @@ namespace BassBoom.Basolia.Media
                 // Get the rates
                 var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_rates>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_rates));
                 @delegate.Invoke(out IntPtr ratesPtr, out int count);
-                rates = ArrayVariantLength.GetIntegersKnownLength(ratesPtr, count, PlatformHelper.IsOnWindows() ? sizeof(int) : sizeof(long));
+                rates = NativeArrayTools.GetIntegersKnownLength(ratesPtr, count, PlatformHelper.IsOnWindows() ? sizeof(int) : sizeof(long));
             }
 
             // We're now entering the safe zone
@@ -756,7 +756,7 @@ namespace BassBoom.Basolia.Media
                 // Get the encodings
                 var @delegate = MpgNative.GetDelegate<NativeOutput.mpg123_encodings>(MpgNative.libManagerMpg, nameof(NativeOutput.mpg123_encodings));
                 @delegate.Invoke(out IntPtr encodingsPtr, out int count);
-                encodings = ArrayVariantLength.GetIntegersKnownLength(encodingsPtr, count, sizeof(int));
+                encodings = NativeArrayTools.GetIntegersKnownLength(encodingsPtr, count, sizeof(int));
             }
 
             // We're now entering the safe zone

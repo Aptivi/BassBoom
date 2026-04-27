@@ -22,11 +22,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
 using BassBoom.Basolia.Exceptions;
-using BassBoom.Basolia.Helpers;
 using BassBoom.Basolia.Languages;
 using BassBoom.Native;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
+using Magico.Enumeration;
 using Textify.General;
 
 namespace BassBoom.Basolia.Media
@@ -59,8 +59,8 @@ namespace BassBoom.Basolia.Media
                 if (driversStatus == (int)mpg123_errors.MPG123_ERR)
                     throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DRIVERQUERY"), mpg123_errors.MPG123_ERR);
                 driverCount = driversStatus;
-                driverNames = ArrayVariantLength.GetStringsKnownLength(names, driverCount);
-                driverDescs = ArrayVariantLength.GetStringsKnownLength(descr, driverCount);
+                driverNames = NativeArrayTools.GetStringsKnownLength(names, driverCount);
+                driverDescs = NativeArrayTools.GetStringsKnownLength(descr, driverCount);
             }
 
             // Iterate through each driver, but ignore the builtins as they're used for debugging.
@@ -101,8 +101,8 @@ namespace BassBoom.Basolia.Media
                     throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_DEVICES_EXCEPTION_DEVICEQUERY"), mpg123_errors.MPG123_ERR);
                 activeDevice = Marshal.PtrToStringAnsi(active);
                 deviceCount = devicesStatus;
-                deviceNames = ArrayVariantLength.GetStringsKnownLength(names, deviceCount);
-                deviceDescs = ArrayVariantLength.GetStringsKnownLength(descr, deviceCount);
+                deviceNames = NativeArrayTools.GetStringsKnownLength(names, deviceCount);
+                deviceDescs = NativeArrayTools.GetStringsKnownLength(descr, deviceCount);
             }
 
             // Iterate through each device
