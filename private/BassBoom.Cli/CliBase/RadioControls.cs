@@ -149,8 +149,8 @@ namespace BassBoom.Cli.CliBase
                 throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             if (BassBoomCli.basolia.IsPlaying() || !Common.populate)
                 return;
-            Common.populate = false;
             Common.Switch(musicPath);
+            Common.populate = false;
             if (!Common.cachedInfos.Any((csi) => csi.MusicPath == musicPath))
             {
                 InfoBoxNonModalColor.WriteInfoBox(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_OPENINGMUSICFILE").FormatString(musicPath), false);
