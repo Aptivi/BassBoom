@@ -221,21 +221,29 @@ namespace BassBoom.Cli.CliBase
             // Then, the main loop
             while (!Common.exiting)
             {
-                Thread.Sleep(1);
                 try
                 {
                     if (!playerScreen.CheckBufferedPart("BassBoom Player"))
                         playerScreen.AddBufferedPart("BassBoom Player", screenPart);
                     ScreenTools.Render();
 
-                    // Handle the keystroke
-                    if (ConsoleWrapper.KeyAvailable)
+                    // Obtain input
+                    InputEventInfo? keystroke;
+                    if (BassBoomCli.basolia.IsPlaying())
                     {
-                        var keystroke = Input.ReadKey();
+                        Thread.Sleep(1);
+                        keystroke = Input.ReadPointerOrKeyNoBlock();
+                    }
+                    else
+                        keystroke = Input.ReadPointerOrKey();
+
+                    // Handle the keystroke
+                    if (keystroke.ConsoleKeyInfo is ConsoleKeyInfo cki && !Input.PointerActive)
+                    {
                         if (BassBoomCli.basolia.IsPlaying())
-                            HandleKeypressPlayMode(keystroke, playerScreen);
+                            HandleKeypressPlayMode(cki, playerScreen);
                         else
-                            HandleKeypressIdleMode(keystroke, playerScreen);
+                            HandleKeypressIdleMode(cki, playerScreen);
                     }
                 }
                 catch (BasoliaException bex)
