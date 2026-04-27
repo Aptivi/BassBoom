@@ -98,6 +98,17 @@ namespace BassBoom.Cli.CliBase
                 throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             Common.volume = BassBoomCli.basolia.GetVolume().baseLinear;
 
+            // Check to see if we're populating music based on args
+            if (passedMusicPaths.Count > 0)
+            {
+                foreach (string path in passedMusicPaths)
+                {
+                    PlayerControls.PopulateMusicFileInfo(path);
+                    Common.populate = true;
+                }
+                passedMusicPaths.Clear();
+            }
+
             // Populate the screen
             Screen playerScreen = new();
             ScreenTools.SetCurrent(playerScreen);
@@ -479,30 +490,18 @@ namespace BassBoom.Cli.CliBase
             // In case we have no songs in the playlist...
             if (Common.cachedInfos.Count == 0)
             {
-                if (passedMusicPaths.Count > 0)
+                int height = (ConsoleWrapper.WindowHeight - 2) / 2;
+                var message = new AlignedText()
                 {
-                    foreach (string path in passedMusicPaths)
+                    Top = height,
+                    Text = LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TIP"),
+                    Settings = new()
                     {
-                        PlayerControls.PopulateMusicFileInfo(path);
-                        Common.populate = true;
+                        Alignment = TextAlignment.Middle
                     }
-                    passedMusicPaths.Clear();
-                }
-                else
-                {
-                    int height = (ConsoleWrapper.WindowHeight - 2) / 2;
-                    var message = new AlignedText()
-                    {
-                        Top = height,
-                        Text = LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_TIP"),
-                        Settings = new()
-                        {
-                            Alignment = TextAlignment.Middle
-                        }
-                    };
-                    drawn.Append(message.Render());
-                    return drawn.ToString();
-                }
+                };
+                drawn.Append(message.Render());
+                return drawn.ToString();
             }
 
             // Populate music file info, as necessary
