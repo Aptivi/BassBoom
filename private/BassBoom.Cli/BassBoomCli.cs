@@ -17,30 +17,39 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using BassBoom.Basolia;
-using BassBoom.Cli.CliBase;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
-using Terminaux.Writer.ConsoleWriters;
-using Terminaux.Base.Extensions;
 using System.Linq;
-using Terminaux.Base;
+using System.Reflection;
+using BassBoom.Basolia;
+using BassBoom.Basolia.Media;
+using BassBoom.Cli.CliBase;
+using BassBoom.Cli.CliBase.Arguments;
 using BassBoom.Cli.Languages;
-using Terminaux.Base.Buffered;
 using Colorimetry;
 using Colorimetry.Data;
-using BassBoom.Basolia.Media;
+using Terminaux.Base;
+using Terminaux.Base.Buffered;
+using Terminaux.Base.Extensions;
+using Terminaux.Shell.Arguments.Base;
+using Terminaux.Writer.ConsoleWriters;
 
 namespace BassBoom.Cli
 {
-    internal class BassBoomCli
+    internal static class BassBoomCli
     {
-        private static readonly Version? version = Assembly.GetAssembly(typeof(InitBasolia))?.GetName().Version;
         internal static Version? mpgVer;
         internal static Version? outVer;
         internal static BasoliaMedia? basolia;
         internal static Color white = new(ConsoleColors.White);
+        internal static bool isRadio;
+        private static readonly Version? version = Assembly.GetAssembly(typeof(InitBasolia))?.GetName().Version;
+        private static readonly Dictionary<string, ArgumentInfo> arguments = new()
+        {
+            { "radio", new("radio", "Radio mode", new RadioArgument()) },
+            { "path", new("path", "Path to MPEG music or MPEG radio URL", new PathArgument()) },
+        };
 
         static int Main(string[] args)
         {
@@ -48,23 +57,8 @@ namespace BassBoom.Cli
             {
                 ConsoleMisc.SetTitle($"BassBoom CLI - Basolia v{version?.ToString()}");
 
-                // First, prompt for the music path if no arguments are provided.
-                string[] arguments = args.Where((arg) => !arg.StartsWith("-")).ToArray();
-                string[] switches = args.Where((arg) => arg.StartsWith("-")).ToArray();
-                bool isRadio = switches.Contains("-r");
-                if (arguments.Length != 0)
-                {
-                    string musicPath = args[0];
-
-                    // Check for existence.
-                    if (string.IsNullOrEmpty(musicPath) || (!isRadio && !File.Exists(musicPath)))
-                    {
-                        TextWriterColor.Write(LanguageTools.GetLocalized("BASSBOOM_APP_NOTFOUND"), musicPath);
-                        return 1;
-                    }
-                    if (!isRadio)
-                        Player.passedMusicPaths.Add(musicPath);
-                }
+                // Parse arguments
+                ArgumentParse.ParseArguments(args, arguments);
 
                 // Initialize Basolia
                 basolia = new();
