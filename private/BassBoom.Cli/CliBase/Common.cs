@@ -56,6 +56,48 @@ namespace BassBoom.Cli.CliBase
         internal static CachedSongInfo? CurrentCachedInfo =>
             cachedInfos.Count > 0 ? cachedInfos[currentPos - 1] : null;
 
+        internal static void PopulatePassedPaths()
+        {
+            if (BassBoomCli.isRadio)
+            {
+                if (Radio.passedRadioStationPaths.Count > 0)
+                {
+                    foreach (string path in Radio.passedRadioStationPaths)
+                    {
+                        try
+                        {
+                            RadioControls.PopulateRadioStationInfo(path);
+                            populate = true;
+                        }
+                        catch (Exception ex)
+                        {
+                            InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICRADIOOPENFAILED") + $": {path}\n{ex.Message}");
+                        }
+                    }
+                    Radio.passedRadioStationPaths.Clear();
+                }
+            }
+            else
+            {
+                if (Player.passedMusicPaths.Count > 0)
+                {
+                    foreach (string path in Player.passedMusicPaths)
+                    {
+                        try
+                        {
+                            PlayerControls.PopulateMusicFileInfo(path);
+                            populate = true;
+                        }
+                        catch (Exception ex)
+                        {
+                            InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED") + $": {path}\n{ex.Message}");
+                        }
+                    }
+                    Player.passedMusicPaths.Clear();
+                }
+            }
+        }
+
         internal static void RaiseVolume()
         {
             if (BassBoomCli.basolia is null)

@@ -39,6 +39,8 @@ namespace BassBoom.Cli.CliBase.Arguments
                 }
                 if (!BassBoomCli.isRadio)
                     Player.passedMusicPaths.Add(musicPath);
+                else
+                    Radio.passedRadioStationPaths.Add(musicPath);
             }
         }
     }

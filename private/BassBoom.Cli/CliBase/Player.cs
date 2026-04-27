@@ -99,15 +99,7 @@ namespace BassBoom.Cli.CliBase
             Common.volume = BassBoomCli.basolia.GetVolume().baseLinear;
 
             // Check to see if we're populating music based on args
-            if (passedMusicPaths.Count > 0)
-            {
-                foreach (string path in passedMusicPaths)
-                {
-                    PlayerControls.PopulateMusicFileInfo(path);
-                    Common.populate = true;
-                }
-                passedMusicPaths.Clear();
-            }
+            Common.PopulatePassedPaths();
 
             // Populate the screen
             Screen playerScreen = new();

@@ -44,6 +44,7 @@ namespace BassBoom.Cli.CliBase
     internal static class Radio
     {
         internal static Thread? playerThread;
+        internal static readonly List<string> passedRadioStationPaths = [];
 
         internal static Keybinding[] AllBindings =>
         [
@@ -76,6 +77,9 @@ namespace BassBoom.Cli.CliBase
                 throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             Common.volume = BassBoomCli.basolia.GetVolume().baseLinear;
             Common.isRadioMode = true;
+
+            // Check to see if we're populating paths to radio stations based on args
+            Common.PopulatePassedPaths();
 
             // Populate the screen
             Screen radioScreen = new();
