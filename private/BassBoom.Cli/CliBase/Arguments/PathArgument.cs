@@ -17,11 +17,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using System;
-using System.IO;
-using BassBoom.Cli.Languages;
 using Terminaux.Shell.Arguments.Base;
-using Terminaux.Writer.ConsoleWriters;
 
 namespace BassBoom.Cli.CliBase.Arguments
 {
@@ -31,12 +27,6 @@ namespace BassBoom.Cli.CliBase.Arguments
         {
             foreach (var musicPath in parameters.ArgumentsList)
             {
-                // Check for existence.
-                if (string.IsNullOrEmpty(musicPath) || (!BassBoomCli.isRadio && !File.Exists(musicPath)))
-                {
-                    TextWriterColor.Write(LanguageTools.GetLocalized("BASSBOOM_APP_NOTFOUND"), musicPath);
-                    Environment.Exit(1);
-                }
                 if (!BassBoomCli.isRadio)
                     Player.passedMusicPaths.Add(musicPath);
                 else

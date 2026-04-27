@@ -1,7 +1,8 @@
 {
   "profiles": {
     "BassBoom.Cli": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "\"--path C:\\Users\\aptiv\\Aptivi\\Music\\jingles\\jingle1.mp3 C:\\Users\\aptiv\\Aptivi\\Music\\jingles\\jingle3.mp3\""
     },
     "BassBoom.Cli - Radio": {
       "commandName": "Project",

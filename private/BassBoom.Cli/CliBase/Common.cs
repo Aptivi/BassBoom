@@ -90,7 +90,7 @@ namespace BassBoom.Cli.CliBase
                         }
                         catch (Exception ex)
                         {
-                            InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_FILE_EXCEPTION_MUSICFILEOPENFAILED") + $": {path}\n{ex.Message}");
+                            InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_NOTFOUND").FormatString(path) + $"\n{ex.Message}");
                         }
                     }
                     Player.passedMusicPaths.Clear();
