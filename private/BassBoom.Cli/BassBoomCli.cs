@@ -19,8 +19,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using BassBoom.Basolia;
 using BassBoom.Basolia.Media;
@@ -30,7 +28,6 @@ using BassBoom.Cli.Languages;
 using Colorimetry;
 using Colorimetry.Data;
 using Terminaux.Base;
-using Terminaux.Base.Buffered;
 using Terminaux.Base.Extensions;
 using Terminaux.Shell.Arguments.Base;
 using Terminaux.Writer.ConsoleWriters;
@@ -68,7 +65,7 @@ namespace BassBoom.Cli
                 outVer = InitBasolia.OutLibVersion;
 
                 // Now, open an interactive TUI
-                ConsoleResizeHandler.StartResizeListener((_, _, _, _) => ScreenTools.CurrentScreen?.RequireRefresh());
+                ConsoleResizeHandler.StartResizeListener();
                 if (isRadio)
                     Radio.RadioLoop();
                 else

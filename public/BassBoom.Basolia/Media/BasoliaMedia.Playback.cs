@@ -26,7 +26,6 @@ using BassBoom.Basolia.Exceptions;
 using BassBoom.Basolia.Languages;
 using BassBoom.Basolia.Media.Enumerations;
 using BassBoom.Basolia.Media.Format;
-using BassBoom.Basolia.Media.Lyrics;
 using BassBoom.Basolia.Media.Playback;
 using BassBoom.Native;
 using BassBoom.Native.Interop.Analysis;
