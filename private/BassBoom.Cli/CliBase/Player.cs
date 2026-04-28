@@ -23,6 +23,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Basolia.Media.Playback;
 using BassBoom.Cli.Languages;
 using BassBoom.Native.Interop.Init;
 using Colorimetry;
@@ -128,7 +129,7 @@ namespace BassBoom.Cli.CliBase
                 int songsPerPage = endPos - startPos;
 
                 // Get the position
-                position = BassBoomCli.basolia.IsOpened() ? BassBoomCli.basolia.GetCurrentDuration() : 0;
+                int renderedPosition = BassBoomCli.basolia.IsOpened() ? BassBoomCli.basolia.GetCurrentDuration() : 0;
                 var posSpan = BassBoomCli.basolia.IsOpened() ? BassBoomCli.basolia.GetCurrentDurationSpan() : new();
 
                 // Disco effect!
@@ -151,7 +152,7 @@ namespace BassBoom.Cli.CliBase
                     FrameColor = disco,
                     TitleColor = disco,
                 };
-                var durationBar = new SimpleProgress((int)(100 * (position / (double)Common.CurrentCachedInfo.Duration)), 100)
+                var durationBar = new SimpleProgress((int)(100 * (renderedPosition / (double)Common.CurrentCachedInfo.Duration)), 100)
                 {
                     Width = ConsoleWrapper.WindowWidth - 4,
                     ShowPercentage = false,
@@ -225,17 +226,14 @@ namespace BassBoom.Cli.CliBase
                 {
                     if (!playerScreen.CheckBufferedPart("BassBoom Player"))
                         playerScreen.AddBufferedPart("BassBoom Player", screenPart);
-                    ScreenTools.Render();
+                    if (playerScreen.NeedsRefresh || playerScreen.RefreshWasDone || BassBoomCli.basolia.IsPlaying())
+                        ScreenTools.Render();
 
                     // Obtain input
-                    InputEventInfo? keystroke;
+                    Thread.Sleep(1);
+                    InputEventInfo? keystroke = Input.ReadPointerOrKeyNoBlock();
                     if (BassBoomCli.basolia.IsPlaying())
-                    {
-                        Thread.Sleep(1);
-                        keystroke = Input.ReadPointerOrKeyNoBlock();
-                    }
-                    else
-                        keystroke = Input.ReadPointerOrKey();
+                        position = BassBoomCli.basolia.GetCurrentDuration();
 
                     // Handle the keystroke
                     if (keystroke.ConsoleKeyInfo is ConsoleKeyInfo cki && !Input.PointerActive)
@@ -244,6 +242,7 @@ namespace BassBoom.Cli.CliBase
                             HandleKeypressPlayMode(cki, playerScreen);
                         else
                             HandleKeypressIdleMode(cki, playerScreen);
+                        playerScreen.RequireRefresh();
                     }
                 }
                 catch (BasoliaException bex)
@@ -284,6 +283,18 @@ namespace BassBoom.Cli.CliBase
         {
             switch (keystroke.Key)
             {
+                case ConsoleKey.RightArrow:
+                    if (keystroke.Modifiers == ConsoleModifiers.Control)
+                        PlayerControls.seekRate += 0.05d;
+                    else
+                        PlayerControls.SeekForward();
+                    break;
+                case ConsoleKey.LeftArrow:
+                    if (keystroke.Modifiers == ConsoleModifiers.Control)
+                        PlayerControls.seekRate -= 0.05d;
+                    else
+                        PlayerControls.SeekBackward();
+                    break;
                 case ConsoleKey.Spacebar:
                     playerThread = new(HandlePlay);
                     PlayerControls.Play();
@@ -453,14 +464,19 @@ namespace BassBoom.Cli.CliBase
                         ScreenTools.CurrentScreen?.RequireRefresh();
                         Common.populate = true;
                     }
+
+                    // Change position and populate music file info to open the music file for playing
                     Common.currentPos = Common.cachedInfos.IndexOf(musicFile) + 1;
                     PlayerControls.PopulateMusicFileInfo(musicFile.MusicPath);
-                    if (Common.paused)
-                    {
-                        Common.paused = false;
-                        BassBoomCli.basolia.SeekToFrame(position);
-                    }
+
+                    // Seek to position and play the music
+                    BassBoomCli.basolia.SeekToFrame(position);
+                    Common.paused = false;
                     BassBoomCli.basolia.Play();
+
+                    // A user might have let the music go to its ending
+                    if (BassBoomCli.basolia.GetState() == PlaybackState.Stopped)
+                        position = 0;
                 }
             }
             catch (Exception ex)
@@ -468,6 +484,7 @@ namespace BassBoom.Cli.CliBase
                 InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_PLAYBACKFAILED") + $" {ex.Message}");
                 Common.failedToPlay = true;
             }
+            ScreenTools.CurrentScreen?.RequireRefresh();
         }
 
         private static string HandleDraw()
