@@ -27,6 +27,7 @@ using BassBoom.Cli.Languages;
 using BassBoom.Native.Interop.Init;
 using Colorimetry;
 using Colorimetry.Data;
+using Colorimetry.Transformation;
 using Terminaux.Base;
 using Terminaux.Base.Buffered;
 using Terminaux.Base.Extensions;
@@ -45,6 +46,10 @@ namespace BassBoom.Cli.CliBase
     {
         internal static Thread? playerThread;
         internal static readonly List<string> passedRadioStationPaths = [];
+        private static SimpleProgress durationBar = new(0, 100)
+        {
+            ShowPercentage = false,
+        };
 
         internal static Keybinding[] AllBindings =>
         [
@@ -99,21 +104,18 @@ namespace BassBoom.Cli.CliBase
                     return "";
 
                 // Get the name
+                var buffer = new StringBuilder();
                 string name = RadioControls.RenderStationName();
 
                 // Get the positions and the amount of stations per page
                 int startPos = 4;
-                int endPos = ConsoleWrapper.WindowHeight - 1;
+                int endPos = ConsoleWrapper.WindowHeight - 4;
                 int stationsPerPage = endPos - startPos;
 
-                // Get the boost indicator
-                var buffer = new StringBuilder();
-                string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground() : "";
-
                 // Disco effect!
-                var disco = BassBoomCli.basolia.IsPlaying() && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
-                string indicator = $"┤ {boostIndicator}" + LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_VOLINDICATOR") + $" {Common.volume * 100:0}%{disco.VTSequenceForeground()} ├";
-                if (BassBoomCli.basolia.IsPlaying())
+                bool playing = BassBoomCli.basolia.IsPlaying();
+                var disco = playing && Common.enableDisco ? new Color($"hsl:{hue};50;50") : BassBoomCli.white;
+                if (playing)
                 {
                     hue++;
                     if (hue >= 360)
@@ -131,9 +133,40 @@ namespace BassBoom.Cli.CliBase
                     FrameColor = disco,
                     TitleColor = disco,
                 };
+                durationBar.Width = ConsoleWrapper.WindowWidth - 4;
+                durationBar.Indeterminate = playing;
+                durationBar.ProgressForegroundColor = TransformationTools.GetDarkBackground(disco);
+                durationBar.ProgressActiveForegroundColor = disco;
                 buffer.Append(
                     listBoxFrame.Render() +
-                    TextWriterWhereColor.RenderWhereColor(indicator, ConsoleWrapper.WindowWidth - ConsoleChar.EstimateCellWidth(indicator) - 4, ConsoleWrapper.WindowHeight - 3, disco)
+                    RendererTools.RenderRenderable(durationBar, new(2, ConsoleWrapper.WindowHeight - 3))
+                );
+
+                // Render the indicator
+                string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground() : "";
+                string indicator = boostIndicator + LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_VOLINDICATOR") + $" {Common.volume * 100:0}%{disco.VTSequenceForeground()}";
+
+                // Render the results
+                int indicatorWidth = ConsoleChar.EstimateCellWidth(indicator);
+                var eraser = new Eraser()
+                {
+                    Left = 2,
+                    Top = ConsoleWrapper.WindowHeight - 4,
+                    Width = ConsoleWrapper.WindowWidth - 4,
+                    Height = 1,
+                };
+                var indicatorText = new BoundedText()
+                {
+                    Left = 2,
+                    Top = ConsoleWrapper.WindowHeight - 4,
+                    ForegroundColor = disco,
+                    Width = ConsoleWrapper.WindowWidth - 7,
+                    Height = 1,
+                    Text = indicator
+                };
+                buffer.Append(
+                    eraser.Render() +
+                    indicatorText.Render()
                 );
                 return buffer.ToString();
             });
@@ -373,7 +406,7 @@ namespace BassBoom.Cli.CliBase
             // Now, print the list of stations.
             var choices = new List<InputChoiceInfo>();
             int startPos = 4;
-            int endPos = ConsoleWrapper.WindowHeight - 1;
+            int endPos = ConsoleWrapper.WindowHeight - 4;
             int stationsPerPage = endPos - startPos;
             int max = Common.cachedInfos.Select((_, idx) => idx).Max((idx) => $"  {idx + 1}) ".Length);
             for (int i = 0; i < Common.cachedInfos.Count; i++)
