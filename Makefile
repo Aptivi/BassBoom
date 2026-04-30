@@ -72,7 +72,7 @@ install:
 	mv $(FDESTDIR)/share/man/man1/bassboom.1 $(FDESTDIR)/share/man/man1/bassboom-$(MODAPI).1
 	mv $(FDESTDIR)/share/applications/bassboom.desktop $(FDESTDIR)/share/applications/bassboom-$(MODAPI).desktop
     # Replace directories in binary files
-	sed -i 's|/usr/lib/bassboom|/usr/lib/bassboom-$(MODAPI)|g' $(FDESTDIR)/bin/bassboom
+	sed -i 's|/usr/lib/bassboom|/usr/lib/bassboom-$(MODAPI)|g' $(FDESTDIR)/bin/bassboom-*
 	sed -i 's|/usr/lib/bassboom|/usr/lib/bassboom-$(MODAPI)|g' $(FDESTDIR)/bin/bb-*
 	sed -i 's|/usr/lib/bassboom|/usr/lib/bassboom-$(MODAPI)|g' $(FDESTDIR)/share/applications/bassboom-$(MODAPI).desktop
 	sed -i 's|/usr/bin/bassboom|/usr/bin/bassboom-$(MODAPI)|g' $(FDESTDIR)/share/applications/bassboom-$(MODAPI).desktop
