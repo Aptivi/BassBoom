@@ -1,0 +1,34 @@
+{
+  "lang": "jpn",
+  "name": "Japanese",
+  "cultures": [
+    "ja",
+    "ja-JP"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTSPECIFIED",
+      "text": "音楽ファイルのパスが指定されていません"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTFOUND",
+      "text": "音楽ファイル {0} が存在しません。"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_OPENING",
+      "text": "音楽ファイル {0} を開いています..."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_UNKNOWNARTIST",
+      "text": "アーティスト不明"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_EXITTIP",
+      "text": "再生を停止するには、「Q」キーを押してください。"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_FAILURE",
+      "text": "再生失敗"
+    }
+  ]
+}

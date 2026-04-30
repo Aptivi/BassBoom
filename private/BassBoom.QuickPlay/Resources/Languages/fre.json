@@ -1,0 +1,80 @@
+{
+  "lang": "fre",
+  "name": "French",
+  "cultures": [
+    "fr",
+    "fr-029",
+    "fr-BE",
+    "fr-BF",
+    "fr-BI",
+    "fr-BJ",
+    "fr-BL",
+    "fr-CA",
+    "fr-CD",
+    "fr-CF",
+    "fr-CG",
+    "fr-CH",
+    "fr-CI",
+    "fr-CM",
+    "fr-DJ",
+    "fr-DZ",
+    "fr-FR",
+    "fr-GA",
+    "fr-GF",
+    "fr-GN",
+    "fr-GP",
+    "fr-GQ",
+    "fr-HT",
+    "fr-KM",
+    "fr-LU",
+    "fr-MA",
+    "fr-MC",
+    "fr-MF",
+    "fr-MG",
+    "fr-ML",
+    "fr-MQ",
+    "fr-MR",
+    "fr-MU",
+    "fr-NC",
+    "fr-NE",
+    "fr-PF",
+    "fr-PM",
+    "fr-RE",
+    "fr-RW",
+    "fr-SC",
+    "fr-SN",
+    "fr-SY",
+    "fr-TD",
+    "fr-TG",
+    "fr-TN",
+    "fr-VU",
+    "fr-WF",
+    "fr-YT"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTSPECIFIED",
+      "text": "Chemin d'accès au fichier audio non spécifié"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTFOUND",
+      "text": "Le fichier audio {0} est introuvable."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_OPENING",
+      "text": "Ouverture du fichier audio {0}..."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_UNKNOWNARTIST",
+      "text": "Artiste inconnu"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_EXITTIP",
+      "text": "Pour arrêter la lecture, appuyez sur « Q »."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_FAILURE",
+      "text": "Échec de la lecture"
+    }
+  ]
+}

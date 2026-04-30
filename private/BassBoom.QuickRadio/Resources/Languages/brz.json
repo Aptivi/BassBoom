@@ -1,0 +1,25 @@
+{
+  "lang": "brz",
+  "name": "Portuguese (Brazil)",
+  "cultures": [
+    "pt-BR"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKRADIO_NOTSPECIFIED",
+      "text": "Caminho da estação de rádio não especificado"
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_OPENING",
+      "text": "Abrindo estação de rádio em {0}..."
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_EXITTIP",
+      "text": "Para parar a reprodução, pressione 'Q'."
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_FAILURE",
+      "text": "Falha na reprodução"
+    }
+  ]
+}

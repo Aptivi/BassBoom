@@ -1,0 +1,37 @@
+{
+  "lang": "cnt-T",
+  "name": "Chinese (Traditional)",
+  "cultures": [
+    "zh",
+    "zh-Hant",
+    "zh-Hant-HK",
+    "zh-Hant-MO",
+    "zh-Hant-TW"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTSPECIFIED",
+      "text": "未指定音樂路徑"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTFOUND",
+      "text": "音樂檔案 {0} 不存在。"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_OPENING",
+      "text": "正在開啟音樂檔案 {0}..."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_UNKNOWNARTIST",
+      "text": "未知藝術家"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_EXITTIP",
+      "text": "若要停止播放，請按“Q”鍵。"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_FAILURE",
+      "text": "播放失敗"
+    }
+  ]
+}

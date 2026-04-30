@@ -36,9 +36,35 @@ def vnd_packbin(extra_args):
     exec_zip_file = f'{version}-bin'
     exec_zip_path = artifacts_dir + '/' + exec_zip_file
     exec_dnfx_zip_file = f'{version}-bin-48'
-    exec_dnfx_zip_path = artifacts_dir + '/' + addons_zip_file
+    exec_dnfx_zip_path = artifacts_dir + '/' + exec_dnfx_zip_file
 
     # Generate the files
+    zip_path = shutil.make_archive(exec_zip_path, 'zip', exec_dir)
+    print(f"Written to {zip_path}")
+    zip_path = shutil.make_archive(exec_dnfx_zip_path, 'zip', exec_dnfx_dir)
+    print(f"Written to {zip_path}")
+    
+    # Do the same for QuickPlay
+    exec_dir = solution + f'/private/BassBoom.QuickPlay/bin/{config}/net10.0/'
+    exec_dnfx_dir = solution + f'/private/BassBoom.QuickPlay/bin/{config}/net48/'
+    artifacts_dir = solution + '/artifacts'
+    exec_zip_file = f'{version}-quickplay-bin'
+    exec_zip_path = artifacts_dir + '/' + exec_zip_file
+    exec_dnfx_zip_file = f'{version}-quickplay-bin-48'
+    exec_dnfx_zip_path = artifacts_dir + '/' + exec_dnfx_zip_file
+    zip_path = shutil.make_archive(exec_zip_path, 'zip', exec_dir)
+    print(f"Written to {zip_path}")
+    zip_path = shutil.make_archive(exec_dnfx_zip_path, 'zip', exec_dnfx_dir)
+    print(f"Written to {zip_path}")
+    
+    # Do the same for QuickRadio
+    exec_dir = solution + f'/private/BassBoom.QuickRadio/bin/{config}/net10.0/'
+    exec_dnfx_dir = solution + f'/private/BassBoom.QuickRadio/bin/{config}/net48/'
+    artifacts_dir = solution + '/artifacts'
+    exec_zip_file = f'{version}-quickradio-bin'
+    exec_zip_path = artifacts_dir + '/' + exec_zip_file
+    exec_dnfx_zip_file = f'{version}-quickradio-bin-48'
+    exec_dnfx_zip_path = artifacts_dir + '/' + exec_dnfx_zip_file
     zip_path = shutil.make_archive(exec_zip_path, 'zip', exec_dir)
     print(f"Written to {zip_path}")
     zip_path = shutil.make_archive(exec_dnfx_zip_path, 'zip', exec_dnfx_dir)

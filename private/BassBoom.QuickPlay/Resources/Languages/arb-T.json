@@ -1,0 +1,60 @@
+{
+  "lang": "arb-T",
+  "name": "Arabic",
+  "cultures": [
+    "ar",
+    "ar-001",
+    "ar-AE",
+    "ar-BH",
+    "ar-DJ",
+    "ar-DZ",
+    "ar-EG",
+    "ar-ER",
+    "ar-IL",
+    "ar-IQ",
+    "ar-JO",
+    "ar-KM",
+    "ar-KW",
+    "ar-LB",
+    "ar-LY",
+    "ar-MA",
+    "ar-MR",
+    "ar-OM",
+    "ar-PS",
+    "ar-QA",
+    "ar-SA",
+    "ar-SD",
+    "ar-SO",
+    "ar-SS",
+    "ar-SY",
+    "ar-TD",
+    "ar-TN",
+    "ar-YE"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTSPECIFIED",
+      "text": "لم يتم تحديد مسار الموسيقى."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTFOUND",
+      "text": "ملف الموسيقى {0} غير موجود."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_OPENING",
+      "text": "جارٍ فتح ملف الموسيقى {0}..."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_UNKNOWNARTIST",
+      "text": "فنان غير معروف."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_EXITTIP",
+      "text": "لإيقاف التشغيل، اضغط على 'Q'."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_FAILURE",
+      "text": "فشل التشغيل"
+    }
+  ]
+}

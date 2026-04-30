@@ -1,0 +1,34 @@
+{
+  "lang": "ind",
+  "name": "Hindi",
+  "cultures": [
+    "hi-Latn",
+    "hi-Latn-IN"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTSPECIFIED",
+      "text": "myoozik paath nahin bataaya gaya hai"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTFOUND",
+      "text": "myoozik fail {0} maujood nahin hai."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_OPENING",
+      "text": "myoozik fail {0} kholee ja rahee hai..."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_UNKNOWNARTIST",
+      "text": "ananon aartist"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_EXITTIP",
+      "text": "ple band karane ke lie, q dabaen."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_FAILURE",
+      "text": "plebaik fel ho raha hai"
+    }
+  ]
+}

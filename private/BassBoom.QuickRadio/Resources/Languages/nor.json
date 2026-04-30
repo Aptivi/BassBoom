@@ -1,0 +1,30 @@
+{
+  "lang": "nor",
+  "name": "Norwegian",
+  "cultures": [
+    "nb",
+    "nb-NO",
+    "nb-SJ",
+    "nn",
+    "nn-NO",
+    "no"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKRADIO_NOTSPECIFIED",
+      "text": "Radiostasjonsbane ikke spesifisert"
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_OPENING",
+      "text": "Åpner radiostasjon kl. {0}..."
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_EXITTIP",
+      "text": "For å stoppe avspillingen, trykk på 'Q'."
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_FAILURE",
+      "text": "Avspillingsfeil"
+    }
+  ]
+}

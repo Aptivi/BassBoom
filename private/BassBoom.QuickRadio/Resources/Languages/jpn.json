@@ -1,0 +1,26 @@
+{
+  "lang": "jpn",
+  "name": "Japanese",
+  "cultures": [
+    "ja",
+    "ja-JP"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKRADIO_NOTSPECIFIED",
+      "text": "ラジオ局のパスが指定されていません"
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_OPENING",
+      "text": "{0}のラジオ局を開きます…"
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_EXITTIP",
+      "text": "再生を停止するには、「Q」キーを押してください。"
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_FAILURE",
+      "text": "再生失敗"
+    }
+  ]
+}

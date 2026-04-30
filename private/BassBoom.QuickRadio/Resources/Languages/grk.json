@@ -1,0 +1,27 @@
+{
+  "lang": "grk",
+  "name": "Greek",
+  "cultures": [
+    "el",
+    "el-CY",
+    "el-GR"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKRADIO_NOTSPECIFIED",
+      "text": "Δεν έχει καθοριστεί η διαδρομή του ραδιοφωνικού σταθμού"
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_OPENING",
+      "text": "Άνοιγμα ραδιοφωνικού σταθμού στις {0}..."
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_EXITTIP",
+      "text": "Για να διακόψετε την αναπαραγωγή, πατήστε 'Q'."
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_FAILURE",
+      "text": "Αποτυχία αναπαραγωγής"
+    }
+  ]
+}

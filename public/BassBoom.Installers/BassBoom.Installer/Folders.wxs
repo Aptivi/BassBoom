@@ -2,6 +2,9 @@
     <Fragment>
         <StandardDirectory Id="ProgramFiles6432Folder">
             <Directory Id="INSTALLFOLDER" Name="!(bind.Property.Manufacturer)\!(bind.Property.ProductName)" />
+            <Directory Id="INSTALLFOLDER_MAIN" Name="!(bind.Property.Manufacturer)\!(bind.Property.ProductName)\Main" />
+            <Directory Id="INSTALLFOLDER_QUICKPLAY" Name="!(bind.Property.Manufacturer)\!(bind.Property.ProductName)\QuickPlay" />
+            <Directory Id="INSTALLFOLDER_QUICKRADIO" Name="!(bind.Property.Manufacturer)\!(bind.Property.ProductName)\QuickRadio" />
         </StandardDirectory>
         
         <StandardDirectory Id="ProgramMenuFolder">
@@ -12,8 +15,8 @@
                     <Shortcut Id="ApplicationStartMenuShortcut"
                               Name="!(bind.Property.ProductName)"
                               Description="Cross-platform music player written in C#"
-                              Target="[INSTALLFOLDER]\BassBoom.Cli.exe"
-                              WorkingDirectory="INSTALLFOLDER"
+                              Target="[INSTALLFOLDER_MAIN]\BassBoom.Cli.exe"
+                              WorkingDirectory="INSTALLFOLDER_MAIN"
                               />
                 </Component>
             </Directory>
@@ -25,8 +28,8 @@
                 <Shortcut Id="DesktopShortcut"
                             Name="!(bind.Property.ProductName)"
                             Description="Cross-platform music player written in C#"
-                            Target="[INSTALLFOLDER]\BassBoom.Cli.exe"
-                            WorkingDirectory="INSTALLFOLDER"
+                            Target="[INSTALLFOLDER_MAIN]\BassBoom.Cli.exe"
+                            WorkingDirectory="INSTALLFOLDER_MAIN"
                             />
             </Component>
         </StandardDirectory>

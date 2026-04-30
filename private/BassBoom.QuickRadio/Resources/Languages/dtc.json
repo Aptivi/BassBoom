@@ -1,0 +1,32 @@
+{
+  "lang": "dtc",
+  "name": "Dutch",
+  "cultures": [
+    "nl",
+    "nl-AW",
+    "nl-BE",
+    "nl-BQ",
+    "nl-CW",
+    "nl-NL",
+    "nl-SR",
+    "nl-SX"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKRADIO_NOTSPECIFIED",
+      "text": "Niet opgegeven pad naar radiostation"
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_OPENING",
+      "text": "Radiostation openen op {0}..."
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_EXITTIP",
+      "text": "Druk op 'Q' om het afspelen te stoppen."
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_FAILURE",
+      "text": "Afspelen mislukt"
+    }
+  ]
+}

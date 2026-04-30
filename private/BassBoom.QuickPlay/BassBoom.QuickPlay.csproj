@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net10.0;net48</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <ApplicationIcon>../../assets/OfficialAppIcon-BassBoom.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Terminaux" Version="8.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\public\BassBoom.Basolia\BassBoom.Basolia.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Assets Include="..\..\assets\bb-sndplay.cmd" />
+  </ItemGroup>
+  <Target Name="UpdateCmdLaunchers" BeforeTargets="Compile">
+    <Copy SourceFiles="@(Assets)" DestinationFolder="$(OutDir)" />
+  </Target>
+
+</Project>

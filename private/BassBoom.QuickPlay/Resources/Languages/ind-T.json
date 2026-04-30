@@ -1,0 +1,34 @@
+{
+  "lang": "ind-T",
+  "name": "Hindi",
+  "cultures": [
+    "hi",
+    "hi-IN"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTSPECIFIED",
+      "text": "म्यूज़िक पाथ नहीं बताया गया है"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_NOTFOUND",
+      "text": "म्यूज़िक फ़ाइल {0} मौजूद नहीं है."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_OPENING",
+      "text": "म्यूज़िक फ़ाइल {0} खोली जा रही है..."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_UNKNOWNARTIST",
+      "text": "अननोन आर्टिस्ट"
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_EXITTIP",
+      "text": "प्ले बंद करने के लिए, 'Q' दबाएँ."
+    },
+    {
+      "loc": "BASSBOOM_QUICKPLAYER_FAILURE",
+      "text": "प्लेबैक फ़ेल हो रहा है"
+    }
+  ]
+}

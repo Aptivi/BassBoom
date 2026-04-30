@@ -1,0 +1,26 @@
+{
+  "lang": "ind-T",
+  "name": "Hindi",
+  "cultures": [
+    "hi",
+    "hi-IN"
+  ],
+  "locs": [
+    {
+      "loc": "BASSBOOM_QUICKRADIO_NOTSPECIFIED",
+      "text": "रेडियो स्टेशन का रास्ता नहीं बताया गया"
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_OPENING",
+      "text": "रेडियो स्टेशन {0} पर खुल रहा है..."
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_EXITTIP",
+      "text": "प्ले बंद करने के लिए, 'Q' दबाएँ।"
+    },
+    {
+      "loc": "BASSBOOM_QUICKRADIO_FAILURE",
+      "text": "प्लेबैक फेल हो गया"
+    }
+  ]
+}

@@ -2,9 +2,9 @@ name: Build MPG123 library (Linux - ARM64)
 
 on:
   push:
-    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x" ]
+    branches: [ "main", "x/oob/v1.0.x" ]
   pull_request:
-    branches: [ "main", "x/oob/v0.1.x", "x/oob/v0.2.x" ]
+    branches: [ "main", "x/oob/v1.0.x" ]
     
 jobs:
   build:

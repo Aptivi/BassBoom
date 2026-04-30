@@ -1,9 +1,11 @@
-MODAPI = 2
+MODAPI = 3
 ROOT_DIR := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
 OUTPUT = "$(ROOT_DIR)/private/BassBoom.Cli/bin/$(ENVIRONMENT)/net10.0"
-BINARIES = "$(ROOT_DIR)/assets/bassboom"
-MANUALS = "$(ROOT_DIR)/assets/bassboom.1"
+OUTPUT_QP = "$(ROOT_DIR)/private/BassBoom.QuickPlay/bin/$(ENVIRONMENT)/net10.0"
+OUTPUT_QR = "$(ROOT_DIR)/private/BassBoom.QuickRadio/bin/$(ENVIRONMENT)/net10.0"
+BINARIES = "$(ROOT_DIR)/assets/bassboom" "$(ROOT_DIR)/assets/bb-radioplay" "$(ROOT_DIR)/assets/bb-sndplay"
+MANUALS = "$(ROOT_DIR)/assets/bassboom.1" "$(ROOT_DIR)/assets/bb-radioplay.1" "$(ROOT_DIR)/assets/bb-sndplay.1"
 DESKTOPS = "$(ROOT_DIR)/assets/bassboom.desktop"
 BRANDINGS = "$(ROOT_DIR)/assets/OfficialAppIcon-BassBoom-512.png"
 
@@ -50,19 +52,31 @@ init-offline:
 	$(MAKE) invoke-init-offline
 
 install:
-	mkdir -m 755 -p $(FDESTDIR)/bin $(FDESTDIR)/lib/bassboom-$(MODAPI) $(FDESTDIR)/share/applications $(FDESTDIR)/share/man/man1/
+    # Prepare directories
+	mkdir -m 755 -p $(FDESTDIR)/bin $(FDESTDIR)/lib/bassboom-$(MODAPI) $(FDESTDIR)/lib/bassboom-$(MODAPI)-quickplay $(FDESTDIR)/lib/bassboom-$(MODAPI)-radioplay $(FDESTDIR)/share/applications $(FDESTDIR)/share/man/man1/
+    # Install binaries and manuals
 	install -m 755 -t $(FDESTDIR)/bin/ $(BINARIES)
 	install -m 644 -t $(FDESTDIR)/share/man/man1/ $(MANUALS)
+    # Install application files
 	find "$(OUTPUT)" -mindepth 1 -type d -exec sh -c 'mkdir -p -m 755 "$(FDESTDIR)/lib/bassboom-$(MODAPI)/$$(realpath --relative-to "$(OUTPUT)" "$$0")"' {} \;
+	find "$(OUTPUT_QP)" -mindepth 1 -type d -exec sh -c 'mkdir -p -m 755 "$(FDESTDIR)/lib/bassboom-$(MODAPI)-quickplay/$$(realpath --relative-to "$(OUTPUT_QP)" "$$0")"' {} \;
+	find "$(OUTPUT_QR)" -mindepth 1 -type d -exec sh -c 'mkdir -p -m 755 "$(FDESTDIR)/lib/bassboom-$(MODAPI)-radioplay/$$(realpath --relative-to "$(OUTPUT_QR)" "$$0")"' {} \;
 	find "$(OUTPUT)" -mindepth 1 -type f -exec sh -c 'install -m 644 -t "$(FDESTDIR)/lib/bassboom-$(MODAPI)/$$(dirname $$(realpath --relative-to "$(OUTPUT)" "$$0"))" "$$0"' {} \;
+	find "$(OUTPUT_QP)" -mindepth 1 -type f -exec sh -c 'install -m 644 -t "$(FDESTDIR)/lib/bassboom-$(MODAPI)-quickplay/$$(dirname $$(realpath --relative-to "$(OUTPUT_QP)" "$$0"))" "$$0"' {} \;
+	find "$(OUTPUT_QR)" -mindepth 1 -type f -exec sh -c 'install -m 644 -t "$(FDESTDIR)/lib/bassboom-$(MODAPI)-radioplay/$$(dirname $$(realpath --relative-to "$(OUTPUT_QR)" "$$0"))" "$$0"' {} \;
+    # Install desktop and branding files
 	install -m 755 -t $(FDESTDIR)/share/applications/ $(DESKTOPS)
 	install -m 755 -t $(FDESTDIR)/lib/bassboom-$(MODAPI)/ $(BRANDINGS)
+    # Rename binaries to reflect version
 	mv $(FDESTDIR)/bin/bassboom $(FDESTDIR)/bin/bassboom-$(MODAPI)
 	mv $(FDESTDIR)/share/man/man1/bassboom.1 $(FDESTDIR)/share/man/man1/bassboom-$(MODAPI).1
 	mv $(FDESTDIR)/share/applications/bassboom.desktop $(FDESTDIR)/share/applications/bassboom-$(MODAPI).desktop
-	sed -i 's|/usr/lib/bassboom|/usr/lib/bassboom-$(MODAPI)|g' $(FDESTDIR)/bin/bassboom-*
+    # Replace directories in binary files
+	sed -i 's|/usr/lib/bassboom|/usr/lib/bassboom-$(MODAPI)|g' $(FDESTDIR)/bin/bassboom
+	sed -i 's|/usr/lib/bassboom|/usr/lib/bassboom-$(MODAPI)|g' $(FDESTDIR)/bin/bb-*
 	sed -i 's|/usr/lib/bassboom|/usr/lib/bassboom-$(MODAPI)|g' $(FDESTDIR)/share/applications/bassboom-$(MODAPI).desktop
 	sed -i 's|/usr/bin/bassboom|/usr/bin/bassboom-$(MODAPI)|g' $(FDESTDIR)/share/applications/bassboom-$(MODAPI).desktop
+    # Trim unused runtimes
 	find '$(FDESTDIR)/lib/' -type d -name "runtimes" -exec sh -c 'find $$0 -mindepth 1 -maxdepth 1 -not -name $(ARCH) -type d -exec rm -rf \{\} \;' {} \;
 
 # Below targets specify functions for full build

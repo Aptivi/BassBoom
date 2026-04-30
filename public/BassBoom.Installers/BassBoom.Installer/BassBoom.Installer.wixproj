@@ -7,7 +7,7 @@
   <ItemGroup>
     <HarvestDirectory Include="../../../private/BassBoom.Cli/bin/$(Configuration)/net10.0">
       <ComponentGroupName>FullComponent</ComponentGroupName>
-      <DirectoryRefId>INSTALLFOLDER</DirectoryRefId>
+      <DirectoryRefId>INSTALLFOLDER_MAIN</DirectoryRefId>
       <SuppressRootDirectory>true</SuppressRootDirectory>
         
       <!--
@@ -19,6 +19,22 @@
       <SuppressRegistry>true</SuppressRegistry>
     </HarvestDirectory>
     <BindPath Include="../../../private/BassBoom.Cli/bin/$(Configuration)/net10.0" />
+
+    <HarvestDirectory Include="../../../private/BassBoom.QuickPlay/bin/$(Configuration)/net10.0">
+      <ComponentGroupName>FullComponentQuickPlay</ComponentGroupName>
+      <DirectoryRefId>INSTALLFOLDER_QUICKPLAY</DirectoryRefId>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+      <SuppressRegistry>true</SuppressRegistry>
+    </HarvestDirectory>
+    <BindPath Include="../../../private/BassBoom.QuickPlay/bin/$(Configuration)/net10.0" />
+
+    <HarvestDirectory Include="../../../private/BassBoom.QuickRadio/bin/$(Configuration)/net10.0">
+      <ComponentGroupName>FullComponentQuickRadio</ComponentGroupName>
+      <DirectoryRefId>INSTALLFOLDER_QUICKRADIO</DirectoryRefId>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+      <SuppressRegistry>true</SuppressRegistry>
+    </HarvestDirectory>
+    <BindPath Include="../../../private/BassBoom.QuickRadio/bin/$(Configuration)/net10.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="WixToolset.Heat" Version="5.0.2" />

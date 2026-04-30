@@ -9,6 +9,8 @@
   </Folder>
   <Folder Name="/Private/Demos/">
     <Project Path="private/BassBoom.Cli/BassBoom.Cli.csproj" />
+    <Project Path="private/BassBoom.QuickPlay/BassBoom.QuickPlay.csproj" Id="f08d513b-17fc-4509-9aeb-1e9675f14a30" />
+    <Project Path="private/BassBoom.QuickRadio/BassBoom.QuickRadio.csproj" Id="2c806125-0e59-416a-b5aa-ed21d6bfabe1" />
   </Folder>
   <Folder Name="/Public/">
     <Project Path="public/BassBoom.Basolia/BassBoom.Basolia.csproj" />
