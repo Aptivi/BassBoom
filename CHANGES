@@ -2,7 +2,7 @@ BassBoom was released on October 1st, 2023, as version v0.0.1, to give you a min
 
 Since then, we've added more features to the music player application and to the Basolia library, which allows your console applications to play sounds, as well as improvements and updates to all depenedencies to make BassBoom more powerful.
 
-We are now announcing the new beginning of BassBoom that is a stepping stone to the most powerful cross-platform MPEG C# library yet.
+As a thanks for your patience, we are now announcing the new beginning of BassBoom that is a stepping stone to the most powerful cross-platform MPEG C# library yet.
 
 ## BassBoom v1.0!
 
@@ -12,7 +12,11 @@ We are now announcing the new beginning of BassBoom that is a stepping stone to 
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[*]` TBD...
+- `[+]` Added support for FreeBSD systems
+- `[+]` Introduced new apps: quick player and quick radio
+- `[+]` Added passing radio station URLs to BassBoom.Cli
+- `[*]` Refactored the Basolia API
+- `[*]` General improvements and bug fixes
 
 Review the commit history if you want to get a deep insight about the changes.
 
