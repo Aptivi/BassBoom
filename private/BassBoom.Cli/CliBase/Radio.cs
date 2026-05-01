@@ -48,6 +48,7 @@ namespace BassBoom.Cli.CliBase
         private static SimpleProgress durationBar = new(0, 100)
         {
             ShowPercentage = false,
+            Accurate = true,
         };
 
         internal static Keybinding[] AllBindings =>

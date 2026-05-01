@@ -156,6 +156,7 @@ namespace BassBoom.Cli.CliBase
                 {
                     Width = ConsoleWrapper.WindowWidth - 4,
                     ShowPercentage = false,
+                    Accurate = true,
                     ProgressForegroundColor = TransformationTools.GetDarkBackground(disco),
                     ProgressActiveForegroundColor = disco,
                 };
