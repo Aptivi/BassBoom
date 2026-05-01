@@ -1,10 +1,18 @@
-We've updated this project to update libraries!
+BassBoom was released on October 1st, 2023, as version v0.0.1, to give you a minimal concept of how console applications can play MP3 music files through different platforms effortlessly, such as Windows, macOS, and Linux.
+
+Since then, we've added more features to the music player application and to the Basolia library, which allows your console applications to play sounds, as well as improvements and updates to all depenedencies to make BassBoom more powerful.
+
+We are now announcing the new beginning of BassBoom that is a stepping stone to the most powerful cross-platform MPEG C# library yet.
+
+## BassBoom v1.0!
+
+![Music player](https://aptivi.gitbook.io/aptivi/~gitbook/image?url=https%3A%2F%2F3839152226-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FizAJoIbtQw1BdIlE4DBz%252Fuploads%252FECyFaqvtluV0IukGAQKV%252Fmusic.png%3Falt%3Dmedia%26token%3Dd596a9a3-182e-42a0-82a7-e4f6cf34c85a&width=768&dpr=3&quality=100&sign=c60ba52a&sv=2)
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[*]` Updated SpecProbe
+- `[*]` TBD...
 
 Review the commit history if you want to get a deep insight about the changes.
 
