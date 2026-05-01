@@ -16,7 +16,7 @@ optdepends=('jack2: Jack support for BassBoom'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
-source=("${pkgname}::git+https://github.com/Aptivi/BassBoom#branch=x/oob/v1.0.x")
+source=("${pkgname}::git+https://github.com/Aptivi/BassBoom#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -4,7 +4,7 @@ import datetime
 
 class VersionInfo():
     def __init__(self, old_version, new_version, api_versions):
-        # Nitrocid version
+        # BassBoom version
         self.old_version = old_version
         self.new_version = new_version
         self.old_version_split = self.old_version.split('.')
@@ -18,7 +18,7 @@ class VersionInfo():
             f'{self.new_version_split[1]}.' \
             f'{self.new_version_split[2]}'
 
-        # Nitrocid mod API version
+        # Basolia API version
         self.old_api_version = api_versions[0]
         self.new_api_version = api_versions[1]
         self.old_api_version_split = self.old_api_version.split('.')
@@ -74,22 +74,19 @@ def vnd_increment(old_version, new_version, api_versions):
                                                             new_version)
     with open(changes_title_file, 'w') as changes_title_stream:
         changes_title_stream.writelines(changes_title_lines)
-
+    
     # Replace the versions in the Arch Linux packaging files
-    arch_rel_file = f"{solution}/PKGBUILD-REL"
-    arch_rel_lite_file = f"{solution}/PKGBUILD-REL-LITE"
-    arch_rel_lines = []
-    arch_rel_lite_lines = []
-    with open(arch_rel_file) as arch_rel_stream:
-        arch_rel_lines = arch_rel_stream.readlines()
-    with open(arch_rel_lite_file) as arch_rel_lite_stream:
-        arch_rel_lite_lines = arch_rel_lite_stream.readlines()
-    arch_rel_lines = process_arch_lines(arch_rel_lines, version)
-    arch_rel_lite_lines = process_arch_lines(arch_rel_lite_lines, version)
-    with open(arch_rel_file, 'w') as arch_rel_stream:
-        arch_rel_stream.writelines(arch_rel_lines)
-    with open(arch_rel_lite_file, 'w') as arch_rel_lite_stream:
-        arch_rel_lite_stream.writelines(arch_rel_lite_lines)
+    arch_rels = {
+        f"{solution}/PKGBUILD-REL",
+        f"{solution}/PKGBUILD-VCS",
+    }
+    for arch_rel in arch_rels:
+        arch_rel_lines = []
+        with open(arch_rel) as arch_rel_stream:
+            arch_rel_lines = arch_rel_stream.readlines()
+        arch_rel_lines = process_arch_lines(arch_rel_lines, version)
+        with open(arch_rel, 'w') as arch_rel_stream:
+            arch_rel_stream.writelines(arch_rel_lines)
     
     # Replace the versions in the GitHub Actions workflows
     workflows = {
@@ -105,6 +102,19 @@ def vnd_increment(old_version, new_version, api_versions):
         workflow_lines = process_misc_lines(workflow_lines, version)
         with open(workflow, 'w') as workflow_stream:
             workflow_stream.writelines(workflow_lines)
+    
+    # Replace the versions in the Debian control file
+    controls = {
+        f"{solution}/debian/control",
+        f"{solution}/debian/rules",
+    }
+    for control in controls:
+        control_lines = []
+        with open(control) as control_stream:
+            control_lines = control_stream.readlines()
+        control_lines = process_misc_lines(control_lines, version)
+        with open(control, 'w') as control_stream:
+            control_stream.writelines(control_lines)
     
     # Replace the versions in the WiX installer files
     installer_wxs = {
@@ -155,36 +165,47 @@ def process_arch_lines(arch_lines, version: VersionInfo):
                 arch_lines[num].replace(version.old_api_version,
                                         version.new_api_version)
         if is_pkgname:
-            nitrocid_old_api_pkg = f'bassboom-{version.old_api_package}'
-            nitrocid_new_api_pkg = f'bassboom-{version.new_api_package}'
+            bassboom_old_api_pkg = f'bassboom-{version.old_api_package}'
+            bassboom_new_api_pkg = f'bassboom-{version.new_api_package}'
             arch_lines[num] = \
-                arch_lines[num].replace(nitrocid_old_api_pkg,
-                                        nitrocid_new_api_pkg)
+                arch_lines[num].replace(bassboom_old_api_pkg,
+                                        bassboom_new_api_pkg)
     return arch_lines
+
+
+def process_tmpl_lines(lines, version: VersionInfo):
+    for num in range(0, len(lines)):
+        is_ver = f'Version="{version.old_version}"' in lines[num]
+        is_cs_ver = f'new({version.old_api_version_tmpl})' in lines[num]
+        is_vb_ver = f'New Version({version.old_api_version_tmpl})' in lines[num]
+        if is_ver:
+            lines[num] = \
+                lines[num].replace(version.old_version,
+                                   version.new_version)
+        if is_cs_ver or is_vb_ver:
+            lines[num] = \
+                lines[num].replace(version.old_api_version_tmpl,
+                                   version.new_api_version_tmpl)
+    return lines
 
 
 def process_wxs_lines(lines, version: VersionInfo):
     for num in range(0, len(lines)):
         is_ver = f'Version="{version.old_version}"' in lines[num]
-        is_name = f'Name="BassBoom {version.old_major}"' in lines[num]
         if is_ver:
             lines[num] = \
                 lines[num].replace(version.old_version,
                                    version.new_version)
-        if is_name:
-            lines[num] = \
-                lines[num].replace(version.old_major,
-                                   version.new_major)
     return lines
 
 
 def process_misc_lines(lines, version: VersionInfo):
-    nitrocid_old_api_pkg = f'bassboom-{version.old_api_package}'
-    nitrocid_new_api_pkg = f'bassboom-{version.new_api_package}'
+    bassboom_old_api_pkg = f'bassboom-{version.old_api_package}'
+    bassboom_new_api_pkg = f'bassboom-{version.new_api_package}'
     for num in range(0, len(lines)):
         is_oldver = version.old_version in lines[num]
         is_oldapiver = version.old_api_version in lines[num]
-        is_package = nitrocid_old_api_pkg in lines[num]
+        is_package = bassboom_old_api_pkg in lines[num]
         if is_oldver:
             lines[num] = \
                 lines[num].replace(version.old_version,
@@ -195,6 +216,6 @@ def process_misc_lines(lines, version: VersionInfo):
                                    version.new_api_version)
         if is_package:
             lines[num] = \
-                lines[num].replace(nitrocid_old_api_pkg,
-                                   nitrocid_new_api_pkg)
+                lines[num].replace(bassboom_old_api_pkg,
+                                   bassboom_new_api_pkg)
     return lines
