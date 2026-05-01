@@ -713,6 +713,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "Фатальна помилка в інтерфейсі командного рядка BassBoom."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "Показати ремінці пристрою"
     }
   ]
 }

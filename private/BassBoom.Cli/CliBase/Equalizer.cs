@@ -17,21 +17,22 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 using System;
+using System.Collections.Generic;
 using System.Text;
+using BassBoom.Basolia.Exceptions;
+using BassBoom.Cli.Languages;
+using Colorimetry.Data;
 using Terminaux.Base;
 using Terminaux.Base.Buffered;
-using Terminaux.Inputs.Styles.Infobox;
+using Terminaux.Base.Extensions;
 using Terminaux.Inputs;
-using System.Collections.Generic;
-using BassBoom.Basolia.Exceptions;
 using Terminaux.Inputs.Styles;
-using Terminaux.Writer.CyclicWriters.Renderer.Tools;
-using BassBoom.Cli.Languages;
-using Terminaux.Writer.CyclicWriters.Simple;
+using Terminaux.Inputs.Styles.Infobox;
+using Terminaux.Inputs.Styles.Infobox.Tools;
 using Terminaux.Writer.CyclicWriters.Graphical;
 using Terminaux.Writer.CyclicWriters.Renderer;
-using Terminaux.Base.Extensions;
-using Colorimetry.Data;
+using Terminaux.Writer.CyclicWriters.Renderer.Tools;
+using Terminaux.Writer.CyclicWriters.Simple;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -39,6 +40,7 @@ namespace BassBoom.Cli.CliBase
     {
         internal static bool exiting = false;
         internal static int currentBandIdx = 0;
+        internal static bool showDeviceBands = false;
 
         internal static Keybinding[] ShowBindings =>
         [
@@ -46,8 +48,10 @@ namespace BassBoom.Cli.CliBase
             new(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_KEYBINDING_INCREASE"), ConsoleKey.RightArrow),
             new(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_KEYBINDING_PREVBAND"), ConsoleKey.UpArrow),
             new(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_KEYBINDING_NEXTBAND"), ConsoleKey.DownArrow),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND"), ConsoleKey.D),
             new(LanguageTools.GetLocalized("BASSBOOM_APP_EQUALIZER_KEYBINDING_RESET"), ConsoleKey.R),
             new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_QUIT"), ConsoleKey.Q),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_HELP"), ConsoleKey.H),
         ];
 
         internal static void OpenEqualizer(Screen screen)
@@ -68,7 +72,7 @@ namespace BassBoom.Cli.CliBase
 
                     // Handle the keystroke
                     var keystroke = Input.ReadKey();
-                    HandleKeypress(keystroke);
+                    HandleKeypress(keystroke, screen);
                 }
                 catch (BasoliaException bex)
                 {
@@ -90,7 +94,7 @@ namespace BassBoom.Cli.CliBase
             ConsoleColoring.LoadBack();
         }
 
-        private static void HandleKeypress(ConsoleKeyInfo keystroke)
+        private static void HandleKeypress(ConsoleKeyInfo keystroke, Screen screen)
         {
             switch (keystroke.Key)
             {
@@ -114,12 +118,24 @@ namespace BassBoom.Cli.CliBase
                         currentBandIdx = 0;
                     break;
                 case ConsoleKey.DownArrow:
+                    int maxBands = (showDeviceBands ? 32 : 3) - 1;
                     currentBandIdx++;
-                    if (currentBandIdx > 31)
-                        currentBandIdx = 31;
+                    if (currentBandIdx > maxBands)
+                        currentBandIdx = maxBands;
                     break;
                 case ConsoleKey.R:
                     EqualizerControls.ResetEqualizers();
+                    break;
+                case ConsoleKey.D:
+                    showDeviceBands = !showDeviceBands;
+                    currentBandIdx = 0;
+                    break;
+                case ConsoleKey.H:
+                    InfoBoxModalColor.WriteInfoBoxModal(KeybindingTools.RenderKeybindingHelpText(ShowBindings), new InfoBoxSettings()
+                    {
+                        Title = LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES"),
+                    });
+                    screen.RequireRefresh();
                     break;
                 case ConsoleKey.Q:
                     exiting = true;
@@ -139,6 +155,7 @@ namespace BassBoom.Cli.CliBase
             {
                 KeybindingList = ShowBindings,
                 Width = ConsoleWrapper.WindowWidth - 1,
+                HelpKeyInfo = new('H', ConsoleKey.H, false, false, false)
             };
             drawn.Append(RendererTools.RenderRenderable(keybindings, new(0, ConsoleWrapper.WindowHeight - 1)));
 
@@ -152,7 +169,8 @@ namespace BassBoom.Cli.CliBase
             int startPos = 4;
             int endPos = ConsoleWrapper.WindowHeight - 1;
             int bandsPerPage = endPos - startPos;
-            for (int i = 0; i < 32; i++)
+            int maxBands = showDeviceBands ? 32 : 3;
+            for (int i = 0; i < maxBands; i++)
             {
                 // Get the equalizer value for this band
                 double val = EqualizerControls.GetEqualizer(i);

@@ -648,5 +648,8 @@
   <data name="BASSBOOM_APP_FATALERROR" xml:space="preserve">
     <value>BassBoom CLI 出現致命錯誤。</value>
   </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND" xml:space="preserve">
+    <value>顯示設備頻段</value>
+  </data>
 
 </root>

@@ -713,6 +713,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "BassBoom CLI で致命的なエラーが発生しました。"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "デバイスバンドを表示する"
     }
   ]
 }

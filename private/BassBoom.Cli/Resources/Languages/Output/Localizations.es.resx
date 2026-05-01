@@ -648,5 +648,8 @@
   <data name="BASSBOOM_APP_FATALERROR" xml:space="preserve">
     <value>Error grave en la CLI de BassBoom.</value>
   </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND" xml:space="preserve">
+    <value>Mostrar bandas del dispositivo</value>
+  </data>
 
 </root>

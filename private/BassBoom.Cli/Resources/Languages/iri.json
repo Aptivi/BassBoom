@@ -714,6 +714,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "Earráid mharfach i CLI BassBoom."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "Taispeáin bandaí gléasanna"
     }
   ]
 }

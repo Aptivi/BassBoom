@@ -713,6 +713,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "BassBoom CLI में घातक त्रुटि।"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "डिवाइस बैंड दिखाएँ"
     }
   ]
 }

@@ -648,5 +648,8 @@
   <data name="BASSBOOM_APP_FATALERROR" xml:space="preserve">
     <value>Errore irreversibile nella CLI di BassBoom.</value>
   </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND" xml:space="preserve">
+    <value>Mostra le bande del dispositivo</value>
+  </data>
 
 </root>

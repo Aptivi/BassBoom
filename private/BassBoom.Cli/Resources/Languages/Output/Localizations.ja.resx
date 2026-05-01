@@ -648,5 +648,8 @@
   <data name="BASSBOOM_APP_FATALERROR" xml:space="preserve">
     <value>BassBoom CLI で致命的なエラーが発生しました。</value>
   </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND" xml:space="preserve">
+    <value>デバイスバンドを表示する</value>
+  </data>
 
 </root>

@@ -739,6 +739,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "خطأ فادح في واجهة سطر أوامر BassBoom."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "عرض نطاقات الجهاز"
     }
   ]
 }

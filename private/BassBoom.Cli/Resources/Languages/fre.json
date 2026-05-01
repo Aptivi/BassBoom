@@ -759,6 +759,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "Erreur fatale dans l'interface de ligne de commande BassBoom."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "Afficher les bandes de l'appareil"
     }
   ]
 }

@@ -648,5 +648,8 @@
   <data name="BASSBOOM_APP_FATALERROR" xml:space="preserve">
     <value>Erreur fatale dans l&apos;interface de ligne de commande BassBoom.</value>
   </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND" xml:space="preserve">
+    <value>Afficher les bandes de l&apos;appareil</value>
+  </data>
 
 </root>

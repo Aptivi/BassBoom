@@ -716,6 +716,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "Errore irreversibile nella CLI di BassBoom."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "Mostra le bande del dispositivo"
     }
   ]
 }

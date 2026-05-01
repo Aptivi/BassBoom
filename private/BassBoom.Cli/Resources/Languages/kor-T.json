@@ -714,6 +714,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "BassBoom CLI에서 치명적인 오류가 발생했습니다."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "기기 대역을 표시합니다"
     }
   ]
 }

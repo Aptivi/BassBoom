@@ -713,6 +713,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "Lỗi nghiêm trọng trong BassBoom CLI."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "Hiển thị các dải tần của thiết bị"
     }
   ]
 }

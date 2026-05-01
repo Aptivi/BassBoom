@@ -719,6 +719,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "Fatale fout in de BassBoom CLI."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "Toon apparaatbanden"
     }
   ]
 }

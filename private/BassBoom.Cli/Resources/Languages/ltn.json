@@ -713,6 +713,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "Error fatalis in BassBoom CLI."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "Ostende fascias instrumentorum"
     }
   ]
 }

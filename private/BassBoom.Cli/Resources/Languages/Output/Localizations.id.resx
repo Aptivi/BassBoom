@@ -648,5 +648,8 @@
   <data name="BASSBOOM_APP_FATALERROR" xml:space="preserve">
     <value>Kesalahan fatal di BassBoom CLI.</value>
   </data>
+  <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND" xml:space="preserve">
+    <value>Tampilkan pita frekuensi perangkat</value>
+  </data>
 
 </root>

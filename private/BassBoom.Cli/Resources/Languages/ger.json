@@ -722,6 +722,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "Schwerwiegender Fehler in der BassBoom-CLI."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "Gerätebänder anzeigen"
     }
   ]
 }

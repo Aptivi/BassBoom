@@ -714,6 +714,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "Μοιραίο σφάλμα στο BassBoom CLI."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "Εμφάνιση ζωνών συσκευών"
     }
   ]
 }

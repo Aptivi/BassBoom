@@ -721,6 +721,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "BassBoom CLI 出现致命错误。"
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "显示设备频段"
     }
   ]
 }

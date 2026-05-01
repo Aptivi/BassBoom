@@ -738,6 +738,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "Error grave en la CLI de BassBoom."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "Mostrar bandas del dispositivo"
     }
   ]
 }

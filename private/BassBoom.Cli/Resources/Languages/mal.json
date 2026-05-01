@@ -716,6 +716,10 @@
     {
       "loc": "BASSBOOM_APP_FATALERROR",
       "text": "Ralat maut dalam BassBoom CLI."
+    },
+    {
+      "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
+      "text": "Tunjukkan jalur peranti"
     }
   ]
 }
