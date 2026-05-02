@@ -52,8 +52,14 @@ namespace BassBoom.Cli.CliBase
                 throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             if (BassBoomCli.basolia.GetState() == PlaybackState.Stopped)
                 BassBoomCli.basolia.Drop();
+
+            // Start the player thread
             Common.advance = true;
+            if (!Radio.playerThread.IsAlive)
+                Radio.playerThread.Regen();
             Radio.playerThread.Start();
+
+            // Wait until radio is really playing
             SpinWait.SpinUntil(() => BassBoomCli.basolia.IsPlaying() || Common.failedToPlay);
             Common.failedToPlay = false;
         }

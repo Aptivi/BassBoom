@@ -33,6 +33,7 @@ using Terminaux.Shell.Arguments.Base;
 using Terminaux.Themes.Colors;
 using Terminaux.Writer.ConsoleWriters;
 using Terminaux.Writer.CyclicWriters.Simple;
+using Threadify.Manager;
 
 namespace BassBoom.QuickRadio
 {
@@ -40,7 +41,7 @@ namespace BassBoom.QuickRadio
     {
         internal static bool quiet;
         internal static string radioPath = "";
-        private static Thread playerThread = new((basolia) => ((BasoliaMedia?)basolia)?.Play());
+        private static ThreadInstance playerThread = new("Player thread", false, (basolia) => ((BasoliaMedia?)basolia)?.Play());
         private static readonly Dictionary<string, ArgumentInfo> arguments = new()
         {
             { "quiet", new("quiet", "Quiet mode", new QuietArgument()) },

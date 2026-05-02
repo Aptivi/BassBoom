@@ -193,13 +193,19 @@ namespace BassBoom.Cli.CliBase
             if (Player.playerThread is null)
                 return;
 
+            // There could be a chance that the music has fully stopped without any user interaction.
             if (BassBoomCli.basolia is null)
                 throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_EXCEPTION_BASOLIAMEDIA"), mpg123_errors.MPG123_BAD_HANDLE);
             if (BassBoomCli.basolia.GetState() == PlaybackState.Stopped)
-                // There could be a chance that the music has fully stopped without any user interaction.
                 BassBoomCli.basolia.SeekToTheBeginning();
+
+            // Start the player thread
             Common.advance = true;
+            if (!Player.playerThread.IsAlive)
+                Player.playerThread.Regen();
             Player.playerThread.Start();
+
+            // Wait until music is really playing
             SpinWait.SpinUntil(() => BassBoomCli.basolia.IsPlaying() || Common.failedToPlay);
             Common.failedToPlay = false;
         }

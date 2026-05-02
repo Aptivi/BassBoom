@@ -39,12 +39,13 @@ using Terminaux.Writer.CyclicWriters.Graphical;
 using Terminaux.Writer.CyclicWriters.Renderer;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 using Terminaux.Writer.CyclicWriters.Simple;
+using Threadify.Manager;
 
 namespace BassBoom.Cli.CliBase
 {
     internal static class Player
     {
-        internal static Thread? playerThread;
+        internal static ThreadInstance? playerThread = new("Player thread", false, HandlePlay);
         internal static int position = 0;
         internal static readonly List<string> passedMusicPaths = [];
 
@@ -297,7 +298,6 @@ namespace BassBoom.Cli.CliBase
                         PlayerControls.SeekBackward();
                     break;
                 case ConsoleKey.Spacebar:
-                    playerThread = new(HandlePlay);
                     PlayerControls.Play();
                     break;
                 case ConsoleKey.B:
@@ -376,7 +376,6 @@ namespace BassBoom.Cli.CliBase
                     PlayerControls.Stop(false);
                     PlayerControls.SeekBeginning();
                     PlayerControls.PreviousSong();
-                    playerThread = new(HandlePlay);
                     PlayerControls.Play();
                     playerScreen.RequireRefresh();
                     break;
@@ -397,7 +396,6 @@ namespace BassBoom.Cli.CliBase
                     PlayerControls.Stop(false);
                     PlayerControls.SeekBeginning();
                     PlayerControls.NextSong();
-                    playerThread = new(HandlePlay);
                     PlayerControls.Play();
                     playerScreen.RequireRefresh();
                     break;
@@ -428,7 +426,6 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.D:
                     PlayerControls.Pause();
                     Common.HandleKeypressCommon(keystroke, playerScreen, false);
-                    playerThread = new(HandlePlay);
                     PlayerControls.Play();
                     playerScreen.RequireRefresh();
                     break;

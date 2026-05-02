@@ -38,12 +38,13 @@ using Terminaux.Writer.CyclicWriters.Graphical;
 using Terminaux.Writer.CyclicWriters.Renderer;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
 using Terminaux.Writer.CyclicWriters.Simple;
+using Threadify.Manager;
 
 namespace BassBoom.Cli.CliBase
 {
     internal static class Radio
     {
-        internal static Thread? playerThread;
+        internal static ThreadInstance? playerThread = new("Player thread", false, HandlePlay);
         internal static readonly List<string> passedRadioStationPaths = [];
         private static SimpleProgress durationBar = new(0, 100)
         {
@@ -241,7 +242,6 @@ namespace BassBoom.Cli.CliBase
             switch (keystroke.Key)
             {
                 case ConsoleKey.Spacebar:
-                    playerThread = new(HandlePlay);
                     RadioControls.Play();
                     playerScreen.RequireRefresh();
                     break;
@@ -288,14 +288,12 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.B:
                     RadioControls.Stop(false);
                     RadioControls.PreviousStation();
-                    playerThread = new(HandlePlay);
                     RadioControls.Play();
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.N:
                     RadioControls.Stop(false);
                     RadioControls.NextStation();
-                    playerThread = new(HandlePlay);
                     RadioControls.Play();
                     playerScreen.RequireRefresh();
                     break;
@@ -324,7 +322,6 @@ namespace BassBoom.Cli.CliBase
                 case ConsoleKey.D:
                     RadioControls.Pause();
                     Common.HandleKeypressCommon(keystroke, playerScreen, true);
-                    playerThread = new(HandlePlay);
                     RadioControls.Play();
                     playerScreen.RequireRefresh();
                     break;
