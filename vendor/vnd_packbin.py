@@ -12,6 +12,7 @@ def vnd_packbin(extra_args):
                                      add_help=False)
     parser.add_argument('-c', '--config', default='Release')
     parsed = parser.parse_args(extra_args)
+    config = parsed.config
 
     # Get the project version
     build_props = solution + '/Directory.Build.props'
