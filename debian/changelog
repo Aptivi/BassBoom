@@ -1,3 +1,9 @@
+bassboom-0 (2.0.3.1-1.0.0-1ppa1) noble; urgency=medium
+
+  * Fixed build failure
+
+ -- Aptivi CEO <ceo@aptivi.anonaddy.com>  Mon, 04 May 2026 08:13:13 +0300
+
 bassboom-3 (2.0.3.1-1.0.0-1) noble; urgency=medium
 
   * Added support for FreeBSD systems
