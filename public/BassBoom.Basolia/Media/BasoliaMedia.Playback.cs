@@ -19,6 +19,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Numerics;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -32,6 +33,7 @@ using BassBoom.Native.Interop.Analysis;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
 using BassBoom.Native.Interop.Play;
+using MathNet.Numerics.IntegralTransforms;
 using Textify.General;
 
 namespace BassBoom.Basolia.Media
@@ -263,6 +265,11 @@ namespace BassBoom.Basolia.Media
                     bufferPlaying = true;
                     err = DecodeFrame(ref num, ref audio, ref audioBytes);
                     PlayBuffer(audio);
+                    if (audio is not null && FrequencyBandsChanged is not null)
+                    {
+                        float[] freqBands = GetFreqBands(audio, bufferSize, rate, channels, (mpg123_enc_enum)encoding);
+                        FrequencyBandsChanged(freqBands);
+                    }
                     bufferPlaying = false;
 
                     // Check to see if we need more (radio)
@@ -550,6 +557,66 @@ namespace BassBoom.Basolia.Media
                 delegate2.Invoke(outHandle);
                 isOutputOpen = false;
             }
+        }
+
+        private static int Clamp(int val, int min, int max) =>
+            val < min ? min :
+            val > max ? max :
+            val;
+
+        private float[] GetFreqBands(byte[] audio, long fftSize, long rate, int channels, mpg123_enc_enum encoding)
+        {
+            // Copy the audio block to PCM buffer
+            int fftSizeHalf = (int)(fftSize / 2);
+            bool isFloat = encoding == mpg123_enc_enum.MPG123_ENC_FLOAT_32;
+            int count = isFloat ? audio.Length / sizeof(float) : audio.Length / sizeof(short);
+            float[] pcmBuffer = new float[count];
+            if (isFloat)
+                Buffer.BlockCopy(audio, 0, pcmBuffer, 0, audio.Length);
+            else
+            {
+                short[] pcmBufferShort = new short[count];
+                Buffer.BlockCopy(audio, 0, pcmBufferShort, 0, audio.Length);
+                for (int i = 0; i < count; i++)
+                    pcmBuffer[i] = pcmBufferShort[i] / 32768f;
+            }
+
+            // Now, apply the window function (Hann's algorithm) and apply the Fourier forward algorithm to
+            // get the FFT buffer.
+            var fftBuffer = new Complex[fftSize];
+            for (int i = 0; i < fftSize && i * channels < pcmBuffer.Length; i++)
+            {
+                double window = 0.5 * (1 - Math.Cos(2 * Math.PI * i / (fftSize - 1)));
+                fftBuffer[i] = new Complex(pcmBuffer[i * channels] * window, 0);
+            }
+            Fourier.Forward(fftBuffer, FourierOptions.AsymmetricScaling);
+
+            // Now, get the magnitudes so that we can then bucket them into logarithmic bands for the music
+            // visualizer.
+            int bandsNum = 32;
+            float[] magnitudes = new float[fftSizeHalf];
+            float[] bands = new float[bandsNum];
+            for (int i = 0; i < magnitudes.Length; i++)
+                magnitudes[i] = (float)Math.Sqrt(fftBuffer[i].Magnitude);
+            for (int b = 0; b < bandsNum; b++)
+            {
+                // Get low and high frequencies
+                float freqLow = 20f * (float)Math.Pow(20000f / 20f, (float)b / bandsNum);
+                float freqHigh = 20f * (float)Math.Pow(20000f / 20f, (float)(b + 1) / bandsNum);
+
+                // Clamp the frequencies to magnitudes
+                int clampedLow = Clamp((int)(freqLow * fftSize / rate), 0, magnitudes.Length - 1);
+                int clampedHigh = Clamp((int)(freqHigh * fftSize / rate), 0, magnitudes.Length - 1);
+
+                // Get the final band value
+                float bandValue = 0;
+                for (int i = clampedLow; i <= clampedHigh; i++)
+                    bandValue += magnitudes[i];
+                bands[b] = clampedHigh >= clampedLow ? bandValue / (clampedHigh - clampedLow + 1) : 0;
+            }
+
+            // Return the final bands
+            return bands;
         }
         #endregion
     }

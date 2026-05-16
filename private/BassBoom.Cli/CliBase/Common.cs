@@ -308,9 +308,17 @@ namespace BassBoom.Cli.CliBase
                     enableDisco = !enableDisco;
                     break;
                 case ConsoleKey.V:
-                    volBoost = !volBoost;
-                    if (!volBoost && volume > 1.0)
-                        RaiseVolume();
+                    if (keystroke.Modifiers == ConsoleModifiers.Shift)
+                    {
+                        volBoost = !volBoost;
+                        if (!volBoost && volume > 1.0)
+                            RaiseVolume();
+                    }
+                    else
+                    {
+                        Visualizer.OpenVisualizer(playerScreen);
+                        playerScreen.RequireRefresh();
+                    }
                     break;
                 case ConsoleKey.D:
                     if (BassBoomCli.basolia is null)

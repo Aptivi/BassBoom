@@ -19,6 +19,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using BassBoom.Basolia;
 using BassBoom.Basolia.Media;
@@ -63,6 +64,7 @@ namespace BassBoom.Cli
                 // Initialize versions
                 mpgVer = InitBasolia.MpgLibVersion;
                 outVer = InitBasolia.OutLibVersion;
+                basolia.FrequencyBandsChanged += bands => Visualizer.bands = bands;
 
                 // Now, open an interactive TUI
                 ConsoleResizeHandler.StartResizeListener();

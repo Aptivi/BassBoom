@@ -17,6 +17,8 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+using System;
+using System.Diagnostics;
 using BassBoom.Basolia.Languages;
 using BassBoom.Basolia.Media.File;
 using BassBoom.Basolia.Media.Playback;
@@ -24,8 +26,6 @@ using BassBoom.Native;
 using BassBoom.Native.Exceptions;
 using BassBoom.Native.Interop.Init;
 using BassBoom.Native.Interop.Output;
-using System;
-using System.Diagnostics;
 using Textify.General;
 
 namespace BassBoom.Basolia.Media
@@ -48,6 +48,11 @@ namespace BassBoom.Basolia.Media
 
         internal mpg123_handle* _mpg123Handle;
         internal out123_handle* _out123Handle;
+
+        /// <summary>
+        /// Frequency band data changed for currently playing song
+        /// </summary>
+        public event Action<float[]>? FrequencyBandsChanged;
 
         /// <summary>
         /// Makes a new Basolia instance and initializes the library, if necessary.

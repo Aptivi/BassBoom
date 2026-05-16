@@ -1,0 +1,154 @@
+﻿//
+// BassBoom  Copyright (C) 2023-2025  Aptivi
+//
+// This file is part of BassBoom
+//
+// BassBoom is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// BassBoom is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+//
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Text;
+using System.Threading;
+using BassBoom.Basolia.Exceptions;
+using BassBoom.Cli.Languages;
+using Terminaux.Base;
+using Terminaux.Base.Buffered;
+using Terminaux.Base.Extensions;
+using Terminaux.Base.Structures;
+using Terminaux.Inputs;
+using Terminaux.Inputs.Styles;
+using Terminaux.Inputs.Styles.Infobox;
+using Terminaux.Inputs.Styles.Infobox.Tools;
+using Terminaux.Writer.CyclicWriters.Graphical;
+using Terminaux.Writer.CyclicWriters.Renderer;
+using Terminaux.Writer.CyclicWriters.Renderer.Tools;
+using Terminaux.Writer.CyclicWriters.Simple;
+
+namespace BassBoom.Cli.CliBase
+{
+    internal static class Visualizer
+    {
+        internal static bool exiting = false;
+        internal static float[] bands = new float[32];
+
+        internal static Keybinding[] ShowBindings =>
+        [
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_QUIT"), ConsoleKey.Q),
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_HELP"), ConsoleKey.H),
+        ];
+
+        internal static void OpenVisualizer(Screen screen)
+        {
+            // First, initialize a screen part to handle drawing
+            ScreenPart screenPart = new();
+            screenPart.AddDynamicText(HandleDraw);
+            screen.RemoveBufferedParts();
+            screen.AddBufferedPart("BassBoom Player - Equalizer", screenPart);
+
+            // Then, clear the screen to draw our TUI
+            while (!exiting)
+            {
+                try
+                {
+                    // Render the buffer
+                    ScreenTools.Render();
+
+                    // Obtain input
+                    Thread.Sleep(20);
+                    InputEventInfo? keystroke = Input.ReadPointerOrKeyNoBlock();
+
+                    // Handle the keystroke
+                    if (keystroke.ConsoleKeyInfo is ConsoleKeyInfo cki && !Input.PointerActive)
+                    {
+                        HandleKeypress(cki, screen);
+                        screen.RequireRefresh();
+                    }
+                }
+                catch (BasoliaException bex)
+                {
+                    // TODO: BASSBOOM_APP_VISUALIZER_BASOLIAERROR -> "There's an error with Basolia when trying to process the visualizer operation."
+                    InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_BASOLIAERROR") + "\n\n" + bex.Message);
+                }
+                catch (BasoliaOutException bex)
+                {
+                    // TODO: BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR -> "There's an error with Basolia output when trying to process the visualizer operation."
+                    InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR") + "\n\n" + bex.Message);
+                }
+                catch (Exception ex)
+                {
+                    // TODO: BASSBOOM_APP_VISUALIZER_ERROR -> "There's an unknown error when trying to process the visualizer operation."
+                    InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_ERROR") + "\n\n" + ex.Message);
+                }
+            }
+
+            // Restore state
+            exiting = false;
+            screen.RemoveBufferedParts();
+            ConsoleColoring.LoadBack();
+        }
+
+        private static void HandleKeypress(ConsoleKeyInfo keystroke, Screen screen)
+        {
+            switch (keystroke.Key)
+            {
+                case ConsoleKey.H:
+                    InfoBoxModalColor.WriteInfoBoxModal(KeybindingTools.RenderKeybindingHelpText(ShowBindings), new InfoBoxSettings()
+                    {
+                        Title = LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_AVAILABLEKEYSTROKES"),
+                    });
+                    screen.RequireRefresh();
+                    break;
+                case ConsoleKey.Q:
+                    exiting = true;
+                    ScreenTools.CurrentScreen?.RequireRefresh();
+                    break;
+            }
+        }
+
+        private static string HandleDraw()
+        {
+            // Prepare things
+            var drawn = new StringBuilder();
+            ConsoleWrapper.CursorVisible = false;
+
+            // Get the number of progress bars required
+            float[] cachedBands = new float[32];
+            bands.CopyTo(cachedBands, 0);
+            float step = (float)cachedBands.Length / ConsoleWrapper.WindowWidth;
+            Debug.WriteLine(string.Join(", ", cachedBands));
+            int posX = 0;
+            for (float stepped = 0; stepped < cachedBands.Length; stepped += step)
+            {
+                // Get the band index and band value
+                int bandIdx = (int)stepped;
+                float band = cachedBands[bandIdx];
+
+                // Describe it using progress bar
+                var progress = new SimpleProgress((int)(band * 10), 100)
+                {
+                    Accurate = true,
+                    Vertical = true,
+                    Height = ConsoleWrapper.WindowHeight,
+                };
+                drawn.Append(RendererTools.RenderRenderable(progress, new Coordinate(posX, 0)));
+
+                // Increment the X position
+                posX++;
+            }
+            return drawn.ToString();
+        }
+    }
+}
