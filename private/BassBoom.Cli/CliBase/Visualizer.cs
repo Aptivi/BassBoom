@@ -23,6 +23,8 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using BassBoom.Basolia.Exceptions;
+using BassBoom.Cli.CliBase.Visualizers;
+using BassBoom.Cli.CliBase.Visualizers.Styles;
 using BassBoom.Cli.Languages;
 using Terminaux.Base;
 using Terminaux.Base.Buffered;
@@ -43,12 +45,26 @@ namespace BassBoom.Cli.CliBase
     {
         internal static bool exiting = false;
         internal static float[] bands = new float[32];
+        internal static int currentVisualizer = 0;
+        internal static IVisualizer[] visualizers =
+        [
+            new Bars(),
+        ];
 
         internal static Keybinding[] ShowBindings =>
         [
+            // TODO: BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS -> "Previous visualizer"
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS"), ConsoleKey.LeftArrow),
+            // TODO: BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT -> "Next visualizer"
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT"), ConsoleKey.RightArrow),
+            // TODO: BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE -> "Change mode"
+            new(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE"), ConsoleKey.M),
             new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_QUIT"), ConsoleKey.Q),
             new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_HELP"), ConsoleKey.H),
         ];
+
+        internal static IVisualizer CurrentVisualizer =>
+            visualizers[currentVisualizer];
 
         internal static void OpenVisualizer(Screen screen)
         {
@@ -111,6 +127,25 @@ namespace BassBoom.Cli.CliBase
                     });
                     screen.RequireRefresh();
                     break;
+                case ConsoleKey.LeftArrow:
+                    currentVisualizer--;
+                    if (currentVisualizer < 0)
+                        currentVisualizer = visualizers.Length - 1;
+                    break;
+                case ConsoleKey.RightArrow:
+                    currentVisualizer++;
+                    if (currentVisualizer > visualizers.Length - 1)
+                        currentVisualizer = 0;
+                    break;
+                case ConsoleKey.UpArrow:
+                    Common.RaiseVolume();
+                    break;
+                case ConsoleKey.DownArrow:
+                    Common.LowerVolume();
+                    break;
+                case ConsoleKey.M:
+                    CurrentVisualizer.SwitchMode();
+                    break;
                 case ConsoleKey.Q:
                     exiting = true;
                     ScreenTools.CurrentScreen?.RequireRefresh();
@@ -120,35 +155,9 @@ namespace BassBoom.Cli.CliBase
 
         private static string HandleDraw()
         {
-            // Prepare things
-            var drawn = new StringBuilder();
+            // Draw the visualizer
             ConsoleWrapper.CursorVisible = false;
-
-            // Get the number of progress bars required
-            float[] cachedBands = new float[32];
-            bands.CopyTo(cachedBands, 0);
-            float step = (float)cachedBands.Length / ConsoleWrapper.WindowWidth;
-            Debug.WriteLine(string.Join(", ", cachedBands));
-            int posX = 0;
-            for (float stepped = 0; stepped < cachedBands.Length; stepped += step)
-            {
-                // Get the band index and band value
-                int bandIdx = (int)stepped;
-                float band = cachedBands[bandIdx];
-
-                // Describe it using progress bar
-                var progress = new SimpleProgress((int)(band * 10), 100)
-                {
-                    Accurate = true,
-                    Vertical = true,
-                    Height = ConsoleWrapper.WindowHeight,
-                };
-                drawn.Append(RendererTools.RenderRenderable(progress, new Coordinate(posX, 0)));
-
-                // Increment the X position
-                posX++;
-            }
-            return drawn.ToString();
+            return CurrentVisualizer.DrawVisualizer();
         }
     }
 }
