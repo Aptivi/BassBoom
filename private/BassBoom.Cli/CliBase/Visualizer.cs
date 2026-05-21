@@ -18,9 +18,6 @@
 //
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 using System.Threading;
 using BassBoom.Basolia.Exceptions;
 using BassBoom.Cli.CliBase.Visualizers;
@@ -29,15 +26,10 @@ using BassBoom.Cli.Languages;
 using Terminaux.Base;
 using Terminaux.Base.Buffered;
 using Terminaux.Base.Extensions;
-using Terminaux.Base.Structures;
 using Terminaux.Inputs;
-using Terminaux.Inputs.Styles;
 using Terminaux.Inputs.Styles.Infobox;
 using Terminaux.Inputs.Styles.Infobox.Tools;
-using Terminaux.Writer.CyclicWriters.Graphical;
-using Terminaux.Writer.CyclicWriters.Renderer;
 using Terminaux.Writer.CyclicWriters.Renderer.Tools;
-using Terminaux.Writer.CyclicWriters.Simple;
 
 namespace BassBoom.Cli.CliBase
 {
@@ -49,6 +41,7 @@ namespace BassBoom.Cli.CliBase
         internal static IVisualizer[] visualizers =
         [
             new Bars(),
+            new Beats(),
         ];
 
         internal static Keybinding[] ShowBindings =>
@@ -73,6 +66,7 @@ namespace BassBoom.Cli.CliBase
             screenPart.AddDynamicText(HandleDraw);
             screen.RemoveBufferedParts();
             screen.AddBufferedPart("BassBoom Player - Equalizer", screenPart);
+            ConsoleColoring.AllowBackground = true;
 
             // Then, clear the screen to draw our TUI
             while (!exiting)
@@ -111,6 +105,7 @@ namespace BassBoom.Cli.CliBase
             }
 
             // Restore state
+            ConsoleColoring.AllowBackground = false;
             exiting = false;
             screen.RemoveBufferedParts();
             ConsoleColoring.LoadBack();

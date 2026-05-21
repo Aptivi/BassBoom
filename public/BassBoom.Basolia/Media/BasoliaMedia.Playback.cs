@@ -559,7 +559,7 @@ namespace BassBoom.Basolia.Media
             }
         }
 
-        private static int Clamp(int val, int min, int max) =>
+        internal static int Clamp(int val, int min, int max) =>
             val < min ? min :
             val > max ? max :
             val;
