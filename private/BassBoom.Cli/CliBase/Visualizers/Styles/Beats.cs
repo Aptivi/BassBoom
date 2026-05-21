@@ -48,15 +48,15 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
             {
                 // Get the band value
                 float band = cachedBands[bandIdx];
-                int bandValue = (int)(band * 15);
+                int bandValue = (int)(band * 20);
                 blendLevel += bandValue;
             }
 
             // Determine how to state the blend
             Color beatColor = mode == 0 ? ConsoleColors.Red : mode == 1 ? ConsoleColors.Lime : ConsoleColors.Blue;
-            Color darkenedBeatColor = TransformationTools.Darken(beatColor, BasoliaMedia.Clamp(blendLevel, 0, 1000) / 10);
+            Color finalBeatColor = TransformationTools.BlendColor(beatColor, ConsoleColors.Black, BasoliaMedia.Clamp(blendLevel, 0, 1000) / 10);
             drawn.Append(
-                ConsoleColoring.RenderSetConsoleColor(darkenedBeatColor, true) +
+                ConsoleColoring.RenderSetConsoleColor(finalBeatColor, true) +
                 ConsoleClearing.GetClearWholeScreenSequence() +
                 ConsoleColoring.RenderResetBackground()
             );
