@@ -44,6 +44,7 @@ namespace BassBoom.Cli.CliBase
             new Beats(),
             new BandPads(),
             new Circles(),
+            new Reflect(),
         ];
 
         internal static Keybinding[] ShowBindings =>
