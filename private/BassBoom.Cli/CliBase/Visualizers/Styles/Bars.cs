@@ -37,9 +37,12 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
             // Get the number of progress bars required
             float[] cachedBands = new float[32];
             Visualizer.bands.CopyTo(cachedBands, 0);
-            float step = (float)cachedBands.Length / ConsoleWrapper.WindowWidth;
+            float step = mode > 1 ?
+                (float)cachedBands.Length / ConsoleWrapper.WindowHeight :
+                (float)cachedBands.Length / ConsoleWrapper.WindowWidth;
             Debug.WriteLine(string.Join(", ", cachedBands));
             int posX = 0;
+            int posY = 0;
             for (float stepped = 0; stepped < cachedBands.Length; stepped += step)
             {
                 // Get the band index and band value
@@ -48,17 +51,20 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
 
                 // Describe it using progress bar
                 int bandValue = (int)(band * 15);
-                bandValue = mode == 1 ? 100 - bandValue : bandValue;
+                bandValue = (mode == 1 || mode == 3) ? 100 - bandValue : bandValue;
                 var progress = new SimpleProgress(bandValue, 100)
                 {
                     Accurate = true,
-                    Vertical = true,
+                    Vertical = mode <= 1,
+                    ShowPercentage = false,
                     Height = ConsoleWrapper.WindowHeight,
+                    Width = ConsoleWrapper.WindowWidth,
                 };
-                drawn.Append(RendererTools.RenderRenderable(progress, new Coordinate(posX, 0)));
+                drawn.Append(RendererTools.RenderRenderable(progress, new Coordinate(mode <= 1 ? posX : 0, mode >= 2 ? posY : 0)));
 
-                // Increment the X position
+                // Increment X and Y positions
                 posX++;
+                posY++;
             }
             return drawn.ToString();
         }
@@ -66,7 +72,7 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
         void IVisualizer.SwitchMode()
         {
             mode++;
-            if (mode > 1)
+            if (mode > 3)
                 mode = 0;
         }
     }
