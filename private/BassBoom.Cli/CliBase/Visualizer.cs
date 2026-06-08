@@ -49,11 +49,8 @@ namespace BassBoom.Cli.CliBase
 
         internal static Keybinding[] ShowBindings =>
         [
-            // TODO: BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS -> "Previous visualizer"
             new(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS"), ConsoleKey.LeftArrow),
-            // TODO: BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT -> "Next visualizer"
             new(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT"), ConsoleKey.RightArrow),
-            // TODO: BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE -> "Change mode"
             new(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE"), ConsoleKey.M),
             new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_QUIT"), ConsoleKey.Q),
             new(LanguageTools.GetLocalized("BASSBOOM_APP_COMMON_KEYBINDING_HELP"), ConsoleKey.H),
@@ -92,17 +89,14 @@ namespace BassBoom.Cli.CliBase
                 }
                 catch (BasoliaException bex)
                 {
-                    // TODO: BASSBOOM_APP_VISUALIZER_BASOLIAERROR -> "There's an error with Basolia when trying to process the visualizer operation."
                     InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_BASOLIAERROR") + "\n\n" + bex.Message);
                 }
                 catch (BasoliaOutException bex)
                 {
-                    // TODO: BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR -> "There's an error with Basolia output when trying to process the visualizer operation."
                     InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR") + "\n\n" + bex.Message);
                 }
                 catch (Exception ex)
                 {
-                    // TODO: BASSBOOM_APP_VISUALIZER_ERROR -> "There's an unknown error when trying to process the visualizer operation."
                     InfoBoxModalColor.WriteInfoBoxModal(LanguageTools.GetLocalized("BASSBOOM_APP_VISUALIZER_ERROR") + "\n\n" + ex.Message);
                 }
             }

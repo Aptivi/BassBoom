@@ -651,5 +651,26 @@
   <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND" xml:space="preserve">
     <value>Vis enhetsbånd</value>
   </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS" xml:space="preserve">
+    <value>Forrige visualiserer</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT" xml:space="preserve">
+    <value>Neste visualiserer</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE" xml:space="preserve">
+    <value>Endre modus</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_BASOLIAERROR" xml:space="preserve">
+    <value>Det er en feil med Basolia under forsøk på å behandle visualiseringsoperasjonen.</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>Det er en feil med Basolia-utdataene under forsøk på å behandle visualiseringsoperasjonen.</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_ERROR" xml:space="preserve">
+    <value>Det er en ukjent feil under forsøk på å behandle visualiseringsoperasjonen.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VISUALIZER" xml:space="preserve">
+    <value>Åpner visualiseringsprogrammet</value>
+  </data>
 
 </root>

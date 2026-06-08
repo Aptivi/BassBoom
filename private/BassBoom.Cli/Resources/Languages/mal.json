@@ -720,6 +720,34 @@
     {
       "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
       "text": "Tunjukkan jalur peranti"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS",
+      "text": "Visualizer sebelumnya"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT",
+      "text": "Visualizer seterusnya"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE",
+      "text": "Tukar mod"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAERROR",
+      "text": "Terdapat ralat dengan Basolia semasa cuba memproses operasi visualizer."
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR",
+      "text": "Terdapat ralat dengan output Basolia semasa cuba memproses operasi visualizer."
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_ERROR",
+      "text": "Terdapat ralat yang tidak diketahui semasa cuba memproses operasi visualizer."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VISUALIZER",
+      "text": "Membuka visualizer"
     }
   ]
 }

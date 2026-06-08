@@ -721,6 +721,34 @@
     {
       "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
       "text": "Vis enhetsbånd"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS",
+      "text": "Forrige visualiserer"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT",
+      "text": "Neste visualiserer"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE",
+      "text": "Endre modus"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAERROR",
+      "text": "Det er en feil med Basolia under forsøk på å behandle visualiseringsoperasjonen."
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR",
+      "text": "Det er en feil med Basolia-utdataene under forsøk på å behandle visualiseringsoperasjonen."
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_ERROR",
+      "text": "Det er en ukjent feil under forsøk på å behandle visualiseringsoperasjonen."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VISUALIZER",
+      "text": "Åpner visualiseringsprogrammet"
     }
   ]
 }

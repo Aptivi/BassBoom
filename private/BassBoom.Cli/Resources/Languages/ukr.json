@@ -717,6 +717,34 @@
     {
       "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
       "text": "Показати ремінці пристрою"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS",
+      "text": "Попередній візуалізатор"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT",
+      "text": "Наступний візуалізатор"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE",
+      "text": "Змінити режим"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAERROR",
+      "text": "Виникла помилка Basolia під час спроби обробки операції візуалізатора."
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR",
+      "text": "Виникла помилка з виводом Basolia під час спроби обробки операції візуалізатора."
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_ERROR",
+      "text": "Виникла невідома помилка під час спроби обробки операції візуалізатора."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VISUALIZER",
+      "text": "Відкриває візуалізатор"
     }
   ]
 }

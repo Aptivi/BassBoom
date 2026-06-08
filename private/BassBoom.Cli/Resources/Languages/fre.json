@@ -763,6 +763,34 @@
     {
       "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
       "text": "Afficher les bandes de l'appareil"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS",
+      "text": "Visualiseur précédent"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT",
+      "text": "Visualiseur suivant"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE",
+      "text": "Changer de mode"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAERROR",
+      "text": "Une erreur s'est produite avec Basolia lors du traitement de l'opération de visualisation."
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR",
+      "text": "Une erreur s'est produite avec la sortie Basolia lors du traitement de l'opération de visualisation."
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_ERROR",
+      "text": "Une erreur inconnue s'est produite lors du traitement de l'opération de visualisation."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VISUALIZER",
+      "text": "Ouvre le visualiseur"
     }
   ]
 }

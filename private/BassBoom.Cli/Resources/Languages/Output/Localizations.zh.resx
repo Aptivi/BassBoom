@@ -651,5 +651,26 @@
   <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND" xml:space="preserve">
     <value>顯示設備頻段</value>
   </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS" xml:space="preserve">
+    <value>上一個視覺化工具</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT" xml:space="preserve">
+    <value>下一個視覺化工具</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE" xml:space="preserve">
+    <value>更改模式</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_BASOLIAERROR" xml:space="preserve">
+    <value>Basolia 在處理視覺化工具操作時發生錯誤。</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>Basolia 在處理視覺化工具操作時輸出出錯。</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_ERROR" xml:space="preserve">
+    <value>處理視覺化工具操作時出現未知錯誤。</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VISUALIZER" xml:space="preserve">
+    <value>開啟視覺化工具</value>
+  </data>
 
 </root>

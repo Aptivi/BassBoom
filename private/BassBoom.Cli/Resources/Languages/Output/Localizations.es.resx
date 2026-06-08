@@ -651,5 +651,26 @@
   <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND" xml:space="preserve">
     <value>Mostrar bandas del dispositivo</value>
   </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS" xml:space="preserve">
+    <value>Visualizador anterior</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT" xml:space="preserve">
+    <value>Visualizador siguiente</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE" xml:space="preserve">
+    <value>Cambiar modo</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_BASOLIAERROR" xml:space="preserve">
+    <value>Se produjo un error con Basolia al intentar procesar la operación del visualizador.</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>Se produjo un error con la salida de Basolia al intentar procesar la operación del visualizador.</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_ERROR" xml:space="preserve">
+    <value>Se produjo un error desconocido al intentar procesar la operación del visualizador.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VISUALIZER" xml:space="preserve">
+    <value>Abre el visualizador</value>
+  </data>
 
 </root>

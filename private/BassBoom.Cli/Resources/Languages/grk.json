@@ -718,6 +718,34 @@
     {
       "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
       "text": "Εμφάνιση ζωνών συσκευών"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS",
+      "text": "Προηγούμενος οπτικοποιητής"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT",
+      "text": "Επόμενος οπτικοποιητής"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE",
+      "text": "Αλλαγή λειτουργίας"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAERROR",
+      "text": "Υπάρχει σφάλμα με το Basolia κατά την προσπάθεια επεξεργασίας της λειτουργίας του οπτικοποιητή."
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR",
+      "text": "Υπάρχει σφάλμα με την έξοδο του Basolia κατά την προσπάθεια επεξεργασίας της λειτουργίας του οπτικοποιητή."
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_ERROR",
+      "text": "Υπάρχει άγνωστο σφάλμα κατά την προσπάθεια επεξεργασίας της λειτουργίας του οπτικοποιητή."
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VISUALIZER",
+      "text": "Ανοίγει τον οπτικοποιητή"
     }
   ]
 }

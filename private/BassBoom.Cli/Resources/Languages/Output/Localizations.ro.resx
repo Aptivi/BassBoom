@@ -651,5 +651,26 @@
   <data name="BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND" xml:space="preserve">
     <value>Afișați benzile dispozitivului</value>
   </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS" xml:space="preserve">
+    <value>Vizualizatorul anterior</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT" xml:space="preserve">
+    <value>Vizualizatorul următor</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE" xml:space="preserve">
+    <value>Modificare mod</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_BASOLIAERROR" xml:space="preserve">
+    <value>Există o eroare cu Basolia la încercarea de procesare a operației de vizualizare.</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR" xml:space="preserve">
+    <value>Există o eroare cu ieșirea Basolia la încercarea de procesare a operației de vizualizare.</value>
+  </data>
+  <data name="BASSBOOM_APP_VISUALIZER_ERROR" xml:space="preserve">
+    <value>Există o eroare necunoscută la încercarea de procesare a operației de vizualizare.</value>
+  </data>
+  <data name="BASSBOOM_APP_COMMON_KEYBINDING_VISUALIZER" xml:space="preserve">
+    <value>Deschide vizualizatorul</value>
+  </data>
 
 </root>

@@ -717,6 +717,34 @@
     {
       "loc": "BASSBOOM_APP_EQUALIZER_KEYBINDING_DEVICEBAND",
       "text": "डिवाइस बैंड दिखाएँ"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_PREVIOUS",
+      "text": "पिछला विज़ुअलाइज़र"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_NEXT",
+      "text": "अगला विज़ुअलाइज़र"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_KEYBINDING_MODE",
+      "text": "मोड बदलें"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAERROR",
+      "text": "विज़ुअलाइज़र ऑपरेशन को प्रोसेस करने की कोशिश करते समय Basolia में एक एरर है।"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_BASOLIAOUTERROR",
+      "text": "विज़ुअलाइज़र ऑपरेशन को प्रोसेस करने की कोशिश करते समय Basolia आउटपुट में एक एरर है।"
+    },
+    {
+      "loc": "BASSBOOM_APP_VISUALIZER_ERROR",
+      "text": "विज़ुअलाइज़र ऑपरेशन को प्रोसेस करने की कोशिश करते समय एक अनजान एरर है।"
+    },
+    {
+      "loc": "BASSBOOM_APP_COMMON_KEYBINDING_VISUALIZER",
+      "text": "विज़ुअलाइज़र खोलता है"
     }
   ]
 }
