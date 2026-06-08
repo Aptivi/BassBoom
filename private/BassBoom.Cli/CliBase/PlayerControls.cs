@@ -256,6 +256,8 @@ namespace BassBoom.Cli.CliBase
         {
             string path = InfoBoxInputColor.WriteInfoBoxInput(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_MUSICFILEPROMPT"));
             ScreenTools.CurrentScreen?.RequireRefresh();
+            if (string.IsNullOrEmpty(path))
+                return;
             if (File.Exists(path))
             {
                 if (BassBoomCli.basolia is null)
@@ -274,8 +276,10 @@ namespace BassBoom.Cli.CliBase
         internal static void PromptForAddSongs()
         {
             string path = InfoBoxInputColor.WriteInfoBoxInput(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_MUSICPLAYLISTPROMPT"));
-            string extension = Path.GetExtension(path);
             ScreenTools.CurrentScreen?.RequireRefresh();
+            if (string.IsNullOrEmpty(path))
+                return;
+            string extension = Path.GetExtension(path);
             if (File.Exists(path) && (extension == ".m3u" || extension == ".m3u8"))
             {
                 int currentPos = Player.position;
@@ -305,6 +309,8 @@ namespace BassBoom.Cli.CliBase
         {
             string path = InfoBoxInputColor.WriteInfoBoxInput(LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_MUSICLIBRARYPROMPT"));
             ScreenTools.CurrentScreen?.RequireRefresh();
+            if (string.IsNullOrEmpty(path))
+                return;
             if (Directory.Exists(path))
             {
                 int currentPos = Player.position;

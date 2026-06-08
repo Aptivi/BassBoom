@@ -116,6 +116,8 @@ namespace BassBoom.Cli.CliBase
         {
             string path = InfoBoxInputColor.WriteInfoBoxInput(LanguageTools.GetLocalized("BASSBOOM_APP_RADIO_STATIONPROMPT"));
             ScreenTools.CurrentScreen?.RequireRefresh();
+            if (string.IsNullOrEmpty(path))
+                return;
             Common.populate = true;
             PopulateRadioStationInfo(path);
             Common.populate = true;
@@ -125,8 +127,10 @@ namespace BassBoom.Cli.CliBase
         internal static void PromptForAddStations()
         {
             string path = InfoBoxInputColor.WriteInfoBoxInput(LanguageTools.GetLocalized("BASSBOOM_APP_RADIO_STATIONGROUPPROMPT"));
-            string extension = Path.GetExtension(path);
             ScreenTools.CurrentScreen?.RequireRefresh();
+            if (string.IsNullOrEmpty(path))
+                return;
+            string extension = Path.GetExtension(path);
             if (File.Exists(path) && (extension == ".m3u" || extension == ".m3u8"))
             {
                 var playlist = PlaylistParser.ParsePlaylist(path);
