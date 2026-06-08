@@ -345,6 +345,7 @@ namespace BassBoom.Cli.CliBase
                         BassBoomCli.basolia.Reset();
                     else
                         ShowDeviceDriver();
+                    BassBoomCli.basolia.isOutputOpen = false;
                     playerScreen.RequireRefresh();
                     break;
                 case ConsoleKey.F1:

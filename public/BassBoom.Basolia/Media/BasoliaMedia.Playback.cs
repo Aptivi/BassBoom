@@ -279,6 +279,8 @@ namespace BassBoom.Basolia.Media
                         FeedRadio();
                     }
                 } while (err == (int)mpg123_errors.MPG123_OK && IsPlaying());
+                if (state == PlaybackState.Pausing)
+                    state = PlaybackState.Paused;
                 if (IsPlaying() || state == PlaybackState.Stopping)
                     state = PlaybackState.Stopped;
             }
@@ -301,7 +303,13 @@ namespace BassBoom.Basolia.Media
             // Check to see if the file is open
             if (!IsOpened())
                 throw new BasoliaException(LanguageTools.GetLocalized("BASSBOOM_BASOLIA_PLAYBACK_EXCEPTION_FILENOTOPEN_PAUSE"), mpg123_errors.MPG123_BAD_FILE);
-            state = PlaybackState.Paused;
+            if (state == PlaybackState.Playing)
+            {
+                state = PlaybackState.Pausing;
+                SpinWait.SpinUntil(() => state == PlaybackState.Paused);
+            }
+            else
+                state = PlaybackState.Stopped;
         }
 
         /// <summary>

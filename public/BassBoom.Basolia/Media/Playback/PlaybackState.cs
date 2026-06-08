@@ -40,5 +40,9 @@ namespace BassBoom.Basolia.Media.Playback
         /// Music is stopping
         /// </summary>
         Stopping,
+        /// <summary>
+        /// Music is pausing
+        /// </summary>
+        Pausing,
     }
 }
