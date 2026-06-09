@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Terminaux" Version="8.4.0.3" />
+    <PackageReference Include="Terminaux" Version="8.5.0" />
     <PackageReference Include="Threadify" Version="1.0.0" />
   </ItemGroup>
 
