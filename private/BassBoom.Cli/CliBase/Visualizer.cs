@@ -37,7 +37,7 @@ namespace BassBoom.Cli.CliBase
     {
         internal static bool exiting = false;
         internal static float[] bands = new float[32];
-        internal static (float[] left, float[] right) sample = default;
+        internal static (float[] left, float[] right) sample = (Array.Empty<float>(), Array.Empty<float>());
         internal static int currentVisualizer = 0;
         internal static IVisualizer[] visualizers =
         [
