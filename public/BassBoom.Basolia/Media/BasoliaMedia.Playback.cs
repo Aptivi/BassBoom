@@ -641,8 +641,11 @@ namespace BassBoom.Basolia.Media
         private float[] GetPcmBuffer(byte[] audio, mpg123_enc_enum encoding)
         {
             // Copy the audio block to PCM buffer
-            bool isFloat = encoding == mpg123_enc_enum.MPG123_ENC_FLOAT_32;
-            int count = isFloat ? audio.Length / sizeof(float) : audio.Length / sizeof(short);
+            bool isFloat =
+                encoding.HasFlag(mpg123_enc_enum.MPG123_ENC_FLOAT_32) ||
+                encoding.HasFlag(mpg123_enc_enum.MPG123_ENC_FLOAT_64);
+            int sampleSize = FormatTools.GetSampleSize((int)encoding);
+            int count = audio.Length / sampleSize;
             float[] pcmBuffer = new float[count];
             if (isFloat)
                 Buffer.BlockCopy(audio, 0, pcmBuffer, 0, audio.Length);
