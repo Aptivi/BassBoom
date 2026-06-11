@@ -58,7 +58,7 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
                     Accurate = true,
                     Vertical = true,
                     ShowPercentage = false,
-                    Height = height,
+                    Height = height + (height % 2 != 0 ? 1 : 0),
                     ProgressForegroundColor = progress.ProgressActiveForegroundColor,
                     ProgressActiveForegroundColor = progress.ProgressForegroundColor,
                 };
