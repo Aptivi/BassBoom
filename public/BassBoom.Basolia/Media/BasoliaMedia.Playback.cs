@@ -613,7 +613,7 @@ namespace BassBoom.Basolia.Media
                 // Get the final band value
                 float bandValue = 0;
                 for (int i = clampedLow; i <= clampedHigh; i++)
-                    bandValue += magnitudes[i];
+                    bandValue += magnitudes[i] * (1 + (b * 0.1f));
                 bands[b] = clampedHigh >= clampedLow ? bandValue / (clampedHigh - clampedLow + 1) : 0;
             }
 

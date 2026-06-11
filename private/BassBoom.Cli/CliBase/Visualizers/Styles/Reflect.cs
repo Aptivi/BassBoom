@@ -45,7 +45,7 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
                 float band = cachedBands[bandIdx];
 
                 // Describe it using progress bar
-                int bandValue = (int)(band * 15);
+                int bandValue = (int)(band * 10);
                 var progress = new SimpleProgress(bandValue, 100)
                 {
                     Accurate = true,

@@ -60,7 +60,7 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
             {
                 // Get the band value
                 float band = cachedBands[bandIdx];
-                int bandValue = (int)(band * 20);
+                int bandValue = (int)(band * 15);
                 bassBlendLevel += bandValue;
             }
             bassBlendLevel = BasoliaMedia.Clamp(bassBlendLevel, 0, 1000);
@@ -74,7 +74,7 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
             {
                 // Get the band value
                 float band = cachedBands[bandIdx];
-                int bandValue = (int)(band * 20);
+                int bandValue = (int)(band * 15);
                 midBlendLevel += bandValue;
             }
             midBlendLevel = BasoliaMedia.Clamp(midBlendLevel, 0, 1000);
@@ -88,7 +88,7 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
             {
                 // Get the band value
                 float band = cachedBands[bandIdx];
-                int bandValue = (int)(band * 20);
+                int bandValue = (int)(band * 15);
                 trebleBlendLevel += bandValue;
             }
             trebleBlendLevel = BasoliaMedia.Clamp(trebleBlendLevel, 0, 1000);
