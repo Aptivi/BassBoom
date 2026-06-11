@@ -17,7 +17,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using System.Diagnostics;
 using System.Text;
 using Terminaux.Base;
 using Terminaux.Base.Structures;
@@ -40,7 +39,6 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
             float step = mode > 1 ?
                 (float)cachedBands.Length / ConsoleWrapper.WindowHeight :
                 (float)cachedBands.Length / ConsoleWrapper.WindowWidth;
-            Debug.WriteLine(string.Join(", ", cachedBands));
             int posX = 0;
             int posY = 0;
             for (float stepped = 0; stepped < cachedBands.Length; stepped += step)

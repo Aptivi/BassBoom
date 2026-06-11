@@ -18,7 +18,6 @@
 //
 
 using System;
-using System.Diagnostics;
 using System.Text;
 using BassBoom.Basolia.Media.Format;
 using Terminaux.Base;

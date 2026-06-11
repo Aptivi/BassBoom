@@ -17,7 +17,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using System.Diagnostics;
 using System.Text;
 using BassBoom.Basolia.Media;
 using Colorimetry;
@@ -38,7 +37,6 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
             // Get the cached bands
             float[] cachedBands = new float[32];
             Visualizer.bands.CopyTo(cachedBands, 0);
-            Debug.WriteLine(string.Join(", ", cachedBands));
 
             // Get the blend level for the bands
             int startBand = mode * 10;

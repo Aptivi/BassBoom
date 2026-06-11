@@ -17,16 +17,12 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using System.Diagnostics;
 using System.Text;
 using BassBoom.Basolia.Media;
 using Colorimetry.Data;
 using Terminaux.Base;
 using Terminaux.Base.Extensions;
-using Terminaux.Base.Structures;
 using Terminaux.Writer.CyclicWriters.Graphical.Shapes;
-using Terminaux.Writer.CyclicWriters.Renderer;
-using Terminaux.Writer.CyclicWriters.Simple;
 
 namespace BassBoom.Cli.CliBase.Visualizers.Styles
 {
@@ -39,7 +35,6 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
             // Get the number of circles required
             float[] cachedBands = new float[32];
             Visualizer.bands.CopyTo(cachedBands, 0);
-            Debug.WriteLine(string.Join(", ", cachedBands));
 
             // Get the height and the width required
             int height = ConsoleWrapper.WindowHeight;
