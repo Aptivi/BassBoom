@@ -82,5 +82,30 @@ namespace BassBoom.Basolia.Media.Format
                 return 0x00;
             return 0x80;
         }
+
+        /// <summary>
+        /// Downsamples the samples (must be called when you have received samples from the <see cref="BasoliaMedia.SamplingDataChanged"/> event handler)
+        /// </summary>
+        /// <param name="samples">Samples that you've obtained from the <see cref="BasoliaMedia.SamplingDataChanged"/> event handler</param>
+        /// <param name="width">Width of the rendering element</param>
+        /// <returns>Downsampled PCM values for the volume oscilloscope</returns>
+        public static float[] DownsampleSamples(float[] samples, int width)
+        {
+            float[] result = new float[width];
+            int bucketSize = samples.Length / width;
+            for (int w = 0; w < width; w++)
+            {
+                // Get the peak with the bucket size from the sample
+                float peak = 0f;
+                for (int b = 0; b < bucketSize; b++)
+                {
+                    float abs = Math.Abs(samples[w * bucketSize + b]);
+                    if (abs > peak)
+                        peak = abs;
+                }
+                result[w] = peak;
+            }
+            return result;
+        }
     }
 }

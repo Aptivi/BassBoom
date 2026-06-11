@@ -64,6 +64,7 @@ namespace BassBoom.Cli
                 mpgVer = InitBasolia.MpgLibVersion;
                 outVer = InitBasolia.OutLibVersion;
                 basolia.FrequencyBandsChanged += bands => Visualizer.bands = bands;
+                basolia.SamplingDataChanged += sample => Visualizer.sample = sample;
 
                 // Now, open an interactive TUI
                 ConsoleResizeHandler.StartResizeListener();

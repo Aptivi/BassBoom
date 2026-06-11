@@ -20,6 +20,7 @@
 using System;
 using System.Diagnostics;
 using System.Numerics;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -265,10 +266,17 @@ namespace BassBoom.Basolia.Media
                     bufferPlaying = true;
                     err = DecodeFrame(ref num, ref audio, ref audioBytes);
                     PlayBuffer(audio);
+
+                    // Check to see if the frequency bands and sampling data have changed
                     if (audio is not null && FrequencyBandsChanged is not null)
                     {
                         float[] freqBands = GetFreqBands(audio, bufferSize, rate, channels, (mpg123_enc_enum)encoding);
                         FrequencyBandsChanged(freqBands);
+                    }
+                    if (audio is not null && SamplingDataChanged is not null)
+                    {
+                        var stereo = GetSamplingData(audio, (mpg123_enc_enum)encoding);
+                        SamplingDataChanged(stereo);
                     }
                     bufferPlaying = false;
 
@@ -574,23 +582,9 @@ namespace BassBoom.Basolia.Media
 
         private float[] GetFreqBands(byte[] audio, long fftSize, long rate, int channels, mpg123_enc_enum encoding)
         {
-            // Copy the audio block to PCM buffer
-            int fftSizeHalf = (int)(fftSize / 2);
-            bool isFloat = encoding == mpg123_enc_enum.MPG123_ENC_FLOAT_32;
-            int count = isFloat ? audio.Length / sizeof(float) : audio.Length / sizeof(short);
-            float[] pcmBuffer = new float[count];
-            if (isFloat)
-                Buffer.BlockCopy(audio, 0, pcmBuffer, 0, audio.Length);
-            else
-            {
-                short[] pcmBufferShort = new short[count];
-                Buffer.BlockCopy(audio, 0, pcmBufferShort, 0, audio.Length);
-                for (int i = 0; i < count; i++)
-                    pcmBuffer[i] = pcmBufferShort[i] / 32768f;
-            }
-
-            // Now, apply the window function (Hann's algorithm) and apply the Fourier forward algorithm to
-            // get the FFT buffer.
+            // Apply the window function (Hann's algorithm) and apply the Fourier forward algorithm to get
+            // the FFT buffer.
+            float[] pcmBuffer = GetPcmBuffer(audio, encoding);
             var fftBuffer = new Complex[fftSize];
             for (int i = 0; i < fftSize && i * channels < pcmBuffer.Length; i++)
             {
@@ -602,6 +596,7 @@ namespace BassBoom.Basolia.Media
             // Now, get the magnitudes so that we can then bucket them into logarithmic bands for the music
             // visualizer.
             int bandsNum = 32;
+            int fftSizeHalf = (int)(fftSize / 2);
             float[] magnitudes = new float[fftSizeHalf];
             float[] bands = new float[bandsNum];
             for (int i = 0; i < magnitudes.Length; i++)
@@ -625,6 +620,40 @@ namespace BassBoom.Basolia.Media
 
             // Return the final bands
             return bands;
+        }
+
+        private (float[] left, float[] right) GetSamplingData(byte[] audio, mpg123_enc_enum encoding)
+        {
+            // Prepare the stereo sampling data for this audio
+            float[] pcmBuffer = GetPcmBuffer(audio, encoding);
+            int samplesPerChannel = pcmBuffer.Length / 2;
+            float[] left = new float[samplesPerChannel];
+            float[] right = new float[samplesPerChannel];
+            for (int i = 0; i < samplesPerChannel; i++)
+            {
+                // Distribute data from the PCM buffer to two channels
+                left[i] = pcmBuffer[i * 2];
+                right[i] = pcmBuffer[i * 2 + 1];
+            }
+            return (left, right);
+        }
+
+        private float[] GetPcmBuffer(byte[] audio, mpg123_enc_enum encoding)
+        {
+            // Copy the audio block to PCM buffer
+            bool isFloat = encoding == mpg123_enc_enum.MPG123_ENC_FLOAT_32;
+            int count = isFloat ? audio.Length / sizeof(float) : audio.Length / sizeof(short);
+            float[] pcmBuffer = new float[count];
+            if (isFloat)
+                Buffer.BlockCopy(audio, 0, pcmBuffer, 0, audio.Length);
+            else
+            {
+                short[] pcmBufferShort = new short[count];
+                Buffer.BlockCopy(audio, 0, pcmBufferShort, 0, audio.Length);
+                for (int i = 0; i < count; i++)
+                    pcmBuffer[i] = pcmBufferShort[i] / 32768f;
+            }
+            return pcmBuffer;
         }
         #endregion
     }

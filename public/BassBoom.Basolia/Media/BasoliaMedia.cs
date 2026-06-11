@@ -55,6 +55,11 @@ namespace BassBoom.Basolia.Media
         public event Action<float[]>? FrequencyBandsChanged;
 
         /// <summary>
+        /// Sampling data changed for currently playing song
+        /// </summary>
+        public event Action<(float[] left, float[] right)>? SamplingDataChanged;
+
+        /// <summary>
         /// Makes a new Basolia instance and initializes the library, if necessary.
         /// </summary>
         /// <param name="root">Root directory that contains native library files</param>
