@@ -27,10 +27,8 @@ using Terminaux.Writer.CyclicWriters.Simple;
 
 namespace BassBoom.Cli.CliBase.Visualizers.Styles
 {
-    internal class Oscilloscope : IVisualizer
+    internal class OscilloscopeUnified : IVisualizer
     {
-        int mode = 0;
-
         string IVisualizer.DrawVisualizer()
         {
             var drawn = new StringBuilder();
@@ -45,58 +43,33 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
             var downsampledRight = FormatTools.DownsampleSamples(cachedStereoRight, width);
 
             // Get the left oscilloscope and render it
-            int halfHeight = ConsoleWrapper.WindowHeight / 2;
-            for (int currentY = 0; currentY < halfHeight; currentY++)
+            int height = ConsoleWrapper.WindowHeight;
+            int quarterHeight = height / 4;
+            int halfHeight = height / 2;
+            for (int currentY = 0; currentY < quarterHeight; currentY++)
             {
-                var progress = GetProgressFrom(downsampledLeft, mode == 1);
+                var progress = Oscilloscope.GetProgressFrom(downsampledLeft, false);
                 drawn.Append(RendererTools.RenderRenderable(progress, new Coordinate(0, currentY)));
             }
-            for (int currentY = halfHeight; currentY < ConsoleWrapper.WindowHeight; currentY++)
+            for (int currentY = quarterHeight; currentY < halfHeight; currentY++)
             {
-                var progress = GetProgressFrom(downsampledRight, mode == 1);
+                var progress = Oscilloscope.GetProgressFrom(downsampledLeft, true);
+                drawn.Append(RendererTools.RenderRenderable(progress, new Coordinate(0, currentY)));
+            }
+            for (int currentY = halfHeight; currentY < halfHeight + quarterHeight; currentY++)
+            {
+                var progress = Oscilloscope.GetProgressFrom(downsampledRight, false);
+                drawn.Append(RendererTools.RenderRenderable(progress, new Coordinate(0, currentY)));
+            }
+            for (int currentY = halfHeight + quarterHeight; currentY < height; currentY++)
+            {
+                var progress = Oscilloscope.GetProgressFrom(downsampledRight, true);
                 drawn.Append(RendererTools.RenderRenderable(progress, new Coordinate(0, currentY)));
             }
             return drawn.ToString();
         }
 
         void IVisualizer.SwitchMode()
-        {
-            mode++;
-            if (mode > 1)
-                mode = 0;
-        }
-
-        internal static SimpleProgress GetProgressFrom(float[] downsampled, bool useRms)
-        {
-            // First, decide whether to get the peak loudness or the RMS loudness
-            float peak = 0;
-            if (useRms)
-                peak = GetRmsLoudness(downsampled);
-            else
-            {
-                foreach (float d in downsampled)
-                    if (d > peak)
-                        peak = d;
-            }
-
-            // Render it to a simple progress bar renderer
-            int bar = (int)(peak * 100);
-            var progress = new SimpleProgress(bar, 100)
-            {
-                Accurate = true,
-                ShowPercentage = false,
-                Height = ConsoleWrapper.WindowHeight,
-                Width = ConsoleWrapper.WindowWidth,
-            };
-            return progress;
-        }
-
-        private static float GetRmsLoudness(float[] downsampled)
-        {
-            float rms = 0;
-            foreach (float d in downsampled)
-                rms += d * d;
-            return (float)Math.Sqrt(rms / downsampled.Length);
-        }
+        { }
     }
 }

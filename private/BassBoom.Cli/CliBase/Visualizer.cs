@@ -46,6 +46,7 @@ namespace BassBoom.Cli.CliBase
             new BandPads(),
             new Circles(),
             new Oscilloscope(),
+            new OscilloscopeUnified(),
             new Reflect(),
         ];
 
