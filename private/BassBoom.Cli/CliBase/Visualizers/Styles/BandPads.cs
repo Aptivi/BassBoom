@@ -102,7 +102,7 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
                 Color = trebleBeatColor,
                 Height = boxHeight,
                 Width = boxWidth,
-                Left = (boxWidth * 2),
+                Left = boxWidth * 2,
                 Top = 0,
             };
             drawn.Append(

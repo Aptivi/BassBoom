@@ -68,16 +68,7 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
 
         internal static SimpleProgress GetProgressFrom(float[] downsampled, bool useRms)
         {
-            // First, decide whether to get the peak loudness or the RMS loudness
-            float peak = 0;
-            if (useRms)
-                peak = GetRmsLoudness(downsampled);
-            else
-            {
-                foreach (float d in downsampled)
-                    if (d > peak)
-                        peak = d;
-            }
+            float peak = GetPeak(downsampled, useRms);
 
             // Render it to a simple progress bar renderer
             int bar = (int)(peak * 100);
@@ -89,6 +80,21 @@ namespace BassBoom.Cli.CliBase.Visualizers.Styles
                 Width = ConsoleWrapper.WindowWidth,
             };
             return progress;
+        }
+
+        internal static float GetPeak(float[] downsampled, bool useRms)
+        {
+            // Decide whether to get the peak loudness or the RMS loudness
+            float peak = 0;
+            if (useRms)
+                peak = GetRmsLoudness(downsampled);
+            else
+            {
+                foreach (float d in downsampled)
+                    if (d > peak)
+                        peak = d;
+            }
+            return peak;
         }
 
         private static float GetRmsLoudness(float[] downsampled)
