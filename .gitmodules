@@ -7,3 +7,6 @@
 [submodule "assets/libmpg123"]
 	path = assets/libmpg123
 	url = https://github.com/madebr/mpg123.git
+[submodule "private/Dtp"]
+	path = private/Dtp
+	url = https://github.com/Aptivi/Dtp
