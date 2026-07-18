@@ -28,13 +28,13 @@ jobs:
         run: |
           pip install aptivi-adt
           adt build -b "-p:Configuration=Release -p:ContinuousIntegrationBuild=true"
-          adt packbin
           adt gendocs
           adt packdocs
-          dotnet build -p:Configuration=Release -p:Platform=x64 public/BassBoom.Installers/BassBoom.Installer.slnx
-          dotnet build -p:Configuration=Release -p:Platform=ARM64 public/BassBoom.Installers/BassBoom.Installer.slnx
-          Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/x64/Release/BassBoom.InstallerBundle.exe artifacts/bassboom-win-x64-installer.exe
-          Move-Item public/BassBoom.Installers/BassBoom.InstallerBundle/bin/ARM64/Release/BassBoom.InstallerBundle.exe artifacts/bassboom-win-arm64-installer.exe
+          adt buildwix Release x64
+          adt buildwix Release ARM64
+          adt packbin
+          adt packwix Release x64
+          adt packwix Release ARM64
       - name: Release Preparation
         id: release-asset
         shell: bash
