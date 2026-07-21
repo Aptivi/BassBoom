@@ -4,46 +4,58 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-24.04
+    outputs:
+      orig-name: ${{ steps.dl.outputs.orig-name }}
+    steps:
+      - name: Download original source
+        id: dl
+        env:
+          ORIG_VERSION: "2.0.3.1-1.0.1-1"
+        run: |
+          UPSTREAM_VERSION=$(echo "$ORIG_VERSION" | sed -E 's/-[^-]+$//')
+          ORIG_NAME="bassboom-3_${UPSTREAM_VERSION}.orig.tar.xz"
+          mkdir -p dist
+          wget --output-document="dist/${ORIG_NAME}" \
+            "https://launchpad.net/~eofla/+archive/ubuntu/bassboom/+sourcefiles/bassboom-3/${ORIG_VERSION}/${ORIG_NAME}"
+          echo "orig-name=${ORIG_NAME}" >> "$GITHUB_OUTPUT"
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: orig-source
+          path: dist/${{ steps.dl.outputs.orig-name }}
+          retention-days: 1
+
+  build:
+    needs: prepare
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - distro: noble
+            series: "24.04"
+          - distro: resolute
+            series: "26.04"
+          - distro: stonking
+            series: "26.10"
     steps:
       - uses: actions/checkout@v6
         with:
           submodules: 'true'
-      
-      - name: Import GPG
-        uses: crazy-max/ghaction-import-gpg@v7
+
+      - uses: actions/download-artifact@v4
         with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-
-      - name: Import SSH
+          name: orig-source
+          path: dist
+          
+      - name: Prepare the source
         run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/private.key
-          sudo chmod 600 ~/.ssh/private.key
-          echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          cat > ~/.ssh/config << EOF
-          Host ppa.launchpad.net
-            IdentityFile ~/.ssh/private.key
-            User eofla
-          EOF
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.APT_SSH_PRIV }}
-          SSH_KNOWN_HOSTS: ${{ secrets.APT_KNOWN_HOST_FOR_UBUNTU_PPA }}
-       
-      - name: Configure Launchpad PPA
-        run: |
-          cat > ~/.dput.cf << EOF
-          [apt-ppa]
-          fqdn = ppa.launchpad.net
-          method = sftp
-          incoming = ~eofla/ubuntu/bassboom/
-          login = eofla
-          allow_unsigned_uploads = 0
-          EOF
-
+          mv dist/*.orig.tar.xz ..
+          tar xf ../*.orig.tar.xz .
+          mv .github ..
+      
       - name: Install required packages
         run: |
           sudo rm /etc/apt/sources.list.d/microsoft-prod.list
@@ -52,15 +64,23 @@ jobs:
           sudo NEEDRESTART_SUSPEND=1 apt install devscripts debhelper-compat dput build-essential equivs
           sudo NEEDRESTART_SUSPEND=1 mk-build-deps -i
           rm *build-deps*
-          
-      - name: Download original source
+
+      - name: Changelog targeting ${{ matrix.distro }}
+        env:
+          DEBEMAIL: "ceo@aptivi.anonaddy.com"
+          DEBFULLNAME: "Aptivi CEO"
         run: |
-          wget --output-document=../bassboom-3_2.0.3.1-1.0.1.orig.tar.xz https://launchpad.net/~eofla/+archive/ubuntu/bassboom/+sourcefiles/bassboom-3/2.0.3.1-1.0.1-1/bassboom-3_2.0.3.1-1.0.1.orig.tar.xz
-          tar xf ../bassboom-3_2.0.3.1-1.0.1.orig.tar.xz .
-          mv .github ..
+          BASE_VERSION=$(dpkg-parsechangelog -S Version)
+          NEW_VERSION="${BASE_VERSION}~${{ matrix.series }}.1"
+          dch --newversion "$NEW_VERSION" \
+              --distribution "${{ matrix.distro }}" \
+              --force-distribution -b \
+              "Rebuild for Ubuntu ${{ matrix.series }} (${{ matrix.distro }})"
 
       - name: Build source package
         run: debuild -S
-        
+
       - name: Push to Launchpad
-        run: dput apt-ppa ../bassboom-3_*_source.changes
+        run: |
+          cat ../bassboom-3_*_source.changes
+          dput -d apt-ppa ../bassboom-3_*_source.changes
