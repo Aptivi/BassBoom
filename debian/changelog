@@ -1,6 +1,6 @@
 bassboom-3 (2.0.3.1-1.0.2.1-1) noble; urgency=medium
 
-  * Please populate changelogs here
+  * Fixed native library copy for .NET Framework 4.8
 
  -- Aptivi CEO <ceo@aptivi.anonaddy.com>  Thu, 27 Aug 2026 13:51:57 +0300
 
