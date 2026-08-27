@@ -25,7 +25,8 @@
     </None>
     
     <!-- Necessary targets -->
-    <None Include="BassBoom.Native.targets" Pack="True" PackagePath="/" />
+    <None Include="BassBoom.Native.targets" Pack="True" PackagePath="build/BassBoom.Native.targets" />
+    <None Include="BassBoom.Native.targets" Pack="True" PackagePath="buildTransitive/BassBoom.Native.targets" />
 
     <!-- For packaging -->
     <None Include="../../assets/OfficialAppIcon-BassBoom-512.png" Pack="true" PackagePath="\" />
