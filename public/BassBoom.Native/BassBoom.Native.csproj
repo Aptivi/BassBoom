@@ -35,8 +35,8 @@
 
   <ItemGroup>
     <PackageReference Include="ResourceLab" Version="1.0.0" />
-    <PackageReference Include="SpecProbe.Loader" Version="3.9.1" />
-    <PackageReference Include="SpecProbe.Software" Version="3.9.1" />
+    <PackageReference Include="SpecProbe.Loader" Version="3.9.1.1" />
+    <PackageReference Include="SpecProbe.Software" Version="3.9.1.1" />
   </ItemGroup>
 
 </Project>

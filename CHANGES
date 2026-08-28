@@ -1,10 +1,10 @@
-This version of BassBoom focuses on fixing native library copy for .NET Framework 4.8. Again.
+This version of BassBoom focuses on updating libraries to finish the native library fix.
 
 ### Changes
 
 This release contains a variety of changes, including, but not limited to:
 
-- `[*]` Fixed native library copy for .NET Framework 4.8
+- `[*]` Updated libraries
 
 Review the commit history if you want to get a deep insight about the changes.
 
