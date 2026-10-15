@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.13.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.13.1" />
     <PackageReference Include="Magico" Version="1.7.3.1" />
     <PackageReference Include="MathNet.Numerics.Signed" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
