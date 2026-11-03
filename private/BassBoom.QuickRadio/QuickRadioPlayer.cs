@@ -29,6 +29,7 @@ using Colorimetry.Transformation;
 using Terminaux.Base;
 using Terminaux.Base.Extensions;
 using Terminaux.Inputs;
+using Terminaux.Sequences.Builder;
 using Terminaux.Shell.Arguments.Base;
 using Terminaux.Themes.Colors;
 using Terminaux.Writer.ConsoleWriters;
@@ -66,12 +67,9 @@ namespace BassBoom.QuickRadio
             var basoliaMedia = new BasoliaMedia();
             basoliaMedia.OpenUrl(radioPath);
 
-            // Get current song
+            // Show exit tip
             if (!quiet)
-            {
-                TextWriterColor.Write($" >> {basoliaMedia.GetRadioNowPlaying()}\n", ThemeColorType.Success);
                 TextWriterColor.Write(LanguageTools.GetLocalized("BASSBOOM_QUICKRADIO_EXITTIP") + "\n", ThemeColorType.Tip);
-            }
 
             // Play the radio station, and display live status to indicate constant connection
             try
@@ -80,12 +78,16 @@ namespace BassBoom.QuickRadio
                 {
                     ShowPercentage = false,
                     Indeterminate = true,
+                    Accurate = true,
                     ProgressActiveForegroundColor = ConsoleColors.Lime,
                     ProgressForegroundColor = TransformationTools.GetDarkBackground(ConsoleColors.Lime),
                 };
                 var builder = new StringBuilder();
                 playerThread.Start(basoliaMedia);
                 SpinWait.SpinUntil(basoliaMedia.IsPlaying);
+                bool firstTime = true;
+                string lastNowPlaying = "";
+                var color = ThemeColorsTools.GetColor(ThemeColorType.Success);
                 while (basoliaMedia.IsPlaying())
                 {
                     if (!quiet)
@@ -94,8 +96,24 @@ namespace BassBoom.QuickRadio
                         int totalWidth = ConsoleWrapper.WindowWidth;
                         durationProgress.Width = totalWidth;
 
-                        // Display duration and progress
+                        // Get currently playing media
+                        string nowPlaying = basoliaMedia.GetRadioNowPlaying();
+
+                        // Display title if needed
                         builder.Clear();
+                        if (nowPlaying != lastNowPlaying)
+                        {
+                            if (!firstTime)
+                                builder.Append(VtSequenceBuilderTools.BuildVtSequence(VtSequenceSpecificTypes.CsiMoveCursorUp, 1));
+                            builder.Append('\r');
+                            builder.Append(ConsoleClearing.GetClearLineToRightSequence());
+                            builder.Append(ConsoleColoring.RenderSetConsoleColor(color));
+                            builder.AppendLine($" >> {nowPlaying}");
+                            lastNowPlaying = nowPlaying;
+                            firstTime = false;
+                        }
+
+                        // Display duration and progress
                         builder.Append('\r');
                         builder.Append(durationProgress.Render());
                         builder.Append(ConsoleClearing.GetClearLineToRightSequence());
@@ -114,6 +132,14 @@ namespace BassBoom.QuickRadio
             catch (Exception ex)
             {
                 TextWriterColor.Write(LanguageTools.GetLocalized("BASSBOOM_QUICKRADIO_FAILURE") + $": {ex.Message}", ThemeColorType.Error);
+            }
+            finally
+            {
+                if (playerThread.IsAlive)
+                {
+                    playerThread.Stop();
+                    playerThread.Wait();
+                }
             }
 
             // Return success to the OS

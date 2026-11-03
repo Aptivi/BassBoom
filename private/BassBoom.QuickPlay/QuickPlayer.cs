@@ -97,6 +97,7 @@ namespace BassBoom.QuickPlay
                 var durationProgress = new SimpleProgress(0, duration)
                 {
                     ShowPercentage = false,
+                    Accurate = true,
                     ProgressActiveForegroundColor = ConsoleColors.Lime,
                     ProgressForegroundColor = TransformationTools.GetDarkBackground(ConsoleColors.Lime),
                 };
