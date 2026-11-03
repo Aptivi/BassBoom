@@ -55,6 +55,7 @@ jobs:
           path: "*.deb"
           archive: false
 
-      - name: Try to install
+      - name: Try to install and execute
         run: |
           sudo apt install ./bassboom-3_*.deb
+          bassboom-3 --test

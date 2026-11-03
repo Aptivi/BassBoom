@@ -34,3 +34,5 @@ jobs:
           pip install aptivi-adt
           adt build -b "-p:Configuration=Release -p:ContinuousIntegrationBuild=true"
           adt checklocs
+      - name: Test versions
+        run: dotnet private/BassBoom.Cli/bin/Release/net10.0/BassBoom.Cli.dll --test
