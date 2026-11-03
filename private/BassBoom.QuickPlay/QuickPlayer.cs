@@ -140,6 +140,14 @@ namespace BassBoom.QuickPlay
             {
                 TextWriterColor.Write(LanguageTools.GetLocalized("BASSBOOM_QUICKPLAYER_FAILURE") + $": {ex.Message}", ThemeColorType.Error);
             }
+            finally
+            {
+                if (playerThread.IsAlive)
+                {
+                    playerThread.Stop();
+                    playerThread.Wait();
+                }
+            }
 
             // Return success to the OS
             return 0;
