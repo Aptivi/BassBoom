@@ -42,7 +42,7 @@ namespace BassBoom.Cli.CliBase
 {
     internal static class PlayerControls
     {
-        internal static double seekRate = 3.0d;
+        internal static int seekRate = 3;
 
         internal static void SeekForward()
         {
@@ -183,6 +183,22 @@ namespace BassBoom.Cli.CliBase
             if (Player.position > Common.CurrentCachedInfo.Duration)
                 Player.position = 0;
             BassBoomCli.basolia.SeekToFrame(Player.position);
+        }
+
+        internal static void ChangeSeekFactor(bool decrease)
+        {
+            if (decrease)
+            {
+                seekRate -= 1;
+                if (seekRate < 1)
+                    seekRate = 1;
+            }
+            else
+            {
+                seekRate += 1;
+                if (seekRate > 60)
+                    seekRate = 60;
+            }
         }
 
         internal static void Play()

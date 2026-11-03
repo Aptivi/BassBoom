@@ -170,7 +170,7 @@ namespace BassBoom.Cli.CliBase
                 // Render the indicator
                 string boostIndicator = Common.volBoost ? new Color(ConsoleColors.Red).VTSequenceForeground() : "";
                 string indicator =
-                    LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_SEEKINDICATOR") + $" {PlayerControls.seekRate:0.00} | " +
+                    LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_SEEKINDICATOR") + $" {PlayerControls.seekRate} | " +
                     boostIndicator + LanguageTools.GetLocalized("BASSBOOM_APP_PLAYER_VOLINDICATOR") + $" {Common.volume * 100:0}%{disco.VTSequenceForeground()}";
 
                 // Render the lyric
@@ -288,13 +288,13 @@ namespace BassBoom.Cli.CliBase
             {
                 case ConsoleKey.RightArrow:
                     if (keystroke.Modifiers == ConsoleModifiers.Control)
-                        PlayerControls.seekRate += 0.05d;
+                        PlayerControls.ChangeSeekFactor(false);
                     else
                         PlayerControls.SeekForward();
                     break;
                 case ConsoleKey.LeftArrow:
                     if (keystroke.Modifiers == ConsoleModifiers.Control)
-                        PlayerControls.seekRate -= 0.05d;
+                        PlayerControls.ChangeSeekFactor(true);
                     else
                         PlayerControls.SeekBackward();
                     break;
@@ -363,13 +363,13 @@ namespace BassBoom.Cli.CliBase
             {
                 case ConsoleKey.RightArrow:
                     if (keystroke.Modifiers == ConsoleModifiers.Control)
-                        PlayerControls.seekRate += 0.05d;
+                        PlayerControls.ChangeSeekFactor(false);
                     else
                         PlayerControls.SeekForward();
                     break;
                 case ConsoleKey.LeftArrow:
                     if (keystroke.Modifiers == ConsoleModifiers.Control)
-                        PlayerControls.seekRate -= 0.05d;
+                        PlayerControls.ChangeSeekFactor(true);
                     else
                         PlayerControls.SeekBackward();
                     break;
