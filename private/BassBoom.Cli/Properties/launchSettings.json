@@ -6,6 +6,10 @@
     "BassBoom.Cli - Radio": {
       "commandName": "Project",
       "commandLineArgs": "--radio"
+    },
+    "BassBoom.Cli - Test": {
+      "commandName": "Project",
+      "commandLineArgs": "--test"
     }
   }
 }

@@ -41,11 +41,13 @@ namespace BassBoom.Cli
         internal static BasoliaMedia? basolia;
         internal static Color white = new(ConsoleColors.White);
         internal static bool isRadio;
+        internal static bool justTest;
         private static readonly Version? version = Assembly.GetAssembly(typeof(InitBasolia))?.GetName().Version;
         private static readonly Dictionary<string, ArgumentInfo> arguments = new()
         {
             { "radio", new("radio", "Radio mode", new RadioArgument()) },
             { "path", new("path", "Path to MPEG music or MPEG radio URL", new PathArgument()) },
+            { "test", new("test", "Just verifies that mpg123 works", new TestArgument()) },
         };
 
         static int Main(string[] args)
@@ -63,10 +65,19 @@ namespace BassBoom.Cli
                 // Initialize versions
                 mpgVer = InitBasolia.MpgLibVersion;
                 outVer = InitBasolia.OutLibVersion;
-                basolia.FrequencyBandsChanged += bands => Visualizer.bands = bands;
-                basolia.SamplingDataChanged += sample => Visualizer.sample = sample;
+
+                // If we're on test mode, exit the app
+                if (justTest)
+                {
+                    TextWriterColor.Write("Basolia: " + $"{InitBasolia.BasoliaVersion}");
+                    TextWriterColor.Write("mpg123:  " + $"{InitBasolia.MpgLibVersion}");
+                    TextWriterColor.Write("out123:  " + $"{InitBasolia.OutLibVersion}");
+                    return 0;
+                }
 
                 // Now, open an interactive TUI
+                basolia.FrequencyBandsChanged += bands => Visualizer.bands = bands;
+                basolia.SamplingDataChanged += sample => Visualizer.sample = sample;
                 ConsoleResizeHandler.StartResizeListener();
                 if (isRadio)
                     Radio.RadioLoop();
